@@ -620,6 +620,9 @@
                 if (nomDepartement) {
                     $('#carte path[data-num="' + nunmeroDepartement + '"]').addClass('selected');
                     $("#donneesDepartment").removeClass("hidden");
+                    $([document.documentElement, document.body]).animate({
+                        scrollTop: $("#donneesDepartment").offset().top-50
+                    }, 1000);
                 } else {
                     $("#donneesDepartment").addClass("hidden");
                 }
