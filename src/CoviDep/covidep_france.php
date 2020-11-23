@@ -1,7 +1,21 @@
 <!-- wp:html -->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 <div class="entry">
-    <h3>Comment se situe mon département par rapport à la France ?</h3>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="wp-block-button is-style-outline pull-left" style="margin-right: 15px;">
+                <a class="wp-block-button__link" href="../covidep"> CoviDep Vague</a>
+            </div>
+            <div class="wp-block-button is-style-outline pull-left" >
+                <a class="wp-block-button__link disabled" href="#" style="background-color: lightgrey;"> CoviDep France</a>
+            </div>
+        </div>
+    </div>
+
+    <h3>
+        Comment se situe mon département par rapport à la France ?
+    </h3>
     <div class="row">
         <div class="col-md-6">
             <p style=" margin-top: 10px;">
@@ -405,50 +419,50 @@
         </div>
         <div class="body">
 
- <!--     TEST Version avec pourcentage comparaison en bout de progress bar. 
-        Ne fonctionne pas sru WP. A revoir sur environnement de test. 
+            <!--     TEST Version avec pourcentage comparaison en bout de progress bar.
+                   Ne fonctionne pas sru WP. A revoir sur environnement de test.
 
-       <div class="donnee Cas">
-                <h3>
-                    Cas
-                </h3>
+                  <div class="donnee Cas">
+                           <h3>
+                               Cas
+                           </h3>
 
-                <small>hebdomadaires pour 100 000 habitants</small>
+                           <small>hebdomadaires pour 100 000 habitants</small>
 
-                 <div>
-                    <div style="width: 90%; float: left;">
-                        <div class="row france">
-                            <div class="col-md-2">
-                                <b>France</b>
-                            </div>
-                            <div class="col-md-10">
-                                <progress style="" type="grey" id="moyenneIncidenceCas" value="0" max="1">
-                                </progress>
-                            </div>
-                        </div>
-                        <div class="row departementCourant">
-                            <div class="col-md-2">
-                                <b><span class="nomDepartment"></span></b>
-                            </div>
-                            <div class="col-md-10">
-                                <progress style="" type="" id="currentDepartmentIncidenceCas" value="0" max="1">
-                                </progress>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="width: 1%; float: left;" class="titreDifference">
-                        <span class="difference titre"></span>
-                    </div>
-                </div>
+                            <div>
+                               <div style="width: 90%; float: left;">
+                                   <div class="row france">
+                                       <div class="col-md-2">
+                                           <b>France</b>
+                                       </div>
+                                       <div class="col-md-10">
+                                           <progress style="" type="grey" id="moyenneIncidenceCas" value="0" max="1">
+                                           </progress>
+                                       </div>
+                                   </div>
+                                   <div class="row departementCourant">
+                                       <div class="col-md-2">
+                                           <b><span class="nomDepartment"></span></b>
+                                       </div>
+                                       <div class="col-md-10">
+                                           <progress style="" type="" id="currentDepartmentIncidenceCas" value="0" max="1">
+                                           </progress>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div style="width: 1%; float: left;" class="titreDifference">
+                                   <span class="difference titre"></span>
+                               </div>
+                           </div>
 
 
-                <p>
-                    Dans le département <span class="articleDepartement"></span><span class="nomDepartment"></span> il y
-                    a eu <span class="incidence"></span>
-                    nouveaux cas pour 100 000 habitants cette semaine.<br>
-                    C’est <span class="difference"></span> plus <span class="sens"></span> que la moyenne française.
-                </p>
-            </div> -->
+                           <p>
+                               Dans le département <span class="articleDepartement"></span><span class="nomDepartment"></span> il y
+                               a eu <span class="incidence"></span>
+                               nouveaux cas pour 100 000 habitants cette semaine.<br>
+                               C’est <span class="difference"></span> plus <span class="sens"></span> que la moyenne française.
+                           </p>
+                       </div> -->
 
             <div class="donnee Cas" style="margin-top:30px;">
                 <h3>
@@ -562,7 +576,7 @@
 
             <div class="donnee Deces" style="margin-top:70px;">
 
-                <h3 >
+                <h3>
                     Décès
                 </h3>
                 <small>hebdomadaires pour 100 000 habitants</small>
@@ -621,7 +635,7 @@
                     $('#carte path[data-num="' + nunmeroDepartement + '"]').addClass('selected');
                     $("#donneesDepartment").removeClass("hidden");
                     $([document.documentElement, document.body]).animate({
-                        scrollTop: $("#donneesDepartment").offset().top-50
+                        scrollTop: $("#donneesDepartment").offset().top - 60
                     }, 1000);
                 } else {
                     $("#donneesDepartment").addClass("hidden");
@@ -688,11 +702,9 @@
                     }, 1000);
 
                 });
-
-
             }
 
-            // $('.select2').select2();
+            $('.select2').select2();
 
             $('#listeDepartements').change(function (e) {
                 affichageInfosDepartement();
@@ -705,7 +717,6 @@
                 nomDepartement = $("#listeDepartements option[data-num='" + departement + "']").val();
                 $("#listeDepartements").val(nomDepartement);
                 $("#listeDepartements").trigger('change');
-                // $('#listeDepartements').select2("val", departement);;
             });
 
             fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/incidence_departements.json')
@@ -717,7 +728,7 @@
                 })
                 .then(json => {
                     allData = json;
-                    console.log(json);
+                   // console.log(json);
 
                     donneesDepartements = allData['donnees_departements'];
                     donneesFrance = allData['donnees_france'];
@@ -725,7 +736,7 @@
                     // Dates de mise à jour
                     date_update = allData['date_update'];
                     document.getElementById("date_update").innerHTML = date_update;
-                    console.log(date_update);
+                   // console.log(date_update);
 
                     //initialisation variables Max
                     incidenceCasMax = 0;
@@ -960,9 +971,9 @@
         }
     </style>
     <br>
-    <p>Page développée bénévolement par <a href="https://www.souvy-informatique.fr/">Michael Souvy</a></p>  
+    <p>Page développée bénévolement par <a href="https://www.souvy-informatique.fr/">Michael Souvy</a></p>
     <p>N’hésitez pas à partager CoviDep France autour de vous ! Le lien est simple : <a
-            href="https://covidtracker.fr/covidep-france">covidtracker.fr/covidep-france</a>.</p>
+                href="https://covidtracker.fr/covidep-france">covidtracker.fr/covidep-france</a>.</p>
     <p>Une erreur ? Merci de <a href="https://covidtracker.fr/contact">nous contacter</a>.</p>
 </div>
 <!-- /wp:html -->
