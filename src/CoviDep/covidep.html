@@ -8,6 +8,8 @@
   Style en première partie, HTML ensuite, puis script JS à la fin.
   -->
 
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
   <style>
     html {
@@ -99,9 +101,9 @@
       border-radius: 5px;
   }
   progress::-moz-progress-bar {  /* Firefox */
-      background: red;  
+      background: red;
       border-radius: 5px;
-  } 
+  }
 
   button:hover {
     background-color: #F0F8FF; /* Green */
@@ -266,17 +268,27 @@
   }
   </style>
 
-
+  <div class="row">
+      <div class="col-xs-12">
+          <div class="wp-block-button is-style-outline pull-left disabled" style="margin-right: 15px;">
+              <a class="wp-block-button__link" href="../covidep/" style="background-color: lightgrey;"> CoviDep Vague</a>
+          </div>
+          <div class="wp-block-button is-style-outline pull-left" >
+              <a class="wp-block-button__link disabled" href="../covidep-france/" style=""> CoviDep France</a>
+          </div>
+      </div>
+  </div>
 
   <h3>Mon département a-t-il dépassé la première vague ?</h3>
+
   <p>CoviDep est un outil qui présente les départements ayant dépassé le nombre d'hospitalisations pour Covid19 du pic de la première vague et ceux ne l'ayant pas encore dépassé. Vous pouvez sélectionner un département dans la liste ci-dessous, ou alors dans les tableaux en bas de page. Les données proviennent de Santé publique France et sont mises à jour quotidiennement.</p>
 
 
   <div class="wrap">
    <div class="three">
       <center>
-      <select name="deps_list_choice" id="deps_list_choice" onchange="listHasChanged();">
-        <option value="">-- Choisissez un département--</option> 
+      <select name="deps_list_choice" class="select2" id="deps_list_choice" onchange="listHasChanged();">
+        <option value="">-- Choisissez un département--</option>
       </select>
       </center>
 
@@ -297,7 +309,7 @@
   <div class="wrap">
 
       <div class="two">
-      <span style="color: red; margin-left: 10px; margin-top:20px; font-size:500%; display: inline-block;" id="nb_apres_vague">--</span> 
+      <span style="color: red; margin-left: 10px; margin-top:20px; font-size:500%; display: inline-block;" id="nb_apres_vague">--</span>
        <h3 style="color: red; margin-bottom: 20px; margin-left: 10px; margin-top: 0px;">
             départements ont dépassé la première vague
           </h3>
@@ -312,7 +324,7 @@
     </div>
 
    <div class="one">
-      <span style="color: green; margin-left: 10px; margin-top:20px; font-size:500%; display: inline-block;" id="nb_avant_vague">--</span> 
+      <span style="color: green; margin-left: 10px; margin-top:20px; font-size:500%; display: inline-block;" id="nb_avant_vague">--</span>
       <h3 style="color: green; margin-bottom: 20px; margin-left: 10px; margin-top: 0px;">
             départements n'ont pas dépassé la première vague
           </h3>
@@ -339,6 +351,12 @@
 
 
   <script>
+
+      jQuery(document).ready(function ($) {
+          //Intiialisation du select2.
+          $('.select2').select2();
+      });
+
     var deps_avant_vague = ["Chargement..."];
     var deps_apres_vague = ["Chargement..."];
     var all_deps_with_num = [];
@@ -371,14 +389,14 @@
          ["maj-1", "maj-2"].forEach(id => {
           document.getElementById(id).innerHTML = document.getElementById(id).innerHTML.replace("-/-", data["date"]);
          })
-         
+
 
 
          updateList();
 
          updateRisks(deps_avant_vague.length, deps_apres_vague.length);
 
-         
+
       })
      .catch(function () {
          this.dataError = true;
@@ -403,7 +421,7 @@
         dot="."
       }
 
-      dep_string = "<span style=\"margin-bottom: -10px; margin-top: 2px; display: inline-block;\"><b>" + dep.substr(0, nb_caract) + dot + "&nbsp;(" + numeros_deps[dep] + ")</b></span><br>"
+      dep_string = "<span style=\" margin-top: 2px; display: inline-block;\"><b>" + dep.substr(0, nb_caract) + dot + "&nbsp;(" + numeros_deps[dep] + ")</b></span><br>"
 
       progress_wave_1 = "<div class=\"box-perso\"><div style='width: 80%; padding 10px; vertical-align: middle;'><progress style='margin-bottom: -10px !important;' type='greenv1' id='avancement' value='{{value}}' max='{{max}}'></progress>"
         .replace("{{value}}", nb_hosp_dep[dep]["hosp_max_premiere_vague"])
@@ -412,7 +430,7 @@
       progress_wave_2 = "<progress style='margin-top: 0px !important;' type='green' id='avancement' value='{{value}}' max='{{max}}'></progress></div>"
         .replace("{{value}}", nb_hosp_dep[dep]["hosp_actuellement"])
         .replace("{{max}}", nb_hosp_dep[dep]["hosp_max_premiere_vague"])
-      
+
       text_evolution = "<div style='vertical-align: bottom;'><span style='font-size: 70%; color: green;'><br>{{text}}&nbsp;%</span></div></div>"
         .replace("{{text}}", calculerTauxEvolution(dep))
 
@@ -430,7 +448,7 @@
     html_deps_apres_vague = "";
 
     deps_apres_vague.reverse().forEach(dep => {
-      
+
       link = "https://covidtracker.fr/dashboard-departements/#" + dep
 
       dot=""
@@ -486,9 +504,9 @@
     console.log(depa)
     depa = depa.replace("'","\'")
     console.log(depa)
-    
+
     document.getElementById("img").innerHTML = "<a href=\"https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/hosp_comp_vagues_" + depa + ".jpeg\" target=\"_blank\" rel=\"noopener noreferrer\"><img  id=\"imageTab\" src=\"https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/hosp_comp_vagues_" + HtmlEncode(depa) + ".jpeg\" width=\"100%\" style=\"max-width: 900px;\">"
-    
+
     var element = document.getElementById("img");
 
       updateResult(depa, a_depasse);
@@ -498,11 +516,11 @@
     const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
     const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
 
-    if(vh < 2000){ //vw < 2000 || 
+    if(vh < 2000){ //vw < 2000 ||
       //location.href = "#";
       //location.href = "#resultat";}
-      document.querySelector('#resultat').scrollIntoView({ 
-        behavior: 'smooth' 
+      document.querySelector('#resultat').scrollIntoView({
+        behavior: 'smooth'
       });}
   }
 
@@ -522,7 +540,7 @@
     )
 
     document.getElementById("deps_list_choice").innerHTML = html_str;
-    
+
   }
 
   function updateButtonColor(dep){
@@ -536,11 +554,13 @@
 
 
   function updateResult(dep, a_depasse){
-    
+
     updateButtonColor(dep);
     date_depassement = nb_hosp_dep[dep]["jour_depassement"];
 
     document.getElementById("deps_list_choice").value = dep;
+    //On déclenche l'évenement change sur le select pour mettre à jour le select2.
+    document.getElementById("deps_list_choice").dispatchEvent(new Event('change'));
 
     text_debut = "<span style='margin-top: 10px;'>Le département <b>";
     text_milieu = dep;
@@ -576,7 +596,7 @@
         text_milieu += " n'a pas"
         color = "green";
       }
-    
+
     document.getElementById("resultat").innerHTML = text_debut + "<span style=\"color:" + color + "\">" + text_milieu + text_fin
     document.getElementById("resultat_chiffres").innerHTML = deuxiemepartie_1 + deuxiemepartie_2 + deuxiemepartie_3 + date_depassement_str + taux_evolution_str_1 + taux_evolution_str_2 + taux_evolution_str_3
   }
