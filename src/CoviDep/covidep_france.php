@@ -6,12 +6,12 @@
         <div class="col-md-6">
             <p style=" margin-top: 10px;">
                 CoviDep France est un outil qui présente graphiquement la situation
-                de chaque département en terme de
+                de chaque département en terme :
             <ul>
-                <li>nombre de cas,</li>
+                <li>de nombre de cas,</li>
                 <li>d'hospitalisations,</li>
-                <li>d'admissions en réanimation</li>
-                <li>et de décès</li>
+                <li>d'admissions en réanimation,</li>
+                <li>de décès</li>
             </ul>
             par rapport à la moyenne française.<br>
             <br>
@@ -20,10 +20,10 @@
             données proviennent de Santé publique France et sont mises à jour
             quotidiennement.
             </p>
-
+            <br>
             <div class="text-center">
                 <select name="deps_list_choice" id="listeDepartements" class="select2">
-                    <option value="" selected="selected">-- Choisissez un département--</option>
+                    <option value="" selected="selected">- Choisissez un département -</option>
                     <option data-num="01" data-article="de l'" value="Ain">01 - Ain</option>
                     <option data-num="02" data-article="de l'" value="Aisne">02 - Aisne</option>
                     <option data-num="03" data-article="de l'" value="Allier">03 - Allier</option>
@@ -171,10 +171,10 @@
                     <option data-num="976" data-article="de " value="Mayotte">976 - Mayotte</option>
                 </select>
                 <br>
-                <span id="img" class="">Sélectionnez un département.<br></span>
+                <br>
                 <br> Vous trouverez d’autres graphique sur le <b>
                     <a href="https://covidtracker.fr/dashboard-departements">
-                        Dashboard Départements&gt;
+                        Dashboard Départements &gt;
                     </a>
                 </b>
                 <br>
@@ -397,7 +397,9 @@
         </div>
     </div>
 
-    <div id="donneesDepartment" class="hidden">
+    <div style="margin-top: 50px;s">Mise à jour : <span id="date_update">-/-</span></div>
+
+    <div id="donneesDepartment" class="hidden" style="margin-top: 10px;">
         <div class="title">
             <h2><span class="nomDepartment"></span></h2>
         </div>
@@ -448,7 +450,7 @@
                 </p>
             </div> -->
 
-            <div class="donnee Cas">
+            <div class="donnee Cas" style="margin-top:30px;">
                 <h3>
                     Cas
                 </h3>
@@ -485,7 +487,7 @@
                 </p>
             </div>
 
-            <div class="donnee Hospitalisations">
+            <div class="donnee Hospitalisations" style="margin-top:70px;">
                 <h3>
                     Hospitalisations
                 </h3>
@@ -521,7 +523,7 @@
                 </p>
             </div>
 
-            <div class="donnee Reanimations">
+            <div class="donnee Reanimations" style="margin-top:70px;">
 
                 <h3>
                     Réanimations
@@ -558,9 +560,9 @@
                 </p>
             </div>
 
-            <div class="donnee Deces">
+            <div class="donnee Deces" style="margin-top:70px;">
 
-                <h3>
+                <h3 >
                     Décès
                 </h3>
                 <small>hebdomadaires pour 100 000 habitants</small>
@@ -601,6 +603,7 @@
 
             var donneesDepartements;
             var donneesFrance;
+            var date_update;
 
             function affichageInfosDepartement() {
 
@@ -715,6 +718,11 @@
 
                     donneesDepartements = allData['donnees_departements'];
                     donneesFrance = allData['donnees_france'];
+
+                    // Dates de mise à jour
+                    date_update = allData['date_update'];
+                    document.getElementById("date_update").innerHTML = date_update;
+                    console.log(date_update);
 
                     //initialisation variables Max
                     incidenceCasMax = 0;
@@ -948,15 +956,10 @@
             fill: none;
         }
     </style>
-    <p style="margin-bottom:1cm;"></p>
-    <div class="wp-block-button is-style-outline">
-        <a class="wp-block-button__link" href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener"><img
-                draggable="false" role="img" class="emoji" alt="☕️"
-                src="CoviDepOri_fichiers/2615.svg">
-            Offrez-moi un café</a></div>
     <br>
+    <p>Page développée bénévolement par <a href="https://www.souvy-informatique.fr/">Michael Souvy</a></p>  
     <p>N’hésitez pas à partager CoviDep France autour de vous ! Le lien est simple : <a
             href="https://covidtracker.fr/covidep-france">covidtracker.fr/covidep-france</a>.</p>
-    <p>Une erreur ? Merci de <a href="https://covidtracker.fr/contact">me contacter</a>.</p>
+    <p>Une erreur ? Merci de <a href="https://covidtracker.fr/contact">nous contacter</a>.</p>
 </div>
 <!-- /wp:html -->
