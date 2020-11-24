@@ -199,7 +199,7 @@
                 <svg id="map" width="400px" height="400px" viewBox="0 0 492 543" version="1.1"
                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                      xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-                    <title>Slice 1</title>
+                    <title>...</title>
                     <description>Created with Sketch (http://www.bohemiancoding.com/sketch)
                     </description>
                     <defs></defs>
@@ -708,6 +708,12 @@
 
             $('#listeDepartements').change(function (e) {
                 affichageInfosDepartement();
+            });
+
+            $('#carte path').hover(function (e) {
+                departement = $(this).data("num");
+                nomDepartement = $("#listeDepartements option[data-num='" + departement + "']").val();
+                $('#carte #map title').text(nomDepartement);
             });
 
             $('#carte path').click(function (e) {
