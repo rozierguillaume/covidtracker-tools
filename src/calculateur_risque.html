@@ -153,7 +153,7 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
 
     <h2 style="margin-top: 60px;">Risque de l'événement</h2>
       <div class="myDiv" id="div_calculateur" style="margin-top: 20px;">
-        <b><p>Le risque qu'il y ait une personne positive dans un événement de <span id="nb_pers_result">--</span> personnes <span id="dep-name"></span>est de :</p></b>
+        <b><p>Le risque qu'il y ait une personne positive dans votre événement de <span id="nb_pers_result">--</span> personnes <span id="dep-name"></span>est de :</p></b>
         <span id="resultat" style="font-size: 50px;"></span><br>
 
         <span id="progress_bar"></span>
@@ -228,7 +228,7 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
       id_departements_a_afficher.push(last_id);
       
       updateHtmlDeps();
-      updateList(last_id);
+      
       calculerResultat()
     }
 
@@ -249,18 +249,19 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
 
       id_departements_a_afficher.forEach(id_dep => {
         document.getElementById("other_deps").innerHTML += div_other_dep(id_dep);
+        updateList(id_dep);
       })
 
       id_departements_a_afficher.forEach(id_dep => {
-        if(id_dep != last_id){
-          console.log(id_dep)
-            document.getElementById("deps_list_choice_"+id_dep).value = "Ain";
-            console.log(departements_a_afficher[id_dep])
-            document.getElementById("tauxincid_"+id_dep).value = incidence_a_afficher[id_dep];
-            document.getElementById("pers_"+id_dep).value = nb_pers_a_afficher[id_dep];
-          }
-        })
 
+        if(id_dep != last_id){
+          document.getElementById("deps_list_choice_"+id_dep).value = departements_a_afficher[id_dep];
+
+          document.getElementById("tauxincid_"+id_dep).value = incidence_a_afficher[id_dep];
+          document.getElementById("pers_"+id_dep).value = nb_pers_a_afficher[id_dep];
+          } 
+        
+        })
       
     }
 
@@ -294,7 +295,8 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
 
       let div_other_dep = `
           <div class="myDiv" style="margin-top: 20px;">
-
+          
+          Lieu des participants : 
           <select name="deps_list_choice" id="deps_list_choice_{{id}}" onchange="listHasChanged({{id}});">
             <option value="">Choisissez un département...</option> 
           </select>
@@ -329,7 +331,7 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
       console.log(id)
       updateButtonColor(dep);
       document.getElementById('tauxincid_'+id).value = incidence_departements[dep]["incidence_cas"];
-      document.getElementById("dep-name").innerHTML = "dans le département " + dep + " ";
+      //document.getElementById("dep-name").innerHTML = "dans le département " + dep + " ";
       calculerResultat();
 
     }
@@ -358,14 +360,14 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
     tauxIncidHasChanged()
     
     function tauxIncidHasChanged() {
-      updateTextResultManualIncidence();
+      //updateTextResultManualIncidence();
 
       calculerResultat()
       document.getElementById('deps_list_choice_0').value = "";
     }
 
     function updateTextResultManualIncidence(){
-    document.getElementById("dep-name").innerHTML = "avec un taux d'incidence de " + document.getElementById('tauxincid_0').value + " (corrigé à " + document.getElementById('tauxincid_0').value * taux_correction + ")"+ " ";
+      document.getElementById("dep-name").innerHTML = "avec un taux d'incidence de " + document.getElementById('tauxincid_0').value + " (corrigé à " + document.getElementById('tauxincid_0').value * taux_correction + ")"+ " ";
   }
 
     function btnCorrectionClicked(correction){
@@ -375,10 +377,10 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
       taux_correction=parseInt(correction);
       incidence = correctIncidence(correction);
 
-      updateTextResultManualIncidence();
+      //updateTextResultManualIncidence();
 
       calculerResultat();
-      create_buttons();
+      //create_buttons();
 
     }
 
@@ -403,10 +405,21 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
 
     }
 
+    function calculerNbPersTot(){
+      document.getElementById("resultat").innerHTML = resultat.toString() + " %";
+
+      nb_pers_tot = parseInt(document.getElementById("pers_0").value);
+      id_departements_a_afficher.forEach(id_dep => {
+        nb_pers_tot += parseInt(nb_pers_a_afficher[id_dep]);
+      })
+      return nb_pers_tot
+    }
+
     function calculerResultat() {
       tauxincid = document.getElementById("tauxincid_0").value * taux_correction;
 
       updateLocalVariables();
+      nb_pers_tot = calculerNbPersTot();
 
       pers = document.getElementById('pers_0').value
 
@@ -424,10 +437,8 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
 
       resultat = Math.round((1-mult) * 100)
 
-      document.getElementById("resultat").innerHTML = resultat.toString() + " %";
-
-      document.getElementById("nb_pers_result").innerHTML = pers;
-      document.getElementById("nb_pers_result_buttons").innerHTML = pers;
+      document.getElementById("nb_pers_result").innerHTML = nb_pers_tot;
+      document.getElementById("nb_pers_result_buttons").innerHTML = nb_pers_tot;
 
       document.getElementById("resultat").style.color = "black";
       color="black";
@@ -455,6 +466,7 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
       document.getElementById("taux_incid_corrigé_0").innerHTML = "(taux corrigé x" + taux_correction + " : " + document.getElementById("tauxincid_0").value*taux_correction   + ")" ;
 
       calculerNbCasContacts();
+      create_buttons();
 
     }
 
@@ -463,7 +475,7 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
   }
 
     function calculerNbCasContacts(){
-      pers = document.getElementById('pers_0').value;
+      pers = calculerNbPersTot();
       nb_contacts_risque_total = 0;
 
       document.getElementById("nb_pers_result_cas_contacts").innerHTML = pers;
@@ -495,10 +507,11 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
 
    function create_buttons(){
         html_deps_apres_vague = "";
+        nb_pers_tot = calculerNbPersTot();
 
         departements.forEach(dep => {
           taux_incid = incidence_departements[dep]["incidence_cas"]
-          risque = Math.round((1-(1-taux_incid*parseInt(taux_correction)/100000)**pers) *100)
+          risque = Math.round((1-(1-taux_incid*parseInt(taux_correction)/100000)**nb_pers_tot) *100)
           
           color = "black";
 
