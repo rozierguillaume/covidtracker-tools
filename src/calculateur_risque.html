@@ -2,10 +2,11 @@
 
     <div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://covidtracker.fr">&lt; Retour <b>Accueil</b></a></div>
     <br>
-    <h3>Les fêtes de fin d'année sont-elles risquées ?</h3>
+    <h2 style="margin-top: 60px;">Les fêtes de fin d'année sont-elles risquées ?</h2>
     <p>Cette question, on se l’est tous posée dernièrement : quelles sont les chances que quelqu’un qui porte le virus soit présent à un repas de Noël ? Quelle est la probabilité qu’un enfant de la classe de mon fils ait la Covid19 ? Grâce à cet outil, vous pouvez l’estimer.</p>
     <p>Pour cela, il vous suffit de choisir votre département et le nombre de personnes participant à l'événement, dans la partie "Mon événement" ci-dessous. Vous pouvez ajouter plusieurs départements afin de simuler un rassemblement de famille dont les membres viennent de différents départements, par exemple lors des fêtes de fin d'années. Vous pouvez aussi modifier manuellement l'incidence, vous retrouverez ce taux dans les <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_metropoles_0.jpeg">grandes métropoles ici</a>, par exemple.</p>
 
+    <p>Les données de circulation du virus sont automatiquement mises à jour quotidiennement, et proviennent de Santé publique France. N'hésitez pas à réaliser une nouvelle simulation dans quelques jours.</p>
 
     <!-- wp:html -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
@@ -154,14 +155,14 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
       <br>
 
       Taux d'incidence mesuré :
-      <input type="text_incid" id="tauxincid_0" onkeyup="tauxIncidHasChanged()" value="500">  / 100 000 hab.
+      <input type="text_incid" id="tauxincid_0" onkeyup="tauxIncidHasChanged()" value="300">  / 100 000 hab.
       <span id="taux_incid_corrigé_0"></span>
 
       <br>
       <br>
 
       Nombre de personnes : 
-      <input type="text" id="pers_0" onkeyup="nbPeopleHasChanged()" value="100">
+      <input type="text" id="pers_0" onkeyup="nbPeopleHasChanged()" value="50">
       <br>
     </div>
 
@@ -178,14 +179,14 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
         <span id="progress_bar"></span>
         <br>
         <br>
-        <p>Dit autrement, si on observait 100 événements similaires à celui-ci, alors dans <span id="risque_autrement">--</span> d'entre eux il y aurait un cas positif, qui pourrait à son tour contaminer les autres participants.</p>
+        <p>Dit autrement, si on observait 100 événements similaires à celui-ci, alors dans <span id="risque_autrement">--</span> d'entre eux il y aurait au moins un cas positif, qui pourrait à son tour contaminer les autres participants.</p>
       
         </div>
 
     
 
     <div class="myDiv" style="margin-top: 40px;">
-      <p style="margin-top: 20px;">Si tous les français se réunissaient dans des événements de <span id="nb_pers_result_cas_contacts">--</span> personnes dans leur département, cela génèrerait <br><span style="font-size: 50px;" id="cas_contacts">--</span><br>cas contacts, qui pourraient eux-mêmes être contaminés si les gestes barrières n'ont pas été appliqués. Ce calcul utilise la population et le taux d'incidence actuel de chaque département.</p>
+      <p style="margin-top: 20px;">Si tous les français se réunissaient dans des événements de <span id="nb_pers_result_cas_contacts">--</span> personnes dans leur département, cela génèrerait jusqu'à <br><span style="font-size: 50px;" id="cas_contacts">--</span><br>cas contacts si tous les participants se croisent durant l'événement. Ces cas contacts pourraient eux-mêmes être contaminés si les gestes barrières n'ont pas été appliqués. Ce calcul repose sur la taille de l'événement, la population et le taux d'incidence actuel de chaque département.</p>
     </div>
 
     <div class="myDiv" id="list_deps_div" style="margin-top: 40px;">
@@ -212,7 +213,7 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
         <p><i>Cet outil est un simulateur. Son résultat est issu d'une estimation, il est donc approximatif, et ne permet pas d'évaluer le risque d'un contact avec une personne contaminée. Nous ne pourrions pas être tenus reponsable en cas de contamination, même si le risque de présence d'un cas indiqué par le simulateur est faible ou nul.</i></p>
     <br>
 
-    <h3>Comment ça marche ?</h3>
+    <h2 style="margin-top: 60px;">Comment ça marche ?</h2>
 
     <p> Pour comprendre comment ce simulateur fonctionne, on donne à chaque personne une probabilité p de porter le virus. <img width="700" src="https://covidtracker.fr/wp-content/uploads/2020/10/Diapositive1.jpg"></p>
 
@@ -328,14 +329,14 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
           <br>
 
           Taux d'incidence mesuré :
-          <input type="text_incid" id="tauxincid_{{id}}" onkeyup="tauxIncidHasChanged()" value="500">  / 100 000 hab.
+          <input type="text_incid" id="tauxincid_{{id}}" onkeyup="tauxIncidHasChanged()" value="300">  / 100 000 hab.
           <span id="taux_incid_corrigé_{{id}}"></span>
 
           <br>
           <br>
 
           Nombre de personnes : 
-          <input type="text" id="pers_{{id}}" onkeyup="nbPeopleHasChanged()" value="100">
+          <input type="text" id="pers_{{id}}" onkeyup="nbPeopleHasChanged()" value="50">
           <br>
           </div>
           `;
@@ -429,7 +430,7 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
     }
 
     function calculerNbPersTot(){
-      document.getElementById("resultat").innerHTML = resultat.toString() + " %";
+      document.getElementById("resultat").innerHTML = resultat.toString().replace(".", ",") + " %";
 
       nb_pers_tot = parseInt(document.getElementById("pers_0").value);
       id_departements_a_afficher.forEach(id_dep => {
@@ -458,20 +459,26 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
         })
       }
 
-      resultat = Math.round((1-mult) * 100)
+      resultat = Math.round((1-mult) * 1000)/10
+
+      if (resultat > 5){
+        resultat = Math.round(resultat);
+
+      }
 
       document.getElementById("nb_pers_result").innerHTML = nb_pers_tot;
       document.getElementById("nb_pers_result_buttons").innerHTML = nb_pers_tot;
 
       document.getElementById("resultat").style.color = "black";
+      document.getElementById("div_calculateur").style.boxShadow = "6px 4px 15px #d6d6d6"
       color="black";
 
-      if(resultat>10){
+      if(resultat>5){
         color="orange";
         document.getElementById("resultat").style.color = "orange";
         document.getElementById("div_calculateur").style.boxShadow = "6px 4px 15px #e6d5a5";}
 
-      if(resultat>50){
+      if(resultat>30){
         color="red";
         document.getElementById("resultat").style.color = "red";
         document.getElementById("div_calculateur").style.boxShadow = "6px 4px 15px #e6aca5";
@@ -481,12 +488,12 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
         color="green";
         document.getElementById("resultat").style.color = "green";
         document.getElementById("div_calculateur").style.boxShadow = "6px 4px 15px #afe6a5"
-        
       }
+
       document.getElementById("progress_bar").innerHTML = "<progress style='' id='pg' type={{color}} value={{val}} max='100'></progress>"
       .replace("{{val}}", resultat.toString()).replace("{{color}}", color);
 
-      document.getElementById("risque_autrement").innerHTML = resultat.toString();
+      document.getElementById("risque_autrement").innerHTML = resultat.toString().replace(".", ",");
 
       document.getElementById("taux_incid_corrigé_0").innerHTML = "(taux corrigé x" + taux_correction + " : " + document.getElementById("tauxincid_0").value*taux_correction   + ")" ;
 
@@ -503,6 +510,8 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
       pers = calculerNbPersTot();
       nb_contacts_risque_total = 0;
 
+      
+
       document.getElementById("nb_pers_result_cas_contacts").innerHTML = pers;
 
       departements.forEach(dep => {
@@ -516,18 +525,28 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
 
       })
 
+      if (nb_contacts_risque_total > 1000000){
+        nb_contacts_risque_total_string = nb_contacts_risque_total/1000000 + " millions"
+      } else {
+        nb_contacts_risque_total_string = pers
+      }
+
       document.getElementById("cas_contacts").innerHTML = numberWithCommas(parseInt(nb_contacts_risque_total));
 
     } 
 
     function updateButtonColor(dep){
-
+      try{
       document.getElementById(dep).classList.add("buttonSelected");
       if(selectedDep.length > 0){
         document.getElementById(selectedDep.replace("'", "\'")).classList.remove("buttonSelected");
       }
       selectedDep = dep;
+
+    } catch (erreur) {
+      console.log(erreur)
     }
+  }
 
 
    function create_buttons(readmore=true){
