@@ -2,10 +2,9 @@
 
     <div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://covidtracker.fr">&lt; Retour <b>Accueil</b></a></div>
     <br>
-    <p>🇬🇧 <a href="https://covidtracker.fr/covid19-risk-calculator/">English version</a></p>
-    <h3>Quelle est la probabilité que parmi N personnes, au moins une soit porteuse du Covid ?</h3>
-    <p>Cette question, on se l’est tous posée dernièrement : quelles sont les chances que quelqu’un qui porte le virus soit présent à ce mariage ? Quelle est la probabilité qu’un enfant de la classe de mon fils ait la Covid19 ? Grâce à cet outil, vous pouvez l’estimer.</p>
-    <p>Pour cela, il vous suffit de choisir votre département et le nombre de personnes participant à l'événement. Vous pouvez aussi modifier manuellement l'incidence. Vous retrouverez ce taux dans les <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_metropoles_0.jpeg">grandes métropoles ici</a>, par exemple.</p>
+    <h3>Les fêtes de fin d'année sont-elles risquées ?</h3>
+    <p>Cette question, on se l’est tous posée dernièrement : quelles sont les chances que quelqu’un qui porte le virus soit présent à un repas de Noël ? Quelle est la probabilité qu’un enfant de la classe de mon fils ait la Covid19 ? Grâce à cet outil, vous pouvez l’estimer.</p>
+    <p>Pour cela, il vous suffit de choisir votre département et le nombre de personnes participant à l'événement, dans la partie "Mon événement" ci-dessous. Vous pouvez ajouter plusieurs départements afin de simuler un rassemblement de famille dont les membres viennent de différents départements, par exemple lors des fêtes de fin d'années. Vous pouvez aussi modifier manuellement l'incidence, vous retrouverez ce taux dans les <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_metropoles_0.jpeg">grandes métropoles ici</a>, par exemple.</p>
 
 
     <!-- wp:html -->
@@ -59,7 +58,7 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
       transition-duration: 0.4s;
       background-color: #ffffff;
       border-radius: 7px;
-      /*box-shadow: 6px 4px 15px #d6d6d6;*/
+      
     		}
 
     button[type="form-btn"] {
@@ -69,7 +68,24 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
       transition-duration: 0.4s;
       background-color: #ffffff;
       border-radius: 7px;
-      /*shadow: 2px 2px 2px #d6d6d6;*/
+        }
+
+    button[type="button_dep"]  {
+      border: 0px solid;
+      transition-duration: 0.4s;
+      background-color: #ffffff;
+      border-radius: 7px;
+      box-shadow: 6px 4px 15px #d6d6d6;
+      
+    		}
+
+        button[type="deps"] {
+      margin-right: 6px;
+      margin-top: 3px;
+      border: 0.5px solid;
+      transition-duration: 0.4s;
+      background-color: #ffffff;
+      border-radius: 7px;
         }
 
     .buttonSelected[type="form-btn"] {
@@ -166,20 +182,20 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
       <p style="margin-top: 20px;">Si tous les français se réunissaient dans des événements de <span id="nb_pers_result_cas_contacts">--</span> personnes dans leur département, cela génèrerait <br><span style="font-size: 50px;" id="cas_contacts">--</span><br>cas contacts, qui pourraient eux-mêmes être contaminés si les gestes barrières n'ont pas été appliqués. Ce calcul utilise la population et le taux d'incidence actuel de chaque département.</p>
     </div>
 
-      <div class="myDiv" style="margin-top: 80px;">
-      <div>
-        Corriger le taux d'incidence officiel pour estimer le taux réel (on ne détecte actuellement que la moitié des cas réels) :<br>
-        <button type="form-btn" id="2" onclick="btnCorrectionClicked('2')" class="buttonSelected">x2 (recommandé)</button><button type="form-btn" id="3" onclick="btnCorrectionClicked('3')">x3</button><button id="1" type="form-btn" onclick="btnCorrectionClicked('1')">Ne pas corriger</button>
-      </div>
-      <br>
-    </div>
-
     <div class="myDiv" id="list_deps_div" style="margin-top: 40px;">
       <p>Risque pour qu'il y ait une personne positive dans un événement de <span id="nb_pers_result_buttons">--  </span> personnes :</p>
       <span id="buttons-deps"></span>
 
-      
     </div>
+
+    <h2 style="margin-top: 60px;">Options</h2>
+      <div class="myDiv" style="margin-top: 20px;">
+        <div>
+          Corriger le taux d'incidence officiel pour estimer le taux réel (on ne détecte actuellement que la moitié des cas réels) :<br>
+          <button type="form-btn" id="2" onclick="btnCorrectionClicked('2')" class="buttonSelected">x2 (recommandé)</button><button type="form-btn" id="3" onclick="btnCorrectionClicked('3')">x3</button><button id="1" type="form-btn" onclick="btnCorrectionClicked('1')">Ne pas corriger</button>
+        </div>
+        <br>
+      </div>
 
     <br>
 
@@ -203,6 +219,7 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
 
     <br>
     <p>Auteurs : <a href="https://twitter.com/eorphelin">Elias Orphelin</a></b>, <a href="https://twitter.com/guillaumerozier">Guillaume Rozier</a></b></p>
+    <p>🇬🇧 <a href="https://covidtracker.fr/covid19-risk-calculator/">English version</a></p>
 
 
 
