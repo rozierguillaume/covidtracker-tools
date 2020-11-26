@@ -8,6 +8,9 @@
 
 
     <!-- wp:html -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    
     <style>
 
   progress {
@@ -137,14 +140,15 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
     	}
 
     </style>
-
+  
 
     <h2 style="margin-top: 60px;">Mon événement</h2>
     <div class="myDiv" style="margin-top: 20px;">
         Lieu des participants :
-          <select name="deps_list_choice" id="deps_list_choice_0" onchange="listHasChanged();">
+          <select name="deps_list_choice" id="deps_list_choice_0" class="select2" onchange="listHasChanged();">
             <option value="">Choisissez un département...</option> 
           </select>
+          
 
       <br>
       <br>
@@ -171,9 +175,11 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
       <div class="myDiv" id="div_calculateur" style="margin-top: 20px;">
         <b><p>Le risque qu'il y ait une personne positive dans votre événement de <span id="nb_pers_result">--</span> personnes <span id="dep-name"></span>est de :</p></b>
         <span id="resultat" style="font-size: 50px;"></span><br>
-
         <span id="progress_bar"></span>
         <br>
+        <br>
+        <p>Dit autrement, si on observait 100 événements similaires à celui-ci, alors dans <span id="risque_autrement">--</span> d'entre eux il y aurait un cas positif, qui pourrait à son tour contaminer les autres participants.</p>
+      
         </div>
 
     
@@ -314,7 +320,7 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
           <div class="myDiv" style="margin-top: 20px;">
           
           Lieu des participants : 
-          <select name="deps_list_choice" id="deps_list_choice_{{id}}" onchange="listHasChanged({{id}});">
+          <select name="deps_list_choice" id="deps_list_choice_{{id}}" class="select2" onchange="listHasChanged({{id}});">
             <option value="">Choisissez un département...</option> 
           </select>
 
@@ -480,6 +486,8 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
       document.getElementById("progress_bar").innerHTML = "<progress style='' id='pg' type={{color}} value={{val}} max='100'></progress>"
       .replace("{{val}}", resultat.toString()).replace("{{color}}", color);
 
+      document.getElementById("risque_autrement").innerHTML = resultat.toString();
+
       document.getElementById("taux_incid_corrigé_0").innerHTML = "(taux corrigé x" + taux_correction + " : " + document.getElementById("tauxincid_0").value*taux_correction   + ")" ;
 
       calculerNbCasContacts();
@@ -522,11 +530,11 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
     }
 
 
-   function create_buttons(){
-        html_deps_apres_vague = "";
+   function create_buttons(readmore=true){
+        html_deps = "";
         nb_pers_tot = calculerNbPersTot();
 
-        departements.forEach(dep => {
+        departements.map((dep, idx) => {
           taux_incid = incidence_departements[dep]["incidence_cas"]
           risque = Math.round((1-(1-taux_incid*parseInt(taux_correction)/100000)**nb_pers_tot) *100)
           
@@ -544,10 +552,22 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
             color="green";
           }
 
+          if(readmore){
+              if(idx<20){
+           html_deps += "<button type='button_dep' style='padding: 10px; margin:5px;' id=\"" + replaceBadCharacters(dep) + "\" onclick=\"buttonHasChanged('" + replaceBadCharacters(dep) + "', 'true')\"><b>" + dep + "</b><br><span style='color:" + color + "'>" + risque + " %</span></button>";
+          }
+        }
+        if(readmore==false){
+          html_deps += "<button type='button_dep' style='padding: 10px; margin:5px;' id=\"" + replaceBadCharacters(dep) + "\" onclick=\"buttonHasChanged('" + replaceBadCharacters(dep) + "', 'true')\"><b>" + dep + "</b><br><span style='color:" + color + "'>" + risque + " %</span></button>";
 
-           html_deps_apres_vague += "<button type='button_dep' style='padding: 10px; margin:5px;' id=\"" + replaceBadCharacters(dep) + "\" onclick=\"buttonHasChanged('" + replaceBadCharacters(dep) + "', 'true')\"><b>" + dep + "</b><br><span style='color:" + color + "'>" + risque + " %</span></button>";
+        }
         })
-        document.getElementById("buttons-deps").innerHTML = html_deps_apres_vague
+        if(readmore){
+          html_deps += "<br><button style='margin-top:20px;' type='form-btn' onclick='create_buttons(false)'>Afficher tous les départements...</button>"
+        } else {
+          html_deps += "<br><button style='margin-top:20px;' type='form-btn' onclick='create_buttons(true)'>Afficher moins...</button>"
+        }
+        document.getElementById("buttons-deps").innerHTML = html_deps
    }
 
    function buttonHasChanged(dep){
