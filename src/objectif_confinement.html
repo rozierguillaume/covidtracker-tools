@@ -1,0 +1,332 @@
+ <!-- wp:html -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
+
+<style>
+    .myDiv {
+        background-color: white;
+    	border: 0px solid black;
+        padding: 10px 30px;
+        border-radius: 7px;
+    	max-width: 800px;
+    	text-align: left;
+        box-shadow: 6px 4px 25px #d6d6d6;
+    	}
+
+
+    .wrap {
+    display: flex;
+    margin-top: 30px;
+  }
+
+  .one {
+      border: 0px solid black;
+    margin-top: 20px;
+    margin-left:10px;
+    padding: 5px 10px;
+    border-radius: 7px;
+    max-width: 1200px;
+    text-align: left;
+    /*box-shadow: 6px 4px 25px #c3d19d;*/
+    box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+    width: 50%;
+    background: #ffffff;
+  }
+
+  .two {
+      border: 0px solid black;
+    margin-top: 20px;
+    margin-left:20px;
+    padding: 5px 10px;
+    border-radius: 7px;
+    max-width: 1200px;
+    text-align: left;
+    /*  box-shadow: 6px 4px 25px #ffa29c;*/
+    box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+    background: #ffffff;
+
+    width: 50%;
+  }
+
+</style>
+
+<div style="border: 1px solid rgb(228, 159, 159); border-radius: 7px; padding: 20px; background: rgb(255, 252, 252);">
+    <h2>Un confinement le 15 décembre est-il possible ?</h2>
+    <p>Le gouvernement a fixé 2 objectifs à atteindre afin d'être déconfinés le 15 décembre. Le premier objectif porte sur les cas quotidiens, et le deuxième objectif sur les personnes en réanimation.</p>
+<p>Les données de cette page sont automatiquement mises à jour quotidiennement. Dernière mise à jour : <span id="update_date">--/--</span>.</p>
+<h2 style="margin-top: 60px;">Cas positifs</h2>
+<p>Le premier objectif à atteindre est moins de 5 000 cas positifs quotidiens. Les données suivantes correspondent au nombre de cas quotidien détectés, en moyenne sur 7 jours. Les dernières données datent d'il y a 3 jours car les tests sont comptabilisés par date de prélèvement, ce délai correspondant au temps de traitement des tests par les laboratoires.</p>
+
+
+<div class="myDiv align-middle" style="max-width: 400px; margin-bottom: 60px;">
+    <div class="row">
+        <div class="col-md-2" style="margin-right: 10px;"><span id="obj_cas" class="align-middle" style="font-size: 300%"></span></div>
+        <div class="col-md-9">
+            <b><span id="cas_actu" style="font-size: 200%;">--</span></b><span style="font-size: 200%;"> / 5 000</span>
+            <p>cas positifs quotidiens en moyenne au <span id="update_date_cas"></span></p>
+            
+        </div>
+    </div>
+        
+</div>
+
+<div>
+    <canvas id="lineCasChart" style="max-height: 700px; max-width: 900px;"></canvas>
+</div>
+
+
+
+
+<h2 style="margin-top: 60px;">Personnes en réanimation</h2>
+<p>Le deuxième objectif à atteindre est entre 2 500 et 3 000 personnes en réanimation ou soins intensifs.</p>
+
+<div class="myDiv" style="max-width: 400px; margin-bottom: 60px;">
+
+    <div class="row">
+        <div class="col-md-2" style="margin-right: 10px;"> <span id="obj_rea" style="font-size: 300%;"></span></div>
+        <div class="col-md-9">
+            <b><span id="rea_actu" style="font-size: 200%;">--</span></b><span style="font-size: 200%;"> / 3 000</span>
+            <p>personnes en réanimation ou soins intensifs le <span id="update_date_rea"></span></p>
+            
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <canvas id="barReaChart" style="max-height: 700px; max-width: 900px;"></canvas>
+</div>
+
+</div>
+
+<script>
+    var data;
+    fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/objectif_deconfinement.json')
+       .then(response => {
+           if (!response.ok) {
+               throw new Error("HTTP error " + response.status);
+           }
+           return response.json();
+       })
+       .then(json => {
+          data = json;
+          buildLineChart();
+          buildBarChart();
+          updateDataDiv();
+           
+        })
+       .catch(function () {
+           this.dataError = true;
+       }
+      )
+
+function numberWithSpaces(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  }
+
+function updateDataDiv(){
+    rea_actu = data["rea"]["values"][data["rea"]["values"].length-1]
+    cas_actu = data["cas"]["values"][data["cas"]["values"].length-1]
+    update_date = data["rea"]["dates"][data["rea"]["dates"].length-1]
+    update_date = update_date.slice(8) + "/" + update_date.slice(5, 7);
+
+    update_date_cas = data["cas"]["dates"][data["cas"]["dates"].length-1]
+    update_date_cas = update_date_cas.slice(8) + "/" + update_date_cas.slice(5, 7);
+
+    var text_rea = "";
+    var text_cas = "";
+
+    if (rea_actu > 3000){
+        color_rea = "red";
+        text_rea = "non "
+    } else {
+        color_rea = "green";
+    }
+
+    if (cas_actu > 5000){
+        color_cas = "red";
+        text_cas= "non "
+    } else {
+        color_cas = "green";
+    }
+
+    document.getElementById("cas_actu").innerHTML = numberWithSpaces(cas_actu);
+    document.getElementById("cas_actu").style.color = color_cas;
+
+    document.getElementById("update_date").innerHTML = update_date;
+    document.getElementById("update_date_rea").innerHTML = update_date;
+    document.getElementById("update_date_cas").innerHTML = update_date_cas;
+
+    if (color_cas=="green"){
+        document.getElementById("obj_cas").innerHTML = "✅"
+    } else {
+        document.getElementById("obj_cas").innerHTML = "❌"
+    }
+
+    document.getElementById("rea_actu").innerHTML = numberWithSpaces(rea_actu);
+    document.getElementById("rea_actu").style.color = color_rea;
+
+    if (color_rea=="green"){
+        document.getElementById("obj_rea").innerHTML = "✅"
+    } else {
+        document.getElementById("obj_rea").innerHTML = "❌"
+    }
+
+}
+
+function buildLineChart(){
+    var ctx = document.getElementById('lineCasChart').getContext('2d');
+    console.log(data["rea"]["dates"])
+    console.log(data["rea"]["values"])
+    var myChart = new Chart(ctx, { 
+        type: 'line',
+        data: {
+            labels: data["cas"]["dates"],
+            datasets: [{
+                label: 'Cas positifs',
+                data: data["cas"]["values"],
+                borderWidth: 3,
+                backgroundColor: 'rgba(0, 168, 235, 0.5)',
+                borderColor: 'rgba(0, 168, 235, 1)'
+            }]
+        },
+        options: {
+            legend: {
+                display: false
+            },
+            scales: {
+                yAxes: [{
+                    gridLines: {
+                        display: false
+                     },
+                    ticks: {
+                        min: 0,
+
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: false
+                     },
+                     ticks: {
+                        maxRotation: 0,
+                        minRotation: 0,
+                        maxTicksLimit: 6,
+                        callback: function(value, index, values) {
+                        return value.slice(8) + "/" + value.slice(5, 7);
+                     }
+                     }
+
+                }]
+            },
+            annotation: {
+            events: ["click"],
+            annotations: [
+                {
+                drawTime: "afterDatasetsDraw",
+                id: "hline",
+                type: "line",
+                mode: "horizontal",
+                scaleID: "y-axis-0",
+                value: 5000,
+                borderColor: "green",
+                borderWidth: 3,
+                label: {
+                    backgroundColor: "green",
+                    content: "Objectif",
+                    enabled: true
+                },
+                onClick: function(e) {
+                    console.log("Annotation", e.type, this);
+                }
+                }
+            ]
+        }
+        }
+    });
+}
+
+
+function buildBarChart(){
+    var ctx = document.getElementById('barReaChart').getContext('2d');
+
+    var myChart = new Chart(ctx, { 
+        type: 'bar',
+        data: {
+            labels: data["rea"]["dates"],
+            datasets: [{
+                label: 'Personnes en réanimation',
+                data: data["rea"]["values"],
+                borderWidth: 1,
+                backgroundColor: 'rgba(255, 0, 26, 0.5)',
+                borderColor: 'rgba(255, 0, 26, 1)'
+            }]
+        },
+        options: {
+            legend: {
+                display: false
+            },
+            scales: {
+                yAxes: [{
+                    gridLines: {
+                        display: false
+                     },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: false
+                     },
+                     ticks: {
+                        maxRotation: 0,
+                        minRotation: 0,
+                        maxTicksLimit: 6,
+                        callback: function(value, index, values) {
+                        return value.slice(8) + "/" + value.slice(5, 7);
+                     }
+                     }
+
+                }]
+            },
+            annotation: {
+                events: ["click"],
+                annotations: [
+                    {
+                    drawTime: "afterDatasetsDraw",
+                    id: "hline",
+                    type: "line",
+                    mode: "horizontal",
+                    scaleID: "y-axis-0",
+                    value: 3000,
+                    borderColor: "green",
+                    borderWidth: 3,
+                    label: {
+                        backgroundColor: "green",
+                        content: "Objectif",
+                        enabled: true
+                    },
+                    onClick: function(e) {
+                        console.log("Annotation", e.type, this);
+                    }
+                    }
+                ]
+        }
+
+        },
+
+        
+    });
+}
+
+</script>
+<br>
+<p>Auteur : <a href="https://twitter.com/guillaumerozier">@GuillaumeRozier</a></p>
+
+
+ <!-- /wp:html -->
+
+ <!-- wp:tadv/classic-paragraph -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">☕️ Offrez-moi un café</a></div>
+<!-- /wp:tadv/classic-paragraph -->

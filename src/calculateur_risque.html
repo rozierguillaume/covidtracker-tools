@@ -274,15 +274,19 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
       id_departements_a_afficher.forEach(id_dep => {
         document.getElementById("other_deps").innerHTML += div_other_dep(id_dep);
         updateList(id_dep);
+        
       })
+      
 
       id_departements_a_afficher.forEach(id_dep => {
 
         if(id_dep != last_id){
+          
           document.getElementById("deps_list_choice_"+id_dep).value = departements_a_afficher[id_dep];
 
           document.getElementById("tauxincid_"+id_dep).value = incidence_a_afficher[id_dep];
           document.getElementById("pers_"+id_dep).value = nb_pers_a_afficher[id_dep];
+          
           } 
         
         })
@@ -496,7 +500,9 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
       document.getElementById("risque_autrement").innerHTML = resultat.toString().replace(".", ",");
 
       document.getElementById("taux_incid_corrigé_0").innerHTML = "(taux corrigé x" + taux_correction + " : " + document.getElementById("tauxincid_0").value*taux_correction   + ")" ;
-
+      id_departements_a_afficher.forEach(id_dep => {
+        document.getElementById("taux_incid_corrigé_"+id_dep).innerHTML = "(taux corrigé x" + taux_correction + ": " + incidence_a_afficher[id_dep]*taux_correction + ")";
+      })
       calculerNbCasContacts();
       create_buttons();
 
