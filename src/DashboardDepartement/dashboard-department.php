@@ -5,7 +5,7 @@
         Retour <b>Accueil</b></a></div>
 
 
-    <?php include('./selectEtCarte.php') ?>
+    <?php include(dirname(__FILE__) . '/selectEtCarte.php') ?>
 
     <script>
         jQuery(document).ready(function ($) {
@@ -148,5 +148,5 @@
     <p><a href="#Menu">Retour au menu</a></p>
 </div>
 
-<?php include('./donneesDepartments.php') ?>
+<?php include(dirname(__FILE__) . '/donneesDepartments.php') ?>
 
