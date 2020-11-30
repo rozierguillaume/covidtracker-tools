@@ -21,56 +21,56 @@
     <meta name="twitter:data1" content="Guillaume Rozier">
     <meta name="twitter:label2" content="Durée de lecture est.">
     <meta name="twitter:data2" content="2 minutes">
-    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
-     <script type="application/ld+json" class="yoast-schema-graph">{
-            "@context": "https://schema.org",
-            "@graph": [
-                {
-                    "@type": "WebSite",
-                    "@id": "https://covidtracker.fr/#website",
-                    "url": "https://covidtracker.fr/",
-                    "name": "CovidTracker",
-                    "description": "Suivi de l&#039;\u00e9pid\u00e9mie de Coronavirus en France et dans le monde",
-                    "potentialAction": [
-                        {
-                            "@type": "SearchAction",
-                            "target": "https://covidtracker.fr/?s={search_term_string}",
-                            "query-input": "required name=search_term_string"
-                        }
-                    ],
-                    "inLanguage": "fr-FR"
-                },
-                {
-                    "@type": "ImageObject",
-                    "@id": "https://covidtracker.fr/dashboard-departements/#primaryimage",
-                    "inLanguage": "fr-FR",
-                    "url": "https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Ain.jpeg"
-                },
-                {
-                    "@type": "WebPage",
-                    "@id": "https://covidtracker.fr/dashboard-departements/#webpage",
-                    "url": "https://covidtracker.fr/dashboard-departements/",
-                    "name": "Dashboard D\u00e9partements - CovidTracker",
-                    "isPartOf": {
-                        "@id": "https://covidtracker.fr/#website"
-                    },
-                    "primaryImageOfPage": {
-                        "@id": "https://covidtracker.fr/dashboard-departements/#primaryimage"
-                    },
-                    "datePublished": "2020-10-21T12:44:19+00:00",
-                    "dateModified": "2020-11-15T19:04:40+00:00",
-                    "inLanguage": "fr-FR",
-                    "potentialAction": [
-                        {
-                            "@type": "ReadAction",
-                            "target": [
-                                "https://covidtracker.fr/dashboard-departements/"
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }</script>
+<!--    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>-->
+<!--     <script type="application/ld+json" class="yoast-schema-graph">{-->
+<!--            "@context": "https://schema.org",-->
+<!--            "@graph": [-->
+<!--                {-->
+<!--                    "@type": "WebSite",-->
+<!--                    "@id": "https://covidtracker.fr/#website",-->
+<!--                    "url": "https://covidtracker.fr/",-->
+<!--                    "name": "CovidTracker",-->
+<!--                    "description": "Suivi de l&#039;\u00e9pid\u00e9mie de Coronavirus en France et dans le monde",-->
+<!--                    "potentialAction": [-->
+<!--                        {-->
+<!--                            "@type": "SearchAction",-->
+<!--                            "target": "https://covidtracker.fr/?s={search_term_string}",-->
+<!--                            "query-input": "required name=search_term_string"-->
+<!--                        }-->
+<!--                    ],-->
+<!--                    "inLanguage": "fr-FR"-->
+<!--                },-->
+<!--                {-->
+<!--                    "@type": "ImageObject",-->
+<!--                    "@id": "https://covidtracker.fr/dashboard-departements/#primaryimage",-->
+<!--                    "inLanguage": "fr-FR",-->
+<!--                    "url": "https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Ain.jpeg"-->
+<!--                },-->
+<!--                {-->
+<!--                    "@type": "WebPage",-->
+<!--                    "@id": "https://covidtracker.fr/dashboard-departements/#webpage",-->
+<!--                    "url": "https://covidtracker.fr/dashboard-departements/",-->
+<!--                    "name": "Dashboard D\u00e9partements - CovidTracker",-->
+<!--                    "isPartOf": {-->
+<!--                        "@id": "https://covidtracker.fr/#website"-->
+<!--                    },-->
+<!--                    "primaryImageOfPage": {-->
+<!--                        "@id": "https://covidtracker.fr/dashboard-departements/#primaryimage"-->
+<!--                    },-->
+<!--                    "datePublished": "2020-10-21T12:44:19+00:00",-->
+<!--                    "dateModified": "2020-11-15T19:04:40+00:00",-->
+<!--                    "inLanguage": "fr-FR",-->
+<!--                    "potentialAction": [-->
+<!--                        {-->
+<!--                            "@type": "ReadAction",-->
+<!--                            "target": [-->
+<!--                                "https://covidtracker.fr/dashboard-departements/"-->
+<!--                            ]-->
+<!--                        }-->
+<!--                    ]-->
+<!--                }-->
+<!--            ]-->
+<!--        }</script>-->
     <link rel="dns-prefetch" href="//www.google.com">
     <link rel="dns-prefetch" href="//www.googletagmanager.com">
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -221,35 +221,35 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/wp-content/uploads/fbrfg/apple-touch-icon.png?v=wAMr6L4M9G">
     <link rel="icon" type="image/png" sizes="32x32" href="/wp-content/uploads/fbrfg/favicon-32x32.png?v=wAMr6L4M9G">
     <link rel="icon" type="image/png" sizes="16x16" href="/wp-content/uploads/fbrfg/favicon-16x16.png?v=wAMr6L4M9G">
-    <link rel="manifest" href="/wp-content/uploads/fbrfg/site.webmanifest?v=wAMr6L4M9G">
-    <link rel="mask-icon" href="/wp-content/uploads/fbrfg/safari-pinned-tab.svg?v=wAMr6L4M9G" color="#5bbad5">
-    <link rel="shortcut icon" href="/wp-content/uploads/fbrfg/favicon.ico?v=wAMr6L4M9G">
-    <meta name="msapplication-TileColor" content="#2b5797">
+<!--    <link rel="manifest" href="/wp-content/uploads/fbrfg/site.webmanifest?v=wAMr6L4M9G">-->
+<!--    <link rel="mask-icon" href="/wp-content/uploads/fbrfg/safari-pinned-tab.svg?v=wAMr6L4M9G" color="#5bbad5">-->
+<!--    <link rel="shortcut icon" href="/wp-content/uploads/fbrfg/favicon.ico?v=wAMr6L4M9G">-->
+<!--    <meta name="msapplication-TileColor" content="#2b5797">-->
     <meta name="msapplication-config" content="/wp-content/uploads/fbrfg/browserconfig.xml?v=wAMr6L4M9G">
     <meta name="theme-color" content="#ffffff">
-    <style type="text/css">
-        .hero.default {
-            background: url(https://covidtracker.fr/wp-content/themes/integral/images/bg-welcome.jpg) no-repeat center top;
-            background-size: cover;
-        }
-    </style>
-    <style type="text/css">.recentcomments a {
-            display: inline !important;
-            padding: 0 !important;
-            margin: 0 !important;
-        }</style>
-    <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({
-            "google_ad_client": "ca-pub-1869182152266753",
-            "enable_page_level_ads": true,
-            "tag_partner": "site_kit"
-        });</script>
-    <link rel="icon"
-          href="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_32,h_32/https://covidtracker.fr/wp-content/uploads/2020/04/cropped-noun_virus_3166287-32x32.png"
-          sizes="32x32">
-    <link rel="icon"
-          href="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_192,h_192/https://covidtracker.fr/wp-content/uploads/2020/04/cropped-noun_virus_3166287-192x192.png"
-          sizes="192x192">
+<!--    <style type="text/css">-->
+<!--        .hero.default {-->
+<!--            background: url(https://covidtracker.fr/wp-content/themes/integral/images/bg-welcome.jpg) no-repeat center top;-->
+<!--            background-size: cover;-->
+<!--        }-->
+<!--    </style>-->
+<!--    <style type="text/css">.recentcomments a {-->
+<!--            display: inline !important;-->
+<!--            padding: 0 !important;-->
+<!--            margin: 0 !important;-->
+<!--        }</style>-->
+<!--    <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
+<!--    <script>(adsbygoogle = window.adsbygoogle || []).push({-->
+<!--            "google_ad_client": "ca-pub-1869182152266753",-->
+<!--            "enable_page_level_ads": true,-->
+<!--            "tag_partner": "site_kit"-->
+<!--        });</script>-->
+<!--    <link rel="icon"-->
+<!--          href="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_32,h_32/https://covidtracker.fr/wp-content/uploads/2020/04/cropped-noun_virus_3166287-32x32.png"-->
+<!--          sizes="32x32">-->
+<!--    <link rel="icon"-->
+<!--          href="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_192,h_192/https://covidtracker.fr/wp-content/uploads/2020/04/cropped-noun_virus_3166287-192x192.png"-->
+<!--          sizes="192x192">-->
     <link rel="apple-touch-icon"
           href="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_180,h_180/https://covidtracker.fr/wp-content/uploads/2020/04/cropped-noun_virus_3166287-180x180.png">
     <meta name="msapplication-TileImage"
@@ -419,22 +419,22 @@
         </div>
     </div>
 </section>
-<script type="text/javascript">
-    jQuery(document).ready(function ($) {
-        $('.flexslider').flexslider({
-            animation: "slide",
-            slideshow: false,
-            slideshowSpeed: parseInt() * 1000,
-        });
-
-        $('.testislider').flexslider({
-            controlNav: true,
-            animation: "slide",
-            slideshow: false,
-            slideshowSpeed: parseInt() * 1000,
-        });
-    })
-</script>
+<!--<script type="text/javascript">-->
+<!--    jQuery(document).ready(function ($) {-->
+<!--        $('.flexslider').flexslider({-->
+<!--            animation: "slide",-->
+<!--            slideshow: false,-->
+<!--            slideshowSpeed: parseInt() * 1000,-->
+<!--        });-->
+<!---->
+<!--        $('.testislider').flexslider({-->
+<!--            controlNav: true,-->
+<!--            animation: "slide",-->
+<!--            slideshow: false,-->
+<!--            slideshowSpeed: parseInt() * 1000,-->
+<!--        });-->
+<!--    })-->
+<!--</script>-->
 <noscript>
     <style>.lazyload {
             display: none;
@@ -444,27 +444,27 @@
     window.lazySizesConfig.loadMode = 1;</script>
 <script async="" data-noptimize="1"
         src="https://covidtracker.fr/wp-content/plugins/autoptimize/classes/external/js/lazysizes.min.js?ao_version=2.7.8"></script>
-<script data-noptimize="1">function c_img(a, b) {
-        src = "avif" == b ? "data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAABoAAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAEAAAABAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACJtZGF0EgAKCBgADsgQEAwgMgwf8AAAWAAAAACvJ+o=" : "data:image/webp;base64,UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==";
-        var c = new Image;
-        c.onload = function () {
-            var d = 0 < c.width && 0 < c.height;
-            a(d, b)
-        }, c.onerror = function () {
-            a(!1, b)
-        }, c.src = src
-    }
-
-    function s_img(a, b) {
-        w = window, "avif" == b ? !1 == a ? c_img(s_img, "webp") : w.ngImg = "avif" : !1 == a ? w.ngImg = !1 : w.ngImg = "webp"
-    }
-
-    c_img(s_img, "avif");
-    document.addEventListener("lazybeforeunveil", function ({target: a}) {
-        window.ngImg && ["data-src", "data-srcset"].forEach(function (b) {
-            attr = a.getAttribute(b), null !== attr && -1 == attr.indexOf("/client/to_") && a.setAttribute(b, attr.replace(/\/client\//, "/client/to_" + window.ngImg + ","))
-        })
-    });</script>
+<!--<script data-noptimize="1">function c_img(a, b) {-->
+<!--        src = "avif" == b ? "data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAABoAAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAEAAAABAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACJtZGF0EgAKCBgADsgQEAwgMgwf8AAAWAAAAACvJ+o=" : "data:image/webp;base64,UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==";-->
+<!--        var c = new Image;-->
+<!--        c.onload = function () {-->
+<!--            var d = 0 < c.width && 0 < c.height;-->
+<!--            a(d, b)-->
+<!--        }, c.onerror = function () {-->
+<!--            a(!1, b)-->
+<!--        }, c.src = src-->
+<!--    }-->
+<!---->
+<!--    function s_img(a, b) {-->
+<!--        w = window, "avif" == b ? !1 == a ? c_img(s_img, "webp") : w.ngImg = "avif" : !1 == a ? w.ngImg = !1 : w.ngImg = "webp"-->
+<!--    }-->
+<!---->
+<!--    c_img(s_img, "avif");-->
+<!--    document.addEventListener("lazybeforeunveil", function ({target: a}) {-->
+<!--        window.ngImg && ["data-src", "data-srcset"].forEach(function (b) {-->
+<!--            attr = a.getAttribute(b), null !== attr && -1 == attr.indexOf("/client/to_") && a.setAttribute(b, attr.replace(/\/client\//, "/client/to_" + window.ngImg + ","))-->
+<!--        })-->
+<!--    });</script>-->
 <script type="text/javascript" id="contact-form-7-js-extra">
     /* <![CDATA[ */
     var wpcf7 = {

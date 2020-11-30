@@ -617,6 +617,7 @@
 
     <!-- wp:heading -->
     <div class="departement">
+
         <h2 id="Côtes-d'armor">Côtes-d'armor (22)</h2>
         <!-- /wp:heading -->
 
