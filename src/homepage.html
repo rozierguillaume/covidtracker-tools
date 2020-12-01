@@ -1,0 +1,837 @@
+<!-- wp:paragraph {"fontSize":"normal"} -->
+<p class="has-normal-font-size"><strong>CovidTracker est un outil permettant de suivre l'évolution de l'épidémie à Coronavirus en France et dans le monde. </strong>Pour des analyses quotidiennes des chiffres, vous pouvez suivre <a href="https://twitter.com/guillaumerozier" target="_blank" rel="noopener noreferrer">@guillaumerozier</a> sur Twitter, ainsi que <a href="https://twitter.com/covidtracker_fr">@covidtracker_fr</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:spacer {"height":50} -->
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:html -->
+
+<style>
+    div[shadow] {	  
+              border: 0px solid black;
+              padding: 10px 20px;
+              border-radius: 7px;
+              text-align: center;
+              box-shadow: 6px 4px 25px #d6d6d6;
+    }
+    
+    button {
+                      border: 1px solid;
+                      margin: 10px;
+                      padding: 15px;
+                      font-size : 16px;
+              transition-duration: 0.4s;
+                      background-color: #ffffff;
+                      border-radius: 15px;
+    
+            }
+    
+            button:hover {
+              background-color: black; /* Green */
+              color: white;
+            }
+    
+      /* the flex container without mediaquerie */
+    
+      div[class_perso] {
+        display: flex;
+        min-height: 12vh;
+        flex-wrap: wrap;
+    
+    
+        /* needed to stack children once to big */
+      }
+    
+      div[class_perso] div {
+        flex: 1;
+        min-width: 200px;
+        min-height: 7vh;
+        /* 2 children + margin and borders makes a break point at around 620px */
+        /*background: lightblue;*/
+    
+      }
+    
+      div div {
+        /*border: solid;*/
+        margin: 3px;
+        /*background: tomato;*/
+      }
+    
+    
+      /* remove the grid system at about 620px */
+    
+      @media screen and (max-width: 621px) {
+        div[class_persos] {
+          min-height: 30vh;
+          /* has a meaning with a grid system */
+        }
+    
+      }
+      </style>
+
+<!-- Coup d'oeil -->
+
+<style>
+    .myDiv {
+        background-color: white;
+    	border: 0px solid black;
+        padding: 10px 30px;
+        border-radius: 7px;
+    	max-width: 800px;
+    	text-align: left;
+        box-shadow: 6px 4px 25px #d6d6d6;
+    	}
+
+
+    .wrap {
+        display: flex;
+        margin-top: 0px;
+        flex-wrap: wrap;
+  }
+  .wrap>* {
+        flex: 1 1 400px;
+    }
+
+    .one {
+        border: 0px solid black;
+        margin-top: 0px;
+        padding: 5px 10px;
+        border-radius: 7px;
+        max-width: 1200px;
+        text-align: left;
+        /*box-shadow: 6px 4px 25px #c3d19d;*/
+        /*box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;*/
+        width: 50%;
+        background: #ffffff;
+  }
+
+    .two {
+        border: 0px solid black;
+        margin-top: 0px;
+        padding: 5px 10px;
+        border-radius: 7px;
+        max-width: 1200px;
+        text-align: left;
+        /*  box-shadow: 6px 4px 25px #ffa29c;*/
+        /*box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;*/
+        background: #ffffff;
+
+        width: 50%;
+  }
+
+</style>
+
+<div shadow="" style="text-align: center; width:100%; border-radius: 7px; padding: 7px 0px;">
+    <h2>En un coup d'œil</h2>
+
+    <div class="wrap">
+        <div class="two" style="text-align: left; ">
+            <centering><h3>Cas positifs</h3></centering>
+            <p>On détecte en moyenne <b><span id="cas_moyen_quotidien">--</span> cas</b> de Covid19 chaque jour, <span id="croissance_cas">--</span> par rapport à la semaine dernière.</p>
+            <div>
+                <canvas id="lineCasChart" style="max-height: 700px; max-width: 900px;"></canvas>
+            </div>
+        </div>
+
+        <div class="one" style="text-align: left;">
+            <centering><h3>Réanimations</h3></centering>
+            <p>Il y a actuellement <b><span id="reanimations">--</span> personnes en réanimation</b> pour Covid19, <span id="croissance_rea">--</span> par rapport à la semaine dernière.</p>
+            <div>
+                <canvas id="barReaChart" style="max-height: 700px; max-width: 900px;"></canvas>
+            </div>
+                
+        </div>
+    </div>
+
+    Plus d'informations sur le <a href="https://covidtracker.fr/covidtracker-france">Dashboard France</a> et <a href="https://covidtracker.fr/deconfitracker">DéconfiTracker</a>.
+
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+
+
+<script>
+    var data;
+    var projection_cas = [];
+
+    fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/objectif_deconfinement.json')
+       .then(response => {
+           if (!response.ok) {
+               throw new Error("HTTP error " + response.status);
+           }
+           return response.json();
+       })
+       .then(json => {
+          data = json;
+          
+          //buildBarChart();
+          updateDataDiv();
+          calculerProjection();
+          
+        })
+       .catch(function () {
+           this.dataError = true;
+       }
+      )
+
+function numberWithSpaces(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "&nbsp;");
+  }
+
+function updateDataDiv(){
+    rea_actu = data["rea"]["values"][data["rea"]["values"].length-1]
+    cas_actu = data["cas"]["values"][data["cas"]["values"].length-1]
+
+    rea_j7 = data["rea"]["values"][data["rea"]["values"].length-8]
+    cas_j7 = data["cas"]["values"][data["cas"]["values"].length-8]
+
+    update_date = data["rea"]["dates"][data["rea"]["dates"].length-1]
+    update_date = update_date.slice(8) + "/" + update_date.slice(5, 7);
+
+    update_date_cas = data["cas"]["dates"][data["cas"]["dates"].length-1]
+    update_date_cas = update_date_cas.slice(8) + "/" + update_date_cas.slice(5, 7);
+
+    document.getElementById("cas_moyen_quotidien").innerHTML = numberWithSpaces(cas_actu);
+    document.getElementById("reanimations").innerHTML = numberWithSpaces(rea_actu);
+
+    if (rea_j7 > rea_actu){
+        document.getElementById("croissance_rea").innerHTML = "en baisse de -&nbsp;" + Math.round(Math.abs((rea_actu-rea_j7)/rea_j7*100))+ "&nbsp;% ";
+    } else {
+        document.getElementById("croissance_rea").innerHTML = "en hausse de +&nbsp;" + Math.round((rea_actu-rea_j7)/rea_j7*100)+ "&nbsp;% ";
+    }
+
+    if (cas_j7 > cas_actu){
+        document.getElementById("croissance_cas").innerHTML = "en baisse de -&nbsp;" + Math.round(Math.abs((cas_actu-cas_j7)/cas_j7*100))+ "&nbsp;% ";
+    } else {
+        document.getElementById("croissance_cas").innerHTML = "en hausse de +&nbsp;" + Math.round((cas_actu-cas_j7)/cas_j7*100)+ "&nbsp;% ";
+    }
+
+}
+
+var lineChart;
+function buildLineChart(projection_cas, labels_cas, projection_rea){
+    
+    var ctx = document.getElementById('lineCasChart').getContext('2d');
+
+    lineChart = new Chart(ctx, { 
+        type: 'line',
+        data: {
+            labels: data["cas"]["dates"].concat(labels_cas),
+            datasets: [{
+                label: 'Cas positifs',
+                data: data["cas"]["values"],
+                borderWidth: 3,
+                backgroundColor: 'rgba(0, 168, 235, 0.5)',
+                borderColor: 'rgba(0, 168, 235, 1)'
+            },
+            {
+                label: 'Projection cas positifs',
+                data: projection_cas
+            }]
+        },
+        options: {
+            legend: {
+                display: false
+            },
+            scales: {
+                yAxes: [{
+                    gridLines: {
+                        display: false
+                     },
+                    ticks: {
+                        min: 0,
+                        userCallback: function(value, index, values) {
+                        return value/1000+"k"
+                    }
+                    },
+                    
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: false
+                     },
+                     ticks: {
+                        maxRotation: 0,
+                        minRotation: 0,
+                        maxTicksLimit: 6,
+                        callback: function(value, index, values) {
+                        return value.slice(8) + "/" + value.slice(5, 7);
+                     }
+                     }
+
+                }]
+            },
+            annotation: {
+            events: ["click"],
+            annotations: [
+                {
+                drawTime: "afterDatasetsDraw",
+                id: "hline",
+                type: "line",
+                mode: "horizontal",
+                scaleID: "y-axis-0",
+                value: 5000,
+                borderColor: "green",
+                borderWidth: 3,
+                label: {
+                    backgroundColor: "green",
+                    content: "Objectif",
+                    enabled: true
+                },
+                onClick: function(e) {
+                    console.log("Annotation", e.type, this);
+                }
+                }
+            ]
+        }
+        }
+    });
+}
+
+function calculerProjection(){
+    let one_day = (1000 * 60 * 60 * 24)
+
+    let jours_restants_cas = (Date.parse("2020-12-12") - Date.parse(data["cas"]["dates"][data["cas"]["dates"].length-1])) / one_day 
+    let jours_restants_rea = (Date.parse("2020-12-15") - Date.parse(data["rea"]["dates"][data["rea"]["dates"].length-1])) / one_day 
+
+    data_cas = data["cas"]["values"]
+    
+    var croissance_cas = 0
+    for(idx=1; idx<=7; idx++) {
+        croissance_cas += (data_cas[data_cas.length-idx-1] - data_cas[data_cas.length-idx])/data_cas[data_cas.length-idx-1]
+    };
+    
+    croissance_cas /= 7
+    var projection_cas = []
+    var labels_cas = []
+
+    for (var idx = 1; idx <= data_cas.length; idx++) {
+        projection_cas.push(NaN)
+    }
+
+    for (var idx = 1; idx <= jours_restants_cas; idx++) {
+    
+        var d = moment(data["cas"]["dates"][data["cas"]["dates"].length-1]).add(idx, 'd')
+        labels_cas.push( d.format('YYYY-MM-DD') )
+
+        projection_cas.push(Math.round(data_cas[data_cas.length-1] * (1-croissance_cas)**idx))
+    }
+
+    // REA
+    data_rea = data["rea"]["values"]
+
+    var croissance_rea = 0
+
+    for(idx=1; idx<=7; idx++) {
+        croissance_rea += (data_rea[data_rea.length-idx-1] - data_rea[data_rea.length-idx])/data_rea[data_rea.length-idx-1]
+    };
+    
+    croissance_rea /= 7
+
+    projection_rea = Math.round(data_rea[data_rea.length-1] * (1-croissance_rea)**jours_restants_rea);
+
+    var projection_rea = []
+    for (var idx = 1; idx <= data_rea.length; idx++) {
+        projection_rea.push(NaN)
+    }
+
+    var labels_rea = []
+    for (var idx = 1; idx <= jours_restants_rea; idx++) {
+        var d = moment(data["rea"]["dates"][data["rea"]["dates"].length-1]).add(idx, 'd')
+        labels_rea.push( d.format('YYYY-MM-DD') )
+
+        projection_rea.push(Math.round(data_rea[data_rea.length-1] * (1-croissance_rea)**idx))
+    }
+
+
+    // Emoji de couleur
+
+    buildLineChart(projection_cas, labels_cas);
+    buildBarChart(projection_rea, labels_rea);
+
+}
+
+var barChart
+function buildBarChart(projection_rea, labels_rea){
+    
+    var ctx = document.getElementById('barReaChart').getContext('2d');
+
+     barChart = new Chart(ctx, { 
+        type: 'bar',
+        data: {
+            labels: data["rea"]["dates"].concat(labels_rea),
+            datasets: [{
+                label: 'Personnes en réanimation',
+                data: data["rea"]["values"],
+                borderWidth: 1,
+                backgroundColor: 'rgba(255, 0, 26, 0.5)',
+                borderColor: 'rgba(255, 0, 26, 1)'
+            }, {
+                label: "Projection réa.",
+                data: projection_rea
+            }]
+        },
+        options: {
+            legend: {
+                display: false
+            },
+            scales: {
+                yAxes: [{
+                    gridLines: {
+                        display: false
+                     },
+                    ticks: {
+                        beginAtZero: true,
+                    }
+                }],
+                xAxes: [{
+                    categoryPercentage: 1.0,
+                    barPercentage: 1.0,
+                    gridLines: {
+                        display: false
+                     },
+                     ticks: {
+                        maxRotation: 0,
+                        minRotation: 0,
+                        maxTicksLimit: 6,
+                        callback: function(value, index, values) {
+                        return value.slice(8) + "/" + value.slice(5, 7);
+                     }
+                     }
+
+                }]
+            },
+            annotation: {
+                events: ["click"],
+                annotations: [
+                    {
+                    drawTime: "afterDatasetsDraw",
+                    id: "hline",
+                    type: "line",
+                    mode: "horizontal",
+                    scaleID: "y-axis-0",
+                    value: 3000,
+                    borderColor: "green",
+                    borderWidth: 3,
+                    label: {
+                        backgroundColor: "green",
+                        content: "Objectif",
+                        enabled: true
+                    },
+                    onClick: function(e) {
+                        console.log("Annotation", e.type, this);
+                    }
+                    }
+                ]
+        }
+
+        },
+
+        
+    });
+}
+
+</script>
+
+
+<!-- Stats world -->
+
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<div shadow="">
+<div class_perso="">
+  <div>
+    <center><h3>Dashboards</h3><br></center>
+<p>Ces tableaux de bord permettent de suivre et mieux comprendre l'évolution de l'épidémie.</p><br>
+<center>     
+<a href="https://covidtracker.fr/covidtracker-france/" style="color:black"><button>🇫🇷 <b>Dashboard France</b></button></a>
+<a href="https://covidtracker.fr/dashboard-regions/" style="color:black"><button>📍Dashboard Régions</button></a>
+<a href="https://covidtracker.fr/dashboard-departements/" style="color:black"><button>🏡 Dashboard Départements</button></a><br>
+<a href="https://covidtracker.fr/covidtracker-world/" style="color:black"><button>🌍 Dashboard World</button></a>
+    </center>
+  </div>
+
+  <div>
+    <center>
+      <h3>Outils</h3><br></center>
+<p>Ces outils permettent de comparer les deux vagues, de calculer le risque de présence d'un cas de covid19, et d'estimer la durée du confinement en cours.</p>
+<center> <a href="https://covidtracker.fr/deconfitracker/" style="color:black"><button>🔥 <b>DéconfiTracker</b></button></a><a href="https://covidtracker.fr/covidep/" style="color:black"><button>🆕 CoviDep</button></a>
+<a href="https://covidtracker.fr/calculateur-risque-covid/" style="color:black"><button>🔢 <b>CoviRisque</b></button></a>
+<a href="https://covidtracker.fr/comparateur-vagues/" style="color:black"><button>🌊 Comparateur de vague</button></a>
+<a href="https://covidtracker.fr/calculateur-duree-confinement/" style="color:black"><button>🔓 Calculateur de déconfinement</button><a href="https://covidtracker.fr/covidradius/" style="color:black"><button>CovidRadius</button></a>
+    </center>
+  </div>
+</div>
+</div>
+<!-- /wp:html -->
+
+<!-- wp:spacer {"height":50} -->
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:html -->
+<a href="https://covidtracker.fr/deconfitracker" style="text-decoration: none;"><div class="alert alert-danger" role="alert">
+<i>27 novembre</i> - <b>DéconfiTracker</b>
+<h2>Un déconfinement le 15 décembre est-il possible ?</h2>
+<p>Le gouvernement a fixé 2 objectifs à atteindre afin d'être déconfinés le 15 décembre. Le premier objectif porte sur les cas quotidiens, et le deuxième objectif sur les personnes en réanimation. Suivez ces indicateurs en direct sur DéconfiTracker, un nouvel outil de CovidTracker. <i> Cliquez ici pour accéder à DéconfiTracker</i></p>
+</div></a>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<div class="alert alert-info" role="alert">
+<i>23 novembre</i><br>
+Nouveau ! Découvrez CoviDep France, un outil permettant de comparer la situation dans votre département par rapport à la moyenne Française.<br><b><a href="https://covidtracker.fr/covidep-france">Accéder à CoviDep France &gt;</a></b>
+</div>
+<!-- /wp:html -->
+
+<!-- wp:spacer {"height":50} -->
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:columns -->
+<div class="wp-block-columns"><!-- wp:column {"width":66.66} -->
+<div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:html -->
+<center>
+Guillaume Rozier était l'invité de BFM TV le 21 novembre afin de présenter CovidTracker :<br><br><iframe width="560" height="315" src="https://www.youtube.com/embed/A9u92KLqsyE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></center>
+
+<br>
+<br>
+<!-- Begin Sendinblue Form -->
+<!-- START - We recommend to place the below code in head tag of your website html  -->
+<style>
+  @font-face {
+    font-display: block;
+    font-family: Roboto;
+    src: url(https://assets.sendinblue.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.sendinblue.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff")
+  }
+
+  @font-face {
+    font-display: fallback;
+    font-family: Roboto;
+    font-weight: 600;
+    src: url(https://assets.sendinblue.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"), url(https://assets.sendinblue.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff")
+  }
+
+  @font-face {
+    font-display: fallback;
+    font-family: Roboto;
+    font-weight: 700;
+    src: url(https://assets.sendinblue.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"), url(https://assets.sendinblue.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff")
+  }
+
+  #sib-container input:-ms-input-placeholder {
+    text-align: left;
+    font-family: "Helvetica", sans-serif;
+    color: #c0ccda;
+  }
+
+  #sib-container input::placeholder {
+    text-align: left;
+    font-family: "Helvetica", sans-serif;
+    color: #c0ccda;
+  }
+
+  #sib-container textarea::placeholder {
+    text-align: left;
+    font-family: "Helvetica", sans-serif;
+    color: #c0ccda;
+  }
+</style>
+<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+<!--  END - We recommend to place the above code in head tag of your website html -->
+
+<!-- START - We recommend to place the below code where you want the form in your website html  -->
+<div class="sib-form" style="text-align: center;
+         background-color: #ffffff;                                 ">
+  <div id="sib-form-container" class="sib-form-container">
+    <div id="error-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:&quot;Helvetica&quot;, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;max-width:540px;">
+      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+          <path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z"></path>
+        </svg>
+        <span class="sib-form-message-panel__inner-text">
+                          Nous n'avons pas pu confirmer votre inscription.
+                      </span>
+      </div>
+    </div>
+    <div></div>
+    <div id="success-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:&quot;Helvetica&quot;, sans-serif; color:#085229; background-color:#e7faf0; border-radius:3px; border-color:#13ce66;max-width:540px;">
+      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+          <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z"></path>
+        </svg>
+        <span class="sib-form-message-panel__inner-text">
+                          Votre inscription est confirmée.
+                      </span>
+      </div>
+    </div>
+    <div></div>
+    <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; background-color:rgba(255,255,255,1); max-width:540px; border-radius:3px; border-width:1px; border-color:#C0CCD9; border-style:solid;">
+      <form id="sib-form" method="POST" action="https://edeef491.sibforms.com/serve/MUIEAKmsoUxvBsG9QEz82Q9bow9EaQTZNr53SUtictmWEWIjA12mQ0rok915rR9AA6ENbMjHz0HNYl8yS9iWYInuxHQfMK_v1GBIyn3gU753vrvlNP5TR1-ErcImIBGX7SVlphs9pMmpiTKISioKiONG3lIzpwJ1XMAsxuVG3skQLYlxyiaUDOqqmWwsdWgybJoOKRLhYurdptLt" data-type="subscription">
+        <div style="padding: 8px 0;">
+          <div class="sib-form-block" style="font-size:32px; text-align:left; font-weight:700; font-family:&quot;Helvetica&quot;, sans-serif; color:#3C4858; background-color:transparent;">
+            <p>Newsletter CovidTracker</p>
+          </div>
+        </div>
+        <div style="padding: 8px 0;">
+          <div class="sib-form-block" style="font-size:16px; text-align:left; font-family:&quot;Helvetica&quot;, sans-serif; color:#3C4858; background-color:transparent;">
+            <div class="sib-text-form-block">
+              <p>Inscrivez-vous à notre newsletter pour suivre nos actualités.</p>
+            </div>
+          </div>
+        </div>
+        <div style="padding: 8px 0;">
+          <div class="sib-input sib-form-block">
+            <div class="form__entry entry_block">
+              <div class="form__label-row ">
+                <label class="entry__label" style="font-size:16px; text-align:left; font-weight:700; font-family:&quot;Helvetica&quot;, sans-serif; color:#3c4858;" for="EMAIL" data-required="*">
+                  Veuillez renseigner votre adresse email pour vous inscrire
+                </label>
+
+                <div class="entry__field">
+                  <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="EMAIL" data-required="true" required="">
+                </div>
+              </div>
+
+              <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:&quot;Helvetica&quot;, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;">
+              </label>
+              <label class="entry__specification" style="font-size:12px; text-align:left; font-family:&quot;Helvetica&quot;, sans-serif; color:#8390A4;">
+                Veuillez renseigner votre adresse email pour vous inscrire. Ex. : abc@xyz.com
+              </label>
+            </div>
+          </div>
+        </div>
+        <div style="padding: 8px 0;">
+          <div class="g-recaptcha" data-sitekey="6LdoX-8ZAAAAADhP6ZVrDyCQjOFWWbbXV7WErf1e" data-callback="invisibleCaptchaCallback" data-size="invisible" onclick="executeCaptcha"></div>
+        </div>
+        <div style="padding: 8px 0;">
+          <div class="sib-form-block" style="text-align: left">
+            <button class="sib-form-block__button sib-form-block__button-with-loader" style="font-size:16px; text-align:left; font-weight:700; font-family:&quot;Helvetica&quot;, sans-serif; color:#FFFFFF; background-color:#3E4857; border-radius:3px; border-width:0px;" form="sib-form" type="submit">
+              <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
+                <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"></path>
+              </svg>
+              S'INSCRIRE
+            </button>
+          </div>
+        </div>
+
+        <input type="text" name="email_address_check" value="" class="input--hidden">
+        <input type="hidden" name="locale" value="fr">
+      </form>
+    </div>
+  </div>
+</div>
+<!-- END - We recommend to place the below code where you want the form in your website html  -->
+
+<!-- START - We recommend to place the below code in footer or bottom of your website html  -->
+<script>
+  window.REQUIRED_CODE_ERROR_MESSAGE = 'Veuillez choisir un code pays';
+
+  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "Les informations que vous avez fournies ne sont pas valides. Veuillez vérifier le format du champ et réessayer.";
+
+  window.REQUIRED_ERROR_MESSAGE = "Vous devez renseigner ce champ. ";
+
+  window.GENERIC_INVALID_MESSAGE = "Les informations que vous avez fournies ne sont pas valides. Veuillez vérifier le format du champ et réessayer.";
+
+
+
+
+  window.translation = {
+    common: {
+      selectedList: '{quantity} liste sélectionnée',
+      selectedLists: '{quantity} listes sélectionnées'
+    }
+  };
+
+  var AUTOHIDE = Boolean(0);
+</script>
+<script src="https://sibforms.com/forms/end-form/build/main.js">
+</script>
+
+<script src="https://www.google.com/recaptcha/api.js?hl=fr"></script>
+
+<!-- END - We recommend to place the above code in footer or bottom of your website html  -->
+<!-- End Sendinblue Form -->
+
+<br>
+<br>
+
+<h3>Derniers articles</h3>
+<!-- /wp:html -->
+
+<!-- wp:latest-posts {"align":"left","displayPostContent":true,"excerptLength":50,"displayPostDate":true,"displayFeaturedImage":true,"featuredImageAlign":"left","featuredImageSizeSlug":"medium"} /-->
+
+<!-- wp:html -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://covidtracker.fr/blog/">Tous les articles de CovidTracker &gt;</a></div>
+<!-- /wp:html --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"width":33.33} -->
+<div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:spacer {"height":30} -->
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:html -->
+<div class="boxed">
+ <a class="twitter-timeline" data-height="500" data-theme="light" href="https://twitter.com/guillaumerozier?ref_src=twsrc%5Etfw">Tweets de @CovidTracker_fr</a> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+<!-- /wp:html -->
+
+<!-- wp:spacer {"height":20} -->
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:html -->
+<div class="boxed">
+ <a class="twitter-timeline" data-height="500" data-theme="light" href="https://twitter.com/covidtracker_fr?ref_src=twsrc%5Etfw">Tweets de @CovidTracker_fr</a> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+<!-- /wp:html -->
+
+<!-- wp:spacer {"height":20} -->
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:spacer {"height":50} -->
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:heading {"align":"center","level":3} -->
+<h3 class="has-text-align-center">Ils parlent de CovidTracker...</h3>
+<!-- /wp:heading -->
+
+<!-- wp:separator -->
+<hr class="wp-block-separator"/>
+<!-- /wp:separator -->
+
+<!-- wp:html -->
+<p align="center">
+<a href="https://france3-regions.francetvinfo.fr/grand-est/meurthe-et-moselle/nancy/coronavirus-etudiant-telecom-nancy-developpe-logiciel-suivre-evolution-pandemie-1820586.html" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/autres/france3_logo.png" width="200px"></a> 
+
+<a href="http://www.leparisien.fr/societe/coronavirus-pourquoi-ces-erreurs-dans-les-decomptes-des-deces-en-ehpad-20-05-2020-8320674.php" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/autres/le_parisien_logo.png" width="200px"></a> 
+
+<a href="https://www.francetvinfo.fr/sante/maladie/coronavirus/infographies-coronavirus-pourquoi-il-faut-faire-attention-en-analysant-les-variations-quotidiennes-du-nombre-de-morts-du-covid-19-en-france_3962377.html" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/autres/franceinfo_logo.png" width="200px"></a> 
+
+<a href="https://factuel.univ-lorraine.fr/node/14224" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/autres/ul_logo.png" width="180px"></a> 
+
+<a href="https://telecomnancy.univ-lorraine.fr/fr/covid-19-un-eleve-de-telecom-nancy-realise-un-outil-de-visualisation-des-donnees-de-lepidemie" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/autres/tn_logo.png" width="180px"></a> 
+
+<a href="https://www.arretsurimages.net/articles/deces-a-la-hausse-le-lundi-la-fausse-alerte" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/autres/arret_sur_images_logo.png" width="200px"></a> 
+
+<a href="https://www.doctissimo.fr/sante/news/covid-19-nombre-deces-pas-en-hausse" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/autres/doctissimo_logo.png" width="200px"></a> 
+
+<a href="https://www.femmeactuelle.fr/sante/sante-pratique/covid-19-pourquoi-il-faut-analyser-avec-prudence-le-nombre-de-deces-quotidiens-2095384" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/autres/femme_actuelle_logo.png" width="200px"></a> 
+
+<a href="https://www.ouest-france.fr/leditiondusoir/data/88893/reader/reader.html#!preferred/1/package/88893/pub/126216/page/9" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/autres/ouest_france_logo.png" width="200px"></a> 
+
+<a href="https://www.data.gouv.fr/fr/reuses/covid-tracker-suivez-lepidemie-du-covid19-en-france-et-dans-le-monde/" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/autres/data_gouv_logo.png" width="230px"></a> 
+
+<a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/autres/article_est_republicain.jpg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/autres/est_republicain_logo.png" width="200px"></a> 
+
+<a href="https://fr.finance.yahoo.com/actualites/covid-19-pourquoi-faut-analyser-160243598.html" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/autres/yahoo_finance_logo.png" width="200px"></a>
+
+<a href="https://www.society-magazine.fr/7464-2/" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/autres/society_logo.png" width="200px"></a> 
+
+<a href="https://www.numerama.com/sciences/627281-pourquoi-le-chiffre-des-nouveaux-cas-de-coronavirus-est-il-aussi-eleve-en-france-le-29-mai.html" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/autres/numerama_logo.png" width="200px"></a> 
+
+<a href="https://www.franceculture.fr/numerique/stopcovid-une-application-pour-quels-resultats" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/autres/franceculture_logo.png" width="200px"></a> 
+
+<a href="https://www.youtube.com/watch?v=hwTJqM2Ll7g" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/autres/franceo_logo.png" width="200px"></a> 
+
+<a href="https://covidtracker.fr/voici-a-quoi-ressemblera-la-prochaine-carte-de-deconfinement-dapres-lci-et-covidtracker/" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/autres/lci_logo.png" width="200px"></a>
+
+<a href="https://www.youtube.com/watch?v=3yEw9bT4b3M" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/autres/bfm_logo.png" width="200px"></a>
+
+</p>
+<!-- /wp:html -->
+
+<!-- wp:spacer {"height":50} -->
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:heading -->
+<h2>Qu'est-ce que la Covid19 ?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>La maladie à Coronavirus 2019, appelée Covid-19, est provoquée par le coronavirus SARS-CoV-2. Elle est apparue en novembre 2019 dans le province de Hubei (Chine), dans la ville de Wuhan, et se propage depuis dans le monde entier.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Selon l’Organisation mondiale de la santé (OMS), le foyer de l’épidémie s’est déplacé. D’abord en Asie, il a concerné l’Europe en mars et avril 2020, puis l’Amérique en mai.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:spacer {"height":20} -->
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:heading -->
+<h2>L'équipe</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Le fondateur du site est <a href="https://twitter.fr/guillaumerozier" target="_blank" rel="noopener noreferrer">Guillaume Rozier</a>. Cet élève ingénieur en informatique, spécialisé dans l'Intelligence Artificielle et le traitement des masses de données, a aussi réalisé les tableaux de bord <a href="https://covidtracker.fr/covidtracker-france/">France</a> et <a href="https://covidtracker.fr/covidtracker-world/">World</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Philippe Brouard, ingénieur à l'Université de Lorraine, est à l'initiative d'un simulateur de l'épidémie, permettant de mieux la comprendre et de la prédire. De nombreux articles sont publiés sur CovidTracker à ce propos.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Remerciements à Elias Orphelin pour être à l'origine de l'idée de plusieurs outils, et à Nicolas Furno pour son aide sur l'hébergement et l'administration du site.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:spacer {"height":20} -->
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:heading -->
+<h2>Les données</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"fontSize":"normal"} -->
+<p class="has-normal-font-size">Les données françaises sont issues de <a href="https://www.santepubliquefrance.fr" target="_blank" rel="noreferrer noopener">Santé publique France</a> et de l'<a href="https://www.insee.fr/fr/accueil" target="_blank" rel="noreferrer noopener">INSEE</a> (Institut National de la Statistique et des Études Économiques). Les données pour les autres pays proviennent du <a href="https://systems.jhu.edu" target="_blank" rel="noreferrer noopener">CSSE</a> de l'Université John Hopkins (USA).</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:spacer {"height":50} -->
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:heading -->
+<h2>Suivez-nous</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Pour des analyses quotidiennes des chiffres vous pouvez nous suivre sur Twitter : <a href="https://twitter.com/guillaumerozier">@GuillaumeRozier</a> et <a href="https://twitter.com/covidtracker_fr">@CovidTracker_fr</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>♥ <a href="https://guillaumerozier.fr/covidtracker-soutenir/">Soutenez CovidTracker</a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+CovidTracker est gratuit et sans pub. <div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">☕️ Offrez-moi un café</a></div>
+<!-- /wp:html -->
+
+<!-- wp:separator -->
+<hr class="wp-block-separator"/>
+<!-- /wp:separator -->
+
+<!-- wp:html -->
+<p class="has-small-font-size"><a href="http://hits.dwyl.com/rozierguillaume/covid-19"><img src="http://hits.dwyl.com/rozierguillaume/covid-19.svg" alt="HitCount" style="”display:none”"></a> <a href="https://guillaumerozier.fr/mentions-legales/">Mentions légales</a></p>
+<!-- /wp:html -->
+
+<!-- wp:paragraph {"fontSize":"small"} -->
+<p class="has-small-font-size">Tags : covidtracker, covid tracker, coronavirus, covid, covid19, suivi, tracker, data, données, Insee, santé publique France, world</p>
+<!-- /wp:paragraph -->
