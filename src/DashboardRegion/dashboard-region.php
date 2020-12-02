@@ -54,11 +54,11 @@
         function trierRegions() {
             $divs = jQuery("#donneesRegions div.region");
             alphabeticallyOrderedRegions = $divs.sort(function (a, b) {
-                alert($(a).data('nom').toLowerCase());
-                alert($(b).data('nom').toLowerCase());
+                // alert($(a).data('nom').toLowerCase());
+                // alert($(b).data('nom').toLowerCase());
                 return String.prototype.localeCompare.call($(a).data('nom').toLowerCase(), $(b).data('nom').toLowerCase());
             });
-            $("#donneesRegions").html(alphabeticallyOrderedDeps);
+            $("#donneesRegions").html(alphabeticallyOrderedRegions);
         }
 
         //
@@ -84,51 +84,46 @@
             $('#map path[data-num=' + numeroRegion + ']').removeClass('selected');
             $('#' + numeroRegion).remove();
         });
-        //
-        // $('#unselectAll').click(function () {
-        //     $('#carte path.selected').each(function () {
-        //         if (!$(this).data("num")) {
-        //             return;
-        //         }
-        //         numeroDepartement = $(this).data("num");
-        //         nomDepartement = $("#listeDepartements option[data-num='" + numeroDepartement + "']").val();
-        //         $(this).removeClass('selected');
-        //         $("select option[data-num='" + numeroDepartement + "']").prop("selected", false);
-        //         $("#listeDepartements").trigger('change');
-        //         $('#' + numeroDepartement).remove();
-        //     });
-        // });
-        //
-        // $('body').on('click', '.masquerDepartement', function (e) {
-        //     e.preventDefault();
-        //     numeroDepartement = $(this).parents('.departement').data("num");
-        //     console.log($("select option[data-num='" + numeroDepartement + "']"));
-        //     $("select option[data-num='" + numeroDepartement + "']").prop("selected", false);
-        //     $('#map path[data-num=' + numeroDepartement + ']').removeClass('selected');
-        //     $("#listeDepartements").trigger('change');
-        //     $('#' + numeroDepartement).remove();
-        // });
-        //
-        // $('#selectAll').click(function () {
-        //     $('#carte path').each(function () {
-        //         if (!$(this).data("num")) {
-        //             return;
-        //         }
-        //         departement = $(this).data("num");
-        //         nomDepartement = $("#listeDepartements option[data-num='" + departement + "']").val();
-        //         if (!$(this).hasClass('selected')) {
-        //             $(this).addClass('selected');
-        //             if ($("#listeDepartements").val()) {
-        //                 $("#listeDepartements").val($.merge([nomDepartement], $("#listeDepartements").val()));
-        //             } else {
-        //                 $("#listeDepartements").val(nomDepartement);
-        //             }
-        //             $("#listeDepartements").trigger('change');
-        //             afficherDepartement(nomDepartement, departement);
-        //         }
-        //     });
-        // });
-        //
+
+
+        $('body').on('click', '.masquerRegion', function (e) {
+            e.preventDefault();
+            numeroRegion = $(this).parents('.region').data("num");
+            $("select option[data-num='" + numeroRegion + "']").prop("selected", false);
+            $('#map path[data-num=' + numeroRegion + ']').removeClass('selected');
+            $("#listeRegions").trigger('change');
+            $('#' + numeroRegion).remove();
+        });
+
+        $('#unselectAll').click(function () {
+            $("#listeRegions option").each(function() {
+                $(this).attr('selected', false);
+                $("#listeRegions").trigger('change');
+            });
+            $('.region').remove();
+            $('#map path').removeClass('selected');
+        });
+
+        $('#selectAll').click(function () {
+            //Sélection des toutes les options du select.
+            $("#listeRegions option").each(function() {
+                nomRegion = $(this).val();
+                if (!$(this).attr('selected')) {
+                    $(this).attr('selected', true);
+                    if ($("#listeRegions").val()) {
+                        $("#listeRegions").val($.merge([nomRegion], $("#listeRegions").val()));
+                    } else {
+                        $("#listeRegions").val(nomRegion);
+                    }
+                    afficherRegion(nomRegion, $(this).data("num"));
+                }
+            });
+            $("#listeRegions").trigger('change');
+            //Sélection des toutes les régions de la carte.
+            $('#map path').addClass('selected');
+
+        });
+
         $('#carte path').hover(function (e) {
             numeroRegion = $(this).data("num");
             nomRegion = $("#listeRegions option[data-num='" + numeroRegion + "']").val();
@@ -200,9 +195,9 @@
 <!-- wp:spacer {"height":50} -->
 <div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
-<p>
-    <a href="#menu">Retour au menu</a>
-</p>
+<!--<p>-->
+<!--    <a href="#menu">Retour au menu</a>-->
+<!--</p>-->
 <div id="donneesRegions">
 
 </div>

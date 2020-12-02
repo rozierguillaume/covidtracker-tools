@@ -1,13 +1,13 @@
 <div id="menu" class="row">
     <div class="col-md-6" style="padding-top: 20px;">
-        Retrouvez les graphiques Covid tracker pour les régions de votre choix :
+        Retrouvez les graphiques CovidTracker pour les régions de votre choix :
         <ul>
-            <li>Evolution des cas positifs, des hospitalisations, des personnes en réanimation et des décès quotidiens</li>
-            <li>Heat map des taux d'incidence,</li>
-            <li>Evolution du taux d'occupation en réanimation</li>
+            <li>évolution des cas positifs, des hospitalisations, des personnes en réanimation et des décès quotidiens</li>
+            <li>heat map des taux d'incidence,</li>
+            <li>évolution du taux d'occupation en réanimation</li>
         </ul>
-        Sélectionnez les départements que vous souhaitez consulter à l'aide du menu déroulant ou en cliquant directement
-        sur la carte de France.
+        Sélectionnez les régions que vous souhaitez consulter à l'aide du menu déroulant ci-dessous
+        ou en cliquant directement sur la carte de France pour les départements de métropole.
         </p>
         <div class="text-center">
             <select multiple="multiple" name="regions_list_choice" id="listeRegions" class="select2">
@@ -41,7 +41,7 @@
     </div>
     <div class="col-md-6 text-center">
         <div id="carte">
-            <svg id="map" xmlns="http://www.w3.org/2000/svg" version="1.2" width="400" height="400" viewBox="400 0 80 100" stroke-linecap="round" stroke-linejoin="round"
+            <svg id="map" xmlns="http://www.w3.org/2000/svg" version="1.2" width="400" height="400" viewBox="400 0 80 110" stroke-linecap="round" stroke-linejoin="round"
                  xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>...</title>
                 <g id="regions" sketch:type="MSLayerGroup" transform="translate(0.000000, 1.000000)">
