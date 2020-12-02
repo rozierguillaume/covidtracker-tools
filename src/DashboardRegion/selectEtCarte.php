@@ -3,7 +3,6 @@
         Retrouvez les graphiques CovidTracker pour les régions de votre choix :
         <ul>
             <li>évolution des cas positifs, des hospitalisations, des personnes en réanimation et des décès quotidiens</li>
-            <li>heat map des taux d'incidence,</li>
             <li>évolution du taux d'occupation en réanimation</li>
         </ul>
         Sélectionnez les régions que vous souhaitez consulter à l'aide du menu déroulant ci-dessous
@@ -32,7 +31,9 @@
             </select>
             <br>
             <br>
-            <btn class="btn btn-primary" id="selectAll">Tout sélectionner</btn>
+            <btn class="btn btn-primary" id="selectAll">
+                Tout sélectionner
+            </btn>
             <btn class="btn btn-primary" id="unselectAll">
                 Tout désélectionner
             </btn>

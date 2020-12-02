@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <link rel="pingback" href="https://covidtracker.fr/xmlrpc.php">
-    <title>Dashboard Départements - CovidTracker</title>
+    <title>Dashboard département - Local</title>
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="canonical" href="https://covidtracker.fr/dashboard-departements/">
     <meta property="og:locale" content="fr_FR">
