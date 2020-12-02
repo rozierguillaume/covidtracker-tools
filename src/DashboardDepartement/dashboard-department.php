@@ -94,17 +94,12 @@
         });
 
         $('#unselectAll').click(function () {
-            $('#carte path.selected').each(function () {
-                if (!$(this).data("num")) {
-                    return;
-                }
-                numeroDepartement = $(this).data("num");
-                nomDepartement = $("#listeDepartements option[data-num='" + numeroDepartement + "']").val();
-                $(this).removeClass('selected');
-                $("select option[data-num='" + numeroDepartement + "']").prop("selected", false);
-                $("#listeDepartements").trigger('change');
-                $('#' + numeroDepartement).remove();
+            $("#listeDepartements option").each(function() {
+                $(this).attr('selected', false);
             });
+            $("#listeDepartements").trigger('change');
+            $('.departement').remove();
+            $('#map path').removeClass('selected');
         });
 
         $('body').on('click', '.masquerDepartement', function (e) {
@@ -118,23 +113,43 @@
         });
 
         $('#selectAll').click(function () {
-            $('#carte path').each(function () {
-                if (!$(this).data("num")) {
-                    return;
-                }
-                departement = $(this).data("num");
-                nomDepartement = $("#listeDepartements option[data-num='" + departement + "']").val();
-                if (!$(this).hasClass('selected')) {
-                    $(this).addClass('selected');
+
+            //Sélection des toutes les options du select.
+            $("#listeDepartements option").each(function() {
+                nomDepartement = $(this).val();
+                if (!$(this).attr('selected')) {
+                    $(this).attr('selected', true);
                     if ($("#listeDepartements").val()) {
                         $("#listeDepartements").val($.merge([nomDepartement], $("#listeDepartements").val()));
                     } else {
                         $("#listeDepartements").val(nomDepartement);
                     }
-                    $("#listeDepartements").trigger('change');
-                    afficherDepartement(nomDepartement, departement);
+                    afficherDepartement(nomDepartement, $(this).data("num"));
                 }
             });
+            $("#listeDepartements").trigger('change');
+            //Sélection des toutes les régions de la carte.
+            $('#map path').addClass('selected');
+
+
+
+            // $('#carte path').each(function () {
+            //     if (!$(this).data("num")) {
+            //         return;
+            //     }
+            //     departement = $(this).data("num");
+            //     nomDepartement = $("#listeDepartements option[data-num='" + departement + "']").val();
+            //     if (!$(this).hasClass('selected')) {
+            //         $(this).addClass('selected');
+            //         if ($("#listeDepartements").val()) {
+            //             $("#listeDepartements").val($.merge([nomDepartement], $("#listeDepartements").val()));
+            //         } else {
+            //             $("#listeDepartements").val(nomDepartement);
+            //         }
+            //         $("#listeDepartements").trigger('change');
+            //         afficherDepartement(nomDepartement, departement);
+            //     }
+            // });
         });
 
         $('#carte path').hover(function (e) {

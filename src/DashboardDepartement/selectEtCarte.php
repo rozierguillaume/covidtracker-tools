@@ -7,7 +7,7 @@
         <li>évolution du taux d'occupation en réanimation.</li>
     </ul>
     Sélectionnez les départements que vous souhaitez consulter à l'aide du menu déroulant ou en cliquant directement
-    sur la carte de France.
+    sur la carte de France pour les départements de métropole.
     </p>
     <div class="text-center">
         <select multiple="multiple" name="deps_list_choice" id="listeDepartements" class="select2">
