@@ -1,10 +1,10 @@
 <div id="menu" class="row">
     <div class="col-md-6" style="padding-top: 20px;">
-        Retrouvez les graphiques Covid tracker pour les départements de votre choix :
+        Retrouvez les graphiques CovidTracker pour les départements de votre choix :
     <ul>
-        <li>Evolution des cas positifs, des hospitalisations, des personnes en réanimation et des décès quotidiens</li>
-        <li>Heat map des taux d'incidence,</li>
-        <li>Evolution du taux d'occupation en réanimation</li>
+        <li>évolution des cas positifs, des hospitalisations, des personnes en réanimation et des décès quotidiens,</li>
+        <li>heatmap des taux d'incidence,</li>
+        <li>évolution du taux d'occupation en réanimation.</li>
     </ul>
     Sélectionnez les départements que vous souhaitez consulter à l'aide du menu déroulant ou en cliquant directement
     sur la carte de France.
@@ -165,12 +165,6 @@
             Tout désélectionner
         </btn>
         <br>
-        <br>
-        <br> Vous trouverez d’autres graphique sur le <b>
-            <a href="https://covidtracker.fr/dashboard-departements">
-                Dashboard Départements &gt;
-            </a>
-        </b>
         <br>
     </div>
 </div>
