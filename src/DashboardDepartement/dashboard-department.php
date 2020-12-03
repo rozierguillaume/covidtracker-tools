@@ -43,7 +43,7 @@
         <!-- wp:spacer {"height":50} -->
         <div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
         <!-- /wp:spacer -->
-        <p><a href="#menu">Retour au menu</a></p>
+        <p><a href="#menu">Haut de page</a></p>
     </div>
 </script>
 <script>
@@ -217,7 +217,6 @@
 <div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 <p>
-    <a href="#menu">Retour au menu</a>
 </p>
 <div id="donneesDepartements">
 
