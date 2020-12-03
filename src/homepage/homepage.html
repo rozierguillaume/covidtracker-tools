@@ -145,7 +145,7 @@
         </div>
     </div>
 
-    Plus d'informations sur le <a href="https://covidtracker.fr/covidtracker-france">Dashboard France</a> et <a href="https://covidtracker.fr/deconfitracker">DéconfiTracker</a>.
+    Plus d'informations sur le <a href="https://covidtracker.fr/covidtracker-france">Dashboard France</a> et <a href="https://covidtracker.fr/deconfitracker">DéconfiTracker</a>. Mise à jour : <span id="date_update_coup_doeil">-/-</span>.
 
 </div>
 
@@ -210,6 +210,8 @@ function updateDataDiv(){
     } else {
         document.getElementById("croissance_cas").innerHTML = "en hausse de +&nbsp;" + Math.round((cas_actu-cas_j7)/cas_j7*100)+ "&nbsp;% ";
     }
+
+    document.getElementById("date_update_coup_doeil").innerHTML = update_date;
 
 }
 

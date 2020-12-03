@@ -60,7 +60,9 @@
 	}
 	</style>
 <p style="margin-bottom:1cm;"></p>
-<p><b>Mise à jour 21/11</b> : le R de la deuxième semaine est fixé et évalué à 1,1, les cas réels ont été ajoutés.<br>
+<p>
+  <b>Mise à jour 02/12</b> : ajout des R et cas réels jusqu'au 27 novembre.<br>
+  <b>Mise à jour 21/11</b> : le R de la deuxième semaine est fixé et évalué à 1,1, les cas réels ont été ajoutés.<br>
   <b>Mise à jour 05/11</b> : le R de la première semaine est fixé et évalué à 1,35, les cas réels ont été ajoutés.</>
 <p style="margin-bottom:1cm;"></p>
 <p>Ce simulateur permet de calculer la durée du confinement en fonction de la valeur du taux de reproduction du Coronavirus sur chaque semaine. Plus le taux de reproduction est élevé, plus le confinement devra durer longtemps. Plus d'informations sur ce taux de reproduction en bas de page. </p>
@@ -130,6 +132,8 @@ var myChart = new Chart(ctx, {
             data: [],
           borderColor: [
                 'black',
+                'black',
+                'black',
                 'black'
             ],
             borderWidth: 2
@@ -171,8 +175,8 @@ plugins: {
 });
 
 
-      var values_data = [1.35, 0.7, 0.6, 0.7]
-      var cas_last7 = [301122, 175225]
+      var values_data = [1.35, 0.7, 0.65, 0.65, 0.7, 0.7, 0.7]
+      var cas_last7 = [301122, 175388, 107402, 65733]
      
       fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/stats.json')
 	   .then(response => {
@@ -322,12 +326,12 @@ plugins: {
     },
         type: 'line',
         data: {
-          labels: [weeks[0], weeks[1], weeks[2], weeks[3]],
+          labels: [weeks[0], weeks[1], weeks[2], weeks[3], weeks[4], weeks[5], weeks[6]],
           datasets: [
             {
               label: 'Taux de reproduction R',
               data: values_data,
-              pointBackgroundColor: ["white", "white"],
+              pointBackgroundColor: ["white", "white", "white", "white"],
               pointBorderColor: [],
               borderWidth: 1,
               pointRadius: 15,
@@ -357,7 +361,7 @@ plugins: {
           onDrag: function(e, datasetIndex, index, value) {
             e.target.style.cursor = 'grabbing'
             // console.log(datasetIndex, index, value)
-            if(index in [0, 1]){
+            if(index in [0, 1, 2, 3]){
               return false}
           },
           onDragEnd: function(e, datasetIndex, index, value) {
