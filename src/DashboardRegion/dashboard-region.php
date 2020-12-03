@@ -177,7 +177,7 @@
     }
 
     #map path:hover {
-        fill: #a1d1ff;
+        fill: #547096;
     }
 
     #map .separator {
