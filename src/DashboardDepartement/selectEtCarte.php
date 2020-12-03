@@ -1,5 +1,6 @@
 <div id="menu" class="row">
     <div class="col-md-6" style="padding-top: 20px;">
+    <p>
         Retrouvez les graphiques CovidTracker pour les départements de votre choix :
     <ul>
         <li>évolution des cas positifs, des hospitalisations, des personnes en réanimation et des décès quotidiens,</li>
