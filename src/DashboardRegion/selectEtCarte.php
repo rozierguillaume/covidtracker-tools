@@ -1,9 +1,10 @@
 <div id="menu" class="row">
     <div class="col-md-6" style="padding-top: 20px;">
+        <p>
         Retrouvez les graphiques CovidTracker pour les régions de votre choix :
         <ul>
-            <li>évolution des cas positifs, des hospitalisations, des personnes en réanimation et des décès quotidiens</li>
-            <li>évolution du taux d'occupation en réanimation</li>
+            <li>évolution des cas positifs, des hospitalisations, des personnes en réanimation et des décès quotidiens,</li>
+            <li>évolution du taux d'occupation en réanimation.</li>
         </ul>
         Sélectionnez les régions que vous souhaitez consulter à l'aide du menu déroulant ci-dessous
         ou en cliquant directement sur la carte de France pour les départements de métropole.
