@@ -10,7 +10,7 @@
     <!-- wp:heading -->
     <div id="numeroDepartement" data-num="numeroDepartement" data-nom="nomDepartement" class="departement">
         <h2>
-            nomDepartement (numeroDepartement)
+            numeroDepartement - nomDepartement
             <a class="masquerDepartement pull-right" href="#">
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-circle-fill" fill="currentColor"
                      xmlns="http://www.w3.org/2000/svg">
@@ -63,7 +63,7 @@
             $divs = jQuery("#donneesDepartements div.departement");
 
             alphabeticallyOrderedDeps = $divs.sort(function (a, b) {
-                return String.prototype.localeCompare.call($(a).data('nom').toLowerCase(), $(b).data('nom').toLowerCase());
+                return String.prototype.localeCompare.call($(a).data('num'), $(b).data('num'));
             });
 
             $("#donneesDepartements").html(alphabeticallyOrderedDeps);
@@ -130,26 +130,6 @@
             $("#listeDepartements").trigger('change');
             //Sélection des toutes les régions de la carte.
             $('#map path').addClass('selected');
-
-
-
-            // $('#carte path').each(function () {
-            //     if (!$(this).data("num")) {
-            //         return;
-            //     }
-            //     departement = $(this).data("num");
-            //     nomDepartement = $("#listeDepartements option[data-num='" + departement + "']").val();
-            //     if (!$(this).hasClass('selected')) {
-            //         $(this).addClass('selected');
-            //         if ($("#listeDepartements").val()) {
-            //             $("#listeDepartements").val($.merge([nomDepartement], $("#listeDepartements").val()));
-            //         } else {
-            //             $("#listeDepartements").val(nomDepartement);
-            //         }
-            //         $("#listeDepartements").trigger('change');
-            //         afficherDepartement(nomDepartement, departement);
-            //     }
-            // });
         });
 
         $('#carte path').hover(function (e) {
@@ -206,8 +186,9 @@
     }
 
     #map path:hover {
-        fill: #a1d1ff;
+        fill: #547096;
     }
+
 
     #map .separator {
         stroke: #ccc;
