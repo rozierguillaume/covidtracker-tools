@@ -347,13 +347,13 @@ function calculerProjection(){
 
     // Emoji de couleur
 
-    if (projection_rea > 3000){
+    if (projection_rea[projection_rea.length-1] > 3000){
         color_rea = "red";
     } else {
         color_rea = "green";
     }
 
-    if (projection_cas > 5000){
+    if (projection_cas[projection_cas.length-1] > 5000){
         color_cas = "red";
     } else {
         color_cas = "green";
