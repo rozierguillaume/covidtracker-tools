@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <link rel="pingback" href="https://covidtracker.fr/xmlrpc.php">
-    <title>Dashboard département - Local</title>
+    <title>Dashboard régions - Local</title>
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="canonical" href="https://covidtracker.fr/dashboard-departements/">
     <meta property="og:locale" content="fr_FR">
@@ -403,9 +403,9 @@
         <div class="col-md-12">
             <div class="content">
                 <div id="post-1648" class="post-1648 page type-page status-publish hentry"><h2 class="entry-title">
-                        Dashboard Départements</h2>
+                        Dashboard Régions</h2>
                     <div class="entry">
-                        <?php include('./dashboard-department.php') ?>
+                        <?php include('./dashboard-region.php') ?>
                     </div>
                 </div>
             </div>

@@ -43,7 +43,7 @@
         <!-- wp:spacer {"height":50} -->
         <div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
         <!-- /wp:spacer -->
-        <p><a href="#menu">Retour au menu</a></p>
+        <p><a href="#menu">Haut de page</a></p>
     </div>
 </script>
 <script>
@@ -129,7 +129,7 @@
             });
             $("#listeDepartements").trigger('change');
             //Sélection des toutes les régions de la carte.
-            $('#map path').addClass('selected');
+            $('#map path:not(.separator)').addClass('selected');
         });
 
         $('#carte path').hover(function (e) {
@@ -200,13 +200,23 @@
         stroke: #ccc;
         fill: none;
     }
+
+    .btn-primary{
+        background-color: #86AAE0;
+        border-color: #86AAE0;
+    }
+
+    .btn-primary.active, .btn-primary.focus, .btn-primary:active, .btn-primary:focus {
+        background: #547096;
+        border-color: #547096;
+        color: #fff;
+    }
 </style>
 
 <!-- wp:spacer {"height":50} -->
 <div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 <p>
-    <a href="#menu">Retour au menu</a>
 </p>
 <div id="donneesDepartements">
 
