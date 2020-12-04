@@ -129,7 +129,7 @@
             });
             $("#listeDepartements").trigger('change');
             //Sélection des toutes les régions de la carte.
-            $('#map path').addClass('selected');
+            $('#map path:not(.separator)').addClass('selected');
         });
 
         $('#carte path').hover(function (e) {
