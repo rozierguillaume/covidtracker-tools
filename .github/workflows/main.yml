@@ -25,9 +25,9 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
-        server: ${{ secrets.IP }}
-        username: ${{ secrets.USER }}
-        password: ${{ secrets.USER_PASSWORD }}
+        server: ${{ secrets.ip }}
+        username: ${{ secrets.user }}
+        password: ${{ secrets.user_password }}
         server-dir: ./covidtracker.fr/wp-content/themes/integral-child/
         dry-run: true
   # This workflow contains a single job called "build"
