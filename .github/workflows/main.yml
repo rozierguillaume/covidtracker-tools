@@ -28,7 +28,7 @@ jobs:
         server: ${{ secrets.IP }}
         username: ${{ secrets.USER }}
         password: ${{ secrets.USER_PASSWORD }}
-        server-dir: ./wp-content/themes/integral-child/
+        server-dir: ./covidtracker.fr/wp-content/themes/integral-child/
         dry-run: true
   # This workflow contains a single job called "build"
   build:
