@@ -28,7 +28,7 @@ jobs:
         server: ${{ secrets.ip }}
         username: ${{ secrets.user }}
         password: ${{ secrets.user_password }}
-        server-dir: ./covidtracker.fr/wp-content/themes/integral-child/
+        protocol: ftps
         dry-run: true
   # This workflow contains a single job called "build"
   build:
