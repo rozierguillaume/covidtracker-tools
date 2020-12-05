@@ -16,15 +16,23 @@
                 </svg>
             </a>
         </h2>
-
+        <h3 style="margin-top: 40px;">Vue d'ensemble</h3>
         <p align="center">
             <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/regions_dashboards/dashboard_jour_nomRegion.jpeg" target="_blank" rel="noopener noreferrer">
                 <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/regions_dashboards/dashboard_jour_nomRegion.jpeg" width="100%"> </a>
         </p>
-
+        <h3 style="margin-top: 40px;">Incidence par tranche d'âge</h3>
+        <p align="center">
+            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_regs/heatmap_taux_nomRegion.jpeg"
+               target="_blank" rel="noopener noreferrer">
+                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_regs/heatmap_taux_nomRegion.jpeg"
+                     width="100%" style="max-width: 1000px;">
+            </a>
+        </p>
+        <h3 style="margin-top: 40px;">Tension hsopitalière</h3>
         <p align="center">
             <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/regions_dashboards/saturation_rea_journ_nomRegion.jpeg" target="_blank" rel="noopener noreferrer">
-                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/regions_dashboards/saturation_rea_journ_nomRegion.jpeg" width="70%">
+                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/regions_dashboards/saturation_rea_journ_nomRegion.jpeg" width="100%">
             </a>
         </p>
 

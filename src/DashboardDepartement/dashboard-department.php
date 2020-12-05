@@ -16,25 +16,28 @@
                 </svg>
             </a>
         </h2>
+        <h3 style="margin-top: 40px;">Vue d'ensemble</h3>
         <p align="center">
             <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_nomDepartement.jpeg"
                target="_blank" rel="noopener noreferrer">
                 <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_nomDepartement.jpeg"
-                     width="75%">
+                     width="100%" style="max-width: 1000px;">
             </a>
         </p>
+        <h3 style="margin-top: 40px;">Incidence par tranche d'âge</h3>
         <p align="center">
             <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_numeroDepartement.jpeg"
                target="_blank" rel="noopener noreferrer">
                 <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_numeroDepartement.jpeg"
-                     width="60%">
+                     width="100%" style="max-width: 1000px;">
             </a>
         </p>
+        <h3 style="margin-top: 40px;">Tension hospitalière</h3>
         <p align="center">
             <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_nomDepartement.jpeg"
                target="_blank" rel="noopener noreferrer">
                 <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_nomDepartement.jpeg"
-                     width="60%">
+                     width="100%" style="max-width: 1000px;">
             </a>
         </p>
         <!-- wp:spacer {"height":50} -->
