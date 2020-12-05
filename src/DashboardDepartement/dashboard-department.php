@@ -26,7 +26,7 @@
             </a>
         </p>
         <h3 style="margin-top: 40px;">Incidence par tranche d'âge</h3>
-        <p>Le taux d'incidence correspond au nombre de cas cumulé sur 7 jours rapporté à 100 000 habitants du département. Cet indicateut représente l'activité épidémique du virus. Le seuil d'alerte est de 50.</p>
+        <p>Le taux d'incidence correspond au nombre de cas cumulé sur 7 jours rapporté à 100 000 habitants du département. Cet indicateur représente l'activité épidémique du virus. Le seuil d'alerte est de 50.</p>
         <p align="center">
             <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_numeroDepartement.jpeg"
                target="_blank" rel="noopener noreferrer">
