@@ -1,0 +1,1512 @@
+<!-- wp:spacer {"height":20} -->
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<p><strong data-rich-text-format-boundary="true">CovidTracker France permet de suivre l'épidémie de Coronavirus et la maladie associée, le Covid19, en France et dans ses régions.</strong><em><strong data-rich-text-format-boundary="true"><br></strong></em>Les données sont issues de Santé Publique&nbsp;France et l'INSEE.<i> Mise à jour des graphiques : automatique vers 19h.</i></p>
+
+<!-- wp:html -->
+<a href="https://covidtracker.fr/deconfitracker" style="text-decoration: none;"><div class="alert alert-danger" role="alert">
+<i>27 novembre</i> - <b>DéconfiTracker</b>
+<h2>Un déconfinement le 15 décembre est-il possible ?</h2>
+<p>Le gouvernement a fixé 2 objectifs à atteindre afin d'être déconfinés le 15 décembre. Le premier objectif porte sur les cas quotidiens, et le deuxième objectif sur les personnes en réanimation. Suivez ces indicateurs en direct sur DéconfiTracker, un nouvel outil de CovidTracker. <i> Cliquez ici pour accéder à DéconfiTracker</i></p>
+</div></a>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<a href="https://covidtracker.fr/covidep-france" style="text-decoration: none;"><div class="alert alert-info" role="alert">
+<i>23 novembre</i><br>
+Nouveau ! Découvrez CoviDep France, un outil permettant de comparer la situation dans votre département par rapport à la moyenne Française. Cliquez ici pour accéder à CoviDep France
+</div></a>
+<!-- /wp:html -->
+
+<!-- wp:separator -->
+<hr class="wp-block-separator"/>
+<!-- /wp:separator -->
+
+<!-- wp:tadv/classic-paragraph -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">☕️ Offrez-moi un café</a></div>
+<!-- /wp:tadv/classic-paragraph -->
+
+<!-- wp:spacer {"height":50} -->
+<div style="height:15px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:html -->
+<style>
+<title>Website Title</title>
+<style type="text/css">
+* {margin: 0; padding: 0;}
+#container {height: 100%; width:100%; font-size: 0;}
+#left, #middle, #right {display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 12px;}
+#left {width: 33%;}
+#middle {width: 33%;}
+#right {width: 33%;}
+</style>
+
+<style>
+/* the flex container without mediaquerie */
+div[shadow] {
+
+	}
+div[class_perso] {
+  display: flex;
+  min-height: 12vh;
+  flex-wrap: wrap;
+	  border: 0px solid black;
+          padding: 10px 20px;
+          border-radius: 7px;
+	  text-align: center;
+          box-shadow: 6px 4px 25px #d6d6d6;
+
+  /* needed to stack children once to big */
+}
+
+div[class_perso] div {
+  flex: 1;
+  min-width: 200px;
+  min-height: 7vh;
+  /* 2 children + margin and borders makes a break point at around 620px */
+  /*background: lightblue;*/
+}
+
+div div {
+  /*border: solid;*/
+  margin: 3px;
+  /*background: tomato;*/
+}
+
+
+/* remove the grid system at about 620px */
+
+@media screen and (max-width: 621px) {
+  div[class_persos] {
+    min-height: 30vh;
+    /* has a meaning with a grid system */
+  }
+
+}
+</style>
+
+<div class_perso="">
+<div><center><h2 id="hosp">---</h2><div id="hosp_descr" style="font-size: 15px;">personnes hospitalisées<br>soit --- le --/--</div></center></div>
+    <div><center><h2 id="rea">---</h2><div id="rea_descr" style="font-size: 15px;">personnes en réanimation<br>soit --- le --/--</div></center></div>
+    <div><center><h2 id="dc_new">---</h2><div id="dc_new_descr" style="font-size: 15px;">nouveaux décès hospitaliers le --/--</div></center></div>
+<div><center><h2 id="cas_last7">---</h2><div id="cas_last7_descr" style="font-size: 15px;">cas positifs sur les 7 derniers jours (--/--)</div></center></div>
+</div>
+
+
+<script>
+readJson()
+function readJson () {
+   // http://localhost:8080
+   fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/stats.json')
+   .then(response => {
+       if (!response.ok) {
+           throw new Error("HTTP error " + response.status);
+       }
+       return response.json();
+   })
+   .then(json => {
+       this.data = json;
+       document.getElementById("rea").innerHTML = data["rea"]["valeur"];
+       document.getElementById("hosp").innerHTML = data["hosp"]["valeur"];
+       document.getElementById("dc_new").innerHTML = data["incid_dc"]["valeur"];
+       document.getElementById("cas_last7").innerHTML = data["tests_last7"]["valeur"];
+       document.getElementById("hosp_descr").innerHTML = document.getElementById("hosp_descr").innerHTML.replace("--/--", data["hosp"]["date"]);
+document.getElementById("hosp_descr").innerHTML = document.getElementById("hosp_descr").innerHTML.replace("---", data["hosp_new"]["valeur"]);
+document.getElementById("rea_descr").innerHTML = document.getElementById("rea_descr").innerHTML.replace("--/--", data["rea"]["date"]);
+document.getElementById("rea_descr").innerHTML = document.getElementById("rea_descr").innerHTML.replace("---", data["rea_new"]["valeur"]);
+document.getElementById("dc_new_descr").innerHTML = document.getElementById("dc_new_descr").innerHTML.replace("--/--", data["incid_dc"]["date"]);
+document.getElementById("cas_last7_descr").innerHTML = document.getElementById("cas_last7_descr").innerHTML.replace("--/--", data["tests_last7"]["date"]);
+   })
+   .catch(function () {
+       this.dataError = true;
+   })
+}
+</script>
+<!-- /wp:html -->
+
+<!-- wp:spacer {"height":20} -->
+<div style="height:10px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:heading -->
+<h1 id="dashboard">Vue d'ensemble</h1>
+<!-- /wp:heading -->
+
+<!-- wp:separator -->
+<hr class="wp-block-separator"/>
+<!-- /wp:separator -->
+
+<!-- wp:paragraph {"fontSize":"normal"} -->
+<p class="has-normal-font-size">Ce graphique est une bonne vue d'ensemble de la situation en France. Il permet en un coup d'œil de suivre le nombre de cas détectés au Covid19, le nombre de personnes hospitalisées, en réanimation ou décédées à cause de la Covid19.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[TABS_R id=844]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:spacer {"height":50} -->
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button {"borderRadius":0,"className":"is-style-outline"} -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://guillaumerozier.fr/covidtracker-france/vue-densemble/">Autres graphiques Vue d'ensemble ›</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<h1 id="tests_virologiques">Activité du virus</h1>
+
+<!-- wp:separator -->
+<hr class="wp-block-separator"/>
+<!-- /wp:separator -->
+
+<!-- wp:heading -->
+<h3>Carte d'incidence</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Cette carte présente l'incidence, c'est-à-dire le nombre de tests positifs sur une semaine dans chaque département, ramené à 100 000 habitants. Un département est considéré comme rouge si son incidence dépasse 50 cas pour 100k habitants.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[TABS_R id=1465]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:spacer {"height":20} -->
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:heading {"level":4} -->
+<h3 id="tauxr_effectif">Taux de reproduction R effectif</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Un paramètre important est R, le taux de reproduction du virus. Si R est inférieur à 1, l'épidémie régresse, car un malade contamine en moyenne moins d'1 personne.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Il est très difficile d'évaluer précisément ce paramètre. Le gouvernement ne détaille pas sa méthode. Personnellement je me suis basé sur la méthode allemande, que j'ai modifiée pour que cela colle avec les résultats de notre gouvernement.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[TABS_R id=1222]</p>
+<!-- /wp:paragraph -->
+
+<p><span style="font-size: 8pt;">Méthode de calcul basée sur la méthode de Cori :</span><br><span style="font-size: 8pt;">R = A / B</span><br><span style="font-size: 8pt;">&nbsp; &nbsp;A = nb. de personnes admises aux urgences pour Covid19 (sur 7 jours)</span><br><span style="font-size: 8pt;">&nbsp; &nbsp;B = nb. de personnes admises aux urgences pour Covid19 il y a 7 jours (sur 7 jours)</span></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:spacer {"height":50} --></p>
+<div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:heading --></p>
+<h2>&nbsp;</h2>
+<p><!-- wp:paragraph -→
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>[TABS_R id=1222]</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<h3 id="tests_virologiques">Taux de positivité</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>Le graphique suivant présente le taux de positivité. Cela correspond à la proportion de tests positifs par rapport à l'ensemble des tests réalisés, positifs ou négatifs.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Dans le deuxième onglet, ce graphique est décliné pour chaque département. Il est conseillé de cliquer sur l'image, puis de zoomer afin d'observer correctement chaque département.</p>
+<p>[TABS_R id=1462]</p>
+<p></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:html --></p>
+<p><!-- /wp:html --></p>
+<p><!-- wp:spacer --></p>
+<div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<h3 id="cas_dep">Nouveaux tests positifs par département</h3>
+<p>Cliquez sur un élément de légende pour l'ajouter. Double-cliquez dessus pour l'isoler.</p>
+<p><iframe src="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/testspositifs_nouv_line.html" width="100%" height="600" frameborder="0" scrolling="yes"></iframe></p>
+<p><!-- wp:heading {"level":3} --></p>
+<p>Une moyenne mobile de 7 jours a été appliquée afin de lisser les irrégularités. N.B. : les données ne sont publiées qu'après 3 jours par le gouvernement. Un décalage est donc normal (il est de 5 jours le lundi).</p>
+<p><!-- wp:spacer --></p>
+<div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<h3 id="cas_reg">Nouveaux tests positifs par région</h3>
+<p><iframe src="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/cas_reg.html" width="100%" height="700" frameborder="0" scrolling="yes"></iframe></p>
+<p></p>
+<p><!-- wp:spacer --></p>
+<div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<h3 id="incid_metro">Taux d'incidence dans les grandes métropoles</h3>
+<p>[TABS_R id=1614]</p>
+<p><!-- wp:spacer --></p>
+<div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<p id="line_metropoles" align="center"><a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/line_metropoles_comp_couvre_feu.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/line_metropoles_comp_couvre_feu.jpeg" width="100%"></a></p>
+<p><!-- wp:spacer --></p>
+<div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<h3 id="tests_virologiques_heatmap">Répartition des cas en fonction de l'âge</h3>
+<p>[TABS_R id=1290]</p>
+<p><!-- wp:spacer --></p>
+<div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<h3 id="incidence_regs">Taux d'incidence par région et âge</h3>
+<p>[TABS_R id=1549]</p>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:html --></p>
+<p><!-- /wp:html --></p>
+<p><!-- wp:spacer --></p>
+<div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<h1 id="deconfinement">Indicateurs épidémiques</h1>
+<p><!-- wp:separator --></p>
+<hr class="wp-block-separator"><!-- /wp:separator --><p></p>
+<p><!-- wp:paragraph --></p>
+<p>Afin de prendre des mesures de déconfinement le 11 mai dernier, le gouvernement s'est basé sur deux indicateurs.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Le premier indicateur est la circulation de virus. Il correspond à la proportion de personnes se présentant aux urgences pour une suspicion de Covid19 par rapport au nombre total de personnes se présentant aux urgences.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Le deuxième indicateur est la saturation des services de réanimation. Il correspond au nombre de lits de réanimation occupés par rapport au nombre de lits (avant l'épidémie).</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3 id="indicateur-1">Circulation du virus</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>[TABS_R id=849]</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>&nbsp;</h3>
+<h3 id="indicateur-2">Saturation hospitalière</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>[TABS_R id=853]</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:spacer --></p>
+<div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<h1 id="hospitalisations-et-reanimations-liees-au-covid-19">Hospitalisations et réanimations liées au Covid-19</h1>
+<p><!-- wp:separator --></p>
+<hr class="wp-block-separator"><!-- /wp:separator --><p></p>
+<p>[TABS_R id=2322]</p>
+<p><!-- /wp:html --></p>
+<p><!-- wp:buttons --></p>
+<div class="wp-block-buttons"><!-- wp:button {"borderRadius":0,"className":"is-style-outline"} --><p></p>
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://guillaumerozier.fr/covidtracker-france/hospitalisations-et-reanimations/">Autres graphiques Hospitalisations ›</a></div>
+<p><!-- /wp:button --></p>
+</div>
+<p><!-- /wp:buttons --></p>
+<p><!-- wp:spacer {"height":20} --></p>
+<div class="wp-block-spacer" style="height: 20px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:spacer {"height":80} --></p>
+<div class="wp-block-spacer" style="height: 80px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:heading --></p>
+<h1 id="dc">Décès dus au Covid-19</h1>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:separator --></p>
+<hr class="wp-block-separator"><!-- /wp:separator --><p></p>
+<p><!-- wp:paragraph {"fontSize":"normal"} --></p>
+<p class="has-normal-font-size">Les décès liés au Covid-19 augmentent toujours, mais moins rapidement qu'avant.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>[TABS_R id=835]</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><video controls="controls" width="80%" height="150"><source src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/course_dc/course_opti.mp4" type="video/mp4">Your browser does not support the video tag.</video></p>
+<p>La région Île-de-France enregistre le plus de décès. Cependant, on observe plus de décès par habitant dans la région Grand-Est.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:html --></p>
+<p align="center"><a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/dc_cum_hab_nonhab_comp.html" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/dc_cum_hab_nonhab_comp.jpeg" width="100%"></a></p>
+<p><!-- /wp:html --></p>
+<p><!-- wp:html --></p>
+<p><!-- /wp:html --></p>
+<p><!-- wp:buttons --></p>
+<div class="wp-block-buttons"><!-- wp:button {"borderRadius":0,"className":"is-style-outline"} --><p></p>
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://guillaumerozier.fr/covidtracker-france/deces/">Autres graphiques Décès ›</a></div>
+<p><!-- /wp:button --></p>
+</div>
+<p><!-- /wp:buttons --></p>
+<p><!-- wp:spacer --></p>
+<div class="wp-block-spacer" style="height: 100px;" aria-hidden="true">
+<h2>&nbsp;</h2>
+</div>
+<h1 id="mortalite">Mortalité toutes causes</h1>
+<p><!-- wp:separator --></p>
+<hr class="wp-block-separator"><!-- /wp:separator --><p></p>
+<p><a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/mortalite.html" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/mortalite.jpeg" width="100%"></a></p>
+<p><!-- /wp:spacer --></p>
+<p></p>
+<div class="wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color has-background has-very-light-gray-background-color" href="https://covidtracker.fr">Accueil</a></div>
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color has-background has-very-light-gray-background-color" style="border-radius: 39px;" href="https://covidtracker.fr/covidtracker-world/">World Dashboard</a></div>
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-background has-very-light-gray-background-color" href="https://covidtracker.fr/blog/">Derniers articles</a></div>
+</div>
+<p><!-- /wp:buttons --></p>
+<p><!-- wp:spacer {"height":20} --></p>
+<div class="wp-block-spacer" style="height: 20px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph {"fontSize":"normal"} --></p>
+<p class="has-normal-font-size">Vous pouvez aussi me suivre sur <a href="http://twitter.com/guillaumerozier" target="_blank" rel="noreferrer noopener">Twitter</a> pour des interprétations des graphiques. Le compte Twitter <a href="http://www.twitter.com/covidtracker_fr" target="_blank" rel="noreferrer noopener">CovidTracker</a> permet d'être notifié des nouvelles données. Une question ou suggestion ? Envoyez-moi un <a href="https://covidtracker.fr/contact/">message</a>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- /wp:html --></p>
+<p><!-- wp:spacer {"height":50} --></p>
+<div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph --></p>
+<p>♥ <a href="https://guillaumerozier.fr/covidtracker-soutenir/">Soutenez CovidTracker</a></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:separator --></p>
+<hr class="wp-block-separator"><!-- /wp:separator --><p></p>
+<p><!-- wp:html --></p>
+<p class="has-small-font-size"><a href="http://hits.dwyl.com/rozierguillaume/covid-19"><img style="”display: none”;" src="http://hits.dwyl.com/rozierguillaume/covid-19.svg" alt="HitCount"></a> <a href="https://guillaumerozier.fr/mentions-legales/">Mentions légales</a></p>
+<p><!-- /wp:html --></p>
+<p><!-- wp:html --></p>
+<p><!-- Begin Sendinblue Form --><br>
+<!-- START - We recommend to place the below code in head tag of your website html  --></p>
+<style>
+  @font-face {<br />
+    font-display: block;<br />
+    font-family: Roboto;<br />
+    src: url(https://assets.sendinblue.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.sendinblue.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff")<br />
+  }</p>
+<p>  @font-face {<br />
+    font-display: fallback;<br />
+    font-family: Roboto;<br />
+    font-weight: 600;<br />
+    src: url(https://assets.sendinblue.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"), url(https://assets.sendinblue.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff")<br />
+  }</p>
+<p>  @font-face {<br />
+    font-display: fallback;<br />
+    font-family: Roboto;<br />
+    font-weight: 700;<br />
+    src: url(https://assets.sendinblue.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"), url(https://assets.sendinblue.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff")<br />
+  }</p>
+<p>  #sib-container input:-ms-input-placeholder {<br />
+    text-align: left;<br />
+    font-family: "Helvetica", sans-serif;<br />
+    color: #c0ccda;<br />
+  }</p>
+<p>  #sib-container input::placeholder {<br />
+    text-align: left;<br />
+    font-family: "Helvetica", sans-serif;<br />
+    color: #c0ccda;<br />
+  }</p>
+<p>  #sib-container textarea::placeholder {<br />
+    text-align: left;<br />
+    font-family: "Helvetica", sans-serif;<br />
+    color: #c0ccda;<br />
+  }<br />
+</style>
+<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+<!--  END - We recommend to place the above code in head tag of your website html --><p></p>
+<p><!-- START - We recommend to place the below code where you want the form in your website html  --></p>
+<div class="sib-form" style="text-align: center;
+         background-color: #ffffff;                                 "><p></p>
+<div id="sib-form-container" class="sib-form-container">
+<div id="error-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:&quot;Helvetica&quot;, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;max-width:540px;">
+<div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+          <path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z"></path>
+        </svg><br>
+        <span class="sib-form-message-panel__inner-text"><br>
+                          Nous n'avons pas pu confirmer votre inscription.<br>
+                      </span>
+      </div>
+<p></p>
+</div>
+<div></div>
+<div id="success-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:&quot;Helvetica&quot;, sans-serif; color:#085229; background-color:#e7faf0; border-radius:3px; border-color:#13ce66;max-width:540px;">
+<div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+          <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z"></path>
+        </svg><br>
+        <span class="sib-form-message-panel__inner-text"><br>
+                          Votre inscription est confirmée.<br>
+                      </span>
+      </div>
+<p></p>
+</div>
+<div></div>
+<div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; background-color:rgba(255,255,255,1); max-width:540px; border-radius:3px; border-width:1px; border-color:#C0CCD9; border-style:solid;">
+<form id="sib-form" method="POST" action="https://edeef491.sibforms.com/serve/MUIEAKmsoUxvBsG9QEz82Q9bow9EaQTZNr53SUtictmWEWIjA12mQ0rok915rR9AA6ENbMjHz0HNYl8yS9iWYInuxHQfMK_v1GBIyn3gU753vrvlNP5TR1-ErcImIBGX7SVlphs9pMmpiTKISioKiONG3lIzpwJ1XMAsxuVG3skQLYlxyiaUDOqqmWwsdWgybJoOKRLhYurdptLt" data-type="subscription">
+<div style="padding: 8px 0;">
+<div class="sib-form-block" style="font-size:32px; text-align:left; font-weight:700; font-family:&quot;Helvetica&quot;, sans-serif; color:#3C4858; background-color:transparent;">
+<p>Newsletter CovidTracker</p>
+<p></p>
+</div>
+</div>
+<div style="padding: 8px 0;">
+<div class="sib-form-block" style="font-size:16px; text-align:left; font-family:&quot;Helvetica&quot;, sans-serif; color:#3C4858; background-color:transparent;">
+<div class="sib-text-form-block">
+<p>Inscrivez-vous à notre newsletter pour suivre nos actualités.</p>
+<p></p>
+</div>
+</div>
+</div>
+<div style="padding: 8px 0;">
+<div class="sib-input sib-form-block">
+<div class="form__entry entry_block">
+<div class="form__label-row ">
+                <label class="entry__label" style="font-size:16px; text-align:left; font-weight:700; font-family:&quot;Helvetica&quot;, sans-serif; color:#3c4858;" for="EMAIL" data-required="*"><br>
+                  Veuillez renseigner votre adresse email pour vous inscrire<br>
+                </label><p></p>
+<div class="entry__field">
+                  <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="EMAIL" data-required="true" required="">
+                </div>
+<p></p>
+</div>
+<p>              <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:&quot;Helvetica&quot;, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"><br>
+              </label><br>
+              <label class="entry__specification" style="font-size:12px; text-align:left; font-family:&quot;Helvetica&quot;, sans-serif; color:#8390A4;"><br>
+                Veuillez renseigner votre adresse email pour vous inscrire. Ex. : abc@xyz.com<br>
+              </label>
+            </p>
+</div>
+</div>
+</div>
+<div style="padding: 8px 0;">
+<div class="g-recaptcha" data-sitekey="6LdoX-8ZAAAAADhP6ZVrDyCQjOFWWbbXV7WErf1e" data-callback="invisibleCaptchaCallback" data-size="invisible" onclick="executeCaptcha"></div>
+<p></p>
+</div>
+<div style="padding: 8px 0;">
+<div class="sib-form-block" style="text-align: left">
+            <button class="sib-form-block__button sib-form-block__button-with-loader" style="font-size:16px; text-align:left; font-weight:700; font-family:&quot;Helvetica&quot;, sans-serif; color:#FFFFFF; background-color:#3E4857; border-radius:3px; border-width:0px;" form="sib-form" type="submit"><br>
+              <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
+                <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"></path>
+              </svg><br>
+              S'INSCRIRE<br>
+            </button>
+          </div>
+<p></p>
+</div>
+<p>        <input type="text" name="email_address_check" value="" class="input--hidden"><br>
+        <input type="hidden" name="locale" value="fr">
+      </p>
+</form>
+</div>
+</div>
+</div>
+<p><!-- END - We recommend to place the below code where you want the form in your website html  --></p>
+<p><!-- START - We recommend to place the below code in footer or bottom of your website html  --><br>
+<script><br />
+  window.REQUIRED_CODE_ERROR_MESSAGE = 'Veuillez choisir un code pays';</p>
+<p>  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "Les informations que vous avez fournies ne sont pas valides. Veuillez vérifier le format du champ et réessayer.";</p>
+<p>  window.REQUIRED_ERROR_MESSAGE = "Vous devez renseigner ce champ. ";</p>
+<p>  window.GENERIC_INVALID_MESSAGE = "Les informations que vous avez fournies ne sont pas valides. Veuillez vérifier le format du champ et réessayer.";</p>
+<p>  window.translation = {<br />
+    common: {<br />
+      selectedList: '{quantity} liste sélectionnée',<br />
+      selectedLists: '{quantity} listes sélectionnées'<br />
+    }<br />
+  };</p>
+<p>  var AUTOHIDE = Boolean(0);<br />
+</script><br>
+<script src="https://sibforms.com/forms/end-form/build/main.js"><br />
+</script></p>
+<p><script src="https://www.google.com/recaptcha/api.js?hl=fr"></script></p>
+<p><!-- END - We recommend to place the above code in footer or bottom of your website html  --><br>
+<!-- End Sendinblue Form --></p>
+<div class="boxed" style="max-width: 800px;"><a class="twitter-timeline" href="https://twitter.com/guillaumerozier?ref_src=twsrc%5Etfw" data-height="500" data-theme="light">Tweets de @GuillaumeRozier</a> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+<p><!-- /wp:html --></p>
