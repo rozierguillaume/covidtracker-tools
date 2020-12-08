@@ -1,0 +1,125 @@
+
+<style>
+
+div[class_perso] {
+  display: flex;
+  min-height: 12vh;
+  flex-wrap: wrap;
+	  border: 0px solid black;
+          padding: 10px 20px;
+          border-radius: 7px;
+	  	text-align: left;
+          box-shadow: 6px 4px 25px #d6d6d6;
+
+  /* needed to stack children once to big */
+}
+
+div[class_perso] div {
+  flex: 1;
+  min-width: 200px;
+  min-height: 7vh;
+  /* 2 children + margin and borders makes a break point at around 620px */
+  /*background: lightblue;*/
+}
+
+div div {
+  /*border: solid;*/
+  margin: 3px;
+  /*background: tomato;*/
+}
+
+
+/* remove the grid system at about 620px */
+
+@media screen and (max-width: 621px) {
+  div[class_persos] {
+    min-height: 30vh;
+    /* has a meaning with a grid system */
+  }
+
+}
+
+</style>
+
+<h2>Départements dont l'incidence est élevée et en hausse</h2><br>
+<div class_perso="" style="margin-bottom: 30px;">
+	
+	<div id="higher_high"></div>
+</div>
+
+<h2>Départements dont l'incidence est élevée et en baisse</h2>
+<div class_perso="" style="margin-bottom: 30px;">
+	
+	<div id="higher_low"></div>
+</div>
+
+<h2>Départements dont l'incidence est basse et en hausse</h2>
+<div class_perso="" style="margin-bottom: 30px;">
+	
+	<div id="lower_high"></div>
+</div>
+
+<h2>Départements dont l'incidence est basse et en baisse</h2>
+<div class_perso="" style="margin-bottom: 30px;">
+	<div id="lower_low"></div>
+</div>
+
+<script>
+var data;
+
+fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/stats.json')
+     .then(response => {
+         if (!response.ok) {
+             throw new Error("HTTP error " + response.status);
+         }
+         return response.json();
+     })
+     .then(json => {
+         this.data = json;
+         build_charts();
+
+         
+      })
+     .catch(function () {
+         this.dataError = true;
+     }
+    )
+
+     function build_charts(){
+
+
+     	data["higher_high"].forEach(dep => {
+
+     		dep = replaceBadCharacters(dep);
+
+     		document.getElementById("higher_high").innerHTML += "<img src='https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/higher_high/incid_{{dep}}.svg' width=130 style='margin-bottom: 5px; margin-right: 3px;'></img>".replace("{{dep}}", dep);
+     	})
+
+	     data["higher_low"].forEach(dep => {
+	     	dep = replaceBadCharacters(dep);
+
+	     	document.getElementById("higher_low").innerHTML += "<img src='https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/higher_low/incid_{{dep}}.svg' width=130 style='margin-bottom: 5px; margin-right: 3px;'></img>".replace("{{dep}}", dep);
+	     }
+	     )
+
+	     data["lower_high"].forEach(dep => {
+	     	dep = replaceBadCharacters(dep);
+
+	     	document.getElementById("lower_high").innerHTML += "<img src='https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/lower_high/incid_{{dep}}.svg' width=130 style='margin-bottom: 5px; margin-right: 3px;'></img>".replace("{{dep}}", dep);
+	     }
+	     )
+
+	     data["lower_low"].forEach(dep => {
+	     	dep = replaceBadCharacters(dep);	
+
+	     	document.getElementById("lower_low").innerHTML += "<img src='https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/lower_low/incid_{{dep}}.svg' width=130 style='margin-bottom: 5px; margin-right: 3px;'></img>".replace("{{dep}}", dep);
+	     }
+
+	     )
+     }
+
+     function replaceBadCharacters(dep){
+    	return dep.replace("'", "&apos;").replace("ô", "&ocirc;")
+  	}
+
+</script>
