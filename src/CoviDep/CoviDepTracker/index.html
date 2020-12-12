@@ -1,125 +1,298 @@
+<div class="col-xs-12">
+  <div class="wp-block-button is-style-outline pull-left" style="margin-right: 20px; margin-bottom: 3px;">
+                <a class="wp-block-button__link disabled" href="#" style="background-color: lightgrey; margin-bottom: 3px;"> CoviDep Tracker</a></div>
+  <div class="wp-block-button is-style-outline pull-left" style="margin-right: 20px; margin-bottom: 3px;">
+                <a class="wp-block-button__link" href="../covidep"> CoviDep Vagues</a>
+            </div>
+  <div class="wp-block-button is-style-outline pull-left">
+                <a class="wp-block-button__link disabled" href="https://covidtracker.fr/covidep-france" style="margin-bottom: 10px;"> CoviDep France</a>
+            </div>
+  <p></p>
+  </div>
+  
+  <!-- wp:html -->
+  
+  <style>
 
-<style>
+.dep-img{
+    	width: 200px;
+    } 
 
-div[class_perso] {
-  display: flex;
-  min-height: 12vh;
-  flex-wrap: wrap;
-	  border: 0px solid black;
-          padding: 10px 20px;
-          border-radius: 7px;
-	  	text-align: left;
-          box-shadow: 6px 4px 25px #d6d6d6;
-
-  /* needed to stack children once to big */
+@media screen and (max-width: 500px) {   
+  .dep-img{
+    	width: 100px;
+    } 
+}
+@media screen and (min-width: 501px) and (max-width: 767px) {   
+  .dep-img{
+    	width: 140px;
+    } 
 }
 
-div[class_perso] div {
-  flex: 1;
-  min-width: 200px;
-  min-height: 7vh;
-  /* 2 children + margin and borders makes a break point at around 620px */
-  /*background: lightblue;*/
-}
+@media screen and (min-width: 767px) {      
+  .dep-img{      
+    	width: 180px;
+    }
+} 
 
-div div {
-  /*border: solid;*/
-  margin: 3px;
-  /*background: tomato;*/
-}
-
-
-/* remove the grid system at about 620px */
-
-@media screen and (max-width: 621px) {
-  div[class_persos] {
-    min-height: 30vh;
-    /* has a meaning with a grid system */
+  .btn_dep{
+    border: 0px; 
+    padding: 0px;
+    margin-right: 1px;
+    margin-bottom: 15px;
+    background-color: white;
   }
 
-}
+  .btn_dep:hover{
+    background-color: rgba(0, 0, 0, 0.05);   
+    border-radius: 7px;
+    cursor:pointer;
+  }
 
-</style>
+  html {
+      scroll-behavior: smooth;
+    }
 
-<h2>Départements dont l'incidence est élevée et en hausse</h2><br>
-<div class_perso="" style="margin-bottom: 30px;">
-	
-	<div id="higher_high"></div>
+  div[class_perso] {
+    display: flex;
+    min-height: 0vh;
+    flex-wrap: wrap;
+    border: 0px solid black;
+    padding: 0px 0px;
+    border-radius: 0px;
+    text-align: left;
+    /*box-shadow: 6px 4px 25px #d6d6d6;*/
+  
+    /* needed to stack children once to big */
+  }
+  
+  div[class_perso] div {
+    flex: 1;
+    min-width: 0px;
+    min-height: 0vh;
+    /* 2 children + margin and borders makes a break point at around 620px */
+    /*background: lightblue;*/
+  }
+  
+  div div {
+    /*border: solid;*/
+    margin: 0px;
+    /*background: tomato;*/
+  }
+  
+  
+  /* remove the grid system at about 620px */
+  
+  @media screen and (max-width: 621px) {
+    div[class_persos] {
+      min-height: 0vh;
+      /* has a meaning with a grid system */
+    }
+  
+  }
+  
+  </style>
+<br>
+<br>
+<p>Cette page présente l'incidence dans les différents départements français. L'incidence correspond au nombre cumulé de cas sur une semaine rapporté à 100 000 habitants de chaque département. Les graphiques affichent les données comprises entre fin septembre et aujourd'hui. Les évolutions (hausse, baisse) sont considérées sur les 7 derniers jours. Les niveaux (haut, bas) sont considérés sur le dernier jour.<br>
+  <br>Dernière mise à jour : <span id="update">--/--</span>.</p>
+
+<div style="border: 1px solid;  max-width: 1000px; border-radius: 7px; padding: 10px; margin-bottom: 40px;">
+  <select name="deps_list_choice" id="deps_list_choice" onchange="listHasChanged();">
+    <option value="">Choisissez un département</option> 
+  </select>
+  <br>
+  <span id="chart"></span>
 </div>
 
-<h2>Départements dont l'incidence est élevée et en baisse</h2>
-<div class_perso="" style="margin-bottom: 30px;">
-	
-	<div id="higher_low"></div>
-</div>
+  <div width=100% style="max-width:800px; margin-right: 0px; margin-left: 0px;">
+    <h2 style="margin-top: 40px;"><span id="nb_deps_higher_high">--</span> départements où l'incidence est <span style="color: red;">élevée</span> et <span style="color: red;">en hausse</span></h2><br>
+    <div class_perso="" style="margin-bottom: 30px;">
+      <div id="higher_high"></div>
+    </div>
+    
+    <h2 style="margin-top: 40px;"><span id="nb_deps_higher_low">--</span> départements où l'incidence est <span style="color: red;">élevée</span> et <span style="color: green;">en baisse</span></h2>
+    <div class_perso="" style="margin-bottom: 30px;">
+      
+      <div id="higher_low"></div>
+    </div>
+    
+    <h2 style="margin-top: 40px;"><span id="nb_deps_lower_high">--</span> départements où l'incidence est <span style="color: green;">basse</span> et <span style="color: red;">en hausse</span></h2>
+    <div class_perso="" style="margin-bottom: 30px;">
+      
+      <div id="lower_high"></div>
+    </div>
+    
+    <h2 style="margin-top: 40px;"><span id="nb_deps_lower_low">--</span> départements où l'incidence est <span style="color: green;">basse</span> et <span style="color: green;">en baisse</span></h2>
+    <div class_perso="" style="margin-bottom: 30px;">
+      <div id="lower_low"></div>
+    </div>
+  </div>
 
-<h2>Départements dont l'incidence est basse et en hausse</h2>
-<div class_perso="" style="margin-bottom: 30px;">
-	
-	<div id="lower_high"></div>
-</div>
+  <br>
+  <br>
 
-<h2>Départements dont l'incidence est basse et en baisse</h2>
-<div class_perso="" style="margin-bottom: 30px;">
-	<div id="lower_low"></div>
-</div>
+  <p style="margin-bottom:1cm;"></p>
 
-<script>
-var data;
+  <div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">☕️ Offrez-moi un café</a></div>
+  <br>
+  <p>Cette page est mise à jour automatiquement quotidiennement.</p>
+  <p>N'hésitez pas à partager CoviDep autour de vous ! Le lien est simple : <a href="https://covidtracker.fr/covidep-tracker">covidtracker.fr/covidep-tracker</a>.</p>
+  <p>Une erreur ? Merci de <a href="https://covidtracker.fr/contact">me contacter</a>.</p>
+  <p>Auteur : <a href="https://twitter.com/guillaumerozier">Guillaume Rozier</a>.</p>
 
-fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/stats.json')
-     .then(response => {
-         if (!response.ok) {
-             throw new Error("HTTP error " + response.status);
-         }
-         return response.json();
-     })
-     .then(json => {
-         this.data = json;
-         build_charts();
+  <p style="margin-bottom:5cm;"></p>
+  
+  <script>
+  var data;
+  var selected_dep = ""
+  
+  fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/stats.json')
+       .then(response => {
+           if (!response.ok) {
+               throw new Error("HTTP error " + response.status);
+           }
+           return response.json();
+       })
+       .then(json => {
+           this.data = json;
+           document.getElementById("update").innerHTML = data["update"];
+           build_charts();
+           updateList();
+  
+           
+        })
+       .catch(function () {
+           this.dataError = true;
+       }
+      )
 
-         
+      function scrollToImage(){
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+
+          document.querySelector('#chart').scrollIntoView({ 
+            behavior: 'smooth' 
       })
-     .catch(function () {
-         this.dataError = true;
-     }
-    )
+  }
+  
+       function build_charts(){
 
-     function build_charts(){
+        document.getElementById("nb_deps_higher_high").innerHTML = data["higher_high"].length
+        document.getElementById("nb_deps_higher_low").innerHTML = data["higher_low"].length
+        document.getElementById("nb_deps_lower_high").innerHTML = data["lower_high"].length
+        document.getElementById("nb_deps_lower_low").innerHTML = data["lower_low"].length
+        
+         data["higher_high"].forEach(dep => {
+           dep = replaceBadCharacters(dep);
+           document.getElementById("higher_high").innerHTML += "<button id='{{dep}}' class='btn_dep' onclick='buttonClicked(\"{{dep}}\")'><img class='dep-img' src='https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/higher_high/incid_{{dep}}.svg' style=''></img></button></button>".replace("{{dep}}", dep).replace("{{dep}}", dep).replace("{{dep}}", dep);
+         })
+  
+         data["higher_low"].forEach(dep => {
+           dep = replaceBadCharacters(dep);
+  
+           document.getElementById("higher_low").innerHTML += "<button id='{{dep}}' class='btn_dep' onclick='buttonClicked(\"{{dep}}\")'><img class='dep-img' class='img-dep' src='https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/higher_low/incid_{{dep}}.svg' style=''></img></button>".replace("{{dep}}", dep).replace("{{dep}}", dep).replace("{{dep}}", dep);
+         }
+         )
+  
+         data["lower_high"].forEach(dep => {
+           dep = replaceBadCharacters(dep);
+  
+           document.getElementById("lower_high").innerHTML += "<button id='{{dep}}' class='btn_dep' onclick='buttonClicked(\"{{dep}}\")'><img class='dep-img' src='https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/lower_high/incid_{{dep}}.svg' style=''></img></button>"
+           .replace("{{dep}}", dep).replace("{{dep}}", dep).replace("{{dep}}", dep);
+         }
+         )
+  
+         data["lower_low"].forEach(dep => {
+           dep = replaceBadCharacters(dep);	
+  
+           document.getElementById("lower_low").innerHTML += "<button id='{{dep}}' class='btn_dep' onclick='buttonClicked(\"{{dep}}\")'><img class='dep-img' src='https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/lower_low/incid_{{dep}}.svg' style=''></img></button>"
+           .replace("{{dep}}", dep).replace("{{dep}}", dep).replace("{{dep}}", dep);
+         }
+  
+         )
+       }
+  
+       function replaceBadCharacters(dep){
+        return dep.replace("'", "&apos;") //.replace("ô", "&ocirc;")
+      }
 
 
-     	data["higher_high"].forEach(dep => {
+  function updateList(){
+        html_str = "<option value=''>Choisissez un département</option>";
 
-     		dep = replaceBadCharacters(dep);
+        data["higher_high"].concat(data["higher_low"]).concat(data["lower_high"]).concat(data["lower_low"]).sort().forEach(dep => {
+          html_str += "<option value='" + replaceBadCharacters(dep) + "'>" + dep + "</option>"
+          }
+        )
+        document.getElementById("deps_list_choice").innerHTML = html_str;   
+  }
 
-     		document.getElementById("higher_high").innerHTML += "<img src='https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/higher_high/incid_{{dep}}.svg' width=130 style='margin-bottom: 5px; margin-right: 3px;'></img>".replace("{{dep}}", dep);
-     	})
+  function buttonClicked(dep){
 
-	     data["higher_low"].forEach(dep => {
-	     	dep = replaceBadCharacters(dep);
+    document.getElementById("deps_list_choice").value=replaceBadCharacters(dep)
+    listHasChanged(dep)
+    scrollToImage()
+  }
 
-	     	document.getElementById("higher_low").innerHTML += "<img src='https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/higher_low/incid_{{dep}}.svg' width=130 style='margin-bottom: 5px; margin-right: 3px;'></img>".replace("{{dep}}", dep);
-	     }
-	     )
+  function listHasChanged(dep){
+    dep = document.getElementById("deps_list_choice").value
+    dep = replaceBadCharacters(dep)
+    dep = dep.replace("&apos;", "'")
+    
+    var list_classes = ["higher_high", "higher_low", "lower_high", "lower_low"];
 
-	     data["lower_high"].forEach(dep => {
-	     	dep = replaceBadCharacters(dep);
+    if (selected_dep != ""){
+      document.getElementById(selected_dep).style = ""
+    }
+    document.getElementById(dep).style = "border: 1px solid black; border-radius: 7px;"
+    selected_dep = dep
 
-	     	document.getElementById("lower_high").innerHTML += "<img src='https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/lower_high/incid_{{dep}}.svg' width=130 style='margin-bottom: 5px; margin-right: 3px;'></img>".replace("{{dep}}", dep);
-	     }
-	     )
+    list_classes.forEach(class_dep => {
+      if(data[class_dep].indexOf(dep) >= 0){
+        class_this_dep = class_dep
+      }
+    })
 
-	     data["lower_low"].forEach(dep => {
-	     	dep = replaceBadCharacters(dep);	
+    var niveau = ""
+    var evol = ""
+    couleur_niveau = "black"
+    couleur_evol = "black"
 
-	     	document.getElementById("lower_low").innerHTML += "<img src='https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/lower_low/incid_{{dep}}.svg' width=130 style='margin-bottom: 5px; margin-right: 3px;'></img>".replace("{{dep}}", dep);
-	     }
+    if (class_this_dep == "higher_high"){
+      niveau = "haute"
+      evol = "en hausse"
+      couleur_niveau = "red"
+      couleur_evol = "red"
 
-	     )
-     }
+    } else if (class_this_dep == "higher_low"){
+      niveau = "haute"
+      evol = "en baisse"
+      couleur_niveau = "red"
+      couleur_evol = "green"
 
-     function replaceBadCharacters(dep){
-    	return dep.replace("'", "&apos;").replace("ô", "&ocirc;")
-  	}
+    } else if (class_this_dep == "lower_high"){
+      niveau = "basse"
+      evol = "en hausse"
+      couleur_niveau = "green"
+      couleur_evol = "red"
 
-</script>
+    } else if (class_this_dep == "lower_low"){
+      niveau = "basse"
+      evol = "en baisse"
+      couleur_niveau = "green"
+      couleur_evol = "green"
+    }
+
+    document.getElementById("chart").innerHTML = "<h3>Dans ce département, l'incidence est actuellement <span style='color: {{color_niveau}}'>{{niveau}}</span>, et <span style='color: {{color_evol}}''>{{evol}}</span> par rapport à la semaine dernière.</h3><br><br><center><img src=\"https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/{{class_dep}}/incid_{{dep}}.svg\" width=100% style='max-width: 550px; margin-bottom: 0px; margin-right: 0px;'></img></center>"
+    .replace("{{dep}}", dep.replace("&apos;", "'"))
+    .replace("{{class_dep}}", class_this_dep)
+    .replace("{{niveau}}", niveau)
+    .replace("{{evol}}", evol)
+    .replace("{{color_niveau}}", couleur_niveau)
+    .replace("{{color_evol}}", couleur_evol)
+  }
+  
+  </script>
+
+  <!-- /wp:html -->

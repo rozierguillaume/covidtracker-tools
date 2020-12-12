@@ -62,6 +62,10 @@
       background-color: #c3d9c4;
       border-radius: 5px;
   }
+  progress[type=greenv1]::-moz-progress-bar {  /* Firefox */
+    background: #c3d9c4;  
+    border-radius: 5px;
+  } 
 
 
   progress[type=red]::-webkit-progress-value { /* Safari/Chrome */
@@ -75,6 +79,12 @@
       background-color: #e3c6c3;
       border-radius: 5px;
   }
+  progress[type=redv1]::-moz-progress-bar {  /* Firefox */
+    background: #e3c6c3;  
+    border-radius: 5px;
+  } 
+
+  
 
   /* REMAINING OF PROGRESSBAR */
   progress[type=green]::-webkit-progress-bar { /* Safari/Chrome */
@@ -83,11 +93,18 @@
       border-radius: 5px;
     }
 
+    progress[type=green]::-moz-progress-bar {  /* Firefox */
+    background: green;  
+    border-radius: 5px;
+  } 
+
   progress[type=greenv1]::-webkit-progress-bar { /* Safari/Chrome */
       background:red;
       background-color: rgba(0, 0, 0, 0); /*#c3d9c4;*/
       border-radius: 5px;
     }
+
+
 
 
   progress[type=red]::-webkit-progress-bar { /* Safari/Chrome */
@@ -101,6 +118,8 @@
       background-color: rgba(0, 0, 0, 0); /*#e3c6c3;*/
       border-radius: 5px;
   }
+
+
 
   /* FIREFOX */
   progress::-moz-progress-bar {  /* Firefox */
@@ -274,7 +293,7 @@
 
 
   <h3>Mon département a-t-il dépassé la première vague ?</h3>
-  <p>CoviDep est un outil qui présente les départements ayant dépassé le nombre d'hospitalisations pour Covid19 du pic de la première vague et ceux ne l'ayant pas encore dépassé. Vous pouvez sélectionner un département dans la liste ci-dessous, ou alors dans les tableaux en bas de page. Les données proviennent de Santé publique France et sont mises à jour quotidiennement.</p>
+  <p>CoviDep est un outil qui présente les départements dont la situation actuelle est pire que le pic de la première vague, et ceux où la situation actuelle est meilleure. L'indicateur comparé est le nombre de personnes hospitalisées pour la Covid19.</p>
 
 
   <div class="wrap">
@@ -304,7 +323,7 @@
       <div class="two">
       <span style="color: red; margin-left: 10px; margin-top:20px; font-size:500%; display: inline-block;" id="nb_apres_vague">--</span> 
        <h3 style="color: red; margin-bottom: 20px; margin-left: 10px; margin-top: 0px;">
-            départements ont dépassé la première vague
+            départements sont dans une situation pire que le pic de la première vague
           </h3>
           <span style="margin-left: 10px;" id="maj-1"><i>Mise à jour : -/-</i></span>
           <p style="margin-left: 10px; font-size:100%">Classement par ordre décroissant d'hospitalisations actuelles. La barre rose représente la hauteur de la première vague, et la barre rouge la hauteur de la vague actuelle. Le taux représente l'évolution de la hauteur de la deuxième vague par rapport à la première.</p>
@@ -319,7 +338,7 @@
    <div class="one">
       <span style="color: green; margin-left: 10px; margin-top:20px; font-size:500%; display: inline-block;" id="nb_avant_vague">--</span> 
       <h3 style="color: green; margin-bottom: 20px; margin-left: 10px; margin-top: 0px;">
-            départements n'ont pas dépassé la première vague
+            départements sont dans une meilleure situation que le pic de la première vague
           </h3>
           <span style="margin-left: 10px;" id="maj-2"><i>Mise à jour : -/-</i></span>
           <p style="margin-left: 10px; font-size:100%">Classement par ordre décroissant d'hospitalisations actuelles. La barre vert clair représente la hauteur de la première vague, et la barre vert foncé la hauteur de la vague actuelle. Le taux représente l'évolution de la hauteur de la deuxième vague par rapport à la première.</p><br>
@@ -352,7 +371,7 @@
     var numero_deps= {};
     var maj = "";
 
-    fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/risk_rates.json')
+    fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/covidep_vagues.json')
      .then(response => {
          if (!response.ok) {
              throw new Error("HTTP error " + response.status);
@@ -421,7 +440,7 @@
       text_evolution = "<div style='vertical-align: bottom;'><span style='font-size: 70%; color: green;'><br>{{text}}&nbsp;%</span></div></div>"
         .replace("{{text}}", calculerTauxEvolution(dep))
 
-      html_deps_avant_vague += "<button type='button_dep' id=\"{{dep}}\" onclick=\"buttonHasChanged('{{dep_func}}', 'false')\"{{dep_string}} {{html_wave_1_html}} {{html_wave_2_html}} {{text_evol_html}} </button>"
+      html_deps_avant_vague += "<button type='button_dep'  id=\"{{dep}}\" onclick=\"buttonHasChanged('{{dep_func}}', 'false')\">{{dep_string}} {{html_wave_1_html}} {{html_wave_2_html}} {{text_evol_html}} </button>"
         .replace("{{dep}}", replaceBadCharacters(dep))
         .replace("{{dep_func}}", dep.replace("'", "\\'"))
         .replace("{{dep_string}}", dep_string)
@@ -549,17 +568,17 @@
 
     document.getElementById("deps_list_choice").value = dep;
 
-    text_debut = "<span style='margin-top: 10px;'>Le département <b>";
-    text_milieu = dep;
-    text_fin = " dépassé </b> </span> le nombre de personnes hospitalisées de la première vague.</span><br>";
+    text_debut = "<span style='margin-top: 10px;'>La situation dans le département <b>";
+    text_milieu = dep + " est actuellement ";
+    text_fin = " </b> </span> que lors du pic de la première vague.</span><br>";
 
     deuxiemepartie_1 = "Lors de la vague du printemps 2020, il y a eu jusqu'à <b>" + nb_hosp_dep[dep]["hosp_max_premiere_vague"] + "</b> personnes hospitalisées en simultané pour la Covid19."
-    deuxiemepartie_2 = " Lors de la vague actuelle, il y a eu jusqu'à <b>"
-    deuxiemepartie_3 = nb_hosp_dep[dep]["hosp_actuellement"] + "</b> personnes hospitalisées en même temps."
+    deuxiemepartie_2 = " Il y a actuellement <b>"
+    deuxiemepartie_3 = nb_hosp_dep[dep]["hosp_actuellement"] + "</b> personnes hospitalisées pour la Covid19."
     date_depassement_str = ""
 
     taux = calculerTauxEvolution(dep)
-    taux_evolution_str_1 = " La deuxieme vague est <b>" + taux + "&nbsp;%</b> plus "
+    taux_evolution_str_1 = " La vague actuelle est <b>" + " plus "
 
     if (taux.includes("+")) {
       taux_evolution_str_2 = "haute"
@@ -567,20 +586,20 @@
       taux_evolution_str_2 = "basse"
     }
 
-    taux_evolution_str_3 = " que la première."
+    taux_evolution_str_3 = "</b> que la première (" + taux + "&nbsp;%)."
 
     if(date_depassement != "-/-"){
-      date_depassement_str = " La seconde vague a dépassé la première le <b>" + date_depassement + "</b>."
+      date_depassement_str = " La seconde vague a dépassé la première vague le <b>" + date_depassement + "</b>."
     }
 
     color = "black";
 
     if(a_depasse == "true"){
-      text_milieu += " a"
+      text_milieu += " pire "
       color = "red";
     }
       else{
-        text_milieu += " n'a pas"
+        text_milieu += " meilleure "
         color = "green";
       }
     
