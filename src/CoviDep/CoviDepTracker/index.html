@@ -11,8 +11,13 @@
   </div>
   
   <!-- wp:html -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+
   
-  <style>
+<style>
 
 .dep-img{
     	width: 200px;
@@ -94,7 +99,7 @@
   </style>
 <br>
 <br>
-<p>Cette page présente l'incidence dans les différents départements français. L'incidence correspond au nombre cumulé de cas sur une semaine rapporté à 100 000 habitants de chaque département. Les graphiques affichent les données comprises entre fin septembre et aujourd'hui. Les évolutions (hausse, baisse) sont considérées sur les 7 derniers jours. Les niveaux (haut, bas) sont considérés sur le dernier jour.<br>
+<p>Cette page présente l'incidence dans les différents départements français. L'incidence correspond au nombre cumulé de cas sur une semaine rapporté à 100 000 habitants de chaque département. Les graphiques affichent les données comprises entre fin septembre et aujourd'hui. Les évolutions (hausse, baisse) sont considérées sur les 7 derniers jours. Les niveaux (haut, bas) sont considérés sur le dernier jour. <br>
   <br>Dernière mise à jour : <span id="update">--/--</span>.</p>
 
 <div style="border: 1px solid;  max-width: 1000px; border-radius: 7px; padding: 10px; margin-bottom: 40px;">
@@ -103,6 +108,9 @@
   </select>
   <br>
   <span id="chart"></span>
+  <div>
+    <canvas id="lineCasChart" style="max-height: 700px; max-width: 900px;"></canvas>
+</div>
 </div>
 
   <div width=100% style="max-width:800px; margin-right: 0px; margin-left: 0px;">
@@ -145,6 +153,7 @@
   
   <script>
   var data;
+  var data_incid;
   var selected_dep = ""
   
   fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/stats.json')
@@ -164,8 +173,35 @@
         })
        .catch(function () {
            this.dataError = true;
+           console.log("error 1")
        }
       )
+
+
+
+      fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/pred_dep_incid.json')
+       .then(response => {
+           if (!response.ok) {
+               throw new Error("HTTP error " + response.status);
+           }
+           return response.json();
+       })
+       .then(json => {
+           this.data_incid = json;
+           //console.log(data_incid);
+           
+           //buildLineChart();
+  
+           
+        })
+       .catch(function (error) {
+           this.dataError = true;
+           console.log("error 2")
+           console.log(error)
+       }
+      )
+
+
 
       function scrollToImage(){
         const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
@@ -242,6 +278,8 @@
     
     var list_classes = ["higher_high", "higher_low", "lower_high", "lower_low"];
 
+    buildLineChart(dep);
+
     if (selected_dep != ""){
       document.getElementById(selected_dep).style = ""
     }
@@ -284,7 +322,9 @@
       couleur_evol = "green"
     }
 
-    document.getElementById("chart").innerHTML = "<h3>Dans ce département, l'incidence est actuellement <span style='color: {{color_niveau}}'>{{niveau}}</span>, et <span style='color: {{color_evol}}''>{{evol}}</span> par rapport à la semaine dernière.</h3><br><br><center><img src=\"https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/{{class_dep}}/incid_{{dep}}.svg\" width=100% style='max-width: 550px; margin-bottom: 0px; margin-right: 0px;'></img></center>"
+    
+
+    document.getElementById("chart").innerHTML = "<h3>Dans ce département, l'incidence est actuellement <span style='color: {{color_niveau}}'>{{niveau}}</span>, et <span style='color: {{color_evol}}''>{{evol}}</span> par rapport à la semaine dernière.</h3><p>La courbe grise représente la projection sur les prochains jours si l'évolution de l'épidémie est similaire aux derniers jours. Les dates correspondent aux prélévements des tests, et non à la remontée du résultat, d'où le décalage de 3 jours entre la dernière donnée et la date actuelle. <i>En aucun cas la projection doit être considérée comme une prédiction fiable.</i></p>" //<br><br><center><img src=\"https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/{{class_dep}}/incid_{{dep}}.svg\" width=100% style='max-width: 550px; margin-bottom: 0px; margin-right: 0px;'></img></center>"
     .replace("{{dep}}", dep.replace("&apos;", "'"))
     .replace("{{class_dep}}", class_this_dep)
     .replace("{{niveau}}", niveau)
@@ -292,6 +332,96 @@
     .replace("{{color_niveau}}", couleur_niveau)
     .replace("{{color_evol}}", couleur_evol)
   }
+
+
+  var lineChart;
+  function buildLineChart(dep){
+    
+    len_to_fill = data_incid["dates"].length - data_incid[dep]["pred_incidence"].length
+    var nan_list = []
+
+    for(var i=0; i<len_to_fill; i++){
+      nan_list.push(NaN);
+    }
+    if (selected_dep != "") {
+      lineChart.destroy();
+    }
+    
+    var ctx = document.getElementById('lineCasChart').getContext('2d');
+
+    lineChart = new Chart(ctx, { 
+        type: 'line',
+        data: {
+            labels: data_incid["dates"],
+            datasets: [{
+                label: 'Taux d\'incidence',
+                data: data_incid[dep]["incidence"],
+                borderWidth: 3,
+                backgroundColor: 'rgba(51, 113, 185, 0.3)',
+                borderColor: 'rgba(51, 113, 185, 0.8)'
+            },
+            {
+                label: 'Projection taux d\'incidence',
+                data: nan_list.concat(data_incid[dep]["pred_incidence"]),
+            }]
+        },
+        options: {
+            legend: {
+                display: false
+            },
+            scales: {
+                yAxes: [{
+                    gridLines: {
+                        display: false
+                     },
+                    ticks: {
+                        min: 0,
+
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: false
+                     },
+                     ticks: {
+                        maxRotation: 0,
+                        minRotation: 0,
+                        maxTicksLimit: 6,
+                        callback: function(value, index, values) {
+                        return value.slice(8) + "/" + value.slice(5, 7);
+                     }
+                     }
+
+                }]
+            },
+            annotation: {
+            events: ["click"],
+            annotations: [
+                    {
+                    drawTime: "afterDatasetsDraw",
+                    id: "hline",
+                    type: "line",
+                    mode: "horizontal",
+                    borderDash: [2, 2],
+                    scaleID: "y-axis-0",
+                    value: 50,
+                    borderColor: "red",
+                    borderWidth: 3,
+                    label: {
+                        backgroundColor: "red",
+                        content: "Seuil d'alerte",
+                        enabled: true
+                    },
+                    onClick: function(e) {
+                        console.log("Annotation", e.type, this);
+                    }
+                    }
+                
+            ]
+        }
+        }
+    });
+}
   
   </script>
 

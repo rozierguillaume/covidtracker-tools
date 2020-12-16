@@ -52,8 +52,8 @@
 </style>
 
 <div style="border: 1px solid rgb(228, 159, 159); border-radius: 7px; padding: 20px; background: rgb(255, 252, 252);">
-    <h2>Un déconfinement le 15 décembre est-il possible ?</h2>
-    <p>Le gouvernement a fixé 2 objectifs à atteindre afin d'être déconfinés le 15 décembre. Le premier objectif porte sur les cas quotidiens, et le deuxième objectif sur les personnes en réanimation.</p>
+    <h2>Comment se profile le déconfinement du 20 janvier 2021 ?</h2>
+    <p>Le gouvernement a fixé 2 objectifs à atteindre pour les déconfinement du 15 décembre dernier, qui n'ont pas été atteints. Le premier objectif porte sur les cas quotidiens, et le deuxième objectif sur les personnes en réanimation.</p>
 <p>Les données de cette page sont automatiquement mises à jour quotidiennement. Dernière mise à jour : <span id="update_date">--/--</span>.</p>
 <h2 style="margin-top: 60px;">Cas positifs</h2>
 <p>Le premier objectif à atteindre est moins de 5 000 cas positifs quotidiens. Les données suivantes correspondent au nombre de cas quotidien détectés, en moyenne sur 7 jours. Les dernières données datent d'il y a 3 jours car les tests sont comptabilisés par date de prélèvement, ce délai correspondant au temps de traitement des tests par les laboratoires. La projection est réalisée en utilisant le taux d'évolution quotidien moyen sur les 7 derniers jours.</p>
@@ -76,7 +76,7 @@
             <div class="col-md-2" style="margin-right: 10px;"><span class="align-middle" style="font-size: 300%" id="obj_proj_cas"></span></div>
             <div class="col-md-9">
                 <b><span id="cas_projection" style="font-size: 200%;">--</span></b><span style="font-size: 200%;"> / 5&nbsp;000</span>
-                <p>projection des cas quotidiens au 15/12, prélevés le 12/12</p>
+                <p>projection des cas quotidiens au 20/01/21, prélevés le 17/01</p>
                 
             </div>
         </div>
@@ -113,7 +113,7 @@
             <div class="col-md-2" style="margin-right: 10px;"><span class="align-middle" style="font-size: 300%" id="obj_proj_rea"></span></div>
             <div class="col-md-9">
                 <b><span id="rea_projection" style="font-size: 200%;">--</span></b><span style="font-size: 200%;"> / 3&nbsp;000</span>
-                <p>projection des réanimations au 15/12</p>
+                <p>projection des réanimations au 20/01/21</p>
                 
             </div>
         </div>
@@ -289,8 +289,8 @@ function buildLineChart(projection_cas, labels_cas, projection_rea){
 function calculerProjection(){
     let one_day = (1000 * 60 * 60 * 24)
 
-    let jours_restants_cas = (Date.parse("2020-12-12") - Date.parse(data["cas"]["dates"][data["cas"]["dates"].length-1])) / one_day 
-    let jours_restants_rea = (Date.parse("2020-12-15") - Date.parse(data["rea"]["dates"][data["rea"]["dates"].length-1])) / one_day 
+    let jours_restants_cas = (Date.parse("2021-01-17") - Date.parse(data["cas"]["dates"][data["cas"]["dates"].length-1])) / one_day 
+    let jours_restants_rea = (Date.parse("2021-01-20") - Date.parse(data["rea"]["dates"][data["rea"]["dates"].length-1])) / one_day 
 
     data_cas = data["cas"]["values"]
     

@@ -34,6 +34,15 @@
                      width="100%" style="max-width: 1000px;">
             </a>
         </p>
+        <h3 style="margin-top: 40px;">Flux hospitaliers</h3>
+        <p>Ce graphique présente l'évolution des entrées et sorties de l'hôpital pour motif Covid19.</p>
+        <p align="center">
+            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/hosp_journ_flux_nomDepartement.jpeg"
+               target="_blank" rel="noopener noreferrer">
+                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/hosp_journ_flux_nomDepartement.jpeg"
+                     width="100%" style="max-width: 1000px;">
+            </a>
+        </p>
         <h3 style="margin-top: 40px;">Tension hospitalière</h3>
         <p>Ce graphique présente la proportion de lits de réanimation occupés uniquement par les patients Covid19, par rapport au nombre de lits en temps normal (fin 2018, étude de la DREES).</p>
         <p align="center">
