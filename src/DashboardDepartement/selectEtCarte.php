@@ -388,7 +388,7 @@
                 </div>
             </div>
             <div class="col-xs-2">
-                <img src="echelle.png">
+                <img src="files.covidtracker.fr/echelle_cas.png">
             </div>
         </div>
     </div>
