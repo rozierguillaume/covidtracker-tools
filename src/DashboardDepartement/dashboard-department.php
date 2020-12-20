@@ -60,6 +60,72 @@
 </script>
 <script>
     jQuery(document).ready(function ($) {
+
+        fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/incidence_departements.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("HTTP error " + response.status);
+                }
+                return response.json();
+            })
+            .then(json => {
+                donneesDepartements = json['donnees_departements'];
+                donneesFrance = json['donnees_france'];
+                console.log(donneesDepartements);
+                for (departement in donneesDepartements){
+                    // console.log(departement);
+                    numeroDepartement = $('#listeDepartements option[value="'+departement+'"]').data("num");
+                    // console.log(numeroDepartement);
+                    donneesDepartement = donneesDepartements[departement];
+                    // console.log(donneesDepartement);
+
+                    var departmentCarte = $('#carte path[data-num="' + numeroDepartement + '"]');
+                    departmentCarte.data("incidence-cas", donneesDepartement["incidence_cas"]);
+
+                    if (donneesDepartement["incidence_cas"]<=25){
+                        departmentCarte.css("fill", "#118408");
+                    } else if (donneesDepartement["incidence_cas"]<=50){
+                        departmentCarte.css("fill", "#98ac3b");
+                    } else if (donneesDepartement["incidence_cas"]<=100){
+                        departmentCarte.css("fill", "#fb9449");
+                    } else if (donneesDepartement["incidence_cas"]<=150){
+                        departmentCarte.css("fill", "#f95228");
+                    }  else if (donneesDepartement["incidence_cas"]<=200){
+                        departmentCarte.css("fill", "#f50e07");
+                    } else if (donneesDepartement["incidence_cas"]<=250){
+                        departmentCarte.css("fill", "#e20001");
+                    } else if (donneesDepartement["incidence_cas"]<=300){
+                        departmentCarte.css("fill", "#d50100");
+                    } else if (donneesDepartement["incidence_cas"]<=350){
+                        departmentCarte.css("fill", "#c40001");
+                    } else if (donneesDepartement["incidence_cas"]<=450){
+                        departmentCarte.css("fill", "#a00000");
+                    } else if (donneesDepartement["incidence_cas"]<=550){
+                        departmentCarte.css("fill", "#840000");
+                    } else if (donneesDepartement["incidence_cas"]<=650){
+                        departmentCarte.css("fill", "#6a0000");
+                    } else if (donneesDepartement["incidence_cas"]<=750){
+                        departmentCarte.css("fill", "#4c0000");
+                    } else {
+                        departmentCarte.css("fill", "#3c0000");
+                    }
+                }
+            });
+
+        /*
+         * Le lancement de l'animation se fait en ajoutant et retirant la classe animated
+         * de la carte afin que tous les départements clignotent en meme temps.
+         * Sans quoi chaqué département commence son clignotement au moment où on lui attribue
+         * la classe selected.
+         */
+        var stopAnimation = function (){
+            $("#map").removeClass("animated")
+        }
+
+        var startAnimation = function (){
+            $("#map").addClass("animated")
+        }
+
         function afficherDepartement(nomDepartment, numeroDepartement) {
             if ($('#' + numeroDepartement).length > 0) {
                 return;
@@ -69,6 +135,8 @@
             content = content.replaceAll('numeroDepartement', numeroDepartement);
             $('#donneesDepartements').prepend(content);
             trierDepartements();
+            stopAnimation();
+            setTimeout(startAnimation, 0);
         }
 
         function trierDepartements() {
@@ -147,7 +215,7 @@
         $('#carte path').hover(function (e) {
             departement = $(this).data("num");
             nomDepartement = $("#listeDepartements option[data-num='" + departement + "']").val();
-            $('#carte #map title').text(nomDepartement);
+            $('#carte #map title').text(nomDepartement+' (incidence: '+$(this).data("incidence-cas")+')');
         });
 
         $('#carte path').click(function (e) {
@@ -184,23 +252,35 @@
     }
 
     #map path {
-        fill: #86AAE0;
+        fill: #c4c4cb;
         stroke: #FFFFFF;
         stroke-width: 0.6;
         transition: fill 0.2s, stroke 0.3s;
+        z-index: 1000;
+        transition: fill 2s;
+        fill-opacity : 1;
     }
 
-    #map path.selected {
-        fill: #547096;
-        stroke: #FFFFFF;
-        stroke-width: 0.6;
+    #map.animated path.selected {
+        /*stroke: #000000;*/
+        /*stroke-width: 1.5;*/
         transition: fill 0.2s, stroke 0.3s;
+        z-index: 9000;
+        /*fill-opacity : 0.9;*/
+        animation: blinker 1.5s linear infinite;
+    }
+
+    @keyframes blinker {
+        50% {
+            stroke-width: 2;
+            fill-opacity : 0.8;
+        }
     }
 
     #map path:hover {
-        fill: #547096;
+        stroke-width: 2.6;
+        fill-opacity : 1;
     }
-
 
     #map .separator {
         stroke: #ccc;
