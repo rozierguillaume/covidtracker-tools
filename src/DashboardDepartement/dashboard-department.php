@@ -336,7 +336,7 @@
     @keyframes blinker {
         50% {
             stroke-width: 2;
-            fill-opacity : 0.8;
+            fill-opacity : 0.5;
         }
     }
 
