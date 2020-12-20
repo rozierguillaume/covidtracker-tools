@@ -16,9 +16,21 @@
                 </svg>
             </a>
         </h2>
-        <div>
-            <span>incidenceDepartement</span>
+        <div class="row">
+            <div class="col-md-4 shadow">
+                <span style="font-size: 160%; color: couleurIncidence"><b>incidenceDepartement</b></span><br>
+                <span><b>Taux d'incidence</b><br>
+                Nombre de cas sur 7 jours pour 100k habitants. L'incidence moyenne en France est incidenceFrance, et le seuil d'alerte 50.<br></span>
+                <span style="font-size: 70%;">Mise à jour : dateMaj</span>
+            </div>
+            <div class="col-md-4 shadow">
+                <span style="font-size: 160%; color: couleurSaturationRea"><b>saturationRea</b></span><br>
+                <span><b>Tension hospitalière</b>
+                <br>Une saturation supérieure à 100% signifie que les patients Covid19 occupent plus de lits qu'il n'y en avait avant l'épidémie</span><br>
+                <span style="font-size: 70%;">Mise à jour : dateMaj</span>
+            </div>
         </div>
+
         <h3 style="margin-top: 40px;">Vue d'ensemble</h3>
         <p>Ces quatre graphiques permettent d'évaluer l'épidémie dans le département. Le nombre de cas correspond à l'activité du virus. Le nombre d'hospitalisations, de réanimations et de décès hospitaliers permettent de mesurer la crise sanitaire.</p>
         <p align="center">
@@ -65,6 +77,8 @@
     jQuery(document).ready(function ($) {
 
         var donneesDepartements
+        var donneesFrance
+        var dateMaj
 
         fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/incidence_departements.json')
             .then(response => {
@@ -74,9 +88,9 @@
                 return response.json();
             })
             .then(json => {
-                this.donneesDepartements = json['donnees_departements'];
+                donneesDepartements = json['donnees_departements'];
                 donneesFrance = json['donnees_france'];
-                console.log(donneesDepartements);
+                dateMaj = json["date_update"]
                 for (departement in donneesDepartements){
                     // console.log(departement);
                     numeroDepartement = $('#listeDepartements option[value="'+departement+'"]').data("num");
@@ -131,7 +145,31 @@
             $("#map").addClass("animated")
         }
 
-        function afficherDepartement(nomDepartment, numeroDepartement, incidenceDepartement=0) {
+        function afficherDepartement(nomDepartment, numeroDepartement) {
+            incidenceDepartement = donneesDepartements[nomDepartement]["incidence_cas"]
+            saturationRea = Math.round(donneesDepartements[nomDepartement]["saturation_rea"])
+            incidenceFrance = Math.round(donneesFrance["incidence_cas"])
+
+            if (incidenceDepartement>100){
+                couleurIncidence = "red"
+
+            } else if (incidenceDepartement>50){
+                couleurIncidence = "orange"
+
+            } else {
+                couleurIncidence = "green"
+            }
+
+            if (saturationRea>80){
+                couleurSaturationRea = "red"
+
+            } else if (saturationRea>30){
+                couleurSaturationRea = "orange"
+                
+            } else {
+                couleurSaturationRea = "green"
+            }
+
             if ($('#' + numeroDepartement).length > 0) {
                 return;
             }
@@ -139,6 +177,12 @@
             content = content.replaceAll('nomDepartement', nomDepartment);
             content = content.replaceAll('numeroDepartement', numeroDepartement);
             content = content.replaceAll('incidenceDepartement', incidenceDepartement);
+            content = content.replaceAll('incidenceFrance', incidenceFrance);
+            content = content.replaceAll('saturationRea', saturationRea + "%");
+            content = content.replaceAll('dateMaj', dateMaj);
+            content = content.replaceAll('couleurIncidence', couleurIncidence);
+            content = content.replaceAll('couleurSaturationRea', couleurSaturationRea);
+
             $('#donneesDepartements').prepend(content);
             trierDepartements();
             stopAnimation();
@@ -169,8 +213,7 @@
             numeroDepartement = e.params.data.element.dataset.num;
             $('#map path[data-num=' + numeroDepartement + ']').addClass('selected');
             // $('#' + nomDepartement).parent().removeClass('hidden');
-            incidenceDepartement = donneesDepartements[nomDepartement]["incidence_cas"]
-            afficherDepartement(nomDepartement, numeroDepartement, incidenceDepartement);
+            afficherDepartement(nomDepartement, numeroDepartement);
         });
 
         $('.select2').on('select2:unselect', function (e) {
@@ -249,6 +292,19 @@
     })
 </script>
 <style>
+    
+    .shadow{
+        border: 0px solid black;
+        padding: 12px;
+        border-radius: 7px;
+        text-align: left;
+        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+        max-width: 350px;
+        background: #ffffff;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
     #listeDepartements {
         width: 100%;
     }
