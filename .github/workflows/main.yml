@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: deploy-sftp
+name: deploy-ssh
 
 # Controls when the action will run. 
 on:
@@ -18,13 +18,18 @@ jobs:
   web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
+    
     steps:
-    - name: scp pipelines
-      uses: cross-the-world/ssh-scp-ssh-pipelines@latest
-      with:
-        host: ${{ secrets.IP }}
-        user: ${{ secrets.USER }}
-        pass: ${{ secrets.USER_PASSWORD }}
-        scp: |
-          './src/*' => '${{ secrets.PATH_TO_THEME }}/src_test'
+      - name: checkout
+        uses: actions/checkout@v1
+        
+      - name: scp pipelines
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+        with:
+          host: ${{ secrets.IP }}
+          user: ${{ secrets.USER }}
+          pass: ${{ secrets.USER_PASSWORD }}
+          connect_timeout: 10s
+          scp: |
+            './src/*' => '${{ secrets.PATH_TO_THEME }}/src_test'
 
