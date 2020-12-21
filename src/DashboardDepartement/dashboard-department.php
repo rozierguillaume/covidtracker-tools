@@ -146,6 +146,7 @@
         }
 
         function afficherDepartement(nomDepartment, numeroDepartement) {
+            console.log(donneesDepartements[nomDepartement]);
             incidenceDepartement = donneesDepartements[nomDepartement]["incidence_cas"]
             saturationRea = Math.round(donneesDepartements[nomDepartement]["saturation_rea"])
             incidenceFrance = Math.round(donneesFrance["incidence_cas"])
@@ -325,11 +326,8 @@
     }
 
     #map.animated path.selected {
-        /*stroke: #000000;*/
-        /*stroke-width: 1.5;*/
         transition: fill 0.2s, stroke 0.3s;
         z-index: 9000;
-        /*fill-opacity : 0.9;*/
         animation: blinker 1.5s linear infinite;
     }
 
@@ -342,7 +340,10 @@
 
     #map path:hover {
         stroke-width: 2.6;
-        fill-opacity : 1;
+    }
+
+    #map path.selected:hover {
+        stroke-width: 0.6;
     }
 
     #map .separator {
