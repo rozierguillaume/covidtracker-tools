@@ -229,7 +229,7 @@
             //content = content.replaceAll('couleurSaturationRea', couleurSaturationRea);
 
             $('#donneesRegions').prepend(content);
-            trierRegions();
+            //trierRegions();
             stopAnimation();
             setTimeout(startAnimation, 0);
         }
@@ -299,6 +299,7 @@
                         $("#listeRegions").val(nomRegion);
                     }
                     afficherRegion(nomRegion, $(this).data("num"));
+                    trierRegions();
                 }
             });
             $("#listeRegions").trigger('change');
@@ -379,13 +380,13 @@
 
     @keyframes blinker {
         50% {
-            stroke-width: 2;
+            stroke-width: 1;
             fill-opacity : 0.5;
         }
     }
 
     #map path:hover {
-        stroke-width: 2.6;
+        stroke-width: 1.2;
         fill-opacity : 1;
     }
 
