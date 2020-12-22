@@ -93,10 +93,50 @@
                 }
                 return response.json();
             })
+
             .then(json => {
                 donneesRegions = json['donnees_regions'];
                 donneesFrance = json['donnees_france'];
                 dateMaj = json["date_update"]
+
+                for (region in donneesRegions){
+                    // console.log(departement);
+                    numeroRegion = $('#listeRegions option[value="'+region+'"]').data("num");
+                    // console.log(numeroDepartement);
+                    donneesRegion = donneesRegions[region];
+                    // console.log(donneesDepartement);
+
+                    var regionCarte = $('#carte path[data-num="' + numeroRegion + '"]');
+                    regionCarte.data("incidence-cas", donneesRegion["incidence_cas"]);
+
+                    if (donneesRegion["incidence_cas"]<=25){
+                        regionCarte.css("fill", "#118408");
+                    } else if (donneesRegion["incidence_cas"]<=50){
+                        regionCarte.css("fill", "#98ac3b");
+                    } else if (donneesRegion["incidence_cas"]<=100){
+                        regionCarte.css("fill", "#fb9449");
+                    } else if (donneesRegion["incidence_cas"]<=150){
+                        regionCarte.css("fill", "#f95228");
+                    }  else if (donneesRegion["incidence_cas"]<=200){
+                        regionCarte.css("fill", "#f50e07");
+                    } else if (donneesRegion["incidence_cas"]<=250){
+                        regionCarte.css("fill", "#e20001");
+                    } else if (donneesRegion["incidence_cas"]<=300){
+                        regionCarte.css("fill", "#d50100");
+                    } else if (donneesRegion["incidence_cas"]<=350){
+                        regionCarte.css("fill", "#c40001");
+                    } else if (donneesRegion["incidence_cas"]<=450){
+                        regionCarte.css("fill", "#a00000");
+                    } else if (donneesRegion["incidence_cas"]<=550){
+                        regionCarte.css("fill", "#840000");
+                    } else if (donneesRegion["incidence_cas"]<=650){
+                        regionCarte.css("fill", "#6a0000");
+                    } else if (donneesRegion["incidence_cas"]<=750){
+                        regionCarte.css("fill", "#4c0000");
+                    } else {
+                        regionCarte.css("fill", "#3c0000");
+                    }
+                }
             });
 
             fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/reffectif_region.json')
