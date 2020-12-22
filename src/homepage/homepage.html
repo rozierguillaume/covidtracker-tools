@@ -75,11 +75,11 @@
 <style>
     .myDiv {
         background-color: white;
-    	border: 0px solid black;
+    	  border: 0px solid black;
         padding: 10px 30px;
         border-radius: 7px;
-    	max-width: 800px;
-    	text-align: left;
+    	  max-width: 800px;
+    	  text-align: left;
         box-shadow: 6px 4px 25px #d6d6d6;
     	}
 
@@ -98,6 +98,7 @@
         margin-top: 0px;
         padding: 5px 10px;
         border-radius: 7px;
+        
         max-width: 1200px;
         text-align: left;
         /*box-shadow: 6px 4px 25px #c3d19d;*/
@@ -138,39 +139,48 @@
 </style>
 
 <h2>En un coup d'œil</h2>
+<div style="text-align: center; width:100%; border-radius: 7px; padding: 0px 0px;"></div>
 
 <div class="wrap" shadow="">
+  
   <div class="one">
     <h2 id="taux_incidence">--</h2>
-    <p><b>Taux d'incidence</b><br><span style="font-size: 85%">Nombre de cas par semaine pour 100k habitants. Le seuil d'alerte est50.</span></p>
+    <span style="font-size: 60%;">ÉLEVÉ ET EN HAUSSE</span><br>
+    <p><b>Taux d'incidence</b><br><span style="font-size: 85%">Nombre de cas par semaine pour 100k habitants. Le seuil d'alerte est 50.</span></p>
   </div> 
 
   <div class="two"> 
     <h2 id="reffectif">--</h2>
+    <span style="font-size: 60%;">MODÉRÉ ET EN HAUSSE</span><br>
     <p><b>Taux de reproduction R</b><br><span style="font-size: 85%">Nombre de personnes contaminées par 1 malade. Au-dessus de R=1, l'épidémie progresse.</span></p>
   </div>
 
   <div class="three"> 
     <h2 id="sat_rea">--%</h2>
+    <span style="font-size: 60%;">MODÉRÉ ET EN BAISSE</span><br>
     <p><b>Tension hospitalière</b><br><span style="font-size: 85%">Nombre de lits de réanimation occupés par les patients Covid19 par rapport au nombre de lits fin 2018.</span></p>
   </div>       
 
 </div>
+</div>
 
-<div style="text-align: center; width:100%; border-radius: 7px; padding: 7px 0px;">
-    <div class="wrap">
-        <div class="two" style="text-align: left; " shadow="">
-    
+<div style="text-align: center; width:100%; border-radius: 7px; padding: 0px 0px;">
+    <div class="wrap" >
+        <div class="two" style="text-align: left; margin-top:5px;" shadow="">
 
             <centering><h3>Cas positifs</h3></centering>
-            <p>On détecte en moyenne <b><span id="cas_moyen_quotidien">--</span> cas</b> de Covid19 chaque jour, <span id="croissance_cas">--</span> par rapport à la semaine dernière.</p>
+            <p>On prélève en moyenne <b><span id="cas_moyen_quotidien">--</span> tests</b> positifs au Covid19 chaque jour, <span id="croissance_cas">--</span> par rapport à la semaine dernière.</p>
 
             <div>
                 <canvas id="lineCasChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
             </div>
-        </div>
+            <br>
+            <span style="font-size: 100%">Derniers chiffres : <span id="cas_opencovid">--</span> tests positifs remontés le <span id="date_opencovid">-/-</span> (Ministère de la Santé), <span id="cas_sidep">--</span> tests positifs prélevés le <span id="date_sidep">-/-</span> (Santé publique France).</span>
 
-        <div class="one" style="text-align: left;" shadow="">
+        </div>
+        
+
+        <div class="one" style="text-align: left; margin-top:5px;" shadow="">
 
             <centering><h3>Réanimations</h3></centering>
             <p>Il y a actuellement <b><span id="reanimations">--</span> personnes en réanimation</b> pour Covid19, <span id="croissance_rea">--</span> par rapport à la semaine dernière.</p>
@@ -195,6 +205,8 @@
 
 <script>
     var data;
+    var data_opencovid;
+    var data_sidep;
     var projection_cas = [];
     var data_indicateurs;
 
@@ -211,6 +223,42 @@
           //buildBarChart();
           updateDataDiv();
           calculerProjection();
+          
+        })
+       .catch(function () {
+           this.dataError = true;
+       }
+      )
+
+      fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/opencovid.json')
+       .then(response => {
+           if (!response.ok) {
+               throw new Error("HTTP error " + response.status);
+           }
+           return response.json();
+       })
+       .then(json => {
+          data_opencovid = json;
+        
+          updateDataDivOpenCovid();
+          
+        })
+       .catch(function () {
+           this.dataError = true;
+       }
+      )
+
+      fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/cas_sidep.json')
+       .then(response => {
+           if (!response.ok) {
+               throw new Error("HTTP error " + response.status);
+           }
+           return response.json();
+       })
+       .then(json => {
+          data_sidep = json;
+        
+          updateDataDivSidep();
           
         })
        .catch(function () {
@@ -235,6 +283,16 @@
            this.dataError = true;
        }
       )
+
+function updateDataDivOpenCovid(){
+  document.getElementById("cas_opencovid").innerHTML = data_opencovid["cas"];
+  document.getElementById("date_opencovid").innerHTML = data_opencovid["update"];
+}
+
+function updateDataDivSidep(){
+  document.getElementById("cas_sidep").innerHTML = data_sidep["cas"];
+  document.getElementById("date_sidep").innerHTML = data_sidep["update"];
+}
 
 function updateDataDivIndicateurs(){
   document.getElementById("taux_incidence").innerHTML = data_indicateurs["taux_incidence"]["valeur"];
@@ -533,7 +591,7 @@ function buildBarChart(projection_rea, labels_rea){
 <p>Ces outils permettent de comparer les deux vagues, de calculer le risque de présence d'un cas de covid19, et d'estimer la durée du confinement en cours.</p>
 <center> <a href="https://covidtracker.fr/deconfitracker/" style="color:black"><button>🔥 <b>DéconfiTracker</b></button></a><a href="https://covidtracker.fr/covidep/" style="color:black"><button>🆕 CoviDep</button></a>
 <a href="https://covidtracker.fr/calculateur-risque-covid/" style="color:black"><button>🔢 <b>CoviRisque</b></button></a>
-<a href="https://covidtracker.fr/archives/" style="color:black"><i>Outils archivés</i></a>
+<a href="https://covidtracker.fr/archives/" style="color:black"><br><i>Outils archivés</i></a>
     </center>
   </div>
 </div>

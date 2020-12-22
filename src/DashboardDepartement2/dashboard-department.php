@@ -185,7 +185,7 @@
             content = content.replaceAll('couleurSaturationRea', couleurSaturationRea);
 
             $('#donneesDepartements').prepend(content);
-            trierDepartements();
+            //trierDepartements();
             stopAnimation();
             setTimeout(startAnimation, 0);
         }
@@ -256,6 +256,7 @@
                         $("#listeDepartements").val(nomDepartement);
                     }
                     afficherDepartement(nomDepartement, $(this).data("num"));
+                    trierDepartements();
                 }
             });
             $("#listeDepartements").trigger('change');

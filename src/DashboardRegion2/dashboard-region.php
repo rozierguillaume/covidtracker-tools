@@ -16,6 +16,28 @@
                 </svg>
             </a>
         </h2>
+
+        <div class="row">
+            <div class="col-md-4 shadow">
+                <span style="font-size: 160%; color: couleurIncidence"><b>incidenceRegion</b></span><br>
+                <span><b>Taux d'incidence</b><br>
+                Nombre de cas sur 7 jours pour 100k habitants. L'incidence moyenne en France est incidenceFrance, et le seuil d'alerte 50.<br></span>
+                <span style="font-size: 70%;">Mise à jour : dateMaj</span>
+            </div>
+            <div class="col-md-4 shadow">
+                <span style="font-size: 160%; color: couleurSaturationRea"><b>saturationRea</b></span><br>
+                <span><b>Tension hospitalière</b>
+                <br>Si supérieur à 100%, alors les patients Covid19 occupent plus de lits de réanimation qu'il n'y en avait avant l'épidémie</span><br>
+                <span style="font-size: 70%;">Mise à jour : dateMaj</span>
+            </div>
+            <div class="col-md-4 shadow">
+                <span style="font-size: 160%; color: couleurReffectif"><b>reffectifRegion</b></span><br>
+                <span><b>R effectif</b>
+                <br>Si le taux de reproduction est supérieur à 1, alors l'épidémie progresse. S'il est inférieur à 1, elle régresse.</span><br>
+                <span style="font-size: 70%;">Mise à jour : dateMaj</span>
+            </div>
+        </div>
+
         <h3 style="margin-top: 40px;">Vue d'ensemble</h3>
         <p>Ces quatre graphiques permettent d'évaluer l'épidémie dans la région. Le nombre de cas correspond à l'activité du virus. Le nombre d'hospitalisations, de réanimations et de décès hospitaliers permettent de mesurer la crise sanitaire.</p>
         <p align="center">
@@ -57,15 +79,159 @@
 </script>
 <script>
     jQuery(document).ready(function ($) {
+
+        var donneesRegions
+        var reffectifRegions
+        var donneesFrance
+        var saturationReaRegions
+        var dateMaj
+
+        fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/incidence_regions.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("HTTP error " + response.status);
+                }
+                return response.json();
+            })
+
+            .then(json => {
+                donneesRegions = json['donnees_regions'];
+                donneesFrance = json['donnees_france'];
+                dateMaj = json["date_update"]
+
+                for (region in donneesRegions){
+                    // console.log(departement);
+                    numeroRegion = $('#listeRegions option[value="'+region+'"]').data("num");
+                    // console.log(numeroDepartement);
+                    donneesRegion = donneesRegions[region];
+                    // console.log(donneesDepartement);
+
+                    var regionCarte = $('#carte path[data-num="' + numeroRegion + '"]');
+                    regionCarte.data("incidence-cas", donneesRegion["incidence_cas"]);
+
+                    if (donneesRegion["incidence_cas"]<=25){
+                        regionCarte.css("fill", "#118408");
+                    } else if (donneesRegion["incidence_cas"]<=50){
+                        regionCarte.css("fill", "#98ac3b");
+                    } else if (donneesRegion["incidence_cas"]<=100){
+                        regionCarte.css("fill", "#fb9449");
+                    } else if (donneesRegion["incidence_cas"]<=150){
+                        regionCarte.css("fill", "#f95228");
+                    }  else if (donneesRegion["incidence_cas"]<=200){
+                        regionCarte.css("fill", "#f50e07");
+                    } else if (donneesRegion["incidence_cas"]<=250){
+                        regionCarte.css("fill", "#e20001");
+                    } else if (donneesRegion["incidence_cas"]<=300){
+                        regionCarte.css("fill", "#d50100");
+                    } else if (donneesRegion["incidence_cas"]<=350){
+                        regionCarte.css("fill", "#c40001");
+                    } else if (donneesRegion["incidence_cas"]<=450){
+                        regionCarte.css("fill", "#a00000");
+                    } else if (donneesRegion["incidence_cas"]<=550){
+                        regionCarte.css("fill", "#840000");
+                    } else if (donneesRegion["incidence_cas"]<=650){
+                        regionCarte.css("fill", "#6a0000");
+                    } else if (donneesRegion["incidence_cas"]<=750){
+                        regionCarte.css("fill", "#4c0000");
+                    } else {
+                        regionCarte.css("fill", "#3c0000");
+                    }
+                }
+            });
+
+            /*
+            * Le lancement de l'animation se fait en ajoutant et retirant la classe animated
+            * de la carte afin que tous les départements clignotent en meme temps.
+            * Sans quoi chaqué département commence son clignotement au moment où on lui attribue
+            * la classe selected.
+            */
+            var stopAnimation = function (){
+                $("#map").removeClass("animated")
+            }
+
+            var startAnimation = function (){
+                $("#map").addClass("animated")
+            }
+
+            fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/reffectif_region.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("HTTP error " + response.status);
+                }
+                return response.json();
+            })
+            .then(json => {
+                reffectifRegions = json;
+            });
+
+            fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/saturation_rea_regions.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("HTTP error " + response.status);
+                }
+                return response.json();
+            })
+            .then(json => {
+                saturationReaRegions = json;
+            });
+
+
         function afficherRegion(nomRegion, numeroRegion) {
+            incidenceRegion = donneesRegions[nomRegion]["incidence_cas"]
+            incidenceFrance = Math.round(donneesFrance["incidence_cas"])
+            saturationRea = Math.round(saturationReaRegions[nomRegion])
+            reffectifRegion = Math.round((reffectifRegions[nomRegion]["value"]*100))/100
+
+            if (incidenceRegion>100){
+                couleurIncidence = "red"
+
+            } else if (incidenceRegion>50){
+                couleurIncidence = "orange"
+
+            } else {
+                couleurIncidence = "green"
+            }
+
+            if (saturationRea>80){
+                couleurSaturation = "red"
+
+            } else if (saturationRea>40){
+                couleurSaturation = "orange"
+
+            } else {
+                couleurSaturation = "green"
+            }
+
+            if (reffectifRegion>1.5){
+                couleurReffectif = "red"
+
+            } else if (reffectifRegion>=0.9){
+                couleurReffectif = "orange"
+
+            } else {
+                couleurReffectif = "green"
+            }
+
             if ($('#' + numeroRegion).length > 0) {
                 return;
             }
             content = $('#regionTemplate').html();
             content = content.replaceAll('nomRegion', nomRegion);
             content = content.replaceAll('numeroRegion', numeroRegion);
+            content = content.replaceAll('incidenceRegion', incidenceRegion);
+            content = content.replaceAll('incidenceFrance', incidenceFrance);
+            content = content.replaceAll('saturationRea', saturationRea + "%");
+            content = content.replaceAll('dateMaj', dateMaj);
+            content = content.replaceAll('couleurIncidence', couleurIncidence);
+            content = content.replaceAll('couleurSaturationRea', couleurSaturation);
+            content = content.replaceAll('couleurReffectif', couleurReffectif);
+            content = content.replaceAll('reffectifRegion', reffectifRegion);
+            //content = content.replaceAll('couleurSaturationRea', couleurSaturationRea);
+
             $('#donneesRegions').prepend(content);
-            trierRegions();
+            //trierRegions();
+            stopAnimation();
+            setTimeout(startAnimation, 0);
         }
 
         function trierRegions() {
@@ -133,6 +299,7 @@
                         $("#listeRegions").val(nomRegion);
                     }
                     afficherRegion(nomRegion, $(this).data("num"));
+                    trierRegions();
                 }
             });
             $("#listeRegions").trigger('change');
@@ -170,6 +337,19 @@
     })
 </script>
 <style>
+
+    .shadow{
+        border: 0px solid black;
+        padding: 12px;
+        border-radius: 7px;
+        text-align: left;
+        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+        max-width: 350px;
+        background: #ffffff;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+    
     #listeRegions {
         width: 100%;
     }
@@ -180,21 +360,34 @@
     }
 
     #map path {
-        fill: #86AAE0;
+        fill: #c4c4cb;
         stroke: #FFFFFF;
         stroke-width: 0.6;
         transition: fill 0.2s, stroke 0.3s;
+        z-index: 1000;
+        transition: fill 2s;
+        fill-opacity : 1;
     }
 
-    #map path.selected {
-        fill: #547096;
-        stroke: #FFFFFF;
-        stroke-width: 0.6;
+    #map.animated path.selected {
+        /*stroke: #000000;*/
+        /*stroke-width: 1.5;*/
         transition: fill 0.2s, stroke 0.3s;
+        z-index: 9000;
+        /*fill-opacity : 0.9;*/
+        animation: blinker 1.5s linear infinite;
+    }
+
+    @keyframes blinker {
+        50% {
+            stroke-width: 1;
+            fill-opacity : 0.5;
+        }
     }
 
     #map path:hover {
-        fill: #547096;
+        stroke-width: 1.2;
+        fill-opacity : 1;
     }
 
     #map .separator {
