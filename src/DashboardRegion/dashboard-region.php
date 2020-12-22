@@ -379,13 +379,13 @@
 
     @keyframes blinker {
         50% {
-            stroke-width: 1;
+            stroke-width: 2;
             fill-opacity : 0.5;
         }
     }
 
     #map path:hover {
-        stroke-width: 1.2;
+        stroke-width: 2.6;
         fill-opacity : 1;
     }
 
