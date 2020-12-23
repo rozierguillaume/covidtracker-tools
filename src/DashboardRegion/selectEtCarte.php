@@ -42,10 +42,10 @@
         </div>
     </div>
     <div class="col-md-6 text-center">
-    <div class="row">
+        <div class="row">
             <div class="col-xs-10">
                 <div id="carte">
-                    <svg id="map" xmlns="http://www.w3.org/2000/svg" version="1.2" width="400" height="400" viewBox="400 0 80 110" stroke-linecap="round" stroke-linejoin="round"
+                    <svg id="map" xmlns="http://www.w3.org/2000/svg" version="1.2" width="400px" height="400px" viewBox="400 0 80 110" stroke-linecap="round" stroke-linejoin="round"
                         xmlns:xlink="http://www.w3.org/1999/xlink">
                         <title>...</title>
                         <g id="regions" sketch:type="MSLayerGroup" transform="translate(0.000000, 1.000000)">
