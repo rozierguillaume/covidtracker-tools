@@ -77,6 +77,24 @@
         <p><a href="#menu">Haut de page</a></p>
     </div>
 </script>
+
+<script id="legendTemplatePre" type="text/template">
+    <table>
+            <tbody>
+</script>
+
+<script id="legendTemplateMid" type="text/template">
+                <tr>
+                    <td style="background-color: colorBg; color: white; font-size: 50%; padding: 5px;">valeur</td>
+                </tr>
+</script>
+
+<script id="legendTemplatePost" type="text/template">
+        </tbody>
+    </table>
+
+</script>
+
 <script>
     jQuery(document).ready(function ($) {
 
@@ -113,6 +131,16 @@
             $("#map").addClass("animated")
         }
 
+        function construireLegende(values=[], colors=[]){
+            content = $('#legendTemplatePre').html();
+            values.map((val, idx) => {
+                content += $('#legendTemplateMid').html().replaceAll("valeur", val).replaceAll("colorBg", colors[idx]);
+            })
+            content += $('#legendTemplatePost').html();
+            console.log(content)
+            $('#legendeCarte').html(content);
+        }
+
         function colorerCarte() {
             for (departement in donneesDepartements) {
                 // console.log(departement);
@@ -121,8 +149,13 @@
                 donneesDepartement = donneesDepartements[departement];
                 // console.log(donneesDepartement);
 
+                valeurs_cas = [">", "750", "650", "550", "450", "350", "300", "250", "200", "150", "100", "50", "25"]
+                couleurs_cas = ["#3c0000", "#4c0000", "#6a0000", "#840000", "#a00000", "#c40001", "#d50100", "#e20001", "#f50e07", "#f95228", "#fb9449", "#98ac3b", "#118408"]
+
                 var departementCarte = $('#carte path[data-num="' + numeroDepartement + '"]');
                 if (typeCarte == 'cas') {
+                    $('#descriptionCarte').html("Nombre de cas cette semaine pour 100k habitants.")
+                    construireLegende(valeurs_cas, couleurs_cas);
                     departementCarte.data("incidence-cas", donneesDepartement["incidence_cas"]);
                     if (donneesDepartement["incidence_cas"] <= 25) {
                         departementCarte.css("fill", "#118408");
@@ -152,6 +185,7 @@
                         departementCarte.css("fill", "#3c0000");
                     }
                 } else if (typeCarte == 'hospitalisations') {
+                    $('#descriptionCarte').html("Nombre d'admissions à l'hôpital avec Covid19 cette semaine pour 100k habitants.")
                     departementCarte.data("incidence-hosp", donneesDepartement["incidence_hosp"]);
                     if (donneesDepartement["incidence_hosp"] <= 3) {
                         departementCarte.css("fill", "#118408");
@@ -181,6 +215,7 @@
                         departementCarte.css("fill", "#3c0000");
                     }
                 } else if (typeCarte == 'deces') {
+                    $('#descriptionCarte').html("Nombre de décès avec Covid19 cette semaine pour 100k habitants.")
                     departementCarte.data("incidence-dc", donneesDepartement["incidence_dc"]);
                     if (donneesDepartement["incidence_dc"] <= 1) {
                         departementCarte.css("fill", "#118408");
@@ -386,9 +421,11 @@
 </script>
 <style>
 
+
+
     table,
     td {
-    border: 1px solid #333;
+    border: 0px solid #333;
     color: black;
     background-color: red;
     }
@@ -477,6 +514,7 @@
         border-color: #547096;
         color: #fff;
     }
+
 </style>
 
 <!-- wp:spacer {"height":50} -->

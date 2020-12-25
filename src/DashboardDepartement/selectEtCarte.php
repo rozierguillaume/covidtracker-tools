@@ -178,6 +178,9 @@
                 <button data-type-carte="hospitalisations" type="button" class="btn btn-primary">Hospitalisations</button>
                 <button data-type-carte="deces" type="button" class="btn btn-primary">Décès</button>
             </div>
+
+            <p id="descriptionCarte"></p>
+            
             <div class="col-xs-10">
                 <div id="carte">
                     <svg id="map" width="400px" height="400px" viewBox="0 0 492 543" version="1.1"
@@ -392,20 +395,7 @@
                     </svg>
                 </div>
             </div>
-            <div class="col-xs-2">
-                  <table>
-                        <tbody>
-                              <tr>
-                                    <td>200</td>
-                              </tr>
-                              <tr>
-                                    <td>100</td>
-                              </tr>
-                              <tr>
-                                    <td>0</td>
-                              </tr>
-                        </tbody>
-                  </table>
+            <div id="legendeCarte" class="col-xs-2">
             </div>
         </div>
     </div>
