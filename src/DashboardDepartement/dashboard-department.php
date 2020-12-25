@@ -152,6 +152,12 @@
                 valeurs_cas = [">", "750", "650", "550", "450", "350", "300", "250", "200", "150", "100", "50", "25"]
                 couleurs_cas = ["#3c0000", "#4c0000", "#6a0000", "#840000", "#a00000", "#c40001", "#d50100", "#e20001", "#f50e07", "#f95228", "#fb9449", "#98ac3b", "#118408"]
 
+                valeurs_hosp = [">", "50", "'45'", "40", "35", "30", "25", "20", "15", "10", "9", "6", "3"]
+                couleurs_hosp = ["#3c0000", "#4c0000", "#6a0000", "#840000", "#a00000", "#c40001", "#d50100", "#e20001", "#f50e07", "#f95228", "#fb9449", "#98ac3b", "#118408"]
+
+                valeurs_dc = [">", "12", "11", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1"]
+                couleurs_dc = ["#3c0000", "#4c0000", "#6a0000", "#840000", "#a00000", "#c40001", "#d50100", "#e20001", "#f50e07", "#f95228", "#fb9449", "#98ac3b", "#118408"]
+
                 var departementCarte = $('#carte path[data-num="' + numeroDepartement + '"]');
                 if (typeCarte == 'cas') {
                     $('#descriptionCarte').html("Nombre de cas cette semaine pour 100k habitants.")
@@ -186,6 +192,8 @@
                     }
                 } else if (typeCarte == 'hospitalisations') {
                     $('#descriptionCarte').html("Nombre d'admissions à l'hôpital avec Covid19 cette semaine pour 100k habitants.")
+                    construireLegende(valeurs_hosp, couleurs_hosp);
+
                     departementCarte.data("incidence-hosp", donneesDepartement["incidence_hosp"]);
                     if (donneesDepartement["incidence_hosp"] <= 3) {
                         departementCarte.css("fill", "#118408");
@@ -216,6 +224,8 @@
                     }
                 } else if (typeCarte == 'deces') {
                     $('#descriptionCarte').html("Nombre de décès avec Covid19 cette semaine pour 100k habitants.")
+                    construireLegende(valeurs_dc, couleurs_dc);
+
                     departementCarte.data("incidence-dc", donneesDepartement["incidence_dc"]);
                     if (donneesDepartement["incidence_dc"] <= 1) {
                         departementCarte.css("fill", "#118408");
