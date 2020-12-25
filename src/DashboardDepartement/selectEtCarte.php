@@ -173,6 +173,14 @@
     </div>
     <div class="col-md-7 text-center">
         <div class="row">
+            <div id="choixTypeCarte" class="btn-group" role="group" aria-label="Basic example">
+                <button data-type-carte="cas" type="button" autofocus="autofocus" class="selected btn btn-primary">Cas</button>
+                <button data-type-carte="hospitalisations" type="button" class="btn btn-primary">Hospitalisations</button>
+                <button data-type-carte="deces" type="button" class="btn btn-primary">Décès</button>
+            </div>
+
+            <p id="descriptionCarte"></p>
+            
             <div class="col-xs-10">
                 <div id="carte">
                     <svg id="map" width="400px" height="400px" viewBox="0 0 492 543" version="1.1"
@@ -387,8 +395,7 @@
                     </svg>
                 </div>
             </div>
-            <div class="col-xs-2">
-                <img src="files.covidtracker.fr/img/echelle_cas.png">
+            <div id="legendeCarte" class="col-xs-2">
             </div>
         </div>
     </div>
