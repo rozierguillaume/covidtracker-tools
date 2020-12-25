@@ -29,6 +29,12 @@
                 <br>Si supérieur à 100%, alors les patients Covid19 occupent plus de lits de réanimation qu'il n'y en avait avant l'épidémie</span><br>
                 <span style="font-size: 70%;">Mise à jour : dateMaj</span>
             </div>
+            <div class="col-md-4 shadow">
+                <span style="font-size: 160%; color: couleurTauxPositivite"><b>tauxPositivite</b></span><br>
+                <span><b>Taux de positivité</b>
+                <br>Proportion de tests positifs dans l'ensemble des tests. Un chiffre bas peut être dû à une faible circulation du virus ou à un testing massif.</span><br>
+                <span style="font-size: 70%;">Mise à jour : dateMaj</span>
+            </div>
         </div>
 
         <h3 style="margin-top: 40px;">Vue d'ensemble</h3>
@@ -75,6 +81,11 @@
 </script>
 <script>
     jQuery(document).ready(function ($) {
+
+        var url_string = window.location.href
+        var url = new URL(url_string);
+        var dep_url = url.searchParams.get("dep");
+        
 
         var donneesDepartements
         var donneesFrance
@@ -145,10 +156,21 @@
             $("#map").addClass("animated")
         }
 
+        selectDepsInUrl();
+        function selectDepsInUrl(){
+            if(dep_url != null){
+                console.log(dep_url);
+                }
+            else{
+              console.log("no dep in url");
+            }
+        }
+
         function afficherDepartement(nomDepartment, numeroDepartement) {
             console.log(donneesDepartements[nomDepartement]);
             incidenceDepartement = donneesDepartements[nomDepartement]["incidence_cas"]
             saturationRea = Math.round(donneesDepartements[nomDepartement]["saturation_rea"])
+            tauxPositivite = donneesDepartements[nomDepartement]["taux_positivite"]
             incidenceFrance = Math.round(donneesFrance["incidence_cas"])
 
             if (incidenceDepartement>100){
@@ -171,6 +193,17 @@
                 couleurSaturationRea = "green"
             }
 
+            if (tauxPositivite>=5){
+                couleurTauxPositivite = "red"
+
+            } else if (tauxPositivite>=1){
+                couleurTauxPositivite = "orange"
+                
+            } else {
+                couleurTauxPositivite = "green"
+            }
+
+
             if ($('#' + numeroDepartement).length > 0) {
                 return;
             }
@@ -180,9 +213,11 @@
             content = content.replaceAll('incidenceDepartement', incidenceDepartement);
             content = content.replaceAll('incidenceFrance', incidenceFrance);
             content = content.replaceAll('saturationRea', saturationRea + "%");
+            content = content.replaceAll('tauxPositivite', tauxPositivite + "%");
             content = content.replaceAll('dateMaj', dateMaj);
             content = content.replaceAll('couleurIncidence', couleurIncidence);
             content = content.replaceAll('couleurSaturationRea', couleurSaturationRea);
+            content = content.replaceAll('couleurTauxPositivite', couleurTauxPositivite);
 
             $('#donneesDepartements').prepend(content);
             //trierDepartements();
