@@ -36,6 +36,12 @@
                 <br>Si le taux de reproduction est supérieur à 1, alors l'épidémie progresse. S'il est inférieur à 1, elle régresse.</span><br>
                 <span style="font-size: 70%;">Mise à jour : dateMaj</span>
             </div>
+            <div class="col-md-4 shadow">
+                <span style="font-size: 160%; color: couleurTauxPositivite"><b>tauxPositivite</b></span><br>
+                <span><b>Taux de positivité</b>
+                <br>Proportion de tests positifs dans l'ensemble des tests. Un chiffre bas peut être dû à une faible circulation du virus ou à un testing massif.</span><br>
+                <span style="font-size: 70%;">Mise à jour : dateMaj</span>
+            </div>
         </div>
 
         <h3 style="margin-top: 40px;">Vue d'ensemble</h3>
@@ -180,6 +186,7 @@
             incidenceRegion = donneesRegions[nomRegion]["incidence_cas"]
             incidenceFrance = Math.round(donneesFrance["incidence_cas"])
             saturationRea = Math.round(saturationReaRegions[nomRegion])
+            tauxPositivite = donneesDepartements[nomDepartement]["taux_positivite"]
             reffectifRegion = Math.round((reffectifRegions[nomRegion]["value"]*100))/100
 
             if (incidenceRegion>100){
@@ -212,6 +219,16 @@
                 couleurReffectif = "green"
             }
 
+            if (tauxPositivite>=5){
+                couleurTauxPositivite = "red"
+
+            } else if (tauxPositivite>=1){
+                couleurTauxPositivite = "orange"
+                
+            } else {
+                couleurTauxPositivite = "green"
+            }
+
             if ($('#' + numeroRegion).length > 0) {
                 return;
             }
@@ -221,11 +238,13 @@
             content = content.replaceAll('incidenceRegion', incidenceRegion);
             content = content.replaceAll('incidenceFrance', incidenceFrance);
             content = content.replaceAll('saturationRea', saturationRea + "%");
+            content = content.replaceAll('tauxPositivite', tauxPositivite + "%");
             content = content.replaceAll('dateMaj', dateMaj);
             content = content.replaceAll('couleurIncidence', couleurIncidence);
             content = content.replaceAll('couleurSaturationRea', couleurSaturation);
             content = content.replaceAll('couleurReffectif', couleurReffectif);
             content = content.replaceAll('reffectifRegion', reffectifRegion);
+            content = content.replaceAll('couleurTauxPositivite', couleurTauxPositivite);
             //content = content.replaceAll('couleurSaturationRea', couleurSaturationRea);
 
             $('#donneesRegions').prepend(content);
