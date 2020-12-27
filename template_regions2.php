@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: template_regions
+Template Name: template_regions2
 */
 ?>
 
