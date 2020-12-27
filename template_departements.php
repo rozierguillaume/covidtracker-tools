@@ -1,9 +1,19 @@
 <?php
 /*
-Template Name: template1
+Template Name: template_departements
 */
 ?>
 
+<?php
+/**
+ Template Name: Full-width Template
+ * Pages for our theme
+ *
+ * @package WordPress
+ * @subpackage Integral
+ * @since Integral 1.0
+ */
+?>
 <?php get_header(); ?>
 
 <div class="spacer"></div>
