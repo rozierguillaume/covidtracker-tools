@@ -1,0 +1,71 @@
+
+
+<div class="col-md-5" style="padding-top: 20px;">
+<div style="width: 200px; height: 200px;">
+<table style="width:100%; height:100%" id="tableauVaccin">
+</div>
+</div>
+    
+</table>
+
+<style>
+table, tr, td {
+  border: 1px solid white;
+}
+
+td {
+    width: 1%;
+    height: 1%;
+}
+
+.green {
+    background-color: rgb(45, 189, 84);
+}
+
+.red {
+    background-color: rgb(237, 88, 88);
+}
+
+.grey {
+    background-color: rgb(207, 169, 169);
+}
+
+
+</style>
+
+<script>
+
+
+var html = ""
+dejaVaccines = 0.5;
+restantaVaccinerImmunite = 60 - dejaVaccines
+restantaVaccinerAutres = 100
+
+tableVaccin();
+function tableVaccin(){
+    const table = document.getElementById("tableauVaccin");
+
+    for(i=0; i<10; i++){
+        html += "<tr>"
+        let row = table.insertRow();
+
+        for(j=0; j<10; j++){
+            var newrow = row.insertCell(j)
+
+            let caseNb = i*10+j+1
+
+            if(caseNb <= dejaVaccines){
+                newrow.classList.add("green");
+            }else if(caseNb <= 60){
+                newrow.classList.add("red");
+            } else {
+                newrow.classList.add("grey");
+            }
+        }
+
+    }
+
+    console.log(html)
+}
+    
+</script>
