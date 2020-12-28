@@ -9,8 +9,8 @@
             <li>heatmap des taux d'incidence,</li>
             <li>évolution du taux d'occupation en réanimation.</li>
         </ul>
-        Sélectionnez les départements que vous souhaitez consulter à l'aide du menu déroulant ou en cliquant directement
-        sur la carte de France métropolitaine.
+            Sélectionnez les départements que vous souhaitez consulter à l'aide du menu déroulant ou en cliquant directement
+            sur la carte de France métropolitaine.
         </p>
         <div class="text-center">
             <select multiple="multiple" name="deps_list_choice" id="listeDepartements" class="select2">
@@ -173,9 +173,16 @@
     </div>
     <div class="col-md-7 text-center">
         <div class="row">
-            <div id="choixTypeCarte" class="btn-group" role="group" aria-label="Basic example">
+
+            <div id="choixTypeDonnee" class="btn-group" role="group">
+                <button data-type-donnee="incidence" type="button" autofocus="autofocus" class="selected btn btn-primary">Incidence</button>
+                <button data-type-carte="evolution" type="button" class="btn btn-primary">Evolution J/J-7</button>
+            </div>
+
+            <div id="choixTypeCarte" class="btn-group" role="group">
                 <button data-type-carte="cas" type="button" autofocus="autofocus" class="selected btn btn-primary">Cas</button>
                 <button data-type-carte="hospitalisations" type="button" class="btn btn-primary">Hospitalisations</button>
+                <button data-type-carte="occupationsLits" type="button" class="btn btn-primary">Occupation lits</button>
                 <button data-type-carte="deces" type="button" class="btn btn-primary">Décès</button>
             </div>
 
