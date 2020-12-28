@@ -2,6 +2,11 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
 <?php include(dirname(__FILE__) . '/selectEtCarte.php') ?>
+<?php
+if (isset($_GET['dep']) and $_GET['dep']) {
+    echo('<script id="departementSearched" type="text/template">' . $_GET["dep"] . '</script>');
+}
+?>
 
 <script id="departementTemplate" type="text/template">
     <!-- wp:heading -->
@@ -86,17 +91,17 @@
 
 <script id="legendTemplatePre" type="text/template">
     <table>
-            <tbody>
+        <tbody>
 </script>
 
 <script id="legendTemplateMid" type="text/template">
-                <tr>
-                    <td style="background-color: colorBg; color: white; font-size: 50%; padding: 5px;">valeur</td>
-                </tr>
+    <tr>
+        <td style="background-color: colorBg; color: white; font-size: 50%; padding: 5px;">valeur</td>
+    </tr>
 </script>
 
 <script id="legendTemplatePost" type="text/template">
-        </tbody>
+    </tbody>
     </table>
 
 </script>
@@ -104,362 +109,380 @@
 <script>
     jQuery(document).ready(function ($) {
 
-        var donneesDepartements;
-        var donneesFrance;
-        var dateMaj;
-        var typeCarte = 'cas';
+            var donneesDepartements;
+            var donneesFrance;
+            var dateMaj;
+            var typeCarte = 'cas';
 
-        fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/incidence_departements.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("HTTP error " + response.status);
+            fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/incidence_departements.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("HTTP error " + response.status);
+                    }
+                    return response.json();
+                })
+                .then(json => {
+                    donneesDepartements = json['donnees_departements'];
+                    donneesFrance = json['donnees_france'];
+                    dateMaj = json["date_update"];
+                    colorerCarte();
+                    selectionnerDepartement();
+                });
+
+            /*
+             * Le lancement de l'animation se fait en ajoutant et retirant la classe animated
+             * de la carte afin que tous les départements clignotent en meme temps.
+             * Sans quoi chaqué département commence son clignotement au moment où on lui attribue
+             * la classe selected.
+             */
+            var stopAnimation = function () {
+                $("#map").removeClass("animated")
+            }
+
+            var startAnimation = function () {
+                $("#map").addClass("animated")
+            }
+
+            function construireLegende(values = [], colors = []) {
+                content = $('#legendTemplatePre').html();
+                values.map((val, idx) => {
+                    content += $('#legendTemplateMid').html().replaceAll("valeur", val).replaceAll("colorBg", colors[idx]);
+                })
+                content += $('#legendTemplatePost').html();
+                // console.log(content);
+                $('#legendeCarte').html(content);
+            }
+
+            function colorerCarte() {
+                for (departement in donneesDepartements) {
+                    // console.log(departement);
+                    numeroDepartement = $('#listeDepartements option[value="' + departement + '"]').data("num");
+                    // console.log(numeroDepartement);
+                    donneesDepartement = donneesDepartements[departement];
+                    // console.log(donneesDepartement);
+
+                    valeurs_cas = [">", "750", "650", "550", "450", "350", "300", "250", "200", "150", "100", "50", "25"]
+                    couleurs_cas = ["#3c0000", "#4c0000", "#6a0000", "#840000", "#a00000", "#c40001", "#d50100", "#e20001", "#f50e07", "#f95228", "#fb9449", "#98ac3b", "#118408"]
+
+                    valeurs_hosp = [">", "50", "'45'", "40", "35", "30", "25", "20", "15", "10", "9", "6", "3"]
+                    couleurs_hosp = ["#3c0000", "#4c0000", "#6a0000", "#840000", "#a00000", "#c40001", "#d50100", "#e20001", "#f50e07", "#f95228", "#fb9449", "#98ac3b", "#118408"]
+
+                    valeurs_dc = [">", "12", "11", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1"]
+                    couleurs_dc = ["#3c0000", "#4c0000", "#6a0000", "#840000", "#a00000", "#c40001", "#d50100", "#e20001", "#f50e07", "#f95228", "#fb9449", "#98ac3b", "#118408"]
+
+                    var departementCarte = $('#carte path[data-num="' + numeroDepartement + '"]');
+                    if (typeCarte == 'cas') {
+                        $('#descriptionCarte').html("Nombre de cas cette semaine pour 100k habitants.")
+                        construireLegende(valeurs_cas, couleurs_cas);
+                        departementCarte.data("incidence-cas", donneesDepartement["incidence_cas"]);
+                        if (donneesDepartement["incidence_cas"] <= 25) {
+                            departementCarte.css("fill", "#118408");
+                        } else if (donneesDepartement["incidence_cas"] <= 50) {
+                            departementCarte.css("fill", "#98ac3b");
+                        } else if (donneesDepartement["incidence_cas"] <= 100) {
+                            departementCarte.css("fill", "#fb9449");
+                        } else if (donneesDepartement["incidence_cas"] <= 150) {
+                            departementCarte.css("fill", "#f95228");
+                        } else if (donneesDepartement["incidence_cas"] <= 200) {
+                            departementCarte.css("fill", "#f50e07");
+                        } else if (donneesDepartement["incidence_cas"] <= 250) {
+                            departementCarte.css("fill", "#e20001");
+                        } else if (donneesDepartement["incidence_cas"] <= 300) {
+                            departementCarte.css("fill", "#d50100");
+                        } else if (donneesDepartement["incidence_cas"] <= 350) {
+                            departementCarte.css("fill", "#c40001");
+                        } else if (donneesDepartement["incidence_cas"] <= 450) {
+                            departementCarte.css("fill", "#a00000");
+                        } else if (donneesDepartement["incidence_cas"] <= 550) {
+                            departementCarte.css("fill", "#840000");
+                        } else if (donneesDepartement["incidence_cas"] <= 650) {
+                            departementCarte.css("fill", "#6a0000");
+                        } else if (donneesDepartement["incidence_cas"] <= 750) {
+                            departementCarte.css("fill", "#4c0000");
+                        } else {
+                            departementCarte.css("fill", "#3c0000");
+                        }
+                    } else if (typeCarte == 'hospitalisations') {
+                        $('#descriptionCarte').html("Nombre d'admissions à l'hôpital avec Covid19 cette semaine pour 100k habitants.")
+                        construireLegende(valeurs_hosp, couleurs_hosp);
+
+                        departementCarte.data("incidence-hosp", donneesDepartement["incidence_hosp"]);
+                        if (donneesDepartement["incidence_hosp"] <= 3) {
+                            departementCarte.css("fill", "#118408");
+                        } else if (donneesDepartement["incidence_hosp"] <= 6) {
+                            departementCarte.css("fill", "#98ac3b");
+                        } else if (donneesDepartement["incidence_hosp"] <= 9) {
+                            departementCarte.css("fill", "#fb9449");
+                        } else if (donneesDepartement["incidence_hosp"] <= 10) {
+                            departementCarte.css("fill", "#f95228");
+                        } else if (donneesDepartement["incidence_hosp"] <= 15) {
+                            departementCarte.css("fill", "#f50e07");
+                        } else if (donneesDepartement["incidence_hosp"] <= 20) {
+                            departementCarte.css("fill", "#e20001");
+                        } else if (donneesDepartement["incidence_hosp"] <= 25) {
+                            departementCarte.css("fill", "#d50100");
+                        } else if (donneesDepartement["incidence_hosp"] <= 30) {
+                            departementCarte.css("fill", "#c40001");
+                        } else if (donneesDepartement["incidence_hosp"] <= 35) {
+                            departementCarte.css("fill", "#a00000");
+                        } else if (donneesDepartement["incidence_hosp"] <= 40) {
+                            departementCarte.css("fill", "#840000");
+                        } else if (donneesDepartement["incidence_hosp"] <= 45) {
+                            departementCarte.css("fill", "#6a0000");
+                        } else if (donneesDepartement["incidence_hosp"] <= 50) {
+                            departementCarte.css("fill", "#4c0000");
+                        } else {
+                            departementCarte.css("fill", "#3c0000");
+                        }
+                    } else if (typeCarte == 'deces') {
+                        $('#descriptionCarte').html("Nombre de décès avec Covid19 cette semaine pour 100k habitants.")
+                        construireLegende(valeurs_dc, couleurs_dc);
+
+                        departementCarte.data("incidence-dc", donneesDepartement["incidence_dc"]);
+                        if (donneesDepartement["incidence_dc"] <= 1) {
+                            departementCarte.css("fill", "#118408");
+                        } else if (donneesDepartement["incidence_dc"] <= 2) {
+                            departementCarte.css("fill", "#98ac3b");
+                        } else if (donneesDepartement["incidence_dc"] <= 3) {
+                            departementCarte.css("fill", "#fb9449");
+                        } else if (donneesDepartement["incidence_dc"] <= 4) {
+                            departementCarte.css("fill", "#f95228");
+                        } else if (donneesDepartement["incidence_dc"] <= 5) {
+                            departementCarte.css("fill", "#f50e07");
+                        } else if (donneesDepartement["incidence_dc"] <= 6) {
+                            departementCarte.css("fill", "#e20001");
+                        } else if (donneesDepartement["incidence_dc"] <= 7) {
+                            departementCarte.css("fill", "#d50100");
+                        } else if (donneesDepartement["incidence_dc"] <= 8) {
+                            departementCarte.css("fill", "#c40001");
+                        } else if (donneesDepartement["incidence_dc"] <= 9) {
+                            departementCarte.css("fill", "#a00000");
+                        } else if (donneesDepartement["incidence_dc"] <= 10) {
+                            departementCarte.css("fill", "#840000");
+                        } else if (donneesDepartement["incidence_dc"] <= 11) {
+                            departementCarte.css("fill", "#6a0000");
+                        } else {
+                            departementCarte.css("fill", "#3c0000");
+                        }
+                    } else {
+                        $('#carte path').css("fill", "#c4c4cb");
+                    }
                 }
-                return response.json();
-            })
-            .then(json => {
-                donneesDepartements = json['donnees_departements'];
-                donneesFrance = json['donnees_france'];
-                dateMaj = json["date_update"];
-                colorerCarte();
-            });
+            }
 
-        /*
-         * Le lancement de l'animation se fait en ajoutant et retirant la classe animated
-         * de la carte afin que tous les départements clignotent en meme temps.
-         * Sans quoi chaqué département commence son clignotement au moment où on lui attribue
-         * la classe selected.
-         */
-        var stopAnimation = function () {
-            $("#map").removeClass("animated")
-        }
-
-        var startAnimation = function () {
-            $("#map").addClass("animated")
-        }
-
-        function construireLegende(values=[], colors=[]){
-            content = $('#legendTemplatePre').html();
-            values.map((val, idx) => {
-                content += $('#legendTemplateMid').html().replaceAll("valeur", val).replaceAll("colorBg", colors[idx]);
-            })
-            content += $('#legendTemplatePost').html();
-            console.log(content)
-            $('#legendeCarte').html(content);
-        }
-
-        function colorerCarte() {
-            for (departement in donneesDepartements) {
-                // console.log(departement);
-                numeroDepartement = $('#listeDepartements option[value="' + departement + '"]').data("num");
-                // console.log(numeroDepartement);
-                donneesDepartement = donneesDepartements[departement];
-                // console.log(donneesDepartement);
-
-                valeurs_cas = [">", "750", "650", "550", "450", "350", "300", "250", "200", "150", "100", "50", "25"]
-                couleurs_cas = ["#3c0000", "#4c0000", "#6a0000", "#840000", "#a00000", "#c40001", "#d50100", "#e20001", "#f50e07", "#f95228", "#fb9449", "#98ac3b", "#118408"]
-
-                valeurs_hosp = [">", "50", "'45'", "40", "35", "30", "25", "20", "15", "10", "9", "6", "3"]
-                couleurs_hosp = ["#3c0000", "#4c0000", "#6a0000", "#840000", "#a00000", "#c40001", "#d50100", "#e20001", "#f50e07", "#f95228", "#fb9449", "#98ac3b", "#118408"]
-
-                valeurs_dc = [">", "12", "11", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1"]
-                couleurs_dc = ["#3c0000", "#4c0000", "#6a0000", "#840000", "#a00000", "#c40001", "#d50100", "#e20001", "#f50e07", "#f95228", "#fb9449", "#98ac3b", "#118408"]
-
-                var departementCarte = $('#carte path[data-num="' + numeroDepartement + '"]');
-                if (typeCarte == 'cas') {
-                    $('#descriptionCarte').html("Nombre de cas cette semaine pour 100k habitants.")
-                    construireLegende(valeurs_cas, couleurs_cas);
-                    departementCarte.data("incidence-cas", donneesDepartement["incidence_cas"]);
-                    if (donneesDepartement["incidence_cas"] <= 25) {
-                        departementCarte.css("fill", "#118408");
-                    } else if (donneesDepartement["incidence_cas"] <= 50) {
-                        departementCarte.css("fill", "#98ac3b");
-                    } else if (donneesDepartement["incidence_cas"] <= 100) {
-                        departementCarte.css("fill", "#fb9449");
-                    } else if (donneesDepartement["incidence_cas"] <= 150) {
-                        departementCarte.css("fill", "#f95228");
-                    } else if (donneesDepartement["incidence_cas"] <= 200) {
-                        departementCarte.css("fill", "#f50e07");
-                    } else if (donneesDepartement["incidence_cas"] <= 250) {
-                        departementCarte.css("fill", "#e20001");
-                    } else if (donneesDepartement["incidence_cas"] <= 300) {
-                        departementCarte.css("fill", "#d50100");
-                    } else if (donneesDepartement["incidence_cas"] <= 350) {
-                        departementCarte.css("fill", "#c40001");
-                    } else if (donneesDepartement["incidence_cas"] <= 450) {
-                        departementCarte.css("fill", "#a00000");
-                    } else if (donneesDepartement["incidence_cas"] <= 550) {
-                        departementCarte.css("fill", "#840000");
-                    } else if (donneesDepartement["incidence_cas"] <= 650) {
-                        departementCarte.css("fill", "#6a0000");
-                    } else if (donneesDepartement["incidence_cas"] <= 750) {
-                        departementCarte.css("fill", "#4c0000");
-                    } else {
-                        departementCarte.css("fill", "#3c0000");
+            function selectionnerDepartement(){
+                if ($("#departementSearched").length>0) {
+                    nomDepartement = $("#departementSearched").text();
+                    if ($("select option[value='" + nomDepartement + "']").length>0){
+                        numeroDepartement = $("select option[value='" + nomDepartement + "']").data('num');
+                        $('#map path[data-num=' + numeroDepartement + ']').addClass('selected');
+                        if ($("#listeDepartements").val()) {
+                            $("#listeDepartements").val($.merge([nomDepartement], $("#listeDepartements").val()));
+                        } else {
+                            $("#listeDepartements").val(nomDepartement);
+                        }
+                        $("#listeDepartements").trigger('change');
+                        afficherDepartement(nomDepartement, numeroDepartement);
+                        $('html,body').animate({scrollTop: $('#donneesDepartements').offset().top-80}, 2000);
                     }
-                } else if (typeCarte == 'hospitalisations') {
-                    $('#descriptionCarte').html("Nombre d'admissions à l'hôpital avec Covid19 cette semaine pour 100k habitants.")
-                    construireLegende(valeurs_hosp, couleurs_hosp);
+                }
+            }
 
-                    departementCarte.data("incidence-hosp", donneesDepartement["incidence_hosp"]);
-                    if (donneesDepartement["incidence_hosp"] <= 3) {
-                        departementCarte.css("fill", "#118408");
-                    } else if (donneesDepartement["incidence_hosp"] <= 6) {
-                        departementCarte.css("fill", "#98ac3b");
-                    } else if (donneesDepartement["incidence_hosp"] <= 9) {
-                        departementCarte.css("fill", "#fb9449");
-                    } else if (donneesDepartement["incidence_hosp"] <= 10) {
-                        departementCarte.css("fill", "#f95228");
-                    } else if (donneesDepartement["incidence_hosp"] <= 15) {
-                        departementCarte.css("fill", "#f50e07");
-                    } else if (donneesDepartement["incidence_hosp"] <= 20) {
-                        departementCarte.css("fill", "#e20001");
-                    }else if (donneesDepartement["incidence_hosp"] <= 25) {
-                        departementCarte.css("fill", "#d50100");
-                    } else if (donneesDepartement["incidence_hosp"] <= 30) {
-                        departementCarte.css("fill", "#c40001");
-                    } else if (donneesDepartement["incidence_hosp"] <= 35) {
-                        departementCarte.css("fill", "#a00000");
-                    } else if (donneesDepartement["incidence_hosp"] <= 40) {
-                        departementCarte.css("fill", "#840000");
-                    } else if (donneesDepartement["incidence_hosp"] <= 45) {
-                        departementCarte.css("fill", "#6a0000");
-                    } else if (donneesDepartement["incidence_hosp"] <= 50) {
-                        departementCarte.css("fill", "#4c0000");
-                    } else {
-                        departementCarte.css("fill", "#3c0000");
-                    }
-                } else if (typeCarte == 'deces') {
-                    $('#descriptionCarte').html("Nombre de décès avec Covid19 cette semaine pour 100k habitants.")
-                    construireLegende(valeurs_dc, couleurs_dc);
+            function afficherDepartement(nomDepartment, numeroDepartement) {
+                console.log(donneesDepartements[nomDepartement]);
+                incidenceDepartement = donneesDepartements[nomDepartement]["incidence_cas"]
+                saturationRea = Math.round(donneesDepartements[nomDepartement]["saturation_rea"])
+                tauxPositivite = donneesDepartements[nomDepartement]["taux_positivite"]
+                incidenceFrance = Math.round(donneesFrance["incidence_cas"])
 
-                    departementCarte.data("incidence-dc", donneesDepartement["incidence_dc"]);
-                    if (donneesDepartement["incidence_dc"] <= 1) {
-                        departementCarte.css("fill", "#118408");
-                    } else if (donneesDepartement["incidence_dc"] <= 2) {
-                        departementCarte.css("fill", "#98ac3b");
-                    } else if (donneesDepartement["incidence_dc"] <= 3) {
-                        departementCarte.css("fill", "#fb9449");
-                    } else if (donneesDepartement["incidence_dc"] <= 4) {
-                        departementCarte.css("fill", "#f95228");
-                    } else if (donneesDepartement["incidence_dc"] <= 5) {
-                        departementCarte.css("fill", "#f50e07");
-                    } else if (donneesDepartement["incidence_dc"] <= 6) {
-                        departementCarte.css("fill", "#e20001");
-                    } else if (donneesDepartement["incidence_dc"] <= 7) {
-                        departementCarte.css("fill", "#d50100");
-                    } else if (donneesDepartement["incidence_dc"] <= 8) {
-                        departementCarte.css("fill", "#c40001");
-                    } else if (donneesDepartement["incidence_dc"] <= 9) {
-                        departementCarte.css("fill", "#a00000");
-                    } else if (donneesDepartement["incidence_dc"] <= 10) {
-                        departementCarte.css("fill", "#840000");
-                    } else if (donneesDepartement["incidence_dc"] <= 11) {
-                        departementCarte.css("fill", "#6a0000");
-                    } else {
-                        departementCarte.css("fill", "#3c0000");
-                    }
+                if (incidenceDepartement > 100) {
+                    couleurIncidence = "red"
+
+                } else if (incidenceDepartement > 50) {
+                    couleurIncidence = "orange"
+
                 } else {
-                    $('#carte path').css("fill", "#c4c4cb");
+                    couleurIncidence = "green"
                 }
-        }
-        }
 
-        function afficherDepartement(nomDepartment, numeroDepartement) {
-            console.log(donneesDepartements[nomDepartement]);
-            incidenceDepartement = donneesDepartements[nomDepartement]["incidence_cas"]
-            saturationRea = Math.round(donneesDepartements[nomDepartement]["saturation_rea"])
-            tauxPositivite = donneesDepartements[nomDepartement]["taux_positivite"]
-            incidenceFrance = Math.round(donneesFrance["incidence_cas"])
+                if (saturationRea > 80) {
+                    couleurSaturationRea = "red"
 
-            if (incidenceDepartement > 100) {
-                couleurIncidence = "red"
+                } else if (saturationRea > 30) {
+                    couleurSaturationRea = "orange"
 
-            } else if (incidenceDepartement > 50) {
-                couleurIncidence = "orange"
+                } else {
+                    couleurSaturationRea = "green"
+                }
 
-            } else {
-                couleurIncidence = "green"
+                if (tauxPositivite >= 5) {
+                    couleurTauxPositivite = "red"
+
+                } else if (tauxPositivite >= 1) {
+                    couleurTauxPositivite = "orange"
+
+                } else {
+                    couleurTauxPositivite = "green"
+                }
+
+
+                if ($('#' + numeroDepartement).length > 0) {
+                    return;
+                }
+                content = $('#departementTemplate').html();
+                content = content.replaceAll('nomDepartement', nomDepartment);
+                content = content.replaceAll('numeroDepartement', numeroDepartement);
+                content = content.replaceAll('incidenceDepartement', incidenceDepartement);
+                content = content.replaceAll('incidenceFrance', incidenceFrance);
+                content = content.replaceAll('saturationRea', saturationRea + "%");
+                content = content.replaceAll('tauxPositivite', tauxPositivite + "%");
+                content = content.replaceAll('dateMaj', dateMaj);
+                content = content.replaceAll('couleurIncidence', couleurIncidence);
+                content = content.replaceAll('couleurSaturationRea', couleurSaturationRea);
+                content = content.replaceAll('couleurTauxPositivite', couleurTauxPositivite);
+
+                $('#donneesDepartements').prepend(content);
+                //trierDepartements();
+                stopAnimation();
+                setTimeout(startAnimation, 0);
             }
 
-            if (saturationRea > 80) {
-                couleurSaturationRea = "red"
+            function trierDepartements() {
+                $divs = jQuery("#donneesDepartements div.departement");
 
-            } else if (saturationRea > 30) {
-                couleurSaturationRea = "orange"
+                alphabeticallyOrderedDeps = $divs.sort(function (a, b) {
+                    return String.prototype.localeCompare.call($(a).data('num'), $(b).data('num'));
+                });
 
-            } else {
-                couleurSaturationRea = "green"
+                $("#donneesDepartements").html(alphabeticallyOrderedDeps);
             }
 
-            if (tauxPositivite>=5){
-                couleurTauxPositivite = "red"
-
-            } else if (tauxPositivite>=1){
-                couleurTauxPositivite = "orange"
-                
-            } else {
-                couleurTauxPositivite = "green"
-            }
-
-
-            if ($('#' + numeroDepartement).length > 0) {
-                return;
-            }
-            content = $('#departementTemplate').html();
-            content = content.replaceAll('nomDepartement', nomDepartment);
-            content = content.replaceAll('numeroDepartement', numeroDepartement);
-            content = content.replaceAll('incidenceDepartement', incidenceDepartement);
-            content = content.replaceAll('incidenceFrance', incidenceFrance);
-            content = content.replaceAll('saturationRea', saturationRea + "%");
-            content = content.replaceAll('tauxPositivite', tauxPositivite + "%");
-            content = content.replaceAll('dateMaj', dateMaj);
-            content = content.replaceAll('couleurIncidence', couleurIncidence);
-            content = content.replaceAll('couleurSaturationRea', couleurSaturationRea);
-            content = content.replaceAll('couleurTauxPositivite', couleurTauxPositivite);
-
-            $('#donneesDepartements').prepend(content);
-            //trierDepartements();
-            stopAnimation();
-            setTimeout(startAnimation, 0);
-        }
-
-        function trierDepartements() {
-            $divs = jQuery("#donneesDepartements div.departement");
-
-            alphabeticallyOrderedDeps = $divs.sort(function (a, b) {
-                return String.prototype.localeCompare.call($(a).data('num'), $(b).data('num'));
+            $('.select2').select2({
+                placeholder: 'Sélectionnez les départements que vous voulez consulter....',
+                closeOnSelect: false,
             });
 
-            $("#donneesDepartements").html(alphabeticallyOrderedDeps);
-        }
+            $('.select2').val(null).trigger('change');
 
-        $('.select2').select2({
-            placeholder: 'Sélectionnez les départements que vous voulez consulter....',
-            closeOnSelect: false,
-        });
+            $('div.departement').addClass('hidden');
 
-        $('.select2').val(null).trigger('change');
-
-        $('div.departement').addClass('hidden');
-
-        $('.select2').on('select2:select', function (e) {
-            nomDepartement = e.params.data.id;
-            numeroDepartement = e.params.data.element.dataset.num;
-            $('#map path[data-num=' + numeroDepartement + ']').addClass('selected');
-            // $('#' + nomDepartement).parent().removeClass('hidden');
-            afficherDepartement(nomDepartement, numeroDepartement);
-        });
-
-        $('.select2').on('select2:unselect', function (e) {
-            nomDepartement = e.params.data.id;
-            numeroDepartement = e.params.data.element.dataset.num;
-            $('#map path[data-num=' + numeroDepartement + ']').removeClass('selected');
-            $('#' + numeroDepartement).remove();
-        });
-
-        $('#unselectAll').click(function () {
-            $("#listeDepartements option").each(function () {
-                $(this).attr('selected', false);
+            $('.select2').on('select2:select', function (e) {
+                nomDepartement = e.params.data.id;
+                numeroDepartement = e.params.data.element.dataset.num;
+                $('#map path[data-num=' + numeroDepartement + ']').addClass('selected');
+                // $('#' + nomDepartement).parent().removeClass('hidden');
+                afficherDepartement(nomDepartement, numeroDepartement);
             });
-            $("#listeDepartements").trigger('change');
-            $('.departement').remove();
-            $('#map path').removeClass('selected');
-        });
 
-        $('body').on('click', '.masquerDepartement', function (e) {
-            e.preventDefault();
-            numeroDepartement = $(this).parents('.departement').data("num");
-            console.log($("select option[data-num='" + numeroDepartement + "']"));
-            $("select option[data-num='" + numeroDepartement + "']").prop("selected", false);
-            $('#map path[data-num=' + numeroDepartement + ']').removeClass('selected');
-            $("#listeDepartements").trigger('change');
-            $('#' + numeroDepartement).remove();
-        });
+            $('.select2').on('select2:unselect', function (e) {
+                nomDepartement = e.params.data.id;
+                numeroDepartement = e.params.data.element.dataset.num;
+                $('#map path[data-num=' + numeroDepartement + ']').removeClass('selected');
+                $('#' + numeroDepartement).remove();
+            });
 
-        $('#selectAll').click(function () {
+            $('#unselectAll').click(function () {
+                $("#listeDepartements option").each(function () {
+                    $(this).attr('selected', false);
+                });
+                $("#listeDepartements").trigger('change');
+                $('.departement').remove();
+                $('#map path').removeClass('selected');
+            });
 
-            //Sélection des toutes les options du select.
-            $("#listeDepartements option").each(function () {
-                nomDepartement = $(this).val();
-                if (!$(this).attr('selected')) {
-                    $(this).attr('selected', true);
+            $('body').on('click', '.masquerDepartement', function (e) {
+                e.preventDefault();
+                numeroDepartement = $(this).parents('.departement').data("num");
+                // console.log($("select option[data-num='" + numeroDepartement + "']"));
+                $("select option[data-num='" + numeroDepartement + "']").prop("selected", false);
+                $('#map path[data-num=' + numeroDepartement + ']').removeClass('selected');
+                $("#listeDepartements").trigger('change');
+                $('#' + numeroDepartement).remove();
+            });
+
+            $('#selectAll').click(function () {
+
+                //Sélection des toutes les options du select.
+                $("#listeDepartements option").each(function () {
+                    nomDepartement = $(this).val();
+                    if (!$(this).attr('selected')) {
+                        $(this).attr('selected', true);
+                        if ($("#listeDepartements").val()) {
+                            $("#listeDepartements").val($.merge([nomDepartement], $("#listeDepartements").val()));
+                        } else {
+                            $("#listeDepartements").val(nomDepartement);
+                        }
+                        afficherDepartement(nomDepartement, $(this).data("num"));
+                        trierDepartements();
+                    }
+                });
+                $("#listeDepartements").trigger('change');
+                //Sélection des toutes les régions de la carte.
+                $('#map path:not(.separator)').addClass('selected');
+            });
+
+            $('#carte path').hover(function (e) {
+                departement = $(this).data("num");
+                nomDepartement = $("#listeDepartements option[data-num='" + departement + "']").val();
+                if (typeCarte == 'cas') {
+                    $('#carte #map title').text(nomDepartement + ' (incidence: ' + $(this).data("incidence-cas") + ')');
+                } else if (typeCarte == 'hospitalisations') {
+                    $('#carte #map title').text(nomDepartement + ' (incidence: ' + $(this).data("incidence-hosp").toFixed(2) + ')');
+                } else if (typeCarte == 'deces') {
+                    $('#carte #map title').text(nomDepartement + ' (incidence: ' + $(this).data("incidence-dc").toFixed(2) + ')');
+                } else {
+                    $('#carte #map title').text(nomDepartement);
+                }
+            });
+
+            $('#carte path').click(function (e) {
+                numeroDepartement = $(this).data("num");
+                nomDepartement = $("#listeDepartements option[data-num='" + numeroDepartement + "']").val();
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                    $("select option[data-num='" + numeroDepartement + "']").prop("selected", false);
+                    $("#listeDepartements").trigger('change');
+                    $('#' + numeroDepartement).remove();
+                } else {
+                    $(this).addClass('selected');
                     if ($("#listeDepartements").val()) {
                         $("#listeDepartements").val($.merge([nomDepartement], $("#listeDepartements").val()));
                     } else {
                         $("#listeDepartements").val(nomDepartement);
                     }
-                    afficherDepartement(nomDepartement, $(this).data("num"));
-                    trierDepartements();
+                    $("#listeDepartements").trigger('change');
+                    // $('#' + nomDepartement).parent().removeClass('hidden');
+                    afficherDepartement(nomDepartement, numeroDepartement);
                 }
             });
-            $("#listeDepartements").trigger('change');
-            //Sélection des toutes les régions de la carte.
-            $('#map path:not(.separator)').addClass('selected');
-        });
 
-        $('#carte path').hover(function (e) {
-            departement = $(this).data("num");
-            nomDepartement = $("#listeDepartements option[data-num='" + departement + "']").val();
-            if (typeCarte == 'cas') {
-                $('#carte #map title').text(nomDepartement + ' (incidence: ' + $(this).data("incidence-cas") + ')');
-            } else if (typeCarte == 'hospitalisations') {
-                $('#carte #map title').text(nomDepartement + ' (incidence: ' + $(this).data("incidence-hosp").toFixed(2) + ')');
-            } else if (typeCarte == 'deces') {
-                $('#carte #map title').text(nomDepartement + ' (incidence: ' + $(this).data("incidence-dc").toFixed(2) + ')');
-            } else {
-                $('#carte #map title').text(nomDepartement);
-            }
-        });
-
-        $('#carte path').click(function (e) {
-            numeroDepartement = $(this).data("num");
-            nomDepartement = $("#listeDepartements option[data-num='" + numeroDepartement + "']").val();
-            if ($(this).hasClass('selected')) {
-                $(this).removeClass('selected');
-                $("select option[data-num='" + numeroDepartement + "']").prop("selected", false);
-                $("#listeDepartements").trigger('change');
-                $('#' + numeroDepartement).remove();
-            } else {
-                $(this).addClass('selected');
-                if ($("#listeDepartements").val()) {
-                    $("#listeDepartements").val($.merge([nomDepartement], $("#listeDepartements").val()));
-                } else {
-                    $("#listeDepartements").val(nomDepartement);
+            $("#choixTypeCarte button").click(function () {
+                typeCarteChoisi = $(this).data('type-carte');
+                if (typeCarte != typeCarteChoisi) {
+                    typeCarte = typeCarteChoisi;
+                    $("#choixTypeCarte button").removeClass('selected');
+                    $(this).addClass('selected');
+                    colorerCarte();
                 }
-                $("#listeDepartements").trigger('change');
-                // $('#' + nomDepartement).parent().removeClass('hidden');
-                afficherDepartement(nomDepartement, numeroDepartement);
-            }
-        });
+                if (typeCarte == 'cas') {
+                    $("#legendeCas").removeClass("hidden");
+                } else {
+                    $("#legendeCas").addClass("hidden");
+                }
+            });
 
-        $("#choixTypeCarte button").click(function () {
-            typeCarteChoisi = $(this).data('type-carte');
-            if (typeCarte != typeCarteChoisi) {
-                typeCarte = typeCarteChoisi;
-                $("#choixTypeCarte button").removeClass('selected');
-                $(this).addClass('selected');
-                colorerCarte();
-            }
-            if (typeCarte == 'cas'){
-                $("#legendeCas").removeClass("hidden");
-            } else {
-                $("#legendeCas").addClass("hidden");
-            }
-        });
 
-    
-    }
+        }
     )
 </script>
 <style>
 
 
-
     table,
     td {
-    border: 0px solid #333;
-    color: black;
-    background-color: red;
+        border: 0px solid #333;
+        color: black;
+        background-color: red;
     }
 
     .shadow {
