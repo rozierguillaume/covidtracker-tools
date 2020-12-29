@@ -2,6 +2,7 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
 <select name="deps_list_choice" id="listeDepartements" class="select2">
+    <option>
     <option data-num="01" data-article="de l'" value="Ain">01 - Ain</option>
     <option data-num="02" data-article="de l'" value="Aisne">02 - Aisne</option>
     <option data-num="03" data-article="de l'" value="Allier">03 - Allier</option>
@@ -158,6 +159,7 @@
         $('.select2').select2({
             placeholder: 'Sélectionnez le département que vous voulez consulter....',
             closeOnSelect: true,
+            allowClear: true
         });
 
 
