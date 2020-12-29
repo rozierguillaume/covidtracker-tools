@@ -173,17 +173,54 @@
     </div>
     <div class="col-md-7 text-center">
         <div class="row">
-
-            <div id="choixTypeDonnee" class="btn-group" role="group">
-                <button data-type-donnee="incidence" type="button" autofocus="autofocus" class="selected btn btn-primary">Incidence</button>
-                <button data-type-carte="evolution" type="button" class="btn btn-primary">Evolution J/J-7</button>
-            </div>
-
+<!--            <div id="choixTypeDonnee" class="btn-group" role="group">-->
+<!--                <button data-type-donnee="incidence" type="button" autofocus="autofocus" class="selected btn btn-primary">Incidence</button>-->
+<!--                <button data-type-carte="evolution" type="button" class="btn btn-primary">Evolution J/J-7</button>-->
+<!--            </div>-->
             <div id="choixTypeCarte" class="btn-group" role="group">
-                <button data-type-carte="cas" type="button" autofocus="autofocus" class="selected btn btn-primary">Cas</button>
-                <button data-type-carte="hospitalisations" type="button" class="btn btn-primary">Hospitalisations</button>
-                <button data-type-carte="occupationsLits" type="button" class="btn btn-primary">Occupation lits</button>
-                <button data-type-carte="deces" type="button" class="btn btn-primary">Décès</button>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Cas <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li data-carte="incidence-cas"><a href="#">Incidence hebdo</a></li>
+<!--                        <li data-carte="evolution-cas"><a href="#">Evolution</a></li>-->
+                        <li data-carte="taux-positivite"><a href="#">Taux positivité</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Hospitalisations <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li data-carte="incidence-hospitalisations"><a href="#">Incidence hebdo</a></li>
+<!--                        <li><a href="#">Evolution</a></li>-->
+<!--                        <li><a href="#">Occupation</a></li>-->
+                    </ul>
+                </div>
+<!--                <button data-type-carte="cas" type="button" autofocus="autofocus" class="selected btn btn-primary">Cas</button>-->
+<!--                <button data-type-carte="hospitalisations" type="button" class="btn btn-primary">Hospitalisations</button>-->
+<!--                <button data-type-carte="occupationsLits" type="button" class="btn btn-primary">Occupation lits</button>-->
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Réanimations <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li data-carte="incidence-reanimations"><a href="#">Incidence hebdo</a></li>
+                        <li data-carte="saturation-reanimations"><a href="#">Taux occupation</a></li>
+<!--                        <li><a href="#">Evolution</a></li>-->
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Décès <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li data-carte="incidence-deces"><a href="#">Incidence hebdo</a></li>
+<!--                        <li><a href="#">Evolution</a></li>-->
+                    </ul>
+                </div>
+<!--                <button data-type-carte="deces" type="button" class="btn btn-primary">Décès</button>-->
             </div>
 
             <p id="descriptionCarte"></p>
