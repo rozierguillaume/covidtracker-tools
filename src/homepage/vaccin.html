@@ -1,22 +1,183 @@
 
+<!-- wp:html -->
+  
+<p>Quelle proportion des français a été vaccinée ? Combien faut-il encore vacciner de personnes avant d'atteindre l'immunité collective ? Quels sont les différents types de vaccins proposés ?
+Ce tracker permet de suivre la proportion de français déjà vaccinés contre la Covid19, et le nombre de personnes restant à vacciner pour atteindre l'immunité collective.
+<br><i>Mise à jour : <span id="date_maj_1">--/--</span></i></p>
 
-<div class="col-md-5" style="padding-top: 20px;">
-<div style="width: 200px; height: 200px;">
-<table style="width:100%; height:100%" id="tableauVaccin">
+<div class="shadow">
+<h2 id="nb_vaccines">--</h2>
+<b>Personnes vaccinées</b><br>
+Nombre de personnes ayant reçu au moins une dose de vaccin contre la Covid19 en France (soit <span id="proportionVaccinesBox">--</span>%).<br>
+<i>Mise à jour : <span id="date_maj_2">--/--</span></i>
 </div>
+
+<h2 style="margin-top : 80px;">Proportion de personnes vaccinées</h2>
+Chaque carré correspond à 1% des français. Les carrés verts <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:rgb(45, 189, 84);" /></svg> correspondent aux français ayant reçu au moins une dose de vaccin (deux sont nécessaires). Les carrés rouge vif <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:rgb(237, 88, 88);" /></svg> représentent les français qu'il faut vacciner avant d'atteindre le taux d'immunité collective (environ 60%). 
+Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill: rgb(207, 169, 169);" /></svg>  représentent les autres français non vaccinés. <i>Mise à jour : <span id="date_maj_3">--/--</span></i>
+
+<div class="row">
+    <div class="col-md-4" style="padding-top: 20px;">
+        <div style="width: 300px; height: 300px;">
+            <table style="width:100%; height:100%" id="tableauVaccin"></table>
+        </div>
+    </div>
+    <br>
+    <div class="col-md-4" style="padding-top: 20px;">
+        
+        <span style="font-size: 200%; color: rgb(45, 189, 84)"><span id="proportionVaccines">--</span>%</span><br> des français ont reçu au moins une dose de vaccin. <br><br> 
+        Il reste à vacciner au moins <br><span style="font-size: 200%; color: rgb(237, 88, 88);"><span id="proportionAVaccinerImmu">--</span>%</span><br>des français avant d'atteindre un taux de vaccination de 60% (immunité collective). <br>
+    </div>
 </div>
-    
-</table>
+<br>
+
+<div class="alert-data" style="margin-top: 15px;">
+    <span style="font-size: 80%;">
+        <b>Source des données</b> - À ce jour, aucune donnée officielle n'a été communiquée. Le nombre de personnes vaccinées provient des données reccueillies par CovidTracker. Cette page sera mise à jour dès publication de données officielles par le Ministère de la Santé, ou Santé publique France. <a href="https://covidtracker.fr/vaccintracker-source">Détail des données.</a>
+    </span>
+</div>
+
+<h2 style="margin-top : 80px;">Autorisation des vaccins</h2>
+<div style="border: 0px solid grey; background-color: rgba(128, 128, 128, 0.1); border-radius: 7px; padding: 12px;">
+L'Union Européenne a passé des commandes pour 6 vaccins différents. 1 est autorisé, 1 en cours d'autorisation et 4 non terminés. <i>Mise à jour : 28/12.</i><br><br>
+<h3 style="margin-top : 10px;">Vaccins autorisés</h3>
+<button class="shadow-btn-green"><b>🇺🇸🇩🇪 Pfizer-BioNTech</b><br>Phase 3 terminée<br>Type : ARN messager<br>Prêt : fin 2020<br>Conservation : -70°C<br>Commandes UE : 200M (+ option 100M)<br>Statut : autorisé</button>
+
+<h3 style="margin-top : 50px;">Vaccins en cours d'autorisation</h3>
+
+<button class="shadow-btn-orange"><b>🇺🇸 Moderna</b><br>Phase 3 terminée<br>Type : ARN messager<br>Prêt : fin 2020<br>Conservation : -20°C (6 mois), +5°C (1 mois)<br>Commandes UE : 80M (+ option 80M)<br>Autorisation : Décision UE le 6 janvier</button>
+
+<h3 style="margin-top : 50px;">Vaccins non terminés</h3>
+<button class="shadow-btn"><b>🇬🇧🇸🇪 AstraZeneca/Oxford</b><br>Phase 3/3<br>Type : Vecteur viral<br>Prêt : fin 2020<br>Conservation : +5°C (6 mois)<br>Commandes UE : 300M (+ option 100M)<br>Statut : non autorisé</button>
+<button class="shadow-btn"><b>🇺🇸🇧🇪 Johnson&Johnson</b><br>Phase 3/3<br>Type : Vecteur viral<br>Prêt : fin janvier 2021<br>Conservation : +5°C<br>Commandes UE : 200M (+ option 200M)<br>Statut : non autorisé</button>
+<button class="shadow-btn"><b>🇩🇪 CureVac</b><br>Phase 2/3<br>Type : ARN messager<br>Prêt : 1er semestre 2021<br>Conservation : -60°C (3 mois), +5°C (3 mois)<br>Commandes UE : 225M (+ option 180M)<br>Statut : non autorisé</button>
+<button class="shadow-btn"><b>🇫🇷🇬🇧 Sanofi-GSK</b><br>Phase 2/3<br>Type : Protéines virales<br>Prêt : fin 2021<br>Conservation : +5°C<br>Commandes UE : 300M<br>Statut : non autorisé</button>
+</div>
+<br>
+<h2>Quand est-ce que sera atteinte l'immunité collective ?</h2>
+Sur VaccinTracker, le taux de 60% a été choisi comme seuil d'immunité collective. Cependant, on ne peut pas aujourd'hui connaître ce taux précisément. 
+La vidéo suivante du média Le Monde explique très bien la problématique à mon sens :
+<br><br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bjFtFMilb34" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<br>
+<h2 style="margin-top : 80px;">Quand pourrez-vous vous faire vacciner ?</h2>
+<h3 style="margin-top : 20px;">Phase 1 (en cours) : janvier et février 2021</h3>
+<ul>
+    <li>Personnes âgées séjournant dans un établissement collectif (type EHPAD) ;</li>
+    <li>Personnel soignant dit "à risque" (plus de 65 ans et/ou avec comorbidité).</li>
+</ul>
+
+<h3 style="margin-top : 50px;">Phase 2 : février / mars 2021</h3>
+<ul>
+    <li>Personnes âgées de plus de 75 ans en priorité ; puis personnes âgées de plus de 65 ans dans un second temps,</li>
+    <li>Professionels de santé ou médico-social (âgé de plus de 50 ans et/ou avec comorbidité).</li>
+</ul>
+
+<h3 style="margin-top : 50px;">Phase 3 : fin juin / début juillet 2021</h3>
+<ul>
+    <li>Personnes âgées de plus de 50 ans,</li>
+    <li>Personnes travaillant dans un secteur "essentiel",</li>
+    <li>Personne vulnérable ou précaire,</li>
+    <li>Personne majeure vivant dans un hébergement confiné ou un lieu clos*.</li>
+</ul>
+<br>
+(*) Les secteurs considérés comme "essentiels" sont les domaines de la sécurité, de l'éducation et de l'alimentaire, indispensables "au fonctionnement du pays en période épidémique", selon le ministère de la Santé.
+(**) Le ministère de la Santé ne donne pas plus de précisions concernant "les hébergements confinés ou les lieux clos". Interrogée par franceinfo sur cette question, la DGS donne uniquement pour exemple les "foyers de travailleurs migrants".
+<br>
+<h2 style="margin-top : 80px;">Vaccination dans le monde</h2>
+Ce graphique présente le nombre de doses administrées pour 100 personnes de chaque habitant. Pour la plupart des vaccins, 2 doses sont nécessaires. L'immunité collective serait atteinte à partir d'environ 120 doses pour 100 habitants.
+<iframe src="https://ourworldindata.org/grapher/covid-vaccination-doses-per-capita?tab=chart&stackMode=absolute&time=latest&region=World" loading="lazy" style="width: 100%; height: 600px; border: 0px none;"></iframe>
+<br>
+<br>
+<br>
+Auteur : Guillaume Rozier
+
 
 <style>
+p{
+    font-size: 120%;
+}
+
+.shadow-btn {
+        border: 0px solid black;
+        padding: 12px;
+        font-size: 100%;
+        border-radius: 7px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        margin-top: 2px;
+        text-align: left;
+        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+        max-width: 350px;
+        background: #ffffff;
+    }
+
+.shadow-btn-green {
+    border: 0px solid black;
+    padding: 12px;
+    font-size: 100%;
+    border-radius: 7px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    margin-top: 2px;
+    text-align: left;
+    box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px rgba(0, 128, 0, 0.317);
+    max-width: 350px;
+    background: #ffffff;
+}
+
+.shadow-btn-orange {
+    border: 0px solid black;
+    padding: 12px;
+    font-size: 100%;
+    border-radius: 7px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    margin-top: 2px;
+    text-align: left;
+    box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px rgba(128, 115, 0, 0.317);
+    max-width: 350px;
+    background: #ffffff;
+}
+
+.shadow-btn-red {
+    border: 0px solid black;
+    padding: 12px;
+    font-size: 100%;
+    border-radius: 7px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    margin-top: 2px;
+    text-align: left;
+    box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px rgba(128, 0, 0, 0.317);
+    max-width: 350px;
+    background: #ffffff;
+}
+
+.shadow {
+        border: 0px solid black;
+        padding: 12px;
+        border-radius: 7px;
+        text-align: left;
+        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+        max-width: 350px;
+        background: #ffffff;
+        margin-top: 30px;
+    }
+
 table, tr, td {
   border: 1px solid white;
+}
+
+body {
+    font-size: 16px;
 }
 
 td {
     width: 1%;
     height: 1%;
 }
+
 
 .green {
     background-color: rgb(45, 189, 84);
@@ -30,21 +191,36 @@ td {
     background-color: rgb(207, 169, 169);
 }
 
+.blink_me {
+  animation: blinker 3s ease infinite;
+  animation-delay: 2s;
+}
+
+@keyframes blinker {
+  50% {
+    background-color: green;
+  }
+}
 
 </style>
 
 <script>
-
+function doStuff() {
+   console.log("hello!");
+}
+setInterval(doStuff, 1000);
 
 var html = ""
-dejaVaccines = 0.5;
+dejaVaccinesnb = 70
+date_maj = "29/12 à 12h00"
+dejaVaccines = dejaVaccinesnb*100/67000000;
 restantaVaccinerImmunite = 60 - dejaVaccines
 restantaVaccinerAutres = 100
 
 tableVaccin();
 function tableVaccin(){
     const table = document.getElementById("tableauVaccin");
-
+    var first_red = true;
     for(i=0; i<10; i++){
         html += "<tr>"
         let row = table.insertRow();
@@ -56,16 +232,36 @@ function tableVaccin(){
 
             if(caseNb <= dejaVaccines){
                 newrow.classList.add("green");
-            }else if(caseNb <= 60){
+                
+                
+            } else if(caseNb <= 60){
                 newrow.classList.add("red");
+                if(first_red){
+                    newrow.classList.add("blink_me");
+                    first_red = false;
+                }
             } else {
                 newrow.classList.add("grey");
             }
         }
 
     }
+}
 
-    console.log(html)
+majValeurs();
+function majValeurs(){
+    document.getElementById("nb_vaccines").innerHTML = dejaVaccinesnb;
+    document.getElementById("proportionVaccines").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(5);
+    document.getElementById("proportionVaccinesBox").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(5);
+    document.getElementById("proportionAVaccinerImmu").innerHTML = (Math.round(restantaVaccinerImmunite*10000000)/10000000).toFixed(5);
+    document.getElementById("date_maj_1").innerHTML = date_maj;
+    document.getElementById("date_maj_2").innerHTML = date_maj;
+    document.getElementById("date_maj_3").innerHTML = date_maj;
+
 }
     
 </script>
+
+<!-- /wp:html -->
+
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">☕️ Offrez-moi un café</a></div>
