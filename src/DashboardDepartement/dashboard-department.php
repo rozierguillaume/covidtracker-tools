@@ -215,7 +215,6 @@
                 } else if (typeCarte == 'evolution-cas') {
                     $('#titreCarte').html("Évolution du nombre de cas sur les 7 derniers jours");
                     $('#descriptionCarte').html("Lecture : du rouge signifie une augmentation du nombre de cas sur les 7 derniers jours par rapport aux 7 jours précédents");
-
                     tableauValeurs = valeurs_evolution;
                     tableauCouleurs = couleurs_evolution;
                     nomDonnee = "incidence_evol";
@@ -227,7 +226,7 @@
                     tableauCouleurs = couleurs_positivite;
                     nomDonnee = "taux_positivite";
                 } else if (typeCarte == 'incidence-hospitalisations') {
-                    $('#titreCarte').html("Admissions quotidiennes à l'hôpital avec Covid19");
+                    $('#titreCarte').html("Admissions à l'hôpital avec Covid19");
                     $('#descriptionCarte').html("cette semaine et pour 100k habitants de chaque département");
                     tableauValeurs = valeurs_hosp;
                     tableauCouleurs = couleurs_hosp;
@@ -246,7 +245,7 @@
                     nomDonnee = "lits_hosp_evol";
                     pourcentage = true;
                 } else if (typeCarte == 'incidence-deces') {
-                    $('#titreCarte').html("Nombre de décès quotidiens avec Covid19");
+                    $('#titreCarte').html("Nombre de décès avec Covid19");
                     $('#descriptionCarte').html("cette semaine pour 100k habitants.");
                     tableauValeurs = valeurs_dc;
                     tableauCouleurs = couleurs_dc;
@@ -259,7 +258,7 @@
                     nomDonnee = "incidence_dc_evol";
                     pourcentage = true;
                 } else if (typeCarte == 'incidence-reanimations') {
-                    $('#titreCarte').html("Admissions quotidiennes à l'hôpital avec Covid19");
+                    $('#titreCarte').html("Admissions à l'hôpital avec Covid19");
                     $('#descriptionCarte').html("cette semaine et pour 100k habitants de chaque département");
                     tableauValeurs = valeurs_rea;
                     tableauCouleurs = couleurs_rea;
