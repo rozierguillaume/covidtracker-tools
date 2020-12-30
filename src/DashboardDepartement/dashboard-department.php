@@ -127,7 +127,7 @@
             var donneesDepartements;
             var donneesFrance;
             var dateMaj;
-            var typeCarte = 'cas';
+            var typeCarte = 'incidence-cas';
 
             fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/incidence_departements.json')
                 .then(response => {
@@ -442,8 +442,10 @@
                 typeCarteChoisi = $(this).parent().data('carte');
                 if (typeCarte != typeCarteChoisi) {
                     typeCarte = typeCarteChoisi;
-                    $("#choixTypeCarte button").removeClass('selected');
-                    $(this).parent('.btn-group').children('button').addClass('selected');
+                    $("#choixTypeCarte button.selected").removeClass('selected');
+                    $("#choixTypeCarte li a.selected").removeClass('selected');
+                    $(this).parents('.btn-group').first().children('button').addClass('selected');
+                    $(this).addClass('selected');
                     colorerCarte();
                 }
                 // if (typeCarte == 'cas'){
@@ -525,6 +527,11 @@
         stroke-width: 1.5;
     }
 
+    #descriptionCarte{
+        font-size: 16px;
+        font-weight: bold;
+    }
+
     #map .separator:hover {
         stroke: #ccc;
         fill: none !important;
@@ -539,6 +546,10 @@
         background: #547096;
         border-color: #547096;
         color: #fff;
+    }
+
+    .dropdown-menu > li > a.selected {
+        background-color: #a1d1ff;
     }
 
     #choixTypeCarte, #choixTypeDonnee {

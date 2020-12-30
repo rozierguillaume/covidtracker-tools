@@ -179,11 +179,11 @@
 <!--            </div>-->
             <div id="choixTypeCarte" class="btn-group" role="group">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="btn btn-primary dropdown-toggle selected" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Cas <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li data-carte="incidence-cas"><a href="#">Incidence hebdo</a></li>
+                        <li data-carte="incidence-cas"><a href="#" class="selected">Incidence hebdo</a></li>
 <!--                        <li data-carte="evolution-cas"><a href="#">Evolution</a></li>-->
                         <li data-carte="taux-positivite"><a href="#">Taux positivité</a></li>
                     </ul>
