@@ -185,39 +185,6 @@
           media="all">
     <script type="text/javascript" src="https://covidtracker.fr/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp"
             id="jquery-core-js"></script>
-    <script type="text/javascript" id="wp-statistics-js-js-extra">
-        /* <![CDATA[ */
-        var wps_statistics_object = {"rest_url": "https:\/\/covidtracker.fr\/wp-json\/", "wpnonce": "c3a162d9b1"};
-        /* ]]> */
-    </script>
-    <script type="text/javascript"
-            src="https://covidtracker.fr/wp-content/plugins/wp-statistics/assets/js/front.min.js?ver=12.6.13"
-            id="wp-statistics-js-js"></script>
-    <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-163777724-1"
-            id="google_gtagjs-js" async=""></script>
-    <script type="text/javascript" id="google_gtagjs-js-after">
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-        gtag('set', 'developer_id.dZTNiMT', true);
-        gtag('config', 'UA-163777724-1', {"anonymize_ip": true});
-    </script>
-    <link rel="https://api.w.org/" href="https://covidtracker.fr/wp-json/">
-    <link rel="alternate" type="application/json" href="https://covidtracker.fr/wp-json/wp/v2/pages/1648">
-    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://covidtracker.fr/xmlrpc.php?rsd">
-    <link rel="wlwmanifest" type="application/wlwmanifest+xml"
-          href="https://covidtracker.fr/wp-includes/wlwmanifest.xml">
-    <meta name="generator" content="WordPress 5.5.3">
-    <link rel="shortlink" href="https://covidtracker.fr/?p=1648">
-    <link rel="alternate" type="application/json+oembed"
-          href="https://covidtracker.fr/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcovidtracker.fr%2Fdashboard-departements%2F">
-    <link rel="alternate" type="text/xml+oembed"
-          href="https://covidtracker.fr/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcovidtracker.fr%2Fdashboard-departements%2F&amp;format=xml">
-    <meta name="generator" content="Site Kit by Google 1.21.0">
     <link rel="apple-touch-icon" sizes="180x180" href="/wp-content/uploads/fbrfg/apple-touch-icon.png?v=wAMr6L4M9G">
     <link rel="icon" type="image/png" sizes="32x32" href="/wp-content/uploads/fbrfg/favicon-32x32.png?v=wAMr6L4M9G">
     <link rel="icon" type="image/png" sizes="16x16" href="/wp-content/uploads/fbrfg/favicon-16x16.png?v=wAMr6L4M9G">
