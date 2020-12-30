@@ -3,13 +3,13 @@
   
 <p>Quelle proportion des français a été vaccinée ? Combien faut-il encore vacciner de personnes avant d'atteindre l'immunité collective ? Quels sont les différents types de vaccins proposés ?
 Ce tracker permet de suivre la proportion de français déjà vaccinés contre la Covid19, et le nombre de personnes restant à vacciner pour atteindre l'immunité collective.
-<br><i>Mise à jour : <span id="date_maj_1">--/--</span></i></p>
+</p>
 
 <div class="shadow">
 <h2 id="nb_vaccines">--</h2>
 <b>Personnes vaccinées</b><br>
 Nombre de personnes ayant reçu au moins une dose de vaccin contre la Covid19 en France (soit <span id="proportionVaccinesBox">--</span>%).<br>
-<i>Mise à jour : <span id="date_maj_2">--/--</span></i>
+<i>Mise à jour : <span id="date_maj_2">--/--</span>.<br>Données : CovidTracker / Ministère de la Santé.</i>
 </div>
 
 <h2 style="margin-top : 80px;">Proportion de personnes vaccinées</h2>
@@ -33,7 +33,7 @@ Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60"
 
 <div class="alert-data" style="margin-top: 15px;">
     <span style="font-size: 80%;">
-        <b>Source des données</b> - À ce jour, aucune donnée officielle n'a été communiquée. Le nombre de personnes vaccinées provient des données reccueillies par CovidTracker. Cette page sera mise à jour dès publication de données officielles par le Ministère de la Santé, ou Santé publique France. <a href="https://covidtracker.fr/vaccintracker-source">Détail des données.</a>
+        <b>Source des données</b> : CovidTracker / Ministère de la Santé.</a>
     </span>
 </div>
 
@@ -166,7 +166,7 @@ p{
         border-radius: 7px;
         text-align: left;
         box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
-        max-width: 350px;
+        max-width: 450px;
         background: #ffffff;
         margin-top: 30px;
     }
@@ -228,7 +228,7 @@ function buildLineChart(projection_cas, labels_cas, projection_rea){
             labels: ["2020-12-27", "2020-12-28", "2020-12-29"],
             datasets: [{
                 label: 'Personnes ayant reçu au moins 1 dose',
-                data: [45, 55, 119],
+                data: [45, 55, 138],
                 borderWidth: 3,
                 backgroundColor: 'rgba(0, 168, 235, 0.5)',
                 borderColor: 'rgba(0, 168, 235, 1)'
@@ -292,8 +292,8 @@ function buildLineChart(projection_cas, labels_cas, projection_rea){
 }
 
 var html = ""
-dejaVaccinesnb = 119
-date_maj = "29/12 à 22h00"
+dejaVaccinesnb = 138
+date_maj = "30/12 à 07h00"
 dejaVaccines = dejaVaccinesnb*100/67000000;
 restantaVaccinerImmunite = 60 - dejaVaccines
 restantaVaccinerAutres = 100
@@ -335,7 +335,7 @@ function majValeurs(){
     document.getElementById("proportionVaccines").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(5);
     document.getElementById("proportionVaccinesBox").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(5);
     document.getElementById("proportionAVaccinerImmu").innerHTML = (Math.round(restantaVaccinerImmunite*10000000)/10000000).toFixed(5);
-    document.getElementById("date_maj_1").innerHTML = date_maj;
+    //document.getElementById("date_maj_1").innerHTML = date_maj;
     document.getElementById("date_maj_2").innerHTML = date_maj;
     document.getElementById("date_maj_3").innerHTML = date_maj;
 
@@ -346,3 +346,7 @@ function majValeurs(){
 <!-- /wp:html -->
 
 <div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">☕️ Offrez-moi un café</a></div>
+
+<!-- wp:spacer -->
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
