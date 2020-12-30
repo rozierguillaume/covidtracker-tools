@@ -166,101 +166,70 @@
                 $('#legendeCarte').html(content);
             }
 
+            function recupererCouleur(valeur, tableauDonnees, tableauCouleurs) {
+                for (i = 12; i > 0; i--) {
+                    if (i == 1) {
+                        return tableauCouleurs[i];
+                    } else if (valeur <= tableauDonnees[i]) {
+                        return tableauCouleurs[i];
+                    }
+                }
+                return "#c4c4cb";
+            }
+
             function colorerCarte() {
+
+                if (typeCarte == 'incidence-cas') {
+                    $('#descriptionCarte').html("Nombre de cas cette semaine pour 100k habitants.");
+                    tableauValeurs = valeurs_cas;
+                    tableauCouleurs = couleurs_cas;
+                    nomDonnee = "incidence_cas";
+                } else if (typeCarte == 'taux-positivite') {
+                    $('#descriptionCarte').html("Taux de positivité hebdomadaire");
+                    tableauValeurs = valeurs_positivite;
+                    tableauCouleurs = couleurs_positivite;
+                    nomDonnee = "taux_positivite";
+                } else if (typeCarte == 'incidence-hospitalisations') {
+                    $('#descriptionCarte').html("Nombre d'admissions à l'hôpital avec Covid19 cette semaine pour 100k habitants.");
+                    tableauValeurs = valeurs_positivite;
+                    tableauCouleurs = couleurs_positivite;
+                    nomDonnee = "incidence_hosp";
+                } else if (typeCarte == 'incidence-deces') {
+                    $('#descriptionCarte').html("Nombre de décès avec Covid19 cette semaine pour 100k habitants.");
+                    tableauValeurs = valeurs_dc;
+                    tableauCouleurs = couleurs_dc;
+                    nomDonnee = "incidence_dc";
+                } else if (typeCarte == 'incidence-reanimations') {
+                    $('#descriptionCarte').html("Nombre d'admissions en réanimation cette semaine pour 100k habitants.");
+                    tableauValeurs = valeurs_rea;
+                    tableauCouleurs = couleurs_rea;
+                    nomDonnee = "incidence_rea";
+                } else if (typeCarte == 'saturation-reanimations') {
+                    $('#descriptionCarte').html("Taux occupation lits de réanimation.");
+                    tableauValeurs = valeurs_saturation_rea;
+                    tableauCouleurs = couleurs_saturation_rea;
+                    nomDonnee = "saturation_rea";
+                } else {
+                    $('#carte path').css("fill", "#c4c4cb");
+                    return;
+                }
+
+                construireLegende(tableauValeurs, tableauCouleurs);
+
                 for (departement in donneesDepartements) {
                     // console.log(departement);
+                    //Récupération du numéor de département à partir de la select.
                     numeroDepartement = $('#listeDepartements option[value="' + departement + '"]').data("num");
                     // console.log(numeroDepartement);
+                    //Récupération des données du département.
                     donneesDepartement = donneesDepartements[departement];
                     // console.log(donneesDepartement);
+                    //Affectation du numéro de département à sa représentation sur la carte. .
                     var departementCarte = $('#carte path[data-num="' + numeroDepartement + '"]');
-
-                    if (typeCarte == 'incidence-cas') {
-                        $('#descriptionCarte').html("Nombre de cas cette semaine pour 100k habitants.");
-                        construireLegende(valeurs_cas, couleurs_cas);
-                        departementCarte.data("incidence-cas", donneesDepartement["incidence_cas"]);
-                        for (i = 12; i > 0; i--) {
-                            if (i == 1) {
-                                departementCarte.css("fill", couleurs_cas[i]);
-                                break;
-                            } else if (donneesDepartement["incidence_cas"] <= valeurs_cas[i]) {
-                                departementCarte.css("fill", couleurs_cas[i]);
-                                break;
-                            }
-                        }
-                    } else if (typeCarte == 'taux-positivite') {
-                        $('#descriptionCarte').html("Taux de positivité hebdomadaire");
-                        construireLegende(valeurs_positivite, couleurs_positivite);
-
-                        departementCarte.data("taux-positivite", donneesDepartement["taux_positivite"]);
-                        for (i = 12; i > 0; i--) {
-                            if (i == 1) {
-                                departementCarte.css("fill", couleurs_positivite[i]);
-                                break;
-                            } else if (donneesDepartement["taux_positivite"] <= valeurs_positivite[i]) {
-                                departementCarte.css("fill", couleurs_positivite[i]);
-                                break;
-                            }
-                        }
-                    } else if (typeCarte == 'incidence-hospitalisations') {
-                        $('#descriptionCarte').html("Nombre d'admissions à l'hôpital avec Covid19 cette semaine pour 100k habitants.")
-                        construireLegende(valeurs_hosp, couleurs_hosp);
-
-                        departementCarte.data("incidence-hosp", donneesDepartement["incidence_hosp"]);
-                        for (i = 12; i > 0; i--) {
-                            if (i == 1) {
-                                departementCarte.css("fill", couleurs_hosp[i]);
-                                break;
-                            } else if (donneesDepartement["incidence_hosp"] <= valeurs_hosp[i]) {
-                                departementCarte.css("fill", couleurs_hosp[i]);
-                                break;
-                            }
-                        }
-                    } else if (typeCarte == 'incidence-deces') {
-                        $('#descriptionCarte').html("Nombre de décès avec Covid19 cette semaine pour 100k habitants.")
-                        construireLegende(valeurs_dc, couleurs_dc);
-
-                        departementCarte.data("incidence-dc", donneesDepartement["incidence_dc"]);
-                        for (i = 12; i > 0; i--) {
-                            if (i == 1) {
-                                departementCarte.css("fill", couleurs_dc[i]);
-                                break;
-                            } else if (donneesDepartement["incidence_dc"] <= valeurs_dc[i]) {
-                                departementCarte.css("fill", couleurs_dc[i]);
-                                break;
-                            }
-                        }
-                    } else if (typeCarte == 'incidence-reanimations') {
-                        $('#descriptionCarte').html("Nombre d'admissions en réanimation cette semaine pour 100k habitants.")
-                        construireLegende(valeurs_rea, couleurs_rea);
-
-                        departementCarte.data("incidence-rea", donneesDepartement["incidence_rea"]);
-                        for (i = 12; i > 0; i--) {
-                            if (i == 1) {
-                                departementCarte.css("fill", couleurs_rea[i]);
-                                break;
-                            } else if (donneesDepartement["incidence_rea"] <= valeurs_rea[i]) {
-                                departementCarte.css("fill", couleurs_rea[i]);
-                                break;
-                            }
-                        }
-                    } else if (typeCarte == 'saturation-reanimations') {
-                        $('#descriptionCarte').html("Taux occupation lits de réanimation.")
-                        construireLegende(valeurs_saturation_rea, couleurs_saturation_rea);
-
-                        departementCarte.data("saturation-rea", donneesDepartement["saturation_rea"]);
-                        for (i = 12; i > 0; i--) {
-                            if (i == 1) {
-                                departementCarte.css("fill", couleurs_saturation_rea[i]);
-                                break;
-                            } else if (donneesDepartement["saturation_rea"] <= valeurs_saturation_rea[i]) {
-                                departementCarte.css("fill", couleurs_saturation_rea[i]);
-                                break;
-                            }
-                        }
-                    } else {
-                        $('#carte path').css("fill", "#c4c4cb");
-                    }
+                    //Affectation de la valeur de la donnée du département à sa représentation sur la carte. .
+                    departementCarte.data(nomDonnee, donneesDepartement[nomDonnee]);
+                    //Coloration du département sur la carte. .
+                    departementCarte.css("fill", recupererCouleur(donneesDepartement[nomDonnee], tableauValeurs, tableauCouleurs));
                 }
             }
 
@@ -273,34 +242,28 @@
 
                 if (incidenceDepartement > 100) {
                     couleurIncidence = "red"
-
                 } else if (incidenceDepartement > 50) {
                     couleurIncidence = "orange"
-
                 } else {
                     couleurIncidence = "green"
                 }
 
                 if (saturationRea > 80) {
-                    couleurSaturationRea = "red"
-
+                    couleurSaturationRea = "red
                 } else if (saturationRea > 30) {
                     couleurSaturationRea = "orange"
-
                 } else {
                     couleurSaturationRea = "green"
                 }
 
                 if (tauxPositivite >= 5) {
                     couleurTauxPositivite = "red"
-
                 } else if (tauxPositivite >= 1) {
                     couleurTauxPositivite = "orange"
                 } else {
                     couleurTauxPositivite = "green"
                 }
-
-
+                
                 if ($('#' + numeroDepartement).length > 0) {
                     return;
                 }
@@ -400,17 +363,17 @@
                 departement = $(this).data("num");
                 nomDepartement = $("#listeDepartements option[data-num='" + departement + "']").val();
                 if (typeCarte == 'incidence-cas') {
-                    $('#carte #map title').text(nomDepartement + ' (incidence : ' + $(this).data("incidence-cas") + ')');
+                    $('#carte #map title').text(nomDepartement + ' (incidence : ' + $(this).data("incidence_cas") + ')');
                 } else if (typeCarte == 'taux-positivite') {
-                    $('#carte #map title').text(nomDepartement + ' (taux positivité : ' + $(this).data("taux-positivite").toFixed(2) + ')');
+                    $('#carte #map title').text(nomDepartement + ' (taux positivité : ' + $(this).data("taux_positivite").toFixed(2) + ')');
                 } else if (typeCarte == 'incidence-hospitalisations') {
-                    $('#carte #map title').text(nomDepartement + ' (incidence : ' + $(this).data("incidence-hosp").toFixed(2) + ')');
+                    $('#carte #map title').text(nomDepartement + ' (incidence : ' + $(this).data("incidence_hosp").toFixed(2) + ')');
                 } else if (typeCarte == 'incidence-deces') {
-                    $('#carte #map title').text(nomDepartement + ' (incidence : ' + $(this).data("incidence-dc").toFixed(2) + ')');
+                    $('#carte #map title').text(nomDepartement + ' (incidence : ' + $(this).data("incidence_dc").toFixed(2) + ')');
                 } else if (typeCarte == 'incidence-reanimations') {
-                    $('#carte #map title').text(nomDepartement + ' (incidence : ' + $(this).data("incidence-rea").toFixed(2) + ')');
+                    $('#carte #map title').text(nomDepartement + ' (incidence : ' + $(this).data("incidence_rea").toFixed(2) + ')');
                 } else if (typeCarte == 'saturation-reanimations') {
-                    $('#carte #map title').text(nomDepartement + ' (taux occupation : ' + $(this).data("saturation-rea").toFixed(0) + '%)');
+                    $('#carte #map title').text(nomDepartement + ' (taux occupation : ' + $(this).data("saturation_rea").toFixed(0) + '%)');
                 } else {
                     $('#carte #map title').text(nomDepartement);
                 }
@@ -527,7 +490,7 @@
         stroke-width: 1.5;
     }
 
-    #descriptionCarte{
+    #descriptionCarte {
         font-size: 16px;
         font-weight: bold;
     }
