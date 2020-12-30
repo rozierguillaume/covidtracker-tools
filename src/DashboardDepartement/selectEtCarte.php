@@ -183,8 +183,8 @@
                         Cas <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li data-carte="incidence-cas"><a href="#" class="selected">Incidence hebdo</a></li>
-<!--                        <li data-carte="evolution-cas"><a href="#">Evolution</a></li>-->
+                        <li data-carte="incidence-cas"><a href="#" class="selected">Incidence</a></li>
+                        <li data-carte="evolution-cas"><a href="#">Evolution</a></li>
                         <li data-carte="taux-positivite"><a href="#">Taux positivité</a></li>
                     </ul>
                 </div>
@@ -193,9 +193,9 @@
                         Hospitalisations <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li data-carte="incidence-hospitalisations"><a href="#">Incidence hebdo</a></li>
-<!--                        <li><a href="#">Evolution</a></li>-->
-<!--                        <li><a href="#">Occupation</a></li>-->
+                        <li data-carte="incidence-hospitalisations"><a href="#">Incidence</a></li>
+                        <li data-carte="lits-hospitalisations"><a href="#">Lits occupés pour 100k habitants</a></li>
+                        <li data-carte="evolution-lits-hospitalisations"><a href="#">Evolution Occupation lits sur 7 j</a></li>
                     </ul>
                 </div>
 <!--                <button data-type-carte="cas" type="button" autofocus="autofocus" class="selected btn btn-primary">Cas</button>-->
@@ -208,7 +208,8 @@
                     <ul class="dropdown-menu">
                         <li data-carte="incidence-reanimations"><a href="#">Incidence hebdo</a></li>
                         <li data-carte="saturation-reanimations"><a href="#">Taux occupation</a></li>
-<!--                        <li><a href="#">Evolution</a></li>-->
+                        <li data-carte="lits-reanimations"><a href="#">Lits occupés pour 100k habitants</a></li>
+                        <li data-carte="evolution-lits-reanimations"><a href="#">Evolution Occupation lits sur 7 j</a></li>
                     </ul>
                 </div>
                 <div class="btn-group">
@@ -217,7 +218,7 @@
                     </button>
                     <ul class="dropdown-menu">
                         <li data-carte="incidence-deces"><a href="#">Incidence hebdo</a></li>
-<!--                        <li><a href="#">Evolution</a></li>-->
+                        <li data-carte="evolution-deces"><a href="#">Evolution</a></li>
                     </ul>
                 </div>
 <!--                <button data-type-carte="deces" type="button" class="btn btn-primary">Décès</button>-->

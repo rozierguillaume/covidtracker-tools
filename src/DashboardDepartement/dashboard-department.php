@@ -109,13 +109,32 @@
             var valeurs_cas = [">", "750", "650", "550", "450", "350", "300", "250", "200", "150", "100", "50", "25"]
             var couleurs_cas = ["#3c0000", "#4c0000", "#6a0000", "#840000", "#a00000", "#c40001", "#d50100", "#e20001", "#f50e07", "#f95228", "#fb9449", "#98ac3b", "#118408"]
 
+            var valeurs_evolution = [">", "40", "30", "20", "10", "5", "0", "-5", "-10", "-20", "-30", "-40", "-50"];
+            var couleurs_evolution = [
+                "#4c0000",
+                "#6a0000",
+                "#f50e07",
+                "#fb633b",
+                "#fb9449",
+                "#fbd763",
+                "#b1df52",
+                "#61c142",
+                "#56ab3d",
+                "#2e9c28",
+                "#1c7b21",
+                "#116522",
+                "#084004"];
+
+
             var valeurs_hosp = [">", "50", "45", "40", "35", "30", "25", "20", "15", "10", "9", "6", "3"];
+            var valeurs_lits_hosp = [">", "90", "80", "70", "60", "50", "40", "30", "25", "20", "15", "10", "5"];
             var couleurs_hosp = ["#3c0000", "#4c0000", "#6a0000", "#840000", "#a00000", "#c40001", "#d50100", "#e20001", "#f50e07", "#f95228", "#fb9449", "#98ac3b", "#118408"];
 
             var valeurs_positivite = [">", "25", "20", "15", "12", "10", "8", "6", "5", "4", "3", "2", "1"];
             var couleurs_positivite = ["#3c0000", "#4c0000", "#6a0000", "#840000", "#a00000", "#c40001", "#d50100", "#e20001", "#f50e07", "#f95228", "#fb9449", "#98ac3b", "#118408"];
 
             var valeurs_rea = [">", "10", "8", "6", "5", "4", "3", "2.5", "2", "1.5", "1", "0.5", "0.25"];
+            var valeurs_lits_rea = [">", "25", "20", "17.5", "15", "12.5", "10", "7.5", "5", "4", "3", "2", "1"];
             var couleurs_rea = ["#3c0000", "#4c0000", "#6a0000", "#840000", "#a00000", "#c40001", "#d50100", "#e20001", "#f50e07", "#f95228", "#fb9449", "#98ac3b", "#118408"];
 
             var valeurs_saturation_rea = [">", "300", "250", "200", "180", "150", "120", "100", "80", "60", "40", "20", "10"];
@@ -157,10 +176,18 @@
                 $("#map").addClass("animated")
             }
 
-            function construireLegende(values = [], colors = []) {
+            function construireLegende(values = [], colors = [], pourcentage = false) {
                 content = $('#legendTemplatePre').html();
                 values.map((val, idx) => {
-                    content += $('#legendTemplateMid').html().replaceAll("valeur", val).replaceAll("colorBg", colors[idx]);
+                    if (pourcentage && (val != '>')) {
+                        if (val>0){
+                            content += $('#legendTemplateMid').html().replaceAll("valeur", '+'+val + ' %').replaceAll("colorBg", colors[idx]);
+                        } else {
+                            content += $('#legendTemplateMid').html().replaceAll("valeur", val + ' %').replaceAll("colorBg", colors[idx]);
+                        }
+                    } else {
+                        content += $('#legendTemplateMid').html().replaceAll("valeur", val).replaceAll("colorBg", colors[idx]);
+                    }
                 })
                 content += $('#legendTemplatePost').html();
                 $('#legendeCarte').html(content);
@@ -178,12 +205,18 @@
             }
 
             function colorerCarte() {
-
+                pourcentage = false;
                 if (typeCarte == 'incidence-cas') {
                     $('#descriptionCarte').html("Nombre de cas cette semaine pour 100k habitants.");
                     tableauValeurs = valeurs_cas;
                     tableauCouleurs = couleurs_cas;
                     nomDonnee = "incidence_cas";
+                } else if (typeCarte == 'evolution-cas') {
+                    $('#descriptionCarte').html("Evolution du nombre de cas sur les 7 derniers jours");
+                    tableauValeurs = valeurs_evolution;
+                    tableauCouleurs = couleurs_evolution;
+                    nomDonnee = "incidence_evol";
+                    pourcentage = true;
                 } else if (typeCarte == 'taux-positivite') {
                     $('#descriptionCarte').html("Taux de positivité hebdomadaire");
                     tableauValeurs = valeurs_positivite;
@@ -191,14 +224,31 @@
                     nomDonnee = "taux_positivite";
                 } else if (typeCarte == 'incidence-hospitalisations') {
                     $('#descriptionCarte').html("Nombre d'admissions à l'hôpital avec Covid19 cette semaine pour 100k habitants.");
-                    tableauValeurs = valeurs_positivite;
-                    tableauCouleurs = couleurs_positivite;
+                    tableauValeurs = valeurs_hosp;
+                    tableauCouleurs = couleurs_hosp;
                     nomDonnee = "incidence_hosp";
+                } else if (typeCarte == 'lits-hospitalisations') {
+                    $('#descriptionCarte').html("Nombre de lits occupés à l'hôpital pour Covid19 pour 100k habitants.");
+                    tableauValeurs = valeurs_lits_hosp;
+                    tableauCouleurs = couleurs_hosp;
+                    nomDonnee = "lits_hosp";
+                } else if (typeCarte == 'evolution-lits-hospitalisations') {
+                    $('#descriptionCarte').html("Evolution du nombre de lits occupés à l'hôpital pour Covid19 sur 7 j.");
+                    tableauValeurs = valeurs_evolution;
+                    tableauCouleurs = couleurs_evolution;
+                    nomDonnee = "lits_hosp_evol";
+                    pourcentage = true;
                 } else if (typeCarte == 'incidence-deces') {
                     $('#descriptionCarte').html("Nombre de décès avec Covid19 cette semaine pour 100k habitants.");
                     tableauValeurs = valeurs_dc;
                     tableauCouleurs = couleurs_dc;
                     nomDonnee = "incidence_dc";
+                } else if (typeCarte == 'evolution-deces') {
+                    $('#descriptionCarte').html("Evolution du nombre de décès sur les 7 derniers jours.");
+                    tableauValeurs = valeurs_evolution;
+                    tableauCouleurs = couleurs_evolution;
+                    nomDonnee = "incidence_dc_evol";
+                    pourcentage = true;
                 } else if (typeCarte == 'incidence-reanimations') {
                     $('#descriptionCarte').html("Nombre d'admissions en réanimation cette semaine pour 100k habitants.");
                     tableauValeurs = valeurs_rea;
@@ -209,12 +259,23 @@
                     tableauValeurs = valeurs_saturation_rea;
                     tableauCouleurs = couleurs_saturation_rea;
                     nomDonnee = "saturation_rea";
+                } else if (typeCarte == 'lits-reanimations') {
+                    $('#descriptionCarte').html("Nombre de lits de réanimation occupés à l'hôpital pour Covid19 pour 100k habitants.");
+                    tableauValeurs = valeurs_lits_rea;
+                    tableauCouleurs = couleurs_hosp;
+                    nomDonnee = "lits_rea";
+                } else if (typeCarte == 'evolution-lits-reanimations') {
+                    $('#descriptionCarte').html("Evolution du nombre de lits de réanimation occupés à l'hôpital pour Covid19 sur 7 j.");
+                    tableauValeurs = valeurs_evolution;
+                    tableauCouleurs = couleurs_evolution;
+                    nomDonnee = "lits_rea_evol";
+                    pourcentage = true;
                 } else {
                     $('#carte path').css("fill", "#c4c4cb");
                     return;
                 }
 
-                construireLegende(tableauValeurs, tableauCouleurs);
+                construireLegende(tableauValeurs, tableauCouleurs, pourcentage);
 
                 for (departement in donneesDepartements) {
                     // console.log(departement);
@@ -241,29 +302,29 @@
                 incidenceFrance = Math.round(donneesFrance["incidence_cas"])
 
                 if (incidenceDepartement > 100) {
-                    couleurIncidence = "red"
+                    couleurIncidence = "red";
                 } else if (incidenceDepartement > 50) {
-                    couleurIncidence = "orange"
+                    couleurIncidence = "orange";
                 } else {
-                    couleurIncidence = "green"
+                    couleurIncidence = "green";
                 }
 
                 if (saturationRea > 80) {
-                    couleurSaturationRea = "red
+                    couleurSaturationRea = "red";
                 } else if (saturationRea > 30) {
-                    couleurSaturationRea = "orange"
+                    couleurSaturationRea = "orange";
                 } else {
-                    couleurSaturationRea = "green"
+                    couleurSaturationRea = "green";
                 }
 
                 if (tauxPositivite >= 5) {
-                    couleurTauxPositivite = "red"
+                    couleurTauxPositivite = "red";
                 } else if (tauxPositivite >= 1) {
-                    couleurTauxPositivite = "orange"
+                    couleurTauxPositivite = "orange";
                 } else {
-                    couleurTauxPositivite = "green"
+                    couleurTauxPositivite = "green";
                 }
-                
+
                 if ($('#' + numeroDepartement).length > 0) {
                     return;
                 }
@@ -331,7 +392,6 @@
             $('body').on('click', '.masquerDepartement', function (e) {
                 e.preventDefault();
                 numeroDepartement = $(this).parents('.departement').data("num");
-                console.log($("select option[data-num='" + numeroDepartement + "']"));
                 $("select option[data-num='" + numeroDepartement + "']").prop("selected", false);
                 $('#map path[data-num=' + numeroDepartement + ']').removeClass('selected');
                 $("#listeDepartements").trigger('change');
@@ -364,16 +424,44 @@
                 nomDepartement = $("#listeDepartements option[data-num='" + departement + "']").val();
                 if (typeCarte == 'incidence-cas') {
                     $('#carte #map title').text(nomDepartement + ' (incidence : ' + $(this).data("incidence_cas") + ')');
+                } else if (typeCarte == 'evolution-cas') {
+                    signe = '';
+                    if ($(this).data("incidence_evol") > 0) {
+                        signe = '+';
+                    }
+                    $('#carte #map title').text(nomDepartement + ' (evolution cas : ' + signe + $(this).data("incidence_evol") + '%)');
                 } else if (typeCarte == 'taux-positivite') {
                     $('#carte #map title').text(nomDepartement + ' (taux positivité : ' + $(this).data("taux_positivite").toFixed(2) + ')');
                 } else if (typeCarte == 'incidence-hospitalisations') {
                     $('#carte #map title').text(nomDepartement + ' (incidence : ' + $(this).data("incidence_hosp").toFixed(2) + ')');
+                } else if (typeCarte == 'lits-hospitalisations') {
+                    $('#carte #map title').text(nomDepartement + ' (lits occupés : ' + $(this).data("lits_hosp").toFixed(2) + ')');
+                } else if (typeCarte == 'evolution-lits-hospitalisations') {
+                    signe = '';
+                    if ($(this).data("lits_hosp_evol") > 0) {
+                        signe = '+';
+                    }
+                    $('#carte #map title').text(nomDepartement + ' (evolution lits occupés : ' + signe + $(this).data("lits_hosp_evol") + '%)');
                 } else if (typeCarte == 'incidence-deces') {
                     $('#carte #map title').text(nomDepartement + ' (incidence : ' + $(this).data("incidence_dc").toFixed(2) + ')');
+                } else if (typeCarte == 'evolution-deces') {
+                    signe = '';
+                    if ($(this).data("incidence_dc_evol") > 0) {
+                        signe = '+';
+                    }
+                    $('#carte #map title').text(nomDepartement + ' (evolution décès : ' + signe + $(this).data("incidence_dc_evol").toFixed(2) + '%)');
                 } else if (typeCarte == 'incidence-reanimations') {
                     $('#carte #map title').text(nomDepartement + ' (incidence : ' + $(this).data("incidence_rea").toFixed(2) + ')');
                 } else if (typeCarte == 'saturation-reanimations') {
                     $('#carte #map title').text(nomDepartement + ' (taux occupation : ' + $(this).data("saturation_rea").toFixed(0) + '%)');
+                } else if (typeCarte == 'lits-reanimations') {
+                    $('#carte #map title').text(nomDepartement + ' (lits réa occupés : ' + $(this).data("lits_rea").toFixed(2) + ')');
+                } else if (typeCarte == 'evolution-lits-reanimations') {
+                    signe = '';
+                    if ($(this).data("lits_rea_evol") > 0) {
+                        signe = '+';
+                    }
+                    $('#carte #map title').text(nomDepartement + ' (evolution lits réa occupés : ' + signe + $(this).data("lits_rea_evol") + '%)');
                 } else {
                     $('#carte #map title').text(nomDepartement);
                 }
