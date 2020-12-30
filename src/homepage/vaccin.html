@@ -37,11 +37,17 @@ Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60"
     </span>
 </div>
 
+<h2 style="margin-top : 80px;">Évolution</h2>
+L'objectif est de vacciner 1 million de personnes en janvier 2021. Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moins 1 dose de vaccin Covid19 :
+<div>
+    <canvas id="lineVacChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
+</div>
+
 <h2 style="margin-top : 80px;">Autorisation des vaccins</h2>
 <div style="border: 0px solid grey; background-color: rgba(128, 128, 128, 0.1); border-radius: 7px; padding: 12px;">
 L'Union Européenne a passé des commandes pour 6 vaccins différents. 1 est autorisé, 1 en cours d'autorisation et 4 non terminés. <i>Mise à jour : 28/12.</i><br><br>
 <h3 style="margin-top : 10px;">Vaccins autorisés</h3>
-<button class="shadow-btn-green"><b>🇺🇸🇩🇪 Pfizer-BioNTech</b><br>Phase 3 terminée<br>Type : ARN messager<br>Prêt : fin 2020<br>Conservation : -70°C<br>Commandes UE : 200M (+ option 100M)<br>Statut : autorisé</button>
+<button class="shadow-btn-green"><b>🇺🇸🇩🇪 Pfizer-BioNTech</b><br>Phase 3 terminée<br>Type : ARN messager<br>Prêt : fin 2020<br>Conservation : -70°C<br>Commandes UE : 300M<br>Statut : autorisé</button>
 
 <h3 style="margin-top : 50px;">Vaccins en cours d'autorisation</h3>
 
@@ -204,15 +210,90 @@ td {
 
 </style>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+
 <script>
-function doStuff() {
-   console.log("hello!");
+
+var lineChart;
+buildLineChart();
+function buildLineChart(projection_cas, labels_cas, projection_rea){
+    
+    var ctx = document.getElementById('lineVacChart').getContext('2d');
+
+    lineChart = new Chart(ctx, { 
+        type: 'line',
+        data: {
+            labels: ["2020-12-27", "2020-12-28", "2020-12-29"],
+            datasets: [{
+                label: 'Personnes ayant reçu au moins 1 dose',
+                data: [45, 55, 119],
+                borderWidth: 3,
+                backgroundColor: 'rgba(0, 168, 235, 0.5)',
+                borderColor: 'rgba(0, 168, 235, 1)'
+            },
+            ]
+        },
+        options: {
+            legend: {
+                display: false
+            },
+            scales: {
+                yAxes: [{
+                    gridLines: {
+                        display: false
+                     },
+                    ticks: {
+                        min: 0
+                    },
+                    
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: false
+                     },
+                     ticks: {
+                        maxRotation: 0,
+                        minRotation: 0,
+                        maxTicksLimit: 6,
+                        callback: function(value, index, values) {
+                        return value.slice(8) + "/" + value.slice(5, 7);
+                     }
+                     }
+
+                }]
+            },
+            annotation: {
+            events: ["click"],
+            annotations: [
+                {
+                drawTime: "afterDatasetsDraw",
+                id: "hline",
+                type: "line",
+                mode: "horizontal",
+                scaleID: "y-axis-0",
+                value: 500,
+                borderColor: "green",
+                borderWidth: 3,
+                label: {
+                    backgroundColor: "green",
+                    content: "500",
+                    enabled: true
+                },
+                onClick: function(e) {
+                    console.log("Annotation", e.type, this);
+                }
+                }
+            ]
+        }
+        }
+    });
 }
-setInterval(doStuff, 1000);
 
 var html = ""
-dejaVaccinesnb = 70
-date_maj = "29/12 à 12h00"
+dejaVaccinesnb = 119
+date_maj = "29/12 à 22h00"
 dejaVaccines = dejaVaccinesnb*100/67000000;
 restantaVaccinerImmunite = 60 - dejaVaccines
 restantaVaccinerAutres = 100
