@@ -223,9 +223,10 @@
                 </div>
 <!--                <button data-type-carte="deces" type="button" class="btn btn-primary">Décès</button>-->
             </div>
-
+            
+            <br>
             <span id="titreCarte"></span><br>
-            <span id="descriptionCarte">
+            <span id="descriptionCarte"></span>
             
             <div class="col-xs-10">
                 <div id="carte">
