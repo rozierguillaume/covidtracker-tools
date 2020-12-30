@@ -183,9 +183,9 @@
                         Cas <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li data-carte="incidence-cas"><a href="#" class="selected">Incidence</a></li>
-                        <li data-carte="evolution-cas"><a href="#">Evolution</a></li>
-                        <li data-carte="taux-positivite"><a href="#">Taux positivité</a></li>
+                        <li data-carte="incidence-cas"><a href="#" class="selected">Taux d'incidence</a></li>
+                        <li data-carte="evolution-cas"><a href="#">Évolution du taux d'incidence</a></li>
+                        <li data-carte="taux-positivite"><a href="#">Taux de positivité</a></li>
                     </ul>
                 </div>
                 <div class="btn-group">
@@ -193,9 +193,9 @@
                         Hospitalisations <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li data-carte="incidence-hospitalisations"><a href="#">Incidence</a></li>
-                        <li data-carte="lits-hospitalisations"><a href="#">Lits occupés pour 100k habitants</a></li>
-                        <li data-carte="evolution-lits-hospitalisations"><a href="#">Evolution Occupation lits sur 7 j</a></li>
+                        <li data-carte="incidence-hospitalisations"><a href="#">Admissions</a></li>
+                        <li data-carte="lits-hospitalisations"><a href="#">Occupation</a></li>
+                        <li data-carte="evolution-lits-hospitalisations"><a href="#">Évolution de l'occupation</a></li>
                     </ul>
                 </div>
 <!--                <button data-type-carte="cas" type="button" autofocus="autofocus" class="selected btn btn-primary">Cas</button>-->
@@ -206,10 +206,10 @@
                         Réanimations <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li data-carte="incidence-reanimations"><a href="#">Incidence hebdo</a></li>
-                        <li data-carte="saturation-reanimations"><a href="#">Taux occupation</a></li>
-                        <li data-carte="lits-reanimations"><a href="#">Lits occupés pour 100k habitants</a></li>
-                        <li data-carte="evolution-lits-reanimations"><a href="#">Evolution Occupation lits sur 7 j</a></li>
+                        <li data-carte="incidence-reanimations"><a href="#">Admissions</a></li>
+                        <li data-carte="saturation-reanimations"><a href="#">Taux d'occupation</a></li>
+                        <li data-carte="lits-reanimations"><a href="#">Occupation</a></li>
+                        <li data-carte="evolution-lits-reanimations"><a href="#">Évolution de l'occupation</a></li>
                     </ul>
                 </div>
                 <div class="btn-group">
@@ -217,14 +217,15 @@
                         Décès <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li data-carte="incidence-deces"><a href="#">Incidence hebdo</a></li>
-                        <li data-carte="evolution-deces"><a href="#">Evolution</a></li>
+                        <li data-carte="incidence-deces"><a href="#">Taux d'incidence</a></li>
+                        <li data-carte="evolution-deces"><a href="#">Évolution du taux d'incidence</a></li>
                     </ul>
                 </div>
 <!--                <button data-type-carte="deces" type="button" class="btn btn-primary">Décès</button>-->
             </div>
 
-            <p id="descriptionCarte"></p>
+            <span id="titreCarte"></span><br>
+            <span id="descriptionCarte">
             
             <div class="col-xs-10">
                 <div id="carte">
