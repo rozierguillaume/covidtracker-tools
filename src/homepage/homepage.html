@@ -276,7 +276,9 @@
        .then(json => {
           this.data_indicateurs = json;
           console.log(data_indicateurs)
+          console.log("yes1")
           updateDataDivIndicateurs();
+          
           
         })
        .catch(function () {
@@ -295,7 +297,10 @@ function updateDataDivSidep(){
 }
 
 function updateDataDivIndicateurs(){
+  console.log("yes2")
+  console.log(data_indicateurs["taux_incidence"])
   document.getElementById("taux_incidence").innerHTML = data_indicateurs["taux_incidence"]["valeur"];
+  console.log("yes")
   document.getElementById("reffectif").innerHTML = data_indicateurs["reffectif"]["valeur"];
   document.getElementById("sat_rea").innerHTML = data_indicateurs["taux_saturation_rea"]["valeur"] + "%";
 

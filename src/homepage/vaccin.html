@@ -1,15 +1,27 @@
-
 <!-- wp:html -->
   
 <p>Quelle proportion des français a été vaccinée ? Combien faut-il encore vacciner de personnes avant d'atteindre l'immunité collective ? Quels sont les différents types de vaccins proposés ?
 Ce tracker permet de suivre la proportion de français déjà vaccinés contre la Covid19, et le nombre de personnes restant à vacciner pour atteindre l'immunité collective.
 </p>
+<!-- /wp:html -->
 
-<div class="shadow">
-<h2 id="nb_vaccines">--</h2>
-<b>Personnes vaccinées</b><br>
-Nombre de personnes ayant reçu au moins une dose de vaccin contre la Covid19 en France (soit <span id="proportionVaccinesBox">--</span>%).<br>
-<i>Mise à jour : <span id="date_maj_2">--/--</span>.<br>Données : CovidTracker / Ministère de la Santé.</i>
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">🫖 Offrez-moi un thé</a></div>
+
+<!-- wp:html -->
+<div class="wrap">
+    <div class="one">
+        <h2 id="nb_vaccines">--</h2>
+        <b>Personnes vaccinées</b><br>
+        Nombre cumulé de personnes ayant reçu au moins une dose de vaccin contre la Covid19 en France (soit <span id="proportionVaccinesBox">--</span>%).<br>
+        <span style="font-size: 70%;"><i>Mise à jour : <span id="date_maj_2">--/--</span>. Données : CovidTracker/Ministère de la Santé.</i></span>
+    </div>
+
+    <div class="two">
+        <h2 id="nb_vaccines_24h">--</h2>
+        <b>Doses injectées en 24h</b><br>
+        Nombre de personnes ayant reçu au moins une dose de vaccin contre la Covid19 en France ces dernières 24h<br>
+        <span style="font-size: 70%;"><i>Mise à jour : <span id="date_maj_1">--/--</span>. Données : CovidTracker/Ministère de la Santé.</i></span>
+    </div>
 </div>
 
 <h2 style="margin-top : 80px;">Proportion de personnes vaccinées</h2>
@@ -38,7 +50,12 @@ Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60"
 </div>
 
 <h2 style="margin-top : 80px;">Évolution</h2>
-L'objectif est de vacciner 1 million de personnes en janvier 2021. Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moins 1 dose de vaccin Covid19 :
+L'objectif est de vacciner 1 million de personnes en janvier 2021. Pour atteindre cet objectif, il faudrait vacciner <b><span id="objectif_quotidien"></span> personnes</b> chaque jour entre aujourd'hui et le 31 janvier 2021.
+<br><br>
+Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moins 1 dose de vaccin Covid19.
+<br>
+<br>
+
 <div>
     <canvas id="lineVacChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
 </div>
@@ -82,9 +99,9 @@ La vidéo suivante du média Le Monde explique très bien la problématique à m
 <h3 style="margin-top : 50px;">Phase 3 : fin juin / début juillet 2021</h3>
 <ul>
     <li>Personnes âgées de plus de 50 ans,</li>
-    <li>Personnes travaillant dans un secteur "essentiel",</li>
+    <li>Personnes travaillant dans un secteur "essentiel" (*),</li>
     <li>Personne vulnérable ou précaire,</li>
-    <li>Personne majeure vivant dans un hébergement confiné ou un lieu clos*.</li>
+    <li>Personne majeure vivant dans un hébergement confiné ou un lieu clos (**).</li>
 </ul>
 <br>
 (*) Les secteurs considérés comme "essentiels" sont les domaines de la sécurité, de l'éducation et de l'alimentaire, indispensables "au fonctionnement du pays en période épidémique", selon le ministère de la Santé.
@@ -95,11 +112,51 @@ Ce graphique présente le nombre de doses administrées pour 100 personnes de ch
 <iframe src="https://ourworldindata.org/grapher/covid-vaccination-doses-per-capita?tab=chart&stackMode=absolute&time=latest&region=World" loading="lazy" style="width: 100%; height: 600px; border: 0px none;"></iframe>
 <br>
 <br>
+Ce graphique présente le nombre de doses administrées dans chaque pays.
+<iframe src="https://ourworldindata.org/grapher/cumulative-covid-vaccinations?tab=chart&stackMode=absolute&time=latest&region=World" loading="lazy" style="width: 100%; height: 600px; border: 0px none;"></iframe>
 <br>
-Auteur : Guillaume Rozier
+<br>
+Développé bénévolement par <a href="https://twitter.com/guillaumerozier">Guillaume Rozier</a>
 
 
 <style>
+.wrap {
+        display: flex;
+        margin-top: 0px;
+        flex-wrap: wrap;
+  }
+  .wrap>* {
+        flex: 1 1 200px;
+    }
+
+    .one {
+        border: 0px solid black;
+        margin-top: 20px;
+        padding: 10px 10px 10px 10px;
+        border-radius: 7px;
+        margin-right: 15px;
+        max-width: 400px;
+        text-align: left;
+        /*box-shadow: 6px 4px 25px #c3d19d;*/
+        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+        width: 100%;
+        background: #ffffff;
+  }
+
+    .two {
+        border: 0px solid black;
+        margin-top: 20px;
+        padding: 10px 10px 10px 10px;
+        border-radius: 7px;
+        max-width: 400px;
+        text-align: left;
+        /*  box-shadow: 6px 4px 25px #ffa29c;*/
+        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+        background: #ffffff;
+        width: 100%;
+        
+  }
+
 p{
     font-size: 120%;
 }
@@ -210,14 +267,165 @@ td {
 
 </style>
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 
 <script>
 
+function numberWithSpaces(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "&nbsp;");
+  }
+
+
+// ref: http://stackoverflow.com/a/1293163/2343
+    // This will parse a delimited string into an array of
+    // arrays. The default delimiter is the comma, but this
+    // can be overriden in the second argument.
+    function CSVToArray( strData, strDelimiter ){
+        // Check to see if the delimiter is defined. If not,
+        // then default to comma.
+        strDelimiter = (strDelimiter || ",");
+
+        // Create a regular expression to parse the CSV values.
+        var objPattern = new RegExp(
+            (
+                // Delimiters.
+                "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
+
+                // Quoted fields.
+                "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
+
+                // Standard fields.
+                "([^\"\\" + strDelimiter + "\\r\\n]*))"
+            ),
+            "gi"
+            );
+
+
+        // Create an array to hold our data. Give the array
+        // a default empty first row.
+        var arrData = [[]];
+
+        // Create an array to hold our individual pattern
+        // matching groups.
+        var arrMatches = null;
+
+
+        // Keep looping over the regular expression matches
+        // until we can no longer find a match.
+        while (arrMatches = objPattern.exec( strData )){
+
+            // Get the delimiter that was found.
+            var strMatchedDelimiter = arrMatches[ 1 ];
+
+            // Check to see if the given delimiter has a length
+            // (is not the start of string) and if it matches
+            // field delimiter. If id does not, then we know
+            // that this delimiter is a row delimiter.
+            if (
+                strMatchedDelimiter.length &&
+                strMatchedDelimiter !== strDelimiter
+                ){
+
+                // Since we have reached a new row of data,
+                // add an empty row to our data array.
+                arrData.push( [] );
+
+            }
+
+            var strMatchedValue;
+
+            // Now that we have our delimiter out of the way,
+            // let's check to see which kind of value we
+            // captured (quoted or unquoted).
+            if (arrMatches[ 2 ]){
+
+                // We found a quoted value. When we capture
+                // this value, unescape any double quotes.
+                strMatchedValue = arrMatches[ 2 ].replace(
+                    new RegExp( "\"\"", "g" ),
+                    "\""
+                    );
+
+            } else {
+
+                // We found a non-quoted value.
+                strMatchedValue = arrMatches[ 3 ];
+
+            }
+
+
+            // Now that we have our value string, let's add
+            // it to the data array.
+            arrData[ arrData.length - 1 ].push( strMatchedValue );
+        }
+
+        // Return the parsed data.
+        return( arrData );
+    }
+
+var data;
+var heures = [];
+var dates = [];
+var nb_vaccines = [];
+var html = ""
+
+var dejaVaccinesNb;
+var dejaVaccines;
+var restantaVaccinerImmunite;
+var restantaVaccinerAutres = 100
+var objectifQuotidien;
+
+fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data.csv')
+       .then(response => {
+           if (!response.ok) {
+               throw new Error("HTTP error " + response.status);
+           }
+           return response.text();
+       })
+       .then(csv => {
+          this.data = csv;
+          array_data = CSVToArray(csv, ",");
+          array_data.slice(1, array_data.length-1).map((value, idx) => {
+            dates.push(value[0])
+            heures.push(value[2])
+            nb_vaccines.push(value[1])
+          })
+
+        this.dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1]
+        this.dejaVaccines = dejaVaccinesNb*100/67000000;
+        this.restantaVaccinerImmunite = 60 - dejaVaccines
+
+        this.objectifQuotidien = calculerObjectif();
+        majValeurs();
+        buildLineChart();
+        
+        
+        })
+       .catch(function () {
+           this.dataError = true;
+       }
+      )
+
+
 var lineChart;
-buildLineChart();
+
+function calculerObjectif(){
+    
+    let one_day = (1000 * 60 * 60 * 24)
+    let jours_restant = (Date.parse("2021-01-31") - Date.parse(dates[dates.length-1]) )/ one_day
+    let objectif = 1000000
+    let resteAVacciner = objectif - nb_vaccines[nb_vaccines.length-1]
+    console.log(jours_restant)
+    if ((resteAVacciner>=0) && (jours_restant>=0)){
+        return Math.round(resteAVacciner/jours_restant)
+    } else {
+        return -1
+    }
+}
+
 function buildLineChart(projection_cas, labels_cas, projection_rea){
     
     var ctx = document.getElementById('lineVacChart').getContext('2d');
@@ -225,10 +433,10 @@ function buildLineChart(projection_cas, labels_cas, projection_rea){
     lineChart = new Chart(ctx, { 
         type: 'line',
         data: {
-            labels: ["2020-12-27", "2020-12-28", "2020-12-29"],
+            labels: dates,
             datasets: [{
-                label: 'Personnes ayant reçu au moins 1 dose',
-                data: [45, 55, 138],
+                label: 'Nombre cumulé de vaccinés ',
+                data: nb_vaccines,
                 borderWidth: 3,
                 backgroundColor: 'rgba(0, 168, 235, 0.5)',
                 borderColor: 'rgba(0, 168, 235, 1)'
@@ -237,7 +445,7 @@ function buildLineChart(projection_cas, labels_cas, projection_rea){
         },
         options: {
             legend: {
-                display: false
+                display: true
             },
             scales: {
                 yAxes: [{
@@ -267,36 +475,29 @@ function buildLineChart(projection_cas, labels_cas, projection_rea){
             annotation: {
             events: ["click"],
             annotations: [
-                {
-                drawTime: "afterDatasetsDraw",
-                id: "hline",
-                type: "line",
-                mode: "horizontal",
-                scaleID: "y-axis-0",
-                value: 500,
-                borderColor: "green",
-                borderWidth: 3,
-                label: {
-                    backgroundColor: "green",
-                    content: "500",
-                    enabled: true
-                },
-                onClick: function(e) {
-                    console.log("Annotation", e.type, this);
-                }
-                }
+            {
+                    drawTime: "afterDatasetsDraw",
+                    id: "hline",
+                    type: "line",
+                    mode: "horizontal",
+                    scaleID: "y-axis-0",
+                    value: 1000000,
+                    borderColor: "green",
+                    borderWidth: 3,
+                    label: {
+                        backgroundColor: "green",
+                        content: "Objectif",
+                        enabled: true
+                    },
+                    onClick: function(e) {
+                        console.log("Annotation", e.type, this);
+                    }
+                    }
             ]
         }
         }
     });
 }
-
-var html = ""
-dejaVaccinesnb = 138
-date_maj = "30/12 à 07h00"
-dejaVaccines = dejaVaccinesnb*100/67000000;
-restantaVaccinerImmunite = 60 - dejaVaccines
-restantaVaccinerAutres = 100
 
 tableVaccin();
 function tableVaccin(){
@@ -329,15 +530,21 @@ function tableVaccin(){
     }
 }
 
-majValeurs();
 function majValeurs(){
-    document.getElementById("nb_vaccines").innerHTML = dejaVaccinesnb;
-    document.getElementById("proportionVaccines").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(5);
-    document.getElementById("proportionVaccinesBox").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(5);
-    document.getElementById("proportionAVaccinerImmu").innerHTML = (Math.round(restantaVaccinerImmunite*10000000)/10000000).toFixed(5);
-    //document.getElementById("date_maj_1").innerHTML = date_maj;
-    document.getElementById("date_maj_2").innerHTML = date_maj;
-    document.getElementById("date_maj_3").innerHTML = date_maj;
+    
+
+    document.getElementById("nb_vaccines").innerHTML = dejaVaccinesNb;
+    document.getElementById("nb_vaccines_24h").innerHTML = dejaVaccinesNb - nb_vaccines[nb_vaccines.length-2];
+    document.getElementById("proportionVaccines").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(4);
+    document.getElementById("proportionVaccinesBox").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(4);
+    document.getElementById("proportionAVaccinerImmu").innerHTML = (Math.round(restantaVaccinerImmunite*10000000)/10000000).toFixed(4);
+    document.getElementById("objectif_quotidien").innerHTML = numberWithSpaces(objectifQuotidien);
+    date = dates[dates.length-1]
+    date = date.slice(8) + "/" + date.slice(5, 7)
+    heure = heures[heures.length-1]
+    document.getElementById("date_maj_1").innerHTML = date + " à " + heure;
+    document.getElementById("date_maj_2").innerHTML = date + " à " + heure;
+    document.getElementById("date_maj_3").innerHTML = date + " à " + heure;
 
 }
     
