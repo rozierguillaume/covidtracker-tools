@@ -2,6 +2,11 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
 <?php include(dirname(__FILE__) . '/selectEtCarte.php') ?>
+<?php		
+ if (isset($_GET['dep']) and $_GET['dep']) {		
+     echo('<script id="departementSearched" type="text/template">' . $_GET["dep"] . '</script>');		
+ }		
+ ?>
 
 <script id="departementTemplate" type="text/template">
     <!-- wp:heading -->
@@ -160,6 +165,7 @@
                     donneesFrance = json['donnees_france'];
                     dateMaj = json["date_update"];
                     colorerCarte();
+                    selectionnerDepartement();
                 });
 
             /*
@@ -303,7 +309,26 @@
                     departementCarte.data(nomDonnee, donneesDepartement[nomDonnee]);
                     //Coloration du département sur la carte. .
                     departementCarte.css("fill", recupererCouleur(donneesDepartement[nomDonnee], tableauValeurs, tableauCouleurs));
+                
                 }
+            }
+
+            function selectionnerDepartement(){		
+                 if ($("#departementSearched").length>0) {		
+                     nomDepartement = $("#departementSearched").text();		
+                     if ($("select option[value='" + nomDepartement + "']").length>0){		
+                         numeroDepartement = $("select option[value='" + nomDepartement + "']").data('num');		
+                         $('#map path[data-num=' + numeroDepartement + ']').addClass('selected');		
+                         if ($("#listeDepartements").val()) {		
+                             $("#listeDepartements").val($.merge([nomDepartement], $("#listeDepartements").val()));		
+                         } else {		
+                             $("#listeDepartements").val(nomDepartement);		
+                         }		
+                         $("#listeDepartements").trigger('change');		
+                         afficherDepartement(nomDepartement, numeroDepartement);		
+                         $('html,body').animate({scrollTop: $('#donneesDepartements').offset().top-80}, 2000);		
+                     }
+                 }
             }
 
             function afficherDepartement(nomDepartment, numeroDepartement) {
