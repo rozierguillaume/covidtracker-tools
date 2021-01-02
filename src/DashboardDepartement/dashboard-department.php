@@ -580,4 +580,3 @@ if (isset($_GET['dep']) and $_GET['dep']) {
 <div id="donneesDepartements">
 
 </div>
-
