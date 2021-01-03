@@ -112,7 +112,7 @@
             $('.dropdown-toggle').dropdown();
 
             var valeurs_cas = [">", "200", "150", "100", "50"]
-            var couleurs_cas = ["#3c0000", "#4c0000", "#e20001", "#f95228", "#98ac3b"]
+            var couleurs_cas = ["#3c0000", "#a00000", "#e20001", "#f95228", "#98ac3b"]
 
             var valeurs_evolution = [">", "40", "30", "20", "10", "5", "0", "-5", "-10", "-20", "-30", "-40", "-50"];
             var couleurs_evolution = [
