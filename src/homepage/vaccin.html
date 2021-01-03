@@ -5,12 +5,14 @@ Ce tracker permet de suivre la proportion de français déjà vaccinés contre l
 </p>
 
 <div class="alert alert-warning" role="alert">
-    02/01/21 à 10h : le Ministère de la Santé n'a à ce jour pas en sa possession les données consolidées du 31 décembre et 1er janvier. Lorsque cela sera le cas, VaccinTracker sera mis à jour.
+    <i>03 janvier à 10h</i><br>Contacté par CovidTracker, le Ministère de la Santé a indiqué ne pas disposer à ce jour des données consolidées à partir du 31 décembre.
+    ⚠️ Les données affichées pour le 31/12 et les jours suivants sont partielles, issues d'une estimation CovidTracker. Elles seront réévaluées dans les prochains jours.
 </div>
-
+<div class="row" style="margin-left: 2px;">
+    Bonne année 2021 ! CovidTracker est gratuit, sans pub et développé bénévolement.<br>
+    <button class="btn-shadow"><a href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">🥂 Offrez-moi une coupe de champagne</a></button> &nbsp;&nbsp;
+</div>
 <!-- /wp:html -->
-
-<div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">🫖 Offrez-moi un thé</a></div>
 
 <!-- wp:html -->
 <div class="wrap">
@@ -18,6 +20,7 @@ Ce tracker permet de suivre la proportion de français déjà vaccinés contre l
         <h2 id="nb_vaccines">--</h2>
         <b>Personnes vaccinées</b><br>
         Nombre cumulé de personnes ayant reçu au moins une dose de vaccin contre la Covid19 en France (soit <span id="proportionVaccinesBox">--</span>%).<br>
+        <i>Données incomplètes à partir du 31/12.</i>
         <span style="font-size: 70%;"><i>Mise à jour : <span id="date_maj_2">--/--</span>. Données : CovidTracker/Ministère de la Santé.</i></span>
     </div>
 
@@ -55,7 +58,7 @@ Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60"
 </div>
 
 <h2 style="margin-top : 80px;">Évolution</h2>
-L'objectif est de vacciner 1 million de personnes en janvier 2021. Pour atteindre cet objectif, il faudrait vacciner <b><span id="objectif_quotidien"></span> personnes</b> chaque jour entre aujourd'hui et le 31 janvier 2021.
+L'objectif est de vacciner 1 million de personnes en janvier 2021. Pour atteindre cet objectif, il faudrait vacciner <b><span id="objectif_quotidien">--</span> personnes</b> chaque jour entre aujourd'hui et le 31 janvier 2021.
 <br><br>
 Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moins 1 dose de vaccin Covid19.
 <br>
@@ -233,6 +236,17 @@ p{
         margin-top: 30px;
     }
 
+    .btn-shadow {
+        border: 0px solid black;
+        padding: 12px;
+        border-radius: 7px;
+        text-align: left;
+        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+        max-width: 450px;
+        background: #ffffff;
+        margin-top: 3px;
+    }
+
 table, tr, td {
   border: 1px solid white;
 }
@@ -383,7 +397,7 @@ var restantaVaccinerImmunite;
 var restantaVaccinerAutres = 100
 var objectifQuotidien;
 
-fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data.csv')
+fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data.csv', {cache: 'no-cache'})
        .then(response => {
            if (!response.ok) {
                throw new Error("HTTP error " + response.status);
@@ -406,6 +420,27 @@ fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data
         this.objectifQuotidien = calculerObjectif();
         majValeurs();
         buildLineChart();
+        lineChart.annotation.annotations = [
+                    {
+                    drawTime: "afterDatasetsDraw",
+                    id: "hline",
+                    type: "line",
+                    mode: "horizontal",
+                    scaleID: "y-axis-0",
+                    value: 3000,
+                    borderColor: "green",
+                    borderWidth: 3,
+                    label: {
+                        backgroundColor: "green",
+                        content: "Objectif",
+                        enabled: true
+                    },
+                    onClick: function(e) {
+                        console.log("Annotation", e.type, this);
+                    }
+                    }
+                ]
+        lineChart.update()
         
         
         })
@@ -444,7 +479,8 @@ function buildLineChart(projection_cas, labels_cas, projection_rea){
                 data: nb_vaccines,
                 borderWidth: 3,
                 backgroundColor: 'rgba(0, 168, 235, 0.5)',
-                borderColor: 'rgba(0, 168, 235, 1)'
+                borderColor: 'rgba(0, 168, 235, 1)',
+                cubicInterpolationMode: 'monotone'
             },
             ]
         },
@@ -480,24 +516,7 @@ function buildLineChart(projection_cas, labels_cas, projection_rea){
             annotation: {
             events: ["click"],
             annotations: [
-            {
-                    drawTime: "afterDatasetsDraw",
-                    id: "hline",
-                    type: "line",
-                    mode: "horizontal",
-                    scaleID: "y-axis-0",
-                    value: 1000000,
-                    borderColor: "green",
-                    borderWidth: 3,
-                    label: {
-                        backgroundColor: "green",
-                        content: "Objectif",
-                        enabled: true
-                    },
-                    onClick: function(e) {
-                        console.log("Annotation", e.type, this);
-                    }
-                    }
+            
             ]
         }
         }
