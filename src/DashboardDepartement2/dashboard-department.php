@@ -200,7 +200,7 @@
             }
 
             function recupererCouleur(valeur, tableauDonnees, tableauCouleurs) {
-                for (i = tableauCouleurs.length-1; i > 0; i--) {
+                for (i = tableauCouleurs.length-1; i >= 0; i--) {
                     if (i == 0) {
                         return tableauCouleurs[i];
                     } else if (valeur <= tableauDonnees[i]) {
