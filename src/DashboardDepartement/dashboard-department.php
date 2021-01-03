@@ -508,12 +508,13 @@
                 numeroDepartement = $(this).data("num");
                 nomDepartement = $("#listeDepartements option[data-num='" + numeroDepartement + "']").val();
                 if ($(this).hasClass('selected')) {
-                    $(this).removeClass('selected');
+                    $("#carte path[data-num='" + numeroDepartement + "']").removeClass("selected");
                     $("select option[data-num='" + numeroDepartement + "']").prop("selected", false);
                     $("#listeDepartements").trigger('change');
                     $('#' + numeroDepartement).remove();
                 } else {
-                    $(this).addClass('selected');
+                    $("#carte path[data-num='" + numeroDepartement + "']").addClass("selected");
+                    // $(this).addClass('selected');
                     if ($("#listeDepartements").val()) {
                         $("#listeDepartements").val($.merge([nomDepartement], $("#listeDepartements").val()));
                     } else {
@@ -650,6 +651,32 @@
         border-color: #547096;
         color: #fff;
     }
+
+
+    @media screen and (max-width: 5000px) {
+        #carte{
+            margin-top: -20px;
+        }
+    }
+
+    @media screen and (max-width: 450px) {
+        #carte{
+            margin-top: -40px;
+        }
+    }
+
+    @media screen and (max-width: 400px) {
+        #carte{
+            margin-top: -60px;
+        }
+    }
+
+    @media screen and (max-width: 370px) {
+        #carte{
+            margin-top: -80px;
+        }
+    }
+
 
 </style>
 
