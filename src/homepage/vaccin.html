@@ -4,9 +4,11 @@
 Ce tracker permet de suivre la proportion de français déjà vaccinés contre la Covid19, et le nombre de personnes restant à vacciner pour atteindre l'immunité collective.
 </p>
 
+<!--
 <div class="alert alert-warning" role="alert">
     <i>03 janvier à 20h</i><br>Le Ministère de la Santé indique à CovidTracker que 516 personnes étaient vaccinées au 1er janvier 2021, après consolidations.
 </div>
+-->
 <div class="row" style="margin-left: 2px;">
     Bonne année 2021 ! CovidTracker est gratuit, sans pub et développé bénévolement.<br>
     <button class="btn-shadow"><a href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">🥂 Offrez-moi une coupe de champagne</a></button> &nbsp;&nbsp;
@@ -18,15 +20,22 @@ Ce tracker permet de suivre la proportion de français déjà vaccinés contre l
     <div class="one">
         <h2 id="nb_vaccines">--</h2>
         <b>Personnes vaccinées</b><br>
-        Nombre cumulé de personnes ayant reçu au moins une dose de vaccin contre la Covid19 en France (soit <span id="proportionVaccinesBox">--</span>%).<br>
-        <span style="font-size: 70%;"><i>Mise à jour : <span id="date_maj_2">--/--</span>. Données : CovidTracker/Ministère de la Santé.</i></span>
+        Nombre cumulé de personnes ayant reçu au moins une dose de vaccin contre la Covid19 en France. <span id="proportion_doses">--</span>% des doses reçues ont été utilisées.<br>
+        <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span id="date_maj_2">--/--</span>.<br>Source : CovidTracker/Ministère de la Santé.</i></div>
     </div>
 
-    <div class="two">
+    <div class="one">
         <h2 id="nb_vaccines_24h">--</h2>
         <b>Doses injectées en 24h</b><br>
         Nombre de personnes ayant reçu au moins une dose de vaccin contre la Covid19 en France ces dernières 24h<br>
-        <span style="font-size: 70%;"><i>Mise à jour : <span id="date_maj_1">--/--</span>. Données : CovidTracker/Ministère de la Santé.</i></span>
+        <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span id="date_maj_1">--/--</span>.<br>Source : CovidTracker/Ministère de la Santé.</i></div>
+    </div>
+
+    <div class="one">
+        <h2 id="nb_doses">--</h2>
+        <b>Doses reçues</b><br>
+        Cumul des doses reçues depuis le 26 décembre. Deux doses espacées de trois semaines sont nécessaires pour vacciner un patient.<br>
+        <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span id="date_maj_4">--/--</span>.<br>Source : CovidTracker/Ministère de la Santé.</i></div>
     </div>
 </div>
 
@@ -56,16 +65,28 @@ Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60"
 </div>
 
 <h2 style="margin-top : 80px;">Évolution</h2>
-<p>
 L'objectif est de vacciner 1 million de personnes en janvier 2021. Pour atteindre cet objectif, il faudrait vacciner <b><span id="objectif_quotidien">--</span> personnes</b> chaque jour entre aujourd'hui et le 31 janvier 2021.
-</p>
-<p>
+<br>
+<br>
 Au rythme actuel <small>(moyenne des 7 derniers jours)</small>, l'objectif du million de personnes vaccinées sera atteint le <b><span id="date_projetee_objectif"></span></b>.
-</p>
 
+<br><br>
 Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moins 1 dose de vaccin Covid19.
 <br>
 <br>
+
+<div>
+    <div style="float:left; margin-left: 3px; margin-right:15px;">
+        <input type="checkbox" id="objectif" name="objectif" onchange="ajouterObjectifAnnotation()">
+        <label for="objectif" style="font-weight: normal;">Afficher objectif</label>
+    </div>
+    <div>
+    <select name="type" id="type" onchange="typeDonneesChart()">
+        <option value="cumul">Cumul vaccinés</option>
+        <option value="quotidien">Vaccinations quotidiennes</option>
+    </select>
+    </div>
+</div>
 
 <div>
     <canvas id="lineVacChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
@@ -410,6 +431,37 @@ var restantaVaccinerAutres = 100
 var objectifQuotidien;
 var dateProjetéeObjectif;
 
+var dosesRecues = 560000;
+
+var data_stock;
+var dates_stock=[];
+var stock=[];
+var cumul_stock=0;
+
+
+fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data_stock.csv', {cache: 'no-cache'})
+       .then(response => {
+           if (!response.ok) {
+               throw new Error("HTTP error " + response.status);
+           }
+           return response.text();
+       })
+       .then(csv => {
+          this.data_stock = csv;
+         
+          array_data_stock = CSVToArray(csv, ",");
+          array_data_stock.slice(1, array_data_stock.length-1).map((value, idx) => {
+            this.dates_stock.push(value[0])
+            this.stock.push(parseInt(value[1]));
+            this.cumul_stock += parseInt(value[1]);
+          }) 
+
+        })
+       .catch(function () {
+           this.dataError = true;
+       }
+      )
+
 fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data.csv', {cache: 'no-cache'})
        .then(response => {
            if (!response.ok) {
@@ -434,29 +486,6 @@ fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data
         this.dateProjetéeObjectif = calculerDateProjetéeObjectif();
         majValeurs();
         buildLineChart();
-        lineChart.annotation.annotations = [
-                    {
-                    drawTime: "afterDatasetsDraw",
-                    id: "hline",
-                    type: "line",
-                    mode: "horizontal",
-                    scaleID: "y-axis-0",
-                    value: 3000,
-                    borderColor: "green",
-                    borderWidth: 3,
-                    label: {
-                        backgroundColor: "green",
-                        content: "Objectif",
-                        enabled: true
-                    },
-                    onClick: function(e) {
-                        console.log("Annotation", e.type, this);
-                    }
-                    }
-                ]
-        lineChart.update()
-        
-        
         })
        .catch(function () {
            this.dataError = true;
@@ -492,11 +521,11 @@ function calculerDateProjetéeObjectif () {
   return new Date(dernièreMaj + (oneDay * nbJoursAvantObjectif))
 }
 
-function buildLineChart(projection_cas, labels_cas, projection_rea){
+function buildLineChart(){
     
     var ctx = document.getElementById('lineVacChart').getContext('2d');
 
-    lineChart = new Chart(ctx, { 
+    this.lineChart = new Chart(ctx, { 
         type: 'line',
         data: {
             labels: dates,
@@ -512,7 +541,7 @@ function buildLineChart(projection_cas, labels_cas, projection_rea){
         },
         options: {
             legend: {
-                display: true
+                display: false
             },
             scales: {
                 yAxes: [{
@@ -547,6 +576,112 @@ function buildLineChart(projection_cas, labels_cas, projection_rea){
         }
         }
     });
+}
+
+function buildBarChart(data){
+    
+    var ctx = document.getElementById('lineVacChart').getContext('2d');
+
+    this.lineChart = new Chart(ctx, { 
+        type: 'bar',
+        data: {
+            labels: dates,
+            datasets: [{
+                label: 'Nombre quotidien de vaccinés ',
+                data: data,
+                borderWidth: 3,
+                backgroundColor: 'rgba(0, 168, 235, 0.5)',
+                borderColor: 'rgba(0, 168, 235, 1)',
+                cubicInterpolationMode: 'monotone'
+            },
+            ]
+        },
+        options: {
+            legend: {
+                display: false
+            },
+            scales: {
+                yAxes: [{
+                    gridLines: {
+                        display: false
+                     },
+                    ticks: {
+                        min: 0
+                    },
+                    
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: false
+                     },
+                     ticks: {
+                        maxRotation: 0,
+                        minRotation: 0,
+                        maxTicksLimit: 6,
+                        callback: function(value, index, values) {
+                        return value.slice(8) + "/" + value.slice(5, 7);
+                     }
+                     }
+
+                }]
+            },
+            annotation: {
+            events: ["click"],
+            annotations: [
+            
+            ]
+        }
+        }
+    });
+}
+function typeDonneesChart(){
+    type_donnees = document.getElementById("type").value
+    this.lineChart.destroy()
+    document.getElementById("objectif").checked=false;
+    if (type_donnees=="quotidien"){
+        
+        nb_vaccines_quot = [nb_vaccines[0]]
+        for(i=0; i<nb_vaccines.length-1; i++){
+            nb_vaccines_quot.push(nb_vaccines[i+1]-nb_vaccines[i])
+        }
+        buildBarChart(nb_vaccines_quot);
+    } else {
+        buildLineChart();
+    }
+    //this.lineChart.update();
+}
+function ajouterObjectifAnnotation(){
+    type_donnees = document.getElementById("type").value
+    if (type_donnees=="quotidien"){
+        obj = 34000;
+    }
+    else {
+        obj = 1000000;
+    }
+    if (this.lineChart.options.annotation.annotations.length==0){
+    this.lineChart.options.annotation.annotations.push(
+                    {
+                    drawTime: "afterDatasetsDraw",
+                    id: "hline",
+                    type: "line",
+                    mode: "horizontal",
+                    scaleID: "y-axis-0",
+                    value: obj,
+                    borderColor: "green",
+                    borderWidth: 3,
+                    label: {
+                        backgroundColor: "green",
+                        content: "Objectif",
+                        enabled: true
+                    },
+                    onClick: function(e) {
+                        console.log("Annotation", e.type, this);
+                    }
+                    });
+    } else {
+        this.lineChart.options.annotation.annotations = [];
+    }
+        this.lineChart.update()
 }
 
 tableVaccin();
@@ -585,17 +720,24 @@ function majValeurs(){
 
     document.getElementById("nb_vaccines").innerHTML = dejaVaccinesNb;
     document.getElementById("nb_vaccines_24h").innerHTML = dejaVaccinesNb - nb_vaccines[nb_vaccines.length-2];
+    document.getElementById("nb_doses").innerHTML = numberWithSpaces(cumul_stock);
     document.getElementById("proportionVaccines").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(4);
-    document.getElementById("proportionVaccinesBox").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(4);
+    document.getElementById("proportion_doses").innerHTML = (dejaVaccinesNb/cumul_stock*100).toFixed(1);
+
     document.getElementById("proportionAVaccinerImmu").innerHTML = (Math.round(restantaVaccinerImmunite*10000000)/10000000).toFixed(4);
     document.getElementById("objectif_quotidien").innerHTML = numberWithSpaces(objectifQuotidien);
     document.getElementById("date_projetee_objectif").innerHTML = formaterDate(dateProjetéeObjectif);
     date = dates[dates.length-1]
     date = date.slice(8) + "/" + date.slice(5, 7)
     heure = heures[heures.length-1]
+
+    date_stock = dates_stock[dates_stock.length-1]
+    date_stock = date_stock.slice(8) + "/" + date_stock.slice(5, 7)
+
     document.getElementById("date_maj_1").innerHTML = date + " à " + heure;
     document.getElementById("date_maj_2").innerHTML = date + " à " + heure;
     document.getElementById("date_maj_3").innerHTML = date + " à " + heure;
+    document.getElementById("date_maj_4").innerHTML = date_stock;
 
 }
     
