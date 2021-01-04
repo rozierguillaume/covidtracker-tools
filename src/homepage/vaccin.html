@@ -58,8 +58,13 @@ Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60"
 </div>
 
 <h2 style="margin-top : 80px;">Évolution</h2>
+<p>
 L'objectif est de vacciner 1 million de personnes en janvier 2021. Pour atteindre cet objectif, il faudrait vacciner <b><span id="objectif_quotidien">--</span> personnes</b> chaque jour entre aujourd'hui et le 31 janvier 2021.
-<br><br>
+</p>
+<p>
+Au rythme actuel <small>(moyenne des 7 derniers jours)</small>, l'objectif du million de personnes vaccinées sera atteint le <b><span id="date_projetee_objectif"></span></b>.
+</p>
+
 Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moins 1 dose de vaccin Covid19.
 <br>
 <br>
@@ -294,8 +299,16 @@ td {
 <script>
 
 function numberWithSpaces(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "&nbsp;");
-  }
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "&nbsp;");
+}
+function formaterDate (date) {
+  if (!(date instanceof Date)) return String(date);
+  return date.toLocaleDateString("fr-FR", { 
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
 
 
 // ref: http://stackoverflow.com/a/1293163/2343
@@ -385,6 +398,7 @@ function numberWithSpaces(x) {
         return( arrData );
     }
 
+const OBJECTIF_FIN_JANVIER = 1000000 // 1_000_000
 var data;
 var heures = [];
 var dates = [];
@@ -396,6 +410,7 @@ var dejaVaccines;
 var restantaVaccinerImmunite;
 var restantaVaccinerAutres = 100
 var objectifQuotidien;
+var dateProjetéeObjectif;
 
 fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data.csv', {cache: 'no-cache'})
        .then(response => {
@@ -418,6 +433,7 @@ fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data
         this.restantaVaccinerImmunite = 60 - dejaVaccines
 
         this.objectifQuotidien = calculerObjectif();
+        this.dateProjetéeObjectif = calculerDateProjetéeObjectif();
         majValeurs();
         buildLineChart();
         lineChart.annotation.annotations = [
@@ -456,7 +472,7 @@ function calculerObjectif(){
     
     let one_day = (1000 * 60 * 60 * 24)
     let jours_restant = (Date.parse("2021-01-31") - Date.parse(dates[dates.length-1]) )/ one_day
-    let objectif = 1000000
+    let objectif = OBJECTIF_FIN_JANVIER;
     let resteAVacciner = objectif - nb_vaccines[nb_vaccines.length-1]
     console.log(jours_restant)
     if ((resteAVacciner>=0) && (jours_restant>=0)){
@@ -464,6 +480,18 @@ function calculerObjectif(){
     } else {
         return -1
     }
+}
+function calculerDateProjetéeObjectif () {
+  const objectif = OBJECTIF_FIN_JANVIER
+  const indexDernièreMaj = dates.length - 1;
+  const indexDébutFenêtre = Math.max(0, indexDernièreMaj - 7)
+  const dernièreMaj = Date.parse(dates[indexDernièreMaj])
+  const resteAVacciner = objectif - Number(nb_vaccines[indexDernièreMaj])
+  const différentielVaccinésFenètre = Number(nb_vaccines[indexDernièreMaj]) - Number(nb_vaccines[indexDébutFenêtre])
+  const différentielVaccinésParJour = différentielVaccinésFenètre / (indexDernièreMaj - indexDébutFenêtre)
+  const oneDay = (1000 * 60 * 60 * 24)
+  const nbJoursAvantObjectif = Math.round(resteAVacciner / différentielVaccinésParJour)
+  return new Date(dernièreMaj + (oneDay * nbJoursAvantObjectif))
 }
 
 function buildLineChart(projection_cas, labels_cas, projection_rea){
@@ -563,6 +591,7 @@ function majValeurs(){
     document.getElementById("proportionVaccinesBox").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(4);
     document.getElementById("proportionAVaccinerImmu").innerHTML = (Math.round(restantaVaccinerImmunite*10000000)/10000000).toFixed(4);
     document.getElementById("objectif_quotidien").innerHTML = numberWithSpaces(objectifQuotidien);
+    document.getElementById("date_projetee_objectif").innerHTML = formaterDate(dateProjetéeObjectif);
     date = dates[dates.length-1]
     date = date.slice(8) + "/" + date.slice(5, 7)
     heure = heures[heures.length-1]
