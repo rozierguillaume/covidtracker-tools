@@ -2,8 +2,8 @@
   <p class="has-normal-font-size"><strong>CovidTracker est un outil permettant de suivre l'évolution de l'épidémie à Coronavirus en France et dans le monde. </strong>Pour des analyses quotidiennes des chiffres, vous pouvez suivre <a href="https://twitter.com/guillaumerozier" target="_blank" rel="noopener noreferrer">@guillaumerozier</a> sur Twitter, ainsi que <a href="https://twitter.com/covidtracker_fr">@covidtracker_fr</a>.</p>
   <!-- /wp:paragraph -->
 
-  <!-- wp:spacer {"height":50} -->
-  <div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+  <!-- wp:spacer {"height":30} -->
+  <div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
   <!-- /wp:spacer -->
 
   <!-- wp:html -->
@@ -139,6 +139,7 @@
   </style>
 
   <h2>En un coup d'œil</h2>
+  Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
   <div style="text-align: center; width:100%; border-radius: 7px; padding: 0px 0px;"></div>
 
   <div class="wrap" shadow="">
@@ -1262,6 +1263,7 @@
       }
 
       document.getElementById("date_update_coup_doeil").innerHTML = update_date;
+      document.getElementById("date_update_coup_doeil2").innerHTML = update_date;
 
   }
 
