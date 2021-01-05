@@ -145,19 +145,19 @@
     
     <div class="one">
       <h2 id="taux_incidence">--</h2>
-      <span style="font-size: 60%;">ÉLEVÉ ET EN BAISSE</span><br>
+      <span id="taux_incidence_str" style="font-size: 60%;">-- ET --</span><br>
       <p><b>Taux d'incidence</b><br><span style="font-size: 85%">Nombre de cas par semaine pour 100k habitants. Le seuil d'alerte est 50.</span></p>
     </div> 
 
     <div class="two"> 
       <h2 id="reffectif">--</h2>
-      <span style="font-size: 60%;">MODÉRÉ ET EN BAISSE</span><br>
+      <span id="reffectif_str" style="font-size: 60%;">-- ET --</span><br>
       <p><b>Taux de reproduction R</b><br><span style="font-size: 85%">Nombre de personnes contaminées par 1 malade. Au-dessus de R=1, l'épidémie progresse.</span></p>
     </div>
 
     <div class="three"> 
       <h2 id="sat_rea">--%</h2>
-      <span style="font-size: 60%;">MODÉRÉ ET EN BAISSE</span><br>
+      <span id="sat_rea_str" style="font-size: 60%;">-- ET --</span><br>
       <p><b>Tension hospitalière</b><br><span style="font-size: 85%">Nombre de lits de réanimation occupés par les patients Covid19 par rapport au nombre de lits fin 2018.</span></p>
     </div>       
 
@@ -322,7 +322,7 @@
 
               function recupererCouleur(valeur, tableauDonnees, tableauCouleurs) {
                   for (i = tableauCouleurs.length-1; i >= 0; i--) {
-                      if (i == 1) {
+                      if (i == 0) {
                           return tableauCouleurs[i];
                       } else if (valeur <= tableauDonnees[i]) {
                           return tableauCouleurs[i];
@@ -1219,8 +1219,13 @@
 
   function updateDataDivIndicateurs(){
     document.getElementById("taux_incidence").innerHTML = data_indicateurs["taux_incidence"]["valeur"];
+    document.getElementById("taux_incidence_str").innerHTML = data_indicateurs["taux_incidence"]["str"];
+
     document.getElementById("reffectif").innerHTML = data_indicateurs["reffectif"]["valeur"];
+    document.getElementById("reffectif_str").innerHTML = data_indicateurs["reffectif"]["str"];
+
     document.getElementById("sat_rea").innerHTML = data_indicateurs["taux_saturation_rea"]["valeur"] + "%";
+    document.getElementById("sat_rea_str").innerHTML = data_indicateurs["taux_saturation_rea_str"]["valeur"] + "%";
 
   }
 
