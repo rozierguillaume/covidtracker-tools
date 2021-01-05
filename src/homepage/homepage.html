@@ -1262,8 +1262,18 @@
           document.getElementById("croissance_cas").innerHTML = "en hausse (+&nbsp;" + Math.round((cas_actu-cas_j7)/cas_j7*100)+ "&nbsp;%) ";
       }
 
-      document.getElementById("date_update_coup_doeil").innerHTML = update_date;
-      document.getElementById("date_update_coup_doeil2").innerHTML = update_date;
+      const oneDay = (1000 * 60 * 60 * 24) ;
+      maj_int = (moment() - Date.parse("2021-"+update_date.slice(3,5)+"-"+update_date.slice(0,2)))/oneDay
+      if(maj_int<1){
+          maj_str = "aujourd'hui"
+      } else if (maj_int < 2){
+          maj_str = "hier"
+      } else {
+          maj_str=update_date}
+
+      document.getElementById("date_update_coup_doeil").innerHTML = maj_str;
+      
+      document.getElementById("date_update_coup_doeil2").innerHTML = maj_str;
 
   }
 
