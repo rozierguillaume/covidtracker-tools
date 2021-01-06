@@ -656,24 +656,28 @@
     @media screen and (max-width: 5000px) {
         #carte{
             margin-top: -20px;
+            margin-bottom: -20px;
         }
     }
 
     @media screen and (max-width: 450px) {
         #carte{
             margin-top: -40px;
+            margin-bottom: -40px;
         }
     }
 
     @media screen and (max-width: 400px) {
         #carte{
             margin-top: -60px;
+            margin-bottom: -60px;
         }
     }
 
     @media screen and (max-width: 370px) {
         #carte{
             margin-top: -80px;
+            margin-bottom: -80px;
         }
     }
 
