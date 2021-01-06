@@ -1,7 +1,7 @@
 <!-- wp:html -->
   
-<p>Quelle proportion des français a été vaccinée ? Combien faut-il encore vacciner de personnes avant d'atteindre l'immunité collective ? Quels sont les différents types de vaccins proposés ?
-Ce tracker permet de suivre la proportion de français déjà vaccinés contre la Covid19, et le nombre de personnes restant à vacciner pour atteindre l'immunité collective.
+<p>Quelle proportion des Français a été vaccinée ? Combien faut-il encore vacciner de personnes avant d'atteindre l'immunité collective ? Quels sont les différents types de vaccins proposés ?
+Ce tracker permet de suivre la proportion de Français déjà vaccinés contre la Covid19, et le nombre de personnes restant à vacciner pour atteindre l'immunité collective. VaccinTracker est une initiative citoyenne indépendante et non officielle.
 </p>
 
 
@@ -38,8 +38,8 @@ Ce tracker permet de suivre la proportion de français déjà vaccinés contre l
 </div>
 
 <h2 style="margin-top : 80px;">Proportion de personnes vaccinées</h2>
-Chaque carré correspond à 1% des français. Les carrés verts <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:rgb(45, 189, 84);" /></svg> correspondent aux français ayant reçu au moins une dose de vaccin (deux sont nécessaires). Les carrés rouge vif <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:rgb(237, 88, 88);" /></svg> représentent les français qu'il faut vacciner avant d'atteindre le taux d'immunité collective (environ 60%). 
-Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill: rgb(207, 169, 169);" /></svg>  représentent les autres français non vaccinés. <i>Mise à jour : <span id="date_maj_3">--/--</span></i>
+Chaque carré correspond à 1% des Français. Les carrés verts <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:rgb(45, 189, 84);" /></svg> correspondent aux Français ayant reçu au moins une dose de vaccin (deux sont nécessaires). Les carrés rouge vif <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:rgb(237, 88, 88);" /></svg> représentent les Français qu'il faut vacciner avant d'atteindre un taux de vaccination de 60%. 
+Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill: rgb(207, 169, 169);" /></svg>  représentent les autres Français non vaccinés. <i>Mise à jour : <span id="date_maj_3">--/--</span></i>
 
 
 <div class="row">
@@ -51,14 +51,16 @@ Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60"
     <br>
     <div class="col-md-4" style="padding-top: 20px;">
         
-        <span style="font-size: 200%; color: rgb(45, 189, 84)"><span id="proportionVaccines">--</span>%</span><br> des français ont reçu au moins une dose de vaccin. <br><br> 
-        Il reste à vacciner au moins <br><span style="font-size: 200%; color: rgb(237, 88, 88);"><span id="proportionAVaccinerImmu">--</span>%</span><br>des français avant d'atteindre un taux de vaccination de 60% (immunité collective). <br>
+        <span style="font-size: 200%; color: rgb(45, 189, 84)"><span id="proportionVaccines">--</span>%</span><br> des Français ont reçu au moins une dose de vaccin. <br><br> 
+        Il reste à vacciner au moins <br><span style="font-size: 200%; color: rgb(237, 88, 88);"><span id="proportionAVaccinerImmu">--</span>%</span><br>des Français avant d'atteindre un taux de vaccination de 60%. <br>
     </div>
 </div>
 <br>
 
 <div class="alert-data" style="margin-top: 15px;">
     <span style="font-size: 80%;">
+        N.B. : un taux de vaccination de 60% ne permet pas nécessairement d'atteindre une immunité collective.<br>
+
         <b>Source des données</b> : CovidTracker / Ministère de la Santé.</a>
     </span>
 </div>
@@ -101,31 +103,31 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
     </div>
 </div>
 
-<div>
+<div class="chart-container" style="position: relative; height:40vh; width:80vw">
     <canvas id="lineVacChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
 </div>
 
-<h2 style="margin-top : 80px;">Autorisation des vaccins</h2>
+<h2 style="margin-top : 80px;" id="autorisation-des-vaccins">Autorisation des vaccins</h2>
 <div style="border: 0px solid grey; background-color: rgba(128, 128, 128, 0.1); border-radius: 7px; padding: 12px;">
-L'Union Européenne a passé des commandes pour 6 vaccins différents. 1 est autorisé, 1 en cours d'autorisation et 4 non terminés. <i>Mise à jour : 04/12.</i><br><br>
+L'Union Européenne a passé des commandes pour 6 vaccins différents. 2 sont autorisés, et 4 n'ont pas encore été soumis. <i>Mise à jour : 06/12.</i><br><br>
 <h3 style="margin-top : 10px;">Vaccins autorisés</h3>
 <button class="shadow-btn-green"><b>🇺🇸🇩🇪 Pfizer-BioNTech</b><br>
-    Phase 3 terminée<br>
     Type : ARN messager<br>
-    Efficacité annoncée : 94.5%<br>
-    Prêt : fin 2020<br>Conservation : -70°C<br>
-    Commandes UE : 300M
-    <br>Statut : autorisé</button>
+    Efficacité annoncée : 94.5%
+    <br>Conservation : -70°C<br>
+    Commandes UE : 300M (France : 45M)
+    <br>Statut : autorisé (UE, France)</button>
+
+<button class="shadow-btn-green"><b>🇺🇸 Moderna</b><br>
+    Type : ARN messager<br>
+    Efficacité annoncée : 94%
+    <br>Conservation : -20°C (6 mois), +5°C (1 mois)<br>Commandes UE : 160M (France : 24M)<br>Statut : autorisé (UE)</button>
+
 
 <h3 style="margin-top : 50px;">Vaccins en cours d'autorisation</h3>
+Aucun.
 
-<button class="shadow-btn-orange"><b>🇺🇸 Moderna</b><br>
-    Phase 3 terminée<br>
-    Type : ARN messager<br>
-    Efficacité annoncée : 94%<br>
-    Prêt : fin 2020<br>Conservation : -20°C (6 mois), +5°C (1 mois)<br>Commandes UE : 80M (+ option 80M)<br>Autorisation : Décision UE le 6 janvier</button>
-
-<h3 style="margin-top : 50px;">Vaccins non terminés</h3>
+<h3 style="margin-top : 50px;">Vaccins pas encore soumis</h3>
 <button class="shadow-btn"><b>🇬🇧🇸🇪 AstraZeneca/Oxford</b><br>
     Phase 3/3<br>
     Type : Vecteur viral<br>
@@ -150,7 +152,7 @@ L'Union Européenne a passé des commandes pour 6 vaccins différents. 1 est aut
 <br>
 <h2>Quand est-ce que sera atteinte l'immunité collective ?</h2>
 Sur VaccinTracker, le taux de 60% a été choisi comme seuil d'immunité collective. Cependant, on ne peut pas aujourd'hui connaître ce taux précisément. 
-La vidéo suivante du média Le Monde explique très bien la problématique à mon sens :
+La vidéo suivante du média Le Monde explique très bien la problématique à notre sens :
 <br><br>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bjFtFMilb34" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <br>
@@ -528,7 +530,7 @@ fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/news
           })
           
           afficherNews();
-          console.log(contenu_news)
+          //console.log(contenu_news)
 
         })
        .catch(function () {
@@ -589,12 +591,13 @@ function afficherNews(){
     var html_str = ""
 
     titre_news.forEach((value, idx)=>{
-        html_str += `<div class='alert alert-warning' role='alert'>
-            <i>` + value + `</i><br>`+ contenu_news[idx] +`</div>`
-        console.log(html_str)
+        html_str += `<i>` + value + `</i><br>`+ contenu_news[idx]
 
+        if(idx<titre_news.length-1){
+            html_str += `<br><br>`
+        }
     })
-    document.getElementById("news").innerHTML = html_str;
+    document.getElementById("news").innerHTML = `<div style="margin-bottom: 20px; border: 1px solid rgba(0, 0, 0, 0.2); border-radius: 7px; padding: 10px; background-color: rgba(0, 0, 0, 0.05);">` + html_str + `</div>`;
 
 }
 
@@ -631,13 +634,14 @@ function buildLineChart(){
             ]
         },
         options: {
+            maintainAspectRatio: false,
             plugins: {
-      deferred: {
-        xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
-        yOffset: '50%', // defer until 50% of the canvas height are inside the viewport
-        delay: 500      // delay of 500 ms after the canvas is considered inside the viewport
-      }
-    },
+                deferred: {
+                    xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
+                    yOffset: '50%', // defer until 50% of the canvas height are inside the viewport
+                    delay: 500      // delay of 500 ms after the canvas is considered inside the viewport
+                }
+                },
             legend: {
                 display: false
             },
@@ -695,6 +699,7 @@ function buildBarChart(data){
             ]
         },
         options: {
+            maintainAspectRatio: false,
             legend: {
                 display: false
             },
