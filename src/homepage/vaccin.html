@@ -9,7 +9,7 @@ Ce tracker permet de suivre la proportion de français déjà vaccinés contre l
 
 <div class="row" style="margin-left: 2px;">
     Bonne année 2021 ! CovidTracker est gratuit, sans pub et développé bénévolement.<br>
-    <button class="btn-shadow"><a href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">🥂 Offrez-moi une coupe de champagne</a></button> &nbsp;&nbsp;
+    <button class="btn-shadow"><a href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">🍩 Offrez-moi un donut</a></button> &nbsp;&nbsp;
 </div>
 <!-- /wp:html -->
 
@@ -353,6 +353,7 @@ td {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-deferred@1"></script>
 
 <script>
 
@@ -499,7 +500,9 @@ fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data
             this.dates_stock.push(value[0])
             this.stock.push(parseInt(value[1]));
             this.cumul_stock += parseInt(value[1]);
-          }) 
+          })
+
+          fetchOtherData();
 
         })
        .catch(function () {
@@ -533,38 +536,39 @@ fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/news
        }
       )
 
-fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data.csv', {cache: 'no-cache'})
-       .then(response => {
-           if (!response.ok) {
-               throw new Error("HTTP error " + response.status);
-           }
-           return response.text();
-       })
-       .then(csv => {
-          this.data = csv;
-          array_data = CSVToArray(csv, ",");
-          array_data.slice(1, array_data.length-1).map((value, idx) => {
-            dates.push(value[0])
-            heures.push(value[2])
-            nb_vaccines.push(value[1])
-            source.push(value[3])
-          })
-
-        this.dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1]
-        this.dejaVaccines = dejaVaccinesNb*100/67000000;
-        this.restantaVaccinerImmunite = 60 - dejaVaccines
-
-        this.objectifQuotidien = calculerObjectif();
-        this.dateProjetéeObjectif = calculerDateProjetéeObjectif();
-        majValeurs();
-        buildLineChart();
+function fetchOtherData(){
+    fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data.csv', {cache: 'no-cache'})
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("HTTP error " + response.status);
+            }
+            return response.text();
         })
-       .catch(function () {
-           this.dataError = true;
-       }
-      )
+        .then(csv => {
+            this.data = csv;
+            array_data = CSVToArray(csv, ",");
+            array_data.slice(1, array_data.length-1).map((value, idx) => {
+                dates.push(value[0])
+                heures.push(value[2])
+                nb_vaccines.push(value[1])
+                source.push(value[3])
+            })
 
+            this.dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1]
+            this.dejaVaccines = dejaVaccinesNb*100/67000000;
+            this.restantaVaccinerImmunite = 60 - dejaVaccines
 
+            this.objectifQuotidien = calculerObjectif();
+            this.dateProjetéeObjectif = calculerDateProjetéeObjectif();
+            majValeurs();
+            buildLineChart();
+            })
+        .catch(function () {
+            this.dataError = true;
+        }
+        )
+
+}
 var lineChart;
 
 function calculerObjectif(){
@@ -627,6 +631,13 @@ function buildLineChart(){
             ]
         },
         options: {
+            plugins: {
+      deferred: {
+        xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
+        yOffset: '50%', // defer until 50% of the canvas height are inside the viewport
+        delay: 500      // delay of 500 ms after the canvas is considered inside the viewport
+      }
+    },
             legend: {
                 display: false
             },
@@ -813,10 +824,10 @@ function majValeurs(){
     document.getElementById("nb_vaccines").innerHTML = dejaVaccinesNb;
     document.getElementById("nb_vaccines_24h").innerHTML = dejaVaccinesNb - nb_vaccines[nb_vaccines.length-2];
     document.getElementById("nb_doses").innerHTML = numberWithSpaces(cumul_stock);
-    document.getElementById("proportionVaccines").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(3);
+    document.getElementById("proportionVaccines").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(2);
     document.getElementById("proportion_doses").innerHTML = (dejaVaccinesNb/cumul_stock*100).toFixed(1);
 
-    document.getElementById("proportionAVaccinerImmu").innerHTML = (Math.round(restantaVaccinerImmunite*10000000)/10000000).toFixed(3);
+    document.getElementById("proportionAVaccinerImmu").innerHTML = (Math.round(restantaVaccinerImmunite*10000000)/10000000).toFixed(2);
     document.getElementById("objectif_quotidien").innerHTML = numberWithSpaces(objectifQuotidien);
     document.getElementById("date_projetee_objectif").innerHTML = formaterDate(dateProjetéeObjectif);
     date = dates[dates.length-1]
@@ -835,6 +846,103 @@ function majValeurs(){
     
 </script>
 
+<!-- /wp:html -->
+
+
+<!-- wp:html -->
+
+<style>
+    div[shadow] {	  
+              border: 0px solid black;
+              padding: 10px 20px;
+              border-radius: 7px;
+              text-align: center;
+              box-shadow: 6px 4px 25px #d6d6d6;
+    }
+    
+    button {
+                      border: 1px solid;
+                      margin: 10px;
+                      padding: 15px;
+                      font-size : 16px;
+              transition-duration: 0.4s;
+                      background-color: #ffffff;
+                      border-radius: 15px;
+    
+            }
+    
+            button:hover {
+              background-color: black; /* Green */
+              color: white;
+            }
+    
+      /* the flex container without mediaquerie */
+    
+      div[class_perso] {
+        display: flex;
+        min-height: 12vh;
+        flex-wrap: wrap;
+    
+    
+        /* needed to stack children once to big */
+      }
+    
+      div[class_perso] div {
+        flex: 1;
+        min-width: 200px;
+        min-height: 7vh;
+        /* 2 children + margin and borders makes a break point at around 620px */
+        /*background: lightblue;*/
+    
+      }
+    
+      div div {
+        /*border: solid;*/
+        margin: 3px;
+        /*background: tomato;*/
+      }
+    
+    
+      /* remove the grid system at about 620px */
+    
+      @media screen and (max-width: 621px) {
+        div[class_persos] {
+          min-height: 30vh;
+          /* has a meaning with a grid system */
+        }
+    
+      }
+      </style>
+</style>
+<br>
+<h2 style="margin-top: 40px;">Menu</h2>
+  <div shadow="" style="margin-bottom: 5px;">
+  <div class_perso="">
+    <div>
+      <center><h3>Dashboards</h3><br></center>
+  <p>Ces tableaux de bord permettent de suivre et mieux comprendre l'évolution de l'épidémie.</p><br>
+  <center>     
+  <a href="https://covidtracker.fr/covidtracker-france/" style="color:black"><button>🇫🇷 <b>France</b></button></a>
+  <a href="https://covidtracker.fr/dashboard-regions/" style="color:black"><button>📍 Régions</button></a>
+  <a href="https://covidtracker.fr/dashboard-departements/" style="color:black"><button>🏡 <b>Départements</b></button></a><br>
+  <a href="https://covidtracker.fr/covidtracker-world/" style="color:black"><button>🌍 World</button></a>
+      </center>
+    </div>
+
+    <div>
+      <center>
+        <h3>Outils</h3><br></center>
+  <p>Ces outils permettent de comparer les deux vagues, de calculer le risque de présence d'un cas de covid19, et d'estimer la durée du confinement en cours.</p>
+  <center> <a href="https://covidtracker.fr/vaccintracker/" style="color:black"><button>💉 <b>VaccinTracker</b></button></a>
+  <a href="https://covidtracker.fr/deconfitracker/" style="color:black"><button>🔥 DéconfiTracker</button></a><a href="https://covidtracker.fr/covidep/" style="color:black"><button>🆕 CoviDep</button></a>
+  <a href="https://covidtracker.fr/calculateur-risque-covid/" style="color:black"><button>🔢 CoviRisque</button></a>
+  <a href="https://covidtracker.fr/archives/" style="color:black"><br><i>Outils archivés</i></a>
+      </center>
+    </div>
+  </div>
+  </div>
+<br>
+<br>
 <!-- /wp:html -->
 
 <div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">☕️ Offrez-moi un café</a></div>
