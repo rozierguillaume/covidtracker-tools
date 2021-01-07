@@ -107,13 +107,12 @@
 
 </script>
 
-
 <script>
     jQuery(document).ready(function ($) {
             $('.dropdown-toggle').dropdown();
 
-            var valeurs_cas = [">", "250", "150", "50"]
-            var couleurs_cas = ["#3c0000", "#c80000", "#f95228", "#98ac3b"]
+            var valeurs_cas = [">", "200", "150", "100", "50"]
+            var couleurs_cas = ["#3c0000", "#a00000", "#e20001", "#f95228", "#98ac3b"]
 
             var valeurs_evolution = [">", "40", "30", "20", "10", "5", "0", "-5", "-10", "-20", "-30", "-40", "-50"];
             var couleurs_evolution = [
@@ -509,13 +508,12 @@
                 numeroDepartement = $(this).data("num");
                 nomDepartement = $("#listeDepartements option[data-num='" + numeroDepartement + "']").val();
                 if ($(this).hasClass('selected')) {
-                    $("#carte path[data-num='" + numeroDepartement + "']").removeClass("selected");
+                    $(this).removeClass('selected');
                     $("select option[data-num='" + numeroDepartement + "']").prop("selected", false);
                     $("#listeDepartements").trigger('change');
                     $('#' + numeroDepartement).remove();
                 } else {
-                    $("#carte path[data-num='" + numeroDepartement + "']").addClass("selected");
-                    // $(this).addClass('selected');
+                    $(this).addClass('selected');
                     if ($("#listeDepartements").val()) {
                         $("#listeDepartements").val($.merge([nomDepartement], $("#listeDepartements").val()));
                     } else {
@@ -652,36 +650,6 @@
         border-color: #547096;
         color: #fff;
     }
-
-
-    @media screen and (max-width: 5000px) {
-        #carte{
-            margin-top: -20px;
-            margin-bottom: -20px;
-        }
-    }
-
-    @media screen and (max-width: 450px) {
-        #carte{
-            margin-top: -40px;
-            margin-bottom: -40px;
-        }
-    }
-
-    @media screen and (max-width: 400px) {
-        #carte{
-            margin-top: -60px;
-            margin-bottom: -60px;
-        }
-    }
-
-    @media screen and (max-width: 370px) {
-        #carte{
-            margin-top: -80px;
-            margin-bottom: -80px;
-        }
-    }
-
 
 </style>
 

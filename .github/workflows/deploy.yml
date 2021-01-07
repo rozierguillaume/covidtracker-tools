@@ -1,0 +1,21 @@
+name: Déploiement
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: rsync deployments
+      uses: burnett01/rsync-deployments@4.1
+      with:
+        switches: -avz --delete --exclude ".git*"
+        path: ./
+        remote_path: ${{ secrets.DEPLOY_PATH }}
+        remote_host: ${{ secrets.DEPLOY_IP }}
+        remote_user: ubuntu
+        remote_key: ${{ secrets.DEPLOY_KEY }}
+        

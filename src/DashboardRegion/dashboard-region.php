@@ -186,7 +186,7 @@
             incidenceRegion = donneesRegions[nomRegion]["incidence_cas"]
             incidenceFrance = Math.round(donneesFrance["incidence_cas"])
             saturationRea = Math.round(saturationReaRegions[nomRegion])
-            tauxPositivite = donneesDepartements[nomDepartement]["taux_positivite"]
+            tauxPositivite = donneesRegions[nomRegion]["taux_positivite"]
             reffectifRegion = Math.round((reffectifRegions[nomRegion]["value"]*100))/100
 
             if (incidenceRegion>100){
@@ -442,4 +442,3 @@
 <div id="donneesRegions">
 
 </div>
-

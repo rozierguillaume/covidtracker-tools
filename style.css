@@ -1,0 +1,90 @@
+/*
+ Theme Name:   Integral Child
+ Theme URI:    http://covidtracker.fr
+ Description:  --
+ Author:       --
+ Author URI:   http://covidtracker.fr
+ Template:     integral
+ Version:      1.0.0
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ Tags:         --
+ Text Domain:  integral-child
+*/
+
+/*
+ Theme Name:   Integral Child
+ Theme URI:    http://covidtracker.fr
+ Description:  --
+ Author:       --
+ Author URI:   http://covidtracker.fr
+ Template:     integral
+ Version:      1.0.0
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ Tags:         --
+ Text Domain:  integral-child
+*/
+
+
+
+@media (min-width: 768px) and (max-width: 1000px) {
+    
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+        
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+        display:block !important;
+    }
+    .navbar-default .navbar-nav {
+        padding-top: 0 !important;
+    }
+    .navbar-default .navbar-nav > li {
+        margin-left: 0;
+    }
+    .navbar-default .navbar-nav > li > a {
+        padding: 0 15px 0 15px;
+        line-height: 32px;
+        border-bottom: 0;
+    }
+    .navbar-default .navbar-nav li.menu-item-has-children a {
+        margin-bottom: 0px !important;
+    }
+    .navbar-right .dropdown-menu {
+        left: 0 important!;
+    }
+}
+
+@media (min-width: 1001px) {
+    .navbar{
+        max-height: 70px !important;
+    }

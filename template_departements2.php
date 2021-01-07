@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: template_regions2
+Template Name: template_departements2
 */
 ?>
 
@@ -35,7 +35,7 @@ Template Name: template_regions2
 					    <div class="entry">
 
 				   		<?php the_content(); ?>
-				   		<?php include(dirname(__FILE__) . '/src/DashboardRegion2/dashboard-region.php') ?>
+				   		<?php include(dirname(__FILE__) . '/src/DashboardDepartement2/dashboard-department.php') ?>
 
 					    </div>
 					     
