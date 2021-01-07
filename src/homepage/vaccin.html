@@ -16,21 +16,14 @@ Ce tracker permet de suivre la proportion de Français déjà vaccinés contre l
 <!-- wp:html -->
 <div class="wrap">
     <div class="one">
-        <h2 id="nb_vaccines">--</h2>
+        <span id="nb_vaccines" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span>&nbsp;&nbsp;(+<span id="nb_vaccines_24h">--</span> en 24h)<br>
         <b>Personnes vaccinées</b><br>
         Nombre cumulé de personnes ayant reçu au moins une dose de vaccin contre la Covid19 en France. <span id="proportion_doses">--</span>% des doses réceptionnées ont été utilisées.<br><span id="estimation_str"></span>
         <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span id="date_maj_2">--/--</span>.<br>Source : CovidTracker/Ministère de la Santé.</i></div>
     </div>
 
     <div class="one">
-        <h2 id="nb_vaccines_24h">--</h2>
-        <b>Doses injectées en 24h</b><br>
-        Nombre de personnes ayant reçu au moins une dose de vaccin contre la Covid19 en France ces dernières 24h<br><span id="estimation_str2"></span>
-        <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span id="date_maj_1">--/--</span>.<br>Source : CovidTracker/Ministère de la Santé.</i></div>
-    </div>
-
-    <div class="one">
-        <h2 id="nb_doses">--</h2>
+        <span id="nb_doses" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span><br>
         <b>Doses réceptionnées</b><br>
         Cumul des doses réceptionnées depuis le 26 décembre. Deux doses espacées de trois semaines sont nécessaires pour vacciner un patient.<br>
         <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span id="date_maj_4">--/--</span>.<br>Source : CovidTracker/Ministère de la Santé.</i></div>
@@ -103,7 +96,7 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
     </div>
 </div>
 
-<div class="chart-container" style="position: relative; height:40vh; width:80vw">
+<div class="chart-container" style="position: relative; height:50vh; width:80vw">
     <canvas id="lineVacChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
 </div>
 
@@ -160,7 +153,7 @@ La vidéo suivante du média Le Monde explique très bien la problématique à n
 <h3 style="margin-top : 20px;">Phase 1 (en cours) : janvier et février 2021</h3>
 <ul>
     <li>Personnes âgées séjournant dans un établissement collectif (type EHPAD) ;</li>
-    <li>Personnel soignant dit "à risque" (plus de 65 ans et/ou avec comorbidité).</li>
+    <li>Personnel soignant, pompiers, aides à domicile (plus de 50 ans).</li>
 </ul>
 
 <h3 style="margin-top : 50px;">Phase 2 : février / mars 2021</h3>
@@ -756,10 +749,10 @@ function typeDonneesChart(){
 function ajouterObjectifAnnotation(){
     type_donnees = document.getElementById("type").value
     if (type_donnees=="quotidien"){
-        obj = 34000;
+        obj = objectifQuotidien;
     }
     else {
-        obj = 1000000;
+        obj = OBJECTIF_FIN_JANVIER;
     }
     if (this.lineChart.options.annotation.annotations.length==0){
     this.lineChart.options.annotation.annotations.push(
@@ -826,8 +819,8 @@ function majValeurs(){
     }
     
 
-    document.getElementById("nb_vaccines").innerHTML = dejaVaccinesNb;
-    document.getElementById("nb_vaccines_24h").innerHTML = dejaVaccinesNb - nb_vaccines[nb_vaccines.length-2];
+    document.getElementById("nb_vaccines").innerHTML = numberWithSpaces(dejaVaccinesNb);
+    document.getElementById("nb_vaccines_24h").innerHTML = numberWithSpaces(dejaVaccinesNb - nb_vaccines[nb_vaccines.length-2]);
     document.getElementById("nb_doses").innerHTML = numberWithSpaces(cumul_stock);
     document.getElementById("proportionVaccines").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(2);
     document.getElementById("proportion_doses").innerHTML = (dejaVaccinesNb/cumul_stock*100).toFixed(1);
@@ -842,7 +835,7 @@ function majValeurs(){
     date_stock = dates_stock[dates_stock.length-1]
     date_stock = date_stock.slice(8) + "/" + date_stock.slice(5, 7)
 
-    document.getElementById("date_maj_1").innerHTML = date + " à " + heure;
+    //document.getElementById("date_maj_1").innerHTML = date + " à " + heure;
     document.getElementById("date_maj_2").innerHTML = date + " à " + heure;
     document.getElementById("date_maj_3").innerHTML = date + " à " + heure;
     document.getElementById("date_maj_4").innerHTML = date_stock;
