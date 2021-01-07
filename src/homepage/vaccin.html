@@ -364,7 +364,7 @@ td {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-deferred@1"></script>
 
-<script>
+<script type="text/javascript">
 
 function numberWithSpaces(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "&nbsp;");
@@ -479,7 +479,7 @@ var dejaVaccines;
 var restantaVaccinerImmunite;
 var restantaVaccinerAutres = 100
 var objectifQuotidien;
-var dateProjetéeObjectif;
+var dateProjeteeObjectif;
 
 var dosesRecues = 560000;
 
@@ -568,7 +568,7 @@ function fetchOtherData(){
             this.restantaVaccinerImmunite = 60 - dejaVaccines
 
             this.objectifQuotidien = calculerObjectif();
-            this.dateProjetéeObjectif = calculerDateProjetéeObjectif();
+            this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
             majValeurs();
             buildLineChart();
             })
@@ -609,17 +609,17 @@ function afficherNews(){
 }
 
 
-function calculerDateProjetéeObjectif () {
+function calculerDateProjeteeObjectif () {
   const objectif = OBJECTIF_FIN_JANVIER
-  const indexDernièreMaj = dates.length - 1;
-  const indexDébutFenêtre = Math.max(0, indexDernièreMaj - 7)
-  const dernièreMaj = Date.parse(dates[indexDernièreMaj])
-  const resteAVacciner = objectif - Number(nb_vaccines[indexDernièreMaj])
-  const différentielVaccinésFenètre = Number(nb_vaccines[indexDernièreMaj]) - Number(nb_vaccines[indexDébutFenêtre])
-  const différentielVaccinésParJour = différentielVaccinésFenètre / (indexDernièreMaj - indexDébutFenêtre)
+  const indexDerniereMaj = dates.length - 1;
+  const indexDebutFenetre = Math.max(0, indexDerniereMaj - 7)
+  const derniereMaj = Date.parse(dates[indexDerniereMaj])
+  const resteAVacciner = objectif - Number(nb_vaccines[indexDerniereMaj])
+  const differentielVaccinesFenetre = Number(nb_vaccines[indexDerniereMaj]) - Number(nb_vaccines[indexDebutFenetre])
+  const differentielVaccinesParJour = differentielVaccinesFenetre / (indexDerniereMaj - indexDebutFenetre)
   const oneDay = (1000 * 60 * 60 * 24)
-  const nbJoursAvantObjectif = Math.round(resteAVacciner / différentielVaccinésParJour)
-  return new Date(dernièreMaj + (oneDay * nbJoursAvantObjectif))
+  const nbJoursAvantObjectif = Math.round(resteAVacciner / differentielVaccinesParJour)
+  return new Date(derniereMaj + (oneDay * nbJoursAvantObjectif))
 }
 
 function buildLineChart(){
@@ -846,7 +846,7 @@ function majValeurs(){
 
     document.getElementById("proportionAVaccinerImmu").innerHTML = (Math.round(restantaVaccinerImmunite*10000000)/10000000).toFixed(2);
     document.getElementById("objectif_quotidien").innerHTML = numberWithSpaces(objectifQuotidien);
-    document.getElementById("date_projetee_objectif").innerHTML = formaterDate(dateProjetéeObjectif);
+    document.getElementById("date_projetee_objectif").innerHTML = formaterDate(dateProjeteeObjectif);
     date = dates[dates.length-1]
     date = date.slice(8) + "/" + date.slice(5, 7)
     heure = heures[heures.length-1]
