@@ -793,20 +793,6 @@
                                                 id="path5896"
                                                 d=""/>
                                     </g>
-                                    <text
-                                            xml:space="preserve"
-                                            style="font-size:9px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Sans;-inkscape-font-specification:Sans"
-                                            x="-31.724806"
-                                            y="6.211243"
-                                            id="text2525"
-                                            class="idfbig"><tspan
-                                                sodipodi:role="line"
-                                                id="tspan2527"
-                                                x="-85.724806"
-                                                y="75.211243"
-                                                style="font-style:normal;-inkscape-font-specification:Sans">
-                                            Île-de-France
-                                        </tspan></text>
                                     <path
                                             style="fill: none; fill-rule: evenodd; stroke: rgb(51, 51, 51); stroke-width: 1; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-dasharray: none; stroke-opacity: 1;"
                                             d="M 516.72142,543.99287 L 516.72142,468.56568 L 551.77498,431.31769 L 581.57051,431.31769"
@@ -831,11 +817,9 @@
                                             id="text2505"><tspan
                                                 sodipodi:role="line"
                                                 id="tspan2507"
-                                                x="2.5722885"
+                                                x="7.5722885"
                                                 y="542.53876"
-                                                style="font-size:9px">Guadeloupe
-                                        </tspan>
-                                    </text>
+                                                style="font-size:9px">Guadeloupe</tspan></text>
                                     <text
                                             xml:space="preserve"
                                             style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Sans;-inkscape-font-specification:Sans"
@@ -846,17 +830,18 @@
                                                 id="tspan2511"
                                                 x="66.464882"
                                                 y="542.53876"
-                                                style="font-size:9px">Martinique
-                                        </tspan></text>
+                                                style="font-size:9px">Martinique</tspan></text>
                                     <text
                                             xml:space="preserve"
                                             style="font-size:9px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Sans;-inkscape-font-specification:Sans"
-                                            x="11.86009"
+                                            x="121.86009"
                                             y="542.38055"
-                                            id="text2513">
-
-                                            Guyane
-                                        </tspan></text>
+                                            id="text2513"><tspan
+                                                sodipodi:role="line"
+                                                id="tspan2515"
+                                                x="121.86009"
+                                                y="542.38055"
+                                                style="font-size:9px;font-style:normal;-inkscape-font-specification:Sans">Guyane</tspan></text>
                                     <text
                                             xml:space="preserve"
                                             style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Sans;-inkscape-font-specification:Sans"
@@ -865,11 +850,9 @@
                                             id="text2517"><tspan
                                                 sodipodi:role="line"
                                                 id="tspan2519"
-                                                x="59.49937"
+                                                x="166.49937"
                                                 y="542.53876"
-                                                style="font-size:9px;font-style:normal;-inkscape-font-specification:Sans">
-                                            La Réunion
-                                        </tspan></text>
+                                                style="font-size:9px;font-style:normal;-inkscape-font-specification:Sans">La Réunion</tspan></text>
                                     <text
                                             xml:space="preserve"
                                             style="font-size:9x;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;stroke-opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;font-family:Sans;-inkscape-font-specification:Sans"
@@ -879,11 +862,21 @@
                                             class="mayotte"><tspan
                                                 sodipodi:role="line"
                                                 id="tspan2523"
-                                                x="118.19235"
+                                                x="225.19235"
                                                 y="542.2619"
-                                                style="font-size:9px;font-style:normal;-inkscape-font-specification:Sans">
-                                            Mayotte
-                                        </tspan></text>
+                                                style="font-size:9px;font-style:normal;-inkscape-font-specification:Sans">Mayotte</tspan></text>
+                                    <text
+                                            xml:space="preserve"
+                                            style="font-size:9px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Sans;-inkscape-font-specification:Sans"
+                                            x="11.724806"
+                                            y="76.211243"
+                                            id="text2525"
+                                            class="idfbig"><tspan
+                                                sodipodi:role="line"
+                                                id="tspan2527"
+                                                x="11.724806"
+                                                y="76.211243"
+                                                style="font-style:normal;-inkscape-font-specification:Sans">Île-de-France</tspan></text>
 
                                     <path
                                             d="M 327.16282,127.37489 L 326.38985,127.9992 L 325.61689,128.11812 L 325.55743,128.53433 L 325.40879,128.92082 L 325.79526,128.92082 L 326.00337,128.74244 L 325.91418,128.44515 L 327.10335,128.38569 L 327.40066,128.50461 L 327.40066,129.12892 L 327.10335,129.75324 L 325.37905,129.51541 L 325.11148,129.27757 L 324.30878,129.84244 L 323.53581,130.05054 L 322.43583,129.99108 L 322.1088,131.15053 L 322.40611,131.65594 L 321.93043,133.05322 L 322.40611,133.94511 L 323.23852,133.52889 L 325.2304,134.62889 L 328.67902,134.62889 L 330.73036,135.58022 L 330.70064,135.37213 L 332.15738,131.71539 L 332.15738,130.05054 L 331.23576,129.81271 L 330.99792,129.36676 L 330.61144,129.18838 L 329.77902,128.26677 L 328.32226,127.43434 L 327.16282,127.37489 z"
@@ -910,7 +903,7 @@
                         </g>
                     </svg>
                 </div>
-                <div id="droitsCarte" style="font-size: 8px; font-style: italic; margin-top: 20px; ">
+                <div id="droitsCarte" style="font-size: 8px; font-style: italic; margin-top: 30px; ">
                     Carte adaptée à partir d'une création <a target="_blank" href="https://fr.wikipedia.org/wiki/Fichier:Carte_vierge_d%C3%A9partements_fran%C3%A7ais_avec_DOM.svg">Wikipedia</a>
                 </div>
             </div>

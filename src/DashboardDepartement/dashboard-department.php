@@ -316,16 +316,16 @@
 
             function selectionnerDepartement(){		
                  if ($("#departementSearched").length>0) {		
-                     nomDepartement = $("#departementSearched").text();		
-                     if ($("select option[value='" + nomDepartement + "']").length>0){		
-                         numeroDepartement = $("select option[value='" + nomDepartement + "']").data('num');		
+                     nomDepartement = $("#departementSearched").text();
+                     numeroDepartement = $('#listeDepartements option[value="' + nomDepartement + '"]').data("num");
+                     if (numeroDepartement){
                          $('#map path[data-num=' + numeroDepartement + ']').addClass('selected');		
                          if ($("#listeDepartements").val()) {		
                              $("#listeDepartements").val($.merge([nomDepartement], $("#listeDepartements").val()));		
                          } else {		
                              $("#listeDepartements").val(nomDepartement);		
                          }		
-                         $("#listeDepartements").trigger('change');		
+                         $("#listeDepartements").trigger('change');
                          afficherDepartement(nomDepartement, numeroDepartement);		
                          $('html,body').animate({scrollTop: $('#donneesDepartements').offset().top-80}, 2000);		
                      }
@@ -334,10 +334,10 @@
 
             function afficherDepartement(nomDepartment, numeroDepartement) {
                 console.log(donneesDepartements[nomDepartement]);
-                incidenceDepartement = donneesDepartements[nomDepartement]["incidence_cas"]
-                saturationRea = Math.round(donneesDepartements[nomDepartement]["saturation_rea"])
-                tauxPositivite = donneesDepartements[nomDepartement]["taux_positivite"]
-                incidenceFrance = Math.round(donneesFrance["incidence_cas"])
+                incidenceDepartement = donneesDepartements[nomDepartement]["incidence_cas"];
+                saturationRea = Math.round(donneesDepartements[nomDepartement]["saturation_rea"]);
+                tauxPositivite = donneesDepartements[nomDepartement]["taux_positivite"];
+                incidenceFrance = Math.round(donneesFrance["incidence_cas"]);
 
                 if (incidenceDepartement > 100) {
                     couleurIncidence = "red";
