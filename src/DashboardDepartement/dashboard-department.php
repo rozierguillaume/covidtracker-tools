@@ -316,9 +316,9 @@
 
             function selectionnerDepartement(){		
                  if ($("#departementSearched").length>0) {		
-                     nomDepartement = $("#departementSearched").text();		
-                     if ($("select option[value='" + nomDepartement + "']").length>0){		
-                         numeroDepartement = $("select option[value='" + nomDepartement + "']").data('num');		
+                     nomDepartement = $("#departementSearched").text();
+                     numeroDepartement = $('#listeDepartements option[value="' + departement + '"]').data("num");
+                     if (numeroDepartement){
                          $('#map path[data-num=' + numeroDepartement + ']').addClass('selected');		
                          if ($("#listeDepartements").val()) {		
                              $("#listeDepartements").val($.merge([nomDepartement], $("#listeDepartements").val()));		
