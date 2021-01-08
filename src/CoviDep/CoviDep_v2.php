@@ -205,7 +205,7 @@
                 </select>
                 <br>
                 <span id="img" class="">Sélectionnez un département.<br></span>
-                <br> Vous trouverez d’autres graphique sur le <b
+                <br> Vous trouverez d’autres graphiques sur le <b
                 <a href="https://covidtracker.fr/dashboard-departements">Dashboard
                     Départements&gt;</a>
                 </b>
