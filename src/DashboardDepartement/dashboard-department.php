@@ -317,7 +317,7 @@
             function selectionnerDepartement(){		
                  if ($("#departementSearched").length>0) {		
                      nomDepartement = $("#departementSearched").text();
-                     numeroDepartement = $('#listeDepartements option[value="' + departement + '"]').data("num");
+                     numeroDepartement = $('#listeDepartements option[value="' + nomDepartement + '"]').data("num");
                      if (numeroDepartement){
                          $('#map path[data-num=' + numeroDepartement + ']').addClass('selected');		
                          if ($("#listeDepartements").val()) {		
@@ -325,7 +325,7 @@
                          } else {		
                              $("#listeDepartements").val(nomDepartement);		
                          }		
-                         $("#listeDepartements").trigger('change');		
+                         $("#listeDepartements").trigger('change');
                          afficherDepartement(nomDepartement, numeroDepartement);		
                          $('html,body').animate({scrollTop: $('#donneesDepartements').offset().top-80}, 2000);		
                      }
@@ -333,7 +333,7 @@
             }
 
             function afficherDepartement(nomDepartment, numeroDepartement) {
-                console.log(donneesDepartements[nomDepartement]);
+                // console.log(donneesDepartements[nomDepartement]);
                 incidenceDepartement = donneesDepartements[nomDepartement]["incidence_cas"]
                 saturationRea = Math.round(donneesDepartements[nomDepartement]["saturation_rea"])
                 tauxPositivite = donneesDepartements[nomDepartement]["taux_positivite"]
