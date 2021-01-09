@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: template_vaccintracker
+Template Name: template_vaccintracker2
 */
 ?>
 
@@ -35,7 +35,7 @@ Template Name: template_vaccintracker
 					    <div class="entry">
 
 				   		<?php the_content(); ?>
-				   		<?php include(dirname(__FILE__) . '/src/VaccinTracker/vaccintracker.html') ?>
+				   		<?php include(dirname(__FILE__) . '/src/VaccinTracker/vaccintracker_map.html') ?>
 
 					    </div>
 					     
