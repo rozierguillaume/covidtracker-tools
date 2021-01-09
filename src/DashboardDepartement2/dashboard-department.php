@@ -366,16 +366,17 @@
                     return;
                 }
                 content = $('#departementTemplate').html();
-                content = content.replaceAll('nomDepartement', nomDepartment);
-                content = content.replaceAll('numeroDepartement', numeroDepartement);
-                content = content.replaceAll('incidenceDepartement', incidenceDepartement);
-                content = content.replaceAll('incidenceFrance', incidenceFrance);
-                content = content.replaceAll('saturationRea', saturationRea + "%");
-                content = content.replaceAll('tauxPositivite', tauxPositivite + "%");
-                content = content.replaceAll('dateMaj', dateMaj);
-                content = content.replaceAll('couleurIncidence', couleurIncidence);
-                content = content.replaceAll('couleurSaturationRea', couleurSaturationRea);
-                content = content.replaceAll('couleurTauxPositivite', couleurTauxPositivite);
+                content = content.replace(/nomDepartement/g, nomDepartment);
+                content = content.replace(/numeroDepartement/g, numeroDepartement);
+                content = content.replace(/incidenceDepartement/g', incidenceDepartement);
+                content = content.replace(/incidenceFrance/g, incidenceFrance);
+                content = content.replace(/saturationRea/g, saturationRea + "%");
+                content = content.replace(/tauxPositivite/g, tauxPositivite + "%");
+                content = content.replace(/dateMaj/g, dateMaj);
+                content = content.replace(/couleurIncidence/g, couleurIncidence);
+                content = content.replace(/couleurSaturationRea/g, couleurSaturationRea);
+                content = content.replace(/couleurTauxPositivite/g, couleurTauxPositivite);
+  
 
                 $('#donneesDepartements').prepend(content);
                 //trierDepartements();
