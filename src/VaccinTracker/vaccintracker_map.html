@@ -58,20 +58,7 @@ Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60"
     </span>
 </div>
 
-<!--
-<h2 style="margin-top : 80px;">Comparaison cas</h2>
-<br>
-<br>
-<svg width="200" height="200" style="margin-right:5px;">
-    <g>
-        <text x="0" y="10" font-family="Verdana" font-size="20" fill="black">-- cas</text>
-        <rect x="0" y="20" width="200" height="200" style="fill:rgb(45, 189, 84);" />
-        
-    </g>
-</svg>
 
-<svg width="50" height="50"><rect x="0" y="0" width="200" height="200" style="fill:rgb(45, 189, 84);" /></svg>
--->
 <h2 style="margin-top : 80px;">Évolution</h2>
 L'objectif est de vacciner 1 million de personnes en janvier 2021. Pour atteindre cet objectif, il faudrait vacciner <b><span id="objectif_quotidien">--</span> personnes</b> chaque jour entre aujourd'hui et le 31 janvier 2021.
 <br>
@@ -124,63 +111,12 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
 
         <div class="row">
             <div class="col-md-4 shadow">
-                <span style="font-size: 160%; color: couleurIncidence"><b>incidenceRegion</b></span><br>
-                <span><b>Taux d'incidence</b><br>
-                Nombre de cas sur 7 jours pour 100k habitants. L'incidence moyenne en France est incidenceFrance, et le seuil d'alerte 50.<br></span>
-                <span style="font-size: 70%;">Mise à jour : dateMaj</span>
-            </div>
-            <div class="col-md-4 shadow">
-                <span style="font-size: 160%; color: couleurSaturationRea"><b>saturationRea</b></span><br>
-                <span><b>Tension hospitalière</b>
-                <br>Si supérieur à 100%, alors les patients Covid19 occupent plus de lits de réanimation qu'il n'y en avait avant l'épidémie</span><br>
-                <span style="font-size: 70%;">Mise à jour : dateMaj</span>
-            </div>
-            <div class="col-md-4 shadow">
-                <span style="font-size: 160%; color: couleurReffectif"><b>reffectifRegion</b></span><br>
-                <span><b>R effectif</b>
-                <br>Si le taux de reproduction est supérieur à 1, alors l'épidémie progresse. S'il est inférieur à 1, elle régresse.</span><br>
-                <span style="font-size: 70%;">Mise à jour : dateMaj</span>
-            </div>
-            <div class="col-md-4 shadow">
-                <span style="font-size: 160%; color: couleurTauxPositivite"><b>tauxPositivite</b></span><br>
-                <span><b>Taux de positivité</b>
-                <br>Proportion de tests positifs dans l'ensemble des tests. Un chiffre bas peut être dû à une faible circulation du virus ou à un testing massif.</span><br>
+                <span style="font-size: 160%; color: black"><b>vaccinesRegion</b></span><br>
+                <span><b>Nombre de personnes vaccinées</b><br>
+                <br></span>
                 <span style="font-size: 70%;">Mise à jour : dateMaj</span>
             </div>
         </div>
-
-        <h3 style="margin-top: 40px;">Vue d'ensemble</h3>
-        <p>Ces quatre graphiques permettent d'évaluer l'épidémie dans la région. Le nombre de cas correspond à l'activité du virus. Le nombre d'hospitalisations, de réanimations et de décès hospitaliers permettent de mesurer la crise sanitaire.</p>
-        <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/regions_dashboards/dashboard_jour_nomRegion.jpeg" target="_blank" rel="noopener noreferrer">
-                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/regions_dashboards/dashboard_jour_nomRegion.jpeg" width="100%"> </a>
-        </p>
-        <h3 style="margin-top: 40px;">Incidence par tranche d'âge</h3>
-        <p>Le taux d'incidence correspond au nombre de cas cumulé sur 7 jours rapporté à 100 000 habitants du département. Cet indicateur représente l'activité épidémique du virus. Le seuil d'alerte est de 50.</p>
-        <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_regs/heatmap_taux_nomRegion.jpeg"
-               target="_blank" rel="noopener noreferrer">
-                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_regs/heatmap_taux_nomRegion.jpeg"
-                     width="100%" style="max-width: 1000px;">
-            </a>
-        </p>
-        <h3 style="margin-top: 40px;">Flux hospitaliers</h3>
-        <p>Ce graphique présente l'évolution des entrées et sorties de l'hôpital pour motif Covid19.</p>
-        <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/regions_dashboards/hosp_journ_flux_nomRegion.jpeg"
-               target="_blank" rel="noopener noreferrer">
-                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/regions_dashboards/hosp_journ_flux_nomRegion.jpeg"
-                     width="100%" style="max-width: 1000px;">
-            </a>
-        </p>
-        <h3 style="margin-top: 40px;">Tension hospitalière</h3>
-        <p>Ce graphique présente la proportion de lits de réanimation occupés uniquement par les patients Covid19, par rapport au nombre de lits en temps normal (fin 2018, étude de la DREES).</p>
-        <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/regions_dashboards/saturation_rea_journ_nomRegion.jpeg" target="_blank" rel="noopener noreferrer">
-                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/regions_dashboards/saturation_rea_journ_nomRegion.jpeg" width="100%">
-            </a>
-        </p>
-
         <!-- wp:spacer {"height":50} -->
         <div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
         <!-- /wp:spacer -->
@@ -340,16 +276,8 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
             content = $('#regionTemplate').html();
             content = content.replaceAll('nomRegion', nomRegion);
             content = content.replaceAll('numeroRegion', numeroRegion);
-            content = content.replaceAll('incidenceRegion', incidenceRegion);
-            content = content.replaceAll('incidenceFrance', incidenceFrance);
-            content = content.replaceAll('saturationRea', saturationRea + "%");
-            content = content.replaceAll('tauxPositivite', tauxPositivite + "%");
+            content = content.replaceAll('vaccinesRegion', 0);
             content = content.replaceAll('dateMaj', dateMaj);
-            content = content.replaceAll('couleurIncidence', couleurIncidence);
-            content = content.replaceAll('couleurSaturationRea', couleurSaturation);
-            content = content.replaceAll('couleurReffectif', couleurReffectif);
-            content = content.replaceAll('reffectifRegion', reffectifRegion);
-            content = content.replaceAll('couleurTauxPositivite', couleurTauxPositivite);
             //content = content.replaceAll('couleurSaturationRea', couleurSaturationRea);
 
             $('#donneesRegions').prepend(content);
@@ -549,26 +477,28 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
 <!--START HTML-->
 <div id="menu" class="row">
     <div class="col-md-6 text-center">
-        <select multiple="multiple" name="regions_list_choice" id="listeRegions" class="select2">
-            <option data-num="01" value="Auvergne-Rhône-Alpes">Auvergne-Rhône-Alpes</option>
-            <option data-num="02" value="Bourgogne-Franche-Comté">Bourgogne-Franche-Comté</option>
-            <option data-num="03" value="Bretagne">Bretagne</option>
-            <option data-num="04" value="Centre">Centre</option>
-            <option data-num="05" value="Corse">Corse</option>
-            <option data-num="06" value="Grand Est">Grand Est</option>
-            <option data-num="07" value="Guadeloupe">Guadeloupe</option>
-            <option data-num="08" value="Guyane">Guyane</option>
-            <option data-num="09" value="Hauts-de-France">Hauts-de-France</option>
-            <option data-num="10" value="Ile-de-France">Ile-de-France</option>
-            <option data-num="11" value="La Réunion">La Réunion</option>
-            <option data-num="12" value="Martinique">Martinique</option>
-            <option data-num="13" value="Mayotte">Mayotte</option>
-            <option data-num="14" value="Normandie">Normandie</option>
-            <option data-num="15" value="Nouvelle-Aquitaine">Nouvelle-Aquitaine</option>
-            <option data-num="16" value="Occitanie">Occitanie</option>
-            <option data-num="17" value="Pays de la Loire">Pays de la Loire</option>
-            <option data-num="18" value="Provence-Alpes-Côte d'Azur">Provence-Alpes-Côte d'Azur</option>
-        </select>
+        <div style="display:none;">
+            <select multiple="multiple" name="regions_list_choice" id="listeRegions" class="select2">
+                <option data-num="01" value="Auvergne-Rhône-Alpes">Auvergne-Rhône-Alpes</option>
+                <option data-num="02" value="Bourgogne-Franche-Comté">Bourgogne-Franche-Comté</option>
+                <option data-num="03" value="Bretagne">Bretagne</option>
+                <option data-num="04" value="Centre">Centre</option>
+                <option data-num="05" value="Corse">Corse</option>
+                <option data-num="06" value="Grand Est">Grand Est</option>
+                <option data-num="07" value="Guadeloupe">Guadeloupe</option>
+                <option data-num="08" value="Guyane">Guyane</option>
+                <option data-num="09" value="Hauts-de-France">Hauts-de-France</option>
+                <option data-num="10" value="Ile-de-France">Ile-de-France</option>
+                <option data-num="11" value="La Réunion">La Réunion</option>
+                <option data-num="12" value="Martinique">Martinique</option>
+                <option data-num="13" value="Mayotte">Mayotte</option>
+                <option data-num="14" value="Normandie">Normandie</option>
+                <option data-num="15" value="Nouvelle-Aquitaine">Nouvelle-Aquitaine</option>
+                <option data-num="16" value="Occitanie">Occitanie</option>
+                <option data-num="17" value="Pays de la Loire">Pays de la Loire</option>
+                <option data-num="18" value="Provence-Alpes-Côte d'Azur">Provence-Alpes-Côte d'Azur</option>
+            </select>
+        </div>
         
         <div class="row">
             <div class="col-xs-12">
