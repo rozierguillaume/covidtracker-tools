@@ -368,7 +368,7 @@
                 content = $('#departementTemplate').html();
                 content = content.replace(/nomDepartement/g, nomDepartment);
                 content = content.replace(/numeroDepartement/g, numeroDepartement);
-                content = content.replace(/incidenceDepartement/g', incidenceDepartement);
+                content = content.replace(/incidenceDepartement/g, incidenceDepartement);
                 content = content.replace(/incidenceFrance/g, incidenceFrance);
                 content = content.replace(/saturationRea/g, saturationRea + "%");
                 content = content.replace(/tauxPositivite/g, tauxPositivite + "%");
