@@ -187,12 +187,12 @@
                 values.map((val, idx) => {
                     if (pourcentage && (val != '>')) {
                         if (val>0){
-                            content += $('#legendTemplateMid').html().replaceAll("valeur", '+'+val + ' %').replaceAll("colorBg", colors[idx]);
+                            content += $('#legendTemplateMid').html().replace(/valeur/g, '+'+val + ' %').replace(/colorBg/g, colors[idx]);
                         } else {
-                            content += $('#legendTemplateMid').html().replaceAll("valeur", val + ' %').replaceAll("colorBg", colors[idx]);
+                            content += $('#legendTemplateMid').html().replace(/valeur/g, val + ' %').replace(/colorBg/g, colors[idx]);
                         }
                     } else {
-                        content += $('#legendTemplateMid').html().replaceAll("valeur", val).replaceAll("colorBg", colors[idx]);
+                        content += $('#legendTemplateMid').html().replace(/valeur/g, val).replace(/colorBg/g, colors[idx]);
                     }
                 })
                 content += $('#legendTemplatePost').html();
