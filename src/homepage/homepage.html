@@ -1209,7 +1209,11 @@
         )
 
   function updateDataDivOpenCovid(){
-    document.getElementById("cas_opencovid").innerHTML = data_opencovid["cas"];
+      var cas_open_covid = data_opencovid["cas"]
+      if(cas_open_covid<=0){
+          cas_open_covid = "--"
+      }
+    document.getElementById("cas_opencovid").innerHTML = cas_open_covid;
     document.getElementById("date_opencovid").innerHTML = data_opencovid["update"];
   }
 
@@ -1845,7 +1849,11 @@
   <!-- /wp:heading -->
 
   <!-- wp:paragraph -->
-  <p>Le fondateur du site est <a href="https://twitter.fr/guillaumerozier" target="_blank" rel="noopener noreferrer">Guillaume Rozier</a>. Cet élève ingénieur en informatique, spécialisé dans l'Intelligence Artificielle et le traitement des masses de données, a aussi réalisé les tableaux de bord <a href="https://covidtracker.fr/covidtracker-france/">France</a> et <a href="https://covidtracker.fr/covidtracker-world/">World</a>.</p>
+  <p>Le site a été développé par <a href="https://twitter.fr/guillaumerozier" target="_blank" rel="noopener noreferrer">Guillaume Rozier</a> (fondateur, ingénieur consultant en informatique) et Michaël Souvy (gérant d'une entreprise de services informatiques). Nicolas Furno s'occupe de l'administration, de l'hébergement et de la mise en production du site.</p>
+   <!-- /wp:paragraph -->
+
+    <!-- wp:paragraph -->
+  <p>La <a href="https://covidtracker.fr/newsletter">newsletter</a> est réalisée par Thomas Devlaeminck.</p>
   <!-- /wp:paragraph -->
 
   <!-- wp:paragraph -->
@@ -1853,7 +1861,7 @@
   <!-- /wp:paragraph -->
 
   <!-- wp:paragraph -->
-  <p>Remerciements à Elias Orphelin pour être à l'origine de l'idée de plusieurs outils, et à Nicolas Furno pour son aide sur l'hébergement et l'administration du site.</p>
+  <p>Remerciements à Elias Orphelin pour être à l'origine de l'idée de plusieurs outils.</p>
   <!-- /wp:paragraph -->
 
   <!-- wp:spacer {"height":20} -->
