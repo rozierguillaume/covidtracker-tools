@@ -104,7 +104,6 @@
 <script id="legendTemplatePost" type="text/template">
     </tbody>
     </table>
-
 </script>
 
 
