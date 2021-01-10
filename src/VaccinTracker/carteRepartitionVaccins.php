@@ -120,10 +120,10 @@
                 return;
             }
             content = $('#regionTemplate').html();
-            content = content.replaceAll('nomRegion', nomRegion);
-            content = content.replaceAll('numeroRegion', numeroRegion);
-            content = content.replaceAll('vaccinesRegion', vaccinesRegion);
-            content = content.replaceAll('dateMaj', "--/--");
+            content = content.replace(/nomRegion/g, nomRegion);
+            content = content.replace(/numeroRegion/g, numeroRegion);
+            content = content.replace(/vaccinesRegion/g, vaccinesRegion);
+            content = content.replace(/dateMaj/g, "--/--");
 
             $('#donneesRegions').prepend(content);
             //trierRegions();
