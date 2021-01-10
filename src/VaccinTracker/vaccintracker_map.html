@@ -113,6 +113,7 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
             <div class="col-md-12 shadow">
                 <span style="font-size: 160%; color: black"><b>vaccinesRegion</b></span><br>
                 <span><b>Nombre de personnes vaccinées</b><br>
+                    Aucune donnée.
                 <br></span>
                 <span style="font-size: 70%;">Mise à jour : dateMaj</span>
             </div>
@@ -155,31 +156,11 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
                     regionCarte.data("incidence-cas", donneesRegion["vaccines"]);
 
                     if (donneesRegion["vaccines"]<=25){
-                        regionCarte.css("fill", "#118408");
-                    } else if (donneesRegion["vaccines"]<=50){
-                        regionCarte.css("fill", "#98ac3b");
-                    } else if (donneesRegion["vaccines"]<=100){
-                        regionCarte.css("fill", "#fb9449");
-                    } else if (donneesRegion["vaccines"]<=150){
-                        regionCarte.css("fill", "#f95228");
-                    }  else if (donneesRegion["vaccines"]<=200){
-                        regionCarte.css("fill", "#f50e07");
-                    } else if (donneesRegion["vaccines"]<=250){
-                        regionCarte.css("fill", "#e20001");
-                    } else if (donneesRegion["vaccines"]<=300){
-                        regionCarte.css("fill", "#d50100");
-                    } else if (donneesRegion["vaccines"]<=350){
-                        regionCarte.css("fill", "#c40001");
-                    } else if (donneesRegion["vaccines"]<=450){
-                        regionCarte.css("fill", "#a00000");
-                    } else if (donneesRegion["vaccines"]<=550){
-                        regionCarte.css("fill", "#840000");
-                    } else if (donneesRegion["vaccines"]<=650){
-                        regionCarte.css("fill", "#6a0000");
+                        regionCarte.css("fill", "grey");
                     } else if (donneesRegion["vaccines"]<=750){
-                        regionCarte.css("fill", "#4c0000");
+                        regionCarte.css("fill", "grey");
                     } else {
-                        regionCarte.css("fill", "#3c0000");
+                        regionCarte.css("fill", "grey");
                     }
                 }
             });
@@ -231,6 +212,7 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
             content = content.replaceAll('nomRegion', nomRegion);
             content = content.replaceAll('numeroRegion', numeroRegion);
             content = content.replaceAll('vaccinesRegion', vaccinesRegion);
+            content = content.replaceAll('dateMaj', "--/--");
 
             $('#donneesRegions').prepend(content);
             //trierRegions();
