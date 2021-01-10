@@ -355,7 +355,7 @@
 
 <!--START HTML-->
 <div id="menu" class="row">
-    <div class="col-md-7 text-center">
+    <div class="col-md-6 text-center">
         <div style="display:none;">
             <select multiple="multiple" name="regions_list_choice" id="listeRegions" class="select2">
                 <option data-num="01" value="Auvergne-Rhône-Alpes">Auvergne-Rhône-Alpes</option>
