@@ -19,18 +19,17 @@
                 </svg>
             </a>
         </h2>
-
-        <div class="row">
-            <div class="col-md-12 shadow">
-                <span style="font-size: 160%; color: black"><b>vaccinesRegion</b></span><br>
-                <span><b>Nombre de personnes vaccinées</b><br>
-                    Aucune donnée.
-                <br></span>
-                <span style="font-size: 70%;">Mise à jour : dateMaj</span>
-            </div>
+        
+        <div class="col-md-12 shadow">
+            <span style="font-size: 160%; color: black"><b>vaccinesRegion</b></span><br>
+            <span><b>Nombre de personnes vaccinées</b><br>
+                Aucune donnée.
+            <br></span>
+            <span style="font-size: 70%;">Mise à jour : dateMaj</span>
         </div>
+      
         <!-- wp:spacer {"height":50} -->
-        <div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+        <div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
         <!-- /wp:spacer -->
 
     </div>
@@ -110,7 +109,12 @@
 
 
         function afficherRegion(nomRegion, numeroRegion) {
+
             vaccinesRegion = donneesRegions[nomRegion]["vaccines"]
+
+            if (vaccinesRegion<=0){
+                vaccinesRegion = "--"
+            }
 
             if ($('#' + numeroRegion).length > 0) {
                 return;
@@ -346,13 +350,12 @@
 <div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
-</div>
 <!--END JS-->
 
 
 <!--START HTML-->
 <div id="menu" class="row">
-    <div class="col-md-6 text-center">
+    <div class="col-md-7 text-center">
         <div style="display:none;">
             <select multiple="multiple" name="regions_list_choice" id="listeRegions" class="select2">
                 <option data-num="01" value="Auvergne-Rhône-Alpes">Auvergne-Rhône-Alpes</option>
@@ -379,7 +382,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <div id="carte">
-                    <svg id="map" xmlns="http://www.w3.org/2000/svg" version="1.2" width="400px" height="400px" viewBox="400 0 80 110" stroke-linecap="round" stroke-linejoin="round"
+                    <svg id="map" xmlns="http://www.w3.org/2000/svg" version="1.2" width="600px" height="600px" viewBox="400 0 80 110" stroke-linecap="round" stroke-linejoin="round"
                          xmlns:xlink="http://www.w3.org/1999/xlink">
                         <title>...</title>
                         <g id="regions" sketch:type="MSLayerGroup" transform="translate(0.000000, 1.000000)">
