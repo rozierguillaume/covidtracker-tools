@@ -360,11 +360,13 @@
             nomRegion = $("#listeRegions option[data-num='" + numeroRegion + "']").val();
             if (regionCarte.hasClass('selected')) {
                 regionCarte.removeClass('selected');
+                regionCarte.find('path').removeClass('selected');
                 $("select option[data-num='" + numeroRegion + "']").prop("selected", false);
                 $("#listeRegions").trigger('change');
                 $('#' + numeroRegion).remove();
             } else {
                 regionCarte.addClass('selected');
+                regionCarte.find('path').addClass('selected');
                 if ($("#listeRegions").val()) {
                     $("#listeRegions").val($.merge([nomRegion], $("#listeRegions").val()));
                 } else {
