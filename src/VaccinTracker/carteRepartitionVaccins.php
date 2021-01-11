@@ -40,7 +40,7 @@
         var donneesRegions;
         var dateMaj;
 
-        fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data_regions.csv')
+        fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data_regions.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error("HTTP error " + response.status);
