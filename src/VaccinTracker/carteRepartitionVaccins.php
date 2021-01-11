@@ -70,9 +70,9 @@
                         console.log("if")
                         regionCarte.css("fill", couleurs[couleurs.length-1]);
                     } else {
-                        for (var idx = 0; i < valeurs.length; i++) {
-                            if (data_reg<=valeurs[idx]){
-                                regionCarte.css("fill", couleurs[idx]);
+                        for (var i = 0; i < valeurs.length; i++) {
+                            if (data_reg<=valeurs[i]){
+                                regionCarte.css("fill", couleurs[i]);
                                 break;
                             }
                         }
