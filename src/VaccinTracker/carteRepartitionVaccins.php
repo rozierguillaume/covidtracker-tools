@@ -123,7 +123,7 @@
         function afficherRegion(nomRegion, numeroRegion) {
 
             vaccinesRegion = donneesRegions[nomRegion]["vaccines"]
-            vaccinesRegionPop = vaccinesRegion/donneesRegions[nomRegion]["population"]
+            vaccinesRegionPop = (vaccinesRegion/donneesRegions[nomRegion]["population"]*100).toFixed(3)
 
             dateMaj = donneesRegions["date_update"]
 
