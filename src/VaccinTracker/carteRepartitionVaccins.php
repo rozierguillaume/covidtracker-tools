@@ -61,25 +61,16 @@
                     var regionCarte = $('#carte path[data-num="' + numeroRegion + '"]');
                     regionCarte.data("incidence-cas", donneesRegion["vaccines"]);
 
-                    if (donneesRegion["vaccines"]<=100){
-                        regionCarte.css("fill", "#DCECCD");
-                    } else if (donneesRegion["vaccines"]<=1000){
-                        regionCarte.css("fill", "#BDE0AE");
-                    } else if (donneesRegion["vaccines"]<=5000){
-                        regionCarte.css("fill", "#98D390");
-                    } else if (donneesRegion["vaccines"]<=10000){
-                        regionCarte.css("fill", "#73C679");
-                    } else if (donneesRegion["vaccines"]<=20000){
-                        regionCarte.css("fill", "#55B86F");
-                    } else if (donneesRegion["vaccines"]<=30000){
-                        regionCarte.css("fill", "#39A96B");
-                    } else if (donneesRegion["vaccines"]<=40000){
-                        regionCarte.css("fill", "#1D9A6C");
-                    } else if (donneesRegion["vaccines"]<=50000){
-                        regionCarte.css("fill", "#178973");
-                    } else {
-                        regionCarte.css("fill", "#117876");
-                    }
+                    let valeurs = [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4]
+                    let couleurs = ["#DCECCD", "#BDE0AE", "#98D390", "#73C679", "#55B86F", "#39A96B", "#1D9A6C", "#178973", "#117876"]
+                    let data_reg = donneesRegion["vaccines"]/donneesRegion["population"]*100
+
+                    regionCarte.css("fill", couleurs[couleurs.length-1]);
+                    valeurs.map((value, idx) => {
+                        if (data_reg<=value){
+                            regionCarte.css("fill", couleurs[idx]);
+                        }
+                    })
                 }
             });
 
