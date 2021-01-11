@@ -125,7 +125,7 @@
             vaccinesRegion = donneesRegions[nomRegion]["vaccines"]
             vaccinesRegionPop = (vaccinesRegion/donneesRegions[nomRegion]["population"]*100).toFixed(3)
 
-            dateMaj = donneesRegions["date_update"]
+            dateMaj = dateMaj
 
             if (vaccinesRegion<=0){
                 vaccinesRegion = "--"
