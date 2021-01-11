@@ -75,7 +75,7 @@
                                 regionCarte.css("fill", couleurs[idx]);
                                 break;
                             }
-                        })
+                        }
                     }
 
                 }
