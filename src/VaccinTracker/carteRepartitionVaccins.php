@@ -61,12 +61,24 @@
                     var regionCarte = $('#carte path[data-num="' + numeroRegion + '"]');
                     regionCarte.data("incidence-cas", donneesRegion["vaccines"]);
 
-                    if (donneesRegion["vaccines"]<=25){
-                        regionCarte.css("fill", "grey");
-                    } else if (donneesRegion["vaccines"]<=750){
-                        regionCarte.css("fill", "grey");
+                    if (donneesRegion["vaccines"]<=100){
+                        regionCarte.css("fill", "#DCECCD");
+                    } else if (donneesRegion["vaccines"]<=1000){
+                        regionCarte.css("fill", "#BDE0AE");
+                    } else if (donneesRegion["vaccines"]<=5000){
+                        regionCarte.css("fill", "#98D390");
+                    } else if (donneesRegion["vaccines"]<=10000){
+                        regionCarte.css("fill", "#73C679");
+                    } else if (donneesRegion["vaccines"]<=20000){
+                        regionCarte.css("fill", "#55B86F");
+                    } else if (donneesRegion["vaccines"]<=30000){
+                        regionCarte.css("fill", "#39A96B");
+                    } else if (donneesRegion["vaccines"]<=40000){
+                        regionCarte.css("fill", "#1D9A6C");
+                    } else if (donneesRegion["vaccines"]<=50000){
+                        regionCarte.css("fill", "#178973");
                     } else {
-                        regionCarte.css("fill", "grey");
+                        regionCarte.css("fill", "#117876");
                     }
                 }
             });
@@ -111,6 +123,7 @@
         function afficherRegion(nomRegion, numeroRegion) {
 
             vaccinesRegion = donneesRegions[nomRegion]["vaccines"]
+            dateMaj = donneesRegions["date_update"]
 
             if (vaccinesRegion<=0){
                 vaccinesRegion = "--"
@@ -123,7 +136,7 @@
             content = content.replace(/nomRegion/g, nomRegion);
             content = content.replace(/numeroRegion/g, numeroRegion);
             content = content.replace(/vaccinesRegion/g, vaccinesRegion);
-            content = content.replace(/dateMaj/g, "--/--");
+            content = content.replace(/dateMaj/g, dateMaj);
 
             $('#donneesRegions').prepend(content);
             //trierRegions();
