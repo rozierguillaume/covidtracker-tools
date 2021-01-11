@@ -23,7 +23,7 @@
         <div class="col-md-12 shadow">
             <span style="font-size: 160%; color: black"><b>vaccinesRegion</b></span><br>
             <span><b>Nombre de personnes vaccinées</b><br>
-                Aucune donnée.
+                Nombre de personnes ayant reçu au moins une dose de vaccin.
             <br></span>
             <span style="font-size: 70%;">Mise à jour : dateMaj</span>
         </div>
@@ -416,7 +416,7 @@
         </div>
     </div>
     <div class="col-md-5" style="padding-top: 20px;" id="donneesRegions">
-        Aucune donnée n'est actuellement fournie par le Gouvernement.
+        Données fournies par le Ministère de la Santé
     </div>
 </div>
 
