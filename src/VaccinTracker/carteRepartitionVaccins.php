@@ -73,6 +73,7 @@
                         valeurs.map((value, idx) => {
                             if (data_reg<=value){
                                 regionCarte.css("fill", couleurs[idx]);
+                                break;
                             }
                         })
                     }
