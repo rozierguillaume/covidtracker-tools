@@ -23,7 +23,7 @@
         <div class="col-md-12 shadow">
             <span style="font-size: 160%; color: black"><b>vaccinesRegion</b></span><br>
             <span><b>Nombre de personnes vaccinées</b><br>
-                Nombre de personnes ayant reçu au moins une dose de vaccin.
+                Nombre de personnes ayant reçu au moins une dose de vaccin. Cela représente vaccinesRegionPop% de la population de cette région.
             <br></span>
             <span style="font-size: 70%;">Mise à jour : dateMaj</span>
         </div>
@@ -123,6 +123,8 @@
         function afficherRegion(nomRegion, numeroRegion) {
 
             vaccinesRegion = donneesRegions[nomRegion]["vaccines"]
+            vaccinesRegionPop = vaccinesRegion/donneesRegions[nomRegion]["population"]
+
             dateMaj = donneesRegions["date_update"]
 
             if (vaccinesRegion<=0){
@@ -136,6 +138,8 @@
             content = content.replace(/nomRegion/g, nomRegion);
             content = content.replace(/numeroRegion/g, numeroRegion);
             content = content.replace(/vaccinesRegion/g, vaccinesRegion);
+            content = content.replace(/vaccinesRegionPop/g, vaccinesRegionPop);
+            
             content = content.replace(/dateMaj/g, dateMaj);
 
             $('#donneesRegions').prepend(content);
