@@ -65,12 +65,15 @@
                     let couleurs = ["#DCECCD", "#BDE0AE", "#98D390", "#73C679", "#55B86F", "#39A96B", "#1D9A6C", "#178973", "#117876"]
                     let data_reg = donneesRegion["vaccines"]/donneesRegion["population"]*100
 
-                    regionCarte.css("fill", couleurs[couleurs.length-1]);
+                    if(data_reg > valeurs[valeurs.length-1]){
+                        regionCarte.css("fill", couleurs[couleurs.length-1]);
+                    }
                     valeurs.map((value, idx) => {
                         if (data_reg<=value){
                             regionCarte.css("fill", couleurs[idx]);
                         }
                     })
+
                 }
             });
 
