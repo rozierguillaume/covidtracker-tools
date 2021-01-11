@@ -70,8 +70,8 @@
                         console.log("if")
                         regionCarte.css("fill", couleurs[couleurs.length-1]);
                     } else {
-                        valeurs.map((value, idx) => {
-                            if (data_reg<=value){
+                        for (var idx = 0; i < valeurs.length; i++) {
+                            if (data_reg<=valeurs[idx]){
                                 regionCarte.css("fill", couleurs[idx]);
                                 break;
                             }
