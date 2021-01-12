@@ -116,14 +116,13 @@ L'Union Européenne a passé des commandes pour 6 vaccins différents. 2 sont au
 
 
 <h3 style="margin-top : 50px;">Vaccins en cours d'autorisation</h3>
-Aucun.
-
-<h3 style="margin-top : 50px;">Vaccins pas encore soumis</h3>
 <button class="shadow-btn"><b>🇬🇧🇸🇪 AstraZeneca/Oxford</b><br>
     Phase 3/3<br>
     Type : Vecteur viral<br>
     Efficacité annoncée : 70%<br>
-    Prêt : fin 2020<br>Conservation : +5°C (6 mois)<br>Commandes UE : 300M (+ option 100M)<br>Doses à injecter : 2<br>Statut : --</button>
+    Prêt : fin 2020<br>Conservation : +5°C (6 mois)<br>Commandes UE : 300M (+ option 100M)<br>Doses à injecter : 2<br>Statut : décision UE 29/01</button>
+
+<h3 style="margin-top : 50px;">Vaccins pas encore soumis</h3>
 <button class="shadow-btn"><b>🇺🇸🇧🇪 Janssen J&J</b><br>
     Phase 3/3<br>
     Type : Vecteur viral<br>
@@ -906,11 +905,6 @@ function majValeurs(){
                       background-color: #ffffff;
                       border-radius: 15px;
 
-            }
-
-            button:hover {
-              background-color: black; /* Green */
-              color: white;
             }
 
       /* the flex container without mediaquerie */
