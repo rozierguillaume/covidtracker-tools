@@ -1,5 +1,5 @@
 <h2 style="margin-top : 80px;">Répartition des vaccinés</h2>
-Coloration en fonction de la proportion de population vaccinée.
+Coloration en fonction de la proportion de population vaccinée. Données fournies par le Ministère de la Santé. Cliquez sur une région pour afficher plus de détail.
 <!--START MAP-->
 
 <!--START JS -->
@@ -502,9 +502,8 @@ Coloration en fonction de la proportion de population vaccinée.
         </div>
     </div>
     <div class="col-md-5" style="padding-top: 20px;" id="donneesRegions">
-        Données fournies par le Ministère de la Santé. Cliquez sur une région pour afficher plus de détail.
         <div class="chart-container" style="position: relative; height:50vh; width:100%">
-            <canvas id="chartRegions" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
+            <canvas id="chartRegions" style="margin-top:0px; max-height: 700px; max-width: 900px;"></canvas>
         </div>
     </div>
 </div>
