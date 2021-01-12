@@ -88,10 +88,31 @@ Coloration en fonction du pourcentage de population vaccinée. Données fournies
                 }
 
                 buildBarChart();
+                sortBarChart();
             });
         
 
             var chartRegions;
+
+            function sortBarChart(){
+                // Get the data from each datasets.
+                var dataArray = [];
+                $.each(chartRegions.data.datasets, function() {
+                    dataArray.push(this.data);
+                });
+                // Get the index after sorted.
+                let dataIndexes = dataArray.map((d, i) => i);
+                dataIndexes.sort((a, b) => {
+                    return dataArray[a] - dataArray[b];
+                });
+                // create after sorted datasets.
+                var tempDatasets = [];
+                $.each(dataIndexes, function() {
+                    tempDatasets.push(chartRegions.data.datasets[this]);
+                });
+                // apply it
+                chartRegions.data.datasets = tempDatasets;
+            }
 
             function buildBarChart(){
 
