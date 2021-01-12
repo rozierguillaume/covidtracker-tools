@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <link rel="pingback" href="https://covidtracker.fr/xmlrpc.php">
-    <title>Dashboard régions - Local</title>
+    <title>Vaccin tracker - Local</title>
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="canonical" href="https://covidtracker.fr/dashboard-departements/">
     <meta property="og:locale" content="fr_FR">
@@ -21,56 +21,6 @@
     <meta name="twitter:data1" content="Guillaume Rozier">
     <meta name="twitter:label2" content="Durée de lecture est.">
     <meta name="twitter:data2" content="2 minutes">
-<!--    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>-->
-<!--     <script type="application/ld+json" class="yoast-schema-graph">{-->
-<!--            "@context": "https://schema.org",-->
-<!--            "@graph": [-->
-<!--                {-->
-<!--                    "@type": "WebSite",-->
-<!--                    "@id": "https://covidtracker.fr/#website",-->
-<!--                    "url": "https://covidtracker.fr/",-->
-<!--                    "name": "CovidTracker",-->
-<!--                    "description": "Suivi de l&#039;\u00e9pid\u00e9mie de Coronavirus en France et dans le monde",-->
-<!--                    "potentialAction": [-->
-<!--                        {-->
-<!--                            "@type": "SearchAction",-->
-<!--                            "target": "https://covidtracker.fr/?s={search_term_string}",-->
-<!--                            "query-input": "required name=search_term_string"-->
-<!--                        }-->
-<!--                    ],-->
-<!--                    "inLanguage": "fr-FR"-->
-<!--                },-->
-<!--                {-->
-<!--                    "@type": "ImageObject",-->
-<!--                    "@id": "https://covidtracker.fr/dashboard-departements/#primaryimage",-->
-<!--                    "inLanguage": "fr-FR",-->
-<!--                    "url": "https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Ain.jpeg"-->
-<!--                },-->
-<!--                {-->
-<!--                    "@type": "WebPage",-->
-<!--                    "@id": "https://covidtracker.fr/dashboard-departements/#webpage",-->
-<!--                    "url": "https://covidtracker.fr/dashboard-departements/",-->
-<!--                    "name": "Dashboard D\u00e9partements - CovidTracker",-->
-<!--                    "isPartOf": {-->
-<!--                        "@id": "https://covidtracker.fr/#website"-->
-<!--                    },-->
-<!--                    "primaryImageOfPage": {-->
-<!--                        "@id": "https://covidtracker.fr/dashboard-departements/#primaryimage"-->
-<!--                    },-->
-<!--                    "datePublished": "2020-10-21T12:44:19+00:00",-->
-<!--                    "dateModified": "2020-11-15T19:04:40+00:00",-->
-<!--                    "inLanguage": "fr-FR",-->
-<!--                    "potentialAction": [-->
-<!--                        {-->
-<!--                            "@type": "ReadAction",-->
-<!--                            "target": [-->
-<!--                                "https://covidtracker.fr/dashboard-departements/"-->
-<!--                            ]-->
-<!--                        }-->
-<!--                    ]-->
-<!--                }-->
-<!--            ]-->
-<!--        }</script>-->
     <link rel="dns-prefetch" href="//www.google.com">
     <link rel="dns-prefetch" href="//www.googletagmanager.com">
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
