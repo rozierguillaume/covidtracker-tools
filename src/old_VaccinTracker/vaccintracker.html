@@ -1,15 +1,9 @@
 <!-- wp:html -->
-
+  
 <p>Quelle proportion des Français a été vaccinée ? Combien faut-il encore vacciner de personnes avant d'atteindre l'immunité collective ? Quels sont les différents types de vaccins proposés ?
 Ce tracker permet de suivre la proportion de Français déjà vaccinés contre la Covid19, et le nombre de personnes restant à vacciner pour atteindre l'immunité collective. VaccinTracker est une initiative citoyenne indépendante et non officielle.
 </p>
 
-<!--
-<div style="margin-bottom: 20px; border: 1px solid rgba(0, 0, 0, 0.2); border-radius: 7px; padding: 10px; background-color: rgba(0, 0, 0, 0.05);">
-<b>11 janvier - Message important sur les données</b><br>
-Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagne vaccinale), initiative indépendante, aucune donnée officielle de vaccination n’était disponible. Nous avons alors commencé à chercher, collecter et sommer les données publiées notamment dans la presse locale. Le Ministère de la Santé a contacté CovidTracker le 30 décembre afin de lui fournir des données officielles, plus exhaustives et à jour. Depuis, nous recevons régulièrement un nouveau chiffre du nombre de vaccinés de sa part, et nous le remercions pour cela. Cependant, cette situation n’est pas conforme avec nos principes d’OpenData. <b>VaccinTracker ne sera désormais mis à jour qu’à partir de données publiques officielles, dès que celles-ci seront disponibles.</b>
-</div>
--->
 
 <div id="news"></div>
 
@@ -37,7 +31,7 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
 </div>
 
 <h2 style="margin-top : 80px;">Proportion de personnes vaccinées</h2>
-Chaque carré correspond à 1% des Français. Les carrés verts <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:rgb(45, 189, 84);" /></svg> correspondent aux Français ayant reçu au moins une dose de vaccin (deux sont nécessaires). Les carrés rouge vif <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:rgb(237, 88, 88);" /></svg> représentent les Français qu'il faut vacciner avant d'atteindre un taux de vaccination de 60%.
+Chaque carré correspond à 1% des Français. Les carrés verts <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:rgb(45, 189, 84);" /></svg> correspondent aux Français ayant reçu au moins une dose de vaccin (deux sont nécessaires). Les carrés rouge vif <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:rgb(237, 88, 88);" /></svg> représentent les Français qu'il faut vacciner avant d'atteindre un taux de vaccination de 60%. 
 Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill: rgb(207, 169, 169);" /></svg>  représentent les autres Français non vaccinés. <i>Mise à jour : <span id="date_maj_3">--/--</span></i>
 
 
@@ -49,8 +43,8 @@ Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60"
     </div>
     <br>
     <div class="col-md-3" style="padding-top: 20px;">
-
-        <span style="font-size: 200%; color: rgb(45, 189, 84)"><span id="proportionVaccines">--</span>%</span><br> des Français ont reçu au moins une dose de vaccin. <br><br>
+        
+        <span style="font-size: 200%; color: rgb(45, 189, 84)"><span id="proportionVaccines">--</span>%</span><br> des Français ont reçu au moins une dose de vaccin. <br><br> 
         Il reste à vacciner au moins <br><span style="font-size: 200%; color: rgb(237, 88, 88);"><span id="proportionAVaccinerImmu">--</span>%</span><br>des Français avant d'atteindre un taux de vaccination de 60%. <br>
     </div>
 </div>
@@ -64,7 +58,20 @@ Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60"
     </span>
 </div>
 
+<!--
+<h2 style="margin-top : 80px;">Comparaison cas</h2>
+<br>
+<br>
+<svg width="200" height="200" style="margin-right:5px;">
+    <g>
+        <text x="0" y="10" font-family="Verdana" font-size="20" fill="black">-- cas</text>
+        <rect x="0" y="20" width="200" height="200" style="fill:rgb(45, 189, 84);" />
+        
+    </g>
+</svg>
 
+<svg width="50" height="50"><rect x="0" y="0" width="200" height="200" style="fill:rgb(45, 189, 84);" /></svg>
+-->
 <h2 style="margin-top : 80px;">Évolution</h2>
 L'objectif est de vacciner 1 million de personnes en janvier 2021. Pour atteindre cet objectif, il faudrait vacciner <b><span id="objectif_quotidien">--</span> personnes</b> chaque jour entre aujourd'hui et le 31 janvier 2021.
 <br>
@@ -92,8 +99,6 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
 <div class="chart-container" style="position: relative; height:50vh; width:100%">
     <canvas id="lineVacChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
 </div>
-
-<?php include(__DIR__ . '/carteRepartitionVaccins.php') ?>
 
 <h2 style="margin-top : 80px;" id="autorisation-des-vaccins">Autorisation des vaccins</h2>
 <div style="border: 0px solid grey; background-color: rgba(128, 128, 128, 0.1); border-radius: 7px; padding: 12px;">
@@ -142,43 +147,31 @@ Aucun.
 </div>
 <br>
 <h2>Quand est-ce que sera atteinte l'immunité collective ?</h2>
-Sur VaccinTracker, le taux de 60% a été choisi comme seuil d'immunité collective. Cependant, on ne peut pas aujourd'hui connaître ce taux précisément.
+Sur VaccinTracker, le taux de 60% a été choisi comme seuil d'immunité collective. Cependant, on ne peut pas aujourd'hui connaître ce taux précisément. 
 La vidéo suivante du média Le Monde explique très bien la problématique à notre sens :
 <br><br>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bjFtFMilb34" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <br>
 <h2 style="margin-top : 80px;">Quand pourrez-vous vous faire vacciner ?</h2>
-Le gouvernement souhaite vacciner 1 million de personnes en janvier 2021, 12 à 14 millions d'ici à mi-avril et 15 à 27 millions d'ici à juillet.
-
-<h3 style="margin-top : 20px;">Début janvier</h3>
+<h3 style="margin-top : 20px;">Phase 1 (en cours) : janvier et février 2021</h3>
 <ul>
     <li>Personnes âgées séjournant dans un établissement collectif (type EHPAD) ;</li>
-    <li>Personnel soignant, pompiers, aides à domicile (plus de 50 ans) ;</li>
-    <li>Personnes en situation de handicap vulnérables qui sont hébergées en maison d'accueil spécialisées (MAS) et en foyer d'accueil médicalisé (FAM).</li>
+    <li>Personnel soignant, pompiers, aides à domicile (plus de 50 ans).</li>
 </ul>
 
-<h3 style="margin-top : 50px;">18 janvier</h3>
+<h3 style="margin-top : 50px;">Phase 2 : février / mars 2021</h3>
 <ul>
     <li>Personnes âgées de plus de 75 ans en priorité ; puis personnes âgées de plus de 65 ans dans un second temps,</li>
+    <li>Professionels de santé ou médico-social (âgé de plus de 50 ans et/ou avec comorbidité).</li>
 </ul>
 
-<h3 style="margin-top : 50px;">Février ou mars</h3>
-<ul>
-    <li>Personnes âgées de plus de 65 ans.</li>
-</ul>
-
-<h3 style="margin-top : 50px;">Fin mars</h3>
+<h3 style="margin-top : 50px;">Phase 3 : fin juin / début juillet 2021</h3>
 <ul>
     <li>Personnes âgées de plus de 50 ans,</li>
     <li>Personnes travaillant dans un secteur "essentiel" (*),</li>
     <li>Personne vulnérable ou précaire,</li>
     <li>Personne majeure vivant dans un hébergement confiné ou un lieu clos (**).</li>
 </ul>
-
-<h3 style="margin-top : 50px;">Été</h3>
-<ul>
-    <li>Ensemble de la population.</li>
-    </ul>
 <br>
 (*) Les secteurs considérés comme "essentiels" sont les domaines de la sécurité, de l'éducation et de l'alimentaire, indispensables "au fonctionnement du pays en période épidémique", selon le ministère de la Santé.
 (**) Le ministère de la Santé ne donne pas plus de précisions concernant "les hébergements confinés ou les lieux clos". Interrogée par franceinfo sur cette question, la DGS donne uniquement pour exemple les "foyers de travailleurs migrants".
@@ -198,13 +191,13 @@ Développé bénévolement par <a href="https://twitter.com/guillaumerozier">Gui
 <style>
 
 .tableau-div{
-    width: 50vh;
+    width: 50vh; 
     height: 50vh;
 }
 
 @media screen and (max-width: 700px){
     .tableau-div{
-    width: 100vh;
+    width: 100vh; 
     height: 100vh;
     }
 }
@@ -243,7 +236,7 @@ Développé bénévolement par <a href="https://twitter.com/guillaumerozier">Gui
         box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
         background: #ffffff;
         width: 100%;
-
+        
   }
 
 p{
@@ -341,6 +334,7 @@ td {
     height: 1%;
 }
 
+
 .green {
     background-color: rgb(45, 189, 84);
 }
@@ -353,11 +347,16 @@ td {
     background-color: rgb(207, 169, 169);
 }
 
-/*@keyframes blinker {*/
-/*  50% {*/
-/*    background-color: rgb(45, 189, 84);*/
-/*  }*/
-/*}*/
+.blink_me {
+  animation: blinker 3s ease infinite;
+  animation-delay: 2s;
+}
+
+@keyframes blinker {
+  50% {
+    background-color: rgb(45, 189, 84);
+  }
+}
 
 
 #subtableVaccin, #subtableVaccin tr, #subtableVaccin td {
@@ -388,7 +387,7 @@ function numberWithSpaces(x) {
 }
 function formaterDate (date) {
   if (!(date instanceof Date)) return String(date);
-  return date.toLocaleDateString("fr-FR", {
+  return date.toLocaleDateString("fr-FR", { 
     year: 'numeric',
     month: 'long',
     day: 'numeric'
@@ -492,7 +491,7 @@ var nb_vaccines = [];
 var source = [];
 
 var dejaVaccinesNb;
-var dejaVaccines;
+var dejaVaccines=0;
 var restantaVaccinerImmunite;
 var restantaVaccinerAutres = 100
 var objectifQuotidien;
@@ -520,7 +519,7 @@ fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data
        })
        .then(csv => {
           this.data_stock = csv;
-
+         
           array_data_stock = CSVToArray(csv, ",");
           array_data_stock.slice(1, array_data_stock.length-1).map((value, idx) => {
             this.dates_stock.push(value[0])
@@ -546,14 +545,14 @@ fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/news
        })
        .then(csv => {
           this.data_news = csv;
-
+         
           array_data_news = CSVToArray(csv, ",");
           array_data_news.slice(1, array_data_news.length-1).map((value, idx) => {
               console.log(value)
             this.titre_news.push(value[0])
             this.contenu_news.push(value[1]);
           })
-
+          
           afficherNews();
           //console.log(contenu_news)
 
@@ -601,7 +600,7 @@ function fetchOtherData(){
 var lineChart;
 
 function calculerObjectif(){
-
+    
     let one_day = (1000 * 60 * 60 * 24)
     let jours_restant = (Date.parse("2021-01-31") - Date.parse(dates[dates.length-1]) )/ one_day
     let objectif = OBJECTIF_FIN_JANVIER;
@@ -643,10 +642,10 @@ function calculerDateProjeteeObjectif () {
 }
 
 function buildLineChart(){
-
+    
     var ctx = document.getElementById('lineVacChart').getContext('2d');
 
-    this.lineChart = new Chart(ctx, {
+    this.lineChart = new Chart(ctx, { 
         type: 'line',
         data: {
             labels: dates,
@@ -680,7 +679,7 @@ function buildLineChart(){
                     ticks: {
                         min: 0
                     },
-
+                    
                 }],
                 xAxes: [{
                     gridLines: {
@@ -700,7 +699,7 @@ function buildLineChart(){
             annotation: {
             events: ["click"],
             annotations: [
-
+            
             ]
         }
         }
@@ -708,10 +707,10 @@ function buildLineChart(){
 }
 
 function buildBarChart(data){
-
+    
     var ctx = document.getElementById('lineVacChart').getContext('2d');
 
-    this.lineChart = new Chart(ctx, {
+    this.lineChart = new Chart(ctx, { 
         type: 'bar',
         data: {
             labels: dates,
@@ -738,7 +737,7 @@ function buildBarChart(data){
                     ticks: {
                         min: 0
                     },
-
+                    
                 }],
                 xAxes: [{
                     gridLines: {
@@ -758,7 +757,7 @@ function buildBarChart(data){
             annotation: {
             events: ["click"],
             annotations: [
-
+            
             ]
         }
         }
@@ -769,7 +768,7 @@ function typeDonneesChart(){
     this.lineChart.destroy()
     document.getElementById("objectif").checked=false;
     if (type_donnees=="quotidien"){
-
+        
         nb_vaccines_quot = [nb_vaccines[0]]
         for(i=0; i<nb_vaccines.length-1; i++){
             nb_vaccines_quot.push(nb_vaccines[i+1]-nb_vaccines[i])
@@ -838,9 +837,9 @@ function tableVaccin(tableElt, level){
                         subtable.id = "subtableVaccin";
                         newrow.appendChild(subtable);
                         first = false;
-                        tableVaccin(subtable, level+1);
+                        tableVaccin(subtable, level+1);                        
                     }
-                } else if((caseNb <= 60 && level == 0) || ((dejaVaccines ?? 0) < 60 && level == 1)) {
+                } else if((caseNb <= 60 && level == 0) || ((dejaVaccines) < 60 && level == 1)) {
                     newrow.classList.add("red");
                 } else {
                     newrow.classList.add("grey");
@@ -855,7 +854,7 @@ function majValeurs(){
     if (source[source.length-1] == "Estimation"){
         document.getElementById("estimation_str").innerHTML = "⚠️ Données non consolidées";
     }
-
+    
     document.getElementById("nb_vaccines").innerHTML = numberWithSpaces(dejaVaccinesNb);
     document.getElementById("nb_vaccines_24h").innerHTML = numberWithSpaces(dejaVaccinesNb - nb_vaccines[nb_vaccines.length-2]);
     document.getElementById("nb_doses").innerHTML = numberWithSpaces(cumul_stock);
@@ -879,9 +878,8 @@ function majValeurs(){
     tableVaccin(table, 0);
 
 }
-
+    
 </script>
-
 
 <!-- /wp:html -->
 
@@ -889,14 +887,14 @@ function majValeurs(){
 <!-- wp:html -->
 
 <style>
-    div[shadow] {
+    div[shadow] {   
               border: 0px solid black;
               padding: 10px 20px;
               border-radius: 7px;
               text-align: center;
               box-shadow: 6px 4px 25px #d6d6d6;
     }
-
+    
     button {
                       border: 1px solid;
                       margin: 10px;
@@ -905,49 +903,49 @@ function majValeurs(){
               transition-duration: 0.4s;
                       background-color: #ffffff;
                       border-radius: 15px;
-
+    
             }
-
+    
             button:hover {
               background-color: black; /* Green */
               color: white;
             }
-
+    
       /* the flex container without mediaquerie */
-
+    
       div[class_perso] {
         display: flex;
         min-height: 12vh;
         flex-wrap: wrap;
-
-
+    
+    
         /* needed to stack children once to big */
       }
-
+    
       div[class_perso] div {
         flex: 1;
         min-width: 200px;
         min-height: 7vh;
         /* 2 children + margin and borders makes a break point at around 620px */
         /*background: lightblue;*/
-
+    
       }
-
+    
       div div {
         /*border: solid;*/
         margin: 3px;
         /*background: tomato;*/
       }
-
-
+    
+    
       /* remove the grid system at about 620px */
-
+    
       @media screen and (max-width: 621px) {
         div[class_persos] {
           min-height: 30vh;
           /* has a meaning with a grid system */
         }
-
+    
       }
       </style>
 </style>
@@ -958,7 +956,7 @@ function majValeurs(){
     <div>
       <center><h3>Dashboards</h3><br></center>
   <p>Ces tableaux de bord permettent de suivre et mieux comprendre l'évolution de l'épidémie.</p><br>
-  <center>
+  <center>     
   <a href="https://covidtracker.fr/covidtracker-france/" style="color:black"><button>🇫🇷 <b>France</b></button></a>
   <a href="https://covidtracker.fr/dashboard-regions/" style="color:black"><button>📍 Régions</button></a>
   <a href="https://covidtracker.fr/dashboard-departements/" style="color:black"><button>🏡 <b>Départements</b></button></a><br>
