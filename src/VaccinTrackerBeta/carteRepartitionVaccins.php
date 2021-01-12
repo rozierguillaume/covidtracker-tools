@@ -5,6 +5,9 @@ Coloration en fonction de la proportion de population vaccinée.
 <!--START JS -->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-deferred@1"></script>
 
 <script id="regionTemplate" type="text/template">
     <!-- wp:heading -->
@@ -443,7 +446,7 @@ Coloration en fonction de la proportion de population vaccinée.
 <script>
     var chartRegions;
     buildBarChart();
-    
+
     function buildBarChart(){
 
         var ctx = document.getElementById('chartRegions').getContext('2d');
