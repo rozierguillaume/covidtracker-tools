@@ -1,13 +1,10 @@
 <h2 style="margin-top : 80px;">Répartition des vaccinés</h2>
-Coloration en fonction du pourcentage de population vaccinée. Données fournies par le Ministère de la Santé. Cliquez sur une région pour afficher plus de détail.
+Coloration en fonction de la proportion de population vaccinée.
 <!--START MAP-->
 
 <!--START JS -->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-deferred@1"></script>
 
 <script id="regionTemplate" type="text/template">
     <!-- wp:heading -->
@@ -41,8 +38,6 @@ Coloration en fonction du pourcentage de population vaccinée. Données fournies
     jQuery(document).ready(function ($) {
 
         var donneesRegions;
-        var nomRegions=[];
-        var vaccinesRegions=[];
         var dateMaj;
 
         fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data_regions.json')
@@ -61,8 +56,6 @@ Coloration en fonction du pourcentage de population vaccinée. Données fournies
                     numeroRegion = $('#listeRegions option[value="'+region+'"]').data("num");
                     // console.log(numeroDepartement);
                     donneesRegion = donneesRegions[region];
-                    nomRegions.push(region);
-                    vaccinesRegions.push(donneesRegions[region]["vaccines"]);
                     // console.log(donneesDepartement);
 
                     var regionCarte = $('#carte path[data-num="' + numeroRegion + '"]');
@@ -86,71 +79,7 @@ Coloration en fonction du pourcentage de population vaccinée. Données fournies
                     }
 
                 }
-
-                buildBarChart();
             });
-        
-
-            var chartRegions;
-
-            function buildBarChart(){
-
-                var ctx = document.getElementById('chartRegions').getContext('2d');
-
-                this.chartRegions = new Chart(ctx, {
-                    type: 'horizontalBar',
-                    data: {
-                        labels: nomRegions,
-                        datasets: [{
-                            label: 'Nombre de vaccinés ',
-                            data: vaccinesRegions,
-                            borderWidth: 3,
-                            backgroundColor: 'rgba(0, 168, 235, 0.5)',
-                            borderColor: 'rgba(0, 168, 235, 1)',
-                            cubicInterpolationMode: 'monotone'
-                        },
-                        ]
-                    },
-                    options: {
-                        maintainAspectRatio: false,
-                        legend: {
-                            display: false
-                        },
-                        scales: {
-                            yAxes: [{
-                                gridLines: {
-                                    display: false
-                                },
-                                ticks: {
-                                    min: 0
-                                },
-
-                            }],
-                            xAxes: [{
-                                gridLines: {
-                                    display: false
-                                },
-                                ticks: {
-                                    maxRotation: 0,
-                                    minRotation: 0,
-                                    maxTicksLimit: 6,
-                                    callback: function(value, index, values) {
-                                    return value; //value.slice(8) + "/" + value.slice(5, 7);
-                                }
-                                }
-
-                            }]
-                        },
-                        annotation: {
-                        events: ["click"],
-                        annotations: [
-
-                        ]
-                    }
-                    }
-                });
-                }
-
 
         /*
         * Le lancement de l'animation se fait en ajoutant et retirant la classe animated
@@ -363,7 +292,7 @@ Coloration en fonction du pourcentage de population vaccinée. Données fournies
     @keyframes blinker {
         50% {
             stroke-width: 1;
-            fill-opacity : 0.2;
+            fill-opacity : 0.5;
         }
     }
 
@@ -440,10 +369,8 @@ Coloration en fonction du pourcentage de population vaccinée. Données fournies
 
 
 <!--START HTML-->
-
 <div id="menu" class="row">
     <div class="col-md-6 text-center">
-    Pourcentage de la population vaccinée :
         <div style="display:none;">
             <select multiple="multiple" name="regions_list_choice" id="listeRegions" class="select2">
                 <option data-num="01" value="Auvergne-Rhône-Alpes">Auvergne-Rhône-Alpes</option>
@@ -503,15 +430,9 @@ Coloration en fonction du pourcentage de population vaccinée. Données fournies
 
         </div>
     </div>
-    <div class="col-md-5" style="padding-top: 0px;" id="donneesRegions">
-    Nombre de personnes ayant reçu une dose :
-        <div class="chart-container" style="position: relative; height:50vh; width:100%">
-            <canvas id="chartRegions" style="margin-top:0px; max-height: 700px; max-width: 900px;"></canvas>
-        </div>
+    <div class="col-md-5" style="padding-top: 20px;" id="donneesRegions">
+        Données fournies par le Ministère de la Santé
     </div>
 </div>
 
-
-
 <!--END MAP-->
-
