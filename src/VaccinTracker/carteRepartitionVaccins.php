@@ -97,7 +97,7 @@ Coloration en fonction du pourcentage de population vaccinée. Données fournies
             function sortBarChart(){
                 // Get the data from each datasets.
                 var dataArray = [];
-                $.each(chartRegions.data.datasets, function() {
+                $.each(this.chartRegions.data.datasets, function() {
                     dataArray.push(this.data);
                 });
                 // Get the index after sorted.
@@ -108,7 +108,7 @@ Coloration en fonction du pourcentage de population vaccinée. Données fournies
                 // create after sorted datasets.
                 var tempDatasets = [];
                 $.each(dataIndexes, function() {
-                    tempDatasets.push(chartRegions.data.datasets[this]);
+                    tempDatasets.push(this.chartRegions.data.datasets[this]);
                 });
                 // apply it
                 chartRegions.data.datasets = tempDatasets;
