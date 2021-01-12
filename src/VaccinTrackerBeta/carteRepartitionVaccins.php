@@ -41,6 +41,8 @@ Coloration en fonction de la proportion de population vaccinée.
     jQuery(document).ready(function ($) {
 
         var donneesRegions;
+        var nomRegions=[];
+        var valeurRegions=[];
         var dateMaj;
 
         fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data_regions.json')
@@ -59,6 +61,8 @@ Coloration en fonction de la proportion de population vaccinée.
                     numeroRegion = $('#listeRegions option[value="'+region+'"]').data("num");
                     // console.log(numeroDepartement);
                     donneesRegion = donneesRegions[region];
+                    nomRegions.push(region);
+                    valeurRegions.push(donneesRegions[region]);
                     // console.log(donneesDepartement);
 
                     var regionCarte = $('#carte path[data-num="' + numeroRegion + '"]');
@@ -96,10 +100,10 @@ Coloration en fonction de la proportion de population vaccinée.
                 this.chartRegions = new Chart(ctx, {
                     type: 'horizontalBar',
                     data: {
-                        labels: ["reg1", "reg2"],
+                        labels: nomRegions,
                         datasets: [{
                             label: 'Nombre de vaccinés ',
-                            data: [1, 2],
+                            data: valeurRegions,
                             borderWidth: 3,
                             backgroundColor: 'rgba(0, 168, 235, 0.5)',
                             borderColor: 'rgba(0, 168, 235, 1)',
