@@ -442,6 +442,7 @@ Coloration en fonction de la proportion de population vaccinée. Données fourni
 <!--START HTML-->
 <div id="menu" class="row">
     <div class="col-md-6 text-center">
+        Nombre de personnes vaccinées par habitant :
         <div style="display:none;">
             <select multiple="multiple" name="regions_list_choice" id="listeRegions" class="select2">
                 <option data-num="01" value="Auvergne-Rhône-Alpes">Auvergne-Rhône-Alpes</option>
@@ -502,6 +503,7 @@ Coloration en fonction de la proportion de population vaccinée. Données fourni
         </div>
     </div>
     <div class="col-md-5" style="padding-top: 20px;" id="donneesRegions">
+    Nombre de personnes vaccinées :
         <div class="chart-container" style="position: relative; height:50vh; width:100%">
             <canvas id="chartRegions" style="margin-top:0px; max-height: 700px; max-width: 900px;"></canvas>
         </div>
