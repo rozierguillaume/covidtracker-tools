@@ -442,8 +442,9 @@ Coloration en fonction de la proportion de population vaccinée.
 
 <script>
     var chartRegions;
-
-    function buildBarChart(data){
+    buildBarChart();
+    
+    function buildBarChart(){
 
         var ctx = document.getElementById('chartRegions').getContext('2d');
 
