@@ -5,7 +5,9 @@ Coloration en fonction de la proportion de population vaccinée.
 <!--START JS -->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-deferred@1"></script>
 
 <script id="regionTemplate" type="text/template">
     <!-- wp:heading -->
@@ -438,6 +440,72 @@ Coloration en fonction de la proportion de population vaccinée.
         </div>
     </div>
 </div>
+
+
+<script>
+    var chartRegions;
+    buildBarChart();
+
+    function buildBarChart(){
+
+        var ctx = document.getElementById('chartRegions').getContext('2d');
+
+        this.chartRegions = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: ["reg1", "reg2"],
+                datasets: [{
+                    label: 'Nombre de vaccinés ',
+                    data: [1, 2],
+                    borderWidth: 3,
+                    backgroundColor: 'rgba(0, 168, 235, 0.5)',
+                    borderColor: 'rgba(0, 168, 235, 1)',
+                    cubicInterpolationMode: 'monotone'
+                },
+                ]
+            },
+            options: {
+                maintainAspectRatio: false,
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                            min: 0
+                        },
+
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                            maxRotation: 0,
+                            minRotation: 0,
+                            maxTicksLimit: 6,
+                            callback: function(value, index, values) {
+                            return value.slice(8) + "/" + value.slice(5, 7);
+                        }
+                        }
+
+                    }]
+                },
+                annotation: {
+                events: ["click"],
+                annotations: [
+
+                ]
+            }
+            }
+        });
+        }
+
+</script>
+
 
 <!--END MAP-->
 
