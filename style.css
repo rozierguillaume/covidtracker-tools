@@ -88,3 +88,8 @@
     .navbar{
         max-height: 70px !important;
     }
+}
+
+.content a {
+   text-decoration: underline;
+}
