@@ -431,8 +431,74 @@ Coloration en fonction de la proportion de population vaccinée.
         </div>
     </div>
     <div class="col-md-5" style="padding-top: 20px;" id="donneesRegions">
-        Données fournies par le Ministère de la Santé
+        Données fournies par le Ministère de la Santé. Cliquez sur une région pour afficher plus de détail.
+        <div class="chart-container" style="position: relative; height:40vh; width:100%">
+            <canvas id="chartRegions" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
+        </div>
     </div>
 </div>
 
 <!--END MAP-->
+
+<script>
+    var chartRegions;
+
+    function buildBarChart(data){
+
+        var ctx = document.getElementById('chartRegions').getContext('2d');
+
+        this.chartRegions = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["2020-01-10", "2020-01-11"],
+                datasets: [{
+                    label: 'Nombre de vaccinés ',
+                    data: [1, 2],
+                    borderWidth: 3,
+                    backgroundColor: 'rgba(0, 168, 235, 0.5)',
+                    borderColor: 'rgba(0, 168, 235, 1)',
+                    cubicInterpolationMode: 'monotone'
+                },
+                ]
+            },
+            options: {
+                maintainAspectRatio: false,
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                            min: 0
+                        },
+
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                            maxRotation: 0,
+                            minRotation: 0,
+                            maxTicksLimit: 6,
+                            callback: function(value, index, values) {
+                            return value.slice(8) + "/" + value.slice(5, 7);
+                        }
+                        }
+
+                    }]
+                },
+                annotation: {
+                events: ["click"],
+                annotations: [
+
+                ]
+            }
+            }
+        });
+        }
+
+</script>
