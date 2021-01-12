@@ -82,7 +82,71 @@ Coloration en fonction de la proportion de population vaccinée.
                     }
 
                 }
+
+                buildBarChart();
             });
+        
+
+            var chartRegions;
+
+            function buildBarChart(){
+
+                var ctx = document.getElementById('chartRegions').getContext('2d');
+
+                this.chartRegions = new Chart(ctx, {
+                    type: 'horizontalBar',
+                    data: {
+                        labels: ["reg1", "reg2"],
+                        datasets: [{
+                            label: 'Nombre de vaccinés ',
+                            data: [1, 2],
+                            borderWidth: 3,
+                            backgroundColor: 'rgba(0, 168, 235, 0.5)',
+                            borderColor: 'rgba(0, 168, 235, 1)',
+                            cubicInterpolationMode: 'monotone'
+                        },
+                        ]
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        legend: {
+                            display: false
+                        },
+                        scales: {
+                            yAxes: [{
+                                gridLines: {
+                                    display: false
+                                },
+                                ticks: {
+                                    min: 0
+                                },
+
+                            }],
+                            xAxes: [{
+                                gridLines: {
+                                    display: false
+                                },
+                                ticks: {
+                                    maxRotation: 0,
+                                    minRotation: 0,
+                                    maxTicksLimit: 6,
+                                    callback: function(value, index, values) {
+                                    return value; //value.slice(8) + "/" + value.slice(5, 7);
+                                }
+                                }
+
+                            }]
+                        },
+                        annotation: {
+                        events: ["click"],
+                        annotations: [
+
+                        ]
+                    }
+                    }
+                });
+                }
+
 
         /*
         * Le lancement de l'animation se fait en ajoutant et retirant la classe animated
@@ -441,70 +505,6 @@ Coloration en fonction de la proportion de population vaccinée.
     </div>
 </div>
 
-
-<script>
-    var chartRegions;
-    buildBarChart();
-
-    function buildBarChart(){
-
-        var ctx = document.getElementById('chartRegions').getContext('2d');
-
-        this.chartRegions = new Chart(ctx, {
-            type: 'horizontalBar',
-            data: {
-                labels: ["reg1", "reg2"],
-                datasets: [{
-                    label: 'Nombre de vaccinés ',
-                    data: [1, 2],
-                    borderWidth: 3,
-                    backgroundColor: 'rgba(0, 168, 235, 0.5)',
-                    borderColor: 'rgba(0, 168, 235, 1)',
-                    cubicInterpolationMode: 'monotone'
-                },
-                ]
-            },
-            options: {
-                maintainAspectRatio: false,
-                legend: {
-                    display: false
-                },
-                scales: {
-                    yAxes: [{
-                        gridLines: {
-                            display: false
-                        },
-                        ticks: {
-                            min: 0
-                        },
-
-                    }],
-                    xAxes: [{
-                        gridLines: {
-                            display: false
-                        },
-                        ticks: {
-                            maxRotation: 0,
-                            minRotation: 0,
-                            maxTicksLimit: 6,
-                            callback: function(value, index, values) {
-                            return value.slice(8) + "/" + value.slice(5, 7);
-                        }
-                        }
-
-                    }]
-                },
-                annotation: {
-                events: ["click"],
-                annotations: [
-
-                ]
-            }
-            }
-        });
-        }
-
-</script>
 
 
 <!--END MAP-->

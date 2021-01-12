@@ -691,7 +691,7 @@ function buildLineChart(){
                         minRotation: 0,
                         maxTicksLimit: 6,
                         callback: function(value, index, values) {
-                        return value; //value.slice(8) + "/" + value.slice(5, 7);
+                        return value.slice(8) + "/" + value.slice(5, 7);
                      }
                      }
 
