@@ -191,7 +191,7 @@ Ce graphique présente le nombre de doses administrées dans chaque pays.
 <iframe src="https://ourworldindata.org/grapher/cumulative-covid-vaccinations?tab=chart&stackMode=absolute&time=latest&region=World" loading="lazy" style="width: 100%; height: 600px; border: 0px none;"></iframe>
 <br>
 <br>
-Développé bénévolement par <a href="https://twitter.com/guillaumerozier">Guillaume Rozier</a>
+Auteur : <a href="https://twitter.com/guillaumerozier">Guillaume Rozier</a>. Contributeurs : .
 
 
 <style>
@@ -623,7 +623,7 @@ function afficherNews(){
             html_str += `<br><br>`
         }
     })
-    document.getElementById("news").innerHTML = `<div style="margin-bottom: 20px; border: 1px solid rgba(0, 0, 0, 0.2); border-radius: 7px; padding: 10px; background-color: rgba(0, 0, 0, 0.05);">` + html_str + `</div>`;
+    //document.getElementById("news").innerHTML = `<div style="margin-bottom: 20px; border: 1px solid rgba(0, 0, 0, 0.2); border-radius: 7px; padding: 10px; background-color: rgba(0, 0, 0, 0.05);">` + html_str + `</div>`;
 
 }
 

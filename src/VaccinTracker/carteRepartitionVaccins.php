@@ -406,12 +406,18 @@ Coloration en fonction du pourcentage de population vaccinée. Données fournies
             margin-top: -30px;
             margin-bottom: -30px;
         }
+        #titre_map{
+            margin-top: -30px;
+        }
     }
 
     @media screen and (max-width: 450px) {
         #carte{
             margin-top: -60px;
             margin-bottom: -60px;
+        }
+        #titre_map{
+            margin-top: -60px;
         }
     }
 
@@ -420,12 +426,18 @@ Coloration en fonction du pourcentage de population vaccinée. Données fournies
             margin-top: -80px;
             margin-bottom: -80px;
         }
+        #titre_map{
+            margin-top: -80px;
+        }
     }
 
     @media screen and (max-width: 370px) {
         #carte{
             margin-top: -100px;
             margin-bottom: -100px;
+        }
+        #titre_map{
+            margin-top: -100px;
         }
     }
 
@@ -443,7 +455,7 @@ Coloration en fonction du pourcentage de population vaccinée. Données fournies
 
 <div id="menu" class="row">
     <div class="col-md-6 text-center">
-    Pourcentage de la population vaccinée :
+    <span id="titre_map">Pourcentage de la population vaccinée :</span>
         <div style="display:none;">
             <select multiple="multiple" name="regions_list_choice" id="listeRegions" class="select2">
                 <option data-num="01" value="Auvergne-Rhône-Alpes">Auvergne-Rhône-Alpes</option>
