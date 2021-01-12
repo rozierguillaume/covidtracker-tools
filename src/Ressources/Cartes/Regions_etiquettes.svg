@@ -1,60 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-        xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/"
-        xmlns:dc="http://purl.org/dc/elements/1.1/"
-        xmlns:cc="http://creativecommons.org/ns#"
-        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-        xmlns:svg="http://www.w3.org/2000/svg"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-        version="1.1"
-        x="0px"
-        y="0px"
-        width="583"
-        height="550"
-        viewBox="-0.376 -0.985 583 550"
-        enable-background="new -0.376 -0.985 495 544"
-        xml:space="preserve"
-        id="svg2"
-        inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
-        sodipodi:docname="Regions_etiquettes.svg"><metadata
-   id="metadata1030">
-    <rdf:RDF><cc:Work
-       rdf:about="">
-    <dc:format>image/svg+xml</dc:format>
-    <dc:type
-            rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:title></dc:title>
-</cc:Work>
-    </rdf:RDF>
-</metadata>
-    <sodipodi:namedview
-            pagecolor="#ffffff"
-            bordercolor="#666666"
-            borderopacity="1"
-            objecttolerance="10"
-            gridtolerance="10"
-            guidetolerance="10"
-            inkscape:pageopacity="0"
-            inkscape:pageshadow="2"
-            inkscape:window-width="1920"
-            inkscape:window-height="1017"
-            id="namedview1028"
-            showgrid="false"
-            inkscape:zoom="1.1640155"
-            inkscape:cx="254.55244"
-            inkscape:cy="258.80964"
-            inkscape:window-x="-8"
-            inkscape:window-y="-8"
-            inkscape:window-maximized="1"
-            inkscape:current-layer="svg2"
-            inkscape:document-rotation="0"
-            units="in"/>
-    <defs
-            id="defs4">
-</defs>
+<svg id="map" width="600px" height="600px" viewBox="0 0 600 600">
+    <title>...</title>
     <path class="region region-53" data-nom="Bretagne" data-code_insee="53"
             inkscape:connector-curvature="0"
             d="m 131.2266,122.04289 -2.03125,1.5625 -4.5,0.5625 -0.90625,1.25 -3.0625,-2.28125 -4.53125,3.03125 1.625,2.1875 -2.4375,3.34375 -3.1875,-1.84375 -5.84375,0.1875 v 3.90625 h -1.03125 l -0.375,-1.8125 -2.3125,0.375 -0.4375,-4.84375 -2.437497,2.6875 -2.21875,-0.9375 -4.5625,0.4375 -0.78125,1.96875 -2.09375,0.5 -0.375,-2.125 -5.03125,0.65625 v 1.34375 l -2.71875,0.15625 -1.4375,-1 -1.875,0.9375 -0.375,2.25 -5.15625,0.1875 -3.03125,3.65625 2.28125,1.71875 -3.03125,2.46875 1.0625,1.875 -0.8125,4.5 3.5625,0.4375 1.0625,-1.03125 0.46875,0.65625 7.59375,-1 1.53125,-1.0625 -1.3125,1.25 0.5,2.46875 3.65625,-1.625 -0.71875,2.46875 4.375,0.21875 -0.09375,0.53125 -4.375,-0.15625 -3.65625,-0.9375 -4.71875,-2.25 -3.15625,3.625 3.71875,1.25 -0.21875,5.6875 1.5,-1.1875 2.0625,-3.15625 3.84375,2.21875 1.875,0.40625 0.71875,2.8125 -1.0625,1.84375 -2.34375,-0.15625 h -2.40625 l -3.875,0.59375 -6.78125,0.375 -1.625,2.15625 2.3125,1.375 2.125,-0.1875 1.75,1.5625 2.5,-0.1875 3.96875,4.53125 0.9375,4.875 -1.5,3 4.53125,0.875 4.6875,-0.21875 1.125,-2.0625 -1.15625,-1.59375 0.75,0.34375 1.78125,-0.1875 3.125,1.75 2.3125,-0.4375 v -0.96875 l 0.1875,0.8125 2.624997,4.3125 5.90625,0.40625 0.125,-0.71875 1,1.4375 3.53125,0.625 h 2.375 l 0.0312,0.0312 2.28125,3.65625 3.4375,0.84375 0.28125,-0.375 -0.1875,0.59375 2.90625,1.28125 3.46875,3.40625 1.09375,2.03125 -0.8125,5.1875 2.71875,2 1.53125,-1.75 -1.28125,-1.6875 v -3 l 2.25,0.53125 0.625,-1.875 0.28125,0.65625 2.875,2.5 1.46875,-2.40625 -0.1875,-0.375 0.65625,0.90625 0.15625,-0.0312 -1.875,2.375 2.625,0.875 1.8125,2.78125 10.6875,-0.96875 2.09375,0.46875 -1,0.84375 0.21875,2.0625 0.5625,0.4375 1.0625,-0.1875 1.59375,-1.5625 1.03125,1.1875 h 3.28125 l 3.8125,-1.96875 5.65626,-2.21875 0.1875,-5.5 1.25,-0.6875 3.625,-1.90625 12.25,-0.625 0.8125,-2.28125 1.84375,-1.8125 4.4375,-0.59375 0.1875,-2.09375 2.5,0.34375 1.71875,2.34375 4.28125,1.03125 0.875,-1.8125 1,-3.5 2.46875,-6.15625 1.21875,-0.6875 3.53125,0.4375 v -5.75 l -1.375,-1.375 v -5.53125 l -0.59375,-1.96875 v -2.96875 l 1.96875,-1.96875 v -4.15625 l -0.96875,-0.78125 0.1875,-5.53125 -1.71875,-0.84375 -2.375,-0.0312 -2.125,-1.6875 -2.21875,2.65625 -1.78125,0.21875 -1.5,2.0625 -1.3125,-0.3125 -3.21875,-2.8125 -1.125,-3.625 -0.65625,-2.6875 h -9.75 l -3.15625,-1.93755 2.46875,-3.34375 -5.40625,-0.21875 -2.0625,2.34375 v 0.0312 l -1.03125,1.15625 -3.84375,-0.40625 -0.40625,2.1875 -1.78125,0.15625 -0.1875,-2.625 -2.37501,-0.71875 -0.96875,1.125 v -3.71875 l -2.71875,2.03125 -3.59375,-0.59375 -1.25,2.4375 -7.28125,3.96875 v 1.84375 h -0.96875 v -3.4375 l -4.0625,-1.90625 0.375,-3.5 -3.71875,-2.71875 v -3.40625 l -2.71875,-0.59375 0.1875,-3.15625 -2.125,-0.1875 0.1875,-2.1875 h -4.4375 l -0.4375,1.34375 -0.96875,-2.3125 z m 9.75,73.15625 1.84375,0.4375 1.75,2.09375 -0.75,1.1875 -2.25,-0.6875 -3,-1.40625 2.875,-0.4375 z"
@@ -392,4 +337,5 @@
      id="tspan1553-66-8"
      x="73.652748"
      y="511.02609"
-     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:18.6667px;font-family:Arial;-inkscape-font-specification:'Arial, Bold Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-linejoin:round;stroke-miterlimit:1.8;stroke-dasharray:none;stroke-opacity:0">666 666</tspan></text></svg>
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:18.6667px;font-family:Arial;-inkscape-font-specification:'Arial, Bold Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-linejoin:round;stroke-miterlimit:1.8;stroke-dasharray:none;stroke-opacity:0">666 666</tspan></text>
+</svg>
