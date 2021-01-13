@@ -127,7 +127,6 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
 <h2 style="margin-top : 80px;" id="autorisation-des-vaccins">Autorisation des vaccins</h2>
 <div style="border: 0px solid grey; background-color: rgba(128, 128, 128, 0.1); border-radius: 7px; padding: 12px;">
 
-<<<<<<< HEAD
     L'Union Européenne a passé des commandes pour 6 vaccins différents. 2 sont autorisés, et 4 n'ont pas encore été
     soumis. <i>Mise à jour : 06/12.</i><br><br>
     <h3 style="margin-top : 10px;">Vaccins autorisés</h3>
