@@ -560,7 +560,7 @@ function fetchOtherData(){
       )
 
     // Get data from health ministry csv
-    fetch('https://www.data.gouv.fr/fr/datasets/r/b234a041-b5ea-4954-889b-67e64a25ce0d', {cache: 'no-cache'}) //
+    fetch('https://www.data.gouv.fr/fr/datasets/r/b234a041-b5ea-4954-889b-67e64a25ce0d', {cache: 'no-cache'})
         .then(response => {
             if (!response.ok) {
                 throw new Error("HTTP error " + response.status);
