@@ -126,6 +126,8 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
 
 <h2 style="margin-top : 80px;" id="autorisation-des-vaccins">Autorisation des vaccins</h2>
 <div style="border: 0px solid grey; background-color: rgba(128, 128, 128, 0.1); border-radius: 7px; padding: 12px;">
+
+<<<<<<< HEAD
     L'Union Européenne a passé des commandes pour 6 vaccins différents. 2 sont autorisés, et 4 n'ont pas encore été
     soumis. <i>Mise à jour : 06/12.</i><br><br>
     <h3 style="margin-top : 10px;">Vaccins autorisés</h3>
@@ -150,18 +152,17 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
         </button>
     </div>
     <h3 style="margin-top : 50px;">Vaccins en cours d'autorisation</h3>
-    <div class="row"></div>
-    Aucun.
-
-    <h3 style="margin-top : 50px;">Vaccins pas encore soumis</h3>
     <div class="row">
-        <button class="shadow-btn col-xs-11 col-md-4"><b>🇬🇧🇸🇪 AstraZeneca/Oxford</b><br>
+        <button class="shadow-btn  col-xs-11 col-md-4"><b>🇬🇧🇸🇪 AstraZeneca/Oxford</b><br>
             Phase 3/3<br>
             Type : Vecteur viral<br>
             Efficacité annoncée : 70%<br>
-            Prêt : fin 2020<br>Conservation : +5°C (6 mois)<br>Commandes UE : 300M (+ option 100M)<br>Doses à injecter :
-            2<br>Statut : --
+            Prêt : fin 2020<br>Conservation : +5°C (6 mois)<br>Commandes UE : 300M (+ option 100M)<br>Doses à injecter : 2<br>Statut : décision UE 29/01
         </button>
+    </div>
+
+    <h3 style="margin-top : 50px;">Vaccins pas encore soumis</h3>
+    <div class="row">
         <button class="shadow-btn col-xs-11 col-md-4"><b>🇺🇸🇧🇪 Janssen J&J</b><br>
             Phase 3/3<br>
             Type : Vecteur viral<br>
@@ -244,7 +245,7 @@ Ce graphique présente le nombre de doses administrées dans chaque pays.
         loading="lazy" style="width: 100%; height: 600px; border: 0px none;"></iframe>
 <br>
 <br>
-Développé bénévolement par <a href="https://twitter.com/guillaumerozier">Guillaume Rozier</a>
+Auteur : <a href="https://twitter.com/guillaumerozier">Guillaume Rozier</a>. Contributeurs : .
 
 
 <style>
@@ -683,7 +684,7 @@ Développé bénévolement par <a href="https://twitter.com/guillaumerozier">Gui
                 html_str += `<br><br>`
             }
         })
-        document.getElementById("news").innerHTML = `<div style="margin-bottom: 20px; border: 1px solid rgba(0, 0, 0, 0.2); border-radius: 7px; padding: 10px; background-color: rgba(0, 0, 0, 0.05);">` + html_str + `</div>`;
+       /* document.getElementById("news").innerHTML = `<div style="margin-bottom: 20px; border: 1px solid rgba(0, 0, 0, 0.2); border-radius: 7px; padding: 10px; background-color: rgba(0, 0, 0, 0.05);">` + html_str + `</div>`;*/
 
     }
 
@@ -700,25 +701,27 @@ Développé bénévolement par <a href="https://twitter.com/guillaumerozier">Gui
         return new Date(derniereMaj + (oneDay * nbJoursAvantObjectif))
     }
 
-    function buildLineChart() {
+  
 
-        var ctx = document.getElementById('lineVacChart').getContext('2d');
+function buildLineChart(){
 
-        this.lineChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: dates,
-                datasets: [{
-                    label: 'Nombre cumulé de vaccinés ',
-                    data: nb_vaccines,
-                    borderWidth: 3,
-                    backgroundColor: 'rgba(0, 168, 235, 0.5)',
-                    borderColor: 'rgba(0, 168, 235, 1)',
-                    cubicInterpolationMode: 'monotone'
-                },
-                ]
+    var ctx = document.getElementById('lineVacChart').getContext('2d');
+
+    this.lineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dates,
+            datasets: [{
+                label: 'Nombre cumulé de vaccinés ',
+                data: nb_vaccines,
+                borderWidth: 3,
+                backgroundColor: 'rgba(0, 168, 235, 0.5)',
+                borderColor: 'rgba(0, 168, 235, 1)',
+                cubicInterpolationMode: 'monotone'
             },
-            options: {
+            ]
+        },
+        options: {
                 maintainAspectRatio: false,
                 plugins: {
                     deferred: {
@@ -1000,6 +1003,7 @@ Développé bénévolement par <a href="https://twitter.com/guillaumerozier">Gui
         border-radius: 15px;
 
     }
+
 
     button:hover {
         background-color: black; /* Green */

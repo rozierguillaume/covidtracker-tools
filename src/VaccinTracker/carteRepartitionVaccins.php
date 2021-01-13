@@ -313,6 +313,7 @@ Coloration en fonction du pourcentage de population vaccinée. Données fournies
         border-color: #547096;
         color: #fff;
     }
+
 </style>
 
 <!-- wp:spacer {"height":50} -->
@@ -326,7 +327,7 @@ Coloration en fonction du pourcentage de population vaccinée. Données fournies
 
 <div id="menu" class="row">
     <div class="col-md-6 text-center">
-        Pourcentage de la population vaccinée :
+    <span id="titre_map" style="display: inline-block">Pourcentage de la population vaccinée :</span>
         <div style="display:none;">
             <select multiple="multiple" name="regions_list_choice" id="listeRegions" class="select2">
                 <option data-num="84" value="Auvergne-Rhône-Alpes">Auvergne-Rhône-Alpes</option>
