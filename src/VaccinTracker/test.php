@@ -405,7 +405,6 @@
                 <div id="post-1648" class="post-1648 page type-page status-publish hentry"><h2 class="entry-title">
                         Dashboard Régions</h2>
                     <div class="entry">
-<!--                        --><?php //include('./vaccintracker.html') ?>
                         <?php include('./vaccintracker_map.php') ?>
                     </div>
                 </div>
