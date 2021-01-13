@@ -46,7 +46,7 @@ Coloration en fonction du pourcentage de population vaccinée. Données fournies
         <div class="row">
             <div class="col-xs-12">
                 <div id="carte">
-                    <?php include(__DIR__ . '/carteSvg.php'); ?>
+                    <?php include(__DIR__ . '/carteNew.php'); ?>
                 </div>
             </div>
 
