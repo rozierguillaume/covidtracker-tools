@@ -42,75 +42,75 @@ Coloration en fonction du pourcentage de population vaccinée. Données fournies
         const POPULATION = [
             {
                 region: 'REG-01',
-                population: 404542
+                population: 376900
             },
             {
                 region: 'REG-02',
-                population: 386875
+                population: 358700
             },
             {
                 region: 'REG-03',
-                population: 290691
+                population: 290700
             },
             {
                 region: 'REG-04',
-                population: 859959
+                population: 860000
             },
             {
                 region: 'REG-06',
-                population: 270372
+                population: 279500
             },
             {
                 region: 'REG-11',
-                population: 12228726
+                population: 12278200
             },
             {
                 region: 'REG-24',
-                population: 2647342
+                population: 2559100
             },
             {
                 region: 'REG-27',
-                population: 2904749
+                population: 2783000
             },
             {
                 region: 'REG-28',
-                population: 3426063
+                population: 3303500
             },
             {
                 region: 'REG-32',
-                population: 6115829
+                population: 5962700
             },
             {
                 region: 'REG-44',
-                population: 5680632
+                population: 5511700
             },
             {
                 region: 'REG-52',
-                population: 3820568
+                population: 3801800
             },
             {
                 region: 'REG-53',
-                population: 3392706
+                population: 3340400
             },
             {
                 region: 'REG-75',
-                population: 6071466
+                population: 6000000
             },
             {
                 region: 'REG-76',
-                population: 5913298
+                population: 5924900
             },
             {
                 region: 'REG-84',
-                population: 8069287
+                population: 8032400
             },
             {
                 region: 'REG-93',
-                population: 5091003
+                population: 5055700
             },
             {
                 region: 'REG-94',
-                population: 332723
+                population: 344700
             },
 
         ];
