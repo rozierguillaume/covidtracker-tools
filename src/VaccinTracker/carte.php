@@ -12,28 +12,6 @@
 <div id="menu" class="row">
     <div class="col-md-6 text-center">
         <h4 id="titre_map" class="" style="display: inline-block">Pourcentage de la population vaccinée :</h4>
-        <div style="display:none;">
-            <select multiple="multiple" name="regions_list_choice" id="listeRegions" class="select2">
-                <option data-num="84" value="Auvergne-Rhône-Alpes">Auvergne-Rhône-Alpes</option>
-                <option data-num="27" value="Bourgogne-Franche-Comté">Bourgogne-Franche-Comté</option>
-                <option data-num="53" value="Bretagne">Bretagne</option>
-                <option data-num="24" value="Centre">Centre</option>
-                <option data-num="94" value="Corse">Corse</option>
-                <option data-num="44" value="Grand Est">Grand Est</option>
-                <option data-num="01" value="Guadeloupe">Guadeloupe</option>
-                <option data-num="03" value="Guyane">Guyane</option>
-                <option data-num="32" value="Hauts-de-France">Hauts-de-France</option>
-                <option data-num="11" value="Ile-de-France">Ile-de-France</option>
-                <option data-num="04" value="La Réunion">La Réunion</option>
-                <option data-num="02" value="Martinique">Martinique</option>
-                <option data-num="06" value="Mayotte">Mayotte</option>
-                <option data-num="28" value="Normandie">Normandie</option>
-                <option data-num="75" value="Nouvelle-Aquitaine">Nouvelle-Aquitaine</option>
-                <option data-num="76" value="Occitanie">Occitanie</option>
-                <option data-num="52" value="Pays de la Loire">Pays de la Loire</option>
-                <option data-num="93" value="Provence-Alpes-Côte d'Azur">Provence-Alpes-Côte d'Azur</option>
-            </select>
-        </div>
         <div id="carte" style="margin-top:20px;">
             <?php include(__DIR__ . '/carteSvg.php'); ?>
         </div>
@@ -48,6 +26,29 @@
             </div>
         </div>
     </div>
+</div>
+
+<div style="display:none;">
+    <select multiple="multiple" name="regions_list_choice" id="listeRegions" class="select2">
+        <option data-num="84" value="Auvergne-Rhône-Alpes">Auvergne-Rhône-Alpes</option>
+        <option data-num="27" value="Bourgogne-Franche-Comté">Bourgogne-Franche-Comté</option>
+        <option data-num="53" value="Bretagne">Bretagne</option>
+        <option data-num="24" value="Centre">Centre</option>
+        <option data-num="94" value="Corse">Corse</option>
+        <option data-num="44" value="Grand Est">Grand Est</option>
+        <option data-num="01" value="Guadeloupe">Guadeloupe</option>
+        <option data-num="03" value="Guyane">Guyane</option>
+        <option data-num="32" value="Hauts-de-France">Hauts-de-France</option>
+        <option data-num="11" value="Ile-de-France">Ile-de-France</option>
+        <option data-num="04" value="La Réunion">La Réunion</option>
+        <option data-num="02" value="Martinique">Martinique</option>
+        <option data-num="06" value="Mayotte">Mayotte</option>
+        <option data-num="28" value="Normandie">Normandie</option>
+        <option data-num="75" value="Nouvelle-Aquitaine">Nouvelle-Aquitaine</option>
+        <option data-num="76" value="Occitanie">Occitanie</option>
+        <option data-num="52" value="Pays de la Loire">Pays de la Loire</option>
+        <option data-num="93" value="Provence-Alpes-Côte d'Azur">Provence-Alpes-Côte d'Azur</option>
+    </select>
 </div>
 <!--END HTML-->
 
