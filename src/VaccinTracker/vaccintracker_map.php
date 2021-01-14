@@ -274,7 +274,7 @@ p{
         box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
         max-width: 450px;
         background: #ffffff;
-        margin-top: 30px;
+        margin-top: 10px;
     }
 
     .btn-shadow {
@@ -313,11 +313,17 @@ td {
     background-color: rgb(207, 169, 169);
 }
 
-/*@keyframes blinker {*/
-/*  50% {*/
-/*    background-color: rgb(45, 189, 84);*/
-/*  }*/
-/*}*/
+
+.blink_me {
+  animation: blinker 3s ease infinite;
+  animation-delay: 2s;
+}
+
+@keyframes blinker {
+  50% {
+    background-color: rgb(45, 189, 84);
+  }
+}
 
 
 #subtableVaccin, #subtableVaccin tr, #subtableVaccin td {
@@ -507,7 +513,6 @@ fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/news
 
           array_data_news = CSVToArray(csv, ",");
           array_data_news.slice(1, array_data_news.length-1).map((value, idx) => {
-              console.log(value)
             this.titre_news.push(value[0])
             this.contenu_news.push(value[1]);
           })
@@ -547,6 +552,7 @@ function fetchOtherData(){
               nb_vaccines = nb_vaccines.filter((v,i,a)=>a.findIndex(t=>(t.date == v.date))===i); // suppression doublons
               nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
               this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
+              this.objectifQuotidien = calculerObjectif();
               majValeurs();
               buildLineChart();
             } else {
@@ -560,7 +566,7 @@ function fetchOtherData(){
       )
 
     // Get data from health ministry csv
-    fetch('https://www.data.gouv.fr/fr/datasets/r/b234a041-b5ea-4954-889b-67e64a25ce0d', {cache: 'no-cache'}) //
+    fetch('https://www.data.gouv.fr/fr/datasets/r/b234a041-b5ea-4954-889b-67e64a25ce0d', {cache: 'no-cache'})
         .then(response => {
             if (!response.ok) {
                 throw new Error("HTTP error " + response.status);
@@ -583,11 +589,11 @@ function fetchOtherData(){
             this.dejaVaccines = dejaVaccinesNb*100/67000000;
             this.restantaVaccinerImmunite = 60 - dejaVaccines
 
-            this.objectifQuotidien = calculerObjectif();
             if(updated) { // si on a les données des 2 sources (csv covidtracker + gouv)
               nb_vaccines = nb_vaccines.filter((v,i,a)=>a.findIndex(t=>(t.date == v.date))===i); // suppression doublons
               nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
               this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
+              this.objectifQuotidien = calculerObjectif();
               majValeurs();
               buildLineChart();
             } else {
