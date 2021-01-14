@@ -551,6 +551,9 @@ function fetchOtherData(){
             if(updated) { // si on a les données des 2 sources (csv covidtracker + gouv)
               nb_vaccines = nb_vaccines.filter((v,i,a)=>a.findIndex(t=>(t.date == v.date))===i); // suppression doublons
               nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
+              dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].total
+              dejaVaccines = dejaVaccinesNb*100/67000000;
+              restantaVaccinerImmunite = 60 - dejaVaccines
               this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
               this.objectifQuotidien = calculerObjectif();
               majValeurs();
@@ -566,7 +569,7 @@ function fetchOtherData(){
       )
 
     // Get data from health ministry csv
-    fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data.csv', {cache: 'no-cache'}) //https://www.data.gouv.fr/fr/datasets/r/b234a041-b5ea-4954-889b-67e64a25ce0d
+    fetch('https://www.data.gouv.fr/fr/datasets/r/b234a041-b5ea-4954-889b-67e64a25ce0d', {cache: 'no-cache'}) //https://www.data.gouv.fr/fr/datasets/r/b234a041-b5ea-4954-889b-67e64a25ce0d
         .then(response => {
             if (!response.ok) {
                 throw new Error("HTTP error " + response.status);
@@ -585,13 +588,12 @@ function fetchOtherData(){
                 });
             });
 
-            this.dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].total
-            this.dejaVaccines = dejaVaccinesNb*100/67000000;
-            this.restantaVaccinerImmunite = 60 - dejaVaccines
-
             if(updated) { // si on a les données des 2 sources (csv covidtracker + gouv)
               nb_vaccines = nb_vaccines.filter((v,i,a)=>a.findIndex(t=>(t.date == v.date))===i); // suppression doublons
               nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
+              dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].total
+              dejaVaccines = dejaVaccinesNb*100/67000000;
+              restantaVaccinerImmunite = 60 - dejaVaccines
               this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
               this.objectifQuotidien = calculerObjectif();
               majValeurs();
