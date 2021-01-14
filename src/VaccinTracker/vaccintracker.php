@@ -551,6 +551,9 @@ function fetchOtherData(){
             if(updated) { // si on a les données des 2 sources (csv covidtracker + gouv)
               nb_vaccines = nb_vaccines.filter((v,i,a)=>a.findIndex(t=>(t.date == v.date))===i); // suppression doublons
               nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
+              dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].total
+              dejaVaccines = dejaVaccinesNb*100/67000000;
+              restantaVaccinerImmunite = 60 - dejaVaccines
               this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
               this.objectifQuotidien = calculerObjectif();
               majValeurs();
@@ -585,13 +588,12 @@ function fetchOtherData(){
                 });
             });
 
-            this.dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].total
-            this.dejaVaccines = dejaVaccinesNb*100/67000000;
-            this.restantaVaccinerImmunite = 60 - dejaVaccines
-
             if(updated) { // si on a les données des 2 sources (csv covidtracker + gouv)
               nb_vaccines = nb_vaccines.filter((v,i,a)=>a.findIndex(t=>(t.date == v.date))===i); // suppression doublons
               nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
+              dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].total
+              dejaVaccines = dejaVaccinesNb*100/67000000;
+              restantaVaccinerImmunite = 60 - dejaVaccines
               this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
               this.objectifQuotidien = calculerObjectif();
               majValeurs();
