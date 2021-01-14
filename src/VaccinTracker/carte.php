@@ -1,25 +1,17 @@
-<h2 style="margin-top : 80px;">Répartition des vaccinés</h2>
-Coloration en fonction du pourcentage de population vaccinée. Données fournies par le Ministère de la Santé. Cliquez sur une région pour afficher plus de détail.
-<!--START MAP-->
+<h2 style="margin-top : 80px;">
+    Répartition des vaccinés
+</h2>
 
-<!--START JS -->
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
-
-<?php include(__DIR__ . '/carteScripts.php'); ?>
-<?php include(__DIR__ . '/carteStyles.php'); ?>
-
-<!-- wp:spacer {"height":50} -->
-<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
-<!-- /wp:spacer -->
-
-<!--END JS-->
-
+<div class="" style="margin-bottom: 40px;">
+    Coloration en fonction du pourcentage de population vaccinée.
+    Données fournies par le Ministère de la Santé.
+    Cliquez sur une région pour afficher plus de détail.
+</div>
 
 <!--START HTML-->
-
 <div id="menu" class="row">
     <div class="col-md-6 text-center">
-    <span id="titre_map" style="display: inline-block">Pourcentage de la population vaccinée :</span>
+        <h4 id="titre_map" class="" style="display: inline-block">Pourcentage de la population vaccinée :</h4>
         <div style="display:none;">
             <select multiple="multiple" name="regions_list_choice" id="listeRegions" class="select2">
                 <option data-num="84" value="Auvergne-Rhône-Alpes">Auvergne-Rhône-Alpes</option>
@@ -34,7 +26,7 @@ Coloration en fonction du pourcentage de population vaccinée. Données fournies
                 <option data-num="11" value="Ile-de-France">Ile-de-France</option>
                 <option data-num="04" value="La Réunion">La Réunion</option>
                 <option data-num="02" value="Martinique">Martinique</option>
-<!--                <option data-num="06" value="Mayotte">Mayotte</option>-->
+                <option data-num="06" value="Mayotte">Mayotte</option>
                 <option data-num="28" value="Normandie">Normandie</option>
                 <option data-num="75" value="Nouvelle-Aquitaine">Nouvelle-Aquitaine</option>
                 <option data-num="76" value="Occitanie">Occitanie</option>
@@ -42,28 +34,70 @@ Coloration en fonction du pourcentage de population vaccinée. Données fournies
                 <option data-num="93" value="Provence-Alpes-Côte d'Azur">Provence-Alpes-Côte d'Azur</option>
             </select>
         </div>
-
-        <div class="row">
-            <div class="col-xs-12">
-                <div id="carte">
-                    <?php include(__DIR__ . '/carteSvg.php'); ?>
-                </div>
-            </div>
-
+        <div id="carte" style="margin-top:20px;">
+            <?php include(__DIR__ . '/carteSvg.php'); ?>
         </div>
     </div>
-    <div class="col-md-5" style="padding-top: 0px;" id="donneesRegions">
+    <div class="col-md-6" style="" id="donneesRegions">
         <div id="region-graphique">
             <div id="region-general">
-                Nombre de personnes ayant reçu une dose :
-                <div class="chart-container" style="position: relative; height:50vh; width:100%">
+                <h4 id="titre_map" class="" style="display: inline-block"> Nombre de personnes ayant reçu une dose :</h4>
+                <div class="chart-container" style="margin-top: 20px; position: relative; height:50vh; width:100%">
                     <canvas id="chartRegions" style="margin-top:0px; max-height: 700px; max-width: 900px;"></canvas>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!--END HTML-->
 
+<!--BLOC CSS -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
+<link href="carte.css" rel="stylesheet"/>
+<!--ENDBLOC JS -->
+<!--BLOC JS -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js"
+        integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw=="
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-deferred@1"></script>
+<script src="carte.js"></script>
 
+<script id="regionTemplate" type="text/template">
+    <!-- wp:heading -->
+    <div id="numeroRegion" data-type="region-detail" data-num="numeroRegion" data-nom="nomRegion" class="region">
+        <div class="col-md-12 shadow">
+            <h2 style="margin-top: 5px;">
+                nomRegion
+                <a class="masquerRegion pull-right" href="#">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-circle-fill" fill="currentColor"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                    </svg>
+                </a>
+            </h2>
+            <span style="font-size: 160%; color: black"><b>vaccinesRegion</b></span><br>
+            <span><b>Nombre de personnes vaccinées</b><br>
+                Nombre de personnes ayant reçu au moins une dose de vaccin. Cela représente vaccinesPopReg% de la population de cette région.
+            <br></span>
+            <span style="font-size: 70%;">Mise à jour : dateMaj</span>
 
-<!--END MAP-->
+            <!-- wp:spacer {"height":50} -->
+            <div style="height:15px" aria-hidden="true" class="wp-block-spacer"></div>
+            <!-- /wp:spacer -->
+
+            <div id="region-graphique-detail">
+                <div class="chart-container" style="position: relative; height:250px; width:100%">
+                    <canvas id="chartRegionDetail"
+                            style="margin-top:0px; max-height: 700px; max-width: 900px;"></canvas>
+                </div>
+            </div>
+        </div>
+        <!-- wp:spacer {"height":50} -->
+        <div style="height:5px" aria-hidden="true" class="wp-block-spacer"></div>
+        <!-- /wp:spacer -->
+    </div>
+</script>
+<!--END JS-->
