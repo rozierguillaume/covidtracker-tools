@@ -53,9 +53,13 @@ Coloration en fonction du pourcentage de population vaccinée. Données fournies
         </div>
     </div>
     <div class="col-md-5" style="padding-top: 0px;" id="donneesRegions">
-    Nombre de personnes ayant reçu une dose :
-        <div class="chart-container" style="position: relative; height:50vh; width:100%">
-            <canvas id="chartRegions" style="margin-top:0px; max-height: 700px; max-width: 900px;"></canvas>
+        <div id="region-graphique">
+            <div id="region-general">
+                Nombre de personnes ayant reçu une dose :
+                <div class="chart-container" style="position: relative; height:50vh; width:100%">
+                    <canvas id="chartRegions" style="margin-top:0px; max-height: 700px; max-width: 900px;"></canvas>
+                </div>
+            </div>
         </div>
     </div>
 </div>

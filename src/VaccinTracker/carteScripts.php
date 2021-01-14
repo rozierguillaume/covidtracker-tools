@@ -5,33 +5,57 @@
 
 <script id="regionTemplate" type="text/template">
     <!-- wp:heading -->
-    <div id="numeroRegion" data-num="numeroRegion" data-nom="nomRegion" class="region">
-        <h2>
-            nomRegion
-            <a class="masquerRegion pull-right" href="#">
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-circle-fill" fill="currentColor"
-                     xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                          d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-                </svg>
-            </a>
-        </h2>
-
+    <div id="numeroRegion" data-type="region-detail" data-num="numeroRegion" data-nom="nomRegion" class="region">
         <div class="col-md-12 shadow">
+            <h2 style="margin-top: 5px;">
+                nomRegion
+                <a class="masquerRegion pull-right" href="#">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-circle-fill" fill="currentColor"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                    </svg>
+                </a>
+            </h2>
             <span style="font-size: 160%; color: black"><b>vaccinesRegion</b></span><br>
             <span><b>Nombre de personnes vaccinées</b><br>
                 Nombre de personnes ayant reçu au moins une dose de vaccin. Cela représente vaccinesPopReg% de la population de cette région.
             <br></span>
             <span style="font-size: 70%;">Mise à jour : dateMaj</span>
+
+            <!-- wp:spacer {"height":50} -->
+                    <div style="height:15px" aria-hidden="true" class="wp-block-spacer"></div>
+            <!-- /wp:spacer -->
+
+            <div id="region-graphique-detail">
+                <div class="chart-container" style="position: relative; height:250px; width:100%">
+                    <canvas id="chartRegionDetail" style="margin-top:0px; max-height: 700px; max-width: 900px;"></canvas>
+                </div>
+
+            </div>
+
         </div>
 
         <!-- wp:spacer {"height":50} -->
-        <div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+        <div style="height:5px" aria-hidden="true" class="wp-block-spacer"></div>
         <!-- /wp:spacer -->
 
     </div>
 </script>
 <script>
+
+    Array.prototype.asortBy = function(p) {
+        return this.slice(0).sort(function(a,b) {
+            return (a[p] < b[p]) ? 1 : (a[p] > b[p]) ? -1 : 0;
+        });
+    }
+    Number.prototype.addZero = function() {
+        if(this <= 9){
+           return "0" + this;
+        }
+        return this
+    }
+    
     jQuery(document).ready(function ($) {
         const POPULATION = [
             {
@@ -111,8 +135,9 @@
         var donneesRegions;
         var nomRegions=[];
         var vaccinesRegions=[];
-        var vaccinesRegionsHistorique = [];
+        var vaccinesRegionsHistorique = {};
         var dateMaj = "";
+        var numeroRegion;
         let valeurs = [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4]
         let couleurs = ["#DCECCD", "#BDE0AE", "#98D390", "#73C679", "#55B86F", "#39A96B", "#1D9A6C", "#178973", "#117876"]
 
@@ -134,7 +159,10 @@
                         date: region.date
                     };
                     data.population = POPULATION.find(reg => reg.region == "REG-" + code).population;
-                    vaccinesRegionsHistorique.push(data);
+                    if(!vaccinesRegionsHistorique[code]) {
+                        vaccinesRegionsHistorique[code] = [];
+                    }
+                    vaccinesRegionsHistorique[code].push(data);
 
                     if(region.date > dateMaj) {
                         dateMaj = region.date;
@@ -171,7 +199,7 @@
         function buildBarChart(){
 
             var ctx = document.getElementById('chartRegions').getContext('2d');
-
+            // graphique liste des régions
             this.chartRegions = new Chart(ctx, {
                 type: 'horizontalBar',
                 data: {
@@ -227,6 +255,7 @@
         }
 
 
+
         /*
         * Le lancement de l'animation se fait en ajoutant et retirant la classe animated
         * de la carte afin que tous les départements clignotent en meme temps.
@@ -243,6 +272,10 @@
 
 
         function afficherRegion(nomRegion, numeroRegion) {
+            $('div[data-type="region-detail"]').remove();
+            $('#region-nom').text(nomRegion);
+            $('#carte path[data-code_insee]').removeClass('selected');
+            $('#region-general').hide();
             let region = vaccinesRegions.find(region => region.code == numeroRegion);
             vaccinesRegion = region.vaccines;
             vaccinesRegionPop = (vaccinesRegion/region.population*100).toFixed(2)
@@ -252,7 +285,7 @@
 
             if (vaccinesRegion<=0){
                 vaccinesRegion = "--"
-            }
+            } 
 
             if ($('#' + numeroRegion).length > 0) {
                 return;
@@ -266,6 +299,19 @@
             content = content.replace(/dateMaj/g, parseInt(fullDate.getDate()).addZero() + '/' + (fullDate.getMonth()+1).addZero());
 
             $('#donneesRegions').prepend(content);
+            vaccinesRegionsHistorique[numeroRegion] = vaccinesRegionsHistorique[numeroRegion].sortBy('date');
+            let dataset = {
+                label: 'Nombre cumulé de vaccinés - ' + nomRegion,
+                data: vaccinesRegionsHistorique[numeroRegion].map(val => val.vaccines),
+                borderWidth: 3,
+                backgroundColor: 'rgba(0, 168, 235, 0.5)',
+                borderColor: 'rgba(0, 168, 235, 1)',
+                cubicInterpolationMode: 'monotone'
+            };
+            let labels = vaccinesRegionsHistorique[numeroRegion].map(val => val.date);
+            $('#region-graphique-detail').show();
+
+            updateData(labels, dataset);
             //trierRegions();
             stopAnimation();
             setTimeout(startAnimation, 200);
@@ -281,6 +327,8 @@
             $('#map path[data-code_insee=' + numeroRegion + ']').removeClass('selected');
             // $("#listeRegions").trigger('change');
             $('#' + numeroRegion).remove();
+            $('#region-general').show();
+            $('#region-graphique-detail').hide();
         });
 
 
@@ -296,24 +344,27 @@
             var regionCarte = $('#carte path[data-code_insee="' + numeroRegion + '"]');
             if (regionCarte.hasClass('selected')) {
                 regionCarte.removeClass('selected');
-                $('#' + numeroRegion).remove();
+                $('#' + numeroRegion).remove()
+                $('#region-general').show();
+                $('#region-graphique-detail').hide();
             } else {
-                regionCarte.addClass('selected');
                 afficherRegion(nomRegion, numeroRegion);
+                regionCarte.addClass('selected');
             }
         });
 
         $('#carte text tspan').click(function (e) {
-            console.log($(this).parent());
             numeroRegion = $(this).parent().data("code_insee");
             nomRegion = $("#listeRegions option[data-num='" + numeroRegion + "']").val();
             var regionCarte = $('#carte path[data-code_insee="' + numeroRegion + '"]');
             if (regionCarte.hasClass('selected')) {
                 regionCarte.removeClass('selected');
                 $('#' + numeroRegion).remove();
+                $('#region-general').show();
+                $('#region-graphique-detail').hide();
             } else {
-                regionCarte.addClass('selected');
                 afficherRegion(nomRegion, numeroRegion);
+                regionCarte.addClass('selected');
             }
         });
 
@@ -323,22 +374,71 @@
             if ($(this).hasClass('selected')) {
                 $(this).removeClass('selected');
                 $('#' + numeroRegion).remove();
+                $('#region-general').show();
+                $('#region-graphique-detail').hide();
             } else {
-                $(this).addClass('selected');
                 afficherRegion(nomRegion, numeroRegion);
+                $(this).addClass('selected');
             }
         });
 
-        Array.prototype.asortBy = function(p) {
-            return this.slice(0).sort(function(a,b) {
-                return (a[p] < b[p]) ? 1 : (a[p] > b[p]) ? -1 : 0;
+
+        function updateData( labels, dataset) {
+            let chart = document.getElementById('chartRegionDetail');
+
+                // Graphique courbe d'une région
+            var lineChartRegion = new Chart(chart, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [dataset]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    plugins: {
+                        deferred: {
+                            xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
+                            yOffset: '50%', // defer until 50% of the canvas height are inside the viewport
+                            delay: 100      // delay of 500 ms after the canvas is considered inside the viewport
+                        }
+                        },
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        yAxes: [{
+                            gridLines: {
+                                display: false
+                             },
+                            ticks: {
+                                min: 0
+                            },
+
+                        }],
+                        xAxes: [{
+                            gridLines: {
+                                display: false
+                             },
+                             ticks: {
+                                maxRotation: 0,
+                                minRotation: 0,
+                                maxTicksLimit: 6,
+                                callback: function(value, index, values) {
+                                return value.slice(8) + "/" + value.slice(5, 7);
+                             }
+                             }
+
+                        }]
+                    },
+                    annotation: {
+                    events: ["click"],
+                    annotations: [
+
+                    ]
+                }
+                }
             });
         }
-        Number.prototype.addZero = function() {
-            if(this <= 9){
-                return "0" + this;
-            }
-            return this
-        }
-    })
+
+})
 </script>

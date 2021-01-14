@@ -67,4 +67,9 @@
     border-color: #547096;
     color: #fff;
 }
+
+
+#region-graphique-detail {
+    display: none;
+}
 </style>
