@@ -729,7 +729,7 @@
                 })
                 .then(json => {
                     allData = json;
-                    console.log(json);
+                    // console.log(json);
 
                     donneesDepartements = allData['donnees_departements'];
                     donneesFrance = allData['donnees_france'];

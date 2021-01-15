@@ -532,7 +532,6 @@ fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data
         })
        .catch(function () {
            this.dataError = true;
-           console.log("error1")
        }
       )
 
@@ -548,7 +547,6 @@ fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/news
          
           array_data_news = CSVToArray(csv, ",");
           array_data_news.slice(1, array_data_news.length-1).map((value, idx) => {
-              console.log(value)
             this.titre_news.push(value[0])
             this.contenu_news.push(value[1]);
           })
@@ -559,7 +557,6 @@ fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/news
         })
        .catch(function () {
            this.dataError = true;
-           console.log("error2")
        }
       )
 
@@ -592,7 +589,6 @@ function fetchOtherData(){
             })
         .catch(function () {
             this.dataError = true;
-            console.log("error3")
         }
         )
 
@@ -605,7 +601,6 @@ function calculerObjectif(){
     let jours_restant = (Date.parse("2021-01-31") - Date.parse(dates[dates.length-1]) )/ one_day
     let objectif = OBJECTIF_FIN_JANVIER;
     let resteAVacciner = objectif - nb_vaccines[nb_vaccines.length-1]
-    console.log(jours_restant)
     if ((resteAVacciner>=0) && (jours_restant>=0)){
         return Math.round(resteAVacciner/jours_restant)
     } else {

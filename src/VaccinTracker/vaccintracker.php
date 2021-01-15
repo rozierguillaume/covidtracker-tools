@@ -14,11 +14,16 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
 <div id="news"></div>
 
 <div class="alert alert-info clearFix"  style="font-size: 20px;">
-    <button class="btn-shadow pull-right">
-        <a href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">🍩 Offrez-moi un donut</a>
-    </button> &nbsp;&nbsp;
-    Bonne année 2021 ! CovidTracker est gratuit, sans pub et développé bénévolement.<br>
-
+    <div class="row">
+        <div class="col-md-8">
+            Bonne année 2021 ! CovidTracker est gratuit, sans pub et développé bénévolement.<br>
+        </div>
+        <div class="col-md-4 text-right">
+            <button class="btn-shadow">
+                <a href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">🍩 Offrez-moi un donut</a>
+            </button> &nbsp;&nbsp;
+        </div>
+    </div>
 </div>
 <!-- /wp:html -->
 
@@ -97,59 +102,10 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
 </div>
 
 <?php include(__DIR__ . '/carte.php') ?>
+<?php include(__DIR__ . '/vaccin-map.html') ?>
 <?php include(__DIR__ . '/autorisations.php') ?>
-
-
-<br>
-<h2>Quand est-ce que sera atteinte l'immunité collective ?</h2>
-Sur VaccinTracker, le taux de 60% a été choisi comme seuil d'immunité collective. Cependant, on ne peut pas aujourd'hui connaître ce taux précisément.
-La vidéo suivante du média Le Monde explique très bien la problématique à notre sens :
-<br><br>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/bjFtFMilb34" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<br>
-<h2 style="margin-top : 80px;">Quand pourrez-vous vous faire vacciner ?</h2>
-Le gouvernement souhaite vacciner 1 million de personnes en janvier 2021, 12 à 14 millions d'ici à mi-avril et 15 à 27 millions d'ici à juillet.
-
-<h3 style="margin-top : 20px;">Début janvier</h3>
-<ul>
-    <li>Personnes âgées séjournant dans un établissement collectif (type EHPAD) ;</li>
-    <li>Personnel soignant, pompiers, aides à domicile (plus de 50 ans) ;</li>
-    <li>Personnes en situation de handicap vulnérables qui sont hébergées en maison d'accueil spécialisées (MAS) et en foyer d'accueil médicalisé (FAM).</li>
-</ul>
-
-<h3 style="margin-top : 50px;">18 janvier</h3>
-<ul>
-    <li>Personnes âgées de plus de 75 ans en priorité ; puis personnes âgées de plus de 65 ans dans un second temps,</li>
-</ul>
-
-<h3 style="margin-top : 50px;">Février ou mars</h3>
-<ul>
-    <li>Personnes âgées de plus de 65 ans.</li>
-</ul>
-
-<h3 style="margin-top : 50px;">Fin mars</h3>
-<ul>
-    <li>Personnes âgées de plus de 50 ans,</li>
-    <li>Personnes travaillant dans un secteur "essentiel" (*),</li>
-    <li>Personne vulnérable ou précaire,</li>
-    <li>Personne majeure vivant dans un hébergement confiné ou un lieu clos (**).</li>
-</ul>
-
-<h3 style="margin-top : 50px;">Été</h3>
-<ul>
-    <li>Ensemble de la population.</li>
-    </ul>
-<br>
-(*) Les secteurs considérés comme "essentiels" sont les domaines de la sécurité, de l'éducation et de l'alimentaire, indispensables "au fonctionnement du pays en période épidémique", selon le ministère de la Santé.
-(**) Le ministère de la Santé ne donne pas plus de précisions concernant "les hébergements confinés ou les lieux clos". Interrogée par franceinfo sur cette question, la DGS donne uniquement pour exemple les "foyers de travailleurs migrants".
-<br>
-<h2 style="margin-top : 80px;">Vaccination dans le monde</h2>
-Ce graphique présente le nombre de doses administrées pour 100 personnes de chaque habitant. Pour la plupart des vaccins, 2 doses sont nécessaires. L'immunité collective serait atteinte à partir d'environ 120 doses pour 100 habitants.
-<iframe src="https://ourworldindata.org/grapher/covid-vaccination-doses-per-capita?tab=chart&stackMode=absolute&time=latest&region=World" loading="lazy" style="width: 100%; height: 600px; border: 0px none;"></iframe>
-<br>
-<br>
-Ce graphique présente le nombre de doses administrées dans chaque pays.
-<iframe src="https://ourworldindata.org/grapher/cumulative-covid-vaccinations?tab=chart&stackMode=absolute&time=latest&region=World" loading="lazy" style="width: 100%; height: 600px; border: 0px none;"></iframe>
+<?php include(__DIR__ . '/immuniteCollective.php') ?>
+<?php include(__DIR__ . '/dansLeMonde.php') ?>
 <br>
 <br>
 Auteur : <a href="https://twitter.com/guillaumerozier">Guillaume Rozier</a>. Contributeurs : .
@@ -902,36 +858,7 @@ Array.prototype.sortBy = function(p) {
 <!-- /wp:html -->
 <!-- wp:html -->
 <?php include(__DIR__ . '/vaccintrackerStyles.php'); ?>
-
-<br>
-<h2 style="margin-top: 40px;">Menu</h2>
-  <div shadow="" style="margin-bottom: 5px;">
-  <div class_perso="">
-    <div>
-      <center><h3>Dashboards</h3><br></center>
-  <p>Ces tableaux de bord permettent de suivre et mieux comprendre l'évolution de l'épidémie.</p><br>
-  <center>
-  <a href="https://covidtracker.fr/covidtracker-france/" style="color:black"><button>🇫🇷 <b>France</b></button></a>
-  <a href="https://covidtracker.fr/dashboard-regions/" style="color:black"><button>📍 Régions</button></a>
-  <a href="https://covidtracker.fr/dashboard-departements/" style="color:black"><button>🏡 <b>Départements</b></button></a><br>
-  <a href="https://covidtracker.fr/covidtracker-world/" style="color:black"><button>🌍 World</button></a>
-      </center>
-    </div>
-
-    <div>
-      <center>
-        <h3>Outils</h3><br></center>
-  <p>Ces outils permettent de comparer les deux vagues, de calculer le risque de présence d'un cas de covid19, et d'estimer la durée du confinement en cours.</p>
-  <center> <a href="https://covidtracker.fr/vaccintracker/" style="color:black"><button>💉 <b>VaccinTracker</b></button></a>
-  <a href="https://covidtracker.fr/deconfitracker/" style="color:black"><button>🔥 DéconfiTracker</button></a><a href="https://covidtracker.fr/covidep/" style="color:black"><button>🆕 CoviDep</button></a>
-  <a href="https://covidtracker.fr/calculateur-risque-covid/" style="color:black"><button>🔢 CoviRisque</button></a>
-  <a href="https://covidtracker.fr/archives/" style="color:black"><br><i>Outils archivés</i></a>
-      </center>
-    </div>
-  </div>
-  </div>
-<br>
-<br>
+<?php include(__DIR__ . '/menuBasPage.php'); ?>
 <!-- /wp:html -->
 
 <div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">☕️ Offrez-moi un café</a></div>
