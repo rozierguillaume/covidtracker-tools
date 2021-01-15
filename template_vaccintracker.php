@@ -35,7 +35,7 @@ Template Name: template_vaccintracker
 					    <div class="entry">
 
 				   		<?php the_content(); ?>
-				   		<?php include(dirname(__FILE__) . '/src/VaccinTracker/vaccintracker.html') ?>
+				   		<?php include(dirname(__FILE__) . '/src/VaccinTracker/vaccintracker.php') ?>
 
 					    </div>
 					     
