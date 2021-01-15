@@ -152,7 +152,7 @@ Ce graphique présente le nombre de doses administrées dans chaque pays.
 <iframe src="https://ourworldindata.org/grapher/cumulative-covid-vaccinations?tab=chart&stackMode=absolute&time=latest&region=World" loading="lazy" style="width: 100%; height: 600px; border: 0px none;"></iframe>
 <br>
 <br>
-Auteur : <a href="https://twitter.com/guillaumerozier">Guillaume Rozier</a>. Contributeurs : .
+Auteurs : Aymerik Diebold, <a href="https://twitter.com/guillaumerozier">Guillaume Rozier</a>, Michael Souvy.
 
 
 <style>
@@ -455,7 +455,7 @@ var nb_vaccines = [];
 
 
 var dejaVaccinesNb;
-var dejaVaccines;
+var dejaVaccines=0;
 var restantaVaccinerImmunite;
 var restantaVaccinerAutres = 100
 var objectifQuotidien;
@@ -849,7 +849,7 @@ function tableVaccin(tableElt, level){
                         first = false;
                         tableVaccin(subtable, level+1);
                     }
-                } else if((caseNb <= 60 && level == 0) || ((dejaVaccines ?? 0) < 60 && level == 1)) {
+                } else if((caseNb <= 60 && level == 0) || ((dejaVaccines) < 60 && level == 1)) {
                     newrow.classList.add("red");
                 } else {
                     newrow.classList.add("grey");
