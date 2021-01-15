@@ -147,11 +147,6 @@ crossorigin=""></script>
         latitudes.map((lat, idx)=>{
             var marker = L.marker([longitudes[idx], lat]).bindPopup("test").addTo(this.mymap);
 
-            marker.on('click', function () {
-    if (!this._popup) { // when maker dont have pop up, this will bind popup and and open it
-        this.bindPopup('Popup content').openPopup();
-    }
-});
         })
 
         
