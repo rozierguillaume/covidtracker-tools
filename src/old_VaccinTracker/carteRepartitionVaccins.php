@@ -64,10 +64,8 @@ Coloration en fonction de la proportion de population vaccinée.
                     let valeurs = [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4]
                     let couleurs = ["#DCECCD", "#BDE0AE", "#98D390", "#73C679", "#55B86F", "#39A96B", "#1D9A6C", "#178973", "#117876"]
                     let data_reg = (donneesRegion["vaccines"]/donneesRegion["population"])*100
-                    console.log(data_reg)
 
                     if(data_reg > valeurs[valeurs.length-1]){
-                        console.log("if")
                         regionCarte.css("fill", couleurs[couleurs.length-1]);
                     } else {
                         for (var i = 0; i < valeurs.length; i++) {

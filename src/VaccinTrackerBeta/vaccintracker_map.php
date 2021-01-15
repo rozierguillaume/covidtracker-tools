@@ -606,7 +606,7 @@ function calculerObjectif(){
     let jours_restant = (Date.parse("2021-01-31") - Date.parse(dates[dates.length-1]) )/ one_day
     let objectif = OBJECTIF_FIN_JANVIER;
     let resteAVacciner = objectif - nb_vaccines[nb_vaccines.length-1]
-    console.log(jours_restant)
+
     if ((resteAVacciner>=0) && (jours_restant>=0)){
         return Math.round(resteAVacciner/jours_restant)
     } else {
