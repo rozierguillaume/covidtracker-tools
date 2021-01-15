@@ -8,17 +8,10 @@ crossorigin=""></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js" integrity="sha512-MQlyPV+ol2lp4KodaU/Xmrn+txc1TP15pOBF/2Sfre7MRsA/pB4Vy58bEqe9u7a7DczMLtU5wT8n7OblJepKbg==" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css" integrity="sha512-BBToHPBStgMiw0lD4AtkRIZmdndhB6aQbXpX7omcrXeG2PauGBl2lzq2xUZTxaLxYz5IDHlmneCZ1IJ+P3kYtQ==" crossorigin="anonymous" />
 
-Carte des centres de vaccination.
-<b>Suivez la campagne vaccinale sur <a href="https://covidtracker.fr/vaccintracker">VaccinTracker ></a></b>
-<br>
-<br>
+<h2 style="margin-top : 80px;" id="centres-vaccination">Centres de vaccination</h2>
+Carte des centres de vaccination. Source des données : Santé.fr.
 
-<div id="mapid" style="height: 80vh; max-height: 600px;"></div>
-
-<br>
-<br>
-
-<b>Suivez la campagne vaccinale sur <a href="https://covidtracker.fr/vaccintracker">VaccinTracker ></a></b>
+<div id="mapid" style="height: 80vh; width: 90vw; max-width: 1000px; max-height: 600px;"></div>
 
 <br>
 <br>
@@ -178,7 +171,7 @@ Carte des centres de vaccination.
       )
 //
 
-    var mymap = L.map('mapid').setView([46.505, -0.09], 6);
+    var mymap = L.map('mapid').setView([46.505, 3], 6);
     var markers = L.markerClusterGroup();
 
     var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
