@@ -5,12 +5,15 @@ crossorigin=""/>
 integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
 crossorigin=""></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js" integrity="sha512-MQlyPV+ol2lp4KodaU/Xmrn+txc1TP15pOBF/2Sfre7MRsA/pB4Vy58bEqe9u7a7DczMLtU5wT8n7OblJepKbg==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css" integrity="sha512-BBToHPBStgMiw0lD4AtkRIZmdndhB6aQbXpX7omcrXeG2PauGBl2lzq2xUZTxaLxYz5IDHlmneCZ1IJ+P3kYtQ==" crossorigin="anonymous" />
+
 Carte des centres de vaccination.
 <b>Suivez la campagne vaccinale sur <a href="https://covidtracker.fr/vaccintracker">VaccinTracker ></a></b>
 <br>
 <br>
 
-<div id="mapid" style="min-height: 800px;"></div>
+<div id="mapid" style="height: 80vh; max-height: 600px;"></div>
 
 <br>
 <br>
@@ -118,8 +121,44 @@ Carte des centres de vaccination.
     var reservation = [];
     var rdv_tel = [];
     var adresses = [];
+    var modalites = [];
+    var date_ouverture = [];
+    var maj = [];
 
-    fetch('https://www.data.gouv.fr/fr/datasets/r/5cb21a85-b0b0-4a65-a249-806a040ec372', {cache: 'no-cache'})
+    const div = document.querySelector('div');
+    const url="https://www.data.gouv.fr/fr/datasets/r/5cb21a85-b0b0-4a65-a249-806a040ec372"
+
+    let request = fetch(url)
+    .then(response => response.arrayBuffer())
+    .then(buffer => {
+        let decoder = new TextDecoder("iso-8859-1");
+        let csv = decoder.decode(buffer);
+        //console.log(text)
+        data_array = CSVToArray(csv, ";");
+          
+          data_array.slice(1, data_array.length-1).map((value, idx) => {
+            longitudes.push(value[9])
+            latitudes.push(value[10])
+            noms.push(value[1])
+            reservation.push(value[32])
+            date_ouverture.push(value[31])
+            rdv_tel.push(value[33])
+            modalites.push(value[34])
+            adresses.push(value[4] + " " + value[5] + ", " + value[6] + " " + value[8])
+            maj.push(value[19].slice(0, 16))
+          })
+
+          ajouter_pins();
+    })
+    .catch(function () {
+           this.dataError = true;
+           console.log("error1")
+       });
+
+    var myHeaders = new Headers();
+    myHeaders.append('Content-Type','text/csv;charset=utf-8'); //iso-8859-1
+
+    fetch('https://www.data.gouv.fr/fr/datasets/r/5cb21a85-b0b0-4a65-a249-806a040ec372', {headers: myHeaders, cache: 'no-cache'})
        .then(response => {
            if (!response.ok) {
                throw new Error("HTTP error " + response.status);
@@ -127,20 +166,10 @@ Carte des centres de vaccination.
            return response.text();
        })
        .then(csv => {
+           
           this.data = csv;
-
           data_array = CSVToArray(csv, ";");
-
-          data_array.slice(1, data_array.length-1).map((value, idx) => {
-            longitudes.push(value[9])
-            latitudes.push(value[10])
-            noms.push(value[1])
-            reservation.push(value[32])
-            rdv_tel.push(value[33])
-            adresses.push(value[4] + " " + value[5] + ", " + value[6] + " " + value[8])
-          })
-
-          ajouter_pins();
+          
         })
        .catch(function () {
            this.dataError = true;
@@ -150,7 +179,7 @@ Carte des centres de vaccination.
 //
 
     var mymap = L.map('mapid').setView([46.505, -0.09], 6);
-
+    var markers = L.markerClusterGroup();
 
     var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -160,7 +189,7 @@ Carte des centres de vaccination.
     
     function ajouter_pins(){
         console.log("debut")
-        L.marker([longitudes[0], latitudes[0]]).bindPopup("test").addTo(this.mymap);
+        
         latitudes.map((lat, idx)=>{
             var reservation_str = ""
             if (reservation[idx].slice(0, 4)=="http"){
@@ -170,13 +199,15 @@ Carte des centres de vaccination.
                 reservation_str = reservation[idx]
             }
 
-            var string_popup = "<b>" + noms[idx] + "</b><br>Adresse : " + adresses[idx] + "<br>Réservation : " + reservation_str + "</a><br>Tél : " + rdv_tel[idx]
-            var marker = L.marker([longitudes[idx], lat]).bindPopup(string_popup).addTo(this.mymap);
+            var string_popup = "<b>" + noms[idx] + "</b><br>Adresse : " + adresses[idx] + "<br>Réservation : " + reservation_str + "</a><br>Tél : <a href:'tel:" + rdv_tel[idx] + "'>" + rdv_tel[idx] + "</a><br>Date d'ouverture : "+ date_ouverture[idx] + "<br>Modalités : " + modalites[idx] + "<br>Mise à jour : " + maj[idx]
+            var marker = L.marker([longitudes[idx], lat]).bindPopup(string_popup) //.addTo(this.mymap);
             marker.on('click', function(e) {this.openPopup();});
+            markers.addLayer(marker);
+            
 
         })
+        mymap.addLayer(markers);
         console.log("fin")
-        
     }
     
 </script>
