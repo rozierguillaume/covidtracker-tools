@@ -108,7 +108,7 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
 <?php include(__DIR__ . '/dansLeMonde.php') ?>
 <br>
 <br>
-Auteur : <a href="https://twitter.com/guillaumerozier">Guillaume Rozier</a>. Contributeurs : .
+Auteurs : Aymerik Diebold, Florent Jaby, <a href="https://twitter.com/guillaumerozier">Guillaume Rozier</a>, Michael Souvy.
 
 
 <style>
@@ -411,7 +411,7 @@ var nb_vaccines = [];
 
 
 var dejaVaccinesNb;
-var dejaVaccines;
+var dejaVaccines = 0;
 var restantaVaccinerImmunite;
 var restantaVaccinerAutres = 100
 var objectifQuotidien;
@@ -807,7 +807,7 @@ function tableVaccin(tableElt, level){
                         first = false;
                         tableVaccin(subtable, level+1);
                     }
-                } else if((caseNb <= 60 && level == 0) || ((dejaVaccines ?? 0) < 60 && level == 1)) {
+                } else if((caseNb <= 60 && level == 0) || ((dejaVaccines) < 60 && level == 1)) {
                     newrow.classList.add("red");
                 } else {
                     newrow.classList.add("grey");

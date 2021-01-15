@@ -26,7 +26,7 @@
 
     <h3 style="margin-top : 50px;">Vaccins en cours d'autorisation</h3>
     <div class="row">
-        <card class="shadow-btn col-xs-11 col-md-4"><b>🇬🇧🇸🇪 AstraZeneca/Oxford</b><br>
+        <card class="shadow-btn-orange col-xs-11 col-md-4"><b>🇬🇧🇸🇪 AstraZeneca/Oxford</b><br>
             Phase 3/3<br>
             Type : Vecteur viral<br>
             Efficacité annoncée : 70%<br>
@@ -39,19 +39,19 @@
 
     <h3 style="margin-top : 50px;">Vaccins pas encore soumis</h3>
     <div class="row">
-        <card class="shadow-btn col-xs-11 col-md-4"><b>🇺🇸🇧🇪 Janssen J&J</b><br>
+        <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇺🇸🇧🇪 Janssen J&J</b><br>
             Phase 3/3<br>
             Type : Vecteur viral<br>
             Efficacité annoncée : --%<br>
             Prêt : fin janvier 2021<br>Conservation : +5°C<br>Commandes UE : 200M (+ option 200M)<br>Doses à injecter : 1 (essai en cours) ou 2<br>Statut : --
         </card>
-        <card class="shadow-btn col-xs-11 col-md-4"><b>🇩🇪 CureVac</b><br>
+        <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇩🇪 CureVac</b><br>
             Phase 2/3<br>
             Type : ARN messager<br>
             Efficacité annoncée : --%<br>
             Prêt : 1er semestre 2021<br>Conservation : -60°C (3 mois), +5°C (3 mois)<br>Commandes UE : 225M (+ option 180M)<br>Doses à injecter : 2<br>Statut : --
         </card>
-        <card class="shadow-btn col-xs-11 col-md-4"><b>🇫🇷🇬🇧 Sanofi/Pasteur-GSK</b><br>
+        <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇫🇷🇬🇧 Sanofi/Pasteur-GSK</b><br>
             Phase 2/3<br>
             Type : Protéines virales<br>
             Efficacité annoncée : --%<br>
