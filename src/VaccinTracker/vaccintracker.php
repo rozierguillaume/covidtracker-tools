@@ -102,6 +102,7 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
 </div>
 
 <?php include(__DIR__ . '/carte.php') ?>
+<?php include(__DIR__ . '/vaccin-map.html') ?>
 <?php include(__DIR__ . '/autorisations.php') ?>
 <?php include(__DIR__ . '/immuniteCollective.php') ?>
 <?php include(__DIR__ . '/dansLeMonde.php') ?>
