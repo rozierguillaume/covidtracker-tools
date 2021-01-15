@@ -54,8 +54,7 @@
 
 <!--BLOC CSS -->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
-
-<?php include(__DIR__ . '/carte.css') ?>
+<link href="carte.css" rel="stylesheet"/>
 <!--ENDBLOC JS -->
 <!--BLOC JS -->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
@@ -64,8 +63,7 @@
         integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw=="
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-deferred@1"></script>
-
-<?php include(__DIR__ . '/carte.js') ?>
+<script src="carte.js"></script>
 
 <script id="regionTemplate" type="text/template">
     <!-- wp:heading -->
