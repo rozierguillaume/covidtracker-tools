@@ -5,8 +5,20 @@ crossorigin=""/>
 integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
 crossorigin=""></script>
 
+Carte des centres de vaccination.
+<b>Suivez la campagne vaccinale sur <a href="https://covidtracker.fr/vaccintracker">VaccinTracker ></a></b>
+<br>
+<br>
 
-<div id="mapid" style="min-height: 400px;"></div>
+<div id="mapid" style="min-height: 800px;"></div>
+
+<br>
+<br>
+
+<b>Suivez la campagne vaccinale sur <a href="https://covidtracker.fr/vaccintracker">VaccinTracker ></a></b>
+
+<br>
+<br>
 
 
 <script>
@@ -102,6 +114,10 @@ crossorigin=""></script>
     var data = [];
     var longitudes = [];
     var latitudes = [];
+    var noms = [];
+    var reservation = [];
+    var rdv_tel = [];
+    var adresses = [];
 
     fetch('https://www.data.gouv.fr/fr/datasets/r/5cb21a85-b0b0-4a65-a249-806a040ec372', {cache: 'no-cache'})
        .then(response => {
@@ -118,11 +134,12 @@ crossorigin=""></script>
           data_array.slice(1, data_array.length-1).map((value, idx) => {
             longitudes.push(value[9])
             latitudes.push(value[10])
+            noms.push(value[1])
+            reservation.push(value[32])
+            rdv_tel.push(value[33])
+            adresses.push(value[4] + " " + value[5] + ", " + value[6] + " " + value[8])
           })
 
-          console.log(longitudes)
-          console.log(latitudes)
-          //ajouter_pins();
           ajouter_pins();
         })
        .catch(function () {
@@ -132,7 +149,7 @@ crossorigin=""></script>
       )
 //
 
-    var mymap = L.map('mapid').setView([51.505, -0.09], 4);
+    var mymap = L.map('mapid').setView([46.505, -0.09], 6);
 
 
     var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -142,14 +159,23 @@ crossorigin=""></script>
 
     
     function ajouter_pins(){
-        console.log("commen")
+        console.log("debut")
         L.marker([longitudes[0], latitudes[0]]).bindPopup("test").addTo(this.mymap);
         latitudes.map((lat, idx)=>{
-            var marker = L.marker([longitudes[idx], lat]).bindPopup("test").addTo(this.mymap);
+            var reservation_str = ""
+            if (reservation[idx].slice(0, 4)=="http"){
+                reservation_str = "<a href='" + reservation[idx] + "'>" + reservation[idx]
+            } 
+            else{
+                reservation_str = reservation[idx]
+            }
+
+            var string_popup = "<b>" + noms[idx] + "</b><br>Adresse : " + adresses[idx] + "<br>Réservation : " + reservation_str + "</a><br>Tél : " + rdv_tel[idx]
+            var marker = L.marker([longitudes[idx], lat]).bindPopup(string_popup).addTo(this.mymap);
+            marker.on('click', function(e) {this.openPopup();});
 
         })
-
-        
+        console.log("fin")
         
     }
     
