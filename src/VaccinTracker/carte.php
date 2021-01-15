@@ -64,7 +64,8 @@
         integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw=="
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-deferred@1"></script>
-<script src="carte.js"></script>
+
+<?php include(__DIR__ . '/carte.js') ?>
 
 <script id="regionTemplate" type="text/template">
     <!-- wp:heading -->
