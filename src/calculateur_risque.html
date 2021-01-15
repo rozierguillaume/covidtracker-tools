@@ -356,7 +356,6 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
 
       let dep = document.getElementById('deps_list_choice_'+id).value;
       departements_a_afficher[id] = dep;
-      console.log(id)
       updateButtonColor(dep);
       document.getElementById('tauxincid_'+id).value = incidence_departements[dep]["incidence_cas"];
       //document.getElementById("dep-name").innerHTML = "dans le département " + dep + " ";

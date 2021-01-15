@@ -72,7 +72,7 @@ jQuery(document).ready(function ($) {
     /*
     * Le lancement de l'animation se fait en ajoutant et retirant la classe animated
     * de la carte afin que tous les départements clignotent en meme temps.
-    * Sans quoi chaqué département commence son clignotement au moment où on lui attribue
+    * Sans quoi chaque département commence son clignotement au moment où on lui attribue
     * la classe selected.
     */
     var stopAnimation = function () {

@@ -332,7 +332,7 @@
             }
 
             function afficherDepartement(nomDepartment, numeroDepartement) {
-                console.log(donneesDepartements[nomDepartement]);
+                // console.log(donneesDepartements[nomDepartement]);
                 incidenceDepartement = donneesDepartements[nomDepartement]["incidence_cas"]
                 saturationRea = Math.round(donneesDepartements[nomDepartement]["saturation_rea"])
                 tauxPositivite = donneesDepartements[nomDepartement]["taux_positivite"]

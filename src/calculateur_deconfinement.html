@@ -260,18 +260,11 @@ plugins: {
         console.log(cas_semaines)
 
    			while(cas_semaines[cas_semaines.length-1] > 35000){
-          console.log("lol")
    				if(values_data_temp.length <= cas_semaines.length){
    					     values_data_temp.push(Math.min(values_data_temp[values_data_temp.length-1], 0.7));
    				}
-
-
        			cas_semaine_suivante = cas_semaines[cas_semaines.length-1] * values_data_temp[cas_semaines.length]
-
-
        			cas_semaines.push(cas_semaine_suivante)
-
-       			
              }
              updateNumberOfWeeks(cas_semaines.length+1);
 
