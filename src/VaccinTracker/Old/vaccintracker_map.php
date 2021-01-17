@@ -101,7 +101,7 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
 
 
 <br>
-<h2>Quand est-ce que sera atteinte l'immunité collective ?</h2>
+<h2>Quand l'immunité collective sera-t-elle atteinte ?</h2>
 Sur VaccinTracker, le taux de 60% a été choisi comme seuil d'immunité collective. Cependant, on ne peut pas aujourd'hui connaître ce taux précisément.
 La vidéo suivante du média Le Monde explique très bien la problématique à notre sens :
 <br><br>
