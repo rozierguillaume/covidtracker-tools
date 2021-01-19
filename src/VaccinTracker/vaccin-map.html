@@ -148,29 +148,6 @@ Carte des centres de vaccination. Source des données : Santé.fr.
            console.log("error1")
        });
 
-    var myHeaders = new Headers();
-    myHeaders.append('Content-Type','text/csv;charset=utf-8'); //iso-8859-1
-
-    fetch('https://www.data.gouv.fr/fr/datasets/r/5cb21a85-b0b0-4a65-a249-806a040ec372', {headers: myHeaders, cache: 'no-cache'})
-       .then(response => {
-           if (!response.ok) {
-               throw new Error("HTTP error " + response.status);
-           }
-           return response.text();
-       })
-       .then(csv => {
-           
-          this.data = csv;
-          data_array = CSVToArray(csv, ";");
-          
-        })
-       .catch(function () {
-           this.dataError = true;
-           console.log("error1")
-       }
-      )
-//
-
     var mymap = L.map('mapid').setView([46.505, 3], 6);
     var markers = L.markerClusterGroup();
 
