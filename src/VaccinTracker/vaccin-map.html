@@ -126,20 +126,19 @@ Carte des centres de vaccination. Source des données : Santé.fr.
     .then(buffer => {
         let decoder = new TextDecoder();
         let csv = decoder.decode(buffer);
-        //console.log(text)
         data_array = CSVToArray(csv, ";");
           
-          data_array.slice(1, data_array.length-1).map((value, idx) => {
-            longitudes.push(value[9])
-            latitudes.push(value[10])
-            noms.push(value[1])
-            reservation.push(value[32])
-            date_ouverture.push(value[31])
-            rdv_tel.push(value[33])
-            modalites.push(value[34])
-            adresses.push(value[4] + " " + value[5] + ", " + value[6] + " " + value[8])
-            maj.push(value[19].slice(0, 16))
-          })
+        data_array.slice(1, data_array.length-1).map((value, idx) => {
+          longitudes.push(value[9])
+          latitudes.push(value[10])
+          noms.push(value[1])
+          reservation.push(value[32])
+          date_ouverture.push(value[31])
+          rdv_tel.push(value[33])
+          modalites.push(value[34])
+          adresses.push(value[4] + " " + value[5] + ", " + value[6] + " " + value[8])
+          maj.push(value[19].slice(0, 16))
+        })
 
           ajouter_pins();
     })
@@ -158,8 +157,6 @@ Carte des centres de vaccination. Source des données : Santé.fr.
 
     
     function ajouter_pins(){
-        console.log("debut")
-        
         latitudes.map((lat, idx)=>{
             var reservation_str = ""
             if (reservation[idx].slice(0, 4)=="http"){
@@ -177,7 +174,6 @@ Carte des centres de vaccination. Source des données : Santé.fr.
 
         })
         mymap.addLayer(markers);
-        console.log("fin")
     }
     
 </script>
