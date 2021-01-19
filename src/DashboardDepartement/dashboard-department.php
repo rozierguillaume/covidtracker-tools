@@ -30,23 +30,29 @@ if (isset($_GET['dep']) and $_GET['dep']) {
             </a>
         </h2>
         <div class="row">
-            <div class="col-md-4 shadow">
-                <span style="font-size: 160%; color: couleurIncidence"><b>incidenceDepartement</b></span><br>
-                <span><b>Taux d'incidence</b><br>
+            <div class="col-sm-6 col-md-4">
+                <div class="shadow">
+                    <span style="font-size: 160%; color: couleurIncidence"><b>incidenceDepartement</b></span><br>
+                    <span><b>Taux d'incidence</b><br>
                 Nombre de cas sur 7 jours pour 100k habitants. L'incidence moyenne en France est incidenceFrance, et le seuil d'alerte 50.<br></span>
-                <span style="font-size: 70%;">Mise à jour : dateMaj</span>
+                    <span style="font-size: 70%;">Mise à jour : dateMaj</span>
+                </div>
             </div>
-            <div class="col-md-4 shadow">
-                <span style="font-size: 160%; color: couleurSaturationRea"><b>saturationRea</b></span><br>
-                <span><b>Tension hospitalière</b>
+            <div class="col-sm-6 col-md-4">
+                <div class="shadow">
+                    <span style="font-size: 160%; color: couleurSaturationRea"><b>saturationRea</b></span><br>
+                    <span><b>Tension hospitalière</b>
                 <br>Si supérieur à 100%, alors les patients Covid19 occupent plus de lits de réanimation qu'il n'y en avait avant l'épidémie</span><br>
-                <span style="font-size: 70%;">Mise à jour : dateMaj</span>
+                    <span style="font-size: 70%;">Mise à jour : dateMaj</span>
+                </div>
             </div>
-            <div class="col-md-4 shadow">
-                <span style="font-size: 160%; color: couleurTauxPositivite"><b>tauxPositivite</b></span><br>
-                <span><b>Taux de positivité</b>
+            <div class="col-sm-6 col-md-4">
+                <div class="shadow">
+                    <span style="font-size: 160%; color: couleurTauxPositivite"><b>tauxPositivite</b></span><br>
+                    <span><b>Taux de positivité</b>
                 <br>Proportion de tests positifs dans l'ensemble des tests. Un chiffre bas peut être dû à une faible circulation du virus ou à un testing massif.</span><br>
-                <span style="font-size: 70%;">Mise à jour : dateMaj</span>
+                    <span style="font-size: 70%;">Mise à jour : dateMaj</span>
+                </div>
             </div>
         </div>
 
@@ -54,13 +60,39 @@ if (isset($_GET['dep']) and $_GET['dep']) {
         <p>Ces quatre graphiques permettent d'évaluer l'épidémie dans le département. Le nombre de cas correspond à
             l'activité du virus. Le nombre d'hospitalisations, de réanimations et de décès hospitaliers permettent de
             mesurer la crise sanitaire.</p>
-        <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_nomDepartement.jpeg"
-               target="_blank" rel="noopener noreferrer">
-                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_nomDepartement.jpeg"
-                     width="100%" style="max-width: 1000px;">
-            </a>
-        </p>
+        <div class="row">
+            <div class="col-md-6">
+                <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/cas_journ_nomDepartement.jpeg"
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/cas_journ_nomDepartement.jpeg"
+                         width="100%" style="max-width: 1000px;">
+                </a>
+            </div>
+            <div class="col-md-6">
+                <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/hosp_journ_nomDepartement.jpeg"
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/hosp_journ_nomDepartement.jpeg"
+                         width="100%" style="max-width: 1000px;">
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/rea_journ_nomDepartement.jpeg"
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/rea_journ_nomDepartement.jpeg"
+                         width="100%" style="max-width: 1000px;">
+                </a>
+            </div>
+            <div class="col-md-6">
+                <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dc_journ_nomDepartement.jpeg"
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dc_journ_nomDepartement.jpeg"
+                         width="100%" style="max-width: 1000px;">
+                </a>
+            </div>
+        </div>
+
         <h3 style="margin-top: 40px;">Incidence par tranche d'âge</h3>
         <p>Le taux d'incidence correspond au nombre de cas cumulé sur 7 jours rapporté à 100 000 habitants du
             département. Cet indicateur représente l'activité épidémique du virus. Le seuil d'alerte est de 50.</p>
