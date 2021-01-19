@@ -124,7 +124,7 @@ Carte des centres de vaccination. Source des données : Santé.fr.
     let request = fetch(url)
     .then(response => response.arrayBuffer())
     .then(buffer => {
-        let decoder = new TextDecoder("iso-8859-1");
+        let decoder = new TextDecoder();
         let csv = decoder.decode(buffer);
         //console.log(text)
         data_array = CSVToArray(csv, ";");
