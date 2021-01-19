@@ -46,7 +46,7 @@
         <div class="row">
             <div class="col-xs-10">
                 <div id="carte">
-                    <?php include(__DIR__.'/carteSvg.php');?>
+                    <?php include(__DIR__ . '/dashboardRegionCarteSvg.php');?>
                 </div>
             </div>
             <div class="col-xs-2">
