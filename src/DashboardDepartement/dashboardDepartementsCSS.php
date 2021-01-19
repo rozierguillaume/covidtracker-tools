@@ -11,9 +11,9 @@
         border-radius: 7px;
         text-align: left;
         box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
-        max-width: 350px;
+        /*max-width: 350px;*/
         background: #ffffff;
-        margin-left: 10px;
+        /*margin-left: 10px;*/
         margin-top: 10px;
     }
 
