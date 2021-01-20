@@ -9,7 +9,7 @@ crossorigin=""></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css" integrity="sha512-BBToHPBStgMiw0lD4AtkRIZmdndhB6aQbXpX7omcrXeG2PauGBl2lzq2xUZTxaLxYz5IDHlmneCZ1IJ+P3kYtQ==" crossorigin="anonymous" />
 
 <h2 style="margin-top : 80px;" id="centres-vaccination">Centres de vaccination</h2>
-Carte des centres de vaccination. Source des données : Santé.fr.
+Carte des centres de vaccination. Source des données : Ministère de la Santé. Mise à jour : 12h et 20h chaque jour.
 
 <div id="mapid" style="height: 80vh; width: 90vw; max-width: 1000px; max-height: 600px;"></div>
 
@@ -132,12 +132,12 @@ Carte des centres de vaccination. Source des données : Santé.fr.
           longitudes.push(value[9])
           latitudes.push(value[10])
           noms.push(value[1])
-          reservation.push(value[32])
-          date_ouverture.push(value[31])
-          rdv_tel.push(value[33])
-          modalites.push(value[34])
+          reservation.push(value[34])
+          date_ouverture.push(value[33])
+          rdv_tel.push(value[30])
+          modalites.push(value[36])
           adresses.push(value[4] + " " + value[5] + ", " + value[6] + " " + value[8])
-          maj.push(value[19].slice(0, 16))
+          maj.push(value[21].slice(0, 16))
         })
 
           ajouter_pins();
@@ -148,7 +148,7 @@ Carte des centres de vaccination. Source des données : Santé.fr.
        });
 
     var mymap = L.map('mapid').setView([46.505, 3], 6);
-    var markers = L.markerClusterGroup();
+    var markers = L.markerClusterGroup({ disableClusteringAtZoom: 9 });
 
     var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -159,14 +159,19 @@ Carte des centres de vaccination. Source des données : Santé.fr.
     function ajouter_pins(){
         latitudes.map((lat, idx)=>{
             var reservation_str = ""
-            if (reservation[idx].slice(0, 4)=="http"){
-                reservation_str = "<a href='" + reservation[idx] + "'>" + reservation[idx]
-            } 
+            if (typeof reservation[idx] != 'undefined'){
+
+                if (reservation[idx].slice(0, 4)=="http"){
+                    reservation_str = "<a href='" + reservation[idx] + "'>" + reservation[idx]
+                } 
+            }
             else{
                 reservation_str = reservation[idx]
             }
 
-            var string_popup = "<b>" + noms[idx] + "</b><br>Adresse : " + adresses[idx] + "<br>Réservation : " + reservation_str + "</a><br>Tél : <a href:'tel:" + rdv_tel[idx] + "'>" + rdv_tel[idx] + "</a><br>Date d'ouverture : "+ date_ouverture[idx] + "<br>Modalités : " + modalites[idx] + "<br>Mise à jour : " + maj[idx]
+            var modalites_str = modalites[idx]
+            
+            var string_popup = "<span style='font-size: 150%;'>" + noms[idx] + "</span><br><b>Adresse :</b> " + adresses[idx] + "<br><b>Réservation :</b> " + reservation_str + "</a><br><b>Tél :</b> <a href:'tel:" + rdv_tel[idx] + "'>" + rdv_tel[idx] + "</a><br><b>Date d'ouverture :</b> "+ date_ouverture[idx] + "<br><b>Modalités :</b> " + modalites_str + "<br><b>Mise à jour :</b> " + maj[idx]
             var marker = L.marker([longitudes[idx], lat]).bindPopup(string_popup) //.addTo(this.mymap);
             marker.on('click', function(e) {this.openPopup();});
             markers.addLayer(marker);
