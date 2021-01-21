@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: deconfitracker
+Template Name: template_deconfitracker
 */
 ?>
 
@@ -35,7 +35,7 @@ Template Name: deconfitracker
 					    <div class="entry">
 
 				   		<?php the_content(); ?>
-				   		<?php include(dirname(__FILE__) . '/src/covidep/DeconfiTracker/index.html') ?>
+				   		<?php include(dirname(__FILE__) . '/src/DeconfiTracker/index.html') ?>
 
 					    </div>
 					     
