@@ -535,7 +535,7 @@ function fetchOtherData(){
         .then(csv => {
             this.data = csv;
             array_data = CSVToArray(csv, ";");
-            array_data.slice(1, array_data.length-1).map((value, idx) => {
+            array_data.slice(1, array_data.length).map((value, idx) => {
                 nb_vaccines.push({
                   date: value[0],
                   heure: "19h30",
