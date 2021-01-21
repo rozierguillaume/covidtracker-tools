@@ -15,7 +15,7 @@
             sur la carte de France métropolitaine.
         </p>
         <div class="text-center">
-            <?php include(__DIR__ . '/selectDepartements.php'); ?>
+            <?php include(dirname(__FILE__) . '/selectDepartements.php'); ?>
             <div style="margin-top: 20px; margin-bottom: 20px;">
                 <btn class="btn btn-primary" id="selectAll">Tout sélectionner</btn>
                 <btn class="btn btn-primary" id="unselectAll">
