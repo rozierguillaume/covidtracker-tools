@@ -1,4 +1,5 @@
 <script>
+//hello world
     jQuery(document).ready(function ($) {
             $('.dropdown-toggle').dropdown();
 
