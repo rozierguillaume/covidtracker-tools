@@ -1,4 +1,28 @@
 <style>
+    .btn{
+        background-color: white !important;
+        color: black;
+        border: 1px grey;
+        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+    }
+
+
+    button.btn.btn-primary.dropdown-toggle{
+        color: black;
+    }
+
+    .dropdown-menu > li > a.selected{
+        background-color: black !important;
+        color: white;
+    }
+    
+    .btn.selected{
+        background-color: black !important;
+        color: black;
+        border: 0px;
+        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+    }
+
     table, td {
         border: 0px solid #333;
         color: black;
