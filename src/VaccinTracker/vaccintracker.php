@@ -31,8 +31,16 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
 <div class="wrap">
     <div class="one">
         <span id="nb_vaccines" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span>&nbsp;&nbsp;(+<span id="nb_vaccines_24h">--</span> en 24h)<br>
+        <b>Personnes partiellement vaccinées</b><br>
+        Nombre cumulé de personnes ayant reçu au moins une dose de vaccin contre la Covid19 en France.
+        <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span id="date_maj_1">--/--</span>.<br>Source : CovidTracker/Ministère de la Santé.</i></div>
+    </div>
+
+    <div class="one">
+        <span id="nb_vaccines_2_doses" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span>&nbsp;&nbsp;(+<span id="nb_vaccines_24h_2_doses">--</span> en 24h)<br>
         <b>Personnes vaccinées</b><br>
-        Nombre cumulé de personnes ayant reçu au moins une dose de vaccin contre la Covid19 en France. <span id="proportion_doses">--</span>% des doses réceptionnées ont été utilisées.<br><span id="estimation_str"></span>
+        <i>Donnée non fournie par le Ministère de la Santé.</i><br>
+        Nombre cumulé de personnes ayant reçu les deux doses de vaccin.
         <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span id="date_maj_2">--/--</span>.<br>Source : CovidTracker/Ministère de la Santé.</i></div>
     </div>
 
@@ -59,15 +67,16 @@ Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60"
     <div class="col-md-3" style="padding-top: 20px;">
 
         <span style="font-size: 200%; color: rgb(45, 189, 84)"><span id="proportionVaccines">--</span>%</span><br> des Français ont reçu au moins une dose de vaccin. <br><br>
-        Il reste à vacciner au moins <br><span style="font-size: 200%; color: rgb(237, 88, 88);"><span id="proportionAVaccinerImmu">--</span>%</span><br>des Français avant d'atteindre un taux de vaccination de 60%. <br>
+        Il reste à vacciner au moins <br><span style="font-size: 200%; color: rgb(237, 88, 88);"><span id="proportionAVaccinerImmu">--</span>%</span><br>des Français avant d'atteindre un taux de vaccination de 60%. <br><br>
+        <span style="font-size: 80%;">
+            N.B. : un taux de vaccination de 60% ne permet pas nécessairement d'atteindre une immunité collective.<br>
+        </span>
     </div>
 </div>
 <br>
 
 <div class="alert-data" style="margin-top: 15px;">
     <span style="font-size: 80%;">
-        N.B. : un taux de vaccination de 60% ne permet pas nécessairement d'atteindre une immunité collective.<br>
-
         <b>Source des données</b> : CovidTracker / Ministère de la Santé.</a>
     </span>
 </div>
@@ -100,6 +109,8 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
 <div class="chart-container" style="position: relative; height:50vh; width:100%">
     <canvas id="lineVacChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
 </div>
+
+Auteur : CovidTracker.fr - Données : Ministère de la Santé
 
 <?php include(__DIR__ . '/carte.php') ?>
 <?php include(__DIR__ . '/vaccin-map.html') ?>
@@ -612,6 +623,7 @@ function calculerDateProjeteeObjectif () {
 function buildLineChart(){
 
     var ctx = document.getElementById('lineVacChart').getContext('2d');
+    let data_values = nb_vaccines.map(val => val.total);
 
     this.lineChart = new Chart(ctx, {
         type: 'line',
@@ -619,7 +631,7 @@ function buildLineChart(){
             labels: nb_vaccines.map(val => val.date),
             datasets: [{
                 label: 'Nombre cumulé de vaccinés ',
-                data: nb_vaccines.map(val => val.total),
+                data: data_values,
                 borderWidth: 3,
                 backgroundColor: 'rgba(0, 168, 235, 0.5)',
                 borderColor: 'rgba(0, 168, 235, 1)',
@@ -633,7 +645,7 @@ function buildLineChart(){
                 deferred: {
                     xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
                     yOffset: '50%', // defer until 50% of the canvas height are inside the viewport
-                    delay: 500      // delay of 500 ms after the canvas is considered inside the viewport
+                    delay: 200      // delay of 500 ms after the canvas is considered inside the viewport
                 }
                 },
             legend: {
@@ -645,7 +657,8 @@ function buildLineChart(){
                         display: false
                      },
                     ticks: {
-                        min: 0
+                        min: 0,
+                        suggestedMax: 1200000,
                     },
 
                 }],
@@ -674,28 +687,52 @@ function buildLineChart(){
     });
 }
 
+function rollingMean(data){
+    var moveMean = [];
+    let N = data.length;
+
+    for (var i = 3; i < N-3; i++)
+    {
+        var mean = (parseInt(data[i-3]) + data[i-2] + data[i-1] + data[i] + data[i+1] + data[i+2] + data[i+3])/7;
+        moveMean.push(mean);
+    }
+    return moveMean;
+}
+
 function buildBarChart(data){
+    console.log(rollingMean(data))
+    console.log(data)
 
     var ctx = document.getElementById('lineVacChart').getContext('2d');
+    let labels = nb_vaccines.map(val => val.date)
+    let rollingMeanValues = rollingMean(data).map((value, idx)=> ({x: labels[idx+3], y: value}))
+    console.log(rollingMeanValues)
 
     this.lineChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: nb_vaccines.map(val => val.date),
+            labels: labels,
             datasets: [{
                 label: 'Nombre quotidien de vaccinés ',
                 data: data,
                 borderWidth: 3,
                 backgroundColor: 'rgba(0, 168, 235, 0.5)',
-                borderColor: 'rgba(0, 168, 235, 1)',
+                borderColor: 'rgba(0, 168, 235, 0)',
                 cubicInterpolationMode: 'monotone'
             },
+            {
+            label: 'Moyenne quotidienne ',
+            data: rollingMeanValues,
+            type: 'line',
+            borderColor: 'rgba(0, 168, 235, 1)',
+            backgroundColor: 'rgba(0, 168, 235, 0)',
+            }
             ]
         },
         options: {
             maintainAspectRatio: false,
             legend: {
-                display: false
+                display: true
             },
             scales: {
                 yAxes: [{
@@ -827,7 +864,7 @@ function majValeurs(){
     document.getElementById("nb_vaccines_24h").innerHTML = numberWithSpaces(dejaVaccinesNb - nb_vaccines[nb_vaccines.length-2].total);
     document.getElementById("nb_doses").innerHTML = numberWithSpaces(cumul_stock);
     document.getElementById("proportionVaccines").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(2);
-    document.getElementById("proportion_doses").innerHTML = (dejaVaccinesNb/cumul_stock*100).toFixed(1);
+    //document.getElementById("proportion_doses").innerHTML = (dejaVaccinesNb/cumul_stock*100).toFixed(1);
 
     document.getElementById("proportionAVaccinerImmu").innerHTML = (Math.round(restantaVaccinerImmunite*10000000)/10000000).toFixed(2);
     document.getElementById("objectif_quotidien").innerHTML = numberWithSpaces(objectifQuotidien);
@@ -839,8 +876,8 @@ function majValeurs(){
     date_stock = dates_stock[dates_stock.length-1]
     date_stock = date_stock.slice(8) + "/" + date_stock.slice(5, 7)
 
-    //document.getElementById("date_maj_1").innerHTML = date + " à " + heure;
-    document.getElementById("date_maj_2").innerHTML = date + " à " + heure;
+    document.getElementById("date_maj_1").innerHTML = date + " à " + heure;
+    //document.getElementById("date_maj_2").innerHTML = date + " à " + heure;
     document.getElementById("date_maj_3").innerHTML = date + " à " + heure;
     document.getElementById("date_maj_4").innerHTML = date_stock;
     tableVaccin(table, 0);
