@@ -102,6 +102,7 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
 </div>
 
 <?php include(__DIR__ . '/carte.php') ?>
+<?php include(__DIR__ . '/queue.php') ?>
 <?php include(__DIR__ . '/vaccin-map.html') ?>
 <?php include(__DIR__ . '/autorisations.php') ?>
 <?php include(__DIR__ . '/immuniteCollective.php') ?>
@@ -408,7 +409,7 @@ function formaterDate (date) {
 const OBJECTIF_FIN_JANVIER = 1000000 // 1_000_000
 var data;
 var nb_vaccines = [];
-
+let differentielVaccinesParJour;
 
 var dejaVaccinesNb;
 var dejaVaccines = 0;
@@ -603,7 +604,7 @@ function calculerDateProjeteeObjectif () {
   const derniereMaj = Date.parse(nb_vaccines[indexDerniereMaj].date)
   const resteAVacciner = objectif - Number(nb_vaccines[indexDerniereMaj].total)
   const differentielVaccinesFenetre = Number(nb_vaccines[indexDerniereMaj].total) - Number(nb_vaccines[indexDebutFenetre].total)
-  const differentielVaccinesParJour = differentielVaccinesFenetre / (indexDerniereMaj - indexDebutFenetre)
+  differentielVaccinesParJour = differentielVaccinesFenetre / (indexDerniereMaj - indexDebutFenetre)
   const oneDay = (1000 * 60 * 60 * 24)
   const nbJoursAvantObjectif = Math.round(resteAVacciner / differentielVaccinesParJour)
   return new Date(derniereMaj + (oneDay * nbJoursAvantObjectif))
