@@ -353,9 +353,11 @@
             vaccinesRegion = region.vaccines;
             vaccinesRegionPop = (vaccinesRegion / region.population * 100).toFixed(2)
             
-            
-            dosesRecuesRegion = "--"
-            
+            if (nomRegion in doses_recues_regions){
+                dosesRecuesRegion = doses_recues_regions[nomRegion]
+            } else {
+                dosesRecuesRegion = "--"
+            }
 
             dateMaj = dateMaj
             let fullDate = new Date(dateMaj);
