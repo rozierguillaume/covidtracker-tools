@@ -83,10 +83,10 @@ Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60"
 
 
 <h2 style="margin-top : 80px;">Évolution</h2>
-L'objectif est de vacciner 1 million de personnes en janvier 2021. Pour atteindre cet objectif, il faudrait vacciner <b><span id="objectif_quotidien">--</span> personnes</b> chaque jour entre aujourd'hui et le 31 janvier 2021.
+Pour vacciner l'ensemble de la population adulte (52 millions de personnes) d'ici à août 2021, il faudrait vacciner <b><span id="objectif_quotidien">--</span> personnes</b> chaque jour.
 <br>
 <br>
-Au rythme actuel <small>(moyenne des 7 derniers jours)</small>, l'objectif du million de personnes vaccinées sera atteint le <b><span id="date_projetee_objectif"></span></b>.
+Au rythme actuel <small>(moyenne des 7 derniers jours)</small>, l'objectif de vacciner l'ensemble de la population adulte serait atteint le <b><span id="date_projetee_objectif"></span></b>.
 
 <br><br>
 Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moins 1 dose de vaccin Covid19.
@@ -309,7 +309,8 @@ td {
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
+//<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0-rc.1/Chart.bundle.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-deferred@1"></script>
@@ -417,6 +418,7 @@ function formaterDate (date) {
     }
 
 const OBJECTIF_FIN_JANVIER = 1000000 // 1_000_000
+const OBJECTIF_FIN_AOUT = 52000000 // 1_000_000
 var data;
 var nb_vaccines = [];
 
@@ -434,6 +436,7 @@ var data_stock;
 var dates_stock=[];
 var stock=[];
 var cumul_stock=0;
+var cumul_stock_array=[];
 
 var data_news = [];
 var titre_news = [];
@@ -457,6 +460,7 @@ fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data
             this.dates_stock.push(value[0])
             this.stock.push(parseInt(value[1]));
             this.cumul_stock += parseInt(value[1]);
+            this.cumul_stock_array.push(cumul_stock);
           })
 
           fetchOtherData();
@@ -581,8 +585,8 @@ var lineChart;
 function calculerObjectif(){
 
     let one_day = (1000 * 60 * 60 * 24)
-    let jours_restant = (Date.parse("2021-01-31") - Date.parse(nb_vaccines[nb_vaccines.length-1].date) )/ one_day
-    let objectif = OBJECTIF_FIN_JANVIER;
+    let jours_restant = (Date.parse("2021-08-31") - Date.parse(nb_vaccines[nb_vaccines.length-1].date) )/ one_day
+    let objectif = OBJECTIF_FIN_AOUT;
     let resteAVacciner = objectif - nb_vaccines[nb_vaccines.length-1].total
     console.log(jours_restant)
     if ((resteAVacciner>=0) && (jours_restant>=0)){
@@ -608,7 +612,7 @@ function afficherNews(){
 
 
 function calculerDateProjeteeObjectif () {
-  const objectif = OBJECTIF_FIN_JANVIER
+  const objectif = OBJECTIF_FIN_AOUT
   const indexDerniereMaj = nb_vaccines.length - 1;
   const indexDebutFenetre = Math.max(0, indexDerniereMaj - 7)
   const derniereMaj = Date.parse(nb_vaccines[indexDerniereMaj].date)
@@ -623,20 +627,28 @@ function calculerDateProjeteeObjectif () {
 function buildLineChart(){
 
     var ctx = document.getElementById('lineVacChart').getContext('2d');
-    let data_values = nb_vaccines.map(val => val.total);
+    let data_values = nb_vaccines.map(val => ({x: val.date, y:parseInt(val.total)}));
+    let data_object_stock = cumul_stock_array.map((value, idx)=> ({x: dates_stock[idx], y: parseInt(value)}))
 
     this.lineChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: nb_vaccines.map(val => val.date),
+            //labels: nb_vaccines.map(val => val.date),
             datasets: [{
-                label: 'Nombre cumulé de vaccinés ',
+                label: 'Personnes vaccinées (cumul) ',
                 data: data_values,
                 borderWidth: 3,
-                backgroundColor: 'rgba(0, 168, 235, 0.5)',
-                borderColor: 'rgba(0, 168, 235, 1)',
-                cubicInterpolationMode: 'monotone'
+                backgroundColor: '#92bed2',
+                borderColor: '#3282bf',
+                cubicInterpolationMode: 'monotone',
             },
+            {
+                label: 'Doses réceptionnées (cumul) ',
+                data: data_object_stock,
+                borderWidth: 3,
+                borderColor: 'grey',
+                cubicInterpolationMode: 'monotone',
+            }
             ]
         },
         options: {
@@ -648,39 +660,24 @@ function buildLineChart(){
                     delay: 200      // delay of 500 ms after the canvas is considered inside the viewport
                 }
                 },
-            legend: {
-                display: false
-            },
             scales: {
                 yAxes: [{
+                    stacked: true,
                     gridLines: {
                         display: false
-                     },
-                    ticks: {
-                        min: 0,
-                        suggestedMax: 1200000,
-                    },
-
+                     }
                 }],
                 xAxes: [{
+                    type: 'time',
+                    distribution: 'linear',
                     gridLines: {
                         display: false
-                     },
-                     ticks: {
-                        maxRotation: 0,
-                        minRotation: 0,
-                        maxTicksLimit: 6,
-                        callback: function(value, index, values) {
-                        return value.slice(8) + "/" + value.slice(5, 7);
                      }
-                     }
-
                 }]
             },
             annotation: {
             events: ["click"],
             annotations: [
-
             ]
         }
         }
@@ -700,13 +697,9 @@ function rollingMean(data){
 }
 
 function buildBarChart(data){
-    console.log(rollingMean(data))
-    console.log(data)
-
     var ctx = document.getElementById('lineVacChart').getContext('2d');
     let labels = nb_vaccines.map(val => val.date)
     let rollingMeanValues = rollingMean(data).map((value, idx)=> ({x: labels[idx+3], y: Math.round(value)}))
-    console.log(rollingMeanValues)
 
     this.lineChart = new Chart(ctx, {
         type: 'bar',
@@ -790,7 +783,7 @@ function ajouterObjectifAnnotation(){
         obj = objectifQuotidien;
     }
     else {
-        obj = OBJECTIF_FIN_JANVIER;
+        obj = OBJECTIF_FIN_AOUT;
     }
     if (this.lineChart.options.annotation.annotations.length==0){
     this.lineChart.options.annotation.annotations.push(

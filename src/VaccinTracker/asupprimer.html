@@ -1,0 +1,135 @@
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0-rc.1/Chart.bundle.js"></script>
+<div class="container">
+  <canvas id="examChart"></canvas>
+</div>
+
+<script>
+    var ctx = document.getElementById("examChart").getContext("2d");
+    
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ["2015-03-15", "2015-03-25", "2015-04-25"],
+        datasets: [{
+          label: 'Demo',
+          yAxisID: '1',
+          data: [{
+              t: "2015-03-15",
+              y: 12
+            },
+            {
+              t: "2015-03-25",
+              y: 21
+            },
+            {
+              t: "2015-04-25",
+              y: 32
+            }
+          ],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+        },
+        {
+          label: 'Demo2',
+          yAxisID: '2',
+          data: [{
+              t: "2015-02-15",
+              y: 12
+            },
+            {
+              t: "2015-03-25",
+              y: 21
+            },
+            {
+              t: "2015-04-25",
+              y: 32
+            }
+          ],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+        },
+        {
+          label: 'Demo2',
+          yAxisID: '2',
+          data: [{
+              t: "2015-02-15",
+              y: 12
+            },
+            {
+              t: "2015-03-25",
+              y: 21
+            },
+            {
+              t: "2015-04-25",
+              y: 32
+            }
+          ],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+        yAxes: [{
+            id: '1',
+            stacked: false
+        },{
+            id: '2',
+            stacked: true
+        }],
+          xAxes: [{
+
+            type: 'time',
+            distribution: 'linear'
+          }]
+        }
+      }
+    });
+    </script>
