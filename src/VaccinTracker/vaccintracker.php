@@ -699,7 +699,7 @@ function rollingMean(data){
 function buildBarChart(data){
     var ctx = document.getElementById('lineVacChart').getContext('2d');
     let labels = nb_vaccines.map(val => val.date)
-    let rollingMeanValues = rollingMean(data).map((value, idx)=> ({x: labels[idx+3], y: value}))
+    let rollingMeanValues = rollingMean(data).map((value, idx)=> ({x: labels[idx+3], y: Math.round(value)}))
 
     this.lineChart = new Chart(ctx, {
         type: 'bar',
