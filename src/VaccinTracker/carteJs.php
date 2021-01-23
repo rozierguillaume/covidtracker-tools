@@ -259,11 +259,20 @@
                 let region_num = value[0];
                 let region = value[1];
                 let doses_reg = parseInt(value[3]);
+                let date = value[5];
 
                 if (region_num in doses_recues_regions) {
-                    doses_recues_regions[region_num] += doses_reg;
+                    let N = doses_recues_regions[region_num]["valeurs"].length
+
+                    if (date == doses_recues_regions[region_num]["dates"][N-1]){
+                        doses_recues_regions[region_num]["valeurs"][N-1] += doses_reg;
+                    } else {
+                        doses_recues_regions[region_num]["valeurs"].push(doses_reg)
+                        doses_recues_regions[region_num]["dates"].push(date)
+                    }
+
                 } else {
-                    doses_recues_regions[region_num] = doses_reg;
+                    doses_recues_regions[region_num] = {"valeurs": [doses_reg], "dates": [date]};
                 }
             })
             console.log(doses_recues_regions)
@@ -353,18 +362,21 @@
             let region = vaccinesRegions.find(region => region.code == numeroRegion);
             vaccinesRegion = region.vaccines;
             vaccinesRegionPop = (vaccinesRegion / region.population * 100).toFixed(2)
-            
+            vaccinesRegion = numberWithSpaces(region.vaccines);
+
             if (numeroRegion in doses_recues_regions){
-                dosesRecuesRegion = doses_recues_regions[numeroRegion]
+                let N = doses_recues_regions[numeroRegion]["valeurs"].length;
+                dosesRecuesRegion = numberWithSpaces(doses_recues_regions[numeroRegion]["valeurs"][N-1]);
+
             } else {
-                dosesRecuesRegion = "--"
+                dosesRecuesRegion = "--";
             }
 
             dateMaj = dateMaj
             let fullDate = new Date(dateMaj);
 
             if (vaccinesRegion <= 0) {
-                vaccinesRegion = "--"
+                vaccinesRegion = "--";
             }
 
             if ($('#' + numeroRegion).length > 0) {
@@ -381,18 +393,26 @@
 
             $('#donneesRegions').prepend(content);
             vaccinesRegionsHistorique[numeroRegion] = vaccinesRegionsHistorique[numeroRegion].sortBy('date');
-            let dataset = {
-                label: 'Nombre cumulé de vaccinés - ' + nomRegion,
+            let datasets = [{
+                label: 'Nombre vaccinés - ' + nomRegion,
                 data: vaccinesRegionsHistorique[numeroRegion].map(val => val.vaccines),
                 borderWidth: 3,
                 backgroundColor: 'rgba(0, 168, 235, 0.5)',
                 borderColor: 'rgba(0, 168, 235, 1)',
                 cubicInterpolationMode: 'monotone'
-            };
+            }, //{
+                //label: 'Nombre doses réceptionnées - ' + nomRegion,
+                //data: doses_recues_regions[numeroRegion]["valeurs"].map((value, idx) => ({x:doses_recues_regions[numeroRegion]["valeurs"], y: value})),
+                //borderWidth: 3,
+                //backgroundColor: 'rgba(0, 168, 235, 0.5)',
+                //borderColor: 'rgba(0, 168, 235, 1)',
+                //cubicInterpolationMode: 'monotone'
+            //}
+            ];
             let labels = vaccinesRegionsHistorique[numeroRegion].map(val => val.date);
             $('#region-graphique-detail').show();
 
-            updateData(labels, dataset);
+            updateData(labels, datasets);
             //trierRegions();
             stopAnimation();
             setTimeout(startAnimation, 200);
@@ -466,7 +486,7 @@
         });
 
 
-        function updateData(labels, dataset) {
+        function updateData(labels, datasets) {
             let chart = document.getElementById('chartRegionDetail');
 
             // Graphique courbe d'une région
@@ -474,7 +494,7 @@
                 type: 'line',
                 data: {
                     labels: labels,
-                    datasets: [dataset]
+                    datasets: datasets
                 },
                 options: {
                     maintainAspectRatio: false,
