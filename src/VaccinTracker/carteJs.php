@@ -258,7 +258,6 @@
             array_data_stock.slice(1, array_data_stock.length-1).map((value, idx) => {
                 let region = value[1];
                 let doses_reg = parseInt(value[3]);
-                console.log(region)
 
                 if (region in doses_recues_regions) {
                     doses_recues_regions[region] += doses_reg;
@@ -353,7 +352,10 @@
             let region = vaccinesRegions.find(region => region.code == numeroRegion);
             vaccinesRegion = region.vaccines;
             vaccinesRegionPop = (vaccinesRegion / region.population * 100).toFixed(2)
-            dosesRecuesRegion = doses_recues_regions[nomRegion]
+            
+            
+            dosesRecuesRegion = "--"
+            
 
             dateMaj = dateMaj
             let fullDate = new Date(dateMaj);
@@ -368,9 +370,9 @@
             content = $('#regionTemplate').html();
             content = content.replace(/nomRegion/g, nomRegion);
             content = content.replace(/numeroRegion/g, numeroRegion);
-            content = content.replace(/vaccinesRegion/g, numberWithSpaces(vaccinesRegion));
+            content = content.replace(/vaccinesRegion/g, vaccinesRegion);
             content = content.replace(/vaccinesPopReg/g, vaccinesRegionPop);
-            content = content.replace(/dosesReceptionneesRegion/g, numberWithSpaces(dosesRecuesRegion));
+            content = content.replace(/dosesReceptionneesRegion/g, dosesRecuesRegion);
 
             content = content.replace(/dateMaj/g, parseInt(fullDate.getDate()).addZero() + '/' + (fullDate.getMonth() + 1).addZero());
 
