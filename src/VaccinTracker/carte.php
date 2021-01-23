@@ -94,6 +94,16 @@
             <div style="height:15px" aria-hidden="true" class="wp-block-spacer"></div>
             <!-- /wp:spacer -->
 
+            <span style="font-size: 160%; color: black"><b>dosesReceptionneesRegion</b></span><br>
+            <span><b>Nombre de doses réceptionnées</b><br>
+                Nombre total de doses réceptionnées.
+            <br></span>
+            <span style="font-size: 70%;">Mise à jour : dateMaj</span>
+
+            <!-- wp:spacer {"height":50} -->
+            <div style="height:15px" aria-hidden="true" class="wp-block-spacer"></div>
+            <!-- /wp:spacer -->
+
             <div id="region-graphique-detail">
                 <div class="chart-container" style="position: relative; height:250px; width:100%">
                     <canvas id="chartRegionDetail"
