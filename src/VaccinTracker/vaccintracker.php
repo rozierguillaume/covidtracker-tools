@@ -86,7 +86,7 @@ Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60"
 Pour vacciner l'ensemble de la population adulte (52 millions de personnes) d'ici à août 2021, il faudrait vacciner <b><span id="objectif_quotidien">--</span> personnes</b> chaque jour.
 <br>
 <br>
-Au rythme actuel <small>(moyenne des 7 derniers jours)</small>, l'objectif de vacciner l'ensemble de la pomulation adulte serait atteint le <b><span id="date_projetee_objectif"></span></b>.
+Au rythme actuel <small>(moyenne des 7 derniers jours)</small>, l'objectif de vacciner l'ensemble de la population adulte serait atteint le <b><span id="date_projetee_objectif"></span></b>.
 
 <br><br>
 Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moins 1 dose de vaccin Covid19.
