@@ -309,7 +309,8 @@ td {
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
+//<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0-rc.1/Chart.bundle.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-deferred@1"></script>
@@ -434,6 +435,7 @@ var data_stock;
 var dates_stock=[];
 var stock=[];
 var cumul_stock=0;
+var cumul_stock_array=[];
 
 var data_news = [];
 var titre_news = [];
@@ -457,6 +459,7 @@ fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data
             this.dates_stock.push(value[0])
             this.stock.push(parseInt(value[1]));
             this.cumul_stock += parseInt(value[1]);
+            this.cumul_stock_array.push(cumul_stock);
           })
 
           fetchOtherData();
@@ -623,20 +626,28 @@ function calculerDateProjeteeObjectif () {
 function buildLineChart(){
 
     var ctx = document.getElementById('lineVacChart').getContext('2d');
-    let data_values = nb_vaccines.map(val => val.total);
+    let data_values = nb_vaccines.map(val => ({x: val.date, y:parseInt(val.total)}));
+    let data_object_stock = cumul_stock_array.map((value, idx)=> ({x: dates_stock[idx], y: parseInt(value)}))
 
     this.lineChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: nb_vaccines.map(val => val.date),
+            //labels: nb_vaccines.map(val => val.date),
             datasets: [{
-                label: 'Nombre cumulé de vaccinés ',
+                label: 'Personnes vaccinées (cumul) ',
                 data: data_values,
                 borderWidth: 3,
-                backgroundColor: 'rgba(0, 168, 235, 0.5)',
-                borderColor: 'rgba(0, 168, 235, 1)',
-                cubicInterpolationMode: 'monotone'
+                backgroundColor: '#92bed2',
+                borderColor: '#3282bf',
+                cubicInterpolationMode: 'monotone',
             },
+            {
+                label: 'Doses réceptionnées (cumul) ',
+                data: data_object_stock,
+                borderWidth: 3,
+                borderColor: 'grey',
+                cubicInterpolationMode: 'monotone',
+            }
             ]
         },
         options: {
@@ -648,39 +659,24 @@ function buildLineChart(){
                     delay: 200      // delay of 500 ms after the canvas is considered inside the viewport
                 }
                 },
-            legend: {
-                display: false
-            },
             scales: {
                 yAxes: [{
+                    stacked: true,
                     gridLines: {
                         display: false
-                     },
-                    ticks: {
-                        min: 0,
-                        suggestedMax: 1200000,
-                    },
-
+                     }
                 }],
                 xAxes: [{
+                    type: 'time',
+                    distribution: 'linear',
                     gridLines: {
                         display: false
-                     },
-                     ticks: {
-                        maxRotation: 0,
-                        minRotation: 0,
-                        maxTicksLimit: 6,
-                        callback: function(value, index, values) {
-                        return value.slice(8) + "/" + value.slice(5, 7);
                      }
-                     }
-
                 }]
             },
             annotation: {
             events: ["click"],
             annotations: [
-
             ]
         }
         }
@@ -700,13 +696,9 @@ function rollingMean(data){
 }
 
 function buildBarChart(data){
-    console.log(rollingMean(data))
-    console.log(data)
-
     var ctx = document.getElementById('lineVacChart').getContext('2d');
     let labels = nb_vaccines.map(val => val.date)
     let rollingMeanValues = rollingMean(data).map((value, idx)=> ({x: labels[idx+3], y: value}))
-    console.log(rollingMeanValues)
 
     this.lineChart = new Chart(ctx, {
         type: 'bar',
