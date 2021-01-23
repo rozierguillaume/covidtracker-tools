@@ -83,10 +83,10 @@ Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60"
 
 
 <h2 style="margin-top : 80px;">Évolution</h2>
-L'objectif est de vacciner 1 million de personnes en janvier 2021. Pour atteindre cet objectif, il faudrait vacciner <b><span id="objectif_quotidien">--</span> personnes</b> chaque jour entre aujourd'hui et le 31 janvier 2021.
+Pour vacciner l'ensemble de la population adulte (52 millions de personnes) d'ici à août 2021, il faudrait vacciner <b><span id="objectif_quotidien">--</span> personnes</b> chaque jour.
 <br>
 <br>
-Au rythme actuel <small>(moyenne des 7 derniers jours)</small>, l'objectif du million de personnes vaccinées sera atteint le <b><span id="date_projetee_objectif"></span></b>.
+Au rythme actuel <small>(moyenne des 7 derniers jours)</small>, l'objectif de vacciner l'ensemble de la pomulation adulte serait atteint le <b><span id="date_projetee_objectif"></span></b>.
 
 <br><br>
 Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moins 1 dose de vaccin Covid19.
@@ -418,6 +418,7 @@ function formaterDate (date) {
     }
 
 const OBJECTIF_FIN_JANVIER = 1000000 // 1_000_000
+const OBJECTIF_FIN_AOUT = 52000000 // 1_000_000
 var data;
 var nb_vaccines = [];
 
@@ -584,8 +585,8 @@ var lineChart;
 function calculerObjectif(){
 
     let one_day = (1000 * 60 * 60 * 24)
-    let jours_restant = (Date.parse("2021-01-31") - Date.parse(nb_vaccines[nb_vaccines.length-1].date) )/ one_day
-    let objectif = OBJECTIF_FIN_JANVIER;
+    let jours_restant = (Date.parse("2021-08-31") - Date.parse(nb_vaccines[nb_vaccines.length-1].date) )/ one_day
+    let objectif = OBJECTIF_FIN_AOUT;
     let resteAVacciner = objectif - nb_vaccines[nb_vaccines.length-1].total
     console.log(jours_restant)
     if ((resteAVacciner>=0) && (jours_restant>=0)){
@@ -611,7 +612,7 @@ function afficherNews(){
 
 
 function calculerDateProjeteeObjectif () {
-  const objectif = OBJECTIF_FIN_JANVIER
+  const objectif = OBJECTIF_FIN_AOUT
   const indexDerniereMaj = nb_vaccines.length - 1;
   const indexDebutFenetre = Math.max(0, indexDerniereMaj - 7)
   const derniereMaj = Date.parse(nb_vaccines[indexDerniereMaj].date)
@@ -782,7 +783,7 @@ function ajouterObjectifAnnotation(){
         obj = objectifQuotidien;
     }
     else {
-        obj = OBJECTIF_FIN_JANVIER;
+        obj = OBJECTIF_FIN_AOUT;
     }
     if (this.lineChart.options.annotation.annotations.length==0){
     this.lineChart.options.annotation.annotations.push(
