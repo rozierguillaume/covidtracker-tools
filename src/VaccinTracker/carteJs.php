@@ -256,13 +256,14 @@
 
             array_data_stock = CSVToArray(csv, ";");
             array_data_stock.slice(1, array_data_stock.length-1).map((value, idx) => {
+                let region_num = value[0];
                 let region = value[1];
                 let doses_reg = parseInt(value[3]);
 
-                if (region in doses_recues_regions) {
-                    doses_recues_regions[region] += doses_reg;
+                if (region_num in doses_recues_regions) {
+                    doses_recues_regions[region_num] += doses_reg;
                 } else {
-                    doses_recues_regions[region] = doses_reg;
+                    doses_recues_regions[region_num] = doses_reg;
                 }
             })
             console.log(doses_recues_regions)
@@ -353,8 +354,8 @@
             vaccinesRegion = region.vaccines;
             vaccinesRegionPop = (vaccinesRegion / region.population * 100).toFixed(2)
             
-            if (nomRegion in doses_recues_regions){
-                dosesRecuesRegion = doses_recues_regions[nomRegion]
+            if (numeroRegion in doses_recues_regions){
+                dosesRecuesRegion = doses_recues_regions[numeroRegion]
             } else {
                 dosesRecuesRegion = "--"
             }
