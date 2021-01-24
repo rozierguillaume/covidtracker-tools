@@ -119,8 +119,6 @@ Auteur : CovidTracker.fr - Données : Ministère de la Santé
 <?php include(__DIR__ . '/dansLeMonde.php') ?>
 <br>
 <br>
-Auteurs : Aymerik Diebold, Florent Jaby, <a href="https://twitter.com/guillaumerozier">Guillaume Rozier</a>, Michael Souvy.
-
 
 <style>
 
@@ -309,8 +307,7 @@ td {
 </style>
 
 
-//<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0-rc.1/Chart.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-deferred@1"></script>
@@ -890,7 +887,9 @@ Array.prototype.sortBy = function(p) {
 <?php include(__DIR__ . '/vaccintrackerStyles.php'); ?>
 <?php include(__DIR__ . '/menuBasPage.php'); ?>
 <!-- /wp:html -->
-
+<br>
+Contributeurs de VaccinTracker : Aymerik Diebold, Florent Jaby, <a href="https://twitter.com/guillaumerozier">Guillaume Rozier</a>, Michael Souvy.
+<br>
 <div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">☕️ Offrez-moi un café</a></div>
 
 <!-- wp:spacer -->

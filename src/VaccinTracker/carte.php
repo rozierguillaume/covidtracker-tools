@@ -85,10 +85,10 @@
                 </a>
             </h2>
             <span style="font-size: 160%; color: black"><b>vaccinesRegion</b></span><br>
-            <span><b>Nombre de personnes vaccinées</b><br>
+            <span><b>Personnes partiellement vaccinées</b><br>
                 Nombre de personnes ayant reçu au moins une dose de vaccin. Cela représente vaccinesPopReg% de la population de cette région.
             <br></span>
-            <span style="font-size: 70%;">Mise à jour : dateMaj</span>
+            <span style="font-size: 70%;">Mise à jour : dateMajDoses</span>
 
             <!-- wp:spacer {"height":50} -->
             <div style="height:15px" aria-hidden="true" class="wp-block-spacer"></div>
@@ -96,9 +96,9 @@
 
             <span style="font-size: 160%; color: black"><b>dosesReceptionneesRegion</b></span><br>
             <span><b>Nombre de doses réceptionnées</b><br>
-                Nombre total de doses réceptionnées.
+                Nombre cumulé de doses réceptionnées.
             <br></span>
-            <span style="font-size: 70%;">Mise à jour : dateMaj</span>
+            <span style="font-size: 70%;">Mise à jour : dateMajRec</span>
 
             <!-- wp:spacer {"height":50} -->
             <div style="height:15px" aria-hidden="true" class="wp-block-spacer"></div>
@@ -110,10 +110,12 @@
                             style="margin-top:0px; max-height: 700px; max-width: 900px;"></canvas>
                 </div>
             </div>
+            © CovidTracker.fr - Données : Ministère de la Santé
         </div>
         <!-- wp:spacer {"height":50} -->
         <div style="height:5px" aria-hidden="true" class="wp-block-spacer"></div>
         <!-- /wp:spacer -->
+        
     </div>
 </script>
 <!--END JS-->
