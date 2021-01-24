@@ -5,14 +5,17 @@
             <center><h3>Dashboards</h3><br></center>
             <p>Ces tableaux de bord permettent de suivre et mieux comprendre l'évolution de l'épidémie.</p><br>
             <center>
+                <a href="https://covidtracker.fr" style="color:black">
+                    <button>🏠 <b>Accueil</b></button>
+                </a>
                 <a href="https://covidtracker.fr/covidtracker-france/" style="color:black">
-                    <button>🇫🇷 <b>France</b></button>
+                    <button>🇫🇷 France</button>
                 </a>
                 <a href="https://covidtracker.fr/dashboard-regions/" style="color:black">
                     <button>📍 Régions</button>
                 </a>
                 <a href="https://covidtracker.fr/dashboard-departements/" style="color:black">
-                    <button>🏡 <b>Départements</b></button>
+                    <button>🏡 Départements</button>
                 </a><br>
                 <a href="https://covidtracker.fr/covidtracker-world/" style="color:black">
                     <button>🌍 World</button>

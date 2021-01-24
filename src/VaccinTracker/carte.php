@@ -88,7 +88,7 @@
             <span><b>Personnes partiellement vaccinées</b><br>
                 Nombre de personnes ayant reçu au moins une dose de vaccin. Cela représente vaccinesPopReg% de la population de cette région.
             <br></span>
-            <span style="font-size: 70%;">Mise à jour : dateMaj</span>
+            <span style="font-size: 70%;">Mise à jour : dateMajDoses</span>
 
             <!-- wp:spacer {"height":50} -->
             <div style="height:15px" aria-hidden="true" class="wp-block-spacer"></div>
@@ -98,7 +98,7 @@
             <span><b>Nombre de doses réceptionnées</b><br>
                 Nombre cumulé de doses réceptionnées.
             <br></span>
-            <span style="font-size: 70%;">Mise à jour : dateMaj</span>
+            <span style="font-size: 70%;">Mise à jour : dateMajRec</span>
 
             <!-- wp:spacer {"height":50} -->
             <div style="height:15px" aria-hidden="true" class="wp-block-spacer"></div>

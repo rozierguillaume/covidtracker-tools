@@ -185,7 +185,7 @@
         var numeroRegion;
         let valeurs = [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5]
         //let couleurs = ["#DCECCD", "#BDE0AE", "#98D390", "#73C679", "#55B86F", "#39A96B", "#1D9A6C", "#178973", "#117876"]
-        let couleurs= ["#cfdde6", "#b8d4e6", "#a1cbe6", "#8ac2e6", "#73bae6", "#5cb1e6", "#45a8e6", "#2e9fe6", "#1796e6", "#008ee6"] // HSV(203, xx, 90) avec xx de 10 à 100
+        let couleurs= ["#cfdde6", "#b8d4e6", "#a1cbe6", "#8ac2e6", "#73bae6", "#5cb1e6", "#45a8e6", "#2e9fe6", "#1796e6", "#0076bf"] // HSV(203, xx, 90) avec xx de 10 à 100
 
         fetch('https://www.data.gouv.fr/fr/datasets/r/16cb2df5-e9c7-46ec-9dbf-c902f834dab1')
             .then(response => {
@@ -204,9 +204,13 @@
                         date: region.date
                     };
                     data.population = POPULATION.find(reg => reg.region == "REG-" + code).population;
+
+                    data.couvertureVaccinale = data.vaccines / data.population * 100;
+
                     if (!vaccinesRegionsHistorique[code]) {
                         vaccinesRegionsHistorique[code] = [];
                     }
+
                     vaccinesRegionsHistorique[code].push(data);
 
                     if (region.date > dateMaj) {
@@ -226,8 +230,27 @@
                         regionCarte.data("incidence-cas", region.totalVaccines);
                         let data_reg = (data.vaccines / data.population) * 100;
                         $('.etiquette.region-' + code).text(data_reg.toFixed(2) + ' %');
-                        if (data_reg > valeurs[valeurs.length - 1]) {
-                            // console.log("if")
+                        
+                    }
+                });
+
+                vaccinesRegions = vaccinesRegions.asortBy('couvertureVaccinale');
+                
+                valeurs = []
+                for(var i=0; i<10; i++){
+                    valeurs.push( vaccinesRegions[vaccinesRegions.length-1].couvertureVaccinale + (vaccinesRegions[0].couvertureVaccinale - vaccinesRegions[vaccinesRegions.length-1].couvertureVaccinale) * i / 10 )
+                }
+                vaccinesRegions.map(data =>{
+
+                    let data_reg = (data.vaccines / data.population) * 100;
+
+                    if (data.code == '06') {
+                        var regionCarte = $('#carte g[data-code_insee="' + data.code + '"] path');
+                    } else {
+                        var regionCarte = $('#carte path[data-code_insee="' + data.code + '"]');
+                    }
+                    
+                    if (data_reg > valeurs[valeurs.length - 1]) {
                             regionCarte.css("fill", couleurs[couleurs.length - 1]);
                         } else {
                             for (var i = 0; i < valeurs.length; i++) {
@@ -237,15 +260,18 @@
                                 }
                             }
                         }
-                    }
-                });
+                })
+
                 vaccinesRegions = vaccinesRegions.asortBy('vaccines');
+
                 buildBarChart();
             });
         
-        var doses_recues_regions = {}
+        var doses_recues_regions = {};
+        var dateMajRec = "";
 
-        fetch('https://www.data.gouv.fr/fr/datasets/r/c3f04527-2d19-4476-b02c-0d86b5a9d3da', {cache: 'no-cache'})
+        fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/livraisons-regional-2021-01-23.csv', {cache: 'no-cache'})
+        //https://www.data.gouv.fr/fr/datasets/r/c3f04527-2d19-4476-b02c-0d86b5a9d3da
         .then(response => {
             if (!response.ok) {
                 throw new Error("HTTP error " + response.status);
@@ -274,8 +300,9 @@
                 } else {
                     doses_recues_regions[region_num] = {"valeurs": [doses_reg], "dates": [date]};
                 }
+                dateMajRec = date;
             })
-            console.log(doses_recues_regions)
+
             })
         .catch(function () {
             this.dataError = true;
@@ -374,6 +401,7 @@
 
             dateMaj = dateMaj
             let fullDate = new Date(dateMaj);
+            let fullDateRec = new Date(dateMajRec);
 
             if (vaccinesRegion <= 0) {
                 vaccinesRegion = "--";
@@ -389,7 +417,8 @@
             content = content.replace(/vaccinesPopReg/g, vaccinesRegionPop);
             content = content.replace(/dosesReceptionneesRegion/g, dosesRecuesRegion);
 
-            content = content.replace(/dateMaj/g, parseInt(fullDate.getDate()).addZero() + '/' + (fullDate.getMonth() + 1).addZero());
+            content = content.replace(/dateMajDoses/g, parseInt(fullDate.getDate()).addZero() + '/' + (fullDate.getMonth() + 1).addZero());
+            content = content.replace(/dateMajRec/g, parseInt(fullDateRec.getDate()).addZero() + '/' + (fullDateRec.getMonth() + 1).addZero());
 
             $('#donneesRegions').prepend(content);
             vaccinesRegionsHistorique[numeroRegion] = vaccinesRegionsHistorique[numeroRegion].sortBy('date');
