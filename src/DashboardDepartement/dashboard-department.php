@@ -42,7 +42,7 @@ if (isset($_GET['dep']) and $_GET['dep']) {
                 <div class="shadow">
                     <span style="font-size: 160%; color: couleurSaturationRea"><b>saturationRea</b></span><br>
                     <span><b>Tension hospitalière</b>
-                <br>Si supérieur à 100%, alors les patients Covid19 occupent plus de lits de réanimation qu'il n'y en avait avant l'épidémie</span><br>
+                <br>Si supérieur à 100%, alors les patients Covid19 occupent plus de lits de réanimation qu'il n'y en avait avant l'épidémie.</span><br>
                     <span style="font-size: 70%;">Mise à jour : dateMaj</span>
                 </div>
             </div>
