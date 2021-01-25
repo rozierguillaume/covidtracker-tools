@@ -649,7 +649,7 @@ function buildLineChart(){
                 data: data_object_stock,
                 borderWidth: 3,
                 borderColor: 'grey',
-                cubicInterpolationMode: 'monotone',
+                steppedLine: true,
             }
             ]
         },
