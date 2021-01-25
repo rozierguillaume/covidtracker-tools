@@ -5,7 +5,7 @@
 <div class="" style="margin-bottom: 40px;">
     Coloration en fonction du pourcentage de population vaccinée.
     Données fournies par le Ministère de la Santé.
-    Cliquez sur une région pour afficher plus de détail.
+    Cliquez sur une région pour afficher plus de détails.
 </div>
 
 <!--START HTML-->
