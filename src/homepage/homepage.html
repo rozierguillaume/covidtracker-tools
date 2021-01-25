@@ -1,13 +1,13 @@
-  <!-- wp:paragraph {"fontSize":"normal"} -->
-  <p class="has-normal-font-size"><strong>CovidTracker est un outil permettant de suivre l'évolution de l'épidémie à Coronavirus en France et dans le monde. </strong>Pour des analyses quotidiennes des chiffres, vous pouvez suivre <a href="https://twitter.com/guillaumerozier" target="_blank" rel="noopener noreferrer">@guillaumerozier</a> sur Twitter, ainsi que <a href="https://twitter.com/covidtracker_fr">@covidtracker_fr</a>.</p>
-  <!-- /wp:paragraph -->
+<!-- wp:paragraph {"fontSize":"normal"} -->
+<p class="has-normal-font-size"><strong>CovidTracker est un outil permettant de suivre l'évolution de l'épidémie à Coronavirus en France et dans le monde. </strong>Pour des analyses quotidiennes des chiffres, vous pouvez suivre <a href="https://twitter.com/guillaumerozier" target="_blank" rel="noopener noreferrer">@guillaumerozier</a> sur Twitter, ainsi que <a href="https://twitter.com/covidtracker_fr">@covidtracker_fr</a>.</p>
+<!-- /wp:paragraph -->
 
-  <!-- wp:spacer {"height":30} -->
-  <div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
-  <!-- /wp:spacer -->
+<!-- wp:spacer {"height":30} -->
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
-  <!-- wp:html -->
-  <style>
+<!-- wp:html -->
+<style>
       div[shadow] {	  
                 border: 0px solid black;
                 padding: 10px 20px;
@@ -149,6 +149,12 @@
       <span id="taux_incidence_str" style="font-size: 60%;">-- ET --</span><br>
       <p><b>Taux d'incidence</b><br><span style="font-size: 85%">Nombre de cas par semaine pour 100k habitants. Le seuil d'alerte est 50.</span></p>
     </div> 
+
+    <div class="one">
+        <h2 id="taux_positivite">--</h2>
+        <span id="taux_positivite_str" style="font-size: 60%;">-- ET --</span><br>
+        <p><b>Taux de positivité</b><br><span style="font-size: 85%">Proportion des tests qui sont positifs parmi l'ensemble des tests.</span></p>
+      </div> 
 
     <div class="two"> 
       <h2 id="reffectif">--</h2>
@@ -1601,7 +1607,7 @@
                         </svg>
                     </div>
                     <div id="droitsCarte" style="font-size: 8px; font-style: italic; margin-top: 30px; ">
-                        Carte adaptée à partir d'une création <a target="_blank" href="https://fr.wikipedia.org/wiki/Fichier:Carte_vierge_d%C3%A9partements_fran%C3%A7ais_avec_DOM.svg">Wikipedia</a>
+                        Carte adaptée à partir d'une création <a target="_blank" href="https://fr.wikipedia.org/wiki/Fichier:Carte_vierge_d%C3%A9partements_fran%C3%A7ais_avec_DOM.svg" rel="noopener">Wikipedia</a>
                     </div>
                 </div>
                 <div id="legendeCarte" class="col-xs-1"></div>
@@ -1727,6 +1733,9 @@
 
     document.getElementById("sat_rea").innerHTML = data_indicateurs["taux_saturation_rea"]["valeur"] + "%";
     document.getElementById("sat_rea_str").innerHTML = data_indicateurs["taux_saturation_rea"]["str"];
+
+    document.getElementById("taux_positivite").innerHTML = data_indicateurs["taux_positivite"]["valeur"] + "%";
+    document.getElementById("taux_positivite_str").innerHTML = data_indicateurs["taux_positivite"]["str"];
 
   }
 
@@ -2019,14 +2028,14 @@
 
 
   <!-- Stats world -->
-  <!-- /wp:html -->
+<!-- /wp:html -->
 
-  <!-- wp:html -->
-  <div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
-  <!-- /wp:html -->
+<!-- wp:html -->
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:html -->
 
-  <!-- wp:html -->
-  <h2>En détail</h2>
+<!-- wp:html -->
+<h2>En détail</h2>
   <div shadow="">
   <div class_perso="">
     <div>
@@ -2052,21 +2061,24 @@
     </div>
   </div>
   </div>
-  <!-- /wp:html -->
+<!-- /wp:html -->
 
-  <!-- wp:spacer {"height":50} -->
-  <div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
-  <!-- /wp:spacer -->
+<!-- wp:spacer {"height":50} -->
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
-  <!-- wp:spacer {"height":50} -->
-  <div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
-  <!-- /wp:spacer -->
+<!-- wp:spacer {"height":50} -->
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
-  <!-- wp:columns -->
-  <div class="wp-block-columns"><!-- wp:column {"width":66.66} -->
-  <div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:html -->
-  <center>
-  Guillaume Rozier était l'invité de BFM TV le 21 novembre afin de présenter CovidTracker :<br><br><iframe width="560" height="315" src="https://www.youtube.com/embed/A9u92KLqsyE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></center>
+<!-- wp:columns -->
+<div class="wp-block-columns"><!-- wp:column {"width":"66.66%"} -->
+<div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:html -->
+<center>
+<div style="border: 1px solid darkred; padding: 15px; border-radius: 7px;"><h2>Replay du dernier live </h2>
+Elias et Guillaume de CovidTracker recevaient Vincent Maréchal et Yvon Maday mercredi 20 janvier pour parler du projet Obépine (analyse des eaux usées pour détecter le Sars-cov-2 partout en France). Cliquez ci-dessous pour accéder au replay.
+<div class="videoWrapper"><iframe width="700" height="400" src="https://www.youtube.com/embed/SytzIqgZMd4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div></div><br>
+</center>
 
   <br>
   <br>
@@ -2231,56 +2243,56 @@
   <br>
 
   <h3>Derniers articles</h3>
-  <!-- /wp:html -->
+<!-- /wp:html -->
 
-  <!-- wp:latest-posts {"align":"left","displayPostContent":true,"excerptLength":50,"displayPostDate":true,"displayFeaturedImage":true,"featuredImageAlign":"left","featuredImageSizeSlug":"medium"} /-->
+<!-- wp:latest-posts {"displayPostContent":true,"excerptLength":50,"displayPostDate":true,"displayFeaturedImage":true,"featuredImageAlign":"left","featuredImageSizeSlug":"medium","align":"left"} /-->
 
-  <!-- wp:html -->
-  <div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://covidtracker.fr/blog/">Tous les articles de CovidTracker &gt;</a></div>
-  <!-- /wp:html --></div>
-  <!-- /wp:column -->
+<!-- wp:html -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://covidtracker.fr/blog/">Tous les articles de CovidTracker &gt;</a></div>
+<!-- /wp:html --></div>
+<!-- /wp:column -->
 
-  <!-- wp:column {"width":33.33} -->
-  <div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:spacer {"height":30} -->
-  <div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
-  <!-- /wp:spacer -->
+<!-- wp:column {"width":"33.33%"} -->
+<div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:spacer {"height":30} -->
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
-  <!-- wp:html -->
-  <div class="boxed">
+<!-- wp:html -->
+<div class="boxed">
   <a class="twitter-timeline" data-height="500" data-theme="light" href="https://twitter.com/guillaumerozier?ref_src=twsrc%5Etfw">Tweets de @CovidTracker_fr</a> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
-  <!-- /wp:html -->
+<!-- /wp:html -->
 
-  <!-- wp:spacer {"height":20} -->
-  <div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
-  <!-- /wp:spacer -->
+<!-- wp:spacer {"height":20} -->
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
-  <!-- wp:html -->
-  <div class="boxed">
+<!-- wp:html -->
+<div class="boxed">
   <a class="twitter-timeline" data-height="500" data-theme="light" href="https://twitter.com/covidtracker_fr?ref_src=twsrc%5Etfw">Tweets de @CovidTracker_fr</a> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
-  <!-- /wp:html -->
+<!-- /wp:html -->
 
-  <!-- wp:spacer {"height":20} -->
-  <div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
-  <!-- /wp:spacer --></div>
-  <!-- /wp:column --></div>
-  <!-- /wp:columns -->
+<!-- wp:spacer {"height":20} -->
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
 
-  <!-- wp:spacer {"height":50} -->
-  <div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
-  <!-- /wp:spacer -->
+<!-- wp:spacer {"height":50} -->
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
-  <!-- wp:heading {"align":"center","level":3} -->
-  <h3 class="has-text-align-center">Ils parlent de CovidTracker...</h3>
-  <!-- /wp:heading -->
+<!-- wp:heading {"textAlign":"center","level":3} -->
+<h3 class="has-text-align-center">Ils parlent de CovidTracker...</h3>
+<!-- /wp:heading -->
 
-  <!-- wp:separator -->
-  <hr class="wp-block-separator"/>
-  <!-- /wp:separator -->
+<!-- wp:separator -->
+<hr class="wp-block-separator"/>
+<!-- /wp:separator -->
 
-  <!-- wp:html -->
-  <p align="center">
+<!-- wp:html -->
+<p align="center">
   <a href="https://france3-regions.francetvinfo.fr/grand-est/meurthe-et-moselle/nancy/coronavirus-etudiant-telecom-nancy-developpe-logiciel-suivre-evolution-pandemie-1820586.html" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/autres/france3_logo.png" width="200px"></a> 
 
   <a href="http://www.leparisien.fr/societe/coronavirus-pourquoi-ces-erreurs-dans-les-decomptes-des-deces-en-ehpad-20-05-2020-8320674.php" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/autres/le_parisien_logo.png" width="200px"></a> 
@@ -2318,88 +2330,88 @@
   <a href="https://www.youtube.com/watch?v=3yEw9bT4b3M" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/autres/bfm_logo.png" width="200px"></a>
 
   </p>
-  <!-- /wp:html -->
+<!-- /wp:html -->
 
-  <!-- wp:spacer {"height":50} -->
-  <div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
-  <!-- /wp:spacer -->
+<!-- wp:spacer {"height":50} -->
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
-  <!-- wp:heading -->
-  <h2>Qu'est-ce que la Covid19 ?</h2>
-  <!-- /wp:heading -->
+<!-- wp:heading -->
+<h2>Qu'est-ce que la Covid19 ?</h2>
+<!-- /wp:heading -->
 
-  <!-- wp:paragraph -->
-  <p>La maladie à Coronavirus 2019, appelée Covid-19, est provoquée par le coronavirus SARS-CoV-2. Elle est apparue en novembre 2019 dans le province de Hubei (Chine), dans la ville de Wuhan, et se propage depuis dans le monde entier.</p>
-  <!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p>La maladie à Coronavirus 2019, appelée Covid-19, est provoquée par le coronavirus SARS-CoV-2. Elle est apparue en novembre 2019 dans le province de Hubei (Chine), dans la ville de Wuhan, et se propage depuis dans le monde entier.</p>
+<!-- /wp:paragraph -->
 
-  <!-- wp:paragraph -->
-  <p>Selon l’Organisation mondiale de la santé (OMS), le foyer de l’épidémie s’est déplacé. D’abord en Asie, il a concerné l’Europe en mars et avril 2020, puis l’Amérique en mai.</p>
-  <!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p>Selon l’Organisation mondiale de la santé (OMS), le foyer de l’épidémie s’est déplacé. D’abord en Asie, il a concerné l’Europe en mars et avril 2020, puis l’Amérique en mai.</p>
+<!-- /wp:paragraph -->
 
-  <!-- wp:spacer {"height":20} -->
-  <div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
-  <!-- /wp:spacer -->
+<!-- wp:spacer {"height":20} -->
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
-  <!-- wp:heading -->
-  <h2>L'équipe</h2>
-  <!-- /wp:heading -->
+<!-- wp:heading -->
+<h2>L'équipe</h2>
+<!-- /wp:heading -->
 
-  <!-- wp:paragraph -->
-  <p>Le site a été développé par <a href="https://twitter.fr/guillaumerozier" target="_blank" rel="noopener noreferrer">Guillaume Rozier</a> (fondateur, ingénieur consultant en informatique) et Michaël Souvy (gérant d'une entreprise de services informatiques). Nicolas Furno s'occupe de l'administration, de l'hébergement et de la mise en production du site.</p>
-   <!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p>Le site a été développé par <a href="https://twitter.fr/guillaumerozier" target="_blank" rel="noopener noreferrer">Guillaume Rozier</a> (fondateur, ingénieur consultant en informatique) et Michaël Souvy (gérant d'une entreprise de services informatiques). Nicolas Furno s'occupe de l'administration, de l'hébergement et de la mise en production du site.</p>
+<!-- /wp:paragraph -->
 
-    <!-- wp:paragraph -->
-  <p>La <a href="https://covidtracker.fr/newsletter">newsletter</a> est réalisée par Thomas Devlaeminck.</p>
-  <!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p>La <a href="https://covidtracker.fr/newsletter">newsletter</a> est réalisée par Thomas Devlaeminck.</p>
+<!-- /wp:paragraph -->
 
-  <!-- wp:paragraph -->
-  <p>Philippe Brouard, ingénieur à l'Université de Lorraine, est à l'initiative d'un simulateur de l'épidémie, permettant de mieux la comprendre et de la prédire. De nombreux articles sont publiés sur CovidTracker à ce propos.</p>
-  <!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p>Philippe Brouard, ingénieur à l'Université de Lorraine, est à l'initiative d'un simulateur de l'épidémie, permettant de mieux la comprendre et de la prédire. De nombreux articles sont publiés sur CovidTracker à ce propos.</p>
+<!-- /wp:paragraph -->
 
-  <!-- wp:paragraph -->
-  <p>Remerciements à Elias Orphelin pour être à l'origine de l'idée de plusieurs outils.</p>
-  <!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p>Remerciements à Elias Orphelin pour être à l'origine de l'idée de plusieurs outils.</p>
+<!-- /wp:paragraph -->
 
-  <!-- wp:spacer {"height":20} -->
-  <div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
-  <!-- /wp:spacer -->
+<!-- wp:spacer {"height":20} -->
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
-  <!-- wp:heading -->
-  <h2>Les données</h2>
-  <!-- /wp:heading -->
+<!-- wp:heading -->
+<h2>Les données</h2>
+<!-- /wp:heading -->
 
-  <!-- wp:paragraph {"fontSize":"normal"} -->
-  <p class="has-normal-font-size">Les données françaises sont issues de <a href="https://www.santepubliquefrance.fr" target="_blank" rel="noreferrer noopener">Santé publique France</a> et de l'<a href="https://www.insee.fr/fr/accueil" target="_blank" rel="noreferrer noopener">INSEE</a> (Institut National de la Statistique et des Études Économiques). Les données pour les autres pays proviennent du <a href="https://systems.jhu.edu" target="_blank" rel="noreferrer noopener">CSSE</a> de l'Université John Hopkins (USA).</p>
-  <!-- /wp:paragraph -->
+<!-- wp:paragraph {"fontSize":"normal"} -->
+<p class="has-normal-font-size">Les données françaises sont issues de <a href="https://www.santepubliquefrance.fr" target="_blank" rel="noreferrer noopener">Santé publique France</a> et de l'<a href="https://www.insee.fr/fr/accueil" target="_blank" rel="noreferrer noopener">INSEE</a> (Institut National de la Statistique et des Études Économiques). Les données pour les autres pays proviennent du <a href="https://systems.jhu.edu" target="_blank" rel="noreferrer noopener">CSSE</a> de l'Université John Hopkins (USA).</p>
+<!-- /wp:paragraph -->
 
-  <!-- wp:spacer {"height":50} -->
-  <div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
-  <!-- /wp:spacer -->
+<!-- wp:spacer {"height":50} -->
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 
-  <!-- wp:heading -->
-  <h2>Suivez-nous</h2>
-  <!-- /wp:heading -->
+<!-- wp:heading -->
+<h2>Suivez-nous</h2>
+<!-- /wp:heading -->
 
-  <!-- wp:paragraph -->
-  <p>Pour des analyses quotidiennes des chiffres vous pouvez nous suivre sur Twitter : <a href="https://twitter.com/guillaumerozier">@GuillaumeRozier</a> et <a href="https://twitter.com/covidtracker_fr">@CovidTracker_fr</a>.</p>
-  <!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p>Pour des analyses quotidiennes des chiffres vous pouvez nous suivre sur Twitter : <a href="https://twitter.com/guillaumerozier">@GuillaumeRozier</a> et <a href="https://twitter.com/covidtracker_fr">@CovidTracker_fr</a>.</p>
+<!-- /wp:paragraph -->
 
-  <!-- wp:paragraph -->
-  <p>♥ <a href="https://guillaumerozier.fr/covidtracker-soutenir/">Soutenez CovidTracker</a></p>
-  <!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p>♥ <a href="https://guillaumerozier.fr/covidtracker-soutenir/">Soutenez CovidTracker</a></p>
+<!-- /wp:paragraph -->
 
-  <!-- wp:html -->
-  CovidTracker est gratuit et sans pub. <div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">☕️ Offrez-moi un café</a></div>
-  <!-- /wp:html -->
+<!-- wp:html -->
+CovidTracker est gratuit et sans pub. <div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">☕️ Offrez-moi un café</a></div>
+<!-- /wp:html -->
 
-  <!-- wp:separator -->
-  <hr class="wp-block-separator"/>
-  <!-- /wp:separator -->
+<!-- wp:separator -->
+<hr class="wp-block-separator"/>
+<!-- /wp:separator -->
 
-  <!-- wp:html -->
-  <a href="https://guillaumerozier.fr/mentions-legales/">Mentions légales</a></p>
-  <!-- /wp:html -->
+<!-- wp:html -->
+<a href="https://guillaumerozier.fr/mentions-legales/">Mentions légales</a></p>
+<!-- /wp:html -->
 
-  <!-- wp:paragraph {"fontSize":"small"} -->
-  <p class="has-small-font-size">Tags : covidtracker, covid tracker, coronavirus, covid, covid19, suivi, tracker, data, données, Insee, santé publique France, world</p>
-  <!-- /wp:paragraph -->
+<!-- wp:paragraph {"fontSize":"small"} -->
+<p class="has-small-font-size">Tags : covidtracker, covid tracker, coronavirus, covid, covid19, suivi, tracker, data, données, Insee, santé publique France, world</p>
+<!-- /wp:paragraph -->
