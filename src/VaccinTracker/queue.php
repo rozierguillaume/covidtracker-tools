@@ -565,14 +565,14 @@ $("#section-tabs li").on("click", function(e){
 		$('#vaccination-impossible-temporaire').show();
 		$('#raison-temporaire').text(fievre ? "présence de symptômes" : (covid ? "infection récente au covid" : (grippe ? "vaccination contre la grippe récente" : "risque de contamination récente à la covid")));
 		$('#notice-medicale').html("<br>Cet outil ne constitue pas un avis médical. Consultez votre médecin pour plus d'informations");
-		$('#dates-vaccin').html(`<br>Au rythme actuel de vaccination <em>(${numberWithSpaces(differentielVaccinesParJour)} doses administrées par jour en moyenne)</em>, compte tenu de votre profil et si <input type="number" id="pourcentage-volontaire" value="${pourcentageVolontaire}" onChange="majVolontaires()" onInput="majVolontaires()" />% de la population souhaite se faire vacciner, vous devriez pouvoir être vacciné entre le <strong id="dateMin">${dateMinString}</strong> et le <strong id="dateMax">${dateMaxString}</strong> (<span id="nb-prio">${numberWithSpaces(nbPersonnesVaccineesMin)}</span> personnes prioritaires). <em>(sous réserve de ne plus avoir de contre-indication)</em>`);
+		$('#dates-vaccin').html(`<br>Au rythme actuel de vaccination <em>(${numberWithSpaces(parseInt(differentielVaccinesParJour))} doses administrées par jour en moyenne)</em> et compte tenu de votre profil, vous devriez pouvoir être vacciné entre le <strong id="dateMin">${dateMinString}</strong> et le <strong id="dateMax">${dateMaxString}</strong> (<span id="nb-prio">${numberWithSpaces(parseInt(nbPersonnesVaccineesMin))}</span> personnes prioritaires). <em>(sous réserve de ne plus avoir de contre-indication)</em><br><br>Projection réaliséee en considérant que <input type="number" id="pourcentage-volontaire" value="${pourcentageVolontaire}" onChange="majVolontaires()" onInput="majVolontaires()" />% de la pop. souhaite se faire vacciner.`);
 	}
 	else if(vaccinationDejaPossible) {
 		$('#vaccination-deja-possible').show();
 	}
 	else {
 		$('#vaccination-attente').show();
-		$('#dates-vaccin').html(`<br>Au rythme actuel de vaccination <em>(${numberWithSpaces(differentielVaccinesParJour)} doses administrées par jour en moyenne)</em>, compte tenu de votre profil et si <input type="number" id="pourcentage-volontaire" value="${pourcentageVolontaire}" onChange="majVolontaires()" onInput="majVolontaires()" />% de la population souhaite se faire vacciner, vous devriez pouvoir être vacciné entre le <strong id="dateMin">${dateMinString}</strong> et le <strong id="dateMax">${dateMaxString}</strong> (<span id="nb-prio">${numberWithSpaces(nbPersonnesVaccineesMin)}</span> personnes prioritaires).`);
+		$('#dates-vaccin').html(`<br>Au rythme actuel de vaccination <em>(${numberWithSpaces(parseInt(differentielVaccinesParJour))} doses administrées par jour en moyenne)</em> et compte tenu de votre profil, vous devriez pouvoir être vacciné entre le <strong id="dateMin">${dateMinString}</strong> et le <strong id="dateMax">${dateMaxString}</strong> (<span id="nb-prio">${numberWithSpaces(parseInt(nbPersonnesVaccineesMin))}</span> personnes prioritaires).<br><br>Projection réalisée en considérant que <input type="number" id="pourcentage-volontaire" value="${pourcentageVolontaire}" onChange="majVolontaires()" onInput="majVolontaires()" />% de la pop. souhaite se faire vacciner.`);
 	}
  }
 
@@ -622,7 +622,7 @@ function majVolontaires() {
   dateEstimationFin = (new Date()).addDays(nbJoursAttenteMax);
   document.getElementById('dateMin').textContent = dateEstimationDebut.toLocaleDateString('fr-FR', optionsDate);
   document.getElementById('dateMax').textContent = dateEstimationFin.toLocaleDateString('fr-FR', optionsDate);
-  document.getElementById('nb-prio').textContent = numberWithSpaces(nbPersonnesVaccineesMin);
+  document.getElementById('nb-prio').innerHTML = numberWithSpaces(parseInt(nbPersonnesVaccineesMin));
 
 }
 
