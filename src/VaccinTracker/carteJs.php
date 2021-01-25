@@ -321,7 +321,7 @@
                 data: {
                     labels: vaccinesRegions.map(val => val.region),
                     datasets: [{
-                        label: 'Nombre de vaccinés ',
+                        label: 'Nombre de doses injectées ',
                         data: vaccinesRegions.map(val => val.vaccines),
                         borderWidth: 3,
                         backgroundColor: 'rgba(0, 168, 235, 0.5)',
@@ -423,7 +423,7 @@
             $('#donneesRegions').prepend(content);
             vaccinesRegionsHistorique[numeroRegion] = vaccinesRegionsHistorique[numeroRegion].sortBy('date');
             let datasets = [{
-                label: 'Nombre vaccinés - ' + nomRegion,
+                label: 'Doses injectées - ' + nomRegion,
                 data: vaccinesRegionsHistorique[numeroRegion].map(val => val.vaccines),
                 borderWidth: 3,
                 backgroundColor: 'rgba(0, 168, 235, 0.5)',
