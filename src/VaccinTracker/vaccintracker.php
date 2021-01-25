@@ -13,7 +13,7 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
 
 <div id="news"></div>
 
-<div class="alert alert-info clearFix"  style="font-size: 20px;">
+<div class="alert alert-info clearFix"  style="font-size: 18px;">
     <div class="row">
         <div class="col-md-8">
             Bonne année 2021 ! CovidTracker est gratuit, sans pub et développé bénévolement.<br>
@@ -25,14 +25,18 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
         </div>
     </div>
 </div>
+
+<div class="alert alert-warning"  style="font-size: 18px;">
+    <b>Information sur les données.</b> Jusqu'alors le Ministère de la Santé communiquait un chiffre <a href="https://solidarites-sante.gouv.fr/actualites/presse/communiques-de-presse/article/vaccination-contre-la-covid-en-france-au-24-janvier-2021-plus-de-1-026-000">présenté</a> comme le "nombre de personnes vaccinées". Il apparaît que ce chiffre corresponde plutôt au nombre de doses injectées (deux doses sont nécessaires pour vacciner une personne) (<a href="https://www.leparisien.fr/societe/covid-19-pourquoi-le-nombre-de-personnes-vaccinees-n-est-pas-vraiment-celui-qu-on-croit-25-01-2021-8421084.php#xtor=AD-1481423553">Le Parisien</a>). Le vocabulaire présent sur cette page a donc été adapté en ce sens.
+</div>
 <!-- /wp:html -->
 
 <!-- wp:html -->
 <div class="wrap">
     <div class="one">
         <span id="nb_vaccines" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span>&nbsp;&nbsp;(+<span id="nb_vaccines_24h">--</span> en 24h)<br>
-        <b>Personnes partiellement vaccinées</b><br>
-        Nombre cumulé de personnes ayant reçu au moins une dose de vaccin contre la Covid19 en France.
+        <b>Doses injectées</b><br>
+        Nombre cumulé doses injectées. Il faut deux doses pour vacciner un patient.
         <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span id="date_maj_1">--/--</span>.<br>Source : CovidTracker/Ministère de la Santé.</i></div>
     </div>
 
@@ -64,9 +68,11 @@ Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60"
         </div>
     </div>
     <br>
-    <div class="col-md-3" style="padding-top: 20px;">
-
-        <span style="font-size: 200%; color: rgb(45, 189, 84)"><span id="proportionVaccines">--</span>%</span><br> des Français ont reçu au moins une dose de vaccin. <br><br>
+    <div class="col-md-4" style="padding-top: 20px;">
+        Entre
+        <span style="font-size: 200%; color: rgb(45, 189, 84)"><span id="proportionVaccinesMin">--</span>%</span>
+        et
+        <span style="font-size: 200%; color: rgb(45, 189, 84)"><span id="proportionVaccinesMax">--</span>%</span><br> des Français ont reçu au moins une dose de vaccin. <i><small>Le Ministère de la Santé ne communiquant pas le nombre de 1ère et 2ème injections, il n'est pas possible de connaître la proportion exacte de vaccinés.</small></i><br><br>
         Il reste à vacciner au moins <br><span style="font-size: 200%; color: rgb(237, 88, 88);"><span id="proportionAVaccinerImmu">--</span>%</span><br>des Français avant d'atteindre un taux de vaccination de 60%. <br><br>
         <span style="font-size: 80%;">
             N.B. : un taux de vaccination de 60% ne permet pas nécessairement d'atteindre une immunité collective.<br>
@@ -83,8 +89,7 @@ Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60"
 
 
 <h2 style="margin-top : 80px;">Évolution</h2>
-Pour vacciner l'ensemble de la population adulte (52 millions de personnes) d'ici à août 2021, il faudrait vacciner <b><span id="objectif_quotidien">--</span> personnes</b> chaque jour.
-<br>
+Pour vacciner l'ensemble de la population adulte (52 millions de personnes) d'ici à août 2021, il faudrait injecter <b><span id="objectif_quotidien">--</span> doses</b> chaque jour.
 <br>
 Au rythme actuel <small>(moyenne des 7 derniers jours)</small>, l'objectif de vacciner l'ensemble de la population adulte serait atteint le <b><span id="date_projetee_objectif"></span></b>.
 
@@ -100,8 +105,8 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
     </div>
     <div>
     <select name="type" id="type" onchange="typeDonneesChart()">
-        <option value="cumul">Cumul vaccinés</option>
-        <option value="quotidien">Vaccinations quotidiennes</option>
+        <option value="cumul">Cumul doses injectées</option>
+        <option value="quotidien">Doses injectées quotidiennes</option>
     </select>
     </div>
 </div>
@@ -587,7 +592,7 @@ function calculerObjectif(){
     let resteAVacciner = objectif - nb_vaccines[nb_vaccines.length-1].total
     console.log(jours_restant)
     if ((resteAVacciner>=0) && (jours_restant>=0)){
-        return Math.round(resteAVacciner/jours_restant)
+        return Math.round(resteAVacciner*2/jours_restant)
     } else {
         return -1
     }
@@ -613,7 +618,7 @@ function calculerDateProjeteeObjectif () {
   const indexDerniereMaj = nb_vaccines.length - 1;
   const indexDebutFenetre = Math.max(0, indexDerniereMaj - 7)
   const derniereMaj = Date.parse(nb_vaccines[indexDerniereMaj].date)
-  const resteAVacciner = objectif - Number(nb_vaccines[indexDerniereMaj].total)
+  const resteAVacciner = objectif*2 - Number(nb_vaccines[indexDerniereMaj].total)
   const differentielVaccinesFenetre = Number(nb_vaccines[indexDerniereMaj].total) - Number(nb_vaccines[indexDebutFenetre].total)
   const differentielVaccinesParJour = differentielVaccinesFenetre / (indexDerniereMaj - indexDebutFenetre)
   const oneDay = (1000 * 60 * 60 * 24)
@@ -632,7 +637,7 @@ function buildLineChart(){
         data: {
             //labels: nb_vaccines.map(val => val.date),
             datasets: [{
-                label: 'Personnes vaccinées (cumul) ',
+                label: 'Doses injectées (cumul) ',
                 data: data_values,
                 borderWidth: 3,
                 backgroundColor: '#92bed2',
@@ -644,7 +649,7 @@ function buildLineChart(){
                 data: data_object_stock,
                 borderWidth: 3,
                 borderColor: 'grey',
-                cubicInterpolationMode: 'monotone',
+                steppedLine: true,
             }
             ]
         },
@@ -853,7 +858,8 @@ function majValeurs(){
     document.getElementById("nb_vaccines").innerHTML = numberWithSpaces(dejaVaccinesNb);
     document.getElementById("nb_vaccines_24h").innerHTML = numberWithSpaces(dejaVaccinesNb - nb_vaccines[nb_vaccines.length-2].total);
     document.getElementById("nb_doses").innerHTML = numberWithSpaces(cumul_stock);
-    document.getElementById("proportionVaccines").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(2);
+    document.getElementById("proportionVaccinesMax").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(2);
+    document.getElementById("proportionVaccinesMin").innerHTML = (Math.round(dejaVaccines/2*10000000)/10000000).toFixed(2);
     //document.getElementById("proportion_doses").innerHTML = (dejaVaccinesNb/cumul_stock*100).toFixed(1);
 
     document.getElementById("proportionAVaccinerImmu").innerHTML = (Math.round(restantaVaccinerImmunite*10000000)/10000000).toFixed(2);
