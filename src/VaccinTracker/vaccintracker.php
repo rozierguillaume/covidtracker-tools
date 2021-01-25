@@ -877,6 +877,7 @@ function majValeurs(){
     //document.getElementById("date_maj_2").innerHTML = date + " à " + heure;
     document.getElementById("date_maj_3").innerHTML = date + " à " + heure;
     document.getElementById("date_maj_4").innerHTML = date_stock;
+    document.getElementById("date_maj_5").innerHTML = date + " à " + heure;
     tableVaccin(table, 0);
 
 }

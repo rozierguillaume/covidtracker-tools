@@ -43,12 +43,13 @@
     </p>
   </fieldset>
   <fieldset class="next">
-  	<p class="strong-hide">Compte tenu des données renseignées,<strong id="vaccination-impossible"> vous ne pouvez pas vous faire vacciner (<span id="raison"></span>)</strong><strong id="vaccination-impossible-temporaire">vous ne pouvez pas vous faire vacciner pour le moment (<span id="raison-temporaire"></span>)</strong><strong id="vaccination-deja-possible">vous pouvez déjà vous faire vacciner</strong><strong id="vaccination-attente">vous ne pouvez pas encore vous faire vacciner</strong>. </p>
+  	<p class="strong-hide">Compte tenu des données renseignées, <strong id="vaccination-impossible"> vous ne pouvez pas vous faire vacciner (<span id="raison"></span>)</strong><strong id="vaccination-impossible-temporaire">vous ne pouvez pas vous faire vacciner pour le moment (<span id="raison-temporaire"></span>)</strong><strong id="vaccination-deja-possible">vous pouvez déjà vous faire vacciner</strong><strong id="vaccination-attente">vous ne pouvez pas encore vous faire vacciner</strong>. </p>
 
   	<p id="notice-medicale"></p>
   	<p id="dates-vaccin"></p>
   </fieldset>
   <a class="btn" id="next">Continuer ▷</a>
+  <p id="maj-queue">Dernière mise à jour le <span id="date_maj_5">--/-- à --h--</span></p>
   <input type="submit" class="btn">
   </div>
 </form>
@@ -340,6 +341,14 @@ textarea + .valid {
 	font-weight: normal;
 }
 
+p#maj-queue {
+    font-size: 12px;
+    position: absolute;
+    bottom: 1px;
+    right: 20px;
+    font-style: italic;
+}
+
 input#pourcentage-volontaire {
     width: 65px !important;
     display: inline-block !important;
@@ -556,14 +565,14 @@ $("#section-tabs li").on("click", function(e){
 		$('#vaccination-impossible-temporaire').show();
 		$('#raison-temporaire').text(fievre ? "présence de symptômes" : (covid ? "infection récente au covid" : (grippe ? "vaccination contre la grippe récente" : "risque de contamination récente à la covid")));
 		$('#notice-medicale').html("<br>Cet outil ne constitue pas un avis médical. Consultez votre médecin pour plus d'informations");
-		$('#dates-vaccin').html(`<br>Au rythme actuel de vaccination, compte tenu de votre profil et si <input type="number" id="pourcentage-volontaire" value="${pourcentageVolontaire}" onChange="majVolontaires()" onInput="majVolontaires()" />% de la population souhaite se faire vacciner, vous devriez pouvoir être vacciné entre le <strong id="dateMin">${dateMinString}</strong> et le <strong id="dateMax">${dateMaxString}</strong> (sous réserve de ne plus avoir de contre-indication).`);
+		$('#dates-vaccin').html(`<br>Au rythme actuel de vaccination <em>(${numberWithSpaces(differentielVaccinesParJour)} doses administrées par jour en moyenne)</em>, compte tenu de votre profil et si <input type="number" id="pourcentage-volontaire" value="${pourcentageVolontaire}" onChange="majVolontaires()" onInput="majVolontaires()" />% de la population souhaite se faire vacciner, vous devriez pouvoir être vacciné entre le <strong id="dateMin">${dateMinString}</strong> et le <strong id="dateMax">${dateMaxString}</strong> (<span id="nb-prio">${numberWithSpaces(nbPersonnesVaccineesMin)}</span> personnes prioritaires). <em>(sous réserve de ne plus avoir de contre-indication)</em>`);
 	}
 	else if(vaccinationDejaPossible) {
 		$('#vaccination-deja-possible').show();
 	}
 	else {
 		$('#vaccination-attente').show();
-		$('#dates-vaccin').html(`<br>Au rythme actuel de vaccination, compte tenu de votre profil et si <input type="number" id="pourcentage-volontaire" value="${pourcentageVolontaire}" onChange="majVolontaires()" onInput="majVolontaires()" />% de la population souhaite se faire vacciner, vous devriez pouvoir être vacciné entre le <strong id="dateMin">${dateMinString}</strong> et le <strong id="dateMax">${dateMaxString}</strong>`);
+		$('#dates-vaccin').html(`<br>Au rythme actuel de vaccination <em>(${numberWithSpaces(differentielVaccinesParJour)} doses administrées par jour en moyenne)</em>, compte tenu de votre profil et si <input type="number" id="pourcentage-volontaire" value="${pourcentageVolontaire}" onChange="majVolontaires()" onInput="majVolontaires()" />% de la population souhaite se faire vacciner, vous devriez pouvoir être vacciné entre le <strong id="dateMin">${dateMinString}</strong> et le <strong id="dateMax">${dateMaxString}</strong> (<span id="nb-prio">${numberWithSpaces(nbPersonnesVaccineesMin)}</span> personnes prioritaires).`);
 	}
  }
 
@@ -613,6 +622,7 @@ function majVolontaires() {
   dateEstimationFin = (new Date()).addDays(nbJoursAttenteMax);
   document.getElementById('dateMin').textContent = dateEstimationDebut.toLocaleDateString('fr-FR', optionsDate);
   document.getElementById('dateMax').textContent = dateEstimationFin.toLocaleDateString('fr-FR', optionsDate);
+  document.getElementById('nb-prio').textContent = numberWithSpaces(nbPersonnesVaccineesMin);
 
 }
 
