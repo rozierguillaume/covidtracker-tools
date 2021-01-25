@@ -72,15 +72,18 @@
 }
 
 #fieldsets {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-  overflow: hidden;
-  background: #f8f8f8;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+    box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+    background: #fff;
+    border-radius: 7px;
+    padding: 10px 10px 10px 10px;
 }
 .inline-form {
     display: flex;
@@ -337,6 +340,11 @@ textarea + .valid {
 	font-weight: normal;
 }
 
+input#pourcentage-volontaire {
+    width: 65px !important;
+    display: inline-block !important;
+}
+
 @media all and (max-width: 625px) {
 	#section-tabs li {
     float: none;
@@ -419,6 +427,7 @@ form#queue-vaccin {
 	let nbPersonnesVaccineesMin = 0; // nombre de personnes à vacciner avant la personne utilisant le simulateur
 	let nbPersonnesVaccineesMax = 0; // nombre de personnes à vacciner avec la personne utilisant le simulateur (avant + tranche comprise)
 	let phaseConcernee = 0; // phase concernée par la personne
+  let pourcentageVolontaire = 100; // pourcentage des français voulant se faire vacciner
 
 	let age = 0;
 	let ehpad = false;
@@ -432,6 +441,9 @@ form#queue-vaccin {
 	let grippe = false;
 	let fievre = false;
 	let cluster = false;
+
+
+  const optionsDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
 
 $("#next").on("click", function(e){
@@ -525,14 +537,13 @@ $("#section-tabs li").on("click", function(e){
 		)
 
 	);
-	nbPersonnesVaccineesMin = nombreVaccinationsAvant(phaseConcernee-1);
-	nbPersonnesVaccineesMax = nombreVaccinationsAvant(phaseConcernee);
-	let nbJoursAttenteMin = Number(nbPersonnesVaccineesMin/differentielVaccinesParJour);
-	let nbJoursAttenteMax = Number(nbPersonnesVaccineesMax/differentielVaccinesParJour);
+	nbPersonnesVaccineesMin = nombreVaccinationsAvant(phaseConcernee-1)*pourcentageVolontaire/100;
+	nbPersonnesVaccineesMax = nombreVaccinationsAvant(phaseConcernee)*pourcentageVolontaire/100;
+	let nbJoursAttenteMin = Number(nbPersonnesVaccineesMin*2/differentielVaccinesParJour);
+	let nbJoursAttenteMax = Number(nbPersonnesVaccineesMax*2/differentielVaccinesParJour);
 	dateEstimationDebut = (new Date()).addDays(nbJoursAttenteMin);
 	dateEstimationFin = (new Date()).addDays(nbJoursAttenteMax);
 
-	const optionsDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 	const dateMinString = dateEstimationDebut.toLocaleDateString('fr-FR', optionsDate);
 	const dateMaxString = dateEstimationFin.toLocaleDateString('fr-FR', optionsDate);
 
@@ -545,14 +556,14 @@ $("#section-tabs li").on("click", function(e){
 		$('#vaccination-impossible-temporaire').show();
 		$('#raison-temporaire').text(fievre ? "présence de symptômes" : (covid ? "infection récente au covid" : (grippe ? "vaccination contre la grippe récente" : "risque de contamination récente à la covid")));
 		$('#notice-medicale').html("<br>Cet outil ne constitue pas un avis médical. Consultez votre médecin pour plus d'informations");
-		$('#dates-vaccin').html(`<br>Au rythme actuel de vaccination et compte tenu de votre profil, vous devriez pouvoir être vacciné entre le <strong>${dateMinString}</strong> et le <strong>${dateMaxString}</strong> (sous réserve de ne plus avoir de contre-indication).`);
+		$('#dates-vaccin').html(`<br>Au rythme actuel de vaccination, compte tenu de votre profil et si <input type="number" id="pourcentage-volontaire" value="${pourcentageVolontaire}" onChange="majVolontaires()" onInput="majVolontaires()" />% de la population souhaite se faire vacciner, vous devriez pouvoir être vacciné entre le <strong id="dateMin">${dateMinString}</strong> et le <strong id="dateMax">${dateMaxString}</strong> (sous réserve de ne plus avoir de contre-indication).`);
 	}
 	else if(vaccinationDejaPossible) {
 		$('#vaccination-deja-possible').show();
 	}
 	else {
 		$('#vaccination-attente').show();
-		$('#dates-vaccin').html(`<br>Au rythme actuel de vaccination et compte tenu de votre profil, vous devriez pouvoir être vacciné entre le <strong>${dateMinString}</strong> et le <strong>${dateMaxString}</strong>`);
+		$('#dates-vaccin').html(`<br>Au rythme actuel de vaccination, compte tenu de votre profil et si <input type="number" id="pourcentage-volontaire" value="${pourcentageVolontaire}" onChange="majVolontaires()" onInput="majVolontaires()" />% de la population souhaite se faire vacciner, vous devriez pouvoir être vacciné entre le <strong id="dateMin">${dateMinString}</strong> et le <strong id="dateMax">${dateMaxString}</strong>`);
 	}
  }
 
@@ -590,6 +601,19 @@ function nombreVaccinationsAvant(numeroPhase) {
 		total += VACCINATIONS_PAR_PHASES[i];
 	}
 	return Math.max(total-dejaVaccinesNb, 0);
+}
+
+function majVolontaires() {
+  pourcentageVolontaire = Math.max(0, Math.min(100, Number(document.getElementById("pourcentage-volontaire").value)));
+    nbPersonnesVaccineesMin = nombreVaccinationsAvant(phaseConcernee-1)*pourcentageVolontaire/100;
+  nbPersonnesVaccineesMax = nombreVaccinationsAvant(phaseConcernee)*pourcentageVolontaire/100;
+  let nbJoursAttenteMin = Number(nbPersonnesVaccineesMin*2/differentielVaccinesParJour);
+  let nbJoursAttenteMax = Number(nbPersonnesVaccineesMax*2/differentielVaccinesParJour);
+  dateEstimationDebut = (new Date()).addDays(nbJoursAttenteMin);
+  dateEstimationFin = (new Date()).addDays(nbJoursAttenteMax);
+  document.getElementById('dateMin').textContent = dateEstimationDebut.toLocaleDateString('fr-FR', optionsDate);
+  document.getElementById('dateMax').textContent = dateEstimationFin.toLocaleDateString('fr-FR', optionsDate);
+
 }
 
 Date.prototype.addDays = function(days) {

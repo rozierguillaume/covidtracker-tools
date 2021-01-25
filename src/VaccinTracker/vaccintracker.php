@@ -425,7 +425,7 @@ const OBJECTIF_FIN_AOUT = 52000000 // 1_000_000
 var data;
 var nb_vaccines = [];
 
-
+let differentielVaccinesParJour;
 var dejaVaccinesNb;
 var dejaVaccines = 0;
 var restantaVaccinerImmunite;
@@ -621,7 +621,7 @@ function calculerDateProjeteeObjectif () {
   const derniereMaj = Date.parse(nb_vaccines[indexDerniereMaj].date)
   const resteAVacciner = objectif*2 - Number(nb_vaccines[indexDerniereMaj].total)
   const differentielVaccinesFenetre = Number(nb_vaccines[indexDerniereMaj].total) - Number(nb_vaccines[indexDebutFenetre].total)
-  const differentielVaccinesParJour = differentielVaccinesFenetre / (indexDerniereMaj - indexDebutFenetre)
+  differentielVaccinesParJour = differentielVaccinesFenetre / (indexDerniereMaj - indexDebutFenetre)
   const oneDay = (1000 * 60 * 60 * 24)
   const nbJoursAvantObjectif = Math.round(resteAVacciner / differentielVaccinesParJour)
   return new Date(derniereMaj + (oneDay * nbJoursAvantObjectif))
