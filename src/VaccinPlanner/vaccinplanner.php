@@ -64,6 +64,10 @@ Auteur : Aymerik Diebold.<br>
 
 
 <style>
+p{
+    font-size: 120%;
+}
+
 #queue-vaccin {
   width: 600px;
   height: auto;
