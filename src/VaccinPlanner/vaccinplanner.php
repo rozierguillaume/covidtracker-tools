@@ -413,7 +413,215 @@ form#queue-vaccin {
   integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
   crossorigin="anonymous"></script>
 
-<script> 
+<script type="text/javascript">
+
+function numberWithSpaces(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "&nbsp;");
+}
+function formaterDate (date) {
+  if (!(date instanceof Date)) return String(date);
+  return date.toLocaleDateString("fr-FR", {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+
+
+// ref: http://stackoverflow.com/a/1293163/2343
+    // This will parse a delimited string into an array of
+    // arrays. The default delimiter is the comma, but this
+    // can be overriden in the second argument.
+    function CSVToArray( strData, strDelimiter ){
+        // Check to see if the delimiter is defined. If not,
+        // then default to comma.
+        strDelimiter = (strDelimiter || ",");
+
+        // Create a regular expression to parse the CSV values.
+        var objPattern = new RegExp(
+            (
+                // Delimiters.
+                "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
+
+                // Quoted fields.
+                "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
+
+                // Standard fields.
+                "([^\"\\" + strDelimiter + "\\r\\n]*))"
+            ),
+            "gi"
+            );
+
+
+        // Create an array to hold our data. Give the array
+        // a default empty first row.
+        var arrData = [[]];
+
+        // Create an array to hold our individual pattern
+        // matching groups.
+        var arrMatches = null;
+
+
+        // Keep looping over the regular expression matches
+        // until we can no longer find a match.
+        while (arrMatches = objPattern.exec( strData )){
+
+            // Get the delimiter that was found.
+            var strMatchedDelimiter = arrMatches[ 1 ];
+
+            // Check to see if the given delimiter has a length
+            // (is not the start of string) and if it matches
+            // field delimiter. If id does not, then we know
+            // that this delimiter is a row delimiter.
+            if (
+                strMatchedDelimiter.length &&
+                strMatchedDelimiter !== strDelimiter
+                ){
+
+                // Since we have reached a new row of data,
+                // add an empty row to our data array.
+                arrData.push( [] );
+
+            }
+
+            var strMatchedValue;
+
+            // Now that we have our delimiter out of the way,
+            // let's check to see which kind of value we
+            // captured (quoted or unquoted).
+            if (arrMatches[ 2 ]){
+
+                // We found a quoted value. When we capture
+                // this value, unescape any double quotes.
+                strMatchedValue = arrMatches[ 2 ].replace(
+                    new RegExp( "\"\"", "g" ),
+                    "\""
+                    );
+
+            } else {
+
+                // We found a non-quoted value.
+                strMatchedValue = arrMatches[ 3 ];
+
+            }
+
+
+            // Now that we have our value string, let's add
+            // it to the data array.
+            arrData[ arrData.length - 1 ].push( strMatchedValue );
+        }
+
+        // Return the parsed data.
+        return( arrData );
+    }
+
+var nb_vaccines = [];
+
+let differentielVaccinesParJour;
+
+var updated = false;
+fetchOtherData();
+
+function fetchOtherData(){
+    // Get data from Guillaume csv
+    fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data.csv', {cache: 'no-cache'})
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("HTTP error " + response.status);
+            }
+            return response.text();
+        })
+        .then(csv => {
+            this.data = csv;
+            array_data = CSVToArray(csv, ",");
+            array_data.slice(1, array_data.length-1).map((value, idx) => {
+                nb_vaccines.push({
+                  date: value[0],
+                  heure: value[2],
+                  total: value[1],
+                  source: value[3]
+                });
+            });
+
+            if(updated) { // si on a les données des 2 sources (csv covidtracker + gouv)
+              nb_vaccines = nb_vaccines.filter((v,i,a)=>a.findIndex(t=>(t.date == v.date))===i); // suppression doublons
+              nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
+              dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].total
+              dejaVaccines = dejaVaccinesNb*100/67000000;
+              restantaVaccinerImmunite = 60 - dejaVaccines
+              this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
+            } else {
+              updated = true;
+            }
+        })
+        .catch(function () {
+            this.dataError = true;
+            console.log("error3")
+        }
+      )
+
+    // Get data from health ministry csv
+    fetch('https://www.data.gouv.fr/fr/datasets/r/b234a041-b5ea-4954-889b-67e64a25ce0d', {cache: 'no-cache'}) //https://www.data.gouv.fr/fr/datasets/r/b234a041-b5ea-4954-889b-67e64a25ce0d
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("HTTP error " + response.status);
+            }
+            return response.text();
+        })
+        .then(csv => {
+            this.data = csv;
+            array_data = CSVToArray(csv, ";");
+            array_data.slice(1, array_data.length).map((value, idx) => {
+                nb_vaccines.push({
+                  date: value[0],
+                  heure: "19h30",
+                  total: value[1],
+                  source: "Ministère de la santé"
+                });
+            });
+
+            if(updated) { // si on a les données des 2 sources (csv covidtracker + gouv)
+              nb_vaccines = nb_vaccines.filter((v,i,a)=>a.findIndex(t=>(t.date == v.date))===i); // suppression doublons
+              nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
+              dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].total
+              dejaVaccines = dejaVaccinesNb*100/67000000;
+              restantaVaccinerImmunite = 60 - dejaVaccines
+              this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
+              date = nb_vaccines[nb_vaccines.length-1].date
+              date = date.slice(8) + "/" + date.slice(5, 7)
+              heure = nb_vaccines[nb_vaccines.length-1].heure
+              document.getElementById("date_maj_5").innerHTML = date + " à " + heure;
+            } else {
+              updated = true;
+            }
+        })
+        .catch(function () {
+            this.dataError = true;
+            console.log("error4")
+        }
+      )
+
+}
+
+
+
+
+function calculerDateProjeteeObjectif () {
+  const indexDerniereMaj = nb_vaccines.length - 1;
+  const indexDebutFenetre = Math.max(0, indexDerniereMaj - 7)
+  const differentielVaccinesFenetre = Number(nb_vaccines[indexDerniereMaj].total) - Number(nb_vaccines[indexDebutFenetre].total)
+  differentielVaccinesParJour = differentielVaccinesFenetre / (indexDerniereMaj - indexDebutFenetre)
+}
+
+
+
+
+Array.prototype.sortBy = function(p) {
+  return this.slice(0).sort(function(a,b) {
+    return (a[p] > b[p]) ? 1 : (a[p] < b[p]) ? -1 : 0;
+  });
+}
+
 
 	const VACCINATION_AGE_MIN = 75; // Vaccination déjà possible à partir de...
 	const VACCINATION_AGE_MIN_SOIGNANT = 50; // Âge min vaccionation soignant
@@ -565,14 +773,14 @@ $("#section-tabs li").on("click", function(e){
 		$('#vaccination-impossible-temporaire').show();
 		$('#raison-temporaire').text(fievre ? "présence de symptômes" : (covid ? "infection récente au covid" : (grippe ? "vaccination contre la grippe récente" : "risque de contamination récente à la covid")));
 		$('#notice-medicale').html("<br>Cet outil ne constitue pas un avis médical. Consultez votre médecin pour plus d'informations");
-		$('#dates-vaccin').html(`<br>Au rythme actuel de vaccination <em>(${numberWithSpaces(parseInt(differentielVaccinesParJour))} doses administrées par jour en moyenne)</em> et compte tenu de votre profil, vous devriez pouvoir être vacciné entre le <strong id="dateMin">${dateMinString}</strong> et le <strong id="dateMax">${dateMaxString}</strong> (<span id="nb-prio">${numberWithSpaces(parseInt(nbPersonnesVaccineesMin))}</span> personnes prioritaires). <em>(sous réserve de ne plus avoir de contre-indication)</em><br><br>Projection réaliséee en considérant que <input type="number" id="pourcentage-volontaire" value="${pourcentageVolontaire}" onChange="majVolontaires()" onInput="majVolontaires()" />% de la pop. souhaite se faire vacciner.`);
+		$('#dates-vaccin').html(`<br>Entre <span id="nb-prio-1">${numberWithSpaces(parseInt(nbPersonnesVaccineesMin))}</span> et <span id="nb-prio-2">${numberWithSpaces(parseInt(nbPersonnesVaccineesMax))}</span> personnes doivent encore se faire vacciner avant vous.<br><br>Au rythme actuel de vaccination <em>(${numberWithSpaces(parseInt(differentielVaccinesParJour))} doses administrées par jour en moyenne)</em> et selon votre profil, vous devriez pouvoir être vacciné entre le <strong id="dateMin">${dateMinString}</strong> et le <strong id="dateMax">${dateMaxString}</strong> <em>(sous réserve de ne plus avoir de contre-indication)</em>.<br>Projection réaliséee en considérant que <input type="number" id="pourcentage-volontaire" value="${pourcentageVolontaire}" onChange="majVolontaires()" onInput="majVolontaires()" />% de la pop. souhaite être vaccinée`);
 	}
 	else if(vaccinationDejaPossible) {
 		$('#vaccination-deja-possible').show();
 	}
 	else {
 		$('#vaccination-attente').show();
-		$('#dates-vaccin').html(`<br>Au rythme actuel de vaccination <em>(${numberWithSpaces(parseInt(differentielVaccinesParJour))} doses administrées par jour en moyenne)</em> et compte tenu de votre profil, vous devriez pouvoir être vacciné entre le <strong id="dateMin">${dateMinString}</strong> et le <strong id="dateMax">${dateMaxString}</strong> (<span id="nb-prio">${numberWithSpaces(parseInt(nbPersonnesVaccineesMin))}</span> personnes prioritaires).<br><br>Projection réalisée en considérant que <input type="number" id="pourcentage-volontaire" value="${pourcentageVolontaire}" onChange="majVolontaires()" onInput="majVolontaires()" />% de la pop. souhaite se faire vacciner.`);
+    $('#dates-vaccin').html(`<br>Entre <span id="nb-prio-1">${numberWithSpaces(parseInt(nbPersonnesVaccineesMin))}</span> et <span id="nb-prio-2">${numberWithSpaces(parseInt(nbPersonnesVaccineesMax))}</span> personnes doivent encore se faire vacciner avant vous.<br><br>Au rythme actuel de vaccination <em>(${numberWithSpaces(parseInt(differentielVaccinesParJour))} doses administrées par jour en moyenne)</em> et selon votre profil, vous devriez pouvoir être vacciné entre le <strong id="dateMin">${dateMinString}</strong> et le <strong id="dateMax">${dateMaxString}</strong>.<br>Projection réaliséee en considérant que <input type="number" id="pourcentage-volontaire" value="${pourcentageVolontaire}" onChange="majVolontaires()" onInput="majVolontaires()" />% de la pop. souhaite être vaccinée`);
 	}
  }
 
@@ -622,7 +830,8 @@ function majVolontaires() {
   dateEstimationFin = (new Date()).addDays(nbJoursAttenteMax);
   document.getElementById('dateMin').textContent = dateEstimationDebut.toLocaleDateString('fr-FR', optionsDate);
   document.getElementById('dateMax').textContent = dateEstimationFin.toLocaleDateString('fr-FR', optionsDate);
-  document.getElementById('nb-prio').innerHTML = numberWithSpaces(parseInt(nbPersonnesVaccineesMin));
+  document.getElementById('nb-prio-1').innerHTML = numberWithSpaces(parseInt(nbPersonnesVaccineesMin));
+  document.getElementById('nb-prio-2').innerHTML = numberWithSpaces(parseInt(nbPersonnesVaccineesMax));
 
 }
 

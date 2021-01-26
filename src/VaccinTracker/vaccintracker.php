@@ -119,7 +119,6 @@ Auteur : CovidTracker.fr - Données : Ministère de la Santé
 
 <?php include(__DIR__ . '/carte.php') ?>
 <?php include(__DIR__ . '/vaccin-map.html') ?>
-<?php include(__DIR__ . '/queue.php'); ?>
 <?php include(__DIR__ . '/autorisations.php') ?>
 <?php include(__DIR__ . '/immuniteCollective.php') ?>
 <?php include(__DIR__ . '/dansLeMonde.php') ?>
@@ -877,7 +876,6 @@ function majValeurs(){
     //document.getElementById("date_maj_2").innerHTML = date + " à " + heure;
     document.getElementById("date_maj_3").innerHTML = date + " à " + heure;
     document.getElementById("date_maj_4").innerHTML = date_stock;
-    document.getElementById("date_maj_5").innerHTML = date + " à " + heure;
     tableVaccin(table, 0);
 
 }
