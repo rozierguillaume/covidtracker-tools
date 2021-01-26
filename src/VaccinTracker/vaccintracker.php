@@ -27,7 +27,7 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
 </div>
 
 <div class="alert alert-warning"  style="font-size: 18px;">
-    <b>Information sur les données.</b> Jusqu'alors le Ministère de la Santé communiquait un chiffre <a href="https://solidarites-sante.gouv.fr/actualites/presse/communiques-de-presse/article/vaccination-contre-la-covid-en-france-au-24-janvier-2021-plus-de-1-026-000">présenté</a> comme le "nombre de personnes vaccinées". Il apparaît que ce chiffre corresponde plutôt au nombre de doses injectées (deux doses sont nécessaires pour vacciner une personne) (<a href="https://www.leparisien.fr/societe/covid-19-pourquoi-le-nombre-de-personnes-vaccinees-n-est-pas-vraiment-celui-qu-on-croit-25-01-2021-8421084.php#xtor=AD-1481423553">Le Parisien</a>). Le vocabulaire présent sur cette page a donc été adapté en ce sens.
+    <b>Information sur les données.</b> Jusqu'alors le Ministère de la Santé communiquait un chiffre <a href="https://solidarites-sante.gouv.fr/actualites/presse/communiques-de-presse/article/vaccination-contre-la-covid-en-france-au-24-janvier-2021-plus-de-1-026-000">présenté</a> comme le "nombre de personnes vaccinées". Il apparaît que ce chiffre correspond plutôt au nombre de doses injectées (deux doses sont nécessaires pour vacciner une personne) (<a href="https://www.leparisien.fr/societe/covid-19-pourquoi-le-nombre-de-personnes-vaccinees-n-est-pas-vraiment-celui-qu-on-croit-25-01-2021-8421084.php#xtor=AD-1481423553">Le Parisien</a>). Le vocabulaire présent sur cette page a donc été adapté en ce sens.
 </div>
 <!-- /wp:html -->
 
@@ -72,7 +72,7 @@ Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60"
         Entre
         <span style="font-size: 200%; color: rgb(45, 189, 84)"><span id="proportionVaccinesMin">--</span>%</span>
         et
-        <span style="font-size: 200%; color: rgb(45, 189, 84)"><span id="proportionVaccinesMax">--</span>%</span><br> des Français ont reçu au moins une dose de vaccin. <i><small>Le Ministère de la Santé ne communiquant pas le nombre de 1ère et 2ème injections, il n'est pas possible de connaître la proportion exacte de vaccinés.</small></i><br><br>
+        <span style="font-size: 200%; color: rgb(45, 189, 84)"><span id="proportionVaccinesMax">--</span>%</span><br> des Français ont reçu au moins une dose de vaccin. <i><small>Le Ministère de la Santé ne communiquant pas le nombre de 1<sup>res</sup> et 2<sup>es</sup> injections, il n'est pas possible de connaître la proportion exacte de vaccinés.</small></i><br><br>
         Il reste à vacciner au moins <br><span style="font-size: 200%; color: rgb(237, 88, 88);"><span id="proportionAVaccinerImmu">--</span>%</span><br>des Français avant d'atteindre un taux de vaccination de 60%. <br><br>
         <span style="font-size: 80%;">
             N.B. : un taux de vaccination de 60% ne permet pas nécessairement d'atteindre une immunité collective.<br>
