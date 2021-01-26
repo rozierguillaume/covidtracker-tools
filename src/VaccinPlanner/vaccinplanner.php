@@ -1,8 +1,8 @@
 
 <div class="" style="margin-bottom: 40px;">
   <p> 
-    Quel est le rythme de vaccination actuel ? Combien reste-t-il de personne à vacciner avant moi ?
-    VaccinPlanner est un outil de CovidTracker vous permettant d'évaluer la date à laquelle vous pourrez vous faire vacciner contre la Covid19 en fonction de votre situation et du rythme actuel de vaccination. Les projections sont mises à jour quotidiennement en fonction de l'évolution de la campagne vaccinale. Le données du rythme et le calendrier de vaccination proviennent du Ministère de la Santé. Suivez aussi l'évolution de la campagne vaccinale sur <a href="https://covidtracker.fr/vaccintracker">VaccinTracker ></a>.
+    Quel est le rythme de vaccination actuel ? Combien reste-t-il de personnes à vacciner avant moi ?
+    VaccinPlanner est un outil de CovidTracker vous permettant d'évaluer la date à laquelle vous pourrez vous faire vacciner contre la Covid19 en fonction de votre situation et du rythme actuel de vaccination. Les projections sont mises à jour quotidiennement en fonction de l'évolution de la campagne vaccinale. Les données (rythme et ordre de priorité des vaccinations) proviennent du Ministère de la Santé. Suivez aussi l'évolution de la campagne vaccinale sur <a href="https://covidtracker.fr/vaccintracker">VaccinTracker ></a>.
   <p>
 </div>
 
