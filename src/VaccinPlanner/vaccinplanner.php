@@ -43,10 +43,10 @@
     </p>
   </fieldset>
   <fieldset class="next">
-  	<p class="strong-hide">Compte tenu des données renseignées, <strong id="vaccination-impossible"> vous ne pouvez pas vous faire vacciner (<span id="raison"></span>)</strong><strong id="vaccination-impossible-temporaire">vous ne pouvez pas vous faire vacciner pour le moment (<span id="raison-temporaire"></span>)</strong><strong id="vaccination-deja-possible">vous pouvez déjà vous faire vacciner</strong><strong id="vaccination-attente">vous ne pouvez pas encore vous faire vacciner</strong>. </p>
+  	<p class="strong-hide"><span id="verdict-vaccin">❌</span> Compte tenu des données renseignées, <strong id="vaccination-impossible"> vous ne pouvez pas vous faire vacciner (<span id="raison"></span>)</strong><strong id="vaccination-impossible-temporaire">vous ne pouvez pas vous faire vacciner pour le moment (<span id="raison-temporaire"></span>)</strong><strong id="vaccination-deja-possible">vous pouvez déjà vous faire vacciner</strong><strong id="vaccination-attente">vous ne pouvez pas encore vous faire vacciner</strong>. </p>
 
-  	<p id="notice-medicale"></p>
-  	<p id="dates-vaccin"></p>
+  	<p id="dates-vaccin"><br><strong style="font-size: 110%;">Temps d'attente</strong><br><strong style="font-size: 140%;" id="temps-attente">- jours</strong><br><br>Au rythme actuel de vaccination <em>(<span id="moyenne-vaccin">-</span> doses administrées par jour en moyenne)</em> et selon votre profil, vous devriez pouvoir être vacciné entre le <span id="dateMin">-</span> et le <span id="dateMax">-</span> <em id="reserve-contre-indication">(sous réserve de ne plus avoir de contre-indication)</em>. Au moins <span id="nb-prio-1">-</span> doivent se faire vacciner avant vous.<br>Projection réaliséee en considérant que <input type="number" id="pourcentage-volontaire" value="-" onChange="majVolontaires()" onInput="majVolontaires()" />% de la pop. souhaite être vaccinée</p>
+    <p id="notice-medicale"></p>
   </fieldset>
   <a class="btn" id="next">Continuer ▷</a>
   <p id="maj-queue">Dernière mise à jour le <span id="date_maj_5">--/-- à --h--</span></p>
@@ -76,7 +76,7 @@ p{
   background: #fff;
   margin: 80px auto;
   position: relative;
-  min-height: 310px;
+  min-height: 360px;
   font-size: 15px;
 }
 
@@ -420,6 +420,12 @@ form#queue-vaccin {
 }
 }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/fr.min.js" ></script>
+
+
+
+
 
 <script
   src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -427,7 +433,7 @@ form#queue-vaccin {
   crossorigin="anonymous"></script>
 
 <script type="text/javascript">
-
+moment.locale('fr');
 function numberWithSpaces(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "&nbsp;");
 }
@@ -724,6 +730,8 @@ $("#section-tabs li").on("click", function(e){
 });
  
 
+$('#pourcentage-volontaire').on('input', majVolontaires);
+$('#pourcentage-volontaire').on('change', majVolontaires);
 
  function majDonneesSaisies()
  {
@@ -731,7 +739,7 @@ $("#section-tabs li").on("click", function(e){
  	$('#vaccination-impossible-temporaire').hide();
  	$('#vaccination-attente').hide();
  	$('#vaccination-deja-possible').hide();
- 	$('#dates-vaccin').html("");
+ 	$('#dates-vaccin').hide();
  	$('#notice-medicale').text("");
 
 	age = Number($('#age').val());
@@ -778,22 +786,40 @@ $("#section-tabs li").on("click", function(e){
 	const dateMaxString = dateEstimationFin.toLocaleDateString('fr-FR', optionsDate);
 
 	if(vaccinationProscritePermanent) {
+    $('#verdict-vaccin').text('❌');
 		$('#vaccination-impossible').show();
 		$('#raison').text(age < 18 ? "mineur" : (allergique ? "allergie" : "enceinte"));
 		$('#notice-medicale').html("<br>Cet outil ne constitue pas un avis médical. Consultez votre médecin pour plus d'informations");
 	}
 	else if(vaccinationProscriteTemporaire) {
+    $('#verdict-vaccin').text('❌');
 		$('#vaccination-impossible-temporaire').show();
 		$('#raison-temporaire').text(fievre ? "présence de symptômes" : (covid ? "infection récente au covid" : (grippe ? "vaccination contre la grippe récente" : "risque de contamination récente à la covid")));
 		$('#notice-medicale').html("<br>Cet outil ne constitue pas un avis médical. Consultez votre médecin pour plus d'informations");
-		$('#dates-vaccin').html(`<br>Entre <span id="nb-prio-1">${numberWithSpaces(parseInt(nbPersonnesVaccineesMin))}</span> et <span id="nb-prio-2">${numberWithSpaces(parseInt(nbPersonnesVaccineesMax))}</span> personnes doivent encore se faire vacciner avant vous.<br><br>Au rythme actuel de vaccination <em>(${numberWithSpaces(parseInt(differentielVaccinesParJour))} doses administrées par jour en moyenne)</em> et selon votre profil, vous devriez pouvoir être vacciné entre le <strong id="dateMin">${dateMinString}</strong> et le <strong id="dateMax">${dateMaxString}</strong> <em>(sous réserve de ne plus avoir de contre-indication)</em>.<br>Projection réaliséee en considérant que <input type="number" id="pourcentage-volontaire" value="${pourcentageVolontaire}" onChange="majVolontaires()" onInput="majVolontaires()" />% de la pop. souhaite être vaccinée`);
+    $("#dates-vaccin").show();
+    $('#nb-prio-1').html(numberWithSpaces(parseInt(nbPersonnesVaccineesMin)));
+    $('#nb-prio-2').html(numberWithSpaces(parseInt(nbPersonnesVaccineesMax)));
+    $('#moyenne-vaccin').html(numberWithSpaces(parseInt(differentielVaccinesParJour)));
+    $('#dateMin').html(dateMinString);
+    $('#dateMax').html(dateMaxString);
+    $('#pourcentage-volontaire').val(pourcentageVolontaire);
+    $("#temps-attente").text(moment(dateEstimationDebut).toNow(true));
 	}
 	else if(vaccinationDejaPossible) {
 		$('#vaccination-deja-possible').show();
+    $('#verdict-vaccin').text('✅');
 	}
 	else {
+    $('#verdict-vaccin').text('❌');
 		$('#vaccination-attente').show();
-    $('#dates-vaccin').html(`<br>Entre <span id="nb-prio-1">${numberWithSpaces(parseInt(nbPersonnesVaccineesMin))}</span> et <span id="nb-prio-2">${numberWithSpaces(parseInt(nbPersonnesVaccineesMax))}</span> personnes doivent encore se faire vacciner avant vous.<br><br>Au rythme actuel de vaccination <em>(${numberWithSpaces(parseInt(differentielVaccinesParJour))} doses administrées par jour en moyenne)</em> et selon votre profil, vous devriez pouvoir être vacciné entre le <strong id="dateMin">${dateMinString}</strong> et le <strong id="dateMax">${dateMaxString}</strong>.<br>Projection réaliséee en considérant que <input type="number" id="pourcentage-volontaire" value="${pourcentageVolontaire}" onChange="majVolontaires()" onInput="majVolontaires()" />% de la pop. souhaite être vaccinée`);
+    $("#dates-vaccin").show();
+    $('#nb-prio-1').html(numberWithSpaces(parseInt(nbPersonnesVaccineesMin)));
+    $('#nb-prio-2').html(numberWithSpaces(parseInt(nbPersonnesVaccineesMax)));
+    $('#moyenne-vaccin').html(numberWithSpaces(parseInt(differentielVaccinesParJour)));
+    $('#dateMin').html(dateMinString);
+    $('#dateMax').html(dateMaxString);
+    $('#pourcentage-volontaire').val(pourcentageVolontaire);
+    $("#temps-attente").text(moment(dateEstimationDebut).toNow(true));
 	}
  }
 
@@ -803,7 +829,7 @@ $("#section-tabs li").on("click", function(e){
  	$('#vaccination-impossible-temporaire').hide();
  	$('#vaccination-attente').hide();
  	$('#vaccination-deja-possible').hide();
- 	$('#dates-vaccin').html("");
+ 	$('#dates-vaccin').hide();
  	$('#notice-medicale').text("");
 
 	$('#age').val("");
@@ -844,7 +870,8 @@ function majVolontaires() {
   document.getElementById('dateMin').textContent = dateEstimationDebut.toLocaleDateString('fr-FR', optionsDate);
   document.getElementById('dateMax').textContent = dateEstimationFin.toLocaleDateString('fr-FR', optionsDate);
   document.getElementById('nb-prio-1').innerHTML = numberWithSpaces(parseInt(nbPersonnesVaccineesMin));
-  document.getElementById('nb-prio-2').innerHTML = numberWithSpaces(parseInt(nbPersonnesVaccineesMax));
+  document.getElementById("temps-attente").textContent = moment(dateEstimationDebut).toNow(true);
+  //document.getElementById('nb-prio-2').innerHTML = numberWithSpaces(parseInt(nbPersonnesVaccineesMax));
 
 }
 
