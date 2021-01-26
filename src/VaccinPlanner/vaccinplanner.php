@@ -1,9 +1,8 @@
-<h2 style="margin-top : 80px;">
-    Quand pourrai-je me faire vacciner ?
-</h2>
 
 <div class="" style="margin-bottom: 40px;">
-    Découvrez quand vous pourrez vous faire vacciner en fonction de votre profil et du rythme de vaccination actuel
+    Quel est le rythme de vaccination actuel ? Combien reste-t-il de personne à vacciner avant moi ?
+    VaccinPlanner est un outil de CovidTracker vous permettant d'évaluer la date à laquelle vous pourrez vous faire vacciner contre la Covid19 en fonction de votre situation et du rythme actuel de vaccination. Les projections sont mises à jour quotidiennement en fonction de l'évolution de la campagne vaccinale. Le données du rythme et le calendrier de vaccination proviennent du Ministère de la Santé. Suivez aussi l'évolution de la campagne vaccinale sur <a href="https://covidtracker.fr/vaccintracker">VaccinTracker ></a>.
+    
 </div>
 
 <form id="queue-vaccin" action="#">
@@ -53,6 +52,14 @@
   <input type="submit" class="btn">
   </div>
 </form>
+<br>
+
+Combien de personnes ont été vaccinées ? Suivez la campagne vaccinale sur <a href="https://covidtracker.fr/vaccintracker">VaccinTracker en cliquant ici</a>.
+<br>
+
+<br>
+Auteur : Aymeric Diebold.<br>
+<small><i>En aucun cas ces projections ne doivent être considérées comme des prédictions fiables.</i></small>
 
 
 <style>
