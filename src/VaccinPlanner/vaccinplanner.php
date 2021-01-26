@@ -870,7 +870,8 @@ function majVolontaires() {
   document.getElementById('dateMin').textContent = dateEstimationDebut.toLocaleDateString('fr-FR', optionsDate);
   document.getElementById('dateMax').textContent = dateEstimationFin.toLocaleDateString('fr-FR', optionsDate);
   document.getElementById('nb-prio-1').innerHTML = numberWithSpaces(parseInt(nbPersonnesVaccineesMin));
-  document.getElementById('nb-prio-2').innerHTML = numberWithSpaces(parseInt(nbPersonnesVaccineesMax));
+  document.getElementById("temps-attente").textContent = moment(dateEstimationDebut).toNow(true);
+  //document.getElementById('nb-prio-2').innerHTML = numberWithSpaces(parseInt(nbPersonnesVaccineesMax));
 
 }
 
