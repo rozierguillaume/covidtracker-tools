@@ -118,7 +118,23 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
 Auteur : CovidTracker.fr - Données : Ministère de la Santé
 
 <?php include(__DIR__ . '/carte.php') ?>
+
+<div class="alert alert-info clearFix"  style="font-size: 18px;">
+    <div class="row">
+        <div class="col-md-8">
+            <small>À VOIR AUSSI...</small><br>
+            Combien de personnes reste-t-il à vacciner avant vous ? Estimez votre temps d'attente en fonction du rythme actuel de vaccination.<br>
+        </div>
+        <div class="col-md-4 text-right">
+            <button class="btn-shadow">
+                <a href="https://covidtracker.fr/vaccinplanner" target="_blank" rel="noreferrer noopener">Accéder à 🗓 <b>VaccinPlanner</b></a>
+            </button> &nbsp;&nbsp;
+        </div>
+    </div>
+</div>
+
 <?php include(__DIR__ . '/vaccin-map.html') ?>
+
 <?php include(__DIR__ . '/autorisations.php') ?>
 <?php include(__DIR__ . '/immuniteCollective.php') ?>
 <?php include(__DIR__ . '/dansLeMonde.php') ?>

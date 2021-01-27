@@ -54,15 +54,39 @@
 </form>
 <br>
 
-Combien de personnes ont été vaccinées ? Suivez la campagne vaccinale sur <a href="https://covidtracker.fr/vaccintracker">VaccinTracker en cliquant ici</a>.
+<div class="alert alert-info clearFix"  style="font-size: 18px;">
+    <div class="row">
+        <div class="col-md-8">
+            <small>À VOIR AUSSI...</small><br>
+            Combien de personnes ont été vaccinées ? Suivez la campagne vaccinale sur VaccinTracker.<br>
+        </div>
+        <div class="col-md-4 text-right">
+            <button class="btn-shadow">
+                <a href="https://covidtracker.fr/vaccintracker" target="_blank" rel="noreferrer noopener">Accéder à 💉 <b>VaccinTracker</b></a>
+            </button> &nbsp;&nbsp;
+        </div>
+    </div>
+</div>
 <br>
 
 <br>
 Auteur : Aymerik Diebold.<br>
 <small><i>En aucun cas ces projections ne doivent être considérées comme des prédictions fiables.</i></small>
 
+<br>
 
 <style>
+
+.btn-shadow {
+        border: 0px solid black;
+        padding: 12px;
+        border-radius: 7px;
+        text-align: left;
+        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+        max-width: 450px;
+        background: #ffffff;
+        margin-top: 3px;
+    }
 
 p{
     font-size: 120%;
