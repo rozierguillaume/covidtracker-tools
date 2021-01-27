@@ -741,6 +741,7 @@ $('#pourcentage-volontaire').on('change', majVolontaires);
  	$('#vaccination-deja-possible').hide();
  	$('#dates-vaccin').hide();
  	$('#notice-medicale').text("");
+  $('#reserve-contre-indication').hide();
 
 	age = Number($('#age').val());
 	ehpad = $('#ehpad').is(":checked");
@@ -804,6 +805,7 @@ $('#pourcentage-volontaire').on('change', majVolontaires);
     $('#dateMax').html(dateMaxString);
     $('#pourcentage-volontaire').val(pourcentageVolontaire);
     $("#temps-attente").text(moment(dateEstimationDebut).toNow(true));
+    $('#reserve-contre-indication').show();
 	}
 	else if(vaccinationDejaPossible) {
 		$('#vaccination-deja-possible').show();
@@ -831,6 +833,7 @@ $('#pourcentage-volontaire').on('change', majVolontaires);
  	$('#vaccination-deja-possible').hide();
  	$('#dates-vaccin').hide();
  	$('#notice-medicale').text("");
+  $('#reserve-contre-indication').hide();
 
 	$('#age').val("");
 	$('#ehpad').prop("checked", false);
