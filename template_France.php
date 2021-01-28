@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: template_departements
+Template Name: template_France
 */
 ?>
 
