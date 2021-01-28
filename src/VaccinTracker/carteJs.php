@@ -321,7 +321,7 @@
                 data: {
                     labels: vaccinesRegions.map(val => val.region),
                     datasets: [{
-                        label: 'Nombre de doses injectées ',
+                        label: 'Cumul vaccinés (1 ou 2 doses) ',
                         data: vaccinesRegions.map(val => val.vaccines),
                         borderWidth: 3,
                         backgroundColor: 'rgba(0, 168, 235, 0.5)',

@@ -26,8 +26,8 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
     </div>
 </div>
 
-<div class="alert alert-warning"  style="font-size: 18px;">
-    <b>Information sur les données.</b> Jusqu'alors le Ministère de la Santé communiquait un chiffre <a href="https://solidarites-sante.gouv.fr/actualites/presse/communiques-de-presse/article/vaccination-contre-la-covid-en-france-au-24-janvier-2021-plus-de-1-026-000">présenté</a> comme le "nombre de personnes vaccinées". Il apparaît que ce chiffre corresponde plutôt au nombre de doses injectées (deux doses sont nécessaires pour vacciner une personne) (<a href="https://www.leparisien.fr/societe/covid-19-pourquoi-le-nombre-de-personnes-vaccinees-n-est-pas-vraiment-celui-qu-on-croit-25-01-2021-8421084.php#xtor=AD-1481423553">Le Parisien</a>). Le vocabulaire présent sur cette page a donc été adapté en ce sens.
+<div class="alert alert-danger"  style="font-size: 18px;">
+    <b>28 janvier - Information sur les données.</b> Jusqu'alors le nombre de doses injectées était remonté manuellement par les ARS au Ministère de la Santé. Désormais, celui-ci récupère directement les données SI Vaccin Covid. Par ailleurs, le vocabulaire change de nouveau, les données mises à disposition concernent les personnes vaccinées (1 ou 2 doses, sans distinction), et non plus de doses administrées. Les données communiqués correspondront désormais à celles de la veille. <a href="https://solidarites-sante.gouv.fr/actualites/presse/communiques-de-presse/article/le-suivi-de-la-couverture-vaccinale-desormais-opere-via-vaccin-covid">Plus d'informations</a>.
 </div>
 <!-- /wp:html -->
 
@@ -35,14 +35,14 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
 <div class="wrap">
     <div class="one">
         <span id="nb_vaccines" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span>&nbsp;&nbsp;(+<span id="nb_vaccines_24h">--</span> en 24h)<br>
-        <b>Doses injectées</b><br>
-        Nombre cumulé doses injectées. Il faut deux doses pour vacciner un patient.
+        <b>Personnes partiellement vaccinées</b><br>
+        Nombre cumulé de personnes ayant reçu une ou plusieurs doses de vaccin.
         <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span id="date_maj_1">--/--</span>.<br>Source : CovidTracker/Ministère de la Santé.</i></div>
     </div>
 
     <div class="one">
         <span id="nb_vaccines_2_doses" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span>&nbsp;&nbsp;(+<span id="nb_vaccines_24h_2_doses">--</span> en 24h)<br>
-        <b>Personnes vaccinées</b><br>
+        <b>Personnes totalement vaccinées</b><br>
         <i>Donnée non fournie par le Ministère de la Santé.</i><br>
         Nombre cumulé de personnes ayant reçu les deux doses de vaccin.
         <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span id="date_maj_2">--/--</span>.<br>Source : CovidTracker/Ministère de la Santé.</i></div>
@@ -105,8 +105,8 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
     </div>
     <div>
     <select name="type" id="type" onchange="typeDonneesChart()">
-        <option value="cumul">Cumul doses injectées</option>
-        <option value="quotidien">Doses injectées quotidiennes</option>
+        <option value="cumul"><b>Cumul</b> vaccinés (1 ou 2 doses)</option>
+        <option value="quotidien">Vaccinations quotidiennes (1 ou 2 doses)</option>
     </select>
     </div>
 </div>
