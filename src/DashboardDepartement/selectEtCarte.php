@@ -34,7 +34,7 @@
                             Cas <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li data-carte="incidence-cas"><a href="#" class="selected">Taux d'incidence (3
+                            <li data-carte="incidence-cas"><a href="#" class="selected">Taux d'incidence (4
                                     couleurs)</a></li>
                             <li data-carte="incidence-cas-12-couleurs"><a href="#" class="">Taux d'incidence (12
                                     couleurs)</a></li>

@@ -9,6 +9,7 @@
     div[shadow] {
 
     }
+
     div[class_perso] {
         display: flex;
         min-height: 12vh;
@@ -30,22 +31,13 @@
         /*background: lightblue;*/
     }
 
-    /* remove the grid system at about 620px */
-
-    @media screen and (max-width: 621px) {
-        div[class_persos] {
-            min-height: 30vh;
-            /* has a meaning with a grid system */
-        }
-
-    }
 
     .nav-tabs > li > a {
         margin-right: 0px !important;
         line-height: 1.42857143 !important;
         border: 1px solid #ececec !important;
         border-radius: 0px 0px 0 0 !important;
-        background-color: #ffffff !important;
+        background-color: #fbfbfb  !important;
         color: #000000 !important;
         padding: 15px 18px 15px 18px !important;
         text-decoration: none !important;
@@ -72,16 +64,28 @@
         border: 1px solid #e6e6e6 !important;
     }
 
-    @media screen and (max-width:767px){
-        .nav-tabs > li {width:100%;}
-    }
-
-
     #echelleResume>div{
         display: inline-block;
         white-space: nowrap;
     }
 
+    @media screen and (max-width:767px){
+        .nav-tabs > li {width:100%;}
+    }
+
+    /* remove the grid system at about 620px */
+
+    @media screen and (max-width: 621px) {
+        div[class_persos] {
+            min-height: 30vh;
+            /* has a meaning with a grid system */
+        }
+
+        #echelleResume>div{
+            display: block;
+        }
+
+    }
 
 
 </style>

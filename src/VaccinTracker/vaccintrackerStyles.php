@@ -61,6 +61,7 @@ div[class_perso] div {
     padding-top: 25px;
     height: 0;
 }
+
 .videoWrapper iframe {
     position: absolute;
     top: 0;

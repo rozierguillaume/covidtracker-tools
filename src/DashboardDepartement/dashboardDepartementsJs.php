@@ -214,6 +214,20 @@
                         afficherDepartement(nomDepartement, numeroDepartement);
                         $('html,body').animate({scrollTop: $('#donneesDepartements').offset().top - 80}, 2000);
                     }
+                } else if($("#numeroDepartementSearched").length > 0){
+                    numeroDepartement = $("#numeroDepartementSearched").text();
+                    nomDepartement = $("#listeDepartements option[data-num='" + numeroDepartement + "']").val();
+                    if (numeroDepartement) {
+                        $('#map path[data-num=' + numeroDepartement + ']').addClass('selected');
+                        if ($("#listeDepartements").val()) {
+                            $("#listeDepartements").val($.merge([nomDepartement], $("#listeDepartements").val()));
+                        } else {
+                            $("#listeDepartements").val(nomDepartement);
+                        }
+                        $("#listeDepartements").trigger('change');
+                        afficherDepartement(nomDepartement, numeroDepartement);
+                        $('html,body').animate({scrollTop: $('#donneesDepartements').offset().top - 80}, 2000);
+                    }
                 }
             }
 
