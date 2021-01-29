@@ -651,7 +651,7 @@ function buildLineChart(){
         data: {
             //labels: nb_vaccines.map(val => val.date),
             datasets: [{
-                label: 'Doses injectées (cumul) ',
+                label: 'Personnes partiellement vaccinées (cumul) ',
                 data: data_values,
                 borderWidth: 3,
                 backgroundColor: '#92bed2',
