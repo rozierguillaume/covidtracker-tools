@@ -130,6 +130,8 @@ Auteur : CovidTracker.fr - Données : Ministère de la Santé
     </div>
 </div>
 
+<?php include(__DIR__ . '/vaccinationsParAge.php') ?>
+
 <?php include(__DIR__ . '/vaccin-map.html') ?>
 
 <?php include(__DIR__ . '/autorisations.php') ?>
