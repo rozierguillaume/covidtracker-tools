@@ -604,7 +604,7 @@ function fetchOtherData(){
         })
         .catch(function () {
             this.dataError = true;
-            console.log("error4")
+            console.log("error4 map")
         }
       )
 

@@ -1,5 +1,5 @@
 <h2 style="margin-top : 80px;">
-    Répartition des vaccinés
+    Répartition des vaccinés par région
 </h2>
 
 <div class="" style="margin-bottom: 40px;">
@@ -52,23 +52,8 @@
 </div>
 <!--END HTML-->
 
-<!--BLOC CSS -->
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
-<!--link href="carte.css" rel="stylesheet"/> -->
-
-<?php include(dirname(__FILE__) . '/carteCss.php') ?>
-
-<!--ENDBLOC JS -->
-<!--BLOC JS -->
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js"
-        integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw=="
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-deferred@1"></script>
-
-<!--<script src="carte.js"></script> -->
-<?php include(dirname(__FILE__) . '/carteJs.php') ?>
+<?php include(dirname(__FILE__) . '/carteRegionCss.php') ?>
+<?php include(dirname(__FILE__) . '/carteRegionJs.php') ?>
 
 <script id="regionTemplate" type="text/template">
     <!-- wp:heading -->

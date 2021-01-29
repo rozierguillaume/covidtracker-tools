@@ -190,9 +190,9 @@
         var wps_statistics_object = {"rest_url": "https:\/\/covidtracker.fr\/wp-json\/", "wpnonce": "c3a162d9b1"};
         /* ]]> */
     </script>
-    <script type="text/javascript"
-            src="https://covidtracker.fr/wp-content/plugins/wp-statistics/assets/js/front.min.js?ver=12.6.13"
-            id="wp-statistics-js-js"></script>
+<!--    <script type="text/javascript"-->
+<!--            src="https://covidtracker.fr/wp-content/plugins/wp-statistics/assets/js/front.min.js?ver=12.6.13"-->
+<!--            id="wp-statistics-js-js"></script>-->
     <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-163777724-1"
             id="google_gtagjs-js" async=""></script>
     <script type="text/javascript" id="google_gtagjs-js-after">
@@ -403,7 +403,7 @@
         <div class="col-md-12">
             <div class="content">
                 <div id="post-1648" class="post-1648 page type-page status-publish hentry"><h2 class="entry-title">
-                        Dashboard Régions</h2>
+                        Vaccintracker</h2>
                     <div class="entry">
                         <?php include('./vaccintracker.php') ?>
                     </div>

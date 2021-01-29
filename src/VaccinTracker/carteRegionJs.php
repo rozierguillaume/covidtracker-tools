@@ -517,7 +517,6 @@
 
         function updateData(labels, datasets) {
             let chart = document.getElementById('chartRegionDetail');
-
             // Graphique courbe d'une région
             var lineChartRegion = new Chart(chart, {
                 type: 'line',
