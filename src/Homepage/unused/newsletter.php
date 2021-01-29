@@ -43,8 +43,7 @@
 <!--  END - We recommend to place the above code in head tag of your website html -->
 
 <!-- START - We recommend to place the below code where you want the form in your website html  -->
-<div class="sib-form" style="text-align: center;
-          background-color: #ffffff;                                 ">
+<div class="sib-form" style="text-align: center; background-color: #ffffff; ">
     <div id="sib-form-container" class="sib-form-container">
         <div id="error-message" class="sib-form-message-panel"
              style="font-size:16px; text-align:left; font-family:&quot;Helvetica&quot;, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;max-width:540px;">
