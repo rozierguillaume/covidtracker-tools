@@ -199,7 +199,7 @@
                     let code = region.code.replace('REG-', '');
                     let data = {
                         code: code,
-                        region: code,
+                        region: region.nom,
                         n_dose1_cumsum: region.n_dose1_cumsum,
                         n_dose1_cumsum_moyenne7j: region.n_dose1_cumsum_moyenne7j,
                         n_dose1_cumsum_pop: region.n_dose1_cumsum_pop,
