@@ -69,10 +69,7 @@ Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60"
     </div>
     <br>
     <div class="col-md-4" style="padding-top: 20px;">
-        Entre
-        <span style="font-size: 200%; color: rgb(45, 189, 84)"><span id="proportionVaccinesMin">--</span>%</span>
-        et
-        <span style="font-size: 200%; color: rgb(45, 189, 84)"><span id="proportionVaccinesMax">--</span>%</span><br> des Français ont reçu au moins une dose de vaccin. <i><small>Le Ministère de la Santé ne communiquant pas le nombre de 1ère et 2ème injections, il n'est pas possible de connaître la proportion exacte de vaccinés.</small></i><br><br>
+        <span style="font-size: 200%; color: rgb(45, 189, 84)"><span id="proportionVaccinesMax">--</span>%</span><br> des Français ont reçu au moins une dose de vaccin.<br><br>
         Il reste à vacciner au moins <br><span style="font-size: 200%; color: rgb(237, 88, 88);"><span id="proportionAVaccinerImmu">--</span>%</span><br>des Français avant d'atteindre un taux de vaccination de 60%. <br><br>
         <span style="font-size: 80%;">
             N.B. : un taux de vaccination de 60% ne permet pas nécessairement d'atteindre une immunité collective.<br>
@@ -876,7 +873,7 @@ function majValeurs(){
     document.getElementById("nb_vaccines_24h").innerHTML = numberWithSpaces(dejaVaccinesNb - nb_vaccines[nb_vaccines.length-2].n_dose1);
     document.getElementById("nb_doses").innerHTML = numberWithSpaces(cumul_stock);
     document.getElementById("proportionVaccinesMax").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(2);
-    document.getElementById("proportionVaccinesMin").innerHTML = (Math.round(dejaVaccines/2*10000000)/10000000).toFixed(2);
+    //document.getElementById("proportionVaccinesMin").innerHTML = (Math.round(dejaVaccines/2*10000000)/10000000).toFixed(2);
     //document.getElementById("proportion_doses").innerHTML = (dejaVaccinesNb/cumul_stock*100).toFixed(1);
 
     document.getElementById("proportionAVaccinerImmu").innerHTML = (Math.round(restantaVaccinerImmunite*10000000)/10000000).toFixed(2);

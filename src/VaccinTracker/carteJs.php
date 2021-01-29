@@ -187,7 +187,7 @@
         //let couleurs = ["#DCECCD", "#BDE0AE", "#98D390", "#73C679", "#55B86F", "#39A96B", "#1D9A6C", "#178973", "#117876"]
         let couleurs= ["#cfdde6", "#b8d4e6", "#a1cbe6", "#8ac2e6", "#73bae6", "#5cb1e6", "#45a8e6", "#2e9fe6", "#1796e6", "#0076bf"] // HSV(203, xx, 90) avec xx de 10 à 100
 
-        fetch('https://www.data.gouv.fr/fr/datasets/r/16cb2df5-e9c7-46ec-9dbf-c902f834dab1')
+        fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/vacsi-reg.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error("HTTP error " + response.status);
@@ -199,13 +199,15 @@
                     let code = region.code.replace('REG-', '');
                     let data = {
                         code: code,
-                        region: region.nom,
-                        vaccines: region.totalVaccines,
+                        region: code,
+                        n_dose1_cumsum: region.n_dose1_cumsum,
+                        n_dose1_cumsum_moyenne7j: region.n_dose1_cumsum_moyenne7j,
+                        n_dose1_cumsum_pop: region.n_dose1_cumsum_pop,
                         date: region.date
                     };
                     data.population = POPULATION.find(reg => reg.region == "REG-" + code).population;
 
-                    data.couvertureVaccinale = data.vaccines / data.population * 100;
+                    data.couvertureVaccinale = data.n_dose1_cumsum / data.population * 100;
 
                     if (!vaccinesRegionsHistorique[code]) {
                         vaccinesRegionsHistorique[code] = [];
@@ -227,8 +229,8 @@
                         } else {
                             var regionCarte = $('#carte path[data-code_insee="' + code + '"]');
                         }
-                        regionCarte.data("incidence-cas", region.totalVaccines);
-                        let data_reg = (data.vaccines / data.population) * 100;
+                        regionCarte.data("incidence-cas", region.n_dose1_cumsum);
+                        let data_reg = (data.n_dose1_cumsum / data.population) * 100;
                         $('.etiquette.region-' + code).text(data_reg.toFixed(2) + ' %');
                         
                     }
@@ -242,7 +244,7 @@
                 }
                 vaccinesRegions.map(data =>{
 
-                    let data_reg = (data.vaccines / data.population) * 100;
+                    let data_reg = (data.n_dose1_cumsum / data.population) * 100;
 
                     if (data.code == '06') {
                         var regionCarte = $('#carte g[data-code_insee="' + data.code + '"] path');
@@ -262,7 +264,7 @@
                         }
                 })
 
-                vaccinesRegions = vaccinesRegions.asortBy('vaccines');
+                vaccinesRegions = vaccinesRegions.asortBy('n_dose1_cumsum');
 
                 buildBarChart();
             });
@@ -322,7 +324,7 @@
                     labels: vaccinesRegions.map(val => val.region),
                     datasets: [{
                         label: 'Cumul vaccinés (1 ou 2 doses) ',
-                        data: vaccinesRegions.map(val => val.vaccines),
+                        data: vaccinesRegions.map(val => val.n_dose1_cumsum),
                         borderWidth: 3,
                         backgroundColor: 'rgba(0, 168, 235, 0.5)',
                         borderColor: 'rgba(0, 168, 235, 1)',
@@ -387,9 +389,9 @@
             $('#carte path[data-code_insee]').removeClass('selected');
             $('#region-general').hide();
             let region = vaccinesRegions.find(region => region.code == numeroRegion);
-            vaccinesRegion = region.vaccines;
+            vaccinesRegion = region.n_dose1_cumsum;
             vaccinesRegionPop = (vaccinesRegion / region.population * 100).toFixed(2)
-            vaccinesRegion = numberWithSpaces(region.vaccines);
+            vaccinesRegion = numberWithSpaces(region.n_dose1_cumsum);
 
             if (numeroRegion in doses_recues_regions){
                 let N = doses_recues_regions[numeroRegion]["valeurs"].length;
@@ -424,7 +426,7 @@
             vaccinesRegionsHistorique[numeroRegion] = vaccinesRegionsHistorique[numeroRegion].sortBy('date');
             let datasets = [{
                 label: 'Doses injectées - ' + nomRegion,
-                data: vaccinesRegionsHistorique[numeroRegion].map(val => val.vaccines),
+                data: vaccinesRegionsHistorique[numeroRegion].map(val => val.n_dose1_cumsum),
                 borderWidth: 3,
                 backgroundColor: 'rgba(0, 168, 235, 0.5)',
                 borderColor: 'rgba(0, 168, 235, 1)',
