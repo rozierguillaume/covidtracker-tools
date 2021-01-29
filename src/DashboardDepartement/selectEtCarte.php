@@ -34,10 +34,12 @@
                             Cas <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li data-carte="incidence-cas"><a href="#" class="selected">Taux d'incidence (4
-                                    couleurs)</a></li>
-                            <li data-carte="incidence-cas-12-couleurs"><a href="#" class="">Taux d'incidence (12
-                                    couleurs)</a></li>
+                            <li data-carte="incidence-cas">
+                                <a href="#" class="selected">Taux d'incidence (4 couleurs)</a>
+                            </li>
+                            <li data-carte="incidence-cas-12-couleurs">
+                                <a href="#" class="">Taux d'incidence (12 couleurs)</a>
+                            </li>
                             <li data-carte="evolution-cas"><a href="#">Évolution du taux d'incidence</a></li>
                             <li data-carte="taux-positivite"><a href="#">Taux de positivité</a></li>
                         </ul>
@@ -48,7 +50,7 @@
                             Vaccinations <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li data-carte="ndose1_cumsum_pop"><a href="#">Proportion partiellement vaccinés</a></li>
+                            <li data-carte="n_dose1_cumsum_pop"><a href="#">Proportion partiellement vaccinés</a></li>
                         </ul>
                     </div>
                     <div class="btn-group">

@@ -5,9 +5,9 @@
             var valeurs_cas = [">", "250", "150", "50"];
             var couleurs_cas = ["#3c0000", "#c80000", "#f95228", "#98ac3b"];
 
-            var valeurs_ndose1_cumsum_pop = [">", "5.5", "5", "4.5", "4", "3.5", "3", "2.5", "2", "1.5"];
-            //var couleurs_ndose1_cumsum_pop = ["#98ac3b", "#3c0000", "#c80000", "#f95228"];
-            var couleurs_ndose1_cumsum_pop = ["#0076bf", "#1796e6",  "#2e9fe6", "#45a8e6",  "#5cb1e6", "#73bae6", "#8ac2e6", "#a1cbe6", "#b8d4e6",  "#cfdde6"]
+            var valeurs_n_dose1_cumsum_pop = [">", "5.5", "5", "4.5", "4", "3.5", "3", "2.5", "2", "1.5"];
+            //var couleurs_n_dose1_cumsum_pop = ["#98ac3b", "#3c0000", "#c80000", "#f95228"];
+            var couleurs_n_dose1_cumsum_pop = ["#0076bf", "#1796e6",  "#2e9fe6", "#45a8e6",  "#5cb1e6", "#73bae6", "#8ac2e6", "#a1cbe6", "#b8d4e6",  "#cfdde6"]
             
             var valeurs_cas_12_couleurs = [">", "500", "450", "400", "350", "300", "250", "200", "150", "100", "75", "50", "25"];
             var couleurs_cas_12_couleurs = ["#3c0000", "#4c0000", "#6a0000", "#840000", "#a00000", "#c40001", "#d50100", "#e20001", "#f50e07", "#f95228", "#fb9449", "#98ac3b", "#118408"];
@@ -196,11 +196,11 @@
                     tableauCouleurs = couleurs_evolution;
                     nomDonnee = "lits_rea_evol";
                     pourcentage = true;
-                } else if (typeCarte == 'ndose1_cumsum_pop') {
+                } else if (typeCarte == 'n_dose1_cumsum_pop') {
                     $('#titreCarte').html("Proportion population partiellement vaccinée");
                     $('#descriptionCarte').html("Proportion de la population ayant reçu au moins une dose de vaccin.");
-                    tableauValeurs = valeurs_ndose1_cumsum_pop;
-                    tableauCouleurs = couleurs_ndose1_cumsum_pop;
+                    tableauValeurs = valeurs_n_dose1_cumsum_pop;
+                    tableauCouleurs = couleurs_n_dose1_cumsum_pop;
                     nomDonnee = "n_dose1_cumsum_pop";
                     pourcentage = true;
                     vaccination = true;
@@ -219,10 +219,7 @@
                     // console.log(numeroDepartement);
                     //Récupération des données du département.
                     if(vaccination==true){
-
                         donneesDepartement = donneesDepartementsVaccination[numeroDepartement];
-                        console.log(donneesDepartementsVaccination)
-                        
                     }else{
                         donneesDepartement = donneesDepartements[departement];
                     }
@@ -231,6 +228,7 @@
                     var departementCarte = $('#carte path[data-num="' + numeroDepartement + '"]');
                     //Affectation de la valeur de la donnée du département à sa représentation sur la carte. .
                     departementCarte.data(nomDonnee, donneesDepartement[nomDonnee]);
+
                     //Coloration du département sur la carte. .
                     departementCarte.css("fill", recupererCouleur(donneesDepartement[nomDonnee], tableauValeurs, tableauCouleurs));
                 }
@@ -269,11 +267,11 @@
             }
 
             function afficherDepartement(nomDepartment, numeroDepartement) {
-                console.log(donneesDepartements[nomDepartement]);
+                // console.log(donneesDepartements[nomDepartement]);
                 incidenceDepartement = donneesDepartements[nomDepartement]["incidence_cas"];
                 saturationRea = Math.round(donneesDepartements[nomDepartement]["saturation_rea"]);
                 tauxPositivite = donneesDepartements[nomDepartement]["taux_positivite"];
-                ndose1_cumsum_pop = donneesDepartementsVaccination[numeroDepartement]["n_dose1_cumsum_pop"];
+                n_dose1_cumsum_pop = donneesDepartementsVaccination[numeroDepartement]["n_dose1_cumsum_pop"];
                 incidenceFrance = Math.round(donneesFrance["incidence_cas"]);
                 dateMajVaccination = donneesDepartementsVaccination[numeroDepartement]["dates"][donneesDepartementsVaccination[numeroDepartement]["dates"].length - 1]
 
@@ -311,7 +309,7 @@
                 content = content.replaceAll('incidenceFrance', incidenceFrance);
                 content = content.replaceAll('saturationRea', saturationRea + "%");
                 content = content.replaceAll('tauxPositivite', tauxPositivite + "%");
-                content = content.replaceAll('ndose1_cumsum_pop', ndose1_cumsum_pop + "%");
+                content = content.replaceAll('n_dose1_cumsum_pop', n_dose1_cumsum_pop + "%");
                 content = content.replaceAll('dateMaj', dateMaj);
                 content = content.replaceAll('dateVaccinationMaj', dateMajVaccination);
                 content = content.replaceAll('couleurIncidence', couleurIncidence);
@@ -412,6 +410,8 @@
                     $('#carte #map title').text(nomDepartement + ' (evolution cas : ' + signe + $(this).data("incidence_evol") + '%)');
                 } else if (typeCarte == 'taux-positivite') {
                     $('#carte #map title').text(nomDepartement + ' (taux positivité : ' + $(this).data("taux_positivite").toFixed(2) + ')');
+                } else if (typeCarte == 'n_dose1_cumsum_pop') {
+                    $('#carte #map title').text(nomDepartement + ' (' + $(this).data("n_dose1_cumsum_pop").toFixed(2) + ' %)');
                 } else if (typeCarte == 'incidence-hospitalisations') {
                     $('#carte #map title').text(nomDepartement + ' (incidence : ' + $(this).data("incidence_hosp").toFixed(2) + ')');
                 } else if (typeCarte == 'lits-hospitalisations') {
