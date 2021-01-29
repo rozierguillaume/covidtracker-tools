@@ -197,8 +197,8 @@
                     nomDonnee = "lits_rea_evol";
                     pourcentage = true;
                 } else if (typeCarte == 'ndose1_cumsum_pop') {
-                    $('#titreCarte').html("% population partiellement vaccinée");
-                    $('#descriptionCarte').html("");
+                    $('#titreCarte').html("Proportion population partiellement vaccinée");
+                    $('#descriptionCarte').html("Proportion de la population ayant reçu au moins une dose de vaccin.");
                     tableauValeurs = valeurs_ndose1_cumsum_pop;
                     tableauCouleurs = couleurs_ndose1_cumsum_pop;
                     nomDonnee = "n_dose1_cumsum_pop";
@@ -273,7 +273,9 @@
                 incidenceDepartement = donneesDepartements[nomDepartement]["incidence_cas"];
                 saturationRea = Math.round(donneesDepartements[nomDepartement]["saturation_rea"]);
                 tauxPositivite = donneesDepartements[nomDepartement]["taux_positivite"];
+                ndose1_cumsum_pop = donneesDepartementsVaccination[numeroDepartement]["n_dose1_cumsum_pop"];
                 incidenceFrance = Math.round(donneesFrance["incidence_cas"]);
+                dateMajVaccination = donneesDepartementsVaccination[numeroDepartement]["dates"][donneesDepartementsVaccination[numeroDepartement]["dates"].length - 1]
 
                 if (incidenceDepartement > 100) {
                     couleurIncidence = "red";
@@ -309,10 +311,12 @@
                 content = content.replaceAll('incidenceFrance', incidenceFrance);
                 content = content.replaceAll('saturationRea', saturationRea + "%");
                 content = content.replaceAll('tauxPositivite', tauxPositivite + "%");
+                content = content.replaceAll('ndose1_cumsum_pop', ndose1_cumsum_pop + "%");
                 content = content.replaceAll('dateMaj', dateMaj);
+                content = content.replaceAll('dateVaccinationMaj', dateMajVaccination);
                 content = content.replaceAll('couleurIncidence', couleurIncidence);
                 content = content.replaceAll('couleurSaturationRea', couleurSaturationRea);
-                content = content.replaceAll('couleurTauxPositivite', couleurTauxPositivite);
+                content = content.replaceAll('couleurTauxPositivite', "black");
 
                 $('#donneesDepartements').prepend(content);
                 //trierDepartements();

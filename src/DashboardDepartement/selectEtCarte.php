@@ -48,7 +48,7 @@
                             Vaccinations <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li data-carte="ndose1_cumsum_pop"><a href="#">% vaccinés</a></li>
+                            <li data-carte="ndose1_cumsum_pop"><a href="#">Proportion partiellement vaccinés</a></li>
                         </ul>
                     </div>
                     <div class="btn-group">
@@ -97,6 +97,7 @@
                 <div id="carte">
                     <?php include(__DIR__ . '/carteDepartements.php'); ?>
                 </div>
+                CovidTracker.fr - Données : Santé publique France
                 <div id="droitsCarte" style="font-size: 8px; font-style: italic; margin-top: 30px; ">
                     Carte adaptée à partir d'une création <a target="_blank"
                                                              href="https://fr.wikipedia.org/wiki/Fichier:Carte_vierge_d%C3%A9partements_fran%C3%A7ais_avec_DOM.svg">Wikipedia</a>
