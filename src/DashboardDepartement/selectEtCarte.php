@@ -45,6 +45,15 @@
                     <div class="btn-group">
                         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
+                            Vaccinations <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li data-carte="ndose1_cumsum_pop"><a href="#">% vaccinés</a></li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
                             Hospitalisations <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">

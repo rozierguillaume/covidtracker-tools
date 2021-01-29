@@ -5,6 +5,10 @@
             var valeurs_cas = [">", "250", "150", "50"];
             var couleurs_cas = ["#3c0000", "#c80000", "#f95228", "#98ac3b"];
 
+            var valeurs_ndose1_cumsum_pop = [">", "5.5", "5", "4.5", "4", "3.5", "3", "2.5", "2", "1.5"];
+            //var couleurs_ndose1_cumsum_pop = ["#98ac3b", "#3c0000", "#c80000", "#f95228"];
+            var couleurs_ndose1_cumsum_pop = ["#0076bf", "#1796e6",  "#2e9fe6", "#45a8e6",  "#5cb1e6", "#73bae6", "#8ac2e6", "#a1cbe6", "#b8d4e6",  "#cfdde6"]
+            
             var valeurs_cas_12_couleurs = [">", "500", "450", "400", "350", "300", "250", "200", "150", "100", "75", "50", "25"];
             var couleurs_cas_12_couleurs = ["#3c0000", "#4c0000", "#6a0000", "#840000", "#a00000", "#c40001", "#d50100", "#e20001", "#f50e07", "#f95228", "#fb9449", "#98ac3b", "#118408"];
 
@@ -44,11 +48,12 @@
             var couleurs_dc = ["#3c0000", "#4c0000", "#6a0000", "#840000", "#a00000", "#c40001", "#d50100", "#e20001", "#f50e07", "#f95228", "#fb9449", "#98ac3b", "#118408"];
 
             var donneesDepartements;
+            var donneesDepartementsVaccination;
             var donneesFrance;
             var dateMaj;
             var typeCarte = 'incidence-cas';
-
-            fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/incidence_departements.json')
+            
+            fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/vacsi-dep.json')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error("HTTP error " + response.status);
@@ -56,19 +61,33 @@
                     return response.json();
                 })
                 .then(json => {
-                    donneesDepartements = json['donnees_departements'];
-                    donneesFrance = json['donnees_france'];
-                    dateMaj = json["date_update"];
-                    colorerCarte();
-                    selectionnerDepartement();
+                    donneesDepartementsVaccination = json;
+                    fetchOtherData();
                 });
+
+            function fetchOtherData(){
+                fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/incidence_departements.json')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("HTTP error " + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(json => {
+                        donneesDepartements = json['donnees_departements'];
+                        donneesFrance = json['donnees_france'];
+                        dateMaj = json["date_update"];
+                        colorerCarte();
+                        selectionnerDepartement();
+                    });
+            }
 
             function construireLegende(values = [], colors = [], pourcentage = false) {
                 content = $('#legendTemplatePre').html();
                 values.map((val, idx) => {
                     if (pourcentage && (val != '>')) {
                         if (val > 0) {
-                            content += $('#legendTemplateMid').html().replaceAll("valeur", '+' + val + ' %').replaceAll("colorBg", colors[idx]);
+                            content += $('#legendTemplateMid').html().replaceAll("valeur", plus + val + ' %').replaceAll("colorBg", colors[idx]);
                         } else {
                             content += $('#legendTemplateMid').html().replaceAll("valeur", val + ' %').replaceAll("colorBg", colors[idx]);
                         }
@@ -93,6 +112,8 @@
 
             function colorerCarte() {
                 pourcentage = false;
+                plus = "+";
+                vaccination = false;
                 if (typeCarte == 'incidence-cas') {
                     $('#titreCarte').html("Taux d'incidence");
                     $('#descriptionCarte').html("Nombre de cas cette semaine pour 100k habitants");
@@ -175,6 +196,15 @@
                     tableauCouleurs = couleurs_evolution;
                     nomDonnee = "lits_rea_evol";
                     pourcentage = true;
+                } else if (typeCarte == 'ndose1_cumsum_pop') {
+                    $('#titreCarte').html("% population partiellement vaccinée");
+                    $('#descriptionCarte').html("");
+                    tableauValeurs = valeurs_ndose1_cumsum_pop;
+                    tableauCouleurs = couleurs_ndose1_cumsum_pop;
+                    nomDonnee = "n_dose1_cumsum_pop";
+                    pourcentage = true;
+                    vaccination = true;
+                    plus = "";
                 } else {
                     $('#carte path').css("fill", "#c4c4cb");
                     return;
@@ -188,7 +218,14 @@
                     numeroDepartement = $('#listeDepartements option[value="' + departement + '"]').data("num");
                     // console.log(numeroDepartement);
                     //Récupération des données du département.
-                    donneesDepartement = donneesDepartements[departement];
+                    if(vaccination==true){
+
+                        donneesDepartement = donneesDepartementsVaccination[numeroDepartement];
+                        console.log(donneesDepartementsVaccination)
+                        
+                    }else{
+                        donneesDepartement = donneesDepartements[departement];
+                    }
                     // console.log(donneesDepartement);
                     //Affectation du numéro de département à sa représentation sur la carte. .
                     var departementCarte = $('#carte path[data-num="' + numeroDepartement + '"]');
