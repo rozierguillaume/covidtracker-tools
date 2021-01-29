@@ -793,7 +793,6 @@ function typeDonneesChart(){
     } else {
         buildLineChart();
     }
-    //this.lineChart.update();
 }
 function ajouterObjectifAnnotation(){
     type_donnees = document.getElementById("type").value
