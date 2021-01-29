@@ -532,7 +532,7 @@ function fetchOtherData(){
                 nb_vaccines.push({
                   date: value[0],
                   heure: value[2],
-                  total: value[1],
+                  n_dose1: value[1],
                   source: value[3]
                 });
             });
@@ -540,7 +540,7 @@ function fetchOtherData(){
             if(updated) { // si on a les données des 2 sources (csv covidtracker + gouv)
               nb_vaccines = nb_vaccines.filter((v,i,a)=>a.findIndex(t=>(t.date == v.date))===i); // suppression doublons
               nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
-              dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].total
+              dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].n_dose1
               dejaVaccines = dejaVaccinesNb*100/67000000;
               restantaVaccinerImmunite = 60 - dejaVaccines
               this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
@@ -558,29 +558,30 @@ function fetchOtherData(){
       )
 
     // Get data from health ministry csv
-    fetch('https://www.data.gouv.fr/fr/datasets/r/b234a041-b5ea-4954-889b-67e64a25ce0d', {cache: 'no-cache'}) //https://www.data.gouv.fr/fr/datasets/r/b234a041-b5ea-4954-889b-67e64a25ce0d
+    fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/vacsi-fra.json', {cache: 'no-cache'}) //https://www.data.gouv.fr/fr/datasets/r/b234a041-b5ea-4954-889b-67e64a25ce0d
         .then(response => {
             if (!response.ok) {
                 throw new Error("HTTP error " + response.status);
             }
-            return response.text();
+            return response.json();
         })
-        .then(csv => {
-            this.data = csv;
-            array_data = CSVToArray(csv, ";");
-            array_data.slice(1, array_data.length).map((value, idx) => {
+        .then(json => {
+            this.data = json;
+            console.log(json)
+            data["dates"].map((value, idx) =>{
                 nb_vaccines.push({
-                  date: value[0],
-                  heure: "19h30",
-                  total: value[1],
+                  date: value,
+                  heure: "",
+                  total: 0,
+                  n_dose1: data["n_dose1_cumsum"][idx],
                   source: "Ministère de la santé"
                 });
-            });
+            })
 
             if(updated) { // si on a les données des 2 sources (csv covidtracker + gouv)
               nb_vaccines = nb_vaccines.filter((v,i,a)=>a.findIndex(t=>(t.date == v.date))===i); // suppression doublons
               nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
-              dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].total
+              dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].n_dose1
               dejaVaccines = dejaVaccinesNb*100/67000000;
               restantaVaccinerImmunite = 60 - dejaVaccines
               this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
@@ -605,7 +606,7 @@ function calculerObjectif(){
     let one_day = (1000 * 60 * 60 * 24)
     let jours_restant = (Date.parse("2021-08-31") - Date.parse(nb_vaccines[nb_vaccines.length-1].date) )/ one_day
     let objectif = OBJECTIF_FIN_AOUT;
-    let resteAVacciner = objectif - nb_vaccines[nb_vaccines.length-1].total
+    let resteAVacciner = objectif - nb_vaccines[nb_vaccines.length-1].n_dose1
     console.log(jours_restant)
     if ((resteAVacciner>=0) && (jours_restant>=0)){
         return Math.round(resteAVacciner*2/jours_restant)
@@ -634,8 +635,8 @@ function calculerDateProjeteeObjectif () {
   const indexDerniereMaj = nb_vaccines.length - 1;
   const indexDebutFenetre = Math.max(0, indexDerniereMaj - 7)
   const derniereMaj = Date.parse(nb_vaccines[indexDerniereMaj].date)
-  const resteAVacciner = objectif*2 - Number(nb_vaccines[indexDerniereMaj].total)
-  const differentielVaccinesFenetre = Number(nb_vaccines[indexDerniereMaj].total) - Number(nb_vaccines[indexDebutFenetre].total)
+  const resteAVacciner = objectif*2 - Number(nb_vaccines[indexDerniereMaj].n_dose1)
+  const differentielVaccinesFenetre = Number(nb_vaccines[indexDerniereMaj].n_dose1) - Number(nb_vaccines[indexDebutFenetre].n_dose1)
   differentielVaccinesParJour = differentielVaccinesFenetre / (indexDerniereMaj - indexDebutFenetre)
   const oneDay = (1000 * 60 * 60 * 24)
   const nbJoursAvantObjectif = Math.round(resteAVacciner / differentielVaccinesParJour)
@@ -645,7 +646,7 @@ function calculerDateProjeteeObjectif () {
 function buildLineChart(){
 
     var ctx = document.getElementById('lineVacChart').getContext('2d');
-    let data_values = nb_vaccines.map(val => ({x: val.date, y:parseInt(val.total)}));
+    let data_values = nb_vaccines.map(val => ({x: val.date, y:parseInt(val.n_dose1)}));
     let data_object_stock = cumul_stock_array.map((value, idx)=> ({x: dates_stock[idx], y: parseInt(value)}))
 
     this.lineChart = new Chart(ctx, {
@@ -787,7 +788,7 @@ function typeDonneesChart(){
 
         nb_vaccines_quot = [nb_vaccines[0].total]
         for(i=0; i<nb_vaccines.length-1; i++){
-            nb_vaccines_quot.push(nb_vaccines[i+1].total-nb_vaccines[i].total)
+            nb_vaccines_quot.push(nb_vaccines[i+1].n_dose1-nb_vaccines[i].n_dose1)
         }
         buildBarChart(nb_vaccines_quot);
     } else {
@@ -872,7 +873,7 @@ function majValeurs(){
     }
 
     document.getElementById("nb_vaccines").innerHTML = numberWithSpaces(dejaVaccinesNb);
-    document.getElementById("nb_vaccines_24h").innerHTML = numberWithSpaces(dejaVaccinesNb - nb_vaccines[nb_vaccines.length-2].total);
+    document.getElementById("nb_vaccines_24h").innerHTML = numberWithSpaces(dejaVaccinesNb - nb_vaccines[nb_vaccines.length-2].n_dose1);
     document.getElementById("nb_doses").innerHTML = numberWithSpaces(cumul_stock);
     document.getElementById("proportionVaccinesMax").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(2);
     document.getElementById("proportionVaccinesMin").innerHTML = (Math.round(dejaVaccines/2*10000000)/10000000).toFixed(2);
