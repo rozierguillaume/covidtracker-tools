@@ -59,6 +59,14 @@ if (isset($_GET['dep']) and $_GET['dep']) {
                     <span style="font-size: 70%;">Mise à jour : dateMaj</span>
                 </div>
             </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="shadow">
+                    <span style="font-size: 160%; color: couleurTauxPositivite"><b>n_dose1_cumsum_pop</b></span><br>
+                    <span><b>Taux de vaccination</b>
+                <br>Proportion de personnes ayant reçu une dose de vaccin.</span><br>
+                    <span style="font-size: 70%;">Dernière donnée : dateVaccinationMaj</span>
+                </div>
+            </div>
         </div>
 
         <h3 style="margin-top: 40px;">Vue d'ensemble</h3>

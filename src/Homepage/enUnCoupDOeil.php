@@ -64,6 +64,9 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
                 <div>
                     <canvas id="barReaChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
                 </div>
+                <br>
+                <br>
+                <br>
             </div>
         </div>
     </div>

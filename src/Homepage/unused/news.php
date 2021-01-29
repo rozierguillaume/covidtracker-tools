@@ -1,3 +1,5 @@
+
+
 <div class="row"><!-- wp:columns -->
     <div class="col-md-8 text-center"><!-- wp:column {"width":"66.66%"} -->
         <div style="border: 1px solid darkred; padding: 15px; border-radius: 7px;">
@@ -15,6 +17,5 @@
 
     <div class="col-md-4">
         <?php include(dirname(__FILE__) . '/newsletter.php') ?>
-
     </div>
 </div>

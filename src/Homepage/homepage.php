@@ -19,16 +19,11 @@
     sur Twitter, ainsi que <a href="https://twitter.com/covidtracker_fr">@covidtracker_fr</a>.
 </p>
 <!-- /wp:paragraph -->
-
+<!-- wp:spacer {"height":30} -->
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
 <?php include(dirname(__FILE__) . '/enUnCoupDOeil.php') ?>
 <?php include(dirname(__FILE__) . '/carte.php') ?>
 <?php include(dirname(__FILE__) . '/enDetail.php') ?>
-<?php include(dirname(__FILE__) . '/news.php') ?>
-<?php include(dirname(__FILE__) . '/derniersArticles.php') ?>
-<?php include(dirname(__FILE__) . '/ilsEnParlent.php') ?>
-<?php include(dirname(__FILE__) . '/footer.php') ?>
 
-<!-- wp:spacer {"height":50} -->
-<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
-<!-- /wp:spacer -->
 

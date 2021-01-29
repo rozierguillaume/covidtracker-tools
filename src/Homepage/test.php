@@ -403,6 +403,10 @@
                         Test accueil local</h2>
                     <div class="entry">
                         <?php include('./homepage.php') ?>
+                        <br>
+                        <pre>Le contenu Wordpress ici...</pre>
+                        <br>
+                        <?php include('./homepageFooter.php') ?>
                     </div>
                 </div>
             </div>

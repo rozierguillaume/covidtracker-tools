@@ -34,8 +34,9 @@ Template Name: template_homepage
 					    
 					    <div class="entry">
 
-				   		<?php the_content(); ?>
-				   		<?php include(dirname(__FILE__) . '/src/Homepage/homepage.php') ?>
+                            <?php include(dirname(__FILE__) . '/src/Homepage/homepage.php') ?>
+				   		    <?php the_content(); ?>
+                            <?php include(dirname(__FILE__) . '/src/Homepage/homepageFooter.php') ?>
 
 					    </div>
 					     

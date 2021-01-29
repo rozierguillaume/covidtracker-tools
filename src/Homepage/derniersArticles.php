@@ -1,3 +1,4 @@
+
 <!-- wp:html -->
 <h3>Derniers articles</h3>
 <!-- /wp:html -->
@@ -6,8 +7,7 @@
 
 <!-- wp:html -->
 <div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://covidtracker.fr/blog/">Tous les articles de CovidTracker &gt;</a></div>
-<!-- /wp:html --></div>
-<!-- /wp:column -->
+<!-- /wp:html -->
 
 <!-- wp:column {"width":"33.33%"} -->
 <div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:spacer {"height":30} -->
