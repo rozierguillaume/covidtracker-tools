@@ -2,16 +2,16 @@
     <div id="echelleResume">
         Échelle :
         <div>
-            <input type="radio" data-type="lineaire" name="drone" value="huey" checked>
-            <label for="huey">Linéaire </label>
+            <input id="radioLineaire" type="radio" data-type="lineaire" name="typeGraphique" checked>
+            <label for="radioLineaire">Linéaire </label>
         </div>
         <div>
-            <input type="radio" data-type="logarithmique" name="drone" value="dewey">
-            <label for="dewey">Logarithmique </label>
+            <input id="radioLogarithnmique" type="radio" data-type="logarithmique" name="typeGraphique">
+            <label for="radioLogarithnmique">Logarithmique </label>
         </div>
         <div>
-            <input type="radio" data-type="croissance" name="drone" value="dewey">
-            <label for="dewey">Croissance hebdo.</label>
+            <input id="radioCroissance" type="radio" data-type="croissance" name="typeGraphique">
+            <label for="radioCroissance">Croissance hebdo.</label>
         </div>
     </div>
 
@@ -92,7 +92,6 @@
 
     <script>
         jQuery(document).ready(function($){
-
             function affichageTypeGraphique()
             {
                 $('#resume .charts').addClass('hidden');
@@ -103,8 +102,8 @@
             $('#echelleResume input').click(function(){
                 affichageTypeGraphique();
             });
-            affichageTypeGraphique();
 
+            affichageTypeGraphique();
         });
     </script>
 
