@@ -27,7 +27,7 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
 </div>
 
 <div class="alert alert-warning"  style="font-size: 18px;">
-    <b>Information sur les données.</b> Jusqu'alors le Ministère de la Santé communiquait un chiffre <a href="https://solidarites-sante.gouv.fr/actualites/presse/communiques-de-presse/article/vaccination-contre-la-covid-en-france-au-24-janvier-2021-plus-de-1-026-000">présenté</a> comme le "nombre de personnes vaccinées". Il apparaît que ce chiffre corresponde plutôt au nombre de doses injectées (deux doses sont nécessaires pour vacciner une personne) (<a href="https://www.leparisien.fr/societe/covid-19-pourquoi-le-nombre-de-personnes-vaccinees-n-est-pas-vraiment-celui-qu-on-croit-25-01-2021-8421084.php#xtor=AD-1481423553">Le Parisien</a>). Le vocabulaire présent sur cette page a donc été adapté en ce sens.
+    <b>29 janvier - Information sur les données.</b> <i>Provenance des données</i> : jusqu’alors les données étaient remontées manuellement par les ARS au Ministère de la Santé. Désormais, le Système d’Information VAC-SI est utilisé. De petits écarts peuvent temporairement être observés le temps que toutes les données soient saisies. Les données du jour concerneront désormais J-1. <i>Type des données</i> : les données concernent désormais le nombre de personnes ayant reçu une dose (non plus le nombre de doses injectées). <a href="https://solidarites-sante.gouv.fr/actualites/presse/communiques-de-presse/article/le-suivi-de-la-couverture-vaccinale-desormais-opere-via-vaccin-covid">Plus d'informations</a>.
 </div>
 <!-- /wp:html -->
 
@@ -35,14 +35,14 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
 <div class="wrap">
     <div class="one">
         <span id="nb_vaccines" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span>&nbsp;&nbsp;(+<span id="nb_vaccines_24h">--</span> en 24h)<br>
-        <b>Doses injectées</b><br>
-        Nombre cumulé doses injectées. Il faut deux doses pour vacciner un patient.
+        <b>Personnes partiellement vaccinées</b><br>
+        Nombre cumulé de personnes ayant reçu une ou plusieurs doses de vaccin.
         <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span id="date_maj_1">--/--</span>.<br>Source : CovidTracker/Ministère de la Santé.</i></div>
     </div>
 
     <div class="one">
         <span id="nb_vaccines_2_doses" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span>&nbsp;&nbsp;(+<span id="nb_vaccines_24h_2_doses">--</span> en 24h)<br>
-        <b>Personnes vaccinées</b><br>
+        <b>Personnes totalement vaccinées</b><br>
         <i>Donnée non fournie par le Ministère de la Santé.</i><br>
         Nombre cumulé de personnes ayant reçu les deux doses de vaccin.
         <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span id="date_maj_2">--/--</span>.<br>Source : CovidTracker/Ministère de la Santé.</i></div>
@@ -69,10 +69,7 @@ Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60"
     </div>
     <br>
     <div class="col-md-4" style="padding-top: 20px;">
-        Entre
-        <span style="font-size: 200%; color: rgb(45, 189, 84)"><span id="proportionVaccinesMin">--</span>%</span>
-        et
-        <span style="font-size: 200%; color: rgb(45, 189, 84)"><span id="proportionVaccinesMax">--</span>%</span><br> des Français ont reçu au moins une dose de vaccin. <i><small>Le Ministère de la Santé ne communiquant pas le nombre de 1ère et 2ème injections, il n'est pas possible de connaître la proportion exacte de vaccinés.</small></i><br><br>
+        <span style="font-size: 200%; color: rgb(45, 189, 84)"><span id="proportionVaccinesMax">--</span>%</span><br> des Français ont reçu au moins une dose de vaccin.<br><br>
         Il reste à vacciner au moins <br><span style="font-size: 200%; color: rgb(237, 88, 88);"><span id="proportionAVaccinerImmu">--</span>%</span><br>des Français avant d'atteindre un taux de vaccination de 60%. <br><br>
         <span style="font-size: 80%;">
             N.B. : un taux de vaccination de 60% ne permet pas nécessairement d'atteindre une immunité collective.<br>
@@ -105,8 +102,8 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
     </div>
     <div>
     <select name="type" id="type" onchange="typeDonneesChart()">
-        <option value="cumul">Cumul doses injectées</option>
-        <option value="quotidien">Doses injectées quotidiennes</option>
+        <option value="cumul"><b>Cumul</b> vaccinés (1 ou 2 doses)</option>
+        <option value="quotidien">Vaccinations quotidiennes (1 ou 2 doses)</option>
     </select>
     </div>
 </div>
@@ -532,7 +529,7 @@ function fetchOtherData(){
                 nb_vaccines.push({
                   date: value[0],
                   heure: value[2],
-                  total: value[1],
+                  n_dose1: value[1],
                   source: value[3]
                 });
             });
@@ -540,7 +537,7 @@ function fetchOtherData(){
             if(updated) { // si on a les données des 2 sources (csv covidtracker + gouv)
               nb_vaccines = nb_vaccines.filter((v,i,a)=>a.findIndex(t=>(t.date == v.date))===i); // suppression doublons
               nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
-              dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].total
+              dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].n_dose1
               dejaVaccines = dejaVaccinesNb*100/67000000;
               restantaVaccinerImmunite = 60 - dejaVaccines
               this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
@@ -558,29 +555,30 @@ function fetchOtherData(){
       )
 
     // Get data from health ministry csv
-    fetch('https://www.data.gouv.fr/fr/datasets/r/b234a041-b5ea-4954-889b-67e64a25ce0d', {cache: 'no-cache'}) //https://www.data.gouv.fr/fr/datasets/r/b234a041-b5ea-4954-889b-67e64a25ce0d
+    fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/vacsi-fra.json', {cache: 'no-cache'}) //https://www.data.gouv.fr/fr/datasets/r/b234a041-b5ea-4954-889b-67e64a25ce0d
         .then(response => {
             if (!response.ok) {
                 throw new Error("HTTP error " + response.status);
             }
-            return response.text();
+            return response.json();
         })
-        .then(csv => {
-            this.data = csv;
-            array_data = CSVToArray(csv, ";");
-            array_data.slice(1, array_data.length).map((value, idx) => {
+        .then(json => {
+            this.data = json;
+            console.log(json)
+            data["dates"].map((value, idx) =>{
                 nb_vaccines.push({
-                  date: value[0],
-                  heure: "19h30",
-                  total: value[1],
+                  date: value,
+                  heure: "",
+                  total: 0,
+                  n_dose1: data["n_dose1_cumsum"][idx],
                   source: "Ministère de la santé"
                 });
-            });
+            })
 
             if(updated) { // si on a les données des 2 sources (csv covidtracker + gouv)
               nb_vaccines = nb_vaccines.filter((v,i,a)=>a.findIndex(t=>(t.date == v.date))===i); // suppression doublons
               nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
-              dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].total
+              dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].n_dose1
               dejaVaccines = dejaVaccinesNb*100/67000000;
               restantaVaccinerImmunite = 60 - dejaVaccines
               this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
@@ -605,7 +603,7 @@ function calculerObjectif(){
     let one_day = (1000 * 60 * 60 * 24)
     let jours_restant = (Date.parse("2021-08-31") - Date.parse(nb_vaccines[nb_vaccines.length-1].date) )/ one_day
     let objectif = OBJECTIF_FIN_AOUT;
-    let resteAVacciner = objectif - nb_vaccines[nb_vaccines.length-1].total
+    let resteAVacciner = objectif - nb_vaccines[nb_vaccines.length-1].n_dose1
     console.log(jours_restant)
     if ((resteAVacciner>=0) && (jours_restant>=0)){
         return Math.round(resteAVacciner*2/jours_restant)
@@ -634,8 +632,8 @@ function calculerDateProjeteeObjectif () {
   const indexDerniereMaj = nb_vaccines.length - 1;
   const indexDebutFenetre = Math.max(0, indexDerniereMaj - 7)
   const derniereMaj = Date.parse(nb_vaccines[indexDerniereMaj].date)
-  const resteAVacciner = objectif*2 - Number(nb_vaccines[indexDerniereMaj].total)
-  const differentielVaccinesFenetre = Number(nb_vaccines[indexDerniereMaj].total) - Number(nb_vaccines[indexDebutFenetre].total)
+  const resteAVacciner = objectif*2 - Number(nb_vaccines[indexDerniereMaj].n_dose1)
+  const differentielVaccinesFenetre = Number(nb_vaccines[indexDerniereMaj].n_dose1) - Number(nb_vaccines[indexDebutFenetre].n_dose1)
   differentielVaccinesParJour = differentielVaccinesFenetre / (indexDerniereMaj - indexDebutFenetre)
   const oneDay = (1000 * 60 * 60 * 24)
   const nbJoursAvantObjectif = Math.round(resteAVacciner / differentielVaccinesParJour)
@@ -645,7 +643,7 @@ function calculerDateProjeteeObjectif () {
 function buildLineChart(){
 
     var ctx = document.getElementById('lineVacChart').getContext('2d');
-    let data_values = nb_vaccines.map(val => ({x: val.date, y:parseInt(val.total)}));
+    let data_values = nb_vaccines.map(val => ({x: val.date, y:parseInt(val.n_dose1)}));
     let data_object_stock = cumul_stock_array.map((value, idx)=> ({x: dates_stock[idx], y: parseInt(value)}))
 
     this.lineChart = new Chart(ctx, {
@@ -653,7 +651,7 @@ function buildLineChart(){
         data: {
             //labels: nb_vaccines.map(val => val.date),
             datasets: [{
-                label: 'Doses injectées (cumul) ',
+                label: 'Personnes partiellement vaccinées (cumul) ',
                 data: data_values,
                 borderWidth: 3,
                 backgroundColor: '#92bed2',
@@ -787,7 +785,7 @@ function typeDonneesChart(){
 
         nb_vaccines_quot = [nb_vaccines[0].total]
         for(i=0; i<nb_vaccines.length-1; i++){
-            nb_vaccines_quot.push(nb_vaccines[i+1].total-nb_vaccines[i].total)
+            nb_vaccines_quot.push(nb_vaccines[i+1].n_dose1-nb_vaccines[i].n_dose1)
         }
         buildBarChart(nb_vaccines_quot);
     } else {
@@ -872,10 +870,10 @@ function majValeurs(){
     }
 
     document.getElementById("nb_vaccines").innerHTML = numberWithSpaces(dejaVaccinesNb);
-    document.getElementById("nb_vaccines_24h").innerHTML = numberWithSpaces(dejaVaccinesNb - nb_vaccines[nb_vaccines.length-2].total);
+    document.getElementById("nb_vaccines_24h").innerHTML = numberWithSpaces(dejaVaccinesNb - nb_vaccines[nb_vaccines.length-2].n_dose1);
     document.getElementById("nb_doses").innerHTML = numberWithSpaces(cumul_stock);
     document.getElementById("proportionVaccinesMax").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(2);
-    document.getElementById("proportionVaccinesMin").innerHTML = (Math.round(dejaVaccines/2*10000000)/10000000).toFixed(2);
+    //document.getElementById("proportionVaccinesMin").innerHTML = (Math.round(dejaVaccines/2*10000000)/10000000).toFixed(2);
     //document.getElementById("proportion_doses").innerHTML = (dejaVaccinesNb/cumul_stock*100).toFixed(1);
 
     document.getElementById("proportionAVaccinerImmu").innerHTML = (Math.round(restantaVaccinerImmunite*10000000)/10000000).toFixed(2);

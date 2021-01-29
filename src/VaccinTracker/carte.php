@@ -11,7 +11,7 @@
 <!--START HTML-->
 <div id="menu" class="row">
     <div class="col-md-6 text-center">
-        <h4 id="titre_map" class="" style="display: inline-block">Nombre de doses injectées pour 100 habitants :</h4>
+        <h4 id="titre_map" class="" style="display: inline-block">Nombre de personnes partiellement vaccinées pour 100 habitants :</h4>
         <div id="carte" style="margin-top:20px;">
             <?php include(__DIR__ . '/carteSvg.php'); ?>
         </div>
@@ -19,7 +19,7 @@
     <div class="col-md-6" style="" id="donneesRegions">
         <div id="region-graphique">
             <div id="region-general">
-                <h4 id="titre_map" class="" style="display: inline-block"> Nombre de doses injectées :</h4>
+                <h4 id="titre_map" class="" style="display: inline-block"> Nombre de personnes partiellement vaccinées :</h4>
                 <div class="chart-container" style="margin-top: 20px; position: relative; height:50vh; width:100%">
                     <canvas id="chartRegions" style="margin-top:0px; max-height: 700px; max-width: 900px;"></canvas>
                 </div>
@@ -85,8 +85,8 @@
                 </a>
             </h2>
             <span style="font-size: 160%; color: black"><b>vaccinesRegion</b></span><br>
-            <span><b>Nombre de doses injectées</b><br>
-                Nombre cumulé de doses injectées. Donc vaccinesPopReg doses ont été injectées pour 100 habitants.
+            <span><b>Nombre de personnes partiellement vaccinées</b><br>
+                Nombre cumulé des personnes ayant reçu au moins une dose. Donc vaccinesPopReg% des habitants ont reçu une dose.
             <br></span>
             <span style="font-size: 70%;">Mise à jour : dateMajDoses</span>
 
