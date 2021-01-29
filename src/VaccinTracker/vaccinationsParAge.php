@@ -16,7 +16,7 @@ fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data
        })
        .then(json => {
           this.data = json;
-          buildLineChart();
+          buildLineChartAge();
         })
        .catch(function () {
            this.dataError = true;
@@ -25,7 +25,7 @@ fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data
       )
 
 
-function buildLineChart(){
+function buildLineChartAge(){
 
     var ctx = document.getElementById('barChart').getContext('2d');
 
