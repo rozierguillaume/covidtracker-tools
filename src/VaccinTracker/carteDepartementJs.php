@@ -137,7 +137,7 @@
 
             $('#donneesDepartements').prepend(content);
             let datasets = [{
-                label: 'Doses injectées - ' + nomDepartement,
+                label: 'Vaccinés (1 ou 2 doses) - ' + nomDepartement,
                 // data: vaccinesDepartementsHistorique[numeroDepartement].map(val => val.vaccines),
                 data: donneesJournalieresDepartement,
                 borderWidth: 3,

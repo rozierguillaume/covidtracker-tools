@@ -1,7 +1,7 @@
 <!--START HTML-->
 <div id="menu" class="row">
     <div class="col-md-6 text-center">
-        <h4 id="titre_map" class="" style="display: inline-block">Nombre de personnes partiellement vaccinées pour 100 habitants :</h4>
+        <h4 id="titre_map" class="" style="display: inline-block">Proportion de la population ayant reçu une dose :</h4>
         <div id="carte" style="margin-top:20px;">
             <?php include(__DIR__ . '/carteRegionSvg.php'); ?>
         </div>
@@ -9,7 +9,7 @@
     <div class="col-md-6" style="" id="donneesRegions">
         <div id="region-graphique">
             <div id="region-general">
-                <h4 id="titre_map" class="" style="display: inline-block"> Nombre de personnes partiellement vaccinées :</h4>
+                <h4 id="titre_map" class="" style="display: inline-block"> Nombre de personnes ayant reçu une dose :</h4>
                 <div class="chart-container" style="margin-top: 20px; position: relative; height:50vh; width:100%">
                     <canvas id="chartRegions" style="margin-top:0px; max-height: 700px; max-width: 900px;"></canvas>
                 </div>

@@ -9,7 +9,6 @@
 
 <?php include(__DIR__ . '/vaccintrackerCss.php'); ?>
 
-
 <!-- wp:html -->
 
 <p>Quelle proportion des Français a été vaccinée ? Combien faut-il encore vacciner de personnes avant d'atteindre

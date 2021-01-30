@@ -2,7 +2,7 @@
 <div id="menu" class="row">
     <div class="col-md-6 text-center">
         <div class="row">
-            <h4 id="titre_map" class="" style="display: inline-block">Nombre de doses injectées pour 100 habitants :</h4>
+            <h4 id="titre_map" class="" style="display: inline-block">Proportion de la population ayant reçu une dose :</h4>
             <div class="col-xs-10">
                 <div style="display:none;">
                     <?php include(dirname(__FILE__) . '/../DashboardDepartement/selectDepartements.php') ?>
@@ -47,9 +47,8 @@
             </h2>
             <span style="font-size: 160%; color: black"><b>vaccinesDepartement</b></span><br>
             <span>
-                <b>Nombre de doses injectées</b><br>
-                Nombre cumulé de doses injectées.
-                Donc vaccinesPopReg doses ont été injectées pour 100 habitants.
+                <b>Personnes ayant reçu une dose</b><br>
+                Nombre cumulé de personnes ayant reçu au moins une dose de vaccin, soit vaccinesPopReg% des habitants.
             <br></span>
             <span style="font-size: 70%;">Mise à jour : dateMajDoses</span>
 

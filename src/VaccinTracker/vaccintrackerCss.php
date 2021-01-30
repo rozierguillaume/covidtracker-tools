@@ -186,7 +186,7 @@
         height: 10%;
     }
 
-    <style>
+    
      div[shadow] {
          border: 0px solid black;
          padding: 10px 20px;
