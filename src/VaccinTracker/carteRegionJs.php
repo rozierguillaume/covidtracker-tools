@@ -425,7 +425,7 @@
             $('#donneesRegions').prepend(content);
             vaccinesRegionsHistorique[numeroRegion] = vaccinesRegionsHistorique[numeroRegion].sortBy('date');
             let datasets = [{
-                label: 'Doses injectées - ' + nomRegion,
+                label: 'Vaccinés (1 ou 2 doses) - ' + nomRegion,
                 data: vaccinesRegionsHistorique[numeroRegion].map(val => val.n_dose1_cumsum),
                 borderWidth: 3,
                 backgroundColor: 'rgba(0, 168, 235, 0.5)',
