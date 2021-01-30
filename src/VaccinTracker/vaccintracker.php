@@ -12,9 +12,7 @@
 <!-- wp:html -->
 
 <p>Quelle proportion des Français a été vaccinée ? Combien faut-il encore vacciner de personnes avant d'atteindre
-    l'immunité collective ? Quels sont les différents types de vaccins proposés ?
-    Ce tracker permet de suivre la proportion de Français déjà vaccinés contre la Covid19, et le nombre de personnes
-    restant à vacciner pour atteindre l'immunité collective. VaccinTracker est une initiative citoyenne indépendante et
+    l'immunité collective ? Quels sont les différents types de vaccins proposés ? Ce tracker permet de suivre la proportion de Français déjà vaccinés contre la Covid19. VaccinTracker est une initiative citoyenne indépendante et
     non officielle.
 </p>
 
@@ -41,15 +39,7 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
     </div>
 </div>
 
-<div class="alert alert-warning" style="font-size: 18px;">
-    <b>29 janvier - Information sur les données.</b> <i>Provenance des données</i> : jusqu’alors les données étaient
-    remontées manuellement par les ARS au Ministère de la Santé. Désormais, le Système d’Information VAC-SI est utilisé.
-    De petits écarts peuvent temporairement être observés le temps que toutes les données soient saisies. Les données du
-    jour concerneront désormais J-1. <i>Type des données</i> : les données concernent désormais le nombre de personnes
-    ayant reçu une dose (non plus le nombre de doses injectées). <a
-            href="https://solidarites-sante.gouv.fr/actualites/presse/communiques-de-presse/article/le-suivi-de-la-couverture-vaccinale-desormais-opere-via-vaccin-covid">Plus
-        d'informations</a>.
-</div>
+
 <!-- /wp:html -->
 
 <?php include(__DIR__.'/resume.php'); ?>
@@ -102,6 +92,17 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
     </div>
 </div>
 <?php include(__DIR__ . '/vaccinationsParAge.php') ?>
+
+<div class="alert alert-warning" style="font-size: 18px; margin-top:40px; margin-bottom: 20px;">
+    <b>29 janvier - Information sur les données.</b> <i>Provenance des données</i> : jusqu’alors les données étaient
+    remontées manuellement par les ARS au Ministère de la Santé. Désormais, le Système d’Information VAC-SI est utilisé.
+    De petits écarts peuvent temporairement être observés le temps que toutes les données soient saisies. Les données du
+    jour concerneront désormais J-1. <i>Type des données</i> : les données concernent désormais le nombre de personnes
+    ayant reçu une dose (non plus le nombre de doses injectées). <a
+            href="https://solidarites-sante.gouv.fr/actualites/presse/communiques-de-presse/article/le-suivi-de-la-couverture-vaccinale-desormais-opere-via-vaccin-covid">Plus
+        d'informations</a>.
+</div>
+
 <?php include(__DIR__ . '/vaccin-map.html') ?>
 <?php include(__DIR__ . '/autorisations.php') ?>
 <?php include(__DIR__ . '/immuniteCollective.php') ?>

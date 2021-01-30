@@ -11,7 +11,6 @@
     <div class="one">
         <span id="nb_vaccines_2_doses" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span>&nbsp;&nbsp;(+<span id="nb_vaccines_24h_2_doses">--</span> en 24h)<br>
         <b>Personnes totalement vaccinées</b><br>
-        <i>Donnée non fournie par le Ministère de la Santé.</i><br>
         Nombre cumulé de personnes ayant reçu les deux doses de vaccin.
         <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span id="date_maj_2">--/--</span>.<br>Source : CovidTracker/Ministère de la Santé.</i></div>
     </div>
