@@ -1,5 +1,16 @@
 
 <script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('#choixCarteDepartement').click(function(){
+            $('#blocCarteDepartement').removeClass('hidden');
+            $('#blocCarteRegion').addClass('hidden');
+        });
+
+        $('#choixCarteRegion').click(function(){
+            $('#blocCarteRegion').removeClass('hidden');
+            $('#blocCarteDepartement').addClass('hidden');
+        });
+    });
 
     function numberWithSpaces(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "&nbsp;");

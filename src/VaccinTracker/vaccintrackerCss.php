@@ -1,5 +1,9 @@
 <style>
 
+    #choixCarte button{
+        margin: 0px;
+    }
+
     .tableau-div{
         width: 50vh;
         height: 50vh;

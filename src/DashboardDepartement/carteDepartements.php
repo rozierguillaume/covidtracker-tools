@@ -1,4 +1,4 @@
-<svg id="map"
+<svg id="map" class="departement"
         width="538.08136"
         height="553.04327"
         viewBox="0 0 538 553"

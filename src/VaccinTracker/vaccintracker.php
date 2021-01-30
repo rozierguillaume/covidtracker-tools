@@ -1,7 +1,10 @@
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js"
+        integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw=="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-deferred@1"></script>
 
 <?php include(__DIR__ . '/vaccintrackerCss.php'); ?>
@@ -9,8 +12,11 @@
 
 <!-- wp:html -->
 
-<p>Quelle proportion des Français a été vaccinée ? Combien faut-il encore vacciner de personnes avant d'atteindre l'immunité collective ? Quels sont les différents types de vaccins proposés ?
-Ce tracker permet de suivre la proportion de Français déjà vaccinés contre la Covid19, et le nombre de personnes restant à vacciner pour atteindre l'immunité collective. VaccinTracker est une initiative citoyenne indépendante et non officielle.
+<p>Quelle proportion des Français a été vaccinée ? Combien faut-il encore vacciner de personnes avant d'atteindre
+    l'immunité collective ? Quels sont les différents types de vaccins proposés ?
+    Ce tracker permet de suivre la proportion de Français déjà vaccinés contre la Covid19, et le nombre de personnes
+    restant à vacciner pour atteindre l'immunité collective. VaccinTracker est une initiative citoyenne indépendante et
+    non officielle.
 </p>
 
 <!--
@@ -22,21 +28,28 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
 
 <div id="news"></div>
 
-<div class="alert alert-info clearFix"  style="font-size: 18px;">
+<div class="alert alert-info clearFix" style="font-size: 18px;">
     <div class="row">
         <div class="col-md-8">
             Bonne année 2021 ! CovidTracker est gratuit, sans pub et développé bénévolement.<br>
         </div>
         <div class="col-md-4 text-right">
             <button class="btn-shadow">
-                <a href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">🍩 Offrez-moi un donut</a>
+                <a href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">🍩
+                    Offrez-moi un donut</a>
             </button> &nbsp;&nbsp;
         </div>
     </div>
 </div>
 
-<div class="alert alert-warning"  style="font-size: 18px;">
-    <b>29 janvier - Information sur les données.</b> <i>Provenance des données</i> : jusqu’alors les données étaient remontées manuellement par les ARS au Ministère de la Santé. Désormais, le Système d’Information VAC-SI est utilisé. De petits écarts peuvent temporairement être observés le temps que toutes les données soient saisies. Les données du jour concerneront désormais J-1. <i>Type des données</i> : les données concernent désormais le nombre de personnes ayant reçu une dose (non plus le nombre de doses injectées). <a href="https://solidarites-sante.gouv.fr/actualites/presse/communiques-de-presse/article/le-suivi-de-la-couverture-vaccinale-desormais-opere-via-vaccin-covid">Plus d'informations</a>.
+<div class="alert alert-warning" style="font-size: 18px;">
+    <b>29 janvier - Information sur les données.</b> <i>Provenance des données</i> : jusqu’alors les données étaient
+    remontées manuellement par les ARS au Ministère de la Santé. Désormais, le Système d’Information VAC-SI est utilisé.
+    De petits écarts peuvent temporairement être observés le temps que toutes les données soient saisies. Les données du
+    jour concerneront désormais J-1. <i>Type des données</i> : les données concernent désormais le nombre de personnes
+    ayant reçu une dose (non plus le nombre de doses injectées). <a
+            href="https://solidarites-sante.gouv.fr/actualites/presse/communiques-de-presse/article/le-suivi-de-la-couverture-vaccinale-desormais-opere-via-vaccin-covid">Plus
+        d'informations</a>.
 </div>
 <!-- /wp:html -->
 
@@ -46,17 +59,39 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
 <h2 style="margin-top : 80px;">
     Répartition des vaccinés
 </h2>
-<?php include(__DIR__ . '/carteRegion.php') ?>
-<?php //include(__DIR__ . '/carteDepartement.php') ?>
-<div class="alert alert-info clearFix"  style="font-size: 18px;">
+<div id="choixCarte">
+    <div class="btn-group" role="group" aria-label="Choix carte">
+        <button id="choixCarteDepartement" autofocus="autofocus" type="button" class="btn btn-primary">
+            Par département
+        </button>
+        <button id="choixCarteRegion" type="button" class="btn btn-primary">
+            Par région
+        </button>
+    </div>
+</div>
+<div class="" style="margin-bottom: 40px;">
+    Coloration en fonction du pourcentage de population vaccinée.
+    Données fournies par le Ministère de la Santé.
+    Cliquez sur une région pour afficher plus de détails.
+</div>
+<div id="blocCarteDepartement">
+    <?php include(__DIR__ . '/carteDepartement.php') ?>
+</div>
+<div id="blocCarteRegion" class="hidden">
+    <?php include(__DIR__ . '/carteRegion.php') ?>
+</div>
+<div class="alert alert-info clearFix" style="font-size: 18px;">
     <div class="row">
         <div class="col-md-8">
-            <small>À VOIR AUSSI...</small><br>
-            Combien de personnes reste-t-il à vacciner avant vous ? Estimez votre temps d'attente en fonction du rythme actuel de vaccination.<br>
+            <small>À VOIR AUSSI...</small>
+            <br>
+            Combien de personnes reste-t-il à vacciner avant vous ? Estimez votre temps d'attente en fonction du rythme
+            actuel de vaccination.<br>
         </div>
         <div class="col-md-4 text-right">
             <button class="btn-shadow">
-                <a href="https://covidtracker.fr/vaccinplanner" target="_blank" rel="noreferrer noopener">Accéder à 🗓 <b>VaccinPlanner</b></a>
+                <a href="https://covidtracker.fr/vaccinplanner" target="_blank" rel="noreferrer noopener">Accéder à 🗓
+                    <b>VaccinPlanner</b></a>
             </button> &nbsp;&nbsp;
         </div>
     </div>
@@ -72,9 +107,12 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
 <?php include(__DIR__ . '/menuBasPage.php'); ?>
 <!-- /wp:html -->
 <br>
-Contributeurs de VaccinTracker : Aymerik Diebold, Florent Jaby, <a href="https://twitter.com/guillaumerozier">Guillaume Rozier</a>, Michael Souvy.
+Contributeurs de VaccinTracker : Aymerik Diebold, Florent Jaby, <a href="https://twitter.com/guillaumerozier">Guillaume
+    Rozier</a>, Michael Souvy.
 <br>
-<div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">☕️ Offrez-moi un café</a></div>
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link"
+                                                 href="https://lydia-app.com/collect/covidtracker/fr" target="_blank"
+                                                 rel="noreferrer noopener">☕️ Offrez-moi un café</a></div>
 
 <!-- wp:spacer -->
 <div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
