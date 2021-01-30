@@ -1,5 +1,16 @@
 <style>
-
+    .btn-group{
+        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+    }
+    .btn{
+        color: black;
+        
+    }
+    .btn.active{
+        background-color: black;
+        color: white;
+        
+    }
     #choixCarte button{
         margin: 0px;
     }

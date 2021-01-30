@@ -4,11 +4,17 @@
         $('#choixCarteDepartement').click(function(){
             $('#blocCarteDepartement').removeClass('hidden');
             $('#blocCarteRegion').addClass('hidden');
+
+            $('#choixCarteDepartement').addClass('active');
+            $('#choixCarteRegion').removeClass('active');
         });
 
         $('#choixCarteRegion').click(function(){
             $('#blocCarteRegion').removeClass('hidden');
             $('#blocCarteDepartement').addClass('hidden');
+
+            $('#choixCarteRegion').addClass('active');
+            $('#choixCarteDepartement').removeClass('active');
         });
     });
 
@@ -203,6 +209,7 @@
                 return response.text();
             })
             .then(csv => {
+                dont_do_that;
                 this.data = csv;
                 array_data = CSVToArray(csv, ",");
                 array_data.slice(1, array_data.length-1).map((value, idx) => {
@@ -255,7 +262,7 @@
                     });
                 })
 
-                if(updated) { // si on a les données des 2 sources (csv covidtracker + gouv)
+                if(true) { // si on a les données des 2 sources (csv covidtracker + gouv)
                     nb_vaccines = nb_vaccines.filter((v,i,a)=>a.findIndex(t=>(t.date == v.date))===i); // suppression doublons
                     nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
                     dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].n_dose1
