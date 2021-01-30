@@ -74,6 +74,14 @@ function buildLineChartAge(type){
             ]
         },
         options: {
+            tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            let value = data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']].toString().split(/(?=(?:...)*$)/).join(' ');
+                            return data['datasets'][tooltipItem.datasetIndex]['label'] + ': ' + value;
+                        }
+                    }
+                },
             maintainAspectRatio: false,
             scales: {
 						xAxes: [{
@@ -120,7 +128,7 @@ function buildLineChartAge(type){
                 labels: data_age.age,
                 datasets: [
                     {
-                    label: '2 doses ',
+                    label: 'Vaccinés (1 ou 2 doses) ',
                     data: data_age["n_dose2_pop"],
                     borderWidth: 3,
                     backgroundColor: "#1796e6",
@@ -128,7 +136,7 @@ function buildLineChartAge(type){
                     cubicInterpolationMode: 'monotone',
                 },
                 {
-                    label: '1 dose ',
+                    label: 'Vaccinés (1 dose) ',
                     data: data_age["n_dose1_pop"],
                     borderWidth: 3,
                     backgroundColor: "#a1cbe6",
@@ -139,6 +147,13 @@ function buildLineChartAge(type){
                 ]
             },
             options: {
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                        return data['datasets'][tooltipItem.datasetIndex]['label'] + ': ' + data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']] + ' %';
+                        }
+                    }
+                },
                 maintainAspectRatio: false,
                 scales: {
                             xAxes: [{

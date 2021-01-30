@@ -123,6 +123,8 @@
     var data;
     var nb_vaccines = [];
 
+    var vaccines_2doses = {};
+
     let differentielVaccinesParJour;
     var dejaVaccinesNb;
     var dejaVaccines = 0;
@@ -145,6 +147,22 @@
     var updated = false;
     const table = document.getElementById("tableauVaccin");
 
+    fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/vacsi-fra-2doses.json', {cache: 'no-cache'})
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("HTTP error " + response.status);
+            }
+            return response.json();
+        })
+        .then(json => {
+            this.vaccines_2doses = json;
+            maj2Doses();
+        })
+        .catch(function () {
+                this.dataError = true;
+                console.log("errorX")
+            }
+        )
 
     fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data_stock.csv', {cache: 'no-cache'})
         .then(response => {
@@ -240,7 +258,7 @@
                     console.log("error3")
                 }
             )
-
+                
         // Get data from health ministry csv
         fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/vacsi-fra.json', {cache: 'no-cache'}) //https://www.data.gouv.fr/fr/datasets/r/b234a041-b5ea-4954-889b-67e64a25ce0d
             .then(response => {
@@ -251,7 +269,7 @@
             })
             .then(json => {
                 this.data = json;
-                console.log(json)
+                //console.log(json)
                 data["dates"].map((value, idx) =>{
                     nb_vaccines.push({
                         date: value,
@@ -291,12 +309,20 @@
         let jours_restant = (Date.parse("2021-08-31") - Date.parse(nb_vaccines[nb_vaccines.length-1].date) )/ one_day
         let objectif = OBJECTIF_FIN_AOUT;
         let resteAVacciner = objectif - nb_vaccines[nb_vaccines.length-1].n_dose1
-        console.log(jours_restant)
+        //console.log(jours_restant)
         if ((resteAVacciner>=0) && (jours_restant>=0)){
             return Math.round(resteAVacciner*2/jours_restant)
         } else {
             return -1
         }
+    }
+
+    function maj2Doses(){
+        //log(vaccines_2doses)
+        let N = vaccines_2doses.n_dose2.length
+        document.getElementById("nb_vaccines_2_doses").innerHTML = numberWithSpaces(vaccines_2doses.n_dose2[N-1]);
+        date=vaccines_2doses.jour[N-1]
+        document.getElementById("date_maj_2").innerHTML = date.slice(8) + "/" + date.slice(5, 7);;
     }
 
     function afficherNews(){
@@ -332,29 +358,51 @@
         var ctx = document.getElementById('lineVacChart').getContext('2d');
         let data_values = nb_vaccines.map(val => ({x: val.date, y:parseInt(val.n_dose1)}));
         let data_object_stock = cumul_stock_array.map((value, idx)=> ({x: dates_stock[idx], y: parseInt(value)}))
+        let data_values_2doses = vaccines_2doses.n_dose2.map((value, idx)=> ({x: vaccines_2doses.jour[idx], y: parseInt(value)}))
 
         this.lineChart = new Chart(ctx, {
             type: 'line',
             data: {
                 //labels: nb_vaccines.map(val => val.date),
-                datasets: [{
-                    label: 'Personnes partiellement vaccinées (cumul) ',
+                datasets: [
+                    {
+                        label: 'Cumul vaccinés (1 ou 2 doses) ',
+                        data: data_values_2doses,
+                        borderWidth: 3,
+                        backgroundColor: '#1796e6',
+                        borderColor: '#127aba',
+                        pointRadius: 2,
+                        steppedLine: true,
+                    },
+                    {
+                    label: 'Cumul vaccinés (2 doses) ',
                     data: data_values,
                     borderWidth: 3,
-                    backgroundColor: '#92bed2',
-                    borderColor: '#3282bf',
+                    backgroundColor: '#a1cbe6',
+                    borderColor: '#3691c9',
+                    pointRadius: 2,
                     cubicInterpolationMode: 'monotone',
-                },
+                    },
                     {
                         label: 'Doses réceptionnées (cumul) ',
                         data: data_object_stock,
                         borderWidth: 3,
                         borderColor: 'grey',
+                        pointRadius: 2,
                         steppedLine: true,
-                    }
+                    },
+                    
                 ]
             },
             options: {
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            let value = data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']].y.toString().split(/(?=(?:...)*$)/).join(' ');
+                            return data['datasets'][tooltipItem.datasetIndex]['label'] + ': ' + value.toString();
+                        }
+                    }
+                },
                 maintainAspectRatio: false,
                 plugins: {
                     deferred: {
@@ -426,6 +474,14 @@
                 ]
             },
             options: {
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            let value = data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']].toString().split(/(?=(?:...)*$)/).join(' ');
+                            return data['datasets'][tooltipItem.datasetIndex]['label'] + ': ' + value;
+                        }
+                    }
+                },
                 maintainAspectRatio: false,
                 legend: {
                     display: true
@@ -567,14 +623,14 @@
         document.getElementById("date_projetee_objectif").innerHTML = formaterDate(dateProjeteeObjectif);
         date = nb_vaccines[nb_vaccines.length-1].date
         date = date.slice(8) + "/" + date.slice(5, 7)
-        heure = nb_vaccines[nb_vaccines.length-1].heure
+        //heure = nb_vaccines[nb_vaccines.length-1].heure
 
         date_stock = dates_stock[dates_stock.length-1]
         date_stock = date_stock.slice(8) + "/" + date_stock.slice(5, 7)
 
-        document.getElementById("date_maj_1").innerHTML = date + " à " + heure;
+        document.getElementById("date_maj_1").innerHTML = date;
         //document.getElementById("date_maj_2").innerHTML = date + " à " + heure;
-        document.getElementById("date_maj_3").innerHTML = date + " à " + heure;
+        document.getElementById("date_maj_3").innerHTML = date;
         document.getElementById("date_maj_4").innerHTML = date_stock;
         tableVaccin(table, 0);
 
