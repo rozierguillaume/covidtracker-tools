@@ -1,6 +1,3 @@
-<h2 style="margin-top : 80px;">
-    Répartition des vaccinés
-</h2>
 
 <div class="" style="margin-bottom: 40px;">
     Coloration en fonction du pourcentage de population vaccinée.
@@ -13,7 +10,7 @@
     <div class="col-md-6 text-center">
         <h4 id="titre_map" class="" style="display: inline-block">Nombre de personnes partiellement vaccinées pour 100 habitants :</h4>
         <div id="carte" style="margin-top:20px;">
-            <?php include(__DIR__ . '/carteSvg.php'); ?>
+            <?php include(__DIR__ . '/carteRegionSvg.php'); ?>
         </div>
     </div>
     <div class="col-md-6" style="" id="donneesRegions">
@@ -56,7 +53,7 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
 <!--link href="carte.css" rel="stylesheet"/> -->
 
-<?php include(dirname(__FILE__) . '/carteCss.php') ?>
+<?php include(dirname(__FILE__) . '/carteRegionCss.php') ?>
 
 <!--ENDBLOC JS -->
 <!--BLOC JS -->
@@ -68,7 +65,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-deferred@1"></script>
 
 <!--<script src="carte.js"></script> -->
-<?php include(dirname(__FILE__) . '/carteJs.php') ?>
+<?php include(dirname(__FILE__) . '/carteRegionJs.php') ?>
 
 <script id="regionTemplate" type="text/template">
     <!-- wp:heading -->
