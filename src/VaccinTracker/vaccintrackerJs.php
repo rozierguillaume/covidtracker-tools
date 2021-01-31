@@ -320,9 +320,13 @@
     function maj2Doses(){
         //log(vaccines_2doses)
         let N = vaccines_2doses.n_dose2.length
+        let vaccines_2doses_24h = vaccines_2doses.n_dose2[N-1] - vaccines_2doses.n_dose2[N-2]
+
         document.getElementById("nb_vaccines_2_doses").innerHTML = numberWithSpaces(vaccines_2doses.n_dose2[N-1]);
+        document.getElementById("nb_vaccines_24h_2_doses").innerHTML = numberWithSpaces(vaccines_2doses_24h);
+        
         date=vaccines_2doses.jour[N-1]
-        document.getElementById("date_maj_2").innerHTML = date.slice(8) + "/" + date.slice(5, 7);;
+        document.getElementById("date_maj_2").innerHTML = date.slice(8) + "/" + date.slice(5, 7);
     }
 
     function afficherNews(){
