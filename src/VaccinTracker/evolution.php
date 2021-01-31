@@ -16,8 +16,8 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
     </div>
     <div>
         <select name="type" id="type" onchange="typeDonneesChart()">
-            <option value="cumul"><b>Cumul</b> vaccinés (1 ou 2 doses)</option>
-            <option value="quotidien">Vaccinations quotidiennes (1 ou 2 doses)</option>
+            <option value="cumul"><b>Cumul</b> vaccinés</option>
+            <option value="quotidien">Vaccinations quotidiennes</option>
         </select>
     </div>
 </div>

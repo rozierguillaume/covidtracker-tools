@@ -366,7 +366,7 @@
                 //labels: nb_vaccines.map(val => val.date),
                 datasets: [
                     {
-                        label: 'Cumul vaccinés (1 ou 2 doses) ',
+                        label: 'Cumul vaccinés (2 doses) ',
                         data: data_values_2doses,
                         borderWidth: 3,
                         backgroundColor: '#1796e6',
@@ -375,7 +375,7 @@
                         steppedLine: true,
                     },
                     {
-                    label: 'Cumul vaccinés (2 doses) ',
+                    label: 'Cumul vaccinés (1 ou 2 doses) ',
                     data: data_values,
                     borderWidth: 3,
                     backgroundColor: '#a1cbe6',
@@ -450,6 +450,7 @@
     function buildBarChart(data){
         var ctx = document.getElementById('lineVacChart').getContext('2d');
         let labels = nb_vaccines.map(val => val.date)
+        let data_values = data.map((value, idx) => ({x: labels[idx], y: value}))
         let rollingMeanValues = rollingMean(data).map((value, idx)=> ({x: labels[idx+3], y: Math.round(value)}))
 
         this.lineChart = new Chart(ctx, {
@@ -458,7 +459,7 @@
                 labels: labels,
                 datasets: [{
                     label: 'Nombre quotidien de vaccinés ',
-                    data: data,
+                    data: data_values,
                     borderWidth: 3,
                     backgroundColor: 'rgba(0, 168, 235, 0.5)',
                     borderColor: 'rgba(0, 168, 235, 0)',
@@ -477,7 +478,7 @@
                 tooltips: {
                     callbacks: {
                         label: function(tooltipItem, data) {
-                            let value = data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']].toString().split(/(?=(?:...)*$)/).join(' ');
+                            let value = data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']].y.toString().split(/(?=(?:...)*$)/).join(' ');
                             return data['datasets'][tooltipItem.datasetIndex]['label'] + ': ' + value;
                         }
                     }
