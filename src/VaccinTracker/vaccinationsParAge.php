@@ -49,7 +49,7 @@ function typeDonneesBarChartAge(){
 function buildLineChartAge(type){
     let date = data_age.date
     document.getElementById("dateMajParAge").innerHTML = date.slice(8) + "/" + date.slice(5, 7);
-    
+
     var ctx = document.getElementById('barChartAge').getContext('2d');
 
     this.barChartAge = new Chart(ctx, {
@@ -66,7 +66,7 @@ function buildLineChartAge(type){
                 cubicInterpolationMode: 'monotone',
             },
             {
-                label: 'Nombre de vaccinés (1 dose) ',
+                label: 'Nombre de vaccinés (1 ou 2 doses) ',
                 data: data_age["n_dose1"],
                 borderWidth: 3,
                 backgroundColor: "#a1cbe6",
@@ -96,14 +96,14 @@ function buildLineChartAge(type){
                                         return value/1000 +" k";
                                     }
                                 },
-							stacked: true,
+							//stacked: true,
                             
 						}],
 						yAxes: [{
                             gridLines: {
                                 display: false
                             },
-							stacked: true
+							//stacked: true
 						}]
 					},
             plugins: {
@@ -139,7 +139,7 @@ function buildLineChartAge(type){
                     cubicInterpolationMode: 'monotone',
                 },
                 {
-                    label: 'Vaccinés (1 dose) ',
+                    label: 'Vaccinés (1 ou 2 doses) ',
                     data: data_age["n_dose1_pop"],
                     borderWidth: 3,
                     backgroundColor: "#a1cbe6",
@@ -170,14 +170,14 @@ function buildLineChartAge(type){
                                         return value + ' %';
                                     }
                                 },
-                                stacked: true,
+                                //stacked: true,
                                 
                             }],
                             yAxes: [{
                                 gridLines: {
                                     display: false
                                 },
-                                stacked: true
+                                //stacked: true
                             }]
                         },
                 plugins: {
