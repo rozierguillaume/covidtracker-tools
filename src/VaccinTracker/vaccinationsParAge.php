@@ -1,7 +1,7 @@
 
 
 <h2 style="margin-top: 40px;" id="vaccinations-par-age">Vaccinations par âge</h2>
-Mise à jour : 27/01 
+Mise à jour : <span id="dateMajParAge">--/--</span>
 
 <div>
     <select name="type_age" id="type_age" onchange="typeDonneesBarChartAge()">
@@ -47,6 +47,9 @@ function typeDonneesBarChartAge(){
 }
 
 function buildLineChartAge(type){
+    let date = data_age.date
+    document.getElementById("dateMajParAge").innerHTML = date.slice(8) + "/" + date.slice(5, 7);
+    
     var ctx = document.getElementById('barChartAge').getContext('2d');
 
     this.barChartAge = new Chart(ctx, {
