@@ -52,7 +52,7 @@
 <center>
 <div id="choixCarte">
     <div class="btn-group" role="group" aria-label="Choix carte">
-        <button id="choixCarteDepartement" autofocus="autofocus" type="button" class="btn btn-secondary active">
+        <button id="choixCarteDepartement" type="button" class="btn btn-secondary active">
             Par département
         </button>
         <button id="choixCarteRegion" type="button" class="btn btn-secondary">
