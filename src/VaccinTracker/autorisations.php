@@ -34,9 +34,17 @@
     </div>
 
     <h3 style="margin-top : 50px;">Vaccins en cours d'autorisation</h3>
-
-        <div><i>Aucun.</i></div>
-
+    <div class="row">
+        <card class="shadow-btn-orange col-xs-11 col-md-4"><b>🇷🇺 Centre Gamaleya (Sputnik V)</b><br>
+            Phase 3/3<br>
+            Type : Vecteur viral<br>
+            Efficacité annoncée : 91%<br>
+            Prêt : fin 2020<br>
+            Conservation : entre +2°C et +8°C<br>
+            Doses à injecter : 2<br>
+            Statut : demande d'homologation UE déposée le 20/01
+        </card>
+    </div>
 
     <h3 style="margin-top : 50px;">Vaccins pas encore soumis</h3>
     <div class="row">
