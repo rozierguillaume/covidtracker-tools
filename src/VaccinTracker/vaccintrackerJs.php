@@ -379,13 +379,13 @@
                         steppedLine: true,
                     },
                     {
-                    label: 'Cumul vaccinés (1 ou 2 doses) ',
-                    data: data_values,
-                    borderWidth: 3,
-                    backgroundColor: '#a1cbe6',
-                    borderColor: '#3691c9',
-                    pointRadius: 2,
-                    cubicInterpolationMode: 'monotone',
+                        label: 'Cumul vaccinés (1 ou 2 doses) ',
+                        data: data_values,
+                        borderWidth: 3,
+                        backgroundColor: '#a1cbe6',
+                        borderColor: '#3691c9',
+                        pointRadius: 2,
+                        cubicInterpolationMode: 'monotone',
                     },
                     {
                         label: 'Doses réceptionnées (cumul) ',
@@ -417,7 +417,7 @@
                 },
                 scales: {
                     yAxes: [{
-                        stacked: true,
+                        stacked: false,
                         gridLines: {
                             display: false
                         }
