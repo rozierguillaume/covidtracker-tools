@@ -1,4 +1,4 @@
-<h3 id="incid_metro">Taux d'incidence dans les grandes métropoles</h3>
+<h3 id="incid_metro">Taux d'incidence par région et âge</h3>
 
 
 <ul class="nav nav-tabs" id="tabsIncidenceRegions" role="tablist">

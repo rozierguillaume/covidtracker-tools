@@ -363,7 +363,8 @@
                     $(this).prop('selected', false);
                 });
                 $("#listeDepartements").trigger('change');
-                $('.departement').remove();
+                $('path.departement').remove();
+                $('div.departement').remove();
                 $('#map path').removeClass('selected');
             });
 
