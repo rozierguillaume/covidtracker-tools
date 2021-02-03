@@ -9,7 +9,6 @@
     }
 
 
-
     .shadow {
         border: 0px solid black;
         padding: 12px;

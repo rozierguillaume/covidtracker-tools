@@ -64,9 +64,7 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
                 <div>
                     <canvas id="barReaChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
                 </div>
-                <br>
-                <br>
-                <br>
+                
             </div>
         </div>
     </div>
@@ -83,7 +81,6 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
                 <div>
                     <canvas id="barHospChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
                 </div>
-                <br>
 
             </div>
         </div>
@@ -91,15 +88,13 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
             <div style="text-align: left; margin-top:5px;" shadow="">
                 <centering><h3>Décès hospitaliers</h3></centering>
                 <p>On constate en moyenne <b><span id="dc_hosp">--</span>
-                        décès hospitaliers</b> pour Covid19,
+                        décès hospitaliers</b> pour Covid19 chaque jour,
                     <span id="croissance_dc_hosp">--</span> par rapport à la semaine dernière.
                 </p>
                 <div>
                     <canvas id="lineDcChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
                 </div>
-                <br>
-                <br>
-                <br>
+            
             </div>
         </div>
         

@@ -114,10 +114,14 @@
 
     function updateDataDiv(){
         rea_actu = data["rea"]["values"][data["rea"]["values"].length-1]
+        hosp_actu = data["hosp"]["values"][data["hosp"]["values"].length-1]
         cas_actu = data["cas"]["values"][data["cas"]["values"].length-1]
+        dc_actu = data["dc"]["values"][data["dc"]["values"].length-1]
 
         rea_j7 = data["rea"]["values"][data["rea"]["values"].length-8]
         cas_j7 = data["cas"]["values"][data["cas"]["values"].length-8]
+        dc_j7 = data["dc"]["values"][data["dc"]["values"].length-8]
+        hosp_j7 = data["hosp"]["values"][data["hosp"]["values"].length-8]
 
         update_date = data["rea"]["dates"][data["rea"]["dates"].length-1]
         update_date = update_date.slice(8) + "/" + update_date.slice(5, 7);
@@ -127,6 +131,8 @@
 
         document.getElementById("cas_moyen_quotidien").innerHTML = numberWithSpaces(cas_actu);
         document.getElementById("reanimations").innerHTML = numberWithSpaces(rea_actu);
+        document.getElementById("hospitalisations").innerHTML = numberWithSpaces(hosp_actu);
+        document.getElementById("dc_hosp").innerHTML = numberWithSpaces(dc_actu);
 
         if (rea_j7 > rea_actu){
             document.getElementById("croissance_rea").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((rea_actu-rea_j7)/rea_j7*100))+ "&nbsp;%) ";
@@ -138,6 +144,18 @@
             document.getElementById("croissance_cas").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((cas_actu-cas_j7)/cas_j7*100))+ "&nbsp;%) ";
         } else {
             document.getElementById("croissance_cas").innerHTML = "en hausse (+&nbsp;" + Math.round((cas_actu-cas_j7)/cas_j7*100)+ "&nbsp;%) ";
+        }
+
+        if (dc_j7 > dc_actu){
+            document.getElementById("croissance_dc_hosp").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((dc_actu-cas_j7)/dc_j7*100))+ "&nbsp;%) ";
+        } else {
+            document.getElementById("croissance_dc_hosp").innerHTML = "en hausse (+&nbsp;" + Math.round((dc_actu-dc_j7)/dc_j7*100)+ "&nbsp;%) ";
+        }
+
+        if (hosp_j7 > hosp_actu){
+            document.getElementById("croissance_hosp").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((hosp_actu-hosp_j7)/hosp_j7*100))+ "&nbsp;%) ";
+        } else {
+            document.getElementById("croissance_hosp").innerHTML = "en hausse (+&nbsp;" + Math.round((hosp_actu-hosp_j7)/hosp_j7*100)+ "&nbsp;%) ";
         }
 
         const oneDay = (1000 * 60 * 60 * 24) ;
@@ -381,9 +399,9 @@
                 datasets: [{
                     label: 'Personnes en réanimation',
                     data: data["rea"]["values"],
-                    borderWidth: 1,
-                    backgroundColor: 'rgba(255, 0, 26, 0.5)',
-                    borderColor: 'rgba(255, 0, 26, 1)'
+                    borderWidth: 0.5,
+                    backgroundColor: 'rgba(201, 4, 4, 0.5)',
+                    borderColor: 'rgba(201, 4, 4, 1)'
                 }]
             },
             options: {
@@ -465,9 +483,9 @@
                 datasets: [{
                     label: 'Personnes hospitalisées',
                     data: data["hosp"]["values"],
-                    borderWidth: 1,
-                    backgroundColor: 'rgba(255, 0, 26, 0.5)',
-                    borderColor: 'rgba(255, 0, 26, 0.5)'
+                    borderWidth: 0.5,
+                    backgroundColor: 'rgba(209, 102, 21,0.3)',
+                    borderColor: 'rgba(209, 102, 21,1)'
                 }]
             },
             options: {
