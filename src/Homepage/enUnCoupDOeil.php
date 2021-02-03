@@ -30,7 +30,7 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
 <br>
 
 <div style="text-align: center; width:100%; border-radius: 7px; padding: 0px 0px;">
-    <div class="row">
+    <div class="row" style="margin-bottom:10px;">
         <div class="col-sm-6">
             <div style="text-align: left; margin-top:5px;" shadow="">
                 <centering><h3>Cas positifs</h3></centering>
@@ -70,6 +70,39 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div style="text-align: left; margin-top:5px;" shadow="">
+                <centering><h3>Hospitalisations</h3></centering>
+                <p>Il y a actuellement <b><span id="hospitalisations">--</span>
+                        personnes hospitalisées</b> pour Covid19,
+                    <span id="croissance_hosp">--</span> par rapport à la semaine dernière.
+                </p>
+
+                <div>
+                    <canvas id="barHospChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
+                </div>
+                <br>
+
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div style="text-align: left; margin-top:5px;" shadow="">
+                <centering><h3>Décès hospitaliers</h3></centering>
+                <p>On constate en moyenne <b><span id="dc_hosp">--</span>
+                        décès hospitaliers</b> pour Covid19,
+                    <span id="croissance_dc_hosp">--</span> par rapport à la semaine dernière.
+                </p>
+                <div>
+                    <canvas id="lineDcChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
+                </div>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+        
     <!-- wp:spacer {"height":30} -->
     <div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
     <!-- /wp:spacer -->

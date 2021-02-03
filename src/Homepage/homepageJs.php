@@ -163,7 +163,7 @@
         lineChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: data["cas"]["dates"].concat(labels_cas),
+                labels: data["cas"]["dates"],
                 datasets: [{
                     label: 'Cas positifs',
                     data: data["cas"]["values"],
@@ -243,6 +243,66 @@
         });
     }
 
+    var lineChartDc;
+    function buildLineChartDc(){
+        
+        var ctx = document.getElementById('lineDcChart').getContext('2d');
+
+        lineChartDc = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: data["dc"]["dates"],
+                datasets: [{
+                    label: 'Décès hospitaliers ',
+                    data: data["dc"]["values"],
+                    borderWidth: 3,
+                    pointRadius: 1,
+                    backgroundColor: 'rgba(0,0,0,0.4)',
+                    borderColor: 'rgba(0,0,0,1)'
+                }]
+            },
+            options: {
+                plugins: {
+                    deferred: {
+                        xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
+                        yOffset: '50%', // defer until 50% of the canvas height are inside the viewport
+                        delay: 500      // delay of 500 ms after the canvas is considered inside the viewport
+                    }
+                },
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        gridLines: {
+                            display: false
+                        },
+
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                            maxRotation: 0,
+                            minRotation: 0,
+                            maxTicksLimit: 6,
+                            callback: function(value, index, values) {
+                                return value.slice(8) + "/" + value.slice(5, 7);
+                            }
+                        }
+
+                    }]
+                },
+                annotation: {
+                    events: ["click"],
+                    annotations: [
+                    ]
+                }
+            }
+        });
+    }
+
     function calculerProjection(){
         let one_day = (1000 * 60 * 60 * 24)
 
@@ -302,7 +362,10 @@
         // Emoji de couleur
 
         buildLineChart(projection_cas, labels_cas);
+        
         buildBarChart(projection_rea, labels_rea);
+        buildLineChartDc();
+        buildBarChartHosp();
 
     }
 
@@ -314,16 +377,13 @@
         barChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: data["rea"]["dates"].concat(labels_rea),
+                labels: data["rea"]["dates"],
                 datasets: [{
                     label: 'Personnes en réanimation',
                     data: data["rea"]["values"],
                     borderWidth: 1,
                     backgroundColor: 'rgba(255, 0, 26, 0.5)',
                     borderColor: 'rgba(255, 0, 26, 1)'
-                }, {
-                    label: "Projection réa.",
-                    data: projection_rea
                 }]
             },
             options: {
@@ -384,6 +444,72 @@
                                 console.log("Annotation", e.type, this);
                             }
                         }
+                    ]
+                }
+
+            },
+
+
+        });
+    }
+
+    var barChartHosp
+    function buildBarChartHosp(){
+
+        var ctx = document.getElementById('barHospChart').getContext('2d');
+
+        barChartHosp = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: data["hosp"]["dates"],
+                datasets: [{
+                    label: 'Personnes hospitalisées',
+                    data: data["hosp"]["values"],
+                    borderWidth: 1,
+                    backgroundColor: 'rgba(255, 0, 26, 0.5)',
+                    borderColor: 'rgba(255, 0, 26, 0.5)'
+                }]
+            },
+            options: {
+                plugins: {
+                    deferred: {
+                        xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
+                        yOffset: '50%', // defer until 50% of the canvas height are inside the viewport
+                        delay: 500      // delay of 500 ms after the canvas is considered inside the viewport
+                    }
+                },
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                            beginAtZero: true,
+                        }
+                    }],
+                    xAxes: [{
+                        categoryPercentage: 1.0,
+                        barPercentage: 1.0,
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                            maxRotation: 0,
+                            minRotation: 0,
+                            maxTicksLimit: 6,
+                            callback: function(value, index, values) {
+                                return value.slice(8) + "/" + value.slice(5, 7);
+                            }
+                        }
+
+                    }]
+                },
+                annotation: {
+                    events: ["click"],
+                    annotations: [
                     ]
                 }
 
