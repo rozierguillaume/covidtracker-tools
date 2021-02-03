@@ -7,12 +7,12 @@
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item active">
         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#hospitalisations" role="tab" aria-controls="home" aria-selected="true">
-            France
+            Hospitalisations
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" id="profile-tab" data-toggle="tab" href="#reanimations" role="tab" aria-controls="profile" aria-selected="false">
-            Départements
+            Réanimations
         </a>
     </li>
 </ul>
