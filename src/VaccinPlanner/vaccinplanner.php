@@ -566,63 +566,26 @@ fetchOtherData();
 
 function fetchOtherData(){
     // Get data from Guillaume csv
-    fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data.csv', {cache: 'no-cache'})
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("HTTP error " + response.status);
-            }
-            return response.text();
-        })
-        .then(csv => {
-            this.data = csv;
-            array_data = CSVToArray(csv, ",");
-            array_data.slice(1, array_data.length-1).map((value, idx) => {
-                nb_vaccines.push({
-                  date: value[0],
-                  heure: value[2],
-                  total: value[1],
-                  source: value[3]
-                });
-            });
+        fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/vacsi-fra.json', {cache: 'no-cache'}) //https://www.data.gouv.fr/fr/datasets/r/b234a041-b5ea-4954-889b-67e64a25ce0d
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("HTTP error " + response.status);
+                }
+                return response.json();
+            })
+            .then(json => {
+                this.data = json;
+                //console.log(json)
+                data["dates"].map((value, idx) =>{
+                    nb_vaccines.push({
+                        date: value,
+                        heure: "19h30",
+                        total: data["n_dose1_cumsum"][idx],
+                        source: "Ministère de la santé"
+                    });
+                })
 
-            if(updated) { // si on a les données des 2 sources (csv covidtracker + gouv)
-              nb_vaccines = nb_vaccines.filter((v,i,a)=>a.findIndex(t=>(t.date == v.date))===i); // suppression doublons
-              nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
-              dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].total
-              dejaVaccines = dejaVaccinesNb*100/67000000;
-              restantaVaccinerImmunite = 60 - dejaVaccines
-              this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
-            } else {
-              updated = true;
-            }
-        })
-        .catch(function () {
-            this.dataError = true;
-            console.log("error3")
-        }
-      )
-
-    // Get data from health ministry csv
-    fetch('https://www.data.gouv.fr/fr/datasets/r/b234a041-b5ea-4954-889b-67e64a25ce0d', {cache: 'no-cache'}) //https://www.data.gouv.fr/fr/datasets/r/b234a041-b5ea-4954-889b-67e64a25ce0d
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("HTTP error " + response.status);
-            }
-            return response.text();
-        })
-        .then(csv => {
-            this.data = csv;
-            array_data = CSVToArray(csv, ";");
-            array_data.slice(1, array_data.length).map((value, idx) => {
-                nb_vaccines.push({
-                  date: value[0],
-                  heure: "19h30",
-                  total: value[1],
-                  source: "Ministère de la santé"
-                });
-            });
-
-            if(updated) { // si on a les données des 2 sources (csv covidtracker + gouv)
+            if(true) { // si on a les données des 2 sources (csv covidtracker + gouv)
               nb_vaccines = nb_vaccines.filter((v,i,a)=>a.findIndex(t=>(t.date == v.date))===i); // suppression doublons
               nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
               dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].total
@@ -633,8 +596,6 @@ function fetchOtherData(){
               date = date.slice(8) + "/" + date.slice(5, 7)
               heure = nb_vaccines[nb_vaccines.length-1].heure
               document.getElementById("date_maj_5").innerHTML = date + " à " + heure;
-            } else {
-              updated = true;
             }
         })
         .catch(function () {
