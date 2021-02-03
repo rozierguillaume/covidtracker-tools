@@ -364,6 +364,7 @@
                 });
                 $("#listeDepartements").trigger('change');
                 $('path.departement').remove();
+                $('div.departement').remove();
                 $('#map path').removeClass('selected');
             });
 
