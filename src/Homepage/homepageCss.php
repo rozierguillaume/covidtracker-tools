@@ -145,7 +145,8 @@
         padding: 10px 20px;
         border-radius: 7px;
         text-align: center;
-        box-shadow: 6px 4px 25px #d6d6d6;
+        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+        background: #ffffff;
     }
 
     button {
