@@ -147,23 +147,7 @@
     var updated = false;
     const table = document.getElementById("tableauVaccin");
 
-    fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/vacsi-fra-2doses.json', {cache: 'no-cache'})
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("HTTP error " + response.status);
-            }
-            return response.json();
-        })
-        .then(json => {
-            this.vaccines_2doses = json;
-            maj2Doses();
-        })
-        .catch(function () {
-                this.dataError = true;
-                console.log("errorX")
-            }
-        )
-
+    // Stocks
     fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data_stock.csv', {cache: 'no-cache'})
         .then(response => {
             if (!response.ok) {
@@ -181,9 +165,7 @@
                 this.cumul_stock += parseInt(value[1]);
                 this.cumul_stock_array.push(cumul_stock);
             })
-
             fetchOtherData();
-
         })
         .catch(function () {
                 this.dataError = true;
@@ -218,47 +200,6 @@
         )
 
     function fetchOtherData(){
-        // Get data from Guillaume csv
-        fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data.csv', {cache: 'no-cache'})
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("HTTP error " + response.status);
-                }
-                return response.text();
-            })
-            .then(csv => {
-                dont_do_that;
-                this.data = csv;
-                array_data = CSVToArray(csv, ",");
-                array_data.slice(1, array_data.length-1).map((value, idx) => {
-                    nb_vaccines.push({
-                        date: value[0],
-                        heure: value[2],
-                        n_dose1: value[1],
-                        source: value[3]
-                    });
-                });
-
-                if(updated) { // si on a les données des 2 sources (csv covidtracker + gouv)
-                    nb_vaccines = nb_vaccines.filter((v,i,a)=>a.findIndex(t=>(t.date == v.date))===i); // suppression doublons
-                    nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
-                    dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].n_dose1
-                    dejaVaccines = dejaVaccinesNb*100/67000000;
-                    restantaVaccinerImmunite = 60 - dejaVaccines
-                    this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
-                    this.objectifQuotidien = calculerObjectif();
-                    majValeurs();
-                    buildLineChart();
-                } else {
-                    updated = true;
-                }
-            })
-            .catch(function () {
-                    this.dataError = true;
-                    console.log("error3")
-                }
-            )
-                
         // Get data from health ministry csv
         fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/vacsi-fra.json', {cache: 'no-cache'}) //https://www.data.gouv.fr/fr/datasets/r/b234a041-b5ea-4954-889b-67e64a25ce0d
             .then(response => {
@@ -280,19 +221,16 @@
                     });
                 })
 
-                if(true) { // si on a les données des 2 sources (csv covidtracker + gouv)
-                    nb_vaccines = nb_vaccines.filter((v,i,a)=>a.findIndex(t=>(t.date == v.date))===i); // suppression doublons
-                    nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
-                    dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].n_dose1
-                    dejaVaccines = dejaVaccinesNb*100/67000000;
-                    restantaVaccinerImmunite = 60 - dejaVaccines
-                    this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
-                    this.objectifQuotidien = calculerObjectif();
-                    majValeurs();
-                    buildLineChart();
-                } else {
-                    updated = true;
-                }
+                nb_vaccines = nb_vaccines.filter((v,i,a)=>a.findIndex(t=>(t.date == v.date))===i); // suppression doublons
+                nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
+                dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].n_dose1
+                dejaVaccines = dejaVaccinesNb*100/67000000;
+                restantaVaccinerImmunite = 60 - dejaVaccines
+                this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
+                this.objectifQuotidien = calculerObjectif();
+                fetch2ndDosesData();
+                
+
             })
             .catch(function () {
                     this.dataError = true;
@@ -300,9 +238,30 @@
                 }
             )
 
+        }
+    
+    function fetch2ndDosesData(){
+        fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/vacsi-fra-2doses.json', {cache: 'no-cache'})
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("HTTP error " + response.status);
+                }
+                return response.json();
+            })
+            .then(json => {
+                this.vaccines_2doses = json;
+                majValeurs();
+                maj2Doses();
+                buildLineChart();
+            })
+            .catch(function () {
+                    this.dataError = true;
+                    console.log("errorX")
+                }
+            )
     }
-    var lineChart;
 
+    var lineChart;
     function calculerObjectif(){
 
         let one_day = (1000 * 60 * 60 * 24)
@@ -456,19 +415,29 @@
         let labels = nb_vaccines.map(val => val.date)
         let data_values = data.map((value, idx) => ({x: labels[idx], y: value}))
         let rollingMeanValues = rollingMean(data).map((value, idx)=> ({x: labels[idx+3], y: Math.round(value)}))
+        let data_values_2doses = vaccines_2doses.n_dose2.map((value, idx)=> ({x: vaccines_2doses.jour[idx], y: parseInt(value)}))
 
         this.lineChart = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: labels,
-                datasets: [{
-                    label: 'Nombre quotidien de vaccinés ',
-                    data: data_values,
-                    borderWidth: 3,
-                    backgroundColor: 'rgba(0, 168, 235, 0.5)',
-                    borderColor: 'rgba(0, 168, 235, 0)',
-                    cubicInterpolationMode: 'monotone'
-                },
+                datasets: [
+                    {
+                        label: 'Nombre quotidien de vaccinés (1 dose) ',
+                        data: data_values,
+                        borderWidth: 1,
+                        backgroundColor: 'rgba(0, 168, 235, 0.5)',
+                        borderColor: 'rgba(0, 168, 235, 0)',
+                        cubicInterpolationMode: 'monotone'
+                    },
+                    {
+                        label: 'Nombre quotidien de vaccinés (2 doses) ',
+                        data: data_values_2doses,
+                        borderWidth: 1,
+                        backgroundColor: '#1796e6',
+                        borderColor: '#1796e6',
+                        cubicInterpolationMode: 'monotone'
+                    },
                     {
                         label: 'Moyenne quotidienne ',
                         data: rollingMeanValues,
@@ -502,18 +471,11 @@
 
                     }],
                     xAxes: [{
+                        type: 'time',
+                        distribution: 'linear',
                         gridLines: {
                             display: false
-                        },
-                        ticks: {
-                            maxRotation: 0,
-                            minRotation: 0,
-                            maxTicksLimit: 6,
-                            callback: function(value, index, values) {
-                                return value.slice(8) + "/" + value.slice(5, 7);
-                            }
                         }
-
                     }]
                 },
                 annotation: {
@@ -616,8 +578,8 @@
             document.getElementById("estimation_str").innerHTML = "⚠️ Données non consolidées";
         }
 
-        document.getElementById("nb_vaccines").innerHTML = numberWithSpaces(dejaVaccinesNb);
-        document.getElementById("nb_vaccines_24h").innerHTML = numberWithSpaces(dejaVaccinesNb - nb_vaccines[nb_vaccines.length-2].n_dose1);
+        document.getElementById("nb_doses_injectees").innerHTML = numberWithSpaces(dejaVaccinesNb);
+        document.getElementById("nb_doses_injectees_24h").innerHTML = numberWithSpaces(dejaVaccinesNb - nb_vaccines[nb_vaccines.length-2].n_dose1);
         document.getElementById("nb_doses").innerHTML = numberWithSpaces(cumul_stock);
         document.getElementById("proportionVaccinesMax").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(2);
         //document.getElementById("proportionVaccinesMin").innerHTML = (Math.round(dejaVaccines/2*10000000)/10000000).toFixed(2);
