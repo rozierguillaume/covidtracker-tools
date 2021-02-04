@@ -319,10 +319,10 @@
 
     function maj2Doses(){
         //log(vaccines_2doses)
-        let N = vaccines_2doses.n_dose2.length
-        let vaccines_2doses_24h = vaccines_2doses.n_dose2[N-1] - vaccines_2doses.n_dose2[N-2]
+        let N = vaccines_2doses.n_dose2_cumsum.length
+        let vaccines_2doses_24h = vaccines_2doses.n_dose2_cumsum[N-1] - vaccines_2doses.n_dose2_cumsum[N-2]
 
-        document.getElementById("nb_vaccines_2_doses").innerHTML = numberWithSpaces(vaccines_2doses.n_dose2[N-1]);
+        document.getElementById("nb_vaccines_2_doses").innerHTML = numberWithSpaces(vaccines_2doses.n_dose2_cumsum[N-1]);
         document.getElementById("nb_vaccines_24h_2_doses").innerHTML = numberWithSpaces(vaccines_2doses_24h);
         
         date=vaccines_2doses.jour[N-1]
@@ -362,7 +362,7 @@
         var ctx = document.getElementById('lineVacChart').getContext('2d');
         let data_values = nb_vaccines.map(val => ({x: val.date, y:parseInt(val.n_dose1)}));
         let data_object_stock = cumul_stock_array.map((value, idx)=> ({x: dates_stock[idx], y: parseInt(value)}))
-        let data_values_2doses = vaccines_2doses.n_dose2.map((value, idx)=> ({x: vaccines_2doses.jour[idx], y: parseInt(value)}))
+        let data_values_2doses = vaccines_2doses.n_dose2_cumsum.map((value, idx)=> ({x: vaccines_2doses.jour[idx], y: parseInt(value)}))
 
         this.lineChart = new Chart(ctx, {
             type: 'line',
