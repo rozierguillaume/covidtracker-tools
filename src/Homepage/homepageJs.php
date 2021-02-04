@@ -528,6 +528,24 @@
                 annotation: {
                     events: ["click"],
                     annotations: [
+                        {
+                            drawTime: "afterDatasetsDraw",
+                            id: "hline",
+                            type: "line",
+                            mode: "horizontal",
+                            scaleID: "y-axis-0",
+                            value: 34000,
+                            borderColor: "red",
+                            borderWidth: 3,
+                            label: {
+                                backgroundColor: "red",
+                                content: "Max. observé",
+                                enabled: true
+                            },
+                            onClick: function(e) {
+                                console.log("Annotation", e.type, this);
+                            }
+                        }
                     ]
                 }
 
