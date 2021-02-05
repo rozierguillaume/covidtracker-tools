@@ -134,6 +134,9 @@
     var dateProjeteeObjectif;
     var dejaVaccines2Doses;
     var dejaVaccines2DosesNb;
+    var livraisons;
+
+    var somme_doses_rolling={};
 
     var dosesRecues = 560000;
 
@@ -255,7 +258,8 @@
 
                 majValeurs();
                 maj2Doses();
-                buildLineChart();
+                fetchStock();
+                
             })
             .catch(function () {
                     this.dataError = true;
@@ -264,6 +268,40 @@
             )
     }
 
+    fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/somme-doses-rolling.json', {cache: 'no-cache'})
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("HTTP error " + response.status);
+                }
+                return response.json();
+            })
+            .then(json => {
+                this.somme_doses_rolling = json;
+            })
+            .catch(function () {
+                    this.dataError = true;
+                    console.log("errorY")
+                }
+            )
+    function fetchStock(){
+        fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/livraisons.json', {cache: 'no-cache'})
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("HTTP error " + response.status);
+                }
+                return response.json();
+            })
+            .then(json => {
+                this.livraisons = json;
+                buildLineChart();
+            })
+            .catch(function () {
+                    this.dataError = true;
+                    console.log("errorStock")
+                }
+            )
+        
+    }
     var lineChart;
     function calculerObjectif(){
 
@@ -328,25 +366,35 @@
 
         var ctx = document.getElementById('lineVacChart').getContext('2d');
         let data_values = nb_vaccines.map(val => ({x: val.date, y:parseInt(val.n_dose1)}));
-        let data_object_stock = cumul_stock_array.map((value, idx)=> ({x: dates_stock[idx], y: parseInt(value)}))
+        //let data_object_stock = cumul_stock_array.map((value, idx)=> ({x: dates_stock[idx], y: parseInt(value)}))
+        let data_object_stock = livraisons.nb_doses_tot_cumsum.map((value, idx)=> ({x: livraisons.jour[idx], y: parseInt(value)}))
+
         let data_values_2doses = vaccines_2doses.n_dose2_cumsum.map((value, idx)=> ({x: vaccines_2doses.jour[idx], y: parseInt(value)}))
+        let labels=nb_vaccines.map(val => val.date)
+        
+        debut_2nd_doses = labels.map((value, idx) => ({x: value, y:0}))
+        let N_tot = labels.length;
+        let N2 = data_values_2doses.length;
+
+        let max_value = livraisons.nb_doses_tot_cumsum[livraisons.nb_doses_tot_cumsum.length-1]
 
         this.lineChart = new Chart(ctx, {
             type: 'line',
             data: {
-                //labels: nb_vaccines.map(val => val.date),
+                labels: labels,
                 datasets: [
                     {
-                        label: 'Cumul vaccinés (2 doses) ',
-                        data: data_values_2doses,
+                        yAxisID:"injections",
+                        label: 'Secondes doses injectées ',
+                        data: debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
                         borderWidth: 3,
                         backgroundColor: '#1796e6',
                         borderColor: '#127aba',
                         pointRadius: 2,
-                        steppedLine: true,
                     },
                     {
-                        label: 'Cumul vaccinés (1 ou 2 doses) ',
+                        yAxisID:"injections",
+                        label: 'Premières doses injectées ',
                         data: data_values,
                         borderWidth: 3,
                         backgroundColor: '#a1cbe6',
@@ -355,7 +403,8 @@
                         cubicInterpolationMode: 'monotone',
                     },
                     {
-                        label: 'Doses réceptionnées (cumul) ',
+                        yAxisID:"stock",
+                        label: 'Doses réceptionnées ',
                         data: data_object_stock,
                         borderWidth: 3,
                         borderColor: 'grey',
@@ -384,12 +433,32 @@
                 },
                 scales: {
                     yAxes: [{
+                        id:"injections",
+                        stacked: true,
+                        gridLines: {
+                            display: false
+                        },
+                        ticks : {
+                            max: max_value,
+                            min: 0,
+                        }
+                    },{
+                        id:"stock",
+                        display: false,
                         stacked: false,
                         gridLines: {
                             display: false
+                        },
+                        ticks : {
+                            max: max_value,
+                            min: 0,
                         }
                     }],
                     xAxes: [{
+                        stacked: true,
+                        ticks:{
+                            source: 'auto'
+                        },
                         type: 'time',
                         distribution: 'linear',
                         gridLines: {
@@ -421,9 +490,14 @@
     function buildBarChart(data){
         var ctx = document.getElementById('lineVacChart').getContext('2d');
         let labels = nb_vaccines.map(val => val.date)
-        let data_values = data.map((value, idx) => ({x: labels[idx], y: value}))
-        let rollingMeanValues = rollingMean(data).map((value, idx)=> ({x: labels[idx+3], y: Math.round(value)}))
+        let data_values = data.map((value, idx) => ({x: labels[idx], y: parseInt(value)}))
+        //let rollingMeanValues = rollingMean(data).map((value, idx)=> ({x: labels[idx+3], y: Math.round(value)}))
+        let rollingMeanValues = somme_doses_rolling.n_dose_rolling.map((value, idx) => ({x:somme_doses_rolling.jour[idx], y:value}))
         let data_values_2doses = vaccines_2doses.n_dose2.map((value, idx)=> ({x: vaccines_2doses.jour[idx], y: parseInt(value)}))
+        
+        debut_2nd_doses = labels.map((value, idx) => ({x: value, y:0}))
+        let N_tot = labels.length;
+        let N2 = data_values_2doses.length;
 
         this.lineChart = new Chart(ctx, {
             type: 'bar',
@@ -431,54 +505,44 @@
                 labels: labels,
                 datasets: [
                     {
+                        label: 'Moyenne quotidienne (total doses injectées) ',
+                        data: rollingMeanValues,
+                        type: 'line',
+                        borderColor: 'black',
+                        pointBackgroundColor: 'rgba(0, 0, 0, 1',
+                        backgroundColor: 'rgba(0, 168, 235, 0)',
+                    },
+                    {
                         label: 'Nombre de première doses ',
                         data: data_values,
-                        borderWidth: 1,
                         backgroundColor: 'rgba(0, 168, 235, 0.5)',
-                        borderColor: 'rgba(0, 168, 235, 0)',
-                        cubicInterpolationMode: 'monotone'
                     },
                     {
                         label: 'Nombre de deuxième doses ',
-                        data: data_values_2doses,
-                        borderWidth: 1,
+                        data: debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
                         backgroundColor: '#1796e6',
-                        borderColor: '#1796e6',
-                        cubicInterpolationMode: 'monotone'
                     },
-                    {
-                        label: 'Moyenne quotidienne (1ère dose) ',
-                        data: rollingMeanValues,
-                        type: 'line',
-                        borderColor: 'rgba(0, 168, 235, 1)',
-                        backgroundColor: 'rgba(0, 168, 235, 0)',
-                    }
+                    
                 ]
             },
             options: {
-                tooltips: {
-                    callbacks: {
-                        label: function(tooltipItem, data) {
-                            let value = data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']].y.toString().split(/(?=(?:...)*$)/).join(' ');
-                            return data['datasets'][tooltipItem.datasetIndex]['label'] + ': ' + value;
-                        }
-                    }
-                },
+                
                 maintainAspectRatio: false,
                 legend: {
                     display: true
                 },
                 scales: {
                     yAxes: [{
+                        id: 'injections',
+                        stacked: true,
+                        position: 'left',
                         gridLines: {
                             display: false
-                        },
-                        ticks: {
-                            min: 0
-                        },
-
+                        }
                     }],
                     xAxes: [{
+                        offset: true,
+                        stacked: true,
                         type: 'time',
                         distribution: 'linear',
                         gridLines: {
@@ -498,7 +562,8 @@
     function typeDonneesChart(){
         type_donnees = document.getElementById("type").value
         this.lineChart.destroy()
-        document.getElementById("objectif").checked=false;
+        //document.getElementById("objectif").checked=false;
+
         if (type_donnees=="quotidien"){
 
             nb_vaccines_quot = [nb_vaccines[0].total]
@@ -518,14 +583,17 @@
         else {
             obj = OBJECTIF_FIN_AOUT;
         }
+        console.log(this.lineChart.options.annotation)
+        
         if (this.lineChart.options.annotation.annotations.length==0){
+            
             this.lineChart.options.annotation.annotations.push(
                 {
                     drawTime: "afterDatasetsDraw",
                     id: "hline",
                     type: "line",
                     mode: "horizontal",
-                    scaleID: "y-axis-0",
+                    scaleID: "injections",
                     value: obj,
                     borderColor: "green",
                     borderWidth: 3,
@@ -541,6 +609,7 @@
         } else {
             this.lineChart.options.annotation.annotations = [];
         }
+        console.log("hey")
         this.lineChart.update()
     }
 
