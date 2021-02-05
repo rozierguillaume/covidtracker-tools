@@ -163,6 +163,10 @@
         background-color: rgb(45, 189, 84);
     }
 
+    .darkgreen {
+        background-color: rgb(31, 128, 57);
+    }
+
     .red {
         background-color: rgb(237, 88, 88);
     }

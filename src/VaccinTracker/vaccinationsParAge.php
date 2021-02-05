@@ -131,7 +131,7 @@ function buildLineChartAge(type){
                 labels: data_age.age,
                 datasets: [
                     {
-                    label: 'Vaccinés (1 ou 2 doses) ',
+                    label: 'Vaccinés (2 doses) ',
                     data: data_age["n_dose2_pop"],
                     borderWidth: 3,
                     backgroundColor: "#1796e6",

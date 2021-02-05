@@ -3,14 +3,14 @@
 <div class="wrap">
     <div class="one">
         <span id="nb_doses_injectees" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span>&nbsp;&nbsp;(+<span id="nb_doses_injectees_24h">--</span> en 24h)<br>
-        <b>Doses injectées</b><br>
-        Nombre cumulé de doses injectées. Deux doses sont nécessaires pour vacciner un patient.
+        <b>Première doses injectées</b><br>
+        Nombre cumulé de personnes ayant reçu une dose de vaccin. Deux doses sont nécessaires pour vacciner un patient.
         <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span id="date_maj_1">--/--</span>.<br>Source : CovidTracker/Ministère de la Santé.</i></div>
     </div>
 
     <div class="one">
         <span id="nb_vaccines_2_doses" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span>&nbsp;&nbsp;(+<span id="nb_vaccines_24h_2_doses">--</span> en 24h)<br>
-        <b>Personnes vaccinées</b><br>
+        <b>Deuxième doses injectées</b><br>
         Nombre cumulé de personnes ayant reçu les deux doses de vaccin.
         <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span id="date_maj_2">--/--</span>.<br>Source : CovidTracker/Ministère de la Santé.</i></div>
     </div>

@@ -132,6 +132,8 @@
     var restantaVaccinerAutres = 100
     var objectifQuotidien;
     var dateProjeteeObjectif;
+    var dejaVaccines2Doses;
+    var dejaVaccines2DosesNb;
 
     var dosesRecues = 560000;
 
@@ -250,6 +252,7 @@
             })
             .then(json => {
                 this.vaccines_2doses = json;
+
                 majValeurs();
                 maj2Doses();
                 buildLineChart();
@@ -278,14 +281,19 @@
 
     function maj2Doses(){
         //log(vaccines_2doses)
+    
         let N = vaccines_2doses.n_dose2_cumsum.length
         let vaccines_2doses_24h = vaccines_2doses.n_dose2_cumsum[N-1] - vaccines_2doses.n_dose2_cumsum[N-2]
 
-        document.getElementById("nb_vaccines_2_doses").innerHTML = numberWithSpaces(vaccines_2doses.n_dose2_cumsum[N-1]);
+        dejaVaccines2DosesNb = vaccines_2doses.n_dose2_cumsum[N-1];
+        dejaVaccines2Doses = dejaVaccines2DosesNb*100/67000000;
+
+        document.getElementById("nb_vaccines_2_doses").innerHTML = numberWithSpaces(dejaVaccines2DosesNb);
         document.getElementById("nb_vaccines_24h_2_doses").innerHTML = numberWithSpaces(vaccines_2doses_24h);
         
         date=vaccines_2doses.jour[N-1]
         document.getElementById("date_maj_2").innerHTML = date.slice(8) + "/" + date.slice(5, 7);
+        tableVaccin(table, 0);
     }
 
     function afficherNews(){
@@ -423,7 +431,7 @@
                 labels: labels,
                 datasets: [
                     {
-                        label: 'Nombre quotidien de vaccinés (1 dose) ',
+                        label: 'Nombre de première doses ',
                         data: data_values,
                         borderWidth: 1,
                         backgroundColor: 'rgba(0, 168, 235, 0.5)',
@@ -431,7 +439,7 @@
                         cubicInterpolationMode: 'monotone'
                     },
                     {
-                        label: 'Nombre quotidien de vaccinés (2 doses) ',
+                        label: 'Nombre de deuxième doses ',
                         data: data_values_2doses,
                         borderWidth: 1,
                         backgroundColor: '#1796e6',
@@ -439,7 +447,7 @@
                         cubicInterpolationMode: 'monotone'
                     },
                     {
-                        label: 'Moyenne quotidienne ',
+                        label: 'Moyenne quotidienne (1ère dose) ',
                         data: rollingMeanValues,
                         type: 'line',
                         borderColor: 'rgba(0, 168, 235, 1)',
@@ -536,7 +544,7 @@
         this.lineChart.update()
     }
 
-    tableVaccin(table, 0);
+    
     function tableVaccin(tableElt, level){
         tableElt.innerHTML = "";
         let first = true;
@@ -547,8 +555,13 @@
                 let newrow = row.insertCell(j)
 
                 let caseNb = i*10+j+1
+                
                 if((caseNb <= dejaVaccines && level == 0) || (caseNb <= (dejaVaccines - Math.floor(dejaVaccines))*100) && level == 1){
-                    newrow.classList.add("green");
+                    if((caseNb <= dejaVaccines2Doses && level == 0) || (caseNb <= (dejaVaccines2Doses - Math.floor(dejaVaccines2Doses))*100) && level == 1){
+                        newrow.classList.add("green");
+                    } else {
+                        newrow.classList.add("green");
+                    }
                 } else {
                     if(first) {
                         if(level == 1) {
@@ -573,6 +586,8 @@
     }
 
     function majValeurs(){
+        //let N = vaccines_2doses.n_dose2_cumsum.length
+        //let deuxiemeDoses = vaccines_2doses.n_dose2_cumsum[N-1];
 
         if (nb_vaccines[nb_vaccines.length-1].source == "Estimation"){
             document.getElementById("estimation_str").innerHTML = "⚠️ Données non consolidées";
@@ -599,7 +614,7 @@
         //document.getElementById("date_maj_2").innerHTML = date + " à " + heure;
         document.getElementById("date_maj_3").innerHTML = date;
         document.getElementById("date_maj_4").innerHTML = date_stock;
-        tableVaccin(table, 0);
+        
 
     }
 
