@@ -161,7 +161,7 @@ function buildLineChartAge(type){
                 scales: {
                             xAxes: [{
                                 gridLines: {
-                                    display: false
+                                    display: true
                                 },
                                 ticks: {
                                     min: 0,
