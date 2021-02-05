@@ -5,7 +5,7 @@ Pour vacciner l'ensemble de la population adulte (52 millions de personnes) d'ic
 Au rythme actuel <small>(moyenne des 7 derniers jours)</small>, l'objectif de vacciner l'ensemble de la population adulte serait atteint le <b><span id="date_projetee_objectif"></span></b>.
 
 <br><br>
-Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moins une dose de vaccin. 
+Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moins une dose de vaccin. <small>Les premières doses sont comptabilisées par date d'injection, les secondes doses par date de remontée. Des écarts peuvent donc être observés avec la réalité.</small>
 <br>
 <br>
 
