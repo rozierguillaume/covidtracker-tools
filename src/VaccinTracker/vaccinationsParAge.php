@@ -170,7 +170,7 @@ function buildLineChartAge(type){
                                         return value + ' %';
                                     }
                                 },
-                                stacked: true,
+                                stacked: false,
                                 
                             }],
                             yAxes: [{

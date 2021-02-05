@@ -134,6 +134,7 @@
     var dateProjeteeObjectif;
     var dejaVaccines2Doses;
     var dejaVaccines2DosesNb;
+    var livraisons;
 
     var somme_doses_rolling={};
 
@@ -257,7 +258,8 @@
 
                 majValeurs();
                 maj2Doses();
-                buildLineChart();
+                fetchStock();
+                
             })
             .catch(function () {
                     this.dataError = true;
@@ -281,7 +283,25 @@
                     console.log("errorY")
                 }
             )
-
+    function fetchStock(){
+        fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/livraisons.json', {cache: 'no-cache'})
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("HTTP error " + response.status);
+                }
+                return response.json();
+            })
+            .then(json => {
+                this.livraisons = json;
+                buildLineChart();
+            })
+            .catch(function () {
+                    this.dataError = true;
+                    console.log("errorStock")
+                }
+            )
+        
+    }
     var lineChart;
     function calculerObjectif(){
 
@@ -346,7 +366,9 @@
 
         var ctx = document.getElementById('lineVacChart').getContext('2d');
         let data_values = nb_vaccines.map(val => ({x: val.date, y:parseInt(val.n_dose1)}));
-        let data_object_stock = cumul_stock_array.map((value, idx)=> ({x: dates_stock[idx], y: parseInt(value)}))
+        //let data_object_stock = cumul_stock_array.map((value, idx)=> ({x: dates_stock[idx], y: parseInt(value)}))
+        let data_object_stock = livraisons.nb_doses_tot_cumsum.map((value, idx)=> ({x: livraisons.jour[idx], y: parseInt(value)}))
+
         let data_values_2doses = vaccines_2doses.n_dose2_cumsum.map((value, idx)=> ({x: vaccines_2doses.jour[idx], y: parseInt(value)}))
         let labels=nb_vaccines.map(val => val.date)
         
@@ -354,7 +376,7 @@
         let N_tot = labels.length;
         let N2 = data_values_2doses.length;
 
-        let max_value = cumul_stock_array[cumul_stock_array.length-1]
+        let max_value = livraisons.nb_doses_tot_cumsum[livraisons.nb_doses_tot_cumsum.length-1]
 
         this.lineChart = new Chart(ctx, {
             type: 'line',
@@ -434,6 +456,9 @@
                     }],
                     xAxes: [{
                         stacked: true,
+                        ticks:{
+                            source: 'auto'
+                        },
                         type: 'time',
                         distribution: 'linear',
                         gridLines: {
