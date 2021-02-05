@@ -346,7 +346,7 @@
                         steppedLine: true,
                     },
                     {
-                        label: 'Cumul vaccinés (1 ou 2 doses) ',
+                        label: 'Cumul vaccinés (1 dose) ',
                         data: data_values,
                         borderWidth: 3,
                         backgroundColor: '#a1cbe6',
