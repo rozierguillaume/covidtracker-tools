@@ -36,11 +36,12 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
     </div>
 </div>
 <div shadow="">
-    <div style="border: 0.5px solid lightgrey; border-radius: 7px; padding: 10px;">
-    <b>Données</b>
-        <div class="row">
-            <div class="col-xs-3">
-                Type :
+    
+
+    <div class="row">
+
+        <div class="col-sm-2" style="min-width: 100px;">
+                <b>Données</b>
                 <select name="type" id="typeDonees" onchange="buildChart()">
                     <option value="incidence">Taux d'incidence</option>
                     <option value="taux_positivite">Taux de positivite</option>
@@ -48,27 +49,18 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
                     <option value="reanimations">Réanimations</option>
                     <option value="deces_hospitaliers">Décès hospitaliers</option>
                 </select>
-            </div>
-
-            <div class="col-xs-4">
+            <br>
+            <br>
+            <label>Territoires</label>
+            <div id="checkboxes" style="text-align: left; overflow-y:scroll; height:500px;">
                 
-            </div>
-
-        </div>
-    </div>
-
-    <div class="row">
-
-        <div class="col-xs-2" style="min-width: 100px;">
-            <div id="checkboxes" style="text-align: left;">
-                <label>Territoires</label>
                 <ul>
                     <li><input type='checkbox' id='france' checked onchange="boxChecked('france')"> France</li><br>
                     <span id="territoiresCheckboxes"></span>
                 </ul>
             </div>
         </div>
-        <div class="col-xs-10" style="min-width: 300px;">
+        <div class="col-sm-10" style="min-width: 300px;">
             <div class="chart-container" style="position: relative; height:80vh; width:100%">
                 <canvas id="dataExplorerChart" style="margin-top:20px; max-height: 800px; max-width: 1500px;"></canvas>
             </div>
