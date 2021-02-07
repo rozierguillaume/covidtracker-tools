@@ -128,7 +128,12 @@ function populateTerritoireSelect(){
     html_code += "<br><i>Départements</i><br>"
     
     data.departements.map((departement, idx) => {
-        html_code += "<input type='checkbox' id='" + replaceBadCharacters(departement) + "' onchange='boxChecked(\"" + replaceBadCharacters(departement) +"\")'> "+ departement +"<br>"
+        complement = " ";
+        if (departement in data["departements_noms"]) {
+            complement += data["departements_noms"][departement];
+        }
+
+        html_code += "<input type='checkbox' id='" + replaceBadCharacters(departement) + "' onchange='boxChecked(\"" + replaceBadCharacters(departement) +"\")'> "+ departement + complement +"<br>"
 
     })
 
@@ -186,9 +191,14 @@ function addTrace(value, territoire){
         N = 0
     }
 
+    complement = " ";
+    if (territoire in data["departements_noms"]) {
+        complement += data["departements_noms"][territoire];
+    }
+
     dataExplorerChart.data.datasets.push({
         yAxisID: value,
-        label: territoire,
+        label: territoire + complement,
         data: data_temp,
         pointRadius: 0.5,
         backgroundColor: 'rgba(0, 168, 235, 0)',
