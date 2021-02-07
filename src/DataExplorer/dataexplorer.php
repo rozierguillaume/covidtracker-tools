@@ -1,7 +1,9 @@
 <!-- wp:html -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/google-palette/1.1.0/palette.js" integrity="sha512-C8lBe+d5Peg8kU+0fyU+JfoDIf0kP1rQBuPwRSBNHqqvqaPu+rkjlY0zPPAqdJOLSFlVI+Wku32S7La7eFhvlA==" crossorigin="anonymous"></script>
-<p>h</p>
+<p>CovidExplorer est un outil de CovidTracker permettant d'explorer les données de l'épidémie en France.</p>
+
+<?php include(__DIR__ . '/styles.php'); ?>
 
 <!--
 <div style="margin-bottom: 20px; border: 1px solid rgba(0, 0, 0, 0.2); border-radius: 7px; padding: 10px; background-color: rgba(0, 0, 0, 0.05);">
@@ -10,18 +12,6 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
 </div>
 -->
 
-
-
-<style>
-#checkboxes label {
-  float: left;
-}
-#checkboxes ul {
-  margin: 0;
-  list-style: none;
-  float: left;
-}
-</style>
 
 <div class="alert alert-info clearFix"  style="font-size: 18px;">
     <div class="row">
@@ -40,7 +30,7 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
 
     <div class="row">
 
-        <div class="col-sm-2" style="min-width: 100px;">
+        <div class="col-sm-3" style="min-width: 100px;">
                 <b>Données</b>
                 <select name="type" id="typeDonees" onchange="buildChart()">
                     <option value="incidence">Taux d'incidence</option>
@@ -52,31 +42,28 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
             <br>
             <br>
             <label>Territoires</label>
-            <div id="checkboxes" style="text-align: left; overflow-y:scroll; height:500px;">
+            <div id="checkboxes" style="text-align: left; overflow-y:scroll; height:550px;">
                 
-                <ul>
-                    <li><input type='checkbox' id='france' checked onchange="boxChecked('france')"> France</li><br>
+                
+                    <input type='checkbox' id='france' checked onchange="boxChecked('france')"> France<br>
                     <span id="territoiresCheckboxes"></span>
-                </ul>
+                
             </div>
         </div>
-        <div class="col-sm-10" style="min-width: 300px;">
-            <div class="chart-container" style="position: relative; height:80vh; width:100%">
+        
+        <div class="col-sm-9" style="min-width: 300px;">
+        <h3>Taux d'incidence</h3>
+        Nombre de cas par semaine pour 100 000 habitants. Auteur : CovidTracker.fr - Données : Santé publique France
+            <div class="chart-container" style="position: relative; height:65vh; width:90%">
                 <canvas id="dataExplorerChart" style="margin-top:20px; max-height: 800px; max-width: 1500px;"></canvas>
             </div>
         </div>
     </div>
 </div>
 
-<style>
-div[shadow] {
-    border: 0px solid black;
-    padding: 10px 20px;
-    border-radius: 7px;
-    text-align: center;
-    box-shadow: 6px 4px 25px #d6d6d6;
-}
-</style>
+<?php include(__DIR__ . '/menuBasPage.php'); ?>
+<br><br>
+
 
 <script>
 var dataExplorerChart;
@@ -113,13 +100,15 @@ function buildChart(){
 function populateTerritoireSelect(){
     var x = document.getElementById("territoireDonnees");
     var html_code = "";
+    html_code += "<br><i>Régions</i><br>"
     data.regions.map((region, idx) => {
-        //var option = document.createElement("option");
-        //option.text = region;
-        //option.value = region;
-        //x.add(option);
-        
-        html_code += "<li><input type='checkbox' id='" + replaceBadCharacters(region) + "' onchange='boxChecked(\"" + replaceBadCharacters(region) +"\")'> "+ region +"</li>"
+        html_code += "<input type='checkbox' id='" + replaceBadCharacters(region) + "' onchange='boxChecked(\"" + replaceBadCharacters(region) +"\")'> "+ region +"<br>"
+
+    })
+    html_code += "<br><i>Départements</i><br>"
+    
+    data.departements.map((departement, idx) => {
+        html_code += "<input type='checkbox' id='" + replaceBadCharacters(departement) + "' onchange='boxChecked(\"" + replaceBadCharacters(departement) +"\")'> "+ departement +"<br>"
 
     })
 
