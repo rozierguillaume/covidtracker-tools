@@ -1,7 +1,7 @@
 <!-- wp:html -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/google-palette/1.1.0/palette.js" integrity="sha512-C8lBe+d5Peg8kU+0fyU+JfoDIf0kP1rQBuPwRSBNHqqvqaPu+rkjlY0zPPAqdJOLSFlVI+Wku32S7La7eFhvlA==" crossorigin="anonymous"></script>
-<p>CovidExplorer est un outil de CovidTracker permettant d'explorer les données de l'épidémie en France.</p>
+<p>CovidExplorer est un outil de CovidTracker permettant d'explorer les données de l'épidémie en France. Sélectionnez un type de données ainsi qu'un ou plusieurs territoires ci-dessous, puis la courbe s'affichera à droite (ou en-dessous sur mobile). <i>Cette page est encore en cours de construction, d'autres fonctionnalités arriveront progressivement.</i> <i>Dernière donnée : <span id="dateDonnee">--/--</span>.</i></p>
 
 <?php include(__DIR__ . '/styles.php'); ?>
 
@@ -149,12 +149,19 @@ function fetchData(){
                 populateTerritoireSelect();
                 //addTrace("incidence", "france");
                 buildChart()
+
+                majDataUpdate();
             })
         .catch(function () {
             this.dataError = true;
             console.log("error-x")
         }
         )
+}
+
+function majDataUpdate(){
+    let N = data["france"]["hospitalisations"]["jour"].length;
+    document.getElementById("dateDonnee").innerHTML = data["france"]["hospitalisations"]["jour"][N-1];
 }
 
 function removeElementArray(arr, element){
