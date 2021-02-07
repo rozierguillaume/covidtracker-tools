@@ -31,7 +31,9 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
     <div class="row">
 
         <div class="col-sm-3" style="min-width: 100px;">
-                <b>Données</b>
+            <b>Donnée à afficher</b>
+                <div style="padding 20px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
+                    <br>
                 <select name="type" id="typeDonees" onchange="buildChart()">
                     <option value="incidence">Taux d'incidence</option>
                     <option value="taux_positivite">Taux de positivite</option>
@@ -39,8 +41,10 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
                     <option value="reanimations">Réanimations</option>
                     <option value="deces_hospitaliers">Décès hospitaliers</option>
                 </select>
+                <br><br>
+                </div>
             <br>
-            <br>
+            
             <label>Territoires</label>
             <div id="checkboxes" style="text-align: left; overflow-y:scroll; padding: 10px; border-radius: 7px; height: 550px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
                 
