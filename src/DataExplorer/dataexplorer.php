@@ -1,7 +1,7 @@
 <!-- wp:html -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/google-palette/1.1.0/palette.js" integrity="sha512-C8lBe+d5Peg8kU+0fyU+JfoDIf0kP1rQBuPwRSBNHqqvqaPu+rkjlY0zPPAqdJOLSFlVI+Wku32S7La7eFhvlA==" crossorigin="anonymous"></script>
-<p>CovidExplorer est un outil de CovidTracker permettant d'explorer les données de l'épidémie en France.</p>
+<p>CovidExplorer est un outil de CovidTracker permettant d'explorer les données de l'épidémie en France. Sélectionnez un type de données ainsi qu'un ou plusieurs territoires ci-dessous, puis la courbe s'affichera à droite (ou en-dessous sur mobile). <i>Cette page est encore en cours de construction, d'autres fonctionnalités arriveront progressivement.</i> <i>Dernière donnée : <span id="dateDonnee">--/--</span>.</i></p>
 
 <?php include(__DIR__ . '/styles.php'); ?>
 
@@ -52,8 +52,8 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
         </div>
         
         <div class="col-sm-9" style="min-width: 300px;">
-        <h3>Taux d'incidence</h3>
-        Nombre de cas par semaine pour 100 000 habitants. Auteur : CovidTracker.fr - Données : Santé publique France
+        <h3 id="titre">Chargement...</h3>
+        <span id="description">...</span>
             <div class="chart-container" style="position: relative; height:65vh; width:90%">
                 <canvas id="dataExplorerChart" style="margin-top:20px; max-height: 800px; max-width: 1500px;"></canvas>
             </div>
@@ -71,6 +71,23 @@ var selected_data=["hospitalisations", "incidence", "reanimations", "deces_hospi
 var selected_territoires=["france"];
 var data;
 var seq = palette('tol', 11);
+var descriptions = {
+    "hospitalisations": "Nombre de lits occupés à l'hôpital pour Covid19.",
+    "incidence": "Nombre de cas par semaine pour 100 000 habitants.",
+    "taux_positivite": "Proportion des tests qui sont positifs (en %).",
+    "reanimations": "Nombre de lits de réanimation occupés à l'hôpital pour Covid19.",
+    "deces_hospitaliers": "Nombre de décès quotidiens pour Covid19 à l'hôpital (moyenne glissante 7j.).",
+}
+
+var titres = {
+    "hospitalisations": "Hospitalisations",
+    "incidence": "Taux d'incidence",
+    "taux_positivite": "Taux de positivité",
+    "reanimations": "Réanimations",
+    "deces_hospitaliers": "Décès hospitaliers",
+}
+
+var credits = "<br>Auteur : <b>CovidTracker.fr</b> - Données : Santé publique France."
 
 function boxChecked(value){
     console.log(value)
@@ -88,13 +105,16 @@ function boxChecked(value){
 }
 
 function buildChart(){
+    
     dataExplorerChart.data.datasets = []
+    dataExplorerChart.options.scales.yAxes = []
     selected_data = [document.getElementById("typeDonees").value]
-    //selected_territoire = [document.getElementById("territoireDonnees").value]
 
     selected_territoires.map((value, idx) => {
         addTrace(selected_data[0], value);
     })
+    document.getElementById("titre").innerHTML = titres[selected_data[0]];
+    document.getElementById("description").innerHTML = descriptions[selected_data[0]];
 }
 
 function populateTerritoireSelect(){
@@ -129,12 +149,19 @@ function fetchData(){
                 populateTerritoireSelect();
                 //addTrace("incidence", "france");
                 buildChart()
+
+                majDataUpdate();
             })
         .catch(function () {
             this.dataError = true;
             console.log("error-x")
         }
         )
+}
+
+function majDataUpdate(){
+    let N = data["france"]["hospitalisations"]["jour"].length;
+    document.getElementById("dateDonnee").innerHTML = data["france"]["hospitalisations"]["jour"][N-1];
 }
 
 function removeElementArray(arr, element){
@@ -152,9 +179,7 @@ function replaceBadCharacters(dep){
   }
 
 function addTrace(value, territoire){
-    console.log(value)
     data_temp = data[territoire][value]["valeur"].map((val, idx) => ({x: data[territoire][value]["jour"][idx], y: val}))
-    console.log(data)
     
     var N = dataExplorerChart.data.datasets.length
     if(N>=10){
@@ -173,9 +198,9 @@ function addTrace(value, territoire){
 
     dataExplorerChart.options.scales.yAxes.push({
         id: value,
-        display: false,
+        display: true,
         gridLines: {
-                        display: false
+                        display: true
                     },
     })
     
