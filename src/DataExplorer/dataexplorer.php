@@ -89,6 +89,7 @@ function boxChecked(value){
 
 function buildChart(){
     dataExplorerChart.data.datasets = []
+    dataExplorerChart.options.scales.yAxes = []
     selected_data = [document.getElementById("typeDonees").value]
     //selected_territoire = [document.getElementById("territoireDonnees").value]
 
@@ -152,9 +153,7 @@ function replaceBadCharacters(dep){
   }
 
 function addTrace(value, territoire){
-    console.log(value)
     data_temp = data[territoire][value]["valeur"].map((val, idx) => ({x: data[territoire][value]["jour"][idx], y: val}))
-    console.log(data)
     
     var N = dataExplorerChart.data.datasets.length
     if(N>=10){
@@ -173,9 +172,9 @@ function addTrace(value, territoire){
 
     dataExplorerChart.options.scales.yAxes.push({
         id: value,
-        display: false,
+        display: true,
         gridLines: {
-                        display: false
+                        display: true
                     },
     })
     
