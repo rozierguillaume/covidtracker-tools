@@ -70,7 +70,7 @@ var dataExplorerChart;
 var selected_data=["hospitalisations", "incidence", "reanimations", "deces_hospitaliers"];
 var selected_territoires=["france"];
 var data;
-var seq = palette('tol', 11);
+var seq = palette('tol', 12);
 var descriptions = {
     "hospitalisations": "Nombre de lits occupés à l'hôpital pour Covid19.",
     "incidence": "Nombre de cas par semaine pour 100 000 habitants.",
@@ -87,7 +87,7 @@ var titres = {
     "deces_hospitaliers": "Décès hospitaliers",
 }
 
-var credits = "<br>Auteur : <b>CovidTracker.fr</b> - Données : Santé publique France."
+var credits = "<br><small>CovidTracker.fr - Données : Santé publique France</small>"
 
 function boxChecked(value){
     console.log(value)
@@ -114,7 +114,7 @@ function buildChart(){
         addTrace(selected_data[0], value);
     })
     document.getElementById("titre").innerHTML = titres[selected_data[0]];
-    document.getElementById("description").innerHTML = descriptions[selected_data[0]];
+    document.getElementById("description").innerHTML = descriptions[selected_data[0]] + credits;
 }
 
 function populateTerritoireSelect(){
