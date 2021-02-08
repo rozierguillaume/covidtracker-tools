@@ -49,7 +49,12 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
             <div id="checkboxes" style="text-align: left; overflow-y:scroll; padding: 10px; border-radius: 7px; height: 550px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
                 
                 
-                    <input type='checkbox' id='france' checked onchange="boxChecked('france')"> France<br>
+                    <div class="checkbox">
+                        <label>
+                            <input type='checkbox' id='france' checked onchange="boxChecked('france')">France
+                        </label>
+                    </div>
+                    <br>
                     <span id="territoiresCheckboxes"></span>
                 
             </div>
