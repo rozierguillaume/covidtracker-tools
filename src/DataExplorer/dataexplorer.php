@@ -154,6 +154,8 @@ function checkPour100k(selected_data){
 }
 
 function buildChart(){
+    dataExplorerChart.destroy();
+    buildEmptyChart();
     
     dataExplorerChart.data.datasets = []
     dataExplorerChart.options.scales.yAxes = []
