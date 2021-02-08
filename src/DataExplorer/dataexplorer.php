@@ -1,6 +1,10 @@
 <!-- wp:html -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/google-palette/1.1.0/palette.js" integrity="sha512-C8lBe+d5Peg8kU+0fyU+JfoDIf0kP1rQBuPwRSBNHqqvqaPu+rkjlY0zPPAqdJOLSFlVI+Wku32S7La7eFhvlA==" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js" integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.css" integrity="sha512-XXtRBFtk/QfR8GEWwQPYjrQBHQwjidXg0wo8HJi9YOaFycWqd2uWkjJoAyx8Mb/+H8uhvmf70EAIxDnQxrwrvw==" crossorigin="anonymous" />
+
 <p>CovidExplorer est un outil de CovidTracker permettant d'explorer les données de l'épidémie en France. Sélectionnez un type de données ainsi qu'un ou plusieurs territoires ci-dessous, puis la courbe s'affichera à droite (ou en-dessous sur mobile). <i>Cette page est encore en cours de construction, d'autres fonctionnalités arriveront progressivement.</i> <i>Dernière donnée : <span id="dateDonnee">--/--</span>.</i></p>
 
 <?php include(__DIR__ . '/styles.php'); ?>
@@ -65,7 +69,14 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
         <span id="description">...</span>
             <div class="chart-container" style="position: relative; height:75vh; width:90%">
                 <canvas id="dataExplorerChart" style="margin-top:20px; max-height: 800px; max-width: 1500px;"></canvas>
+                
             </div>
+            <div id="sliderUI" style="margin-top:10px; margin-bottom: 10px;"></div>
+            <!--
+            <div class="slidecontainer" style="margin-top: 10px; margin-bottom: 5px;">
+                    <input type="range" min="0" max="1" value="0" class="slider" id="timeSlider" oninput="changeTime()" onchange="changeTime()">
+                </div>
+                -->
         </div>
     </div>
 </div>
@@ -73,8 +84,9 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
 <?php include(__DIR__ . '/menuBasPage.php'); ?>
 <br><br>
 
-
 <script>
+
+
 var dataExplorerChart;
 var selected_data=["incidence"];
 var selected_territoires=["france"];
@@ -125,6 +137,22 @@ function pour100kChecked(){
     buildChart();
 }
 
+function changeTime(){
+    let selected_data = document.getElementById("typeDonees").value
+    let idx = document.getElementById('sliderUI').noUiSlider.get(); // document.getElementById("timeSlider").value
+    
+    let idx_min = parseInt(idx[0])
+    let idx_max = parseInt(idx[1])
+    console.log(idx_min)
+    dataExplorerChart.options.scales.xAxes[0].ticks = {
+        min: data["france"][selected_data]["jour"][idx_min],
+        max: data["france"][selected_data]["jour"][idx_max]
+        }
+    //console.log(dataExplorerChart.options.scales.xAxes.time)
+    dataExplorerChart.update()
+
+}
+
 function checkPour100k(selected_data){
     
     if (selected_data == "incidence"){
@@ -148,10 +176,32 @@ function checkPour100k(selected_data){
     }
 }
 
+function updateSlider(){
+    var sliderNoUi = document.getElementById('sliderUI');
+
+    let selected_data = document.getElementById("typeDonees").value
+    //let slider = document.getElementById("timeSlider");
+
+    let N = data["france"][selected_data]["jour"].length;
+
+    sliderNoUi.noUiSlider.updateOptions({
+        range: {
+            'min': 0,
+            'max': N-1
+        }
+    });
+
+    sliderNoUi.noUiSlider.set([0, N-1])
+
+    //slider.max = N-1;  
+}
+
 function buildChart(){
+    
+    updateSlider();
     dataExplorerChart.destroy();
     buildEmptyChart();
-    
+
     dataExplorerChart.data.datasets = []
     dataExplorerChart.options.scales.yAxes = []
     selected_data = [document.getElementById("typeDonees").value]
@@ -207,6 +257,7 @@ function fetchData(){
                 this.data = json;
                 populateTerritoireSelect();
                 //addTrace("incidence", "france");
+                buildSlider();
                 buildChart()
 
                 majDataUpdate();
@@ -321,5 +372,32 @@ function buildEmptyChart() {
     });
 }
 
+function buildSlider(){
+    var slider = document.getElementById('sliderUI');
+
+    noUiSlider.create(slider, {
+        start: [0, 100],
+        connect: true,
+        step: 1,
+        range: {
+            'min': 0,
+            'max': 100,
+
+        }
+    });
+
+    slider.noUiSlider.on('update', function (values, handle) {
+        changeTime()
+    });
+}
 
 </script>
+
+<style>
+
+.noUi-connect {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+
+</style>
