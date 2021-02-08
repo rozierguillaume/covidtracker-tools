@@ -51,7 +51,12 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
             <div id="checkboxes" style="text-align: left; overflow-y:scroll; padding: 10px; border-radius: 7px; height: 550px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
                 
                 
-                    <input type='checkbox' id='france' checked onchange="boxChecked('france')"> France<br>
+                    <div class="checkbox">
+                        <label>
+                            <input type='checkbox' id='france' checked onchange="boxChecked('france')">France
+                        </label>
+                    </div>
+                    <br>
                     <span id="territoiresCheckboxes"></span>
                 
             </div>
@@ -132,7 +137,7 @@ function populateTerritoireSelect(){
     var html_code = "";
     html_code += "<br><i>Régions</i><br>"
     data.regions.map((region, idx) => {
-        html_code += "<input type='checkbox' id='" + replaceBadCharacters(region) + "' onchange='boxChecked(\"" + replaceBadCharacters(region) +"\")'> "+ region +"<br>"
+        html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(region) + "' onchange='boxChecked(\"" + replaceBadCharacters(region) +"\")'> "+ region + "</label></div>" + "<br>"
 
     })
     html_code += "<br><i>Départements</i><br>"
@@ -143,7 +148,7 @@ function populateTerritoireSelect(){
             complement += data["departements_noms"][departement];
         }
 
-        html_code += "<input type='checkbox' id='" + replaceBadCharacters(departement) + "' onchange='boxChecked(\"" + replaceBadCharacters(departement) +"\")'> "+ departement + complement +"<br>"
+        html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(departement) + "' onchange='boxChecked(\"" + replaceBadCharacters(departement) +"\")'> "+ departement + complement + "</label></div>" + "<br>"
 
     })
 
@@ -275,3 +280,9 @@ function buildEmptyChart() {
 
 
 </script>
+<style type="text/css">
+    .checkbox {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+</style>
