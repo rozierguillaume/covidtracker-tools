@@ -34,12 +34,23 @@
                             Cas <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li data-carte="incidence-cas"><a href="#" class="selected">Taux d'incidence (3
-                                    couleurs)</a></li>
-                            <li data-carte="incidence-cas-12-couleurs"><a href="#" class="">Taux d'incidence (12
-                                    couleurs)</a></li>
+                            <li data-carte="incidence-cas">
+                                <a href="#" class="selected">Taux d'incidence (4 couleurs)</a>
+                            </li>
+                            <li data-carte="incidence-cas-12-couleurs">
+                                <a href="#" class="">Taux d'incidence (12 couleurs)</a>
+                            </li>
                             <li data-carte="evolution-cas"><a href="#">Évolution du taux d'incidence</a></li>
                             <li data-carte="taux-positivite"><a href="#">Taux de positivité</a></li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                            Vaccinations <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li data-carte="n_dose1_cumsum_pop"><a href="#">Proportion partiellement vaccinés</a></li>
                         </ul>
                     </div>
                     <div class="btn-group">
@@ -88,6 +99,7 @@
                 <div id="carte">
                     <?php include(__DIR__ . '/carteDepartements.php'); ?>
                 </div>
+                CovidTracker.fr - Données : Santé publique France
                 <div id="droitsCarte" style="font-size: 8px; font-style: italic; margin-top: 30px; ">
                     Carte adaptée à partir d'une création <a target="_blank"
                                                              href="https://fr.wikipedia.org/wiki/Fichier:Carte_vierge_d%C3%A9partements_fran%C3%A7ais_avec_DOM.svg">Wikipedia</a>

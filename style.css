@@ -80,11 +80,12 @@
         margin-bottom: 0px !important;
     }
     .navbar-right .dropdown-menu {
-        left: 0 important!;
+        left: 0 !important;
     }
 }
 
 @media (min-width: 1001px) {
-    .navbar{
+    .navbar {
         max-height: 70px !important;
     }
+}

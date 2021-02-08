@@ -4,7 +4,12 @@
 <?php include(dirname(__FILE__) . '/dashboardDepartementsJs.php') ?>
 <?php
 if (isset($_GET['dep']) and $_GET['dep']) {
-    echo('<script id="departementSearched" type="text/template">' . $_GET["dep"] . '</script>');
+    $department = $_GET['dep'];
+    if (is_numeric($department) || $department =="2A" || $department=="2B"){
+        echo('<script id="numeroDepartementSearched" type="text/template">' . $_GET["dep"] . '</script>');
+    } else {
+        echo('<script id="departementSearched" type="text/template">' . $_GET["dep"] . '</script>');
+    }
 }
 ?>
 
@@ -52,6 +57,14 @@ if (isset($_GET['dep']) and $_GET['dep']) {
                     <span><b>Taux de positivité</b>
                 <br>Proportion de tests positifs dans l'ensemble des tests. Un chiffre bas peut être dû à une faible circulation du virus ou à un testing massif.</span><br>
                     <span style="font-size: 70%;">Mise à jour : dateMaj</span>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="shadow">
+                    <span style="font-size: 160%; color: couleurTauxPositivite"><b>n_dose1_cumsum_pop</b></span><br>
+                    <span><b>Taux de vaccination</b>
+                <br>Proportion de personnes ayant reçu une dose de vaccin.</span><br>
+                    <span style="font-size: 70%;">Dernière donnée : dateVaccinationMaj</span>
                 </div>
             </div>
         </div>

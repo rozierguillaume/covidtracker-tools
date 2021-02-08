@@ -1,6 +1,6 @@
 <h2 style="margin-top : 80px;" id="autorisation-des-vaccins">Autorisation des vaccins</h2>
 <div style="border: 0px solid grey; background-color: rgba(128, 128, 128, 0.1); border-radius: 7px; padding: 12px;">
-    L'Union Européenne a passé des commandes pour 6 vaccins différents. 2 sont autorisés, 1 est en cours d'autorisation et 3 n'ont pas encore été soumis. <i>Mise à jour : 06/12.</i><br><br>
+    L'Union Européenne a passé des commandes pour 6 vaccins différents. 3 sont autorisés, aucun n'est en cours d'autorisation et 3 n'ont pas encore été soumis. <i>Mise à jour : 29/01.</i><br><br>
     <h3 style="margin-top : 10px;">Vaccins autorisés</h3>
     <div class="row">
         <card class="shadow-btn-green col-xs-11 col-md-4"><b>🇺🇸🇩🇪 Pfizer-BioNTech</b><br>
@@ -22,20 +22,21 @@
             Doses à injecter : 2<br>
             Statut : autorisé (UE, France)
         </card>
+        <card class="shadow-btn-green col-xs-11 col-md-4"><b>🇬🇧🇸🇪 AstraZeneca/Oxford</b><br>
+            Phase 3/3<br>
+            Type : Vecteur viral<br>
+            Efficacité annoncée : 60-70% (moins de 55 ans)<br>
+            Conservation : +5°C (6 mois)<br>
+            Commandes UE : 300M (+ option 100M)<br>
+            Doses à injecter : 2<br>
+            Statut : autorisé UE (29/01)
+        </card>
     </div>
 
     <h3 style="margin-top : 50px;">Vaccins en cours d'autorisation</h3>
-    <div class="row">
-        <card class="shadow-btn-orange col-xs-11 col-md-4"><b>🇬🇧🇸🇪 AstraZeneca/Oxford</b><br>
-            Phase 3/3<br>
-            Type : Vecteur viral<br>
-            Efficacité annoncée : 70%<br>
-            Prêt : fin 2020<br>Conservation : +5°C (6 mois)<br>
-            Commandes UE : 300M (+ option 100M)<br>
-            Doses à injecter : 2<br>
-            Statut : décision UE 29/01
-        </card>
-    </div>
+
+        <div><i>Aucun.</i></div>
+
 
     <h3 style="margin-top : 50px;">Vaccins pas encore soumis</h3>
     <div class="row">

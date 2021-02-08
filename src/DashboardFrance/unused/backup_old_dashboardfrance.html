@@ -1,0 +1,1547 @@
+<!-- wp:spacer {"height":20} -->
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<p><strong data-rich-text-format-boundary="true">CovidTracker France permet de suivre l'épidémie de Coronavirus et la maladie associée, le Covid19, en France et dans ses régions.</strong><em><strong data-rich-text-format-boundary="true"><br></strong></em>Les données sont issues de Santé Publique&nbsp;France et l'INSEE.<i> Mise à jour des graphiques : automatique vers 19h30.</i></p>
+
+<!-- wp:separator -->
+<hr class="wp-block-separator"/>
+<!-- /wp:separator -->
+
+<!-- wp:tadv/classic-paragraph -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">☕️ Offrez-moi un café</a></div>
+<!-- /wp:tadv/classic-paragraph -->
+
+<!-- wp:spacer {"height":50} -->
+<div style="height:15px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:html -->
+<style>
+<title>Website Title</title>
+<style type="text/css">
+* {margin: 0; padding: 0;}
+#container {height: 100%; width:100%; font-size: 0;}
+#left, #middle, #right {display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 12px;}
+#left {width: 33%;}
+#middle {width: 33%;}
+#right {width: 33%;}
+</style>
+
+<style>
+/* the flex container without mediaquerie */
+div[shadow] {
+
+	}
+div[class_perso] {
+  display: flex;
+  min-height: 12vh;
+  flex-wrap: wrap;
+	  border: 0px solid black;
+          padding: 10px 20px;
+          border-radius: 7px;
+	  text-align: center;
+          box-shadow: 6px 4px 25px #d6d6d6;
+
+  /* needed to stack children once to big */
+}
+
+div[class_perso] div {
+  flex: 1;
+  min-width: 200px;
+  min-height: 7vh;
+  /* 2 children + margin and borders makes a break point at around 620px */
+  /*background: lightblue;*/
+}
+
+div div {
+  /*border: solid;*/
+  margin: 3px;
+  /*background: tomato;*/
+}
+
+
+/* remove the grid system at about 620px */
+
+@media screen and (max-width: 621px) {
+  div[class_persos] {
+    min-height: 30vh;
+    /* has a meaning with a grid system */
+  }
+
+}
+</style>
+
+<div class_perso="">
+<div><center><h2 id="hosp">---</h2><div id="hosp_descr" style="font-size: 15px;">personnes hospitalisées<br>soit --- le --/--</div></center></div>
+    <div><center><h2 id="rea">---</h2><div id="rea_descr" style="font-size: 15px;">personnes en réanimation<br>soit --- le --/--</div></center></div>
+    <div><center><h2 id="dc_new">---</h2><div id="dc_new_descr" style="font-size: 15px;">nouveaux décès hospitaliers le --/--</div></center></div>
+<div><center><h2 id="cas_last7">---</h2><div id="cas_last7_descr" style="font-size: 15px;">cas positifs sur les 7 derniers jours (--/--)</div></center></div>
+</div>
+
+
+<script>
+readJson()
+function readJson () {
+   // http://localhost:8080
+   fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/stats.json')
+   .then(response => {
+       if (!response.ok) {
+           throw new Error("HTTP error " + response.status);
+       }
+       return response.json();
+   })
+   .then(json => {
+       this.data = json;
+       document.getElementById("rea").innerHTML = data["rea"]["valeur"];
+       document.getElementById("hosp").innerHTML = data["hosp"]["valeur"];
+       document.getElementById("dc_new").innerHTML = data["incid_dc"]["valeur"];
+       document.getElementById("cas_last7").innerHTML = data["tests_last7"]["valeur"];
+       document.getElementById("hosp_descr").innerHTML = document.getElementById("hosp_descr").innerHTML.replace("--/--", data["hosp"]["date"]);
+document.getElementById("hosp_descr").innerHTML = document.getElementById("hosp_descr").innerHTML.replace("---", data["hosp_new"]["valeur"]);
+document.getElementById("rea_descr").innerHTML = document.getElementById("rea_descr").innerHTML.replace("--/--", data["rea"]["date"]);
+document.getElementById("rea_descr").innerHTML = document.getElementById("rea_descr").innerHTML.replace("---", data["rea_new"]["valeur"]);
+document.getElementById("dc_new_descr").innerHTML = document.getElementById("dc_new_descr").innerHTML.replace("--/--", data["incid_dc"]["date"]);
+document.getElementById("cas_last7_descr").innerHTML = document.getElementById("cas_last7_descr").innerHTML.replace("--/--", data["tests_last7"]["date"]);
+   })
+   .catch(function () {
+       this.dataError = true;
+   })
+}
+</script>
+<!-- /wp:html -->
+
+<!-- wp:spacer {"height":20} -->
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:heading -->
+<h1 id="dashboard">Vue d'ensemble</h1>
+<!-- /wp:heading -->
+
+<!-- wp:separator -->
+<hr class="wp-block-separator"/>
+<!-- /wp:separator -->
+
+<!-- wp:paragraph {"fontSize":"normal"} -->
+<p class="has-normal-font-size">Ce graphique est une bonne vue d'ensemble de la situation en France. Il permet en un coup d'œil de suivre le nombre de cas détectés au Covid19, le nombre de personnes hospitalisées, en réanimation ou décédées à cause de la Covid19.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[TABS_R id=844]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:spacer {"height":20} -->
+<div style="height:10px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<p>Ce graphique permet de visualiser en un coup d'oeil la situation de chaque département : </p>
+<p id="line_metropoles" align="center"><a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/evolution_deps/evolution_deps_0.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/evolution_deps/evolution_deps_0.jpeg" width="100%" style="max-width: 2000px;"></a></p>
+
+<!-- wp:spacer {"height":50} -->
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<h1 id="tests_virologiques">Activité du virus</h1>
+
+<!-- wp:separator -->
+<hr class="wp-block-separator"/>
+<!-- /wp:separator -->
+
+<!-- wp:heading -->
+<h3>Carte d'incidence</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Cette carte présente l'incidence, c'est-à-dire le nombre de tests positifs sur une semaine dans chaque département, ramené à 100 000 habitants. Un département est considéré comme rouge si son incidence dépasse 50 cas pour 100k habitants.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[TABS_R id=1465]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:spacer {"height":20} -->
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:heading {"level":4} -->
+<h3 id="tauxr_effectif">Taux de reproduction R effectif</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Un paramètre important est R, le taux de reproduction du virus. Si R est inférieur à 1, l'épidémie régresse, car un malade contamine en moyenne moins d'1 personne.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Il est très difficile d'évaluer précisément ce paramètre. Le gouvernement ne détaille pas sa méthode. Personnellement je me suis basé sur la méthode allemande, que j'ai modifiée pour que cela colle avec les résultats de notre gouvernement.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[TABS_R id=1222]</p>
+<!-- /wp:paragraph -->
+
+<p><span style="font-size: 8pt;">Méthode de calcul basée sur la méthode de Cori :</span><br><span style="font-size: 8pt;">R = A / B</span><br><span style="font-size: 8pt;">&nbsp; &nbsp;A = nb. de personnes admises aux urgences pour Covid19 (sur 7 jours)</span><br><span style="font-size: 8pt;">&nbsp; &nbsp;B = nb. de personnes admises aux urgences pour Covid19 il y a 7 jours (sur 7 jours)</span></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:spacer {"height":50} --></p>
+<div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:heading --></p>
+<h2>&nbsp;</h2>
+<p><!-- wp:paragraph -→
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>[TABS_R id=1222]</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<h3 id="tests_virologiques">Taux de positivité</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>Le graphique suivant présente le taux de positivité. Cela correspond à la proportion de tests positifs par rapport à l'ensemble des tests réalisés, positifs ou négatifs.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Dans le deuxième onglet, ce graphique est décliné pour chaque département. Il est conseillé de cliquer sur l'image, puis de zoomer afin d'observer correctement chaque département.</p>
+<p>[TABS_R id=1462]</p>
+<p></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:html --></p>
+<p><!-- wp:spacer --></p>
+<div class="wp-block-spacer" style="height: 10px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<h3 id="cas_dep">Nouveaux tests positifs par département</h3>
+<p>Cliquez sur un élément de légende pour l'ajouter. Double-cliquez dessus pour l'isoler.</p>
+<p><iframe src="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/testspositifs_nouv_line.html" width="100%" height="600" frameborder="0" scrolling="yes"></iframe></p>
+<p><!-- wp:heading {"level":3} --></p>
+<p>Une moyenne mobile de 7 jours a été appliquée afin de lisser les irrégularités. N.B. : les données ne sont publiées qu'après 3 jours par le gouvernement. Un décalage est donc normal (il est de 5 jours le lundi).</p>
+<p><!-- /wp:html --></p>
+<p><!-- wp:spacer --></p>
+<div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:html --></p>
+<p><!-- /wp:html --></p>
+<p><!-- wp:spacer --></p>
+<div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<h3 id="cas_reg">Nouveaux tests positifs par région</h3>
+<p><iframe src="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/cas_reg.html" width="100%" height="700" frameborder="0" scrolling="yes"></iframe></p>
+<p></p>
+<p><!-- wp:spacer --></p>
+<div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<h3 id="incid_metro">Taux d'incidence dans les grandes métropoles</h3>
+<p>[TABS_R id=1614]</p>
+<p><!-- wp:spacer --></p>
+<div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<h3 id="couvre_feu_renforce">Efficacité du couvre-feu renforcé</h3>
+<p>Les départements ont été séparés en trois groupes : ceux en couvre-feu renforcé le 02/01 (bleu), ceux en couvre-feu renforcé le 08/01 (orange), et les autres (noir).</p>
+<p id="line_metropoles" align="center"><a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/impact_couvre_feu.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/impact_couvre_feu.jpeg" width="100%"></a></p>
+<p><!-- wp:spacer --></p>
+<div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<h3 id="tests_virologiques_heatmap">Répartition des cas en fonction de l'âge</h3>
+<p>[TABS_R id=1290]</p>
+<p><!-- wp:spacer --></p>
+<div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<h3 id="incidence_regs">Taux d'incidence par région et âge</h3>
+<p>[TABS_R id=1549]</p>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:html --></p>
+<p><!-- /wp:html --></p>
+<p><!-- wp:spacer --></p>
+<div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<h1 id="deconfinement">Indicateurs épidémiques</h1>
+<p><!-- wp:separator --></p>
+<hr class="wp-block-separator"><!-- /wp:separator --><p></p>
+<p><!-- wp:paragraph --></p>
+<p>Afin de prendre des mesures de déconfinement le 11 mai dernier, le gouvernement s'est basé sur deux indicateurs.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Le premier indicateur est la circulation de virus. Il correspond à la proportion de personnes se présentant aux urgences pour une suspicion de Covid19 par rapport au nombre total de personnes se présentant aux urgences.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Le deuxième indicateur est la saturation des services de réanimation. Il correspond au nombre de lits de réanimation occupés par rapport au nombre de lits (avant l'épidémie).</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3 id="indicateur-1">Circulation du virus</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>[TABS_R id=849]</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>&nbsp;</h3>
+<h3 id="indicateur-2">Saturation hospitalière</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>[TABS_R id=853]</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:spacer --></p>
+<div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<h1 id="hospitalisations-et-reanimations-liees-au-covid-19">Hospitalisations et réanimations liées au Covid-19</h1>
+<p><!-- wp:separator --></p>
+<hr class="wp-block-separator"><!-- /wp:separator --><p></p>
+<p>[TABS_R id=2322]</p>
+<p><!-- /wp:html --></p>
+<p><!-- wp:spacer {"height":20} --></p>
+<div class="wp-block-spacer" style="height: 20px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:spacer {"height":80} --></p>
+<div class="wp-block-spacer" style="height: 80px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:heading --></p>
+<h1 id="dc">Décès dus au Covid-19</h1>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:separator --></p>
+<hr class="wp-block-separator"><!-- /wp:separator --><p></p>
+<p><!-- wp:paragraph {"fontSize":"normal"} --></p>
+<p class="has-normal-font-size">Les décès liés au Covid-19 augmentent toujours, mais moins rapidement qu'avant.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>[TABS_R id=835]</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><video controls="controls" width="80%" height="150"><source src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/course_dc/course_opti.mp4" type="video/mp4">Your browser does not support the video tag.</video></p>
+<p>La région Île-de-France enregistre le plus de décès. Cependant, on observe plus de décès par habitant dans la région Grand-Est.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:html --></p>
+<p align="center"><a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/dc_cum_hab_nonhab_comp.html" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/dc_cum_hab_nonhab_comp.jpeg" width="100%"></a></p>
+<p><!-- /wp:html --></p>
+<p><!-- wp:html --></p>
+<p><!-- /wp:html --></p>
+<p><!-- wp:spacer --></p>
+<div class="wp-block-spacer" style="height: 100px;" aria-hidden="true">
+<h2>&nbsp;</h2>
+</div>
+<h1 id="mortalite">Mortalité toutes causes</h1>
+<p><!-- wp:separator --></p>
+<hr class="wp-block-separator"><!-- /wp:separator --><p></p>
+<p><a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/mortalite.html" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/mortalite.jpeg" width="100%"></a></p>
+<p><!-- /wp:spacer --></p>
+<p></p>
+<div class="wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color has-background has-very-light-gray-background-color" href="https://covidtracker.fr">Accueil</a></div>
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color has-background has-very-light-gray-background-color" style="border-radius: 39px;" href="https://covidtracker.fr/covidtracker-world/">World Dashboard</a></div>
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-background has-very-light-gray-background-color" href="https://covidtracker.fr/blog/">Derniers articles</a></div>
+</div>
+<p><!-- /wp:buttons --></p>
+<p><!-- wp:spacer {"height":20} --></p>
+<div class="wp-block-spacer" style="height: 20px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph {"fontSize":"normal"} --></p>
+<p class="has-normal-font-size">Vous pouvez aussi me suivre sur <a href="http://twitter.com/guillaumerozier" target="_blank" rel="noreferrer noopener">Twitter</a> pour des interprétations des graphiques. Le compte Twitter <a href="http://www.twitter.com/covidtracker_fr" target="_blank" rel="noreferrer noopener">CovidTracker</a> permet d'être notifié des nouvelles données. Une question ou suggestion ? Envoyez-moi un <a href="https://covidtracker.fr/contact/">message</a>.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- /wp:html --></p>
+<p><!-- wp:spacer {"height":50} --></p>
+<div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
+<p><!-- /wp:spacer --></p>
+<p><!-- wp:paragraph --></p>
+<p>♥ <a href="https://guillaumerozier.fr/covidtracker-soutenir/">Soutenez CovidTracker</a></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:separator --></p>
+<hr class="wp-block-separator"><!-- /wp:separator --><p></p>
+<p><!-- wp:html --></p>
+<p><a href="https://guillaumerozier.fr/mentions-legales/">Mentions légales</a></p>
+<p><!-- /wp:html --></p>
+<p><!-- wp:html --><br>
+<!-- /wp:html --></p>
