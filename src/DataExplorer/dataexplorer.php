@@ -126,7 +126,7 @@ function populateTerritoireSelect(){
     var html_code = "";
     html_code += "<br><i>Régions</i><br>"
     data.regions.map((region, idx) => {
-        html_code += "<input type='checkbox' id='" + replaceBadCharacters(region) + "' onchange='boxChecked(\"" + replaceBadCharacters(region) +"\")'> "+ region +"<br>"
+        html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(region) + "' onchange='boxChecked(\"" + replaceBadCharacters(region) +"\")'> "+ region + "</label></div>" + "<br>"
 
     })
     html_code += "<br><i>Départements</i><br>"
@@ -137,7 +137,7 @@ function populateTerritoireSelect(){
             complement += data["departements_noms"][departement];
         }
 
-        html_code += "<input type='checkbox' id='" + replaceBadCharacters(departement) + "' onchange='boxChecked(\"" + replaceBadCharacters(departement) +"\")'> "+ departement + complement +"<br>"
+        html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(departement) + "' onchange='boxChecked(\"" + replaceBadCharacters(departement) +"\")'> "+ departement + complement + "</label></div>" + "<br>"
 
     })
 
@@ -269,3 +269,9 @@ function buildEmptyChart() {
 
 
 </script>
+<style type="text/css">
+    .checkbox {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+</style>
