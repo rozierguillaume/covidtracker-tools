@@ -36,6 +36,8 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
                     <br>
                 <select name="type" id="typeDonees" onchange="buildChart()">
                     <option value="incidence">Taux d'incidence</option>
+                    <option value="cas">Cas positifs</option>
+                    <option value="tests">Dépistage</option>
                     <option value="taux_positivite">Taux de positivite</option>
                     <option value="hospitalisations">Hospitalisations</option>
                     <option value="reanimations">Réanimations</option>
@@ -81,6 +83,8 @@ var descriptions = {
     "taux_positivite": "Proportion des tests qui sont positifs (en %).",
     "reanimations": "Nombre de lits de réanimation occupés à l'hôpital pour Covid19.",
     "deces_hospitaliers": "Nombre de décès quotidiens pour Covid19 à l'hôpital (moyenne glissante 7j.).",
+    "cas": "Nombre de tests positifs quotidiens (RT-PCR et antigéniques) (moyenne glissante 7j.).",
+    "tests": "Nombre de tests quotidiens (positifs et négatifs) (moyenne glissante 7j.)."
 }
 
 var titres = {
@@ -89,6 +93,8 @@ var titres = {
     "taux_positivite": "Taux de positivité",
     "reanimations": "Réanimations",
     "deces_hospitaliers": "Décès hospitaliers",
+    "cas": "Cas positifs",
+    "tests": "Dépistage",
 }
 
 var credits = "<br><small>CovidTracker.fr - Données : Santé publique France</small>"
