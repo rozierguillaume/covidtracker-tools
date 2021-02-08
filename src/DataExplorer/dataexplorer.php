@@ -67,7 +67,7 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
         <div class="col-sm-9" style="min-width: 300px;">
         <h3 id="titre">Chargement...</h3>
         <span id="description">...</span>
-            <div class="chart-container" style="position: relative; height:75vh; width:90%">
+            <div class="chart-container" style="position: relative; height:70vh; width:90%">
                 <canvas id="dataExplorerChart" style="margin-top:20px; max-height: 800px; max-width: 1500px;"></canvas>
                 
             </div>
