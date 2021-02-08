@@ -31,10 +31,11 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
     <div class="row">
 
         <div class="col-sm-3" style="min-width: 100px;">
+        <h2>CovidExplorer</h2><br>
             <b>Donnée à afficher</b>
-                <div style="padding 20px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
-                    <br>
-                <select name="type" id="typeDonees" onchange="buildChart()">
+                <div style="border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
+                    
+                <select name="type" id="typeDonees" onchange="buildChart()" style="margin-top:10px;">
                     <option value="incidence">Taux d'incidence</option>
                     <option value="cas">Cas positifs</option>
                     <option value="tests">Dépistage</option>
@@ -43,7 +44,9 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
                     <option value="reanimations">Réanimations</option>
                     <option value="deces_hospitaliers">Décès hospitaliers</option>
                 </select>
-                <br><br>
+                <br>
+                <input type='checkbox' id='pour100k' onchange="pour100kChecked()" style="margin-bottom:10px;"> Pour 100 k habitants
+                
                 </div>
             <br>
             
@@ -60,7 +63,7 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
         <div class="col-sm-9" style="min-width: 300px;">
         <h3 id="titre">Chargement...</h3>
         <span id="description">...</span>
-            <div class="chart-container" style="position: relative; height:65vh; width:90%">
+            <div class="chart-container" style="position: relative; height:75vh; width:90%">
                 <canvas id="dataExplorerChart" style="margin-top:20px; max-height: 800px; max-width: 1500px;"></canvas>
             </div>
         </div>
@@ -73,10 +76,12 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
 
 <script>
 var dataExplorerChart;
-var selected_data=["hospitalisations", "incidence", "reanimations", "deces_hospitaliers"];
+var selected_data=["incidence"];
 var selected_territoires=["france"];
 var data;
 var seq = palette('tol', 12);
+var pour100k = false;
+
 var descriptions = {
     "hospitalisations": "Nombre de lits occupés à l'hôpital pour Covid19.",
     "incidence": "Nombre de cas par semaine pour 100 000 habitants.",
@@ -114,16 +119,44 @@ function boxChecked(value){
 
 }
 
+function pour100kChecked(){
+    pour100k = !pour100k;
+    buildChart();
+}
+
+function checkPour100k(selected_data){
+    if (selected_data == "incidence"){
+        document.getElementById("pour100k").setAttribute("checked", "");
+        document.getElementById("pour100k").setAttribute("disabled", "");
+        return false;
+
+    } else {
+        document.getElementById("pour100k").removeAttribute("disabled");
+        if(!pour100k){
+            document.getElementById("pour100k").removeAttribute("checked");
+        }
+        return pour100k;
+    }
+}
+
 function buildChart(){
     
     dataExplorerChart.data.datasets = []
     dataExplorerChart.options.scales.yAxes = []
     selected_data = [document.getElementById("typeDonees").value]
 
+    pour100k_temp = checkPour100k(selected_data[0]);
+
     selected_territoires.map((value, idx) => {
-        addTrace(selected_data[0], value);
+        addTrace(selected_data[0], value, pour100k_temp);
     })
     document.getElementById("titre").innerHTML = titres[selected_data[0]];
+
+    if (pour100k){
+        if(selected_data[0]!="incidence"){
+            document.getElementById("titre").innerHTML += " pour 100k habitants";
+        }
+    }
     document.getElementById("description").innerHTML = descriptions[selected_data[0]] + credits;
 }
 
@@ -193,8 +226,12 @@ function replaceBadCharacters(dep){
     return dep.replace("'", "&apos;").replace("ô", "&ocirc;")
   }
 
-function addTrace(value, territoire){
-    data_temp = data[territoire][value]["valeur"].map((val, idx) => ({x: data[territoire][value]["jour"][idx], y: val}))
+function addTrace(value, territoire, pour100k_temp){
+    diviseur = 1;
+    if (pour100k_temp){
+        diviseur = data[territoire]["population"]/100000;
+    }
+    data_temp = data[territoire][value]["valeur"].map((val, idx) => ({x: data[territoire][value]["jour"][idx], y: val/diviseur}))
     
     var N = dataExplorerChart.data.datasets.length
     if(N>=10){
