@@ -108,6 +108,7 @@ var titres = {
 }
 
 var credits = "<br><small>CovidTracker.fr - Données : Santé publique France</small>"
+let incompatibles_pour100k = ["incidence", "taux_positivite"]
 
 function boxChecked(value){
     console.log(value)
@@ -130,16 +131,24 @@ function pour100kChecked(){
 }
 
 function checkPour100k(selected_data){
+    
     if (selected_data == "incidence"){
-        document.getElementById("pour100k").setAttribute("checked", "");
+        document.getElementById("pour100k").checked = true;
         document.getElementById("pour100k").setAttribute("disabled", "");
         return false;
 
+    } else if (selected_data == "taux_positivite") {
+        console.log(document.getElementById("pour100k").attributes)
+        
+        document.getElementById("pour100k").checked = false;
+        document.getElementById("pour100k").setAttribute("disabled", "");
+        return false;
     } else {
         document.getElementById("pour100k").removeAttribute("disabled");
         if(!pour100k){
-            document.getElementById("pour100k").removeAttribute("checked");
+            document.getElementById("pour100k").checked = false;
         }
+
         return pour100k;
     }
 }
@@ -158,7 +167,7 @@ function buildChart(){
     document.getElementById("titre").innerHTML = titres[selected_data[0]];
 
     if (pour100k){
-        if(selected_data[0]!="incidence"){
+        if(! incompatibles_pour100k.includes(selected_data[0])){
             document.getElementById("titre").innerHTML += " pour 100k habitants";
         }
     }
