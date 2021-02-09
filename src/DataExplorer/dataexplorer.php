@@ -46,6 +46,8 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
                     <option value="taux_positivite">Taux de positivite</option>
                     <option value="hospitalisations">Hospitalisations</option>
                     <option value="reanimations">Réanimations</option>
+                    <option value="nbre_acte_corona">Actes SOS médecin</option>
+                    <option value="nbre_pass_corona">Passages aux urgences</option>
                     <option value="deces_hospitaliers">Décès hospitaliers</option>
                 </select>
                 <br>
@@ -86,6 +88,19 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
     </div>
 </div>
 
+<div>
+    Palette de couleurs : 
+    <select name="type" id="colorSeqSelect" onchange="changeColorSeq()" style="margin-top:10px;">
+        <option value="mpn65">Par défaut (mpn65)</option>
+        <option value="tol">tol</option>
+        <option value="tol-dv">tol-dv</option>
+        <option value="tol-sq">tol-sq</option>
+        <option value="tol-rainbow">tol-rainbow</option>
+        <option value="cb-Paired">cb-Paired </option>
+        <option value="cb-BrBG">cb-BrBG</option>
+    </select>
+</div>
+
 <?php include(__DIR__ . '/menuBasPage.php'); ?>
 <br><br>
 
@@ -96,7 +111,7 @@ var dataExplorerChart;
 var selected_data=["incidence"];
 var selected_territoires=["france"];
 var data;
-var seq = palette('tol', 12);
+var seq = palette('mpn65', 40).slice(1, 40);
 var pour100k = false;
 
 var descriptions = {
@@ -104,9 +119,11 @@ var descriptions = {
     "incidence": "Nombre de cas par semaine pour 100 000 habitants.",
     "taux_positivite": "Proportion des tests qui sont positifs (en %).",
     "reanimations": "Nombre de lits de réanimation occupés à l'hôpital pour Covid19.",
-    "deces_hospitaliers": "Nombre de décès quotidiens pour Covid19 à l'hôpital (moyenne glissante 7j.).",
-    "cas": "Nombre de tests positifs quotidiens (RT-PCR et antigéniques) (moyenne glissante 7j.).",
-    "tests": "Nombre de tests quotidiens (positifs et négatifs) (moyenne glissante 7j.)."
+    "deces_hospitaliers": "Nombre de décès quotidiens pour Covid19 à l'hôpital (moyenne glissante 7 jours).",
+    "cas": "Nombre de tests positifs quotidiens (RT-PCR et antigéniques) (moyenne glissante 7 jours).",
+    "tests": "Nombre de tests quotidiens (positifs et négatifs) (moyenne glissante 7 jours).",
+    "nbre_acte_corona": "Nombre d'actes SOS médecin pour suspicion Covid19 (moyenne glissante 7 jours).",
+    "nbre_pass_corona": "Nombre de passages aux urgences pour suspicion Covid19 (moyenne glissante 7 jours).",
 }
 
 var titres = {
@@ -117,6 +134,8 @@ var titres = {
     "deces_hospitaliers": "Décès hospitaliers",
     "cas": "Cas positifs",
     "tests": "Dépistage",
+    "nbre_acte_corona": "Actes SOS médecin pour Covid19",
+    "nbre_pass_corona": "Passages aux urgences pour Covid19",
 }
 
 var credits = "<br><small>CovidTracker.fr - Données : Santé publique France</small>"
@@ -140,6 +159,23 @@ function boxChecked(value){
 function pour100kChecked(){
     pour100k = !pour100k;
     buildChart();
+}
+
+function changeColorSeq(){
+    let type_seq = document.getElementById("colorSeqSelect").value;
+    console.log(type_seq)
+    let N = 11;
+
+    seq = palette(type_seq, N) 
+
+    if(type_seq=="mpn65"){
+        N=40;
+        seq = palette(type_seq, N) 
+        seq = seq.slice(1, 40)
+    }
+
+    buildChart();
+
 }
 
 function changeTime(){
@@ -322,7 +358,7 @@ function addTrace(value, territoire, pour100k_temp){
     data_temp = data[territoire][value]["valeur"].map((val, idx) => ({x: data[territoire][value]["jour"][idx], y: val/diviseur}))
     
     var N = dataExplorerChart.data.datasets.length
-    if(N>=10){
+    if(N>=seq.length-1){
         N = 0
     }
 
