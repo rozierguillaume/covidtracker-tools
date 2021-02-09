@@ -148,11 +148,32 @@ function changeTime(){
     
     let idx_min = parseInt(idx[0])
     let idx_max = parseInt(idx[1])
+    let x_min = data["france"][selected_data]["jour"][idx_min]
+
     console.log(idx_min)
     dataExplorerChart.options.scales.xAxes[0].ticks = {
-        min: data["france"][selected_data]["jour"][idx_min],
+        min: x_min,
         max: data["france"][selected_data]["jour"][idx_max]
         }
+    var y_max = 0
+    dataExplorerChart.data.datasets.map((dataset, idx_dataset) => {
+        dataset.data.map((value, idx_data) => {
+            if(value.x > x_min){
+                if(value.y*1.1 > y_max){
+                    y_max = value.y*1.1
+                }
+            }
+
+        })
+    })
+
+    dataExplorerChart.options.scales.yAxes.map((axis, idx) => {
+        axis.ticks = {
+        min: 0,
+        max: y_max
+        }
+    })
+    
     //console.log(dataExplorerChart.options.scales.xAxes.time)
     dataExplorerChart.update()
 
@@ -383,6 +404,7 @@ function buildSlider(){
     noUiSlider.create(slider, {
         start: [0, 100],
         connect: true,
+        behaviour: 'drag',
         step: 1,
         range: {
             'min': 0,
