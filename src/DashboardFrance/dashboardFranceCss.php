@@ -10,6 +10,17 @@
 
     }
 
+    button {
+        border: 1px solid;
+        margin: 10px;
+        padding: 15px;
+        font-size : 16px;
+        transition-duration: 0.4s;
+        background-color: #ffffff;
+        border-radius: 15px;
+
+    }
+
     div[class_perso] {
         display: flex;
         min-height: 12vh;
