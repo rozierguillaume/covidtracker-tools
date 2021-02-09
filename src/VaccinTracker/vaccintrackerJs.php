@@ -293,6 +293,7 @@
             })
             .then(json => {
                 this.livraisons = json;
+                majValeursStock();
                 buildLineChart();
             })
             .catch(function () {
@@ -404,7 +405,7 @@
                     },
                     {
                         yAxisID:"stock",
-                        label: 'Doses réceptionnées ',
+                        label: 'Doses réceptionnées ou officiellement attendues ',
                         data: data_object_stock,
                         borderWidth: 3,
                         borderColor: 'grey',
@@ -654,6 +655,32 @@
         }
     }
 
+    function obtenirCumulStockActuel(){
+        
+        var idx_max = 0;
+        let today = moment();
+        
+        livraisons.jour.map((value, idx)=>{
+            
+            if(moment(value) <= today){
+                idx_max = idx
+            }
+        })
+        
+        return {"jour": livraisons.jour[idx_max], "valeur": livraisons.nb_doses_tot_cumsum[idx_max]};
+    }
+
+    function majValeursStock(){
+        results = obtenirCumulStockActuel();
+        document.getElementById("nb_doses").innerHTML = numberWithSpaces(results["valeur"]);
+        document.getElementById("date_maj_4").innerHTML = formateDate(results["jour"]);
+
+    }
+
+    function formateDate(date){
+        return date.slice(8) + "/" + date.slice(5, 7)
+    }
+
     function majValeurs(){
         //let N = vaccines_2doses.n_dose2_cumsum.length
         //let deuxiemeDoses = vaccines_2doses.n_dose2_cumsum[N-1];
@@ -664,7 +691,7 @@
 
         document.getElementById("nb_doses_injectees").innerHTML = numberWithSpaces(dejaVaccinesNb);
         document.getElementById("nb_doses_injectees_24h").innerHTML = numberWithSpaces(dejaVaccinesNb - nb_vaccines[nb_vaccines.length-2].n_dose1);
-        document.getElementById("nb_doses").innerHTML = numberWithSpaces(cumul_stock);
+        
         document.getElementById("proportionVaccinesMax").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(2);
         //document.getElementById("proportionVaccinesMin").innerHTML = (Math.round(dejaVaccines/2*10000000)/10000000).toFixed(2);
         //document.getElementById("proportion_doses").innerHTML = (dejaVaccinesNb/cumul_stock*100).toFixed(1);
@@ -677,13 +704,12 @@
         //heure = nb_vaccines[nb_vaccines.length-1].heure
 
         date_stock = dates_stock[dates_stock.length-1]
-        date_stock = date_stock.slice(8) + "/" + date_stock.slice(5, 7)
+        date_stock = formateDate(date_stock);
 
         document.getElementById("date_maj_1").innerHTML = date;
         //document.getElementById("date_maj_2").innerHTML = date + " à " + heure;
         document.getElementById("date_maj_3").innerHTML = date;
-        document.getElementById("date_maj_4").innerHTML = date_stock;
-        
+                
 
     }
 
