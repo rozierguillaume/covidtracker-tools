@@ -25,7 +25,6 @@
             Article : https://www.nejm.org/doi/full/10.1056/NEJMoa2035389
         </card>
         <card class="shadow-btn-green col-xs-11 col-md-4"><b>🇬🇧🇸🇪 AstraZeneca/Oxford</b><br>
-            Phase 3/3<br>
             Type : Vecteur viral<br>
             Efficacité annoncée : 60-70% (moins de 55 ans)<br>
             Conservation : +5°C (6 mois)<br>
