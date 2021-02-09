@@ -371,10 +371,12 @@ function addTrace(value, territoire, pour100k_temp){
         yAxisID: value,
         label: territoire + complement,
         data: data_temp,
-        pointRadius: 0.5,
+        pointRadius: 0,
         backgroundColor: 'rgba(0, 168, 235, 0)',
         borderColor: "#"+seq[N],
-        cubicInterpolationMode: 'monotone'
+        cubicInterpolationMode: 'monotone',
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: "#"+seq[N],
     })
 
     dataExplorerChart.options.scales.yAxes.push({
@@ -398,6 +400,13 @@ function buildEmptyChart() {
             datasets: []
         },
         options: {
+            hover: {
+                intersect: false
+            },
+            tooltips: {
+                mode: 'x',
+                intersect: false
+            },
             animation: {
                 duration: 0
             },
