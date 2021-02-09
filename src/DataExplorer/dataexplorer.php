@@ -242,10 +242,18 @@ function updateSlider(){
     var sliderNoUi = document.getElementById('sliderUI');
 
     let selected_data = document.getElementById("typeDonees").value
-    //let slider = document.getElementById("timeSlider");
-
     let N = data["france"][selected_data]["jour"].length;
+    
+    let idx = document.getElementById('sliderUI').noUiSlider.get();
+    let idx_min = 0
+    let idx_max = N-1
 
+    if (idx[1]<N){
+        if(idx[1]!=0){
+        idx_min = parseInt(idx[0])
+        idx_max = parseInt(idx[1])
+        }
+    }
     sliderNoUi.noUiSlider.updateOptions({
         range: {
             'min': 0,
@@ -253,7 +261,7 @@ function updateSlider(){
         }
     });
 
-    sliderNoUi.noUiSlider.set([0, N-1])
+    sliderNoUi.noUiSlider.set([idx_min, idx_max])
 
     //slider.max = N-1;  
 }
@@ -263,6 +271,7 @@ function buildChart(){
     updateSlider();
     dataExplorerChart.destroy();
     buildEmptyChart();
+    changeTime();
 
     dataExplorerChart.data.datasets = []
     dataExplorerChart.options.scales.yAxes = []
@@ -447,7 +456,7 @@ function buildSlider(){
     var slider = document.getElementById('sliderUI');
 
     noUiSlider.create(slider, {
-        start: [0, 100],
+        start: [0, 0],
         connect: true,
         behaviour: 'drag',
         step: 1,
