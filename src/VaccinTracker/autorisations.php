@@ -1,7 +1,7 @@
 <h2 style="margin-top : 80px;" id="autorisation-des-vaccins">Autorisation des vaccins</h2>
 <div style="border: 0px solid grey; background-color: rgba(128, 128, 128, 0.1); border-radius: 7px; padding: 12px;">
     L'Union Européenne a passé des commandes pour 6 vaccins différents. 3 sont autorisés, aucun n'est en cours d'autorisation et 3 n'ont pas encore été soumis. 
-    1 vaccin a été soumis à une mission de conseil auprès de l'EMA<i>Mise à jour : 02/02.</i><br><br>
+    De plus 1 vaccin (hors pré-commandes) fait l'objet d'une mission de conseil auprès de l'EMA.<i>Mise à jour : 02/02.</i><br><br>
     <h3 style="margin-top : 10px;">Vaccins autorisés</h3>
     <div class="row">
         <card class="shadow-btn-green col-xs-11 col-md-4"><b>🇺🇸🇩🇪 Pfizer-BioNTech</b><br>
