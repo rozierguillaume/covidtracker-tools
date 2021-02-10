@@ -231,7 +231,6 @@
                 dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].n_dose1
                 dejaVaccines = dejaVaccinesNb*100/67000000;
                 restantaVaccinerImmunite = 60 - dejaVaccines
-                this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
                 this.objectifQuotidien = calculerObjectif();
                 fetch2ndDosesData();
                 
@@ -255,7 +254,7 @@
             })
             .then(json => {
                 this.vaccines_2doses = json;
-
+                this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
                 majValeurs();
                 maj2Doses();
                 fetchStock();
@@ -352,15 +351,17 @@
 
     function calculerDateProjeteeObjectif () {
         const objectif = OBJECTIF_FIN_AOUT
-        const indexDerniereMaj = nb_vaccines.length - 1;
-        const indexDebutFenetre = Math.max(0, indexDerniereMaj - 7)
-        const derniereMaj = Date.parse(nb_vaccines[indexDerniereMaj].date)
-        const resteAVacciner = objectif*2 - Number(nb_vaccines[indexDerniereMaj].n_dose1)
-        const differentielVaccinesFenetre = Number(nb_vaccines[indexDerniereMaj].n_dose1) - Number(nb_vaccines[indexDebutFenetre].n_dose1)
-        differentielVaccinesParJour = differentielVaccinesFenetre / (indexDerniereMaj - indexDebutFenetre)
-        const oneDay = (1000 * 60 * 60 * 24)
-        const nbJoursAvantObjectif = Math.round(resteAVacciner / differentielVaccinesParJour)
-        return new Date(derniereMaj + (oneDay * nbJoursAvantObjectif))
+        const vdose1 = ( nb_vaccines[nb_vaccines.length -1].n_dose1 - nb_vaccines[nb_vaccines.length -8].n_dose1 ) / 7
+        const cumsum = vaccines_2doses.n_dose2_cumsum
+        const vdose2 = ( cumsum[cumsum.length -1] - cumsum[cumsum.length -8] ) / 7
+        const resteAVaccinerDose1 = objectif - nb_vaccines[nb_vaccines.length -1].n_dose1
+        const joursDose1Complete = Math.ceil(resteAVaccinerDose1 / vdose1)
+        const nDose2quandD1Complete = Math.floor(joursDose1Complete * vdose2)
+        const resteAVaccinerDose2 = objectif - nDose2quandD1Complete
+        const joursDose2Complete = Math.ceil(resteAVaccinerDose2 / (vdose2+vdose1))
+        const date = new Date(nb_vaccines[nb_vaccines.length -1].date)
+        date.setDate(date.getDate() + joursDose2Complete + joursDose1Complete)
+        return  date
     }
 
     function buildLineChart(){
