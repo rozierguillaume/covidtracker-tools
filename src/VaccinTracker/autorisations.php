@@ -12,7 +12,7 @@
             Dont France : 75M + 15M<br>
             Doses à injecter : 2<br>
             Statut : autorisé (UE, France)<br>
-            <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2034577">Article</a>
+            <a href="https://doi.org/10.1056/NEJMoa2034577">Article</a>
         </card>
 
         <card class="shadow-btn-green col-xs-11 col-md-4"><b>🇺🇸 Moderna</b><br>
@@ -23,7 +23,7 @@
             Dont France : 24M<br>
             Doses à injecter : 2<br>
             Statut : autorisé (UE, France)<br>
-            <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2035389">Article</a>
+            <a href="https://doi.org/10.1056/NEJMoa2035389">Article</a>
         </card>
         <card class="shadow-btn-green col-xs-11 col-md-4"><b>🇬🇧🇸🇪 AstraZeneca/Oxford</b><br>
             Type : Vecteur viral<br>
@@ -32,7 +32,7 @@
             Commandes UE : 300M (+ option 100M)<br>
             Doses à injecter : 2<br>
             Statut : autorisé (UE, France)<br>
-            <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)32661-1">Article</a>
+            <a href="https://doi.org/10.1016/S0140-6736(20)32661-1">Article</a>
         </card>
     </div>
 
@@ -83,7 +83,7 @@
             Conservation : entre +2°C et +8°C<br>
             Doses à injecter : 2<br>
             Statut : mission de conseil, étape préalable à une demande d'autorisation
-            <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)00234-8">Article</a>
+            <a href="https://doi.org/10.1016/S0140-6736(21)00234-8">Article</a>
         </card>
     </div>
 </div>
