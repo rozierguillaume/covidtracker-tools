@@ -11,7 +11,7 @@
             Dont France : 75M + 15M<br>
             Doses à injecter : 2<br>
             Statut : autorisé (UE, France)<br>
-            Article : https://www.nejm.org/doi/full/10.1056/NEJMoa2034577
+            <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2034577">Article</a>
         </card>
 
         <card class="shadow-btn-green col-xs-11 col-md-4"><b>🇺🇸 Moderna</b><br>
@@ -22,7 +22,7 @@
             Dont France : 24M<br>
             Doses à injecter : 2<br>
             Statut : autorisé (UE, France)<br>
-            Article : https://www.nejm.org/doi/full/10.1056/NEJMoa2035389
+            <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2035389">Article</a>
         </card>
         <card class="shadow-btn-green col-xs-11 col-md-4"><b>🇬🇧🇸🇪 AstraZeneca/Oxford</b><br>
             Type : Vecteur viral<br>
@@ -31,7 +31,7 @@
             Commandes UE : 300M (+ option 100M)<br>
             Doses à injecter : 2<br>
             Statut : autorisé (UE, France)<br>
-            Article : https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)32661-1
+            <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)32661-1">Article</a>
         </card>
     </div>
 
