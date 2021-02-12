@@ -75,13 +75,13 @@
                 }
                 donneesDepartement = donneesDepartementsEhpadVaccination[numeroDepartement];
 
-                var departementCarte = $('#carteEHPAD1Dose path[data-num="' + numeroDepartement + '"]');
-                departementCarte.data("res_couv_tot_dose1", donneesDepartement["res_couv_tot_dose1"]);
-                departementCarte.css("fill", recupererCouleurEHPAD(donneesDepartement["res_couv_tot_dose1"], tableauValeurs, tableauCouleurs1dose));
+                var departementCarteDose1 = $('#carteEHPAD1Dose path[data-num="' + numeroDepartement + '"]');
+                departementCarteDose1.data("res_couv_tot_dose1", donneesDepartement["res_couv_tot_dose1"]);
+                departementCarteDose1.css("fill", recupererCouleurEHPAD(donneesDepartement["res_couv_tot_dose1"], tableauValeurs, tableauCouleurs1dose));
 
-                var departementCarte = $('#carteEHPAD2Doses path[data-num="' + numeroDepartement + '"]');
-                departementCarte.data("res_couv_tot_dose2", donneesDepartement["res_couv_tot_dose2"]);
-                departementCarte.css("fill", recupererCouleurEHPAD(donneesDepartement["res_couv_tot_dose2"], tableauValeurs, tableauCouleurs2doses));
+                var departementCarteDose2 = $('#carteEHPAD2Doses path[data-num="' + numeroDepartement + '"]');
+                departementCarteDose2.data("res_couv_tot_dose2", donneesDepartement["res_couv_tot_dose2"]);
+                departementCarteDose2.css("fill", recupererCouleurEHPAD(donneesDepartement["res_couv_tot_dose2"], tableauValeurs, tableauCouleurs2doses));
             }
         }
 
@@ -129,9 +129,9 @@
             departement = $(this).data("num");
             nomDepartement = $("#listeDepartements option[data-num='" + departement + "']").val();
             if ($(this).data("res_couv_tot_dose2")){
-                $('#carteEHPAD1Dose #map title').text(nomDepartement + ' (' + $(this).data("res_couv_tot_dose2").toFixed(1) + ' %)');
+                $('#carteEHPAD2Doses #map title').text(nomDepartement + ' (' + $(this).data("res_couv_tot_dose2").toFixed(1) + ' %)');
             } else {
-                $('#carteEHPAD1Dose #map title').text(nomDepartement + ' : pas de donnée !');
+                $('#carteEHPAD2Doses #map title').text(nomDepartement + ' : pas de donnée !');
             }
         });
 
