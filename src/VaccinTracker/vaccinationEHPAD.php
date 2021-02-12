@@ -4,7 +4,7 @@
 <?php include(dirname(__FILE__) . '/vaccinatinEHPADJs.php') ?>
 
 <div class="" style="margin-bottom: 40px;">
-    Coloration en fonction du pourcentage de personnes hébergées en EPHAD vaccinée.
+    Coloration en fonction du pourcentage de personnes hébergées en EPHAD vaccinées.
     Données fournies par le Ministère de la Santé.
 </div>
 <br>
