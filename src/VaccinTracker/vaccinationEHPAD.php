@@ -10,7 +10,7 @@
 <br>
 
 <div id="menu" class="row">
-    <div class="col-md-6 text-center">
+    <div class="col-md-6 col-md-offset-3 text-center">
         <div class="row">
             <h4 id="titre_map" class="" style="display: inline-block">Proportion de résidents ayant reçu une dose :</h4>
             <div class="col-xs-10">
@@ -23,7 +23,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6  text-center">
+    <div class="col-md-6 hidden text-center">
         <h4 id="titre_map" class="" style="display: inline-block">Proportion de résidents ayant reçu deux doses :</h4>
         <div class="col-xs-10">
             <div id="carteEHPAD2Doses" style="margin-top:20px;">
