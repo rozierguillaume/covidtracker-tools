@@ -41,7 +41,7 @@
         <div><i>Aucun.</i></div>
 
 
-    <h3 style="margin-top : 50px;">Vaccins en cours d'examen continu (UE)</h3>
+    <h3 style="margin-top : 50px;">Vaccins en phase d'examen continu (UE)</h3>
     <div class="row">
         <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇺🇸🇧🇪 Janssen J&J</b><br>
             Phase 3/3<br>
@@ -69,7 +69,7 @@
             Efficacité annoncée : 89.3%<br>
             Conservation : entre +2°C et +8°C<br>
             Commandes UE : 100M (+ option 100M)<br>
-            Doses à injecter : <br>
+            Doses à injecter : 2<br>
             Statut : examen continu (UE)
         </card>
      </div>
