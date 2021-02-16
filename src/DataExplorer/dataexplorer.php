@@ -40,15 +40,22 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
                 <div style="border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
                     
                 <select name="type" id="typeDonees" onchange="buildChart()" style="margin-top:10px;">
-                    <option value="incidence">Taux d'incidence</option>
-                    <option value="cas">Cas positifs</option>
-                    <option value="tests">Dépistage</option>
-                    <option value="taux_positivite">Taux de positivite</option>
-                    <option value="hospitalisations">Hospitalisations</option>
-                    <option value="reanimations">Réanimations</option>
-                    <option value="nbre_acte_corona">Actes SOS médecin</option>
-                    <option value="nbre_pass_corona">Passages aux urgences</option>
-                    <option value="deces_hospitaliers">Décès hospitaliers</option>
+                    <optgroup label="Indicateurs épidémiques">
+                        <option value="incidence">Taux d'incidence</option>
+                        <option value="cas">Cas positifs</option>
+                        <option value="tests">Dépistage</option>
+                        <option value="taux_positivite">Taux de positivite</option>
+                    </optgroup>
+                    <optgroup label="Indicateurs sanitaires">
+                        <option value="hospitalisations">Hospitalisations</option>
+                        <option value="incid_hospitalisations">Admissions à l'hôpital</option>
+                        <option value="reanimations">Réanimations</option>
+                        <option value="incid_reanimations">Admissions en réanimation</option>
+                    
+                        <option value="nbre_acte_corona">Actes SOS médecin</option>
+                        <option value="nbre_pass_corona">Passages aux urgences</option>
+                        <option value="deces_hospitaliers">Décès hospitaliers</option>
+                    </optgroup>
                 </select>
                 <br>
                 <input type='checkbox' id='pour100k' onchange="pour100kChecked()" style="margin-bottom:10px;"> Pour 100 k habitants
@@ -116,9 +123,11 @@ var pour100k = false;
 
 var descriptions = {
     "hospitalisations": "Nombre de lits occupés à l'hôpital pour Covid19.",
+    "incid_hospitalisations": "Nombre d'admissions quotidiennes à l'hôpital pour Covid19 (moyenne glissante 7 jours).",
     "incidence": "Nombre de cas par semaine pour 100 000 habitants.",
     "taux_positivite": "Proportion des tests qui sont positifs (en %).",
     "reanimations": "Nombre de lits de réanimation occupés à l'hôpital pour Covid19.",
+    "incid_reanimations": "Nombre d'admissions quotidiennes en réanimation pour Covid19 (moyenne glissante 7 jours).",
     "deces_hospitaliers": "Nombre de décès quotidiens pour Covid19 à l'hôpital (moyenne glissante 7 jours).",
     "cas": "Nombre de tests positifs quotidiens (RT-PCR et antigéniques) (moyenne glissante 7 jours).",
     "tests": "Nombre de tests quotidiens (positifs et négatifs) (moyenne glissante 7 jours).",
@@ -128,9 +137,11 @@ var descriptions = {
 
 var titres = {
     "hospitalisations": "Hospitalisations",
+    "incid_hospitalisations": "Nouvelles admissions à l'hospital",
     "incidence": "Taux d'incidence",
     "taux_positivite": "Taux de positivité",
     "reanimations": "Réanimations",
+    "incid_reanimations": "Nouvelles admissions en réanimation",
     "deces_hospitaliers": "Décès hospitaliers",
     "cas": "Cas positifs",
     "tests": "Dépistage",
