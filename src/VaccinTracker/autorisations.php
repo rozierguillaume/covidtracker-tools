@@ -42,10 +42,11 @@
             Phase 3/3<br>
             Type : Vecteur viral<br>
             Efficacité annoncée : --%<br>
+            Prêt : fin janvier 2021<br>
             Conservation : +5°C<br>
             Commandes UE : 200M (+ option 200M)<br>
             Doses à injecter : 1 (essai en cours) ou 2<br>
-            Statut : examen continu (UE)
+            Statut : décision UE (mi-mars 2021)
         </card>
     </div>
 
