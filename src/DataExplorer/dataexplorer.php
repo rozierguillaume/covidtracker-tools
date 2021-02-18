@@ -149,6 +149,12 @@ var titres = {
     "nbre_pass_corona": "Passages aux urgences pour Covid19",
 }
 
+var noms_zones = {
+    "zone_a": "Zone A",
+    "zone_b": "Zone B",
+    "zone_c": "Zone C"
+}
+
 var credits = "<br><small>CovidTracker.fr - Données : Santé publique France</small>"
 let incompatibles_pour100k = ["incidence", "taux_positivite"]
 
@@ -320,6 +326,14 @@ function populateTerritoireSelect(){
         }
 
         html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(departement) + "' onchange='boxChecked(\"" + replaceBadCharacters(departement) +"\")'> "+ departement + complement + "</label></div>" + "<br>"
+
+    })
+
+    html_code += "<br><i>Zones de vacances</i><br>"
+    
+    data.zones_vacances.map((zone, idx) => {
+        complement = " ";
+        html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(zone) + "' onchange='boxChecked(\"" + replaceBadCharacters(zone) +"\")'> "+ noms_zones[zone] + complement + "</label></div>" + "<br>"
 
     })
 
