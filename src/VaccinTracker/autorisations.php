@@ -7,8 +7,8 @@
             Type : ARN messager<br>
             Efficacité annoncée : 94.5%<br>
             Conservation : -70°C<br>
-            Commandes UE : 500M + option 100M<br>
-            Dont France : 75M + 15M<br>
+            Commandes UE : 500M + option 150M (+ option 150M)<br>
+            Dont France : 75M + 22.5M (+option 22.5M)<br>
             Doses à injecter : 2<br>
             Statut : autorisé (UE, France)<br>
             <a href="https://doi.org/10.1056/NEJMoa2034577">Article</a>
@@ -18,7 +18,7 @@
             Type : ARN messager<br>
             Efficacité annoncée : 94%<br>
             Conservation : -20°C (6 mois), +5°C (1 mois)<br>
-            Commandes UE : 160M <br>
+            Commandes UE : 160M + 150M <br>
             Dont France : 24M<br>
             Doses à injecter : 2<br>
             Statut : autorisé (UE, France)<br>
@@ -37,11 +37,6 @@
     </div>
 
     <h3 style="margin-top : 50px;">Vaccins en cours d'autorisation</h3>
-
-        <div><i>Aucun.</i></div>
-
-
-    <h3 style="margin-top : 50px;">Vaccins en phase d'examen continu (UE)</h3>
     <div class="row">
         <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇺🇸🇧🇪 Janssen J&J</b><br>
             Phase 3/3<br>
@@ -52,7 +47,11 @@
             Doses à injecter : 1 (essai en cours) ou 2<br>
             Statut : examen continu (UE)
         </card>
-        
+    </div>
+
+
+    <h3 style="margin-top : 50px;">Vaccins en phase d'examen continu (UE)</h3>
+    <div class="row">      
         <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇩🇪 CureVac</b><br>
             Phase 2/3<br>
             Type : ARN messager<br>
