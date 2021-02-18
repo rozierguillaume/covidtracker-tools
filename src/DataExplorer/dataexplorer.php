@@ -373,8 +373,8 @@ function fetchData(){
 }
 
 function majDataUpdate(){
-    let N = data["france"]["hospitalisations"]["jour"].length;
-    document.getElementById("dateDonnee").innerHTML = data["france"]["hospitalisations"]["jour"][N-1];
+    let N = data["france"]["jour_hosp"].length;
+    document.getElementById("dateDonnee").innerHTML = data["france"]["jour_hosp"][N-1];
 }
 
 function removeElementArray(arr, element){
