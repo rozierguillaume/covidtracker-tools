@@ -149,6 +149,12 @@ var titres = {
     "nbre_pass_corona": "Passages aux urgences pour Covid19",
 }
 
+var noms_zones = {
+    "zone_a": "Zone A",
+    "zone_b": "Zone B",
+    "zone_c": "Zone C"
+}
+
 var credits = "<br><small>CovidTracker.fr - Données : Santé publique France</small>"
 let incompatibles_pour100k = ["incidence", "taux_positivite"]
 
@@ -161,8 +167,7 @@ function boxChecked(value){
         selected_territoires = removeElementArray(selected_territoires, value);
         
     }
-    console.log("territoires")
-    console.log(selected_territoires)
+    
     buildChart();
 
 }
@@ -190,17 +195,21 @@ function changeColorSeq(){
 }
 
 function changeTime(){
+    
+    
     let selected_data = document.getElementById("typeDonees").value
+    let nom_jour = data["france"][selected_data]["jour_nom"]
+    
     let idx = document.getElementById('sliderUI').noUiSlider.get(); // document.getElementById("timeSlider").value
     
     let idx_min = parseInt(idx[0])
     let idx_max = parseInt(idx[1])
-    let x_min = data["france"][selected_data]["jour"][idx_min]
+    
+    let x_min = data["france"][nom_jour][idx_min]
 
-    console.log(idx_min)
     dataExplorerChart.options.scales.xAxes[0].ticks = {
         min: x_min,
-        max: data["france"][selected_data]["jour"][idx_max]
+        max: data["france"][nom_jour][idx_max]
         }
     var y_max = 0
     dataExplorerChart.data.datasets.map((dataset, idx_dataset) => {
@@ -253,7 +262,9 @@ function updateSlider(){
     var sliderNoUi = document.getElementById('sliderUI');
 
     let selected_data = document.getElementById("typeDonees").value
-    let N = data["france"][selected_data]["jour"].length;
+    
+    let jour_nom = data["france"][selected_data]["jour_nom"]
+    let N = data["france"][jour_nom].length;
     
     let idx = document.getElementById('sliderUI').noUiSlider.get();
     let idx_min = 0
@@ -323,12 +334,20 @@ function populateTerritoireSelect(){
 
     })
 
+    html_code += "<br><i>Zones de vacances</i><br>"
+    
+    data.zones_vacances.map((zone, idx) => {
+        complement = " ";
+        html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(zone) + "' onchange='boxChecked(\"" + replaceBadCharacters(zone) +"\")'> "+ noms_zones[zone] + complement + "</label></div>" + "<br>"
+
+    })
+
     document.getElementById("territoiresCheckboxes").innerHTML = html_code;
     
 }
 fetchData();
 function fetchData(){
-    fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/dataexplorer.json', {cache: 'no-cache'})
+    fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/dataexplorer_compr.json', {cache: 'no-cache'})
         .then(response => {
             if (!response.ok) {
                 throw new Error("HTTP error " + response.status);
@@ -339,9 +358,11 @@ function fetchData(){
                 this.data = json;
                 populateTerritoireSelect();
                 //addTrace("incidence", "france");
+                console.log("0")
                 buildSlider();
+                console.log("1")
                 buildChart()
-
+                console.log("2")
                 majDataUpdate();
             })
         .catch(function () {
@@ -352,8 +373,8 @@ function fetchData(){
 }
 
 function majDataUpdate(){
-    let N = data["france"]["hospitalisations"]["jour"].length;
-    document.getElementById("dateDonnee").innerHTML = data["france"]["hospitalisations"]["jour"][N-1];
+    let N = data["france"]["jour_hosp"].length;
+    document.getElementById("dateDonnee").innerHTML = data["france"]["jour_hosp"][N-1];
 }
 
 function removeElementArray(arr, element){
@@ -375,7 +396,9 @@ function addTrace(value, territoire, pour100k_temp){
     if (pour100k_temp){
         diviseur = data[territoire]["population"]/100000;
     }
-    data_temp = data[territoire][value]["valeur"].map((val, idx) => ({x: data[territoire][value]["jour"][idx], y: val/diviseur}))
+    var jour_nom = data[territoire][value]["jour_nom"]
+    console.log(jour_nom)
+    data_temp = data[territoire][value]["valeur"].map((val, idx) => ({x: data["france"][jour_nom][idx], y: val/diviseur}))
     
     var N = dataExplorerChart.data.datasets.length
     if(N>=seq.length-1){
@@ -465,6 +488,7 @@ function buildEmptyChart() {
 
 function buildSlider(){
     var slider = document.getElementById('sliderUI');
+    
 
     noUiSlider.create(slider, {
         start: [0, 0],
@@ -477,10 +501,11 @@ function buildSlider(){
 
         }
     });
-
+    
     slider.noUiSlider.on('update', function (values, handle) {
         changeTime()
     });
+    
 }
 
 </script>
