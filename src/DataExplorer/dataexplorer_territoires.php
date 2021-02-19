@@ -1,3 +1,4 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 
 <div shadow="">
     <div class="row">
@@ -7,7 +8,7 @@
             <b>Donnée à afficher</b>
                 <div style="border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
                     
-                <select name="type" id="typeDonees" onchange="buildChart()" style="margin-top:10px;">
+                <select name="type" id="typeDonees" onchange="secureChangeTime()" style="margin-top:10px;">
                     <optgroup label="Indicateurs épidémiques">
                         <option value="incidence">Taux d'incidence</option>
                         <option value="cas">Cas positifs</option>
@@ -159,10 +160,56 @@ function changeColorSeq(){
     buildChart();
 
 }
+function secureChangeTime(){
+    var sliderNoUi = document.getElementById('sliderUI');
+    let idx = document.getElementById('sliderUI').noUiSlider.get(); // document.getElementById("timeSlider").value
+    let idx_min = parseInt(idx[0])
+    let idx_max = parseInt(idx[1])
+
+    var nom_jour = data["france"][selected_data]["jour_nom"]
+    let date_min = data["france"][nom_jour][idx_min]
+    let date_max = data["france"][nom_jour][idx_max]
+
+    buildChart();
+    console.log("idx")
+    var dmin = indexOf(date_min)
+    var dmax = indexOf(date_max)
+
+    var nom_jour = data["france"][selected_data]["jour_nom"]
+    let N_temp = data["france"][nom_jour].length
+    if(dmax==0){
+        dmax = N_temp-1;
+    }
+    if((N_temp-dmax)<=10){
+        dmax = N_temp-1;
+    }
+
+    sliderNoUi.noUiSlider.set([dmin, dmax])
+    changeTime();
+}
+
+function indexOf(jour){
+    var nom_jour = data["france"][selected_data]["jour_nom"]
+
+    var to_return = true
+    for (var idx = 0; idx < data["france"][nom_jour].length; idx++) {
+        value = data["france"][nom_jour][idx]
+        if ( moment(value) >= moment(jour) ){
+            return idx;
+            to_return = false;
+            break;
+        }
+    }
+    if(to_return){
+        return 0;
+    }
+    
+}
+
+var x_min_date = ""
+var x_max_date = ""
 
 function changeTime(){
-    
-    
     let selected_data = document.getElementById("typeDonees").value
     let nom_jour = data["france"][selected_data]["jour_nom"]
     
@@ -170,13 +217,15 @@ function changeTime(){
     
     let idx_min = parseInt(idx[0])
     let idx_max = parseInt(idx[1])
-    
+
     let x_min = data["france"][nom_jour][idx_min]
+    let x_max = data["france"][nom_jour][idx_max]
 
     dataExplorerChart.options.scales.xAxes[0].ticks = {
         min: x_min,
-        max: data["france"][nom_jour][idx_max]
+        max: x_max
         }
+
     var y_max = 0
     dataExplorerChart.data.datasets.map((dataset, idx_dataset) => {
         dataset.data.map((value, idx_data) => {
@@ -259,7 +308,6 @@ function buildChart(){
     updateSlider();
     dataExplorerChart.destroy();
     buildEmptyChart();
-    changeTime();
 
     dataExplorerChart.data.datasets = []
     dataExplorerChart.options.scales.yAxes = []
@@ -279,6 +327,7 @@ function buildChart(){
         }
     }
     document.getElementById("description").innerHTML = descriptions[selected_data[0]] + credits;
+    changeTime();
 }
 
 function populateTerritoireSelect(){
