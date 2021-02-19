@@ -58,11 +58,5 @@
             Efficacité annoncée : --%<br>
             Prêt : 1er semestre 2021<br>Conservation : -60°C (3 mois), +5°C (3 mois)<br>Commandes UE : 225M (+ option 180M)<br>Doses à injecter : 2<br>Statut : --
         </card>
-        <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇫🇷🇬🇧 Sanofi/Pasteur-GSK</b><br>
-            Phase 2/3<br>
-            Type : Protéines virales<br>
-            Efficacité annoncée : --%<br>
-            Prêt : fin 2021<br>Conservation : +5°C<br>Commandes UE : 300M<br>Doses à injecter : --<br>Statut : --
-        </card>
     </div>
 </div>
