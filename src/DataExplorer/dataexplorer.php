@@ -30,12 +30,10 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
     </div>
 </div>
 <div shadow="">
-    
-
     <div class="row">
-
-        <div class="col-sm-3" style="min-width: 100px;">
-        <h2>CovidExplorer</h2><br>
+        <div class="col-sm-3" style="min-width: 100px; max-width: 90%;">
+        <span style="font-size: 200%"><b>CovidExplorer</b></span><br>
+        <span style="font-size: 150%">Territoires</span><br><br>
             <b>Donnée à afficher</b>
                 <div style="border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
                     
@@ -64,9 +62,7 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
             <br>
             
             <label>Territoires</label>
-            <div id="checkboxes" style="text-align: left; overflow-y:scroll; padding: 10px; border-radius: 7px; height: 550px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
-                
-                
+            <div id="checkboxes" style="text-align: left; max-height: 50%; overflow-y:scroll; padding: 10px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
                     <div class="checkbox">
                         <label>
                             <input type='checkbox' id='france' checked onchange="boxChecked('france')">France
@@ -81,7 +77,7 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
         <div class="col-sm-9" style="min-width: 300px;">
         <h3 id="titre">Chargement...</h3>
         <span id="description">...</span>
-            <div class="chart-container" style="position: relative; height:70vh; width:90%">
+            <div class="chart-container" style="position: relative; height:60vh; width:100%">
                 <canvas id="dataExplorerChart" style="margin-top:20px; max-height: 800px; max-width: 1500px;"></canvas>
                 
             </div>
@@ -152,7 +148,8 @@ var titres = {
 var noms_zones = {
     "zone_a": "Zone A",
     "zone_b": "Zone B",
-    "zone_c": "Zone C"
+    "zone_c": "Zone C",
+    "france": "France"
 }
 
 var credits = "<br><small>CovidTracker.fr - Données : Santé publique France</small>"
@@ -317,11 +314,21 @@ function buildChart(){
 function populateTerritoireSelect(){
     var x = document.getElementById("territoireDonnees");
     var html_code = "";
+
+    html_code += "<br><i>Zones de vacances</i><br>"
+    
+    data.zones_vacances.map((zone, idx) => {
+        complement = " ";
+        html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(zone) + "' onchange='boxChecked(\"" + replaceBadCharacters(zone) +"\")'> "+ noms_zones[zone] + complement + "</label></div>" + "<br>"
+    })
+
+
     html_code += "<br><i>Régions</i><br>"
     data.regions.map((region, idx) => {
         html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(region) + "' onchange='boxChecked(\"" + replaceBadCharacters(region) +"\")'> "+ region + "</label></div>" + "<br>"
 
     })
+
     html_code += "<br><i>Départements</i><br>"
     
     data.departements.map((departement, idx) => {
@@ -331,14 +338,6 @@ function populateTerritoireSelect(){
         }
 
         html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(departement) + "' onchange='boxChecked(\"" + replaceBadCharacters(departement) +"\")'> "+ departement + complement + "</label></div>" + "<br>"
-
-    })
-
-    html_code += "<br><i>Zones de vacances</i><br>"
-    
-    data.zones_vacances.map((zone, idx) => {
-        complement = " ";
-        html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(zone) + "' onchange='boxChecked(\"" + replaceBadCharacters(zone) +"\")'> "+ noms_zones[zone] + complement + "</label></div>" + "<br>"
 
     })
 
@@ -397,7 +396,6 @@ function addTrace(value, territoire, pour100k_temp){
         diviseur = data[territoire]["population"]/100000;
     }
     var jour_nom = data[territoire][value]["jour_nom"]
-    console.log(jour_nom)
     data_temp = data[territoire][value]["valeur"].map((val, idx) => ({x: data["france"][jour_nom][idx], y: val/diviseur}))
     
     var N = dataExplorerChart.data.datasets.length
@@ -408,6 +406,10 @@ function addTrace(value, territoire, pour100k_temp){
     complement = " ";
     if (territoire in data["departements_noms"]) {
         complement += data["departements_noms"][territoire];
+    }
+
+    if(territoire in noms_zones){
+        territoire=noms_zones[territoire]
     }
 
     dataExplorerChart.data.datasets.push({
