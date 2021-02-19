@@ -32,7 +32,7 @@
             <br>
             
             <label>Territoires</label>
-            <div id="checkboxes" style="text-align: left; height: 50%; max-height: 50%; overflow-y:scroll; padding: 10px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
+            <div id="checkboxes" style="text-align: left; height:80vw; max-height: 500px; overflow-y:scroll; padding: 10px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
                     <div class="checkbox">
                         <label>
                             <input type='checkbox' id='france' checked onchange="boxChecked('france')">France

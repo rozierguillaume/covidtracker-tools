@@ -39,7 +39,7 @@
                 </div>
             <br>
             <label>Tranches d'âge</label>
-            <div id="checkboxes" style="text-align: left; max-height: 50%; overflow-y:scroll; padding: 10px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
+            <div id="checkboxes" style="text-align: left; height:300px; overflow-y:scroll; padding: 5px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
                     <span id="agesCheckboxes"></span>
             </div>
         </div>
@@ -63,7 +63,7 @@
 
 <div>
     Palette de couleurs : 
-    <select name="type" id="age_colorage_seqSelect" onchange="age_changeColorage_seq()" style="margin-top:10px;">
+    <select name="type" id="age_colorage_seqSelect" onchange="age_changeColorage_seq()" style="margin-top:10px;" style="width:100%">
         <option value="mpn65">Par défaut (mpn65)</option>
         <option value="tol">tol</option>
         <option value="tol-dv">tol-dv</option>
@@ -330,13 +330,12 @@ function fetchage_data(){
                 this.age_data = json;
                 console.log("init-a")
                 associationTranches();
-                //console.log(age_data)
+                console.log("association-a")
                 populateAgesSelect();
+                console.log("populate-a")
                 populateTerritoires()
                 console.log("0")
                 buildSliderAge();
-                console.log("1")
-                buildChartAge()
                 console.log("done-a")
                 
             })
@@ -480,6 +479,8 @@ function buildSliderAge(){
     slider.noUiSlider.on('update', function (values, handle) {
         changeTimeAge()
     });
+
+    buildChartAge();
     
 }
 
