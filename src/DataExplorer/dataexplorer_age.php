@@ -1,5 +1,5 @@
 
-<div shadow="">
+<div shadow="" id="age">
     <div class="row">
         <div class="col-sm-3" style="min-width: 100px; max-width: 90%;">
         <span style="font-size: 200%"><b>CovidExplorer</b></span><br>
@@ -334,14 +334,14 @@ function fetchage_data(){
                 populateAgesSelect();
                 console.log("populate-a")
                 populateTerritoires()
-                console.log("0")
+                console.log("populate-territoires-a")
                 buildSliderAge();
                 console.log("done-a")
                 
             })
         .catch(function () {
             this.age_dataError = true;
-            console.log("error-x")
+            console.log("error-x-a")
         }
         )
 }
