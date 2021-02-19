@@ -292,7 +292,7 @@ function buildChartAge(){
 }
 
 function populateAgesSelect(){
-
+    console.log("enter populateAgesSelect")
     var html_code = "";
     html_code += "<br><i>Tranches d'âge</i><br>"
     
@@ -303,18 +303,21 @@ function populateAgesSelect(){
     
     document.getElementById("agesCheckboxes").innerHTML = html_code;
     document.getElementById("ages_tous").checked = true;
+    console.log("exit populateAgesSelect")
     
 }
 
 function populateTerritoires(){
+    console.log("enter_populate_territoires")
     html_code = "<optgroup label='Régions'>"
 
-    data.regions.map((value, idx) => {
+    age_data.regions.map((value, idx) => {
         html_code += "<option value='" + value + "'>" + value + "</option>"
     })
     html_code += "</optgroup>"
 
     document.getElementById("territoireAge").innerHTML += html_code;
+    console.log("exit_populate_territoires")
 }
 
 fetchage_data();
@@ -333,6 +336,7 @@ function fetchage_data(){
                 console.log("association-a")
                 populateAgesSelect();
                 console.log("populate-a")
+                //Erreur au-dessus
                 populateTerritoires()
                 console.log("populate-territoires-a")
                 buildSliderAge();
@@ -347,7 +351,9 @@ function fetchage_data(){
 }
 
 function associationTranches(){
+    console.log("enter associationTranches")
     age_data.france.tranches_noms.map((value, idx) => {associationTranchesNoms[value]=age_data.france.tranches_noms_affichage[idx]})
+    console.log("enter associationTranches")
 }
 
 function removeElementArray(arr, element){
