@@ -2,7 +2,9 @@
 <div shadow="" id="age">
     <div class="row">
         <div class="col-sm-3" style="min-width: 100px; max-width: 90%;">
+        
         <span style="font-size: 200%"><b>CovidExplorer</b></span><br>
+        
         <span style="font-size: 180%">Tranches d'âge</span><br><br>
             <b>Donnée à afficher</b>
                 <div style="border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
@@ -61,17 +63,20 @@
     </div>
 </div>
 
-<div>
-    Palette de couleurs : 
-    <select name="type" id="age_colorage_seqSelect" onchange="age_changeColorage_seq()" style="margin-top:10px;" style="width:100%">
-        <option value="mpn65">Par défaut (mpn65)</option>
-        <option value="tol">tol</option>
-        <option value="tol-dv">tol-dv</option>
-        <option value="tol-sq">tol-sq</option>
-        <option value="tol-rainbow">tol-rainbow</option>
-        <option value="cb-Paired">cb-Paired </option>
-        <option value="cb-BrBG">cb-BrBG</option>
-    </select>
+
+<div class="row">
+    <div class="col-sm-4">
+        Palette de couleurs : 
+        <select name="type" id="age_colorage_seqSelect" onchange="age_changeColorage_seq()" style="margin-top:10px;" style="width:100%">
+            <option value="mpn65">Par défaut (mpn65)</option>
+            <option value="tol">tol</option>
+            <option value="tol-dv">tol-dv</option>
+            <option value="tol-sq">tol-sq</option>
+            <option value="tol-rainbow">tol-rainbow</option>
+            <option value="cb-Paired">cb-Paired </option>
+            <option value="cb-BrBG">cb-BrBG</option>
+        </select>
+    </div>
 </div>
 
 <br>
@@ -128,6 +133,10 @@ var noms_tranches = {
     "zone_b": "Zone B",
     "zone_c": "Zone C",
     "france": "France"
+}
+
+function telechargerImage(){
+    document.getElementById("link").href = age_dataExplorerAgeChart.toBase64Image()
 }
 
 var credits = "<br><small>CovidTracker.fr - Données : Santé publique France</small>"
@@ -262,7 +271,6 @@ function buildChartAge(){
     updateSliderAge();
     age_dataExplorerAgeChart.destroy();
     buildEmptyChartAge();
-    changeTimeAge();
 
     age_dataExplorerAgeChart.data.datasets = []
     age_dataExplorerAgeChart.options.scales.yAxes = []
@@ -289,6 +297,7 @@ function buildChartAge(){
         }
     }
     document.getElementById("age_description").innerHTML = age_descriptions[age_selected_age_data[0]] + credits;
+    changeTimeAge();
 }
 
 function populateAgesSelect(){
@@ -303,6 +312,7 @@ function populateAgesSelect(){
     
     document.getElementById("agesCheckboxes").innerHTML = html_code;
     document.getElementById("ages_tous").checked = true;
+    
     console.log("exit populateAgesSelect")
     
 }
@@ -341,6 +351,7 @@ function fetchage_data(){
                 console.log("populate-territoires-a")
                 buildSliderAge();
                 console.log("done-a")
+                telechargerImage()
                 
             })
         .catch(function () {

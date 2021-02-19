@@ -29,6 +29,5 @@
 <?php include(__DIR__ . '/dataexplorer_territoires.php'); ?>
 
 <br><br><br>
-<?php include(__DIR__ . '/dataexplorer_age.php'); ?>
 
 <?php include(__DIR__ . '/menuBasPage.php'); ?>
