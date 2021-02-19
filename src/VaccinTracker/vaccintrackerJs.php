@@ -669,7 +669,7 @@
 
     function majValeursStock(){
         results = obtenirCumulStockActuel();
-        document.getElementById("nb_doses").innerHTML = numberWithSpaces(results["valeur"]);
+        document.getElementById("nb_doses").innerHTML = "--"//numberWithSpaces(results["valeur"]);
         document.getElementById("date_maj_4").innerHTML = formateDate(results["jour"]);
 
     }
