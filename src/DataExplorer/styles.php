@@ -30,3 +30,14 @@ div[shadow] {
 }
 </style>
 
+<style type="text/css">
+    .checkbox {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .noUi-connect {
+    background-color: rgba(0, 0, 0, 0.2);
+    }
+</style>
+
