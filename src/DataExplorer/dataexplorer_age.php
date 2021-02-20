@@ -1,5 +1,8 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 
-<div shadow="" id="age">
+<div id="age"><p><i>CovidExplorer Tranches d'âge</i> permet d'explorer l'évolution dans les différentes tranches d'âge. Il est possible de sélectionner une région en particulier, ou la France entière.</p>
+</div>
+<div shadow="" id="age_box">
     <div class="row">
         <div class="col-sm-3" style="min-width: 100px; max-width: 90%;">
         
@@ -9,7 +12,7 @@
             <b>Donnée à afficher</b>
                 <div style="border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
                     
-                <select name="type" id="typeDoneesAge" onchange="buildChartAge()" style="margin-top:10px;">
+                <select name="type" id="typeDoneesAge" onchange="secureChangeTime_age()" style="margin-top:10px;">
                     <optgroup label="Indicateurs épidémiques">
                         <option value="incidence">Taux d'incidence</option>
                         <option value="cas">Cas positifs</option>
@@ -49,6 +52,13 @@
         <div class="col-sm-9" style="min-width: 300px;">
         <h3 id="age_titre">Chargement...</h3>
         <span id="age_description">...</span>
+        <br>
+        <img
+                src="https://files.covidtracker.fr/covidtracker_vect.svg"
+                alt="un triangle aux trois côtés égaux"
+                height="87px"
+                width="130px" 
+        />
             <div class="chart-container" style="position: relative; height:60vh; width:100%">
                 <canvas id="age_dataExplorerAgeChart" style="margin-top:20px; max-height: 800px; max-width: 1500px;"></canvas>
                 
@@ -139,7 +149,7 @@ function telechargerImage(){
     document.getElementById("link").href = age_dataExplorerAgeChart.toBase64Image()
 }
 
-var credits = "<br><small>CovidTracker.fr - Données : Santé publique France</small>"
+var age_credits = ""//"<br><small>CovidTracker.fr/<b>CovidExplorer</b> - Données : Santé publique France</small>"
 let incompatibles_age_pour100k = ["incidence", "taux_positivite"]
 
 function boxAgeChecked(value){
@@ -173,6 +183,52 @@ function age_changeColorage_seq(){
 
     buildChartAge();
 
+}
+
+function indexOf_age(jour){
+    var nom_jour = age_data["france"]["tous"][age_selected_age_data]["jour_nom"]
+
+    var to_return = true
+    for (var idx = 0; idx < age_data["france"][nom_jour].length; idx++) {
+        value = age_data["france"][nom_jour][idx]
+        if ( moment(value) >= moment(jour) ){
+            return idx;
+            to_return = false;
+            break;
+        }
+    }
+    if(to_return){
+        return 0;
+    }
+    
+}
+
+function secureChangeTime_age(){
+    var sliderNoUi = document.getElementById('sliderUIAge');
+    let idx = document.getElementById('sliderUIAge').noUiSlider.get(); // document.getElementById("timeSlider").value
+    let idx_min = parseInt(idx[0])
+    let idx_max = parseInt(idx[1])
+
+    var nom_jour = age_data["france"]["tous"][age_selected_age_data]["jour_nom"]
+    let date_min = age_data["france"][nom_jour][idx_min]
+    let date_max = age_data["france"][nom_jour][idx_max]
+
+    buildChartAge();
+    
+    var dmin = indexOf_age(date_min)
+    var dmax = indexOf_age(date_max)
+
+    var nom_jour = age_data["france"]["tous"][age_selected_age_data]["jour_nom"]
+    let N_temp = age_data["france"][nom_jour].length
+    if(dmax==0){
+        dmax = N_temp-1;
+    }
+    if((N_temp-dmax)<=10){
+        dmax = N_temp-1;
+    }
+
+    sliderNoUi.noUiSlider.set([dmin, dmax])
+    changeTime();
 }
 
 function changeTimeAge(){
@@ -296,14 +352,14 @@ function buildChartAge(){
             document.getElementById("age_titre").innerHTML += " pour 100k habitants";
         }
     }
-    document.getElementById("age_description").innerHTML = age_descriptions[age_selected_age_data[0]] + credits;
+    document.getElementById("age_description").innerHTML = age_descriptions[age_selected_age_data[0]] + age_credits;
     changeTimeAge();
 }
 
 function populateAgesSelect(){
     console.log("enter populateAgesSelect")
     var html_code = "";
-    html_code += "<br><i>Tranches d'âge</i><br>"
+    //html_code += "<br><i>Tranches d'âge</i><br>"
     
     age_data.france.tranches_noms.map((tranche, idx) => {
         complement = " ";
@@ -312,6 +368,12 @@ function populateAgesSelect(){
     
     document.getElementById("agesCheckboxes").innerHTML = html_code;
     document.getElementById("ages_tous").checked = true;
+
+    document.getElementById("ages_"+age_data.france.tranches_noms[1]).checked = true;
+    document.getElementById("ages_"+age_data.france.tranches_noms[5]).checked = true;
+
+    age_selected_tranches.push(age_data.france.tranches_noms[1])
+    age_selected_tranches.push(age_data.france.tranches_noms[5])
     
     console.log("exit populateAgesSelect")
     
@@ -322,7 +384,7 @@ function populateTerritoires(){
     html_code = "<optgroup label='Régions'>"
 
     age_data.regions.map((value, idx) => {
-        html_code += "<option value='" + value + "'>" + value + "</option>"
+        html_code += "<option value='" + replaceBadCharacters(value) + "'>" + value + "</option>"
     })
     html_code += "</optgroup>"
 

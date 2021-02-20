@@ -46,19 +46,25 @@
         </div>
         
         <div class="col-sm-9" style="min-width: 300px;">
-        <h3 id="titre">Chargement...</h3>
-        <span id="description">...</span>
-            <div class="chart-container" style="position: relative; height:60vh; width:100%">
-                <canvas id="dataExplorerChart" style="margin-top:20px; max-height: 800px; max-width: 1500px;"></canvas>
-                
-            </div>
-            <div id="sliderUI" style="margin-top:10px; margin-bottom: 10px;"></div>
-            <!--
-            <div class="slidecontainer" style="margin-top: 10px; margin-bottom: 5px;">
-                    <input type="range" min="0" max="1" value="0" class="slider" id="timeSlider" oninput="changeTime()" onchange="changeTime()">
+            <h3 id="titre">Chargement...</h3>
+            
+            <span id="description">...</span><br>
+            <img
+                src="https://files.covidtracker.fr/covidtracker_vect.svg"
+                alt="un triangle aux trois côtés égaux"
+                height="87px"
+                width="130px" 
+            />
+            
+                <div class="chart-container" style="position: relative; height:60vh; width:100%">
+                    <canvas id="dataExplorerChart" style="margin-top:20px; max-height: 800px; max-width: 1500px;"></canvas>
+                    
                 </div>
-                -->
+                <div id="sliderUI" style="margin-top:10px; margin-bottom: 10px;">
+                </div>
         </div>
+        
+        
     </div>
 </div>
 
@@ -122,7 +128,7 @@ var noms_zones = {
     "france": "France"
 }
 
-var credits = "<br><small>CovidTracker.fr - Données : Santé publique France</small>"
+var credits = ""//"<br><small>CovidTracker.fr/<b>CovidExplorer</b></small>"
 let incompatibles_pour100k = ["incidence", "taux_positivite"]
 
 function boxChecked(value){
