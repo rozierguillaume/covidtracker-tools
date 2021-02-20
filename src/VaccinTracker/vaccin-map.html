@@ -129,15 +129,15 @@ Carte des centres de vaccination. Source des données : Ministère de la Santé.
         data_array = CSVToArray(csv, ";");
           
         data_array.slice(1, data_array.length-1).map((value, idx) => {
-          longitudes.push(value[9])
-          latitudes.push(value[10])
+          longitudes.push(value[10])
+          latitudes.push(value[11])
           noms.push(value[1])
-          reservation.push(value[33])
-          date_ouverture.push(value[32])
-          rdv_tel.push(value[34])
+          reservation.push(value[34])
+          date_ouverture.push(value[33])
+          rdv_tel.push(value[35])
           modalites.push(value[35])
-          adresses.push(value[4] + " " + value[5] + ", " + value[6] + " " + value[8])
-          maj.push(value[21].slice(0, 16))
+          adresses.push(value[5] + " " + value[6] + ", " + value[7] + " " + value[9])
+          maj.push(value[22].slice(0, 16))
         })
 
           ajouter_pins();

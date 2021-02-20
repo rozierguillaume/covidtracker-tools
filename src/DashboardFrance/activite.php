@@ -10,6 +10,5 @@
 <?php include(__DIR__ . '/activite/tauxPositivite.php') ?>
 <?php include(__DIR__ . '/activite/nouveauxTestsPositifs.php') ?>
 <?php include(__DIR__ . '/activite/tauxIncidenceMetropoles.php') ?>
-<?php include(__DIR__ . '/activite/efficaciteCouvreFeu.php') ?>
 <?php include(__DIR__ . '/activite/repartitionCas.php') ?>
 <?php include(__DIR__ . '/activite/tauxIncidenceRegions.php') ?>

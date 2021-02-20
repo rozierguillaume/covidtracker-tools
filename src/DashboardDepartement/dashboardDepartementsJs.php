@@ -179,7 +179,7 @@
                     nomDonnee = "incidence_rea";
                 } else if (typeCarte == 'saturation-reanimations') {
                     $('#titreCarte').html("Taux d'occupation des lits de réanimation");
-                    $('#descriptionCarte').html("uniquement par les paitients Covid19");
+                    $('#descriptionCarte').html("uniquement par les patients Covid19");
                     tableauValeurs = valeurs_saturation_rea;
                     tableauCouleurs = couleurs_saturation_rea;
                     nomDonnee = "saturation_rea";

@@ -175,29 +175,39 @@
         background-color: rgb(207, 169, 169);
     }
 
-
-    .blink_me {
-        animation: blinker 3s ease infinite;
+    .animation-seconde-dose {
+        background-color: rgb(45, 189, 84);
+        animation: seconde-dose 3s ease infinite;
         animation-delay: 2s;
     }
 
-    @keyframes blinker {
-        50% {
-            background-color: rgb(45, 189, 84);
-        }
+    .animation-premiere-dose {
+        background-color: rgb(237, 88, 88);
+        animation: premiere-dose 3s ease infinite;
+        animation-delay: 2s;
+    }
+
+    @keyframes premiere-dose {
+      /*from {background-color: rgb(237, 88, 88);}*/
+      50% {background-color: rgb(45, 189, 84);}
+    }
+
+    @keyframes seconde-dose {
+      /*from {background-color: rgb(45, 189, 84);}*/
+      50% {background-color: rgb(31, 128, 57);}
     }
 
 
-    #subtableVaccin, #subtableVaccin tr, #subtableVaccin td {
+    .subtableVaccin, .subtableVaccin tr, .subtableVaccin td {
         border: none;
     }
 
-    #subtableVaccin {
+    .subtableVaccin {
         width: 100%;
         height: 100%;
     }
 
-    #subtableVaccin tr {
+    .subtableVaccin tr {
         height: 10%;
     }
 

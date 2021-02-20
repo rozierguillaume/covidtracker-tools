@@ -38,36 +38,8 @@
 <?php include(__DIR__.'/resume.php'); ?>
 <?php include(__DIR__.'/proportionVaccines.php'); ?>
 <?php include(__DIR__.'/evolution.php'); ?>
-<h2 style="margin-top : 80px;">
-    Répartition des vaccinés
-</h2>
+<?php include(__DIR__.'/repartition.php'); ?>
 
-<div class="" style="margin-bottom: 40px;">
-    Coloration en fonction du pourcentage de population vaccinée.
-    Données fournies par le Ministère de la Santé.
-    Cliquez sur une région pour afficher plus de détails.
-</div>
-<br>
-
-<center>
-<div id="choixCarte">
-    <div class="btn-group" role="group" aria-label="Choix carte">
-        <button id="choixCarteDepartement" type="button" class="btn btn-secondary active">
-            Par département
-        </button>
-        <button id="choixCarteRegion" type="button" class="btn btn-secondary">
-            Par région
-        </button>
-    </div>
-</div>
-</center>
-
-<div id="blocCarteDepartement">
-    <?php include(__DIR__ . '/carteDepartement.php') ?>
-</div>
-<div id="blocCarteRegion" class="hidden">
-    <?php include(__DIR__ . '/carteRegion.php') ?>
-</div>
 <div class="alert alert-info clearFix" style="font-size: 18px;">
     <div class="row">
         <div class="col-md-8">
@@ -84,7 +56,10 @@
         </div>
     </div>
 </div>
+
+<?php include(__DIR__ . '/vaccinationEHPAD.php') ?>
 <?php include(__DIR__ . '/vaccinationsParAge.php') ?>
+
 
 <div class="alert alert-warning" style="font-size: 18px; margin-top:40px; margin-bottom: 20px;">
     <b>29 janvier - Information sur les données.</b> <i>Provenance des données</i> : jusqu’alors les données étaient
