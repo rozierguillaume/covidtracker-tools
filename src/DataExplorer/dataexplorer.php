@@ -5,11 +5,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js" integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg==" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.css" integrity="sha512-XXtRBFtk/QfR8GEWwQPYjrQBHQwjidXg0wo8HJi9YOaFycWqd2uWkjJoAyx8Mb/+H8uhvmf70EAIxDnQxrwrvw==" crossorigin="anonymous" />
 
-<p>CovidExplorer est un outil de CovidTracker permettant d'explorer les données de l'épidémie en France. Sélectionnez un type de données ainsi qu'un ou plusieurs territoires ci-dessous, puis la courbe s'affichera à droite (ou en-dessous sur mobile). <i>Cette page est encore en cours de construction, d'autres fonctionnalités arriveront progressivement.</i> <i>Dernière donnée : <span id="dateDonnee">--/--</span>.</i></p>
+<p style="font-size:130%;">CovidExplorer est un outil de CovidTracker permettant d'explorer les données de l'épidémie en France. Deux modules sont proposés : <i>Territoires</i> et <i>Tranches d'âge</i>.
+Le premier, ci-dessous, permet de comparer plusieurs territoires (régions, départements, France entière) entre eux.
+Le second, en bas de page, permet d'explorer l'évolution de l'épidémie dans les tranches d'âge.
+
+<i>Dernière donnée : <span id="dateDonnee">--/--</span>. Données : Santé publique France.</i></p>
 
 <?php include(__DIR__ . '/styles.php'); ?>
-
-
 
 <div class="alert alert-info clearFix"  style="font-size: 18px;">
     <div class="row">
@@ -26,9 +28,14 @@
 
 <br><br>
 
+<h3>Explorez les territoires</h3>
+<p>Sélectionnez un type de données ainsi qu'un ou plusieurs territoires ci-dessous, puis la courbe s'affichera à droite (ou en-dessous sur mobile). 
+</p>
+
 <?php include(__DIR__ . '/dataexplorer_territoires.php'); ?>
 
 <br><br><br>
+<h3>Explorez les tranches d'âge</h3>
 <?php include(__DIR__ . '/dataexplorer_age.php'); ?>
 
 <?php include(__DIR__ . '/menuBasPage.php'); ?>
