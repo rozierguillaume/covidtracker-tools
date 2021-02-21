@@ -35,6 +35,24 @@ Les données sont issues de Santé Publique France et l’INSEE. <i>Mise à jour
 
 
 <?php include(__DIR__ . '/vueDEnsemble.php') ?>
+
+<div class="alert alert-info clearFix" style="font-size: 18px; margin-top:10px; margin-bottom:40px;">
+    <div class="row">
+        <div class="col-md-8">
+            <small>NOUVEAU !</small>
+            <br>
+            <b>Explorez les données avec CovidExplorer</b>
+            <br>
+            Comment évolue le taux d'incidence dans votre département par rapport à votre région ? Quelle est la courbe des hospitalisations en France ?...<br>
+        </div>
+        <div class="col-md-4 text-right">
+            <button class="btn-shadow">
+                <a href="https://covidtracker.fr/covidexplorer" target="_blank" rel="noreferrer noopener">Accéder à 🔎
+                    <b>CovidExplorer</b></a>
+            </button> &nbsp;&nbsp;
+        </div>
+    </div>
+</div>
 <?php include(__DIR__ . '/activite.php') ?>
 <?php include(__DIR__ . '/indicateursEpidemiques.php') ?>
 <?php include(__DIR__ . '/hospitalisationsEtReanimations.php') ?>

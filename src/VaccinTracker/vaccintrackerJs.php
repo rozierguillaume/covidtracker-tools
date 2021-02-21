@@ -231,7 +231,6 @@
                 dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].n_dose1
                 dejaVaccines = dejaVaccinesNb*100/67000000;
                 restantaVaccinerImmunite = 60 - dejaVaccines
-                this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
                 this.objectifQuotidien = calculerObjectif();
                 fetch2ndDosesData();
                 
@@ -255,7 +254,7 @@
             })
             .then(json => {
                 this.vaccines_2doses = json;
-
+                this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
                 majValeurs();
                 maj2Doses();
                 fetchStock();
@@ -332,7 +331,8 @@
         
         date=vaccines_2doses.jour[N-1]
         document.getElementById("date_maj_2").innerHTML = date.slice(8) + "/" + date.slice(5, 7);
-        tableVaccin(table, 0);
+        document.getElementById("proportionVaccines2doses").innerHTML = (Math.round(dejaVaccines2Doses*10000000)/10000000).toFixed(2);
+        tableVaccin(table);
     }
 
     function afficherNews(){
@@ -346,21 +346,22 @@
             }
         })
         //document.getElementById("news").innerHTML = `<div style="margin-bottom: 20px; border: 1px solid rgba(0, 0, 0, 0.2); border-radius: 7px; padding: 10px; background-color: rgba(0, 0, 0, 0.05);">` + html_str + `</div>`;
-
     }
 
 
     function calculerDateProjeteeObjectif () {
         const objectif = OBJECTIF_FIN_AOUT
-        const indexDerniereMaj = nb_vaccines.length - 1;
-        const indexDebutFenetre = Math.max(0, indexDerniereMaj - 7)
-        const derniereMaj = Date.parse(nb_vaccines[indexDerniereMaj].date)
-        const resteAVacciner = objectif*2 - Number(nb_vaccines[indexDerniereMaj].n_dose1)
-        const differentielVaccinesFenetre = Number(nb_vaccines[indexDerniereMaj].n_dose1) - Number(nb_vaccines[indexDebutFenetre].n_dose1)
-        differentielVaccinesParJour = differentielVaccinesFenetre / (indexDerniereMaj - indexDebutFenetre)
-        const oneDay = (1000 * 60 * 60 * 24)
-        const nbJoursAvantObjectif = Math.round(resteAVacciner / differentielVaccinesParJour)
-        return new Date(derniereMaj + (oneDay * nbJoursAvantObjectif))
+        const vdose1 = ( nb_vaccines[nb_vaccines.length -1].n_dose1 - nb_vaccines[nb_vaccines.length -8].n_dose1 ) / 7
+        const cumsum = vaccines_2doses.n_dose2_cumsum
+        const vdose2 = ( cumsum[cumsum.length -1] - cumsum[cumsum.length -8] ) / 7
+        const resteAVaccinerDose1 = objectif - nb_vaccines[nb_vaccines.length -1].n_dose1
+        const joursDose1Complete = Math.ceil(resteAVaccinerDose1 / vdose1)
+        const nDose2quandD1Complete = Math.floor(joursDose1Complete * vdose2)
+        const resteAVaccinerDose2 = objectif - nDose2quandD1Complete
+        const joursDose2Complete = Math.ceil(resteAVaccinerDose2 / (vdose2+vdose1))
+        const date = new Date(nb_vaccines[nb_vaccines.length -1].date)
+        date.setDate(date.getDate() + joursDose2Complete + joursDose1Complete)
+        return  date
     }
 
     function buildLineChart(){
@@ -614,8 +615,7 @@
         this.lineChart.update()
     }
 
-    
-    function tableVaccin(tableElt, level){
+    function tableVaccin(tableElt){
         tableElt.innerHTML = "";
         let first = true;
         for(let i=0; i<10; i++){
@@ -624,31 +624,28 @@
             for(let j=0; j<10; j++){
                 let newrow = row.insertCell(j)
 
-                let caseNb = i*10+j+1
-                
-                if((caseNb <= dejaVaccines && level == 0) || (caseNb <= (dejaVaccines - Math.floor(dejaVaccines))*100) && level == 1){
-                    if((caseNb <= dejaVaccines2Doses && level == 0) || (caseNb <= (dejaVaccines2Doses - Math.floor(dejaVaccines2Doses))*100) && level == 1){
-                        newrow.classList.add("green");
-                    } else {
-                        newrow.classList.add("green");
-                    }
-                } else {
-                    if(first) {
-                        if(level == 1) {
-                            newrow.classList.add("blink_me");
-                            newrow.classList.add(dejaVaccines >= 60 ? "grey" : "red");
-                            first = false;
+                let subtable = document.createElement("table");
+                subtable.classList = "subtableVaccin";
+                newrow.appendChild(subtable);
+
+                for (let k=0; k<10; k++) {
+                    let subrow = subtable.insertRow();
+                    for(let l=0 ; l < 10 ; l++) {
+                        let caseNb = i*10+j+0.1*k+0.01*l+0.01
+                        let newsubrow = subrow.insertCell(l);
+                        if(caseNb <= dejaVaccines2Doses){
+                            newsubrow.classList.add('darkgreen');
+                        } else if(caseNb <= dejaVaccines2Doses+0.01) {
+                            newsubrow.classList.add('animation-seconde-dose');
+                        } else if(caseNb <= dejaVaccines){
+                            newsubrow.classList.add('green');
+                        } else if(caseNb <= dejaVaccines+0.01) {
+                            newsubrow.classList.add('animation-premiere-dose');
+                        } else if(caseNb <= 60) {
+                            newsubrow.classList.add("red");
                         } else {
-                            const subtable = document.createElement("table");
-                            subtable.id = "subtableVaccin";
-                            newrow.appendChild(subtable);
-                            first = false;
-                            tableVaccin(subtable, level+1);
+                            newsubrow.classList.add("grey");
                         }
-                    } else if((caseNb <= 60 && level == 0) || ((dejaVaccines) < 60 && level == 1)) {
-                        newrow.classList.add("red");
-                    } else {
-                        newrow.classList.add("grey");
                     }
                 }
             }
@@ -693,6 +690,7 @@
         document.getElementById("nb_doses_injectees_24h").innerHTML = numberWithSpaces(dejaVaccinesNb - nb_vaccines[nb_vaccines.length-2].n_dose1);
         
         document.getElementById("proportionVaccinesMax").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(2);
+        console.log(dejaVaccines2Doses);
         //document.getElementById("proportionVaccinesMin").innerHTML = (Math.round(dejaVaccines/2*10000000)/10000000).toFixed(2);
         //document.getElementById("proportion_doses").innerHTML = (dejaVaccinesNb/cumul_stock*100).toFixed(1);
 
