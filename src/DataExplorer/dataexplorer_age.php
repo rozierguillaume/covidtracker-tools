@@ -334,6 +334,11 @@ function buildChartAge(){
     
     age_pour100k_temp = checkage_pour100kAge(age_selected_age_data[0]);
 
+    if(document.querySelector('#territoireAge option:checked').parentElement.label == "Départements"){
+        if(document.querySelector('#typeDoneesAge option:checked').parentElement.label == "Indicateurs sanitaires"){
+            window.alert("Santé publique France ne publie pas les données hospitaliaires par tranche d'âge au niveau départemental. Merci de sélectionner un indicateur épidémique, ou de sélectionner un autre territoire (region, France entière).");
+        }
+    }
     age_selected_territoires.map((territoire_temp, idx_temp) => {
         age_selected_tranches.map((value, idx) => {
         addTraceAge(age_selected_age_data[0], value, age_pour100k_temp, document.getElementById("territoireAge").value);
@@ -381,10 +386,17 @@ function populateAgesSelect(){
 
 function populateTerritoires(){
     console.log("enter_populate_territoires")
-    html_code = "<optgroup label='Régions'>"
 
+    html_code = "<optgroup label='Régions'>"
     age_data.regions.map((value, idx) => {
         html_code += "<option value='" + replaceBadCharacters(value) + "'>" + value + "</option>"
+    })
+    html_code += "</optgroup>"
+
+    html_code += "<optgroup label='Départements'>"
+
+    age_data.departements.map((value, idx) => {
+        html_code += "<option value='" + replaceBadCharacters(value) + "'>" + value + " " + age_data.departements_noms[value] + "</option>"
     })
     html_code += "</optgroup>"
 
