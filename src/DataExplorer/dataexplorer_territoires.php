@@ -24,6 +24,7 @@
                         <option value="nbre_acte_corona">Actes SOS médecin</option>
                         <option value="nbre_pass_corona">Passages aux urgences</option>
                         <option value="deces_hospitaliers">Décès hospitaliers</option>
+                        <option value="deces_ehpad">Décès EHPAD</option>
                     </optgroup>
                 </select>
                 <br>
@@ -101,6 +102,7 @@ var descriptions = {
     "reanimations": "Nombre de lits de réanimation occupés à l'hôpital pour Covid19.",
     "incid_reanimations": "Nombre d'admissions quotidiennes en réanimation pour Covid19 (moyenne glissante 7 jours).",
     "deces_hospitaliers": "Nombre de décès quotidiens pour Covid19 à l'hôpital (moyenne glissante 7 jours).",
+    "deces_ehpad": "Nombre de décès quotidiens en EHPAD (moyenne glissante 7 jours) — <i>données communiquées une fois par semaine, d'où les irrégularités</i>.",
     "cas": "Nombre de tests positifs quotidiens (RT-PCR et antigéniques) (moyenne glissante 7 jours).",
     "tests": "Nombre de tests quotidiens (positifs et négatifs) (moyenne glissante 7 jours).",
     "nbre_acte_corona": "Nombre d'actes SOS médecin pour suspicion Covid19 (moyenne glissante 7 jours).",
@@ -115,6 +117,7 @@ var titres = {
     "reanimations": "Réanimations",
     "incid_reanimations": "Nouvelles admissions en réanimation",
     "deces_hospitaliers": "Décès hospitaliers",
+    "deces_ehpad": "Décès en EHPAD",
     "cas": "Cas positifs",
     "tests": "Dépistage",
     "nbre_acte_corona": "Actes SOS médecin pour Covid19",
@@ -167,6 +170,8 @@ function changeColorSeq(){
 
 }
 function secureChangeTime(){
+    populateTerritoireSelect();
+
     var sliderNoUi = document.getElementById('sliderUI');
     let idx = document.getElementById('sliderUI').noUiSlider.get(); // document.getElementById("timeSlider").value
     let idx_min = parseInt(idx[0])
@@ -321,9 +326,19 @@ function buildChart(){
 
     pour100k_temp = checkPour100k(selected_data[0]);
     
+    var show_alert=false
     selected_territoires.map((value, idx) => {
+        if(value!="france"){
+            show_alert=true
+        }
         addTrace(selected_data[0], value, pour100k_temp);
     })
+    console.log(show_alert)
+    if(show_alert==true){
+        if(selected_data=="deces_ehpad"){
+            window.alert("Santé publique France ne publie pas les décès en EHPAD au niveau départemental ou régional. Merci de sélectionner un indicateur épidémique, ou de sélectionner le territorie France entière).");
+        }
+    }
     
     document.getElementById("titre").innerHTML = titres[selected_data[0]];
 
@@ -337,38 +352,52 @@ function buildChart(){
 }
 
 function populateTerritoireSelect(){
-    //var x = document.getElementById("territoireDonnees");
+    var typeDonnees = document.getElementById("typeDonees").value;
     var html_code = "";
 
-    html_code += "<br><i>Zones de vacances</i><br>"
-    
-    data.zones_vacances.map((zone, idx) => {
-        complement = " ";
-        html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(zone) + "' onchange='boxChecked(\"" + replaceBadCharacters(zone) +"\")'> "+ noms_zones[zone] + complement + "</label></div>" + "<br>"
-    })
+    if (typeDonnees!="deces_ehpad"){
+        html_code += "<br><i>Zones de vacances</i><br>"
+        
+        data.zones_vacances.map((zone, idx) => {
+            complement = " ";
+            html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(zone) + "' onchange='boxChecked(\"" + replaceBadCharacters(zone) +"\")'> "+ noms_zones[zone] + complement + "</label></div>" + "<br>"
+        })
 
 
-    html_code += "<br><i>Régions</i><br>"
-    data.regions.map((region, idx) => {
-        html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(region) + "' onchange='boxChecked(\"" + replaceBadCharacters(region) +"\")'> "+ region + "</label></div>" + "<br>"
+        html_code += "<br><i>Régions</i><br>"
+        data.regions.map((region, idx) => {
+            html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(region) + "' onchange='boxChecked(\"" + replaceBadCharacters(region) +"\")'> "+ region + "</label></div>" + "<br>"
 
-    })
+        })
 
-    html_code += "<br><i>Départements</i><br>"
-    
-    data.departements.map((departement, idx) => {
-        complement = " ";
-        if (departement in data["departements_noms"]) {
-            complement += data["departements_noms"][departement];
-        }
+        html_code += "<br><i>Départements</i><br>"
+        
+        data.departements.map((departement, idx) => {
+            complement = " ";
+            if (departement in data["departements_noms"]) {
+                complement += data["departements_noms"][departement];
+            }
 
-        html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(departement) + "' onchange='boxChecked(\"" + replaceBadCharacters(departement) +"\")'> "+ departement + complement + "</label></div>" + "<br>"
+            html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(departement) + "' onchange='boxChecked(\"" + replaceBadCharacters(departement) +"\")'> "+ departement + complement + "</label></div>" + "<br>"
 
-    })
+        })
+    } else {
+        html_code += "<br><i>Les décès en EHPAD ne sont publiés par Santé publique France que pour la France entière.</i>"
+        unselectAll();
+    }
 
     document.getElementById("territoiresCheckboxes").innerHTML = html_code;
     
 }
+
+function unselectAll(){
+    selected_territoires.map((value, idx)=>{
+        document.getElementById(value).checked = false
+    })
+    selected_territoires = ["france"]
+    document.getElementById("france").checked = true
+}
+
 fetchData();
 function fetchData(){
     fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/dataexplorer_compr.json', {cache: 'no-cache'})
