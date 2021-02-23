@@ -135,15 +135,13 @@ var credits = ""//"<br><small>CovidTracker.fr/<b>CovidExplorer</b></small>"
 let incompatibles_pour100k = ["incidence", "taux_positivite"]
 
 function boxChecked(value){
-    console.log(value)
 
     if (document.getElementById(value).checked) {
         selected_territoires.push(value);
     } else {
         selected_territoires = removeElementArray(selected_territoires, value);
         
-    }
-    
+    } 
     buildChart();
 
 }
@@ -351,7 +349,19 @@ function buildChart(){
     changeTime();
 }
 
+function updateBoxChecked(){
+    selected_territoires.map((territoire, idx)=>{
+        try {
+            document.getElementById(territoire).checked = true;
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    )
+}
+
 function populateTerritoireSelect(){
+    
     var typeDonnees = document.getElementById("typeDonees").value;
     var html_code = "";
 
@@ -386,8 +396,18 @@ function populateTerritoireSelect(){
         unselectAll();
     }
 
+    if (typeDonnees=="incidence"){
+        html_code += "<br><i>Métropoles</i><br>"
+        complement = ""
+        data.metropoles.map((metropole, idx) => {
+            html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(metropole) + "' onchange='boxChecked(\"" + replaceBadCharacters(metropole) +"\")'> "+ metropole + complement + "</label></div>" + "<br>"
+        })
+    } else {
+        html_code += "<br><i>Métropoles : seul le taux d'incidence est publié par Santé publique France.</i>"
+    }
+
     document.getElementById("territoiresCheckboxes").innerHTML = html_code;
-    
+    updateBoxChecked();
 }
 
 function unselectAll(){
