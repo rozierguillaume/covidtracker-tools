@@ -1,6 +1,5 @@
 <h2 style="margin-top : 80px;" id="autorisation-des-vaccins">Autorisation des vaccins</h2>
 <div style="border: 0px solid grey; background-color: rgba(128, 128, 128, 0.1); border-radius: 7px; padding: 12px;">
-    L'Union Européenne a passé des commandes pour 6 vaccins différents. 3 sont autorisés, 1 est en cours d'autorisation et 2 n'ont pas encore été soumis. <i>Mise à jour : 16/02.</i><br><br>
     <h3 style="margin-top : 10px;">Vaccins autorisés</h3>
     <div class="row">
         <card class="shadow-btn-green col-xs-11 col-md-4"><b>🇺🇸🇩🇪 Pfizer-BioNTech</b><br>
@@ -61,7 +60,17 @@
             Conservation : -60°C (3 mois), +5°C (3 mois)<br>
             Commandes UE : 225M (+ option 180M)<br>
             Doses à injecter : 2<br>
-            Statut : --
+            Statut : examen continu (UE)
+        </card>
+        
+         <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇺🇸 Novavax</b><br>
+            Phase 3/3<br>
+            Type : Sous-unité protéique<br>
+            Efficacité annoncée : 89.3%<br>
+            Conservation : entre +2°C et +8°C<br>
+            Commandes UE : 100M (+ option 100M)<br>
+            Doses à injecter : 2<br>
+            Statut : examen continu (UE)
         </card>
         
         <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇫🇷🇬🇧 Sanofi/Pasteur-GSK</b><br>
