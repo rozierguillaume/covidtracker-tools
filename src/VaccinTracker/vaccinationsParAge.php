@@ -96,7 +96,7 @@ function buildLineChartAge(type){
                                         return value/1000 +" k";
                                     }
                                 },
-							stacked: true,
+							stacked: false,
                             
 						}],
 						yAxes: [{

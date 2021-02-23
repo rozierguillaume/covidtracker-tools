@@ -18,12 +18,13 @@
             Type : ARN messager<br>
             Efficacité annoncée : 94%<br>
             Conservation : -20°C (6 mois), +5°C (1 mois)<br>
-            Commandes UE : 160M <br>
-            Dont France : 24M<br>
+            Commandes UE : 160M + 150M + option 150M<br>
+            Dont France : 24M + 22.5M + 22.5M<br>
             Doses à injecter : 2<br>
             Statut : autorisé (UE, France)<br>
             <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2035389">Article</a>
         </card>
+        
         <card class="shadow-btn-green col-xs-11 col-md-4"><b>🇬🇧🇸🇪 AstraZeneca/Oxford</b><br>
             Type : Vecteur viral<br>
             Efficacité annoncée : 60-70% (moins de 55 ans)<br>
@@ -50,13 +51,17 @@
     </div>
 
 
-    <h3 style="margin-top : 50px;">Vaccins pas encore soumis</h3>
+    <h3 style="margin-top : 50px;">Vaccins non encore soumis</h3>
     <div class="row">
         <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇩🇪 CureVac</b><br>
             Phase 2/3<br>
             Type : ARN messager<br>
             Efficacité annoncée : --%<br>
-            Prêt : 1er semestre 2021<br>Conservation : -60°C (3 mois), +5°C (3 mois)<br>Commandes UE : 225M (+ option 180M)<br>Doses à injecter : 2<br>Statut : --
+            Prêt : 1er semestre 2021<br>
+            Conservation : -60°C (3 mois), +5°C (3 mois)<br>
+            Commandes UE : 225M (+ option 180M)<br>
+            Doses à injecter : 2<br>
+            Statut : --
         </card>
     </div>
 </div>
