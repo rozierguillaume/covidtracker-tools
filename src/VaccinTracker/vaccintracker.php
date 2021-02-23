@@ -38,6 +38,7 @@
 <?php include(__DIR__.'/resume.php'); ?>
 <?php include(__DIR__.'/proportionVaccines.php'); ?>
 <?php include(__DIR__.'/evolution.php'); ?>
+<?php include(__DIR__.'/typesVaccins.php'); ?>
 <?php include(__DIR__.'/repartition.php'); ?>
 
 <div class="alert alert-info clearFix" style="font-size: 18px;">
