@@ -6,8 +6,8 @@
             Type : ARN messager<br>
             Efficacité annoncée : 94.5%<br>
             Conservation : -70°C<br>
-            Commandes UE : 500M + option 100M<br>
-            Dont France : 75M + 15M<br>
+            Commandes UE : 500M (+ option 100M)<br>
+            Dont France : 75M (+ option 15M)<br>
             Doses à injecter : 2<br>
             Statut : autorisé (UE, France)<br>
             <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2034577">Article</a>
@@ -17,8 +17,8 @@
             Type : ARN messager<br>
             Efficacité annoncée : 94%<br>
             Conservation : -20°C (6 mois), +5°C (1 mois)<br>
-            Commandes UE : 160M + 150M + option 150M<br>
-            Dont France : 24M + 22.5M + 22.5M<br>
+            Commandes UE : 160M + 150M (+ option 150M)<br>
+            Dont France : 24M + 22.5M (+ option 22.5M)<br>
             Doses à injecter : 2<br>
             Statut : autorisé (UE, France)<br>
             <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2035389">Article</a>
@@ -26,9 +26,10 @@
         
         <card class="shadow-btn-green col-xs-11 col-md-4"><b>🇬🇧🇸🇪 AstraZeneca/Oxford</b><br>
             Type : Vecteur viral<br>
-            Efficacité annoncée : 60-70% (moins de 55 ans)<br>
+            Efficacité annoncée : 60-70% (< 55 ans)<br>
             Conservation : +5°C (6 mois)<br>
-            Commandes UE : 300M (+ option 100M)<br>
+            Commandes UE : 300M (+ option 100M)<br>
+            Dont France : 45M (+ option 15M)<br>
             Doses à injecter : 2<br>
             Statut : autorisé (UE, France)<br>
             <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)32661-1">Article</a>
@@ -43,7 +44,8 @@
             Efficacité annoncée : --%<br>
             Prêt : fin janvier 2021<br>
             Conservation : +5°C<br>
-            Commandes UE : 200M (+ option 200M)<br>
+            Commandes UE : 200M (+ option 200M)<br>
+            Dont France : 30M (+ option 30M)<br>
             Doses à injecter : 1 (essai en cours) ou 2<br>
             Statut : décision UE (mi-mars 2021)
         </card>
@@ -58,7 +60,8 @@
             Efficacité annoncée : --%<br>
             Prêt : 1er semestre 2021<br>
             Conservation : -60°C (3 mois), +5°C (3 mois)<br>
-            Commandes UE : 225M (+ option 180M)<br>
+            Commandes UE : 225M (+ option 180M)<br>
+            Dont France : 33.75M (+ option 27M)<br>
             Doses à injecter : 2<br>
             Statut : examen continu (UE)
         </card>
@@ -68,7 +71,8 @@
             Type : Sous-unité protéique<br>
             Efficacité annoncée : 89.3%<br>
             Conservation : entre +2°C et +8°C<br>
-            Commandes UE : 100M (+ option 100M)<br>
+            Commandes UE : 100M (+ option 100M)<br>
+            Dont France : 15M (+ option 15M)<br>
             Doses à injecter : 2<br>
             Statut : examen continu (UE)
         </card>
@@ -80,6 +84,7 @@
             Prêt : fin 2021<br>
             Conservation : +5°C<br>
             Commandes UE : 300M<br>
+            Dont France : 45M<br>
             Doses à injecter : --<br>
             Statut : --
         </card>
