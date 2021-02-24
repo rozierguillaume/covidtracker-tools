@@ -33,11 +33,11 @@
         ];
 
         var tableauCouleurs2doses= [
-            "#fff7f7",
-            "#f6fbc6",
-            "#cbfb58",
-            "#7ae24a",
-            "#61c142",
+            "#9cb394",
+            "#90b384",
+            "#80ae73",
+            "#71ab60",
+            "#65a950",
             "#56ab3d",
             "#2e9c28",
             "#1c7b21",
@@ -80,8 +80,8 @@
                 departementCarteDose1.css("fill", recupererCouleurEHPAD(donneesDepartement["res_couv_tot_dose1"], tableauValeurs, tableauCouleurs1dose));
 
                 var departementCarteDose2 = $('#carteEHPAD2Doses path[data-num="' + numeroDepartement + '"]');
-                departementCarteDose2.data("res_couv_tot_dose2", donneesDepartement["res_couv_tot_dose2"]);
-                departementCarteDose2.css("fill", recupererCouleurEHPAD(donneesDepartement["res_couv_tot_dose2"], tableauValeurs, tableauCouleurs2doses));
+                departementCarteDose2.data("res_couv_tot_dose2", donneesDepartement["res_couv_tot_dose2"]/10);
+                departementCarteDose2.css("fill", recupererCouleurEHPAD(donneesDepartement["res_couv_tot_dose2"]/10, tableauValeurs, tableauCouleurs2doses));
             }
         }
 
