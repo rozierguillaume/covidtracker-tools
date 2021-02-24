@@ -80,8 +80,8 @@
                 departementCarteDose1.css("fill", recupererCouleurEHPAD(donneesDepartement["res_couv_tot_dose1"], tableauValeurs, tableauCouleurs1dose));
 
                 var departementCarteDose2 = $('#carteEHPAD2Doses path[data-num="' + numeroDepartement + '"]');
-                departementCarteDose2.data("res_couv_tot_dose2", donneesDepartement["res_couv_tot_dose2"]/10);
-                departementCarteDose2.css("fill", recupererCouleurEHPAD(donneesDepartement["res_couv_tot_dose2"]/10, tableauValeurs, tableauCouleurs2doses));
+                departementCarteDose2.data("res_couv_tot_dose2", donneesDepartement["res_couv_tot_dose2"]);
+                departementCarteDose2.css("fill", recupererCouleurEHPAD(donneesDepartement["res_couv_tot_dose2"], tableauValeurs, tableauCouleurs2doses));
             }
         }
 
