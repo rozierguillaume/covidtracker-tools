@@ -9,7 +9,7 @@ crossorigin=""></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css" integrity="sha512-BBToHPBStgMiw0lD4AtkRIZmdndhB6aQbXpX7omcrXeG2PauGBl2lzq2xUZTxaLxYz5IDHlmneCZ1IJ+P3kYtQ==" crossorigin="anonymous" />
 
 <h2 style="margin-top : 80px;" id="centres-vaccination">Taux d'incidence par communauté de communes</h2>
-Données : Santé publique France. Mise à jour quotidienne.
+Données : Santé publique France. Mise à jour quotidienne. Inspiré du travail de Germain Forestier.
 
 <div id="mapid" style="height: 90vh; width: 90vw; max-width: 1500px; max-height: 1500px;"></div>
 
@@ -156,6 +156,7 @@ Données : Santé publique France. Mise à jour quotidienne.
         if (!response.ok) {
             throw new Error("HTTP error " + response.status);
         }
+        console.log(response)
         return response.json();
     })
     .then(json => {
@@ -197,7 +198,7 @@ Données : Santé publique France. Mise à jour quotidienne.
            d == '[0;10['   ? '#59ff78' : //FED976
            d == "0" ? "blue" :
  
-                            '#FFEDA0';
+                            '#blue';
     }
 
     function getColorFromWindow(d) {
@@ -233,7 +234,7 @@ Données : Santé publique France. Mise à jour quotidienne.
     function style(feature) {
     return {
         fillColor: getColor(feature.properties.CODE_EPCI),
-        weight: 0,
+        weight: 1,
         opacity: 0.2,
         color: 'white',
         dashArray: '3',
@@ -308,7 +309,7 @@ Données : Santé publique France. Mise à jour quotidienne.
     info.update = function (props) {
         
         this._div.innerHTML = '' +  (props ?
-            '<b>' + props.NOM_EPCI + '</b><br>' + "Taux d'incidence :<br><span style='font-size: 120%;'>" + getNomIncidence(data[props.CODE_EPCI]) + '</span><br>cas par semaine pour 100k hab'
+            '<b>' + props.NOM_EPCI + '</b><br>' + "Taux d'incidence :<br><span style='font-size: 120%;'>" + getNomIncidence(data[props.CODE_EPCI]) + "<br>EPCI : " + props.CODE_EPCI + '</span><br>cas par semaine pour 100k hab'
             : 'Survoler');
     };
 
