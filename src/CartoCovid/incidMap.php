@@ -4,10 +4,11 @@ crossorigin=""/>
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
 integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
 crossorigin=""></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js" integrity="sha512-MQlyPV+ol2lp4KodaU/Xmrn+txc1TP15pOBF/2Sfre7MRsA/pB4Vy58bEqe9u7a7DczMLtU5wT8n7OblJepKbg==" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css" integrity="sha512-BBToHPBStgMiw0lD4AtkRIZmdndhB6aQbXpX7omcrXeG2PauGBl2lzq2xUZTxaLxYz5IDHlmneCZ1IJ+P3kYtQ==" crossorigin="anonymous" />
-<p>CoviCarte est un outil de CovidTracker permettant de suivre l'activité de l'épidémie en France. Les données proviennent de Santé publique France, et sont mises à jour tous les soirs. La carte est interactive.<i>Cette page est en cours de construction et s'améliorera au fil du temps.</i></p>
+<p>CoviCarte est un outil de CovidTracker permettant de suivre l'activité de l'épidémie en France. Les données proviennent de Santé publique France, et sont mises à jour tous les soirs. La carte est interactive. <i>Cette page est en cours de construction et s'améliorera au fil du temps.</i></p>
 <div class="alert alert-info clearFix" style="font-size: 18px;">
     <div class="row">
         <div class="col-md-8">
@@ -367,6 +368,18 @@ div[shadow] {
            inc == '[0;10['   ? 'moins de 10' : //FED976
                             'inconnu';
     }
+
+    function getValeurMoyenneIncidence(inc){
+    return inc == '[1000;Max]' ? 1000 :
+           inc == '[500;1000[' ? 750 :
+           inc == '[250;500['  ? 375 :
+           inc == '[150;250['  ? 200 :
+           inc == '[50;150['  ? 100 : //FC4E2A
+           inc == '[20;50['   ? 35 : //FD8D3C
+           inc == '[10;20['   ? 15 : //FEB24C
+           inc == '[0;10['   ? 5 : //FED976
+                            0 ;
+    }
     
  
 
@@ -476,6 +489,13 @@ div[shadow] {
         this._div.innerHTML = '' +  (props ?
             '<b>' + props.NOM_EPCI + '</b><br>' + "Taux d'incidence :<br><span style='font-size: 120%;'>" + getNomIncidence(data[props.CODE_EPCI]) + '</span><br>cas par semaine pour 100k hab <br><small>' + date + '</small>'
             : 'Survoler');
+        if(props){
+            this._div.innerHTML += `<div class="chart-container" style="position: relative; height:200px; width:300px;">
+                <canvas id="barChart" style="margin-top:20px;"></canvas>
+            </div>`
+
+            buildBarChart(props)
+        }
     };
 
     info.addTo(mymap);
@@ -484,7 +504,7 @@ div[shadow] {
     //
     //
     // Legend   
-    var legend = L.control({position: 'bottomright'});
+    var legend = L.control({position: 'bottomleft'});
 
     legend.onAdd = function (map) {
 
@@ -513,6 +533,71 @@ div[shadow] {
     };
 
     legend.addTo(mymap);
+
+
+    var barChart;
+    
+    function buildBarChart(props){
+        var ctx = document.getElementById('barChart').getContext('2d');
+        var data_temp=[];
+        var colours=[];
+        
+        all_data.dates.map((date, idx) => {
+            data_temp.push(getValeurMoyenneIncidence(all_data[date][props.CODE_EPCI]))
+            colours.push(getColorFromWindow(all_data[date][props.CODE_EPCI]))
+        })
+        console.log(data_temp)
+        console.log(all_data.dates)
+
+        this.barChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: all_data.dates,
+                datasets: [
+                    {   
+                        label: ' ',
+                        data: data_temp,
+                        backgroundColor: colours,
+                    },
+                    
+                ]
+            },
+            options: {
+                
+                maintainAspectRatio: false,
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        position: 'left',
+                        gridLines: {
+                            display: true
+                        },
+                        ticks:{
+                            min:0,
+                            max:1000
+                        }
+                    }],
+                    xAxes: [{
+                        offset: true,
+                        stacked: true,
+                        type: 'time',
+                        distribution: 'linear',
+                        gridLines: {
+                            display: false
+                        }
+                    }]
+                },
+                annotation: {
+                    events: ["click"],
+                    annotations: [
+
+                    ]
+                }
+            }
+        });
+    }
     
 </script>
 
