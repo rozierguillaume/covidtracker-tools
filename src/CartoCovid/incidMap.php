@@ -24,25 +24,19 @@ crossorigin=""></script>
 
 <h2 style="margin-top : 80px;" id="centres-vaccination">Taux d'incidence par communauté de communes</h2>
 <p>Cette carte présente le taux d'incidence (le nombre de cas de Covid19 détectés par semaine et pour 100 000 habitants de chaque zone).</p>
-<div class="shadow" style="height: 90vh; width: 90vw; max-width: 1000px; max-height: 1000px;">
+<div class="shadow" style="height: 90vh; width: 99vw; max-width: 1200px; max-height: 1200px;">
     <center>
 
     <div class="row">
-        <button onclick="precedentClicked()"> < Précédent</button>
+        <button onclick="precedentClicked()">&#10094; Précédent</button>
         <select id="selectDates" onchange="updatemap()">
         </select>
-        <button onclick="suivantClicked()">Suivant ></button>
-
+        <button onclick="suivantClicked()">Suivant &#10095;</button>
+    <br>
     </div>
     
-    <img
-        src="https://files.covidtracker.fr/covidtracker_vect.svg"
-        alt="un triangle aux trois côtés égaux"
-        height="40px"
-        width="130px" 
-        />
     </center>
-    <div id="mapid" style="height: 80vh; width: 90vw; max-width: 980px; max-height: 980px;">
+    <div id="mapid" style="height: 83vh; width: 96vw; max-width: 1180px; max-height: 1180px;">
     </div>
 </div>
 
@@ -56,6 +50,14 @@ Auteur Guillaume Rozier.
 <?php include(__DIR__ . '/menuBasPage.php'); ?>
 
 <style>
+
+div[shadow] {
+         border: 0px solid black;
+         padding: 10px 20px;
+         border-radius: 7px;
+         text-align: center;
+         box-shadow: 6px 4px 25px #d6d6d6;
+     }
 
 .shadow {
         border: 0px solid black;
@@ -78,6 +80,32 @@ Auteur Guillaume Rozier.
     background: #ffffff;
     margin-top: 3px;
 }
+
+    div[class_perso] {
+            display: flex;
+            min-height: 12vh;
+            flex-wrap: wrap;
+
+
+            /* needed to stack children once to big */
+        }
+
+    div[class_perso] div {
+        flex: 1;
+        min-width: 200px;
+        min-height: 7vh;
+        /* 2 children + margin and borders makes a break point at around 620px */
+        /*background: lightblue;*/
+
+    }
+
+    @media screen and (max-width: 621px) {
+        div[class_persos] {
+            min-height: 30vh;
+            /* has a meaning with a grid system */
+        }
+
+    }
 
 </style>
 
@@ -297,7 +325,7 @@ Auteur Guillaume Rozier.
 
     function getColor(epci) {
         d = data[epci]
-    return d == '[1000;Max]' ? '#800026' :
+    return d == '[1000;Max]' ? 'black' :
            d == '[500;1000[' ? '#800026' :
            d == '[250;500['  ? '#BD0026' :
            d == '[150;250['  ? '#E31A1C' :
@@ -312,7 +340,7 @@ Auteur Guillaume Rozier.
 
     function getColorFromWindow(d) {
 
-    return d == '[1000;Max]' ? '#800026' :
+    return d == '[1000;Max]' ? 'black' :
            d == '[500;1000[' ? '#800026' :
            d == '[250;500['  ? '#BD0026' :
            d == '[150;250['  ? '#E31A1C' :
@@ -470,7 +498,14 @@ Auteur Guillaume Rozier.
                 '<i style="background:' + getColorFromWindow(grades[i]) + '"></i> ' +
                 grades[i] +'<br>';
         }
-        div.innerHTML += "<br>CovidTracker.fr"
+        div.innerHTML += `<br><img
+        src="https://files.covidtracker.fr/covidtracker_vect.svg"
+        alt="un triangle aux trois côtés égaux"
+        height="40px"
+        width="150px" 
+        style="margin-top:5px"
+        />`
+ 
         return div;
     };
 
