@@ -7,7 +7,7 @@ crossorigin=""></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js" integrity="sha512-MQlyPV+ol2lp4KodaU/Xmrn+txc1TP15pOBF/2Sfre7MRsA/pB4Vy58bEqe9u7a7DczMLtU5wT8n7OblJepKbg==" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css" integrity="sha512-BBToHPBStgMiw0lD4AtkRIZmdndhB6aQbXpX7omcrXeG2PauGBl2lzq2xUZTxaLxYz5IDHlmneCZ1IJ+P3kYtQ==" crossorigin="anonymous" />
-<p>CartoCovid est un outil de CovidTracker permettant de suivre l'activité de l'épidémie en France. <i>Cette page est en cours de construction et s'améliorera au fil du temps.</i></p>
+<p>CoviCarte est un outil de CovidTracker permettant de suivre l'activité de l'épidémie en France. Les données proviennent de Santé publique France, et sont mises à jour tous les soirs. La carte est interactive.<i>Cette page est en cours de construction et s'améliorera au fil du temps.</i></p>
 <div class="alert alert-info clearFix" style="font-size: 18px;">
     <div class="row">
         <div class="col-md-8">
@@ -23,7 +23,7 @@ crossorigin=""></script>
 </div>
 
 <h2 style="margin-top : 80px;" id="centres-vaccination">Taux d'incidence par communauté de communes</h2>
-<p>Cette carte présente le taux d'incidence (le nombre de cas de Covid19 détectés par semaine et pour 100 000 habitants de chaque zone).</p>
+<p>Cette carte présente le taux d'incidence (le nombre de cas de Covid19 détectés par semaine et pour 100 000 habitants de chaque zone). Chaque communauté de commune est définie par un code EPCI.</p>
 <div class="shadow" style="height: 90vh; width: 99vw; max-width: 1200px; max-height: 1200px;">
     <center>
 
@@ -50,6 +50,9 @@ Auteur Guillaume Rozier.
 <?php include(__DIR__ . '/menuBasPage.php'); ?>
 
 <style>
+p{
+    font-size: 120%;
+}
 
 div[shadow] {
          border: 0px solid black;
