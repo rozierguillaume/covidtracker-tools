@@ -26,8 +26,6 @@ crossorigin=""></script>
 <p>Cette carte présente le taux d'incidence (le nombre de cas de Covid19 détectés par semaine et pour 100 000 habitants de chaque zone).</p>
 <div class="shadow" style="height: 90vh; width: 90vw; max-width: 1000px; max-height: 1000px;">
     <center>
-    Date de prélèvement des tests (jusqu'à J-3) :
-    <br>
 
     <div class="row">
         <button onclick="precedentClicked()"> < Précédent</button>
@@ -36,14 +34,16 @@ crossorigin=""></script>
         <button onclick="suivantClicked()">Suivant ></button>
 
     </div>
-
-    <br>
-
+    
+    <img
+        src="https://files.covidtracker.fr/covidtracker_vect.svg"
+        alt="un triangle aux trois côtés égaux"
+        height="40px"
+        width="130px" 
+        />
+    </center>
     <div id="mapid" style="height: 80vh; width: 90vw; max-width: 980px; max-height: 980px;">
     </div>
-
-    
-</center>
 </div>
 
 <br>
@@ -53,6 +53,7 @@ Auteur Guillaume Rozier.
 <br>
 <br>
 
+<?php include(__DIR__ . '/menuBasPage.php'); ?>
 
 <style>
 
@@ -442,7 +443,7 @@ Auteur Guillaume Rozier.
     info.update = function (props) {
         date = document.getElementById("selectDates").value
         this._div.innerHTML = '' +  (props ?
-            '<b>' + props.NOM_EPCI + '</b><br>' + "Taux d'incidence :<br><span style='font-size: 120%;'>" + getNomIncidence(data[props.CODE_EPCI]) + "<br>EPCI : " + props.CODE_EPCI + '</span><br>cas par semaine pour 100k hab <br><small>' + date + '</small>'
+            '<b>' + props.NOM_EPCI + '</b><br>' + "Taux d'incidence :<br><span style='font-size: 120%;'>" + getNomIncidence(data[props.CODE_EPCI]) + '</span><br>cas par semaine pour 100k hab <br><small>' + date + '</small>'
             : 'Survoler');
     };
 
@@ -451,7 +452,7 @@ Auteur Guillaume Rozier.
 
     //
     //
-    // Legend
+    // Legend   
     var legend = L.control({position: 'bottomright'});
 
     legend.onAdd = function (map) {
@@ -462,13 +463,14 @@ Auteur Guillaume Rozier.
         
         // loop through our density intervals and generate a label with a colored square for each interval
         console.log("lol")
+        div.innerHTML += "<b>Taux d'incidence</b><br>"
         for (var i = 0; i < grades.length; i++) {
             
             div.innerHTML +=
                 '<i style="background:' + getColorFromWindow(grades[i]) + '"></i> ' +
                 grades[i] +'<br>';
         }
-
+        div.innerHTML += "<br>CovidTracker.fr"
         return div;
     };
 
