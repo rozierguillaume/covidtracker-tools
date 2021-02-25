@@ -35,7 +35,7 @@ Template Name: template_cartocovid
 					    <div class="entry">
 
 				   		<?php the_content(); ?>
-				   		<?php include(dirname(__FILE__) . '/src/CartoCovid/incidMap.html') ?>
+				   		<?php include(dirname(__FILE__) . '/src/CartoCovid/incidMap.php') ?>
 
 					    </div>
 					     
