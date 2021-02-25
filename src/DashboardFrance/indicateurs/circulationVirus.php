@@ -17,14 +17,14 @@
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane active in" id="CVFrance" role="tabpanel" aria-labelledby="CVFrance-tab">
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/indic1_france.jpeg">
+            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/indic1_france.jpeg" target="_blank" rel="noopener noreferrer">
                 <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/indic1_france.jpeg" width="100%" style="max-width: 900px">
             </a>
         </p>
     </div>
     <div class="tab-pane fade" id="CVDepartements" role="tabpanel" aria-labelledby="CVDepartements-tab">
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/subplots_deconf_indic1.jpeg">
+            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/subplots_deconf_indic1.jpeg" target="_blank" rel="noopener noreferrer">
                 <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/subplots_deconf_indic1.jpeg" width="100%" style="max-width: 900px">
             </a>
         </p align="center">
