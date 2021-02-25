@@ -7,15 +7,75 @@ crossorigin=""></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js" integrity="sha512-MQlyPV+ol2lp4KodaU/Xmrn+txc1TP15pOBF/2Sfre7MRsA/pB4Vy58bEqe9u7a7DczMLtU5wT8n7OblJepKbg==" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css" integrity="sha512-BBToHPBStgMiw0lD4AtkRIZmdndhB6aQbXpX7omcrXeG2PauGBl2lzq2xUZTxaLxYz5IDHlmneCZ1IJ+P3kYtQ==" crossorigin="anonymous" />
+<p>CartoCovid est un outil de CovidTracker permettant de suivre l'activité de l'épidémie en France. <i>Cette page est en cours de construction et s'améliorera au fil du temps.</i></p>
+<div class="alert alert-info clearFix" style="font-size: 18px;">
+    <div class="row">
+        <div class="col-md-8">
+            Bonne année 2021 ! CovidTracker est gratuit, sans pub et développé bénévolement.<br>
+        </div>
+        <div class="col-md-4 text-right">
+            <button class="btn-shadow">
+                <a href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">🍩
+                    Offrez-moi un donut</a>
+            </button> &nbsp;&nbsp;
+        </div>
+    </div>
+</div>
 
 <h2 style="margin-top : 80px;" id="centres-vaccination">Taux d'incidence par communauté de communes</h2>
-Données : Santé publique France. Mise à jour quotidienne. Inspiré du travail de Germain Forestier.
+<p>Cette carte présente le taux d'incidence (le nombre de cas de Covid19 détectés par semaine et pour 100 000 habitants de chaque zone).</p>
+<div class="shadow" style="height: 90vh; width: 90vw; max-width: 1000px; max-height: 1000px;">
+    <center>
+    Date de prélèvement des tests (jusqu'à J-3) :
+    <br>
 
-<div id="mapid" style="height: 90vh; width: 90vw; max-width: 1500px; max-height: 1500px;"></div>
+    <div class="row">
+        <button onclick="precedentClicked()"> < Précédent</button>
+        <select id="selectDates" onchange="updatemap()">
+        </select>
+        <button onclick="suivantClicked()">Suivant ></button>
 
+    </div>
+
+    <br>
+
+    <div id="mapid" style="height: 90%; width: 100%; max-width: 1000px; max-height: 1000px;">
+    </div>
+</center>
+</div>
+<br>
+Données : Santé publique France. Mise à jour quotidienne.<br>
+Inspiré du travail de <a href="https://twitter.com/gforestier/status/1364264665308680195?s=21">Germain Forestier</a>.<br>
+Auteur Guillaume Rozier.
 <br>
 <br>
 
+
+<style>
+
+.shadow {
+        border: 0px solid black;
+        padding: 12px;
+        border-radius: 7px;
+        text-align: left;
+        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+        max-width: 450px;
+        background: #ffffff;
+        margin-top: 10px;
+    }
+
+.btn-shadow {
+    border: 0px solid black;
+    padding: 12px;
+    border-radius: 7px;
+    text-align: left;
+    box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+    max-width: 450px;
+    background: #ffffff;
+    margin-top: 3px;
+}
+
+</style>
 
 <script>
 
@@ -108,6 +168,7 @@ Données : Santé publique France. Mise à jour quotidienne. Inspiré du travail
     }
 
     var data;
+    var all_data;
     var longitudes = [];
     var latitudes = [];
     var noms = [];
@@ -177,13 +238,53 @@ Données : Santé publique France. Mise à jour quotidienne. Inspiré du travail
             return response.json();
         })
         .then(json => {
-                this.data = json;
-                console.log(data)
+                this.all_data = json;
+                console.log(all_data.dates.length)
+                let N = all_data["dates"].length
+                this.data = all_data[all_data["dates"][N-1]]
+                populateSelect()
                 addtomap()
             })
         .catch(function () {
             console.log("error-x-b")
         })
+    }
+    
+    function getIndexCurrentDate(){
+        date_selected = document.getElementById("selectDates").value
+        idx_return = 0
+        
+        all_data.dates.map((date, idx) => {
+            if (date==date_selected){
+                idx_return = idx    
+            }
+        })
+        return idx_return
+        
+    }
+
+    function changeSelectValue(position){
+        document.getElementById("selectDates").value = all_data.dates[position]
+    }
+
+    function precedentClicked(){
+        let position = getIndexCurrentDate()
+        console.log(position)
+        if(position>=1){
+            changeSelectValue(position-1)
+            data = all_data[all_data.dates[position-1]]
+            updatemap()
+        }
+    }
+
+    function suivantClicked(){
+        let position = getIndexCurrentDate()
+        N = all_data.dates.length
+        if(position<=N-2){
+            changeSelectValue(position+1)
+            data = all_data[all_data.dates[position+1]]
+            updatemap()
+        }
     }
 
     function getColor(epci) {
@@ -283,14 +384,39 @@ Données : Santé publique France. Mise à jour quotidienne. Inspiré du travail
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(mymap);
 
+    var layerGroup = new L.LayerGroup();
+
+    function updatemap(){
+        let date = document.getElementById("selectDates").value;
+        data = all_data[date]
+        removelayer()
+        addtomap()
+    }
 
     function addtomap(){
-        console.log("json")
-        console.log(geojson)
+        layerGroup.addTo(mymap);
         geojson_map = L.geoJson(geojson["features"], {
             style: style,
             onEachFeature: onEachFeature}).addTo(mymap);
-        console.log("done")
+        layerGroup.addLayer(geojson_map);
+    }
+
+    function removelayer(){
+        layerGroup.removeLayer(geojson_map);
+    }
+
+    function populateSelect(){
+        html_code = ""
+        var maxdate = ""
+        all_data.dates.map((date, idx) => {
+            html_code += "<option value='" + date + "'>" + date + "</option>"
+            maxdate = date
+        })
+        
+        document.getElementById("selectDates").innerHTML = html_code
+
+        document.getElementById("selectDates").value = maxdate;
+        
     }
 
     //
@@ -307,9 +433,9 @@ Données : Santé publique France. Mise à jour quotidienne. Inspiré du travail
 
     // method that we will use to update the control based on feature properties passed
     info.update = function (props) {
-        
+        date = document.getElementById("selectDates").value
         this._div.innerHTML = '' +  (props ?
-            '<b>' + props.NOM_EPCI + '</b><br>' + "Taux d'incidence :<br><span style='font-size: 120%;'>" + getNomIncidence(data[props.CODE_EPCI]) + "<br>EPCI : " + props.CODE_EPCI + '</span><br>cas par semaine pour 100k hab'
+            '<b>' + props.NOM_EPCI + '</b><br>' + "Taux d'incidence :<br><span style='font-size: 120%;'>" + getNomIncidence(data[props.CODE_EPCI]) + "<br>EPCI : " + props.CODE_EPCI + '</span><br>cas par semaine pour 100k hab <br><small>' + date + '</small>'
             : 'Survoler');
     };
 
