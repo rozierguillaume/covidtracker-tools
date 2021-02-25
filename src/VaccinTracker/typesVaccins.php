@@ -22,6 +22,8 @@
 
 <script>
 var typesVaccins;
+var typesVaccinsLivraisons;
+
 fetchTypesVaccins();
 function fetchTypesVaccins(){
         fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/vacsi-v-fra.json', {cache: 'no-cache'})
@@ -41,6 +43,23 @@ function fetchTypesVaccins(){
             .catch(function () {
                     this.dataError = true;
                     console.log("error-types")
+                }
+            )
+
+            fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/livraisons-v.json', {cache: 'no-cache'})
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("HTTP error " + response.status);
+                }
+                return response.json();
+            })
+            .then(json => {
+                this.typesVaccinsLivraisons = json;
+                
+            })
+            .catch(function () {
+                    this.dataError = true;
+                    console.log("error-types-livraisons")
                 }
             )
 }
@@ -130,7 +149,7 @@ function buildChartTypesVaccins(){
     var lineChartTypeVaccin;
     function buildLineTypeChart(typeVaccin){
         var ctx = document.getElementById('lineChartTypesVaccins').getContext('2d');
-
+        console.log(typesVaccinsLivraisons)
         this.lineChartTypeVaccin = new Chart(ctx, {
             type: 'line',
             data: {
@@ -138,12 +157,30 @@ function buildChartTypesVaccins(){
                 datasets: [
                     {
                         yAxisID:"injections",
-                        label: 'Nombre de vaccinés (premières doses) ',
+                        label: 'Premières doses injectées ',
                         data: typesVaccins[typeVaccin.toString()].jour.map((day, idx) => ({x: day, y: typesVaccins[typeVaccin.toString()].n_cum_dose1[idx]})),
                         borderWidth: 3,
                         backgroundColor: "lightblue",
                         borderColor: colors[typeVaccin-1],
                         pointRadius: 2,
+                    },
+                    {
+                        yAxisID:"injections",
+                        label: 'Secondes doses injectées (données non fournies) ',
+                        data: [],
+                        borderWidth: 3,
+                        backgroundColor: "#1796e6",
+                        borderColor: colors[typeVaccin-1],
+                        pointRadius: 2,
+                    },
+                    {
+                        yAxisID:"injections",
+                        label: 'Livraisons (passées et plannifiées) ',
+                        data: typesVaccinsLivraisons[typeVaccin].jour.map((day, idx) => ({x: day, y: typesVaccinsLivraisons[typeVaccin].nb_doses_tot_cumsum[idx]})),
+                        borderWidth: 3,
+                        borderColor: "grey",
+                        pointRadius: 2,
+                        steppedLine: true,
                     }
                     
                 ]

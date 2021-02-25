@@ -92,14 +92,11 @@ function buildLineChartAge(type){
                                 display: false
                             },
                             ticks: {
-                                callbacks: {
-                        label: function(tooltipItem, data) {
-                            let value = data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']].toString().split(/(?=(?:...)*$)/).join(' ');
-                            return data['datasets'][tooltipItem.datasetIndex]['label'] + ': ' + value;
-                        }
-                    }
+                                    callback: function (value) {
+                                        return value/1000 +" k";
+                                    }
                                 },
-							stacked: true,
+							stacked: false,
                             
 						}],
 						yAxes: [{
