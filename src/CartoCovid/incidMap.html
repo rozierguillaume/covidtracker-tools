@@ -43,7 +43,7 @@ crossorigin=""></script>
 </center>
 </div>
 
-<div id="mapid" style="height: 90%; width: 100%; max-width: 1000px; max-height: 1000px;">
+<div id="mapid" style="height: 90vh; width: 90vw; max-width: 1000px; max-height: 1000px;">
 </div>
 
 <br>
@@ -241,12 +241,16 @@ Auteur Guillaume Rozier.
             return response.json();
         })
         .then(json => {
+                console.log("alldata")
                 this.all_data = json;
                 console.log(all_data.dates.length)
                 let N = all_data["dates"].length
                 this.data = all_data[all_data["dates"][N-1]]
+                console.log("populate")
                 populateSelect()
+                console.log("addtomap")
                 addtomap()
+                console.log("all done")
             })
         .catch(function () {
             console.log("error-x-b")
