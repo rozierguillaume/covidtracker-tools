@@ -6,6 +6,9 @@ integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0v
 crossorigin=""></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js" integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.css" integrity="sha512-XXtRBFtk/QfR8GEWwQPYjrQBHQwjidXg0wo8HJi9YOaFycWqd2uWkjJoAyx8Mb/+H8uhvmf70EAIxDnQxrwrvw==" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js" integrity="sha512-MQlyPV+ol2lp4KodaU/Xmrn+txc1TP15pOBF/2Sfre7MRsA/pB4Vy58bEqe9u7a7DczMLtU5wT8n7OblJepKbg==" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css" integrity="sha512-BBToHPBStgMiw0lD4AtkRIZmdndhB6aQbXpX7omcrXeG2PauGBl2lzq2xUZTxaLxYz5IDHlmneCZ1IJ+P3kYtQ==" crossorigin="anonymous" />
 <p>CoviCarte est un outil de CovidTracker permettant de suivre l'activité de l'épidémie en France. Les données proviennent de Santé publique France, et sont mises à jour tous les soirs. La carte est interactive. <i>Cette page est en cours de construction et s'améliorera au fil du temps.</i></p>
@@ -25,20 +28,28 @@ crossorigin=""></script>
 
 <h2 style="margin-top : 80px;" id="centres-vaccination">Taux d'incidence par communauté de communes</h2>
 <p>Cette carte présente le taux d'incidence (le nombre de cas de Covid19 détectés par semaine et pour 100 000 habitants de chaque zone). Chaque communauté de commune est définie par un code EPCI.</p>
-<div class="shadow" style="height: 90vh; width: 99vw; max-width: 1200px; max-height: 1200px;">
+<div class="shadow" style="height: 90vh; width: 98vw; max-width: 1200px; max-height: 1200px;">
     <center>
 
     <div class="row">
-        <button onclick="precedentClicked()">&#10094; Précédent</button>
-        <select id="selectDates" onchange="updatemap()">
+        <button class="button-nav" onclick="precedentClicked()">&#10094; Précédent</button>
+        <select id="selectDates" onchange="selectchanged()">
         </select>
-        <button onclick="suivantClicked()">Suivant &#10095;</button>
+        <button class="button-nav" onclick="suivantClicked()">Suivant &#10095;</button>
     <br>
+    <div id="slider-dates" style="margin-bottom: 10px; margin-top: 10px; max-width: 80%;"></div>
     </div>
     
     </center>
-    <div id="mapid" style="height: 83vh; width: 96vw; max-width: 1180px; max-height: 1180px;">
+    <div id="mapid" style="height: 80vh; width: 94vw; max-width: 1180px; max-height: 1180px;">
     </div>
+    <br><br>
+    
+</div>
+
+<div style="margin-top: 20px;">
+    <b>Opacité :</b> <span id="slider-opacite-value"></span>
+    <div id="slider-opacite" style="max-width: 200px;"></div>
 </div>
 
 <br>
@@ -253,12 +264,11 @@ div[shadow] {
         if (!response.ok) {
             throw new Error("HTTP error " + response.status);
         }
-        console.log(response)
+
         return response.json();
     })
     .then(json => {
             this.geojson = json;
-            console.log(geojson)
             secondFetch();
         })
     .catch(function () {
@@ -281,9 +291,12 @@ div[shadow] {
                 this.data = all_data[all_data["dates"][N-1]]
                 console.log("populate")
                 populateSelect()
+                buildSlider();
                 console.log("addtomap")
                 addtomap()
+                buildSliderDates();
                 console.log("all done")
+                
             })
         .catch(function () {
             console.log("error-x-b")
@@ -309,12 +322,12 @@ div[shadow] {
 
     function precedentClicked(){
         let position = getIndexCurrentDate()
-        console.log(position)
         if(position>=1){
             changeSelectValue(position-1)
             data = all_data[all_data.dates[position-1]]
             updatemap()
         }
+        updateslider();
     }
 
     function suivantClicked(){
@@ -325,6 +338,7 @@ div[shadow] {
             data = all_data[all_data.dates[position+1]]
             updatemap()
         }
+        updateslider();
     }
 
     function getColor(epci) {
@@ -385,13 +399,14 @@ div[shadow] {
 
 
     function style(feature) {
+        let opacity_slider=document.getElementById('slider-opacite').noUiSlider.get();
     return {
         fillColor: getColor(feature.properties.CODE_EPCI),
-        weight: 1,
+        weight: 0,
         opacity: 0.2,
         color: 'white',
         dashArray: '3',
-        fillOpacity: 0.7
+        fillOpacity: opacity_slider
     };
     }
 
@@ -399,10 +414,10 @@ div[shadow] {
         var layer = e.target;
 
         layer.setStyle({
-            weight: 5,
-            color: '#666',
+            weight: 7,
+            color: 'white',
             dashArray: '',
-            fillOpacity: 0.7
+            fillOpacity: 0.8
         });
 
         if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
@@ -443,6 +458,19 @@ div[shadow] {
         data = all_data[date]
         removelayer()
         addtomap()
+        //updateslider()
+    }
+
+    function updateslider(){
+        let position = getIndexCurrentDate()
+        console.log(position)
+        document.getElementById('slider-dates').noUiSlider.set(position)
+
+    }
+
+    function selectchanged(){
+        updateslider();
+        updatemap();
     }
 
     function addtomap(){
@@ -451,6 +479,7 @@ div[shadow] {
             style: style,
             onEachFeature: onEachFeature}).addTo(mymap);
         layerGroup.addLayer(geojson_map);
+        document.getElementById('slider-opacite').noUiSlider.on("set", function () {updatemap();});
     }
 
     function removelayer(){
@@ -513,7 +542,6 @@ div[shadow] {
             labels = [];
         
         // loop through our density intervals and generate a label with a colored square for each interval
-        console.log("lol")
         div.innerHTML += "<b>Taux d'incidence</b><br>"
         for (var i = 0; i < grades.length; i++) {
             
@@ -546,8 +574,6 @@ div[shadow] {
             data_temp.push(getValeurMoyenneIncidence(all_data[date][props.CODE_EPCI]))
             colours.push(getColorFromWindow(all_data[date][props.CODE_EPCI]))
         })
-        console.log(data_temp)
-        console.log(all_data.dates)
 
         this.barChart = new Chart(ctx, {
             type: 'bar',
@@ -598,10 +624,81 @@ div[shadow] {
             }
         });
     }
+
+
+    // SLIDER
+    
+
+    function buildSlider(){
+        var rangeSlider = document.getElementById('slider-opacite');
+        noUiSlider.create(rangeSlider, {
+            start: [0.8],
+            step: 0.1,
+            range: {
+                'min': [0],
+                'max': [1]
+            }
+        });
+
+        var rangeSliderValueElement = document.getElementById('slider-opacite-value');
+
+        rangeSlider.noUiSlider.on('update', function (values, handle) {
+            rangeSliderValueElement.innerHTML = values[handle];
+            //updatemap();
+        });
+
+    }
+
+    function sliderHasUpdated(){
+        let idx = parseInt(document.getElementById('slider-dates').noUiSlider.get())
+        changeSelectValue(idx)
+        data = all_data[all_data.dates[idx]]
+        updatemap()
+    }
+
+    function buildSliderDates(){
+        var rangeSlider = document.getElementById('slider-dates');
+        noUiSlider.create(rangeSlider, {
+            start: [all_data.dates.length-1],
+            step: 1,
+            range: {
+                'min': [0],
+                'max': [all_data.dates.length-1]
+            }
+        });
+
+        rangeSlider.noUiSlider.on('update', function (values, handle) {
+            sliderHasUpdated();
+            //updatemap();
+        });
+
+    }
     
 </script>
 
 <style>
+    button {
+        border: 1px solid;
+        margin: 10px;
+        padding: 15px;
+        font-size : 16px;
+        transition-duration: 0.4s;
+        background-color: #ffffff;
+        border-radius: 15px;
+
+    }
+
+    .button-nav {
+        border: 1px solid;
+        margin: 0px 20px 0px 20px;
+        padding: 2px 5px 2px 5px;
+        font-size : 14px;
+        transition-duration: 0.4s;
+        background-color: #ffffff;
+        border-radius: 10px;
+
+    }
+
     #mapid { height: 180px; }
 
     .info {
