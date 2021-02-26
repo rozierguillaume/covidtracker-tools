@@ -463,7 +463,6 @@ div[shadow] {
 
     function updateslider(){
         let position = getIndexCurrentDate()
-        console.log(position)
         document.getElementById('slider-dates').noUiSlider.set(position)
 
     }
@@ -479,7 +478,6 @@ div[shadow] {
             style: style,
             onEachFeature: onEachFeature}).addTo(mymap);
         layerGroup.addLayer(geojson_map);
-        document.getElementById('slider-opacite').noUiSlider.on("set", function () {updatemap();});
     }
 
     function removelayer(){
@@ -671,7 +669,7 @@ div[shadow] {
             sliderHasUpdated();
             //updatemap();
         });
-
+        document.getElementById('slider-opacite').noUiSlider.on("update", function () {updatemap();});
     }
     
 </script>
