@@ -3,7 +3,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/google-palette/1.1.0/palette.min.js" integrity="sha512-+rKeqfKuzCrzOolK5cPvYqzEHJTEPWG1MTvH02P+MYgmw7uMyNiewzvzlPj0wOgPd10jdNAtkf8tL1aQt7RsxQ==" crossorigin="anonymous"></script>
 
-Générateur de graphique de Castex<br>
+Générateur de courbes de Castex<br>
 <i>* Ceci est une page parodique comportant de fausses données.</i>
 
 <br>
@@ -11,7 +11,7 @@ Générateur de graphique de Castex<br>
 <br>
 
 <h3 id="title"></h3>
-<div class="chart-container" style="position: relative; height:400px; width:700px;">
+<div class="chart-container" style="position: relative; height:70vh; width:90vw; max-width: 1000px; max-height: 500px;">
     <canvas id="barChart" style="margin-top:20px;"></canvas>
 </div>
 
@@ -19,6 +19,7 @@ Générateur de graphique de Castex<br>
 
 <script>
 
+    var already_built = false;
 
     function randomTitle(){
         list_titles = [
@@ -67,6 +68,9 @@ Générateur de graphique de Castex<br>
 
     var barChart;
     function buildBarChart(){
+        if (already_built==true){
+            barChart.destroy()
+        }
         var seq = palette('mpn65', 40);
         console.log(seq)
         var ctx = document.getElementById('barChart').getContext('2d');
@@ -121,6 +125,7 @@ Générateur de graphique de Castex<br>
                 }
             }
         });
+        already_built=true
     }
 </script>
 
