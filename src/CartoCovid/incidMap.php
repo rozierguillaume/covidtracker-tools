@@ -33,7 +33,7 @@ crossorigin=""></script>
 
     <div class="row">
         <button class="button-nav" onclick="precedentClicked()">&#10094; Précédent</button>
-        <select id="selectDates" onchange="selectchanged()">
+        <select id="selectDates" class="form-select" onchange="selectchanged()">
         </select>
         <button class="button-nav" onclick="suivantClicked()">Suivant &#10095;</button>
     <br>
