@@ -387,11 +387,11 @@ div[shadow] {
     function style(feature) {
     return {
         fillColor: getColor(feature.properties.CODE_EPCI),
-        weight: 1,
+        weight: 0,
         opacity: 0.2,
         color: 'white',
         dashArray: '3',
-        fillOpacity: 0.7
+        fillOpacity: 0.8
     };
     }
 
@@ -399,10 +399,10 @@ div[shadow] {
         var layer = e.target;
 
         layer.setStyle({
-            weight: 5,
-            color: '#666',
+            weight: 7,
+            color: 'white',
             dashArray: '',
-            fillOpacity: 0.7
+            fillOpacity: 0.8
         });
 
         if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
