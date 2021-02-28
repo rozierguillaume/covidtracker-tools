@@ -22,10 +22,11 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
             <option value="cumul"><b>Cumul</b> vaccinés</option>
             <option value="quotidien">Vaccinations quotidiennes</option>
         </select>
+        <div id="afficherLivraisonsDiv"><input type="checkbox" id="afficherLivraisons" checked> Afficher les livraisons</div>
     </div>
 </div>
 
-<div class="chart-container" style="position: relative; height:60vh; width:100%">
+<div class="chart-container" style="position: relative; width:100%">
     <canvas id="lineVacChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
 </div>
 
