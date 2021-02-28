@@ -1,6 +1,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 
-<div shadow="">
+<div shadow="" width: 100%>
     <div class="row">
         <div class="col-sm-3" style="min-width: 100px; max-width: 90%;">
         <span style="font-size: 200%"><b>CovidExplorer</b></span><br>
@@ -521,6 +521,31 @@ function buildEmptyChart() {
             datasets: []
         },
         options: {
+            layout: {
+                padding: {
+                    left: 0,
+                    right: 100,
+                    top: 0,
+                    bottom: 0
+                }
+            },
+            plugins: {
+                datalabels: {
+                    anchor: "end",
+                    clamp: true,
+                    align: 'right',
+                    color: function(ctx) {
+                        return ctx.dataset.borderColor
+                    },
+                    formatter: function(value, context) {
+                        if (context.dataset.data[context.dataIndex].x == dataExplorerChart.options.scales.xAxes[0].ticks.max)
+                        {
+                            return  context.dataset.label;
+                        }
+                        return "";
+                    }
+                },
+            },
             hover: {
                 intersect: false
             },

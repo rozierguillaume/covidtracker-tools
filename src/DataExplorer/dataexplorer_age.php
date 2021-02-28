@@ -509,6 +509,31 @@ function buildEmptyChartAge() {
             age_datasets: []
         },
         options: {
+            layout: {
+                padding: {
+                    left: 0,
+                    right: 100,
+                    top: 0,
+                    bottom: 0
+                }
+            },
+            plugins: {
+                datalabels: {
+                        anchor: "end",
+                        clamp: true,
+                        align: 'right',
+                        color: function(ctx) {
+                            return ctx.dataset.borderColor
+                        },
+                        formatter: function(value, context) {
+                            if (context.dataset.data[context.dataIndex].x == dataExplorerChart.options.scales.xAxes[0].ticks.max)
+                            {
+                                return  context.dataset.label;
+                            }
+                            return "";
+                        }
+                    },
+            },
             hover: {
                 intersect: false
             },
