@@ -363,9 +363,19 @@
         date.setDate(date.getDate() + joursDose2Complete + joursDose1Complete)
         return  date
     }
+    var boxchecked=true
 
-    function buildLineChart(){
+    function boxCheckedLineChart(){
+        this.lineChart.destroy()
+        boxchecked = !boxchecked
+        buildLineChart(boxchecked)
+    }
 
+    function buildLineChart(checked=true){
+        document.getElementById("afficherLivraisonsDiv").innerHTML = `<input type="checkbox" id="afficherLivraisons" onchange="boxCheckedLineChart()" checked> Afficher les livraisons`
+        if(checked==false){
+            document.getElementById("afficherLivraisons").checked=false
+        }
         var ctx = document.getElementById('lineVacChart').getContext('2d');
         let data_values = nb_vaccines.map(val => ({x: val.date, y:parseInt(val.n_dose1)}));
         //let data_object_stock = cumul_stock_array.map((value, idx)=> ({x: dates_stock[idx], y: parseInt(value)}))
@@ -378,13 +388,7 @@
         let N_tot = labels.length;
         let N2 = data_values_2doses.length;
 
-        let max_value = livraisons.nb_doses_tot_cumsum[livraisons.nb_doses_tot_cumsum.length-1]
-
-        this.lineChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [
+        var datasets = [
                     {
                         yAxisID:"injections",
                         label: 'Secondes doses injectées ',
@@ -392,7 +396,8 @@
                         borderWidth: 3,
                         backgroundColor: '#1796e6',
                         borderColor: '#127aba',
-                        pointRadius: 2,
+                        pointRadius: 0,
+                        pointHitRadius: 3,
                     },
                     {
                         yAxisID:"injections",
@@ -401,22 +406,39 @@
                         borderWidth: 3,
                         backgroundColor: '#a1cbe6',
                         borderColor: '#3691c9',
-                        pointRadius: 2,
+                        pointRadius: 0,
                         cubicInterpolationMode: 'monotone',
-                    },
-                    {
-                        yAxisID:"stock",
-                        label: 'Doses réceptionnées ou officiellement attendues ',
-                        data: data_object_stock,
-                        borderWidth: 3,
-                        borderColor: 'grey',
-                        pointRadius: 2,
-                        steppedLine: true,
-                    },
+                        pointHitRadius: 3,
+                    }
                     
                 ]
+
+
+        if (document.getElementById("afficherLivraisons").checked==true){
+            datasets.push({
+                            yAxisID:"stock",
+                            label: 'Doses réceptionnées ou officiellement attendues ',
+                            data: data_object_stock,
+                            borderWidth: 3,
+                            borderColor: 'grey',
+                            pointRadius: 0,
+                            steppedLine: true,
+                            pointHitRadius: 3,
+                        })
+            var max_value = livraisons.nb_doses_tot_cumsum[livraisons.nb_doses_tot_cumsum.length-1]
+
+        } else {
+            var max_value = vaccines_2doses.n_dose2_cumsum[vaccines_2doses.n_dose2_cumsum.length-1] + nb_vaccines[nb_vaccines.length-1].n_dose1
+        }
+
+        this.lineChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: datasets
             },
             options: {
+                aspectRatio: 0.6,
                 tooltips: {
                     callbacks: {
                         label: function(tooltipItem, data) {
@@ -490,9 +512,11 @@
     }
 
     function buildBarChart(data){
+        document.getElementById("afficherLivraisonsDiv").innerHTML = ``
         var ctx = document.getElementById('lineVacChart').getContext('2d');
         let labels = nb_vaccines.map(val => val.date)
         let data_values = data.map((value, idx) => ({x: labels[idx], y: parseInt(value)}))
+        
         //let rollingMeanValues = rollingMean(data).map((value, idx)=> ({x: labels[idx+3], y: Math.round(value)}))
         let rollingMeanValues = somme_doses_rolling.n_dose_rolling.map((value, idx) => ({x:somme_doses_rolling.jour[idx], y:value}))
         let data_values_2doses = vaccines_2doses.n_dose2.map((value, idx)=> ({x: vaccines_2doses.jour[idx], y: parseInt(value)}))
@@ -513,6 +537,8 @@
                         borderColor: 'black',
                         pointBackgroundColor: 'rgba(0, 0, 0, 1',
                         backgroundColor: 'rgba(0, 168, 235, 0)',
+                        pointRadius: 1,
+                        pointHitRadius: 3
                     },
                     {
                         label: 'Nombre de première doses ',
@@ -528,8 +554,8 @@
                 ]
             },
             options: {
-                
-                maintainAspectRatio: false,
+                aspectRatio: 1.5,
+                //maintainAspectRatio: false,
                 legend: {
                     display: true
                 },
@@ -543,12 +569,16 @@
                         }
                     }],
                     xAxes: [{
-                        offset: true,
+                        //offset: true,
                         stacked: true,
                         type: 'time',
                         distribution: 'linear',
                         gridLines: {
                             display: false
+                        },
+                        time: {
+                            min: moment("2021-01-01"),
+                            max: moment()
                         }
                     }]
                 },
