@@ -9,12 +9,14 @@
         <div class="chart-container" style="position: relative; height:60vh; width:100%">
             <canvas id="barChartTypesVaccins" style="margin-top:20px; max-height: 700px; max-width: 50vw;"></canvas>
         </div>
+        <span><i><br><br>Cliquez sur un élément du graphique en barre pour l'afficher en détail.</i></span>
     </div>
 
     <div class = "col-sm-8" shadow="">
-        <span id=titreTypeVaccin><i><br><br>Cliquez sur un élément du graphique en barre pour l'afficher en détail.</i></span>
-
-        <div class="chart-container" style="position: relative; height:60vh;">
+    
+    <span id=titreTypeVaccin><i><br><br>Premières doses injectées</i></span>
+    <div id="boutonFermer"></div>
+        <div class="chart-container" style="position: relative; ">
             <canvas id="lineChartTypesVaccins" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
         </div>
     </div>
@@ -37,7 +39,7 @@ function fetchTypesVaccins(){
                 this.typesVaccins = json;
                 console.log(typesVaccins)
                 buildChartTypesVaccins();
-                console.log(typesVaccins["1"]["n_dose1"][1])
+                buildLineTypeChart_tous();
                 
             })
             .catch(function () {
@@ -147,9 +149,11 @@ function buildChartTypesVaccins(){
     }
 
     var lineChartTypeVaccin;
+
     function buildLineTypeChart(typeVaccin){
+        document.getElementById("boutonFermer").innerHTML = "<button onclick='fermerPanneauTypes()' style='padding: 2px 5px 2px 5px; font-size: 13px;'>Afficher tous les vaccins</button>"
         var ctx = document.getElementById('lineChartTypesVaccins').getContext('2d');
-        console.log(typesVaccinsLivraisons)
+        this.lineChartTypeVaccin.destroy()
         this.lineChartTypeVaccin = new Chart(ctx, {
             type: 'line',
             data: {
@@ -175,7 +179,7 @@ function buildChartTypesVaccins(){
                     },
                     {
                         yAxisID:"injections",
-                        label: 'Livraisons (passées et plannifiées) ',
+                        label: 'Livraisons (passées et planifiées) ',
                         data: typesVaccinsLivraisons[typeVaccin].jour.map((day, idx) => ({x: day, y: typesVaccinsLivraisons[typeVaccin].nb_doses_tot_cumsum[idx]})),
                         borderWidth: 3,
                         borderColor: "grey",
@@ -186,6 +190,109 @@ function buildChartTypesVaccins(){
                 ]
             },
             options: {
+                aspectRatio: 0.7,
+                maintainAspectRatio: true,
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            let value = data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']].y.toString().split(/(?=(?:...)*$)/).join(' ');
+                            return data['datasets'][tooltipItem.datasetIndex]['label'] + ': ' + value.toString();
+                        }
+                    }
+                },
+                maintainAspectRatio: false,
+                plugins: {
+                    deferred: {
+                        xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
+                        yOffset: '50%', // defer until 50% of the canvas height are inside the viewport
+                        delay: 200      // delay of 500 ms after the canvas is considered inside the viewport
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        id:"injections",
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                            callback: function (value) {
+                                        return value/1000 +" k";
+                                    }
+                        }
+                    }],
+                    xAxes: [{
+                        ticks:{
+                            source: 'auto'
+                        },
+                        type: 'time',
+                        distribution: 'linear',
+                        gridLines: {
+                            display: false
+                        }
+                    }]
+                },
+                annotation: {
+                    events: ["click"],
+                    annotations: [
+                    ]
+                }
+            }
+        });
+    
+    }
+
+    function fermerPanneauTypes(){
+        this.lineChartTypeVaccin.destroy()
+        buildLineTypeChart_tous()
+    }
+
+    function buildLineTypeChart_tous(){
+        document.getElementById("boutonFermer").innerHTML = "";
+        
+        var ctx = document.getElementById('lineChartTypesVaccins').getContext('2d');
+
+        document.getElementById("titreTypeVaccin").innerHTML = "<h3>Premières doses injectées</h3>"
+        
+        this.lineChartTypeVaccin = new Chart(ctx, {
+            type: 'line',
+            data: {
+                //labels: labels,
+                datasets: [
+                    {
+                        yAxisID:"injections",
+                        label: typesVaccins.noms_vaccins[1-1] + " ",
+                        data: typesVaccins["1"].jour.map((day, idx) => ({x: day, y: typesVaccins["1"].n_cum_dose1[idx]})),
+                        borderWidth: 4,
+                        fill: false,
+                        backgroundColor: "white",
+                        borderColor: colors[1-1],
+                        pointRadius: 0,
+                    },
+                    {
+                        yAxisID:"injections",
+                        label: typesVaccins.noms_vaccins[2-1] + " ",
+                        data: typesVaccins["2"].jour.map((day, idx) => ({x: day, y: typesVaccins["2"].n_cum_dose1[idx]})),
+                        borderWidth: 4,
+                        fill: false,
+                        backgroundColor: "white",
+                        borderColor: colors[2-1],
+                        pointRadius: 0,
+                    },
+                    {
+                        yAxisID:"injections",
+                        label: typesVaccins.noms_vaccins[3-1] + " ",
+                        data: typesVaccins["3"].jour.map((day, idx) => ({x: day, y: typesVaccins["3"].n_cum_dose1[idx]})),
+                        borderWidth: 4,
+                        fill: false,
+                        backgroundColor: "white",
+                        borderColor: colors[3-1],
+                        pointRadius: 0,
+                    },
+                ]
+            },
+            options: {
+                aspectRatio: 0.7,
+                maintainAspectRatio: true,
                 tooltips: {
                     callbacks: {
                         label: function(tooltipItem, data) {
