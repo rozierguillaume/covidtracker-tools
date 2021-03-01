@@ -689,8 +689,8 @@
             }
             buildBarChart(nb_vaccines_quot);
         } else {
-            document.getElementById("afficherLivraisonsDiv").innerHTML = `<div id="afficherLivraisonsDiv"><input type="checkbox" id="afficherLivraisons" onchange="boxCheckedLineChart()" checked> Afficher livraisons</div>`
-            document.getElementById("afficherProjectionsDiv").innerHTML = `<div id="afficherProjectionsDiv"><input type="checkbox" id="afficherProjections" onchange="boxCheckedProjectionsLineChart()" checked> Afficher projections de vaccination</div>`
+            document.getElementById("afficherLivraisonsDiv").innerHTML = `<div id="afficherLivraisonsDiv"><input type="checkbox" id="afficherLivraisons" onchange="boxCheckedLineChart()" checked> Afficher les livraisons</div>`
+            document.getElementById("afficherProjectionsDiv").innerHTML = `<div id="afficherProjectionsDiv"><input type="checkbox" id="afficherProjections" onchange="boxCheckedProjectionsLineChart()" checked> Afficher les projections de vaccinations (1)</div>`
             buildLineChart();
         }
     }
