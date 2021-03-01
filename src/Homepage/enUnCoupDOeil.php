@@ -29,9 +29,9 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
 </div>
 <br>
 
-<div style="text-align: center; width:100%; border-radius: 7px; padding: 0px 0px;">
+<div class="container" style="text-align: center; width:100%; border-radius: 7px; padding: 0px 0px;">
     <div class="row" style="margin-bottom:10px;">
-        <div class="col-sm-6">
+        <div class="col-md-6">
             <div style="text-align: left; margin-top:5px;" shadow="">
                 <centering><h3>Cas positifs</h3></centering>
                 <p>On prélève en moyenne <b>
@@ -54,49 +54,47 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
 
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-md-6">
             <div style="text-align: left; margin-top:5px;" shadow="">
-                <centering><h3>Réanimations</h3></centering>
+                <div class="row flex-nowrap">
+                    <div class="col-xs-6" style="">
+                        <centering><h3 id='titreHospitDiv'>--</h3></centering>
+                    </div>
+
+                    <div class="col-xs-4" style="text-align: left;">
+                        <div id="choixDonneesHospit" class="btn-group" role="group" style="margin-top: 15px;">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary dropdown-toggle selected" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li data-carte="reanimations" onclick="dataSelected('rea')">
+                                        <a id="rea-ligne" class="selected">Réanimations</a>
+                                    </li>
+                                    <li data-carte="hospitalisations" onclick="dataSelected('hosp')">
+                                        <a id="hosp-ligne" class="">Hospitalisations</a>
+                                    </li>
+                                    <li data-carte="dc-hospitaliers" onclick="dataSelected('dc')">
+                                        <a id="dc-ligne" class="">Décès hospitaliers</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <p>Il y a actuellement <b><span id="reanimations">--</span>
-                        personnes en réanimation</b> pour Covid19,
+                        personnes <span id="typePersonnes">en réanimation</span></b> pour Covid19,
                     <span id="croissance_rea">--</span> par rapport à la semaine dernière.
                 </p>
                 <div>
-                    <canvas id="barReaChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
+                    <canvas id="barChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
                 </div>
-                
+                <br><br><br>
             </div>
+            
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-sm-6">
-            <div style="text-align: left; margin-top:5px;" shadow="">
-                <centering><h3>Hospitalisations</h3></centering>
-                <p>Il y a actuellement <b><span id="hospitalisations">--</span>
-                        personnes hospitalisées</b> pour Covid19,
-                    <span id="croissance_hosp">--</span> par rapport à la semaine dernière.
-                </p>
-
-                <div>
-                    <canvas id="barHospChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
-                </div>
-
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div style="text-align: left; margin-top:5px;" shadow="">
-                <centering><h3>Décès hospitaliers</h3></centering>
-                <p>On constate en moyenne <b><span id="dc_hosp">--</span>
-                        décès hospitaliers</b> pour Covid19 chaque jour,
-                    <span id="croissance_dc_hosp">--</span> par rapport à la semaine dernière.
-                </p>
-                <div>
-                    <canvas id="lineDcChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
-                </div>
-            
-            </div>
-        </div>
         
     <!-- wp:spacer {"height":30} -->
     <div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>

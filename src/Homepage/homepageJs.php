@@ -17,7 +17,11 @@
 
             //buildBarChart();
             updateDataDiv();
-            calculerProjection();
+            updateHospitDiv('rea');
+            //calculerProjection();
+
+            buildLineChart();
+            buildBarChart('rea');
 
         })
         .catch(function () {
@@ -112,63 +116,78 @@
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "&nbsp;");
     }
 
-    function updateDataDiv(){
-        rea_actu = data["rea"]["values"][data["rea"]["values"].length-1]
-        hosp_actu = data["hosp"]["values"][data["hosp"]["values"].length-1]
-        cas_actu = data["cas"]["values"][data["cas"]["values"].length-1]
-        dc_actu = data["dc"]["values"][data["dc"]["values"].length-1]
+    function dataSelected(selected_data){
+        barChart.destroy();
+        updateHospitDiv(selected_data)
+        buildBarChart(selected_data)
 
-        rea_j7 = data["rea"]["values"][data["rea"]["values"].length-8]
-        cas_j7 = data["cas"]["values"][data["cas"]["values"].length-8]
-        dc_j7 = data["dc"]["values"][data["dc"]["values"].length-8]
-        hosp_j7 = data["hosp"]["values"][data["hosp"]["values"].length-8]
+        document.getElementById("rea-ligne").classList.remove("selected")
+        document.getElementById("hosp-ligne").classList.remove("selected")
+        document.getElementById("dc-ligne").classList.remove("selected")
+
+        document.getElementById(selected_data + "-ligne").classList.add("selected")
+        
+    }
+
+    function updateHospitDiv(dataSelected){
+        if(dataSelected=="rea"){
+            dataSelectedString="en réanimation"
+            dataSelectedStringTitle="Réanimations"
+        } else if(dataSelected=="hosp"){
+            dataSelectedString="hospitalisées"
+            dataSelectedStringTitle="Hospitalisations"
+        } else if(dataSelected=="dc"){
+            dataSelectedString="décédées à l'hôpital"
+            dataSelectedStringTitle="Décès hospitaliers"
+        }
+        document.getElementById("typePersonnes").innerHTML = dataSelectedString;
+        document.getElementById("titreHospitDiv").innerHTML = dataSelectedStringTitle;
+
+        val_actu = data[dataSelected]["values"][data[dataSelected]["values"].length-1]
+        val_j7 = data[dataSelected]["values"][data[dataSelected]["values"].length-8]
 
         update_date = data["rea"]["dates"][data["rea"]["dates"].length-1]
         update_date = update_date.slice(8) + "/" + update_date.slice(5, 7);
 
+        document.getElementById("reanimations").innerHTML = numberWithSpaces(val_actu);
+
+        if (val_j7 > val_actu){
+            document.getElementById("croissance_rea").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((val_actu-val_j7)/val_j7*100))+ "&nbsp;%) ";
+        } else {
+            document.getElementById("croissance_rea").innerHTML = "en hausse (+&nbsp;" + Math.round((val_actu-val_j7)/val_j7*100)+ "&nbsp;%) ";
+        }
+
+    }
+
+    function updateDataDiv(){
+        
+        cas_actu = data["cas"]["values"][data["cas"]["values"].length-1]
+        cas_j7 = data["cas"]["values"][data["cas"]["values"].length-8]
+
+        update_date = data["rea"]["dates"][data["rea"]["dates"].length-1]
+        //update_date = update_date.slice(8) + "/" + update_date.slice(5, 7);
         update_date_cas = data["cas"]["dates"][data["cas"]["dates"].length-1]
         update_date_cas = update_date_cas.slice(8) + "/" + update_date_cas.slice(5, 7);
 
         document.getElementById("cas_moyen_quotidien").innerHTML = numberWithSpaces(cas_actu);
-        document.getElementById("reanimations").innerHTML = numberWithSpaces(rea_actu);
-        document.getElementById("hospitalisations").innerHTML = numberWithSpaces(hosp_actu);
-        document.getElementById("dc_hosp").innerHTML = numberWithSpaces(dc_actu);
-
-        if (rea_j7 > rea_actu){
-            document.getElementById("croissance_rea").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((rea_actu-rea_j7)/rea_j7*100))+ "&nbsp;%) ";
-        } else {
-            document.getElementById("croissance_rea").innerHTML = "en hausse (+&nbsp;" + Math.round((rea_actu-rea_j7)/rea_j7*100)+ "&nbsp;%) ";
-        }
 
         if (cas_j7 > cas_actu){
             document.getElementById("croissance_cas").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((cas_actu-cas_j7)/cas_j7*100))+ "&nbsp;%) ";
         } else {
             document.getElementById("croissance_cas").innerHTML = "en hausse (+&nbsp;" + Math.round((cas_actu-cas_j7)/cas_j7*100)+ "&nbsp;%) ";
         }
-
-        if (dc_j7 > dc_actu){
-            document.getElementById("croissance_dc_hosp").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((dc_actu-cas_j7)/dc_j7*100))+ "&nbsp;%) ";
-        } else {
-            document.getElementById("croissance_dc_hosp").innerHTML = "en hausse (+&nbsp;" + Math.round((dc_actu-dc_j7)/dc_j7*100)+ "&nbsp;%) ";
-        }
-
-        if (hosp_j7 > hosp_actu){
-            document.getElementById("croissance_hosp").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((hosp_actu-hosp_j7)/hosp_j7*100))+ "&nbsp;%) ";
-        } else {
-            document.getElementById("croissance_hosp").innerHTML = "en hausse (+&nbsp;" + Math.round((hosp_actu-hosp_j7)/hosp_j7*100)+ "&nbsp;%) ";
-        }
-
+        
         const oneDay = (1000 * 60 * 60 * 24) ;
         maj_int = (moment() - Date.parse("2021-"+update_date.slice(3,5)+"-"+update_date.slice(0,2)))/oneDay
+        
         if(maj_int<1){
             maj_str = "aujourd'hui"
         } else if (maj_int < 2){
             maj_str = "hier"
         } else {
             maj_str=update_date}
-
+        
         document.getElementById("date_update_coup_doeil").innerHTML = maj_str;
-
         document.getElementById("date_update_coup_doeil2").innerHTML = maj_str;
 
     }
@@ -262,11 +281,11 @@
     }
 
     var lineChartDc;
-    function buildLineChartDc(){
+    function buildDcLineChart(){
         
-        var ctx = document.getElementById('lineDcChart').getContext('2d');
+        var ctx = document.getElementById('barChart').getContext('2d');
 
-        lineChartDc = new Chart(ctx, {
+        barChart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: data["dc"]["dates"],
@@ -379,18 +398,25 @@
 
         // Emoji de couleur
 
-        buildLineChart(projection_cas, labels_cas);
         
-        buildBarChart(projection_rea, labels_rea);
         buildLineChartDc();
         buildBarChartHosp();
 
     }
+    function buildBarChart(dataSelected){
+        if(dataSelected=='rea'){
+            buildReaBarChart()
+        } else if(dataSelected=='hosp'){
+            buildHospBarChart()
+        } else if(dataSelected=='dc'){
+            buildDcLineChart()
+        }
+    }
 
     var barChart
-    function buildBarChart(projection_rea, labels_rea){
+    function buildReaBarChart(){
 
-        var ctx = document.getElementById('barReaChart').getContext('2d');
+        var ctx = document.getElementById('barChart').getContext('2d');
 
         barChart = new Chart(ctx, {
             type: 'bar',
@@ -471,12 +497,12 @@
         });
     }
 
-    var barChartHosp
-    function buildBarChartHosp(){
+    //var barChartHosp
+    function buildHospBarChart(){
 
-        var ctx = document.getElementById('barHospChart').getContext('2d');
+        var ctx = document.getElementById('barChart').getContext('2d');
 
-        barChartHosp = new Chart(ctx, {
+        barChart = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: data["hosp"]["dates"],

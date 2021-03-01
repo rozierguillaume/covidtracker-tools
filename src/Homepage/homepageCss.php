@@ -402,4 +402,26 @@
         }
 
     }
+
+    a {
+        cursor: pointer;
+    }
+
+    .btn{
+        background-color: white !important;
+        color: black;
+        border: solid 1px grey;
+        
+    }
+
+
+    button.btn.btn-primary.dropdown-toggle{
+        color: black;
+    }
+    .dropdown-menu > li > a.selected{
+        background-color: black !important;
+        color: white;
+    }
+
+    
 </style>
