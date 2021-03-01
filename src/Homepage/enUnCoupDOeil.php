@@ -68,7 +68,7 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
                                         aria-haspopup="true" aria-expanded="false">Plus
                                     <span class="caret"></span>
                                 </button>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu dropdown-menu-right">
                                     <li data-carte="reanimations" onclick="dataSelected('rea')">
                                         <a id="rea-ligne" class="selected">Réanimations</a>
                                     </li>
