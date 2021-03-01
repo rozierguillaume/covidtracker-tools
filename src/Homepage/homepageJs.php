@@ -17,7 +17,11 @@
 
             //buildBarChart();
             updateDataDiv();
-            calculerProjection();
+            updateHospitDiv('rea');
+            //calculerProjection();
+
+            buildLineChart();
+            buildBarChart('rea');
 
         })
         .catch(function () {
@@ -112,45 +116,78 @@
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "&nbsp;");
     }
 
-    function updateDataDiv(){
-        rea_actu = data["rea"]["values"][data["rea"]["values"].length-1]
-        cas_actu = data["cas"]["values"][data["cas"]["values"].length-1]
+    function dataSelected(selected_data){
+        barChart.destroy();
+        updateHospitDiv(selected_data)
+        buildBarChart(selected_data)
 
-        rea_j7 = data["rea"]["values"][data["rea"]["values"].length-8]
-        cas_j7 = data["cas"]["values"][data["cas"]["values"].length-8]
+        document.getElementById("rea-ligne").classList.remove("selected")
+        document.getElementById("hosp-ligne").classList.remove("selected")
+        document.getElementById("dc-ligne").classList.remove("selected")
+
+        document.getElementById(selected_data + "-ligne").classList.add("selected")
+        
+    }
+
+    function updateHospitDiv(dataSelected){
+        if(dataSelected=="rea"){
+            dataSelectedString="en réanimation"
+            dataSelectedStringTitle="Réanimations"
+        } else if(dataSelected=="hosp"){
+            dataSelectedString="hospitalisées"
+            dataSelectedStringTitle="Hospitalisations"
+        } else if(dataSelected=="dc"){
+            dataSelectedString="décédées à l'hôpital"
+            dataSelectedStringTitle="Décès hospitaliers"
+        }
+        document.getElementById("typePersonnes").innerHTML = dataSelectedString;
+        document.getElementById("titreHospitDiv").innerHTML = dataSelectedStringTitle;
+
+        val_actu = data[dataSelected]["values"][data[dataSelected]["values"].length-1]
+        val_j7 = data[dataSelected]["values"][data[dataSelected]["values"].length-8]
 
         update_date = data["rea"]["dates"][data["rea"]["dates"].length-1]
         update_date = update_date.slice(8) + "/" + update_date.slice(5, 7);
 
+        document.getElementById("reanimations").innerHTML = numberWithSpaces(val_actu);
+
+        if (val_j7 > val_actu){
+            document.getElementById("croissance_rea").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((val_actu-val_j7)/val_j7*100))+ "&nbsp;%) ";
+        } else {
+            document.getElementById("croissance_rea").innerHTML = "en hausse (+&nbsp;" + Math.round((val_actu-val_j7)/val_j7*100)+ "&nbsp;%) ";
+        }
+
+    }
+
+    function updateDataDiv(){
+        
+        cas_actu = data["cas"]["values"][data["cas"]["values"].length-1]
+        cas_j7 = data["cas"]["values"][data["cas"]["values"].length-8]
+
+        update_date = data["rea"]["dates"][data["rea"]["dates"].length-1]
+        //update_date = update_date.slice(8) + "/" + update_date.slice(5, 7);
         update_date_cas = data["cas"]["dates"][data["cas"]["dates"].length-1]
         update_date_cas = update_date_cas.slice(8) + "/" + update_date_cas.slice(5, 7);
 
         document.getElementById("cas_moyen_quotidien").innerHTML = numberWithSpaces(cas_actu);
-        document.getElementById("reanimations").innerHTML = numberWithSpaces(rea_actu);
-
-        if (rea_j7 > rea_actu){
-            document.getElementById("croissance_rea").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((rea_actu-rea_j7)/rea_j7*100))+ "&nbsp;%) ";
-        } else {
-            document.getElementById("croissance_rea").innerHTML = "en hausse (+&nbsp;" + Math.round((rea_actu-rea_j7)/rea_j7*100)+ "&nbsp;%) ";
-        }
 
         if (cas_j7 > cas_actu){
             document.getElementById("croissance_cas").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((cas_actu-cas_j7)/cas_j7*100))+ "&nbsp;%) ";
         } else {
             document.getElementById("croissance_cas").innerHTML = "en hausse (+&nbsp;" + Math.round((cas_actu-cas_j7)/cas_j7*100)+ "&nbsp;%) ";
         }
-
+        
         const oneDay = (1000 * 60 * 60 * 24) ;
         maj_int = (moment() - Date.parse("2021-"+update_date.slice(3,5)+"-"+update_date.slice(0,2)))/oneDay
+        
         if(maj_int<1){
             maj_str = "aujourd'hui"
         } else if (maj_int < 2){
             maj_str = "hier"
         } else {
             maj_str=update_date}
-
+        
         document.getElementById("date_update_coup_doeil").innerHTML = maj_str;
-
         document.getElementById("date_update_coup_doeil2").innerHTML = maj_str;
 
     }
@@ -163,7 +200,7 @@
         lineChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: data["cas"]["dates"].concat(labels_cas),
+                labels: data["cas"]["dates"],
                 datasets: [{
                     label: 'Cas positifs',
                     data: data["cas"]["values"],
@@ -243,6 +280,66 @@
         });
     }
 
+    var lineChartDc;
+    function buildDcLineChart(){
+        
+        var ctx = document.getElementById('barChart').getContext('2d');
+
+        barChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: data["dc"]["dates"],
+                datasets: [{
+                    label: 'Décès hospitaliers ',
+                    data: data["dc"]["values"],
+                    borderWidth: 3,
+                    pointRadius: 1,
+                    backgroundColor: 'rgba(0,0,0,0.4)',
+                    borderColor: 'rgba(0,0,0,1)'
+                }]
+            },
+            options: {
+                plugins: {
+                    deferred: {
+                        xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
+                        yOffset: '50%', // defer until 50% of the canvas height are inside the viewport
+                        delay: 500      // delay of 500 ms after the canvas is considered inside the viewport
+                    }
+                },
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        gridLines: {
+                            display: false
+                        },
+
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                            maxRotation: 0,
+                            minRotation: 0,
+                            maxTicksLimit: 6,
+                            callback: function(value, index, values) {
+                                return value.slice(8) + "/" + value.slice(5, 7);
+                            }
+                        }
+
+                    }]
+                },
+                annotation: {
+                    events: ["click"],
+                    annotations: [
+                    ]
+                }
+            }
+        });
+    }
+
     function calculerProjection(){
         let one_day = (1000 * 60 * 60 * 24)
 
@@ -301,29 +398,36 @@
 
         // Emoji de couleur
 
-        buildLineChart(projection_cas, labels_cas);
-        buildBarChart(projection_rea, labels_rea);
+        
+        buildLineChartDc();
+        buildBarChartHosp();
 
+    }
+    function buildBarChart(dataSelected){
+        if(dataSelected=='rea'){
+            buildReaBarChart()
+        } else if(dataSelected=='hosp'){
+            buildHospBarChart()
+        } else if(dataSelected=='dc'){
+            buildDcLineChart()
+        }
     }
 
     var barChart
-    function buildBarChart(projection_rea, labels_rea){
+    function buildReaBarChart(){
 
-        var ctx = document.getElementById('barReaChart').getContext('2d');
+        var ctx = document.getElementById('barChart').getContext('2d');
 
         barChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: data["rea"]["dates"].concat(labels_rea),
+                labels: data["rea"]["dates"],
                 datasets: [{
                     label: 'Personnes en réanimation',
                     data: data["rea"]["values"],
-                    borderWidth: 1,
-                    backgroundColor: 'rgba(255, 0, 26, 0.5)',
-                    borderColor: 'rgba(255, 0, 26, 1)'
-                }, {
-                    label: "Projection réa.",
-                    data: projection_rea
+                    borderWidth: 0.5,
+                    backgroundColor: 'rgba(201, 4, 4, 0.5)',
+                    borderColor: 'rgba(201, 4, 4, 1)'
                 }]
             },
             options: {
@@ -378,6 +482,90 @@
                             label: {
                                 backgroundColor: "green",
                                 content: "Objectif",
+                                enabled: true
+                            },
+                            onClick: function(e) {
+                                console.log("Annotation", e.type, this);
+                            }
+                        }
+                    ]
+                }
+
+            },
+
+
+        });
+    }
+
+    //var barChartHosp
+    function buildHospBarChart(){
+
+        var ctx = document.getElementById('barChart').getContext('2d');
+
+        barChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: data["hosp"]["dates"],
+                datasets: [{
+                    label: 'Personnes hospitalisées',
+                    data: data["hosp"]["values"],
+                    borderWidth: 0.5,
+                    backgroundColor: 'rgba(209, 102, 21,0.3)',
+                    borderColor: 'rgba(209, 102, 21,1)'
+                }]
+            },
+            options: {
+                plugins: {
+                    deferred: {
+                        xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
+                        yOffset: '50%', // defer until 50% of the canvas height are inside the viewport
+                        delay: 500      // delay of 500 ms after the canvas is considered inside the viewport
+                    }
+                },
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                            beginAtZero: true,
+                        }
+                    }],
+                    xAxes: [{
+                        categoryPercentage: 1.0,
+                        barPercentage: 1.0,
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                            maxRotation: 0,
+                            minRotation: 0,
+                            maxTicksLimit: 6,
+                            callback: function(value, index, values) {
+                                return value.slice(8) + "/" + value.slice(5, 7);
+                            }
+                        }
+
+                    }]
+                },
+                annotation: {
+                    events: ["click"],
+                    annotations: [
+                        {
+                            drawTime: "afterDatasetsDraw",
+                            id: "hline",
+                            type: "line",
+                            mode: "horizontal",
+                            scaleID: "y-axis-0",
+                            value: 34000,
+                            borderColor: "red",
+                            borderWidth: 3,
+                            label: {
+                                backgroundColor: "red",
+                                content: "Max. observé",
                                 enabled: true
                             },
                             onClick: function(e) {
