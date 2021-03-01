@@ -2,7 +2,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js" integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js" integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.css" integrity="sha512-XXtRBFtk/QfR8GEWwQPYjrQBHQwjidXg0wo8HJi9YOaFycWqd2uWkjJoAyx8Mb/+H8uhvmf70EAIxDnQxrwrvw==" crossorigin="anonymous" />
 <style>
     .myDiv {
         background-color: white;
@@ -55,6 +56,10 @@
     <h2>Que pourraient être les indicateurs dans 10 jours ?</h2>
     <p>Le gouvernement a fixé 2 objectifs à atteindre pour le déconfinement du 15 décembre dernier, qui n'ont pas été atteints. Le premier objectif porte sur les cas quotidiens, et le deuxième objectif sur les personnes en réanimation.</p>
 <p>Les données de cette page sont automatiquement mises à jour quotidiennement. Dernière mise à jour : <span id="update_date">--/--</span>.</p>
+<br>
+<b>Durée de projection :</b> <span id="dureeProjection">--</span> jours<br>
+<div id="slider" style="max-width: 400px; margin-top: 5px;"></div>
+
 <h2 style="margin-top: 60px;">Cas positifs</h2>
 <p>Le premier objectif à atteindre est moins de 5 000 cas positifs quotidiens. Les données suivantes correspondent au nombre de cas quotidien détectés, en moyenne sur 7 jours. Les dernières données datent d'il y a 3 jours car les tests sont comptabilisés par date de prélèvement, ce délai correspondant au temps de traitement des tests par les laboratoires. La projection est réalisée en utilisant le taux d'évolution quotidien moyen sur les 7 derniers jours.</p>
 
@@ -76,7 +81,7 @@
             <div class="col-md-2" style="margin-right: 10px;"><span class="align-middle" style="font-size: 300%" id="obj_proj_cas"></span></div>
             <div class="col-md-9">
                 <b><span id="cas_projection" style="font-size: 200%;">--</span></b><span style="font-size: 200%;"> / 5&nbsp;000</span>
-                <p>projection des cas quotidiens dans 10 jours</p>
+                <p>projection des cas quotidiens dans <span id="dureeProjectionCas">--</span> jours à croissance constante</p>
                 
             </div>
         </div>
@@ -113,7 +118,7 @@
             <div class="col-md-2" style="margin-right: 10px;"><span class="align-middle" style="font-size: 300%" id="obj_proj_rea"></span></div>
             <div class="col-md-9">
                 <b><span id="rea_projection" style="font-size: 200%;">--</span></b><span style="font-size: 200%;"> / 3&nbsp;000</span>
-                <p>projection des réanimations dans 10 jours</p>
+                <p>projection des réanimations dans <span id="dureeProjectionRea">--</span> jours à croissance constante</p>
                 
             </div>
         </div>
@@ -286,20 +291,69 @@ function buildLineChart(projection_cas, labels_cas, projection_rea){
     });
 }
 
+var slider = document.getElementById('slider');
+buildNoUiSlider()
+function buildNoUiSlider(){
+    
+
+    noUiSlider.create(slider, {
+        start: [10],
+        connect: true,
+        step: 1,
+        range: {
+            'min': 0,
+            'max': 50,
+        }
+    });
+
+    slider.noUiSlider.on('change', function () { dureeProjectionChange(); });
+}
+
+var jours_restants_cas = 10
+var jours_restants_rea = 10
+
+function dureeProjectionChange(){
+    duree_projection = Math.trunc(parseInt(slider.noUiSlider.get()));
+    jours_restants_cas = duree_projection;
+    jours_restants_rea = duree_projection;
+
+    lineChart.destroy()
+    barChart.destroy()
+
+    calculerProjection();
+}
+
 function calculerProjection(){
+
+    document.getElementById("dureeProjectionCas").innerHTML = jours_restants_cas;
+    document.getElementById("dureeProjectionRea").innerHTML = jours_restants_rea;
+    document.getElementById("dureeProjection").innerHTML = jours_restants_rea;
+
     let one_day = (1000 * 60 * 60 * 24)
 
-    let jours_restants_cas = 10 //(Date.parse("2021-01-17") - Date.parse(data["cas"]["dates"][data["cas"]["dates"].length-1])) / one_day 
-    let jours_restants_rea = 10 //(Date.parse("2021-01-20") - Date.parse(data["rea"]["dates"][data["rea"]["dates"].length-1])) / one_day 
+     //(Date.parse("2021-01-17") - Date.parse(data["cas"]["dates"][data["cas"]["dates"].length-1])) / one_day 
+     //(Date.parse("2021-01-20") - Date.parse(data["rea"]["dates"][data["rea"]["dates"].length-1])) / one_day 
 
     data_cas = data["cas"]["values"]
     
-    var croissance_cas = 0
+    var croissance_cas = 0;
+    var croissance_cas_liste = [];
+
     for(idx=1; idx<=7; idx++) {
-        croissance_cas += (data_cas[data_cas.length-idx-1] - data_cas[data_cas.length-idx])/data_cas[data_cas.length-idx-1]
+        croissance_cas_idx = (data_cas[data_cas.length-idx-1] - data_cas[data_cas.length-idx])/data_cas[data_cas.length-idx-1]
+
+        croissance_cas += croissance_cas_idx
+        croissance_cas_liste.push(1-croissance_cas_idx)
     };
-    
     croissance_cas /= 7
+    
+    var croissance_croissance_cas = 0;
+    for(idx=1; idx<=6; idx++) {
+        croissance_croissance_cas_idx = (croissance_cas_liste[idx-1] - croissance_cas_liste[idx])/croissance_cas_liste[idx-1]
+        croissance_croissance_cas += croissance_croissance_cas_idx
+    };
+    croissance_croissance_cas /= 6
+
     var projection_cas = []
     var labels_cas = []
 
@@ -307,12 +361,18 @@ function calculerProjection(){
         projection_cas.push(NaN)
     }
 
+    console.log(1-croissance_cas)
+    console.log(1-croissance_croissance_cas)
+
     for (var idx = 1; idx <= jours_restants_cas; idx++) {
     
         var d = moment(data["cas"]["dates"][data["cas"]["dates"].length-1]).add(idx, 'd')
         labels_cas.push( d.format('YYYY-MM-DD') )
 
-        projection_cas.push(Math.round(data_cas[data_cas.length-1] * (1-croissance_cas)**idx))
+        //projection_croissance = data_cas[data_cas.length-1] * (1-croissance_cas)**idx
+        projection = Math.round(data_cas[data_cas.length-1] * (1-croissance_cas)**idx)
+
+        projection_cas.push(projection)
     }
 
     document.getElementById("cas_projection").innerHTML = numberWithSpaces(projection_cas[projection_cas.length-1]);
