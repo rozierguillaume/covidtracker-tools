@@ -61,11 +61,11 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
                         <centering><h3 id='titreHospitDiv'>--</h3></centering>
                     </div>
 
-                    <div class="col-xs-4" style="text-align: left;">
-                        <div id="choixDonneesHospit" class="btn-group" role="group" style="margin-top: 15px;">
+                    <div class="col-xs-6" style="text-align: right;">
+                        <div id="choixDonneesHospit" class="btn-group" role="group" style="margin-top: 5px;">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-primary dropdown-toggle selected" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
+                                        aria-haspopup="true" aria-expanded="false">Plus
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
