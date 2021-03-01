@@ -22,7 +22,8 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
             <option value="cumul"><b>Cumul</b> vaccinés</option>
             <option value="quotidien">Vaccinations quotidiennes</option>
         </select>
-        <div id="afficherLivraisonsDiv"><input type="checkbox" id="afficherLivraisons" checked> Afficher les livraisons</div>
+        <div id="afficherLivraisonsDiv"><input type="checkbox" id="afficherLivraisons" onchange="boxCheckedLineChart()" checked> Afficher livraisons</div>
+        <div id="afficherProjectionsDiv"><input type="checkbox" id="afficherProjections" onchange="boxCheckedProjectionsLineChart()" checked> Afficher projections de vaccination</div>
     </div>
 </div>
 
