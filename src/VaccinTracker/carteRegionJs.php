@@ -267,7 +267,11 @@
                 vaccinesRegions = vaccinesRegions.asortBy('n_dose1_cumsum');
 
                 buildBarChart();
-            });
+            }).catch(function () {
+                this.dataError = true;
+                console.log("error-regions")
+            }
+        );
         
         var doses_recues_regions = {};
         var dateMajRec = "";
