@@ -63,6 +63,13 @@
                             style="margin-top:0px; max-height: 700px; max-width: 900px;"></canvas>
                 </div>
             </div>
+            <br>
+            <div id="departement-graphique-age">
+                <div class="chart-container" style="position: relative; height:250px; width:100%">
+                    <canvas id="chartDepartementAge"
+                            style="margin-top:0px; max-height: 700px; max-width: 900px;"></canvas>
+                </div>
+            </div>
             © CovidTracker.fr - Données : Ministère de la Santé
         </div>
         <!-- wp:spacer {"height":50} -->

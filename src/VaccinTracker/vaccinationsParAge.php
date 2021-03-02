@@ -96,7 +96,7 @@ function buildLineChartAge(type){
                                         return value/1000 +" k";
                                     }
                                 },
-							stacked: true,
+							stacked: false,
                             
 						}],
 						yAxes: [{
@@ -131,7 +131,7 @@ function buildLineChartAge(type){
                 labels: data_age.age,
                 datasets: [
                     {
-                    label: 'Vaccinés (1 ou 2 doses) ',
+                    label: 'Vaccinés (2 doses) ',
                     data: data_age["n_dose2_pop"],
                     borderWidth: 3,
                     backgroundColor: "#1796e6",
@@ -161,7 +161,7 @@ function buildLineChartAge(type){
                 scales: {
                             xAxes: [{
                                 gridLines: {
-                                    display: false
+                                    display: true
                                 },
                                 ticks: {
                                     min: 0,
@@ -170,7 +170,7 @@ function buildLineChartAge(type){
                                         return value + ' %';
                                     }
                                 },
-                                stacked: true,
+                                stacked: false,
                                 
                             }],
                             yAxes: [{
