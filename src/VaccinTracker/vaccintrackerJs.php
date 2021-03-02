@@ -411,8 +411,9 @@
         projectionsChecked = boxcheckedProjections
         //document.getElementById("afficherLivraisonsDiv").innerHTML = `<input type="checkbox" id="afficherLivraisons" onchange="boxCheckedLineChart()" checked> Afficher les livraisons`
         var ctx = document.getElementById('lineVacChart').getContext('2d');
-        let data_values = nb_vaccines.map(val => ({x: val.date, y:parseInt(val.n_dose1)}));
-        //let data_object_stock = cumul_stock_array.map((value, idx)=> ({x: dates_stock[idx], y: parseInt(value)}))
+        let data_values = data_france.n_dose1_cumsum.map((val, idx) => ({x: data_france.dates[idx], y:parseInt(val)}));
+        let data_values_2nd = data_france.n_dose2_cumsum.map((val, idx) => ({x: data_france.dates[idx], y:parseInt(val)}));
+
         let data_object_stock = livraisons.nb_doses_tot_cumsum.map((value, idx)=> ({x: livraisons.jour[idx], y: parseInt(value)}))
 
         let data_values_2doses = vaccines_2doses.n_dose2_cumsum.map((value, idx)=> ({x: vaccines_2doses.jour[idx], y: parseInt(value)}))
@@ -426,7 +427,7 @@
                     {
                         yAxisID:"injections",
                         label: 'Secondes doses injectées ',
-                        data: debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
+                        data: data_values_2nd, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
                         borderWidth: 3,
                         backgroundColor: '#1796e6',
                         borderColor: '#127aba',
