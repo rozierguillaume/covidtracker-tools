@@ -74,6 +74,7 @@
                         return response.json();
                     })
                     .then(json => {
+
                         donneesDepartements = json['donnees_departements'];
                         donneesFrance = json['donnees_france'];
                         dateMaj = json["date_update"];
@@ -115,90 +116,90 @@
                 plus = "+";
                 vaccination = false;
                 if (typeCarte == 'incidence-cas') {
-                    $('#titreCarte').html("Taux d'incidence");
+                    $('#titreCarte').html("<h3>Taux d'incidence</h3>");
                     $('#descriptionCarte').html("Nombre de cas cette semaine pour 100k habitants");
                     tableauValeurs = valeurs_cas;
                     tableauCouleurs = couleurs_cas;
                     nomDonnee = "incidence_cas";
                 } else if (typeCarte == 'incidence-cas-12-couleurs') {
-                    $('#titreCarte').html("Taux d'incidence");
+                    $('#titreCarte').html("<h3>Taux d'incidence</h3>");
                     $('#descriptionCarte').html("Nombre de cas cette semaine pour 100k habitants");
                     tableauValeurs = valeurs_cas_12_couleurs;
                     tableauCouleurs = couleurs_cas_12_couleurs;
                     nomDonnee = "incidence_cas";
                 } else if (typeCarte == 'evolution-cas') {
-                    $('#titreCarte').html("Évolution du nombre de cas sur les 7 derniers jours");
-                    $('#descriptionCarte').html("Lecture : du rouge signifie une augmentation du nombre de cas sur les 7 derniers jours par rapport aux 7 jours précédents");
+                    $('#titreCarte').html("<h3>Évolution du nombre de cas sur 7 jours</h3>");
+                    $('#descriptionCarte').html("Lecture : du rouge signifie une augmentation du nombre de cas cette semaine par rapport à la semaine précédente");
                     tableauValeurs = valeurs_evolution;
                     tableauCouleurs = couleurs_evolution;
                     nomDonnee = "incidence_evol";
                     pourcentage = true;
                 } else if (typeCarte == 'taux-positivite') {
-                    $('#titreCarte').html("Taux de positivité");
+                    $('#titreCarte').html("<h3>Taux de positivité</h3>");
                     $('#descriptionCarte').html("Proportion des tests positifs cette semaine");
                     tableauValeurs = valeurs_positivite;
                     tableauCouleurs = couleurs_positivite;
                     nomDonnee = "taux_positivite";
                 } else if (typeCarte == 'incidence-hospitalisations') {
-                    $('#titreCarte').html("Admissions à l'hôpital avec Covid19");
-                    $('#descriptionCarte').html("cette semaine et pour 100k habitants de chaque département");
+                    $('#titreCarte').html("<h3>Admissions à l'hôpital</h3>");
+                    $('#descriptionCarte').html("pour Covid19, cette semaine et pour 100k habitants de chaque département");
                     tableauValeurs = valeurs_hosp;
                     tableauCouleurs = couleurs_hosp;
                     nomDonnee = "incidence_hosp";
                 } else if (typeCarte == 'lits-hospitalisations') {
-                    $('#titreCarte').html("Nombre de lits occupés à l'hôpital pour Covid19");
-                    $('#descriptionCarte').html("pour 100k habitants de chaque département");
+                    $('#titreCarte').html("<h3>Nombre de lits occupés à l'hôpital</h3>");
+                    $('#descriptionCarte').html("pour Covid19 et pour 100k habitants de chaque département");
                     tableauValeurs = valeurs_lits_hosp;
                     tableauCouleurs = couleurs_hosp;
                     nomDonnee = "lits_hosp";
                 } else if (typeCarte == 'evolution-lits-hospitalisations') {
-                    $('#titreCarte').html("Évolution du nombre de lits occupés à l'hôpital pour Covid19 sur les 7 derniers jours");
-                    $('#descriptionCarte').html("Du rouge signifie une augmentation du nombre de lits occupés par des patients Covid19 à l'hôpital");
+                    $('#titreCarte').html("<h3>Évolution du nombre de lits occupés sur 7 jours</h3>");
+                    $('#descriptionCarte').html("Lecture : du rouge signifie une augmentation du nombre de lits occupés par des patients Covid19 à l'hôpital cette semaine par rapport à la semaine précédente");
                     tableauValeurs = valeurs_evolution;
                     tableauCouleurs = couleurs_evolution;
                     nomDonnee = "lits_hosp_evol";
                     pourcentage = true;
                 } else if (typeCarte == 'incidence-deces') {
-                    $('#titreCarte').html("Nombre de décès avec Covid19");
-                    $('#descriptionCarte').html("cette semaine pour 100k habitants.");
+                    $('#titreCarte').html("<h3>Nombre de décès hospitaliers</h3>");
+                    $('#descriptionCarte').html("avec Cvoid19, cette semaine et pour 100k habitants");
                     tableauValeurs = valeurs_dc;
                     tableauCouleurs = couleurs_dc;
                     nomDonnee = "incidence_dc";
                 } else if (typeCarte == 'evolution-deces') {
-                    $('#titreCarte').html("Évolution du nombre de décès");
-                    $('#descriptionCarte').html("sur les 7 derniers jours par rapport aux 7 jours précédents");
+                    $('#titreCarte').html("<h3>Évolution des décès hospitaliers sur 7 jours</h3>");
+                    $('#descriptionCarte').html("avec Covid19, sur la dernière semaine par rapport à la semaine précédente");
                     tableauValeurs = valeurs_evolution;
                     tableauCouleurs = couleurs_evolution;
                     nomDonnee = "incidence_dc_evol";
                     pourcentage = true;
                 } else if (typeCarte == 'incidence-reanimations') {
-                    $('#titreCarte').html("Admissions à l'hôpital avec Covid19");
-                    $('#descriptionCarte').html("cette semaine et pour 100k habitants de chaque département");
+                    $('#titreCarte').html("<h3>Admissions à l'hôpital</h3>");
+                    $('#descriptionCarte').html("pour Covid19, cette semaine et pour 100k habitants de chaque département");
                     tableauValeurs = valeurs_rea;
                     tableauCouleurs = couleurs_rea;
                     nomDonnee = "incidence_rea";
                 } else if (typeCarte == 'saturation-reanimations') {
-                    $('#titreCarte').html("Taux d'occupation des lits de réanimation");
-                    $('#descriptionCarte').html("uniquement par les patients Covid19");
+                    $('#titreCarte').html("<h3>Taux d'occupation des lits de réanimation</h3>");
+                    $('#descriptionCarte').html("proportion des lits de réanimation occupés uniquement par les patients Covid19");
                     tableauValeurs = valeurs_saturation_rea;
                     tableauCouleurs = couleurs_saturation_rea;
                     nomDonnee = "saturation_rea";
                 } else if (typeCarte == 'lits-reanimations') {
-                    $('#titreCarte').html("Nombre de lits de réanimation occupés pour Covid19");
-                    $('#descriptionCarte').html("pour 100k habitants de chaque département");
+                    $('#titreCarte').html("<h3>Nombre de lits de réanimation occupés</h3>");
+                    $('#descriptionCarte').html("pour Covid10 et pour 100k habitants de chaque département");
                     tableauValeurs = valeurs_lits_rea;
                     tableauCouleurs = couleurs_hosp;
                     nomDonnee = "lits_rea";
                 } else if (typeCarte == 'evolution-lits-reanimations') {
-                    $('#titreCarte').html("Évolution du nombre de lits de réanimation occupés pour Covid19 sur les 7 derniers jours");
-                    $('#descriptionCarte').html("Du rouge signifie une augmentation du nombre de lits de réanimation occupés par des patients Covid19");
+                    $('#titreCarte').html("<h3>Évolution des lits de réanimation occupés sur 7 jours</h3>");
+                    $('#descriptionCarte').html("Lecture : du rouge signifie une augmentation du nombre de lits de réanimation occupés par des patients Covid19 cette semaine par rapport à la semaine précédente");
                     tableauValeurs = valeurs_evolution;
                     tableauCouleurs = couleurs_evolution;
                     nomDonnee = "lits_rea_evol";
                     pourcentage = true;
                 } else if (typeCarte == 'n_dose1_cumsum_pop') {
-                    $('#titreCarte').html("Proportion population partiellement vaccinée");
-                    $('#descriptionCarte').html("Proportion de la population ayant reçu au moins une dose de vaccin.");
+                    $('#titreCarte').html("<h3>Proportion population partiellement vaccinée</h3>");
+                    $('#descriptionCarte').html("Proportion de la population ayant reçu au moins une dose de vaccin");
                     tableauValeurs = valeurs_n_dose1_cumsum_pop;
                     tableauCouleurs = couleurs_n_dose1_cumsum_pop;
                     nomDonnee = "n_dose1_cumsum_pop";
@@ -211,6 +212,8 @@
                 }
 
                 construireLegende(tableauValeurs, tableauCouleurs, pourcentage);
+
+                $('#dateCarte').html(dateMaj)
 
                 for (departement in donneesDepartements) {
                     // console.log(departement);

@@ -1,5 +1,5 @@
 <div id="menu" class="row">
-    <div class="col-md-5 col-md-push-7" style="padding-top: 20px;">
+    <div class="col-md-4 col-md-push-7" style="padding-top: 20px;">
         <p>
             Retrouvez les graphiques CovidTracker pour les départements de votre choix :
         <ul>
@@ -24,7 +24,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-7 text-center col-md-pull-5">
+    <div class="col-md-8 text-center col-md-pull-5">
         <div class="row">
             <div class="col-xs-12">
                 <div id="choixTypeCarte" class="btn-group" role="group">
@@ -90,9 +90,18 @@
                 </div>
             </div>
             <br>
-
-            <span id="titreCarte"></span><br>
-            <span id="descriptionCarte"></span>
+            <br>
+            <span id="titreCarte"></span>
+            
+            <span id="descriptionCarte"></span> au 
+            <span id="dateCarte">--/--</span>
+            <br>
+            <img
+                src="https://files.covidtracker.fr/covidtracker_vect.svg"
+                alt="un triangle aux trois côtés égaux"
+                height="87px"
+                width="130px" 
+            />
             <br>
             <br>
             <div class="col-xs-10">
