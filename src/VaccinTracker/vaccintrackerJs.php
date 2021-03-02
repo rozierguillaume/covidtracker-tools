@@ -122,6 +122,7 @@
     const OBJECTIF_FIN_JANVIER = 1000000 // 1_000_000
     const OBJECTIF_FIN_AOUT = 52000000 // 1_000_000
     var data;
+    var data_france;
     var nb_vaccines = [];
 
     var vaccines_2doses = {};
@@ -216,6 +217,7 @@
             })
             .then(json => {
                 this.data = json;
+                this.data_france = json;
                 //console.log(json)
                 data["dates"].map((value, idx) =>{
                     nb_vaccines.push({
@@ -605,6 +607,9 @@
         let data_values_2doses = vaccines_2doses.n_dose2.map((value, idx)=> ({x: vaccines_2doses.jour[idx], y: parseInt(value)}))
         
         debut_2nd_doses = labels.map((value, idx) => ({x: value, y:0}))
+
+        let data_values_2nd = data_france.n_dose2.map((value, idx) => ({x: data_france.dates[idx], y: value}))
+
         let N_tot = labels.length;
         let N2 = data_values_2doses.length;
 
@@ -630,7 +635,7 @@
                     },
                     {
                         label: 'Nombre de deuxièmes doses ',
-                        data: debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
+                        data: data_values_2nd, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
                         backgroundColor: '#1796e6',
                     },
                     
