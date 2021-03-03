@@ -1,3 +1,4 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
@@ -121,6 +122,7 @@
     const OBJECTIF_FIN_JANVIER = 1000000 // 1_000_000
     const OBJECTIF_FIN_AOUT = 52000000 // 1_000_000
     var data;
+    var data_france;
     var nb_vaccines = [];
 
     var vaccines_2doses = {};
@@ -215,6 +217,7 @@
             })
             .then(json => {
                 this.data = json;
+                this.data_france = json;
                 //console.log(json)
                 data["dates"].map((value, idx) =>{
                     nb_vaccines.push({
@@ -283,7 +286,7 @@
                 }
             )
     function fetchStock(){
-        fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/livraisons.json', {cache: 'no-cache'})
+        fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/flux-tot-nat.json', {cache: 'no-cache'})
             .then(response => {
                 if (!response.ok) {
                     throw new Error("HTTP error " + response.status);
@@ -363,12 +366,54 @@
         date.setDate(date.getDate() + joursDose2Complete + joursDose1Complete)
         return  date
     }
+    var boxchecked=true
 
-    function buildLineChart(){
+    function boxCheckedLineChart(){
+        this.lineChart.destroy()
+        boxchecked = !boxchecked
+        document.getElementById("afficherLivraisons").checked=boxchecked
+        buildLineChart(boxchecked)
+    }
 
+    var boxcheckedProjections=true
+    function boxCheckedProjectionsLineChart(){
+        this.lineChart.destroy()
+        boxcheckedProjections = !boxcheckedProjections
+        document.getElementById("afficherProjections").checked=boxcheckedProjections
+        buildLineChart(boxchecked, boxcheckedProjections)
+    }
+
+    function valeursProjection(liste, taille){
+        lastval = liste[liste.length-1]
+
+        croissance = (lastval - liste[liste.length-14])/14
+
+        var projections = [];
+        //console.log(croissance)
+        for (i=1; i<=taille; i++){
+            projections.push(Math.round(lastval + i*croissance))
+        }
+        //console.log(projections)
+        return projections
+    }
+
+    function datesProjection(date_min, taille){
+        var dates_projections = []
+
+        for (i=1; i<=taille; i++){
+            dates_projections.push(moment(date_min).add(i, 'd').format('YYYY-MM-DD'))
+        }
+        //console.log(dates_projections)
+        return dates_projections
+    }
+
+    function buildLineChart(checked=true, projectionsChecked=true){
+        projectionsChecked = boxcheckedProjections
+        //document.getElementById("afficherLivraisonsDiv").innerHTML = `<input type="checkbox" id="afficherLivraisons" onchange="boxCheckedLineChart()" checked> Afficher les livraisons`
         var ctx = document.getElementById('lineVacChart').getContext('2d');
-        let data_values = nb_vaccines.map(val => ({x: val.date, y:parseInt(val.n_dose1)}));
-        //let data_object_stock = cumul_stock_array.map((value, idx)=> ({x: dates_stock[idx], y: parseInt(value)}))
+        let data_values = data_france.n_dose1_cumsum.map((val, idx) => ({x: data_france.dates[idx], y:parseInt(val)}));
+        let data_values_2nd = data_france.n_dose2_cumsum.map((val, idx) => ({x: data_france.dates[idx], y:parseInt(val)}));
+
         let data_object_stock = livraisons.nb_doses_tot_cumsum.map((value, idx)=> ({x: livraisons.jour[idx], y: parseInt(value)}))
 
         let data_values_2doses = vaccines_2doses.n_dose2_cumsum.map((value, idx)=> ({x: vaccines_2doses.jour[idx], y: parseInt(value)}))
@@ -378,21 +423,16 @@
         let N_tot = labels.length;
         let N2 = data_values_2doses.length;
 
-        let max_value = livraisons.nb_doses_tot_cumsum[livraisons.nb_doses_tot_cumsum.length-1]
-
-        this.lineChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [
+        var datasets = [
                     {
                         yAxisID:"injections",
                         label: 'Secondes doses injectées ',
-                        data: debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
+                        data: data_values_2nd, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
                         borderWidth: 3,
                         backgroundColor: '#1796e6',
                         borderColor: '#127aba',
-                        pointRadius: 2,
+                        pointRadius: 0,
+                        pointHitRadius: 3,
                     },
                     {
                         yAxisID:"injections",
@@ -401,22 +441,78 @@
                         borderWidth: 3,
                         backgroundColor: '#a1cbe6',
                         borderColor: '#3691c9',
-                        pointRadius: 2,
+                        pointRadius: 0,
                         cubicInterpolationMode: 'monotone',
-                    },
-                    {
-                        yAxisID:"stock",
-                        label: 'Doses réceptionnées ou officiellement attendues ',
-                        data: data_object_stock,
-                        borderWidth: 3,
-                        borderColor: 'grey',
-                        pointRadius: 2,
-                        steppedLine: true,
-                    },
+                        pointHitRadius: 3,
+                    }
                     
                 ]
+        if(projectionsChecked==true){
+            projections_dose2 = valeursProjection(vaccines_2doses.n_dose2_cumsum, 50)
+            projections_dates = datesProjection(vaccines_2doses.jour[vaccines_2doses.jour.length-1], 50)
+
+            datasets.push({
+                            yAxisID:"injections_proj",
+                            label: 'Projection deuxièmes doses ',
+                            data: projections_dose2.map((value, idx) => ({x:projections_dates[idx], y: value})),
+                            borderWidth: 2,
+                            //backgroundColor: '#a1cbe6',
+                            fill:false,
+                            borderColor: '#127aba',
+                            pointRadius: 0,
+                            cubicInterpolationMode: 'linear',
+                            pointHitRadius: 3,
+                            borderDash: [3,2]
+                        })
+
+
+            
+            projections_dose1 = valeursProjection(data.n_dose1_cumsum, 50)
+            projections_dates = datesProjection(data.dates[data.dates.length-1], 50)
+
+            datasets.push({
+                            yAxisID:"injections_proj",
+                            label: 'Projection premières doses ',
+                            data: projections_dose1.map((value, idx) => ({x:projections_dates[idx], y: value})),
+                            borderWidth: 2,
+                            //backgroundColor: '#a1cbe6',
+                            fill:false,
+                            borderColor: '#3691c9',
+                            pointRadius: 0,
+                            cubicInterpolationMode: 'linear',
+                            pointHitRadius: 3,
+                            borderDash: [3,2]
+                        })
+        }
+
+
+        if (document.getElementById("afficherLivraisons").checked==true){
+            datasets.push({
+                            yAxisID:"stock",
+                            label: 'Doses réceptionnées ou officiellement attendues ',
+                            data: data_object_stock,
+                            borderWidth: 3,
+                            borderColor: 'grey',
+                            pointRadius: 0,
+                            steppedLine: true,
+                            pointHitRadius: 3,
+                        })
+            var max_value = livraisons.nb_doses_tot_cumsum[livraisons.nb_doses_tot_cumsum.length-1]
+
+        } else if(document.getElementById("afficherProjections").checked==false){
+            var max_value = vaccines_2doses.n_dose2_cumsum[vaccines_2doses.n_dose2_cumsum.length-1] + nb_vaccines[nb_vaccines.length-1].n_dose1
+        } else {
+            var max_value = projections_dose1[projections_dose1.length-1] + projections_dose2[projections_dose2.length-1]
+        }
+
+        this.lineChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: datasets
             },
             options: {
+                aspectRatio: 0.6,
                 tooltips: {
                     callbacks: {
                         label: function(tooltipItem, data) {
@@ -444,6 +540,18 @@
                             max: max_value,
                             min: 0,
                         }
+                    },
+                    {
+                        id:"injections_proj",
+                        display: false,
+                        stacked: true,
+                        gridLines: {
+                            display: false
+                        },
+                        ticks : {
+                            max: max_value,
+                            min: 0,
+                        }
                     },{
                         id:"stock",
                         display: false,
@@ -457,7 +565,7 @@
                         }
                     }],
                     xAxes: [{
-                        stacked: true,
+                        //stacked: true,
                         ticks:{
                             source: 'auto'
                         },
@@ -490,14 +598,19 @@
     }
 
     function buildBarChart(data){
+        document.getElementById("afficherLivraisonsDiv").innerHTML = ``
         var ctx = document.getElementById('lineVacChart').getContext('2d');
         let labels = nb_vaccines.map(val => val.date)
         let data_values = data.map((value, idx) => ({x: labels[idx], y: parseInt(value)}))
+        
         //let rollingMeanValues = rollingMean(data).map((value, idx)=> ({x: labels[idx+3], y: Math.round(value)}))
         let rollingMeanValues = somme_doses_rolling.n_dose_rolling.map((value, idx) => ({x:somme_doses_rolling.jour[idx], y:value}))
         let data_values_2doses = vaccines_2doses.n_dose2.map((value, idx)=> ({x: vaccines_2doses.jour[idx], y: parseInt(value)}))
         
         debut_2nd_doses = labels.map((value, idx) => ({x: value, y:0}))
+
+        let data_values_2nd = data_france.n_dose2.map((value, idx) => ({x: data_france.dates[idx], y: value}))
+
         let N_tot = labels.length;
         let N2 = data_values_2doses.length;
 
@@ -513,23 +626,25 @@
                         borderColor: 'black',
                         pointBackgroundColor: 'rgba(0, 0, 0, 1',
                         backgroundColor: 'rgba(0, 168, 235, 0)',
+                        pointRadius: 1,
+                        pointHitRadius: 3
                     },
                     {
-                        label: 'Nombre de première doses ',
+                        label: 'Nombre de premières doses ',
                         data: data_values,
                         backgroundColor: 'rgba(0, 168, 235, 0.5)',
                     },
                     {
-                        label: 'Nombre de deuxième doses ',
-                        data: debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
+                        label: 'Nombre de deuxièmes doses ',
+                        data: data_values_2nd, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
                         backgroundColor: '#1796e6',
                     },
                     
                 ]
             },
             options: {
-                
-                maintainAspectRatio: false,
+                aspectRatio: 1.5,
+                //maintainAspectRatio: false,
                 legend: {
                     display: true
                 },
@@ -543,12 +658,16 @@
                         }
                     }],
                     xAxes: [{
-                        offset: true,
+                        //offset: true,
                         stacked: true,
                         type: 'time',
                         distribution: 'linear',
                         gridLines: {
                             display: false
+                        },
+                        time: {
+                            min: moment("2021-01-01"),
+                            max: moment()
                         }
                     }]
                 },
@@ -567,13 +686,17 @@
         //document.getElementById("objectif").checked=false;
 
         if (type_donnees=="quotidien"){
-
+            document.getElementById("afficherLivraisonsDiv").innerHTML = ``
+            document.getElementById("afficherProjectionsDiv").innerHTML = ``
+            
             nb_vaccines_quot = [nb_vaccines[0].total]
             for(i=0; i<nb_vaccines.length-1; i++){
                 nb_vaccines_quot.push(nb_vaccines[i+1].n_dose1-nb_vaccines[i].n_dose1)
             }
             buildBarChart(nb_vaccines_quot);
         } else {
+            document.getElementById("afficherLivraisonsDiv").innerHTML = `<div id="afficherLivraisonsDiv"><input type="checkbox" id="afficherLivraisons" onchange="boxCheckedLineChart()" checked> Afficher les livraisons</div>`
+            document.getElementById("afficherProjectionsDiv").innerHTML = `<div id="afficherProjectionsDiv"><input type="checkbox" id="afficherProjections" onchange="boxCheckedProjectionsLineChart()" checked> Afficher les projections de vaccinations (1)</div>`
             buildLineChart();
         }
     }
@@ -585,7 +708,7 @@
         else {
             obj = OBJECTIF_FIN_AOUT;
         }
-        console.log(this.lineChart.options.annotation)
+        //console.log(this.lineChart.options.annotation)
         
         if (this.lineChart.options.annotation.annotations.length==0){
             
@@ -605,13 +728,13 @@
                         enabled: true
                     },
                     onClick: function(e) {
-                        console.log("Annotation", e.type, this);
+                        //console.log("Annotation", e.type, this);
                     }
                 });
         } else {
             this.lineChart.options.annotation.annotations = [];
         }
-        console.log("hey")
+        //console.log("hey")
         this.lineChart.update()
     }
 
@@ -690,7 +813,7 @@
         document.getElementById("nb_doses_injectees_24h").innerHTML = numberWithSpaces(dejaVaccinesNb - nb_vaccines[nb_vaccines.length-2].n_dose1);
         
         document.getElementById("proportionVaccinesMax").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(2);
-        console.log(dejaVaccines2Doses);
+        //console.log(dejaVaccines2Doses);
         //document.getElementById("proportionVaccinesMin").innerHTML = (Math.round(dejaVaccines/2*10000000)/10000000).toFixed(2);
         //document.getElementById("proportion_doses").innerHTML = (dejaVaccinesNb/cumul_stock*100).toFixed(1);
 

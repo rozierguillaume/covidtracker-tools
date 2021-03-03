@@ -22,11 +22,14 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
             <option value="cumul"><b>Cumul</b> vaccinés</option>
             <option value="quotidien">Vaccinations quotidiennes</option>
         </select>
+        <div id="afficherLivraisonsDiv"><input type="checkbox" id="afficherLivraisons" onchange="boxCheckedLineChart()" checked> Afficher les livraisons</div>
+        <div id="afficherProjectionsDiv"><input type="checkbox" id="afficherProjections" onchange="boxCheckedProjectionsLineChart()" checked> Afficher les projections de vaccination (1)</div>
     </div>
 </div>
 
-<div class="chart-container" style="position: relative; height:60vh; width:100%">
+<div class="chart-container" style="position: relative; width:100%">
     <canvas id="lineVacChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
 </div>
 
-Auteur : CovidTracker.fr - Données : Ministère de la Santé
+Auteur : CovidTracker.fr - Données : Ministère de la Santé<br>
+<small>(1) : les projections sont réalisées en supposant que le rythme reste constant et similaire aux deux dernières semaines. Ce ne sont en aucun cas des prédictions.</small>

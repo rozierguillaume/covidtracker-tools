@@ -1,11 +1,14 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js"
         integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw=="
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
         integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
         crossorigin="anonymous"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-deferred@1"></script>
+
+
 
 <?php include(__DIR__ . '/vaccintrackerCss.php'); ?>
 
@@ -38,6 +41,7 @@
 <?php include(__DIR__.'/resume.php'); ?>
 <?php include(__DIR__.'/proportionVaccines.php'); ?>
 <?php include(__DIR__.'/evolution.php'); ?>
+<?php include(__DIR__.'/typesVaccins.php'); ?>
 <?php include(__DIR__.'/repartition.php'); ?>
 
 <div class="alert alert-info clearFix" style="font-size: 18px;">
