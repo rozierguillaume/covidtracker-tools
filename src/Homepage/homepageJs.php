@@ -74,7 +74,7 @@
         })
         .then(json => {
             this.data_indicateurs = json;
-            console.log(data_indicateurs)
+            //console.log(data_indicateurs)
             updateDataDivIndicateurs();
 
         })
@@ -93,7 +93,7 @@
     }
 
     function updateDataDivSidep(){
-        document.getElementById("cas_sidep").innerHTML = data_sidep["cas"];
+        document.getElementById("cas_sidep").innerHTML = numberWithSpaces(data_sidep["cas"]);
         document.getElementById("date_sidep").innerHTML = data_sidep["update"];
     }
 
@@ -178,7 +178,7 @@
         }
         
         const oneDay = (1000 * 60 * 60 * 24) ;
-        maj_int = (moment() - Date.parse("2021-"+update_date.slice(3,5)+"-"+update_date.slice(0,2)))/oneDay
+        maj_int = (moment() - Date.parse("2021-"+update_date.slice(5,7)+"-"+update_date.slice(8,10)))/oneDay
         
         if(maj_int<1){
             maj_str = "aujourd'hui"
@@ -219,7 +219,7 @@
                     deferred: {
                         xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
                         yOffset: '50%', // defer until 50% of the canvas height are inside the viewport
-                        delay: 500      // delay of 500 ms after the canvas is considered inside the viewport
+                        delay: 100      // delay of 500 ms after the canvas is considered inside the viewport
                     }
                 },
                 legend: {
@@ -228,7 +228,7 @@
                 scales: {
                     yAxes: [{
                         gridLines: {
-                            display: false
+                            display: true
                         },
                         ticks: {
                             min: 0,
@@ -271,7 +271,7 @@
                                 enabled: true
                             },
                             onClick: function(e) {
-                                console.log("Annotation", e.type, this);
+                                //console.log("Annotation", e.type, this);
                             }
                         }
                     ]
@@ -312,8 +312,11 @@
                 scales: {
                     yAxes: [{
                         gridLines: {
-                            display: false
+                            display: true
                         },
+                        ticks: {
+                            min: 0
+                        }
 
                     }],
                     xAxes: [{
@@ -444,7 +447,7 @@
                 scales: {
                     yAxes: [{
                         gridLines: {
-                            display: false
+                            display: true
                         },
                         ticks: {
                             beginAtZero: true,
@@ -519,7 +522,7 @@
                     deferred: {
                         xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
                         yOffset: '50%', // defer until 50% of the canvas height are inside the viewport
-                        delay: 500      // delay of 500 ms after the canvas is considered inside the viewport
+                        delay: 100      // delay of 500 ms after the canvas is considered inside the viewport
                     }
                 },
                 legend: {
@@ -528,7 +531,7 @@
                 scales: {
                     yAxes: [{
                         gridLines: {
-                            display: false
+                            display: true
                         },
                         ticks: {
                             beginAtZero: true,
