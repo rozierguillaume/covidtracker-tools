@@ -49,7 +49,7 @@
             Statut : décision UE (mi-mars 2021)
         </card>
         <card class="shadow-btn-orange col-xs-11 col-md-4"><b>🇷🇺 Sputnik V</b><br>
-            <i>Ce vaccin n'a pas été pré-commandé par l'UE</i>
+            <i>Ce vaccin n'a pas été pré-commandé par l'UE</i><br>
             Phase 3/3<br>
             Type : Vecteur viral<br>
             Efficacité annoncée : 90%<br>
