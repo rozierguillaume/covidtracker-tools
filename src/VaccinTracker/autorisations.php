@@ -48,6 +48,16 @@
             Doses à injecter : 1 (essai en cours) ou 2<br>
             Statut : décision UE (mi-mars 2021)
         </card>
+        <card class="shadow-btn-orange col-xs-11 col-md-4"><b>🇷🇺 Sputnik V</b><br>
+            <i>Ce vaccin n'a pas été pré-commandé par l'UE</i>
+            Phase 3/3<br>
+            Type : Vecteur viral<br>
+            Efficacité annoncée : 90%<br>
+            Prêt : oui<br>
+            Conservation : +5°C<br>
+            Doses à injecter : 2<br>
+            Statut : vaccin en <a href="https://www.ema.europa.eu/en/news/ema-starts-rolling-review-sputnik-v-covid-19-vaccine">cours d'évaluation</a> par l'AEM
+        </card>
     </div>
 
 

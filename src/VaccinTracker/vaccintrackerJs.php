@@ -448,8 +448,8 @@
                     
                 ]
         if(projectionsChecked==true){
-            projections_dose2 = valeursProjection(vaccines_2doses.n_dose2_cumsum, 50)
-            projections_dates = datesProjection(vaccines_2doses.jour[vaccines_2doses.jour.length-1], 50)
+            projections_dose2 = valeursProjection(data_france.n_dose2_cumsum, 50)
+            projections_dates = datesProjection(data_france.dates[data_france.dates.length-1], 50)
 
             datasets.push({
                             yAxisID:"injections_proj",
@@ -467,8 +467,8 @@
 
 
             
-            projections_dose1 = valeursProjection(data.n_dose1_cumsum, 50)
-            projections_dates = datesProjection(data.dates[data.dates.length-1], 50)
+            projections_dose1 = valeursProjection(data_france.n_dose1_cumsum, 50)
+            projections_dates = datesProjection(data_france.dates[data_france.dates.length-1], 50)
 
             datasets.push({
                             yAxisID:"injections_proj",
