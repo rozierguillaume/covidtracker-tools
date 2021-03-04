@@ -1,5 +1,5 @@
 <h2>En un coup d'œil</h2>
-Mise à jour : <span id="date_update_coup_doeil2">-/-</span> à 19h30
+Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
 <div style="text-align: center; width:100%; border-radius: 7px; padding: 0px 0px;"></div>
 
 <div class="wrap" shadow="">
@@ -99,7 +99,7 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span> à 19h30
     <!-- wp:spacer {"height":30} -->
     <div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
     <!-- /wp:spacer -->
-    Plus d'informations sur le <a href="https://covidtracker.fr/covidtracker-france">Dashboard France</a> et <a href="https://covidtracker.fr/deconfitracker">DéconfiTracker</a>. Mise à jour : <span id="date_update_coup_doeil">-/-</span> à 19h30.
+    Plus d'informations sur le <a href="https://covidtracker.fr/covidtracker-france">Dashboard France</a> et <a href="https://covidtracker.fr/deconfitracker">DéconfiTracker</a>. Mise à jour : <span id="date_update_coup_doeil">-/-</span>.
 </div>
 
 <!-- wp:spacer {"height":30} -->
