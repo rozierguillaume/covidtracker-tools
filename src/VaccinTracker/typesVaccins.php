@@ -108,6 +108,14 @@ function buildChartTypesVaccins(){
                 ]
             },
             options: {
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            let value = data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']].y.toString().split(/(?=(?:...)*$)/).join(' ');
+                            return data['datasets'][tooltipItem.datasetIndex]['label'] + ': ' + value.toString();
+                        }
+                    }
+                },
                 onClick: handleClick,
                 maintainAspectRatio: false,
                 scales: {
@@ -127,7 +135,7 @@ function buildChartTypesVaccins(){
                                 stacked: true,
                                 ticks: {
                                     callback: function (value) {
-                                        return value/1000 +" k";
+                                        return value/1000000 +" M";
                                     }
                                 }
                             }]

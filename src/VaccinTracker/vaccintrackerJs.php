@@ -539,6 +539,9 @@
                         ticks : {
                             max: max_value,
                             min: 0,
+                            callback: function (value) {
+                                        return value/1000000 +" M";
+                                    }
                         }
                     },
                     {
@@ -655,6 +658,11 @@
                         position: 'left',
                         gridLines: {
                             display: false
+                        },
+                        ticks: {
+                            callback: function (value) {
+                                        return value/1000 +" k";
+                                    }
                         }
                     }],
                     xAxes: [{
