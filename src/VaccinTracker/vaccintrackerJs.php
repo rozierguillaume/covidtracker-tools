@@ -324,7 +324,8 @@
         //log(vaccines_2doses)
     
         let N = vaccines_2doses.n_dose2_cumsum.length
-        let vaccines_2doses_24h = vaccines_2doses.n_dose2_cumsum[N-1] - vaccines_2doses.n_dose2_cumsum[N-2]
+        //let vaccines_2doses_24h = vaccines_2doses.n_dose2_cumsum[N-1] - vaccines_2doses.n_dose2_cumsum[N-2]
+        let vaccines_2doses_24h = data_france.n_dose2[data_france.n_dose2.length-1]
 
         dejaVaccines2DosesNb = vaccines_2doses.n_dose2_cumsum[N-1];
         dejaVaccines2Doses = dejaVaccines2DosesNb*100/67000000;

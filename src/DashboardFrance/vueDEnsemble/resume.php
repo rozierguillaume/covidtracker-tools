@@ -108,27 +108,25 @@
     </script>
 
 
-    <b>Cas : </b>
-    <a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/cas_journ.html" target="_blank" rel="noreferrer noopener">Graphique interactif</a> —
-    <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/cas_journ.jpeg" target="_blank" rel="noreferrer noopener">Image</a><br>
+    <b>Cas : </b><br>Par date de prélèvement (<a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/cas_journ.html" target="_blank" rel="noreferrer noopener">Graphique interactif</a> —
+    <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/cas_journ.jpeg" target="_blank" rel="noreferrer noopener">Image</a>) • Par date de publication (<a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/cas_journ_spf.html" target="_blank" rel="noreferrer noopener">Graphique interactif</a> —
+    <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/cas_journ_spf.jpeg" target="_blank" rel="noreferrer noopener">Image</a>)<br>
 
     <b>Hospitalisations : </b><br>
-    Occupation :
-    <a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/hosp_journ.html" target="_blank" rel="noreferrer noopener">Graphique interactif</a> —
-    <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hosp_journ.jpeg" target="_blank" rel="noreferrer noopener">Image</a><br>
-    Admissions :
-    <a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/hosp_journ_adm.html" target="_blank" rel="noreferrer noopener">Graphique
-        interactif</a> -
-    <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hosp_journ_adm.jpeg" target="_blank" rel="noreferrer noopener">Image</a><br>
+    Occupation (<a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/hosp_journ.html" target="_blank" rel="noreferrer noopener">Graphique interactif</a> —
+    <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hosp_journ.jpeg" target="_blank" rel="noreferrer noopener">Image</a>)
+    • Admissions (<a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/hosp_journ_adm.html" target="_blank" rel="noreferrer noopener">Graphique
+        interactif</a> —
+    <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hosp_journ_adm.jpeg" target="_blank" rel="noreferrer noopener">Image</a>)<br>
 
     <b>Réanimations : </b><br>
     Occupation :
-    <a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/rea_journ.html" target="_blank" rel="noreferrer noopener">Graphique interactif</a> —
-    <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/rea_journ.jpeg" target="_blank" rel="noreferrer noopener">Image</a><br>
+    (<a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/rea_journ.html" target="_blank" rel="noreferrer noopener">Graphique interactif</a> —
+    <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/rea_journ.jpeg" target="_blank" rel="noreferrer noopener">Image</a>) •
     Admissions :
-    <a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/rea_journ_adm.html" target="_blank" rel="noreferrer noopener">Graphique interactif</a>
-    -
-    <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/rea_journ_adm.jpeg" target="_blank" rel="noreferrer noopener">Image</a><br>
+    (<a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/rea_journ_adm.html" target="_blank" rel="noreferrer noopener">Graphique interactif</a>
+    —
+    <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/rea_journ_adm.jpeg" target="_blank" rel="noreferrer noopener">Image</a>)<br>
 
     <b>Décès : </b>
     <a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/dc_journ.html" target="_blank" rel="noreferrer noopener">Graphique interactif</a> —
