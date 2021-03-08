@@ -519,20 +519,20 @@ function buildEmptyChartAge() {
             },
             plugins: {
                 datalabels: {
-                        anchor: "end",
-                        clamp: true,
-                        align: 'right',
-                        color: function(ctx) {
-                            return ctx.dataset.borderColor
-                        },
-                        formatter: function(value, context) {
-                            if (context.dataset.data[context.dataIndex].x == dataExplorerChart.options.scales.xAxes[0].ticks.max)
-                            {
-                                return  context.dataset.label;
-                            }
-                            return "";
-                        }
+                    anchor: "end",
+                    clamp: true,
+                    align: 'right',
+                    color: function(ctx) {
+                        return ctx.dataset.borderColor
                     },
+                    formatter: function(value, context) {
+                        if (context.dataset.data[context.dataIndex].x == age_dataExplorerAgeChart.options.scales.xAxes[0].ticks.max)
+                        {
+                            return  context.dataset.label;
+                        }
+                        return "";
+                    }
+                },
             },
             hover: {
                 intersect: false

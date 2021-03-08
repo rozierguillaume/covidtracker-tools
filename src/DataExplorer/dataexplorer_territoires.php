@@ -1,6 +1,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 
-<div shadow="" width: 100%>
+<div shadow="" style="width: 100%;">
     <div class="row">
         <div class="col-sm-3" style="min-width: 100px; max-width: 90%;">
         <span style="font-size: 200%"><b>CovidExplorer</b></span><br>
@@ -34,7 +34,7 @@
             <br>
             
             <label>Territoires</label>
-            <div id="checkboxes" style="text-align: left; height:80vw; max-height: 500px; overflow-y:scroll; padding: 10px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
+            <div id="checkboxes" style="text-align: left; height:80vw; max-height: 60%; overflow-y:scroll; padding: 10px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
                     <div class="checkbox">
                         <label>
                             <input type='checkbox' id='france' checked onchange="boxChecked('france')">France
@@ -57,8 +57,8 @@
                 width="130px" 
             />
             
-                <div class="chart-container" style="position: relative; height:60vh; width:100%">
-                    <canvas id="dataExplorerChart" style="margin-top:20px; max-height: 800px; max-width: 1500px;"></canvas>
+                <div class="chart-container" style="position: relative; height:90vh; width:100%; max-height: 75%">
+                    <canvas id="dataExplorerChart" style="margin-top:20px; max-height: 1500px; max-width: 1500px;"></canvas>
                     
                 </div>
                 <div id="sliderUI" style="margin-top:10px; margin-bottom: 10px;">
@@ -523,7 +523,7 @@ function buildEmptyChart() {
         options: {
             layout: {
                 padding: {
-                    left: 0,
+                    left: -2,
                     right: 100,
                     top: 0,
                     bottom: 0
