@@ -57,8 +57,8 @@
                 width="130px" 
             />
             
-                <div class="chart-container" style="position: relative; height:80vh; width:100%; max-height: 75%">
-                    <canvas id="dataExplorerChart" style="margin-top:20px; max-height: 900px; max-width: 1500px;"></canvas>
+                <div class="chart-container" style="position: relative; height:70vh; width:100%; max-height: 75%">
+                    <canvas id="dataExplorerChart" style="margin-top:20px; max-height: 800px; max-width: 1500px;"></canvas>
                     
                 </div>
                 <div id="sliderUI" style="margin-top:10px; margin-bottom: 10px;">
