@@ -34,7 +34,7 @@
             <br>
             
             <label>Territoires</label>
-            <div id="checkboxes" style="text-align: left; height:80vw; max-height: 60vh; overflow-y:scroll; padding: 10px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
+            <div id="checkboxes" style="text-align: left; height:80vw; max-height: 400px; overflow-y:scroll; padding: 10px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
                     <div class="checkbox">
                         <label>
                             <input type='checkbox' id='france' checked onchange="boxChecked('france')">France
@@ -58,7 +58,7 @@
             />
             
                 <div class="chart-container" style="position: relative; height:90vh; width:100%; max-height: 75%">
-                    <canvas id="dataExplorerChart" style="margin-top:20px; max-height: 1500px; max-width: 1500px;"></canvas>
+                    <canvas id="dataExplorerChart" style="margin-top:20px; max-height: 1000px; max-width: 1500px;"></canvas>
                     
                 </div>
                 <div id="sliderUI" style="margin-top:10px; margin-bottom: 10px;">
