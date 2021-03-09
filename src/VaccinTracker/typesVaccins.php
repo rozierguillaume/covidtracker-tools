@@ -49,7 +49,7 @@ function fetchTypesVaccins(){
                 }
             )
 
-            fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/livraisons-v.json', {cache: 'no-cache'})
+            fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/flux-tot-nat.json', {cache: 'no-cache'})
             .then(response => {
                 if (!response.ok) {
                     throw new Error("HTTP error " + response.status);
@@ -58,6 +58,8 @@ function fetchTypesVaccins(){
             })
             .then(json => {
                 this.typesVaccinsLivraisons = json;
+                console.log("yay")
+                console.log(typesVaccinsLivraisons)
                 
             })
             .catch(function () {
@@ -160,6 +162,8 @@ function buildChartTypesVaccins(){
     var lineChartTypeVaccin;
 
     function buildLineTypeChart(typeVaccin){
+        typeVaccin = typeVaccin.toString()
+        console.log(typesVaccinsLivraisons)
         N_livraisons = typesVaccinsLivraisons[typeVaccin].nb_doses_tot_cumsum.length
         max_value = typesVaccinsLivraisons[typeVaccin].nb_doses_tot_cumsum[N_livraisons-1]
 
