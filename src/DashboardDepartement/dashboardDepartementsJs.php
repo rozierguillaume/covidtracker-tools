@@ -194,7 +194,7 @@
                     pourcentage = true;
                 } else if (typeCarte == 'incidence-deces') {
                     $('#titreCarte').html("<h3>Nombre de décès hospitaliers</h3>");
-                    $('#descriptionCarte').html("avec Cvoid19, cette semaine et pour 100k habitants");
+                    $('#descriptionCarte').html("avec Covid19, cette semaine et pour 100k habitants");
                     tableauValeurs = valeurs_dc;
                     tableauCouleurs = couleurs_dc;
                     nomDonnee = "incidence_dc";
