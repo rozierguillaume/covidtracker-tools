@@ -38,7 +38,7 @@
                                 <a href="#" class="selected">Taux d'incidence (4 couleurs)</a>
                             </li>
                             <li data-carte="incidence-cas-12-couleurs">
-                                <a href="#" class="">Taux d'incidence (12 couleurs)</a>
+                                <a href="#" class="">Taux d'incidence (13 couleurs)</a>
                             </li>
                             <li data-carte="var_uk">
                                 <a href="#" class="">Variant UK</a>
@@ -47,7 +47,8 @@
                                 <a href="#" class="">Variants SA et BZ</a>
                             </li>
                             <li data-carte="evolution-cas"><a href="#">Évolution du taux d'incidence</a></li>
-                            <li data-carte="taux-positivite"><a href="#">Taux de positivité</a></li>
+                            <li data-carte="taux-positivite-restreint"><a href="#">Taux de positivité</a></li>
+                            <!--<li data-carte="taux-positivite"><a href="#">Taux de positivité (13 couleurs)</a></li> --> 
                         </ul>
                     </div>
                     <div class="btn-group">
