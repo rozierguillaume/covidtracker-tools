@@ -46,7 +46,7 @@
             Conservation : +5°C<br>
             Commandes UE : 200M (+ option 200M)<br>
             Doses à injecter : 1 (essai en cours) ou 2<br>
-            Statut : décision UE (mi-mars 2021)
+            Statut : autorisé (UE), en cours d'autorisation (France)
         </card>
         <card class="shadow-btn-orange col-xs-11 col-md-4"><b>🇷🇺 Sputnik V</b><br>
             <i>Ce vaccin n'a pas été pré-commandé par l'UE</i><br>
