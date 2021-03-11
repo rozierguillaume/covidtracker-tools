@@ -429,22 +429,22 @@
                         yAxisID:"injections",
                         label: 'Secondes doses injectées ',
                         data: data_values_2nd, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
-                        borderWidth: 3,
+                        borderWidth: 0.1,
                         backgroundColor: '#1796e6',
                         borderColor: '#127aba',
                         pointRadius: 0,
-                        pointHitRadius: 3,
+                        pointHitRadius: 1,
                     },
                     {
                         yAxisID:"injections",
                         label: 'Premières doses injectées ',
                         data: data_values,
-                        borderWidth: 3,
+                        borderWidth: 0.1,
                         backgroundColor: '#a1cbe6',
                         borderColor: '#3691c9',
                         pointRadius: 0,
                         cubicInterpolationMode: 'monotone',
-                        pointHitRadius: 3,
+                        pointHitRadius: 1,
                     }
                     
                 ]
@@ -515,13 +515,13 @@
             options: {
                 aspectRatio: 0.6,
                 tooltips: {
-                    callbacks: {
-                        label: function(tooltipItem, data) {
-                            let value = data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']].y.toString().split(/(?=(?:...)*$)/).join(' ');
-                            return data['datasets'][tooltipItem.datasetIndex]['label'] + ': ' + value.toString();
-                        }
-                    }
+                    mode: 'x',
+                    intersect: false
                 },
+                hover: {
+                    intersect: false
+                },
+                
                 maintainAspectRatio: false,
                 plugins: {
                     deferred: {
