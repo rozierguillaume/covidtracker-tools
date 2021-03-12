@@ -34,9 +34,9 @@
             Statut : autorisé (UE, France)<br>
             <a target="_blank" title="Article sur le vaccin AstraZeneca" href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)32661-1">Article</a>
         </card>
-        
+    </div>
+    <div class="row">
         <card class="shadow-btn-green col-xs-11 col-md-4"><b>🇺🇸🇧🇪 Janssen J&J</b><br>
-            Phase 3/3<br>
             Type : Vecteur viral<br>
             Efficacité annoncée : 66%<br>
             Conservation : +5°C<br>
