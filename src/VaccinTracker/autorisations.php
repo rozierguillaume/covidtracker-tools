@@ -34,20 +34,20 @@
             Statut : autorisé (UE, France)<br>
             <a target="_blank" title="Article sur le vaccin AstraZeneca" href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)32661-1">Article</a>
         </card>
+        
+        <card class="shadow-btn-green col-xs-11 col-md-4"><b>🇺🇸🇧🇪 Janssen J&J</b><br>
+            Phase 3/3<br>
+            Type : Vecteur viral<br>
+            Efficacité annoncée : 66%<br>
+            Conservation : +5°C<br>
+            Commandes UE : 200M (+ option 200M)<br>
+            Doses à injecter : 1 (essai en cours) ou 2<br>
+            Statut : autorisé (UE, France)
+        </card>
     </div>
 
     <h3 style="margin-top : 50px;">Vaccins en cours d'autorisation</h3>
     <div class="row">
-        <card class="shadow-btn-orange col-xs-11 col-md-4"><b>🇺🇸🇧🇪 Janssen J&J</b><br>
-            Phase 3/3<br>
-            Type : Vecteur viral<br>
-            Efficacité annoncée : --%<br>
-            Prêt : fin janvier 2021<br>
-            Conservation : +5°C<br>
-            Commandes UE : 200M (+ option 200M)<br>
-            Doses à injecter : 1 (essai en cours) ou 2<br>
-            Statut : autorisé (UE), en cours d'autorisation (France)
-        </card>
         <card class="shadow-btn-orange col-xs-11 col-md-4"><b>🇷🇺 Sputnik V</b><br>
             <i>Ce vaccin n'a pas été pré-commandé par l'UE</i><br>
             Phase 3/3<br>
