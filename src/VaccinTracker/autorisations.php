@@ -79,7 +79,9 @@
             Prêt : oui<br>
             Conservation : +5°C<br>
             Doses à injecter : 2<br>
-            Statut : vaccin en <a target="_blank" href="https://www.ema.europa.eu/en/news/ema-starts-rolling-review-sputnik-v-covid-19-vaccine">cours d'évaluation</a> par l'AEM (04/03/2021)
+            Statut : vaccin en <a target="_blank" href="https://www.ema.europa.eu/en/news/ema-starts-rolling-review-sputnik-v-covid-19-vaccine">cours d'évaluation</a> par l'AEM (04/03/2021)<br>
+            <a target="_blank" title="Article sur le vaccin Sputnik V" href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)00234-8">Article</a>
+        </card>
         </card>
     </div>
 
