@@ -41,7 +41,7 @@
         <!-- /wp:spacer -->
 
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/subplots_hosp_regpop.jpeg">
+            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/subplots_hosp_regpop.jpeg" target="_blank" rel="noopener noreferrer">
                 <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/subplots_hosp_regpop.jpeg" width="100%">
             </a>
         </p>
@@ -70,7 +70,7 @@
         <br>
         <br>
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/subplots_rea_regpop.jpeg">
+            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/subplots_rea_regpop.jpeg" target="_blank" rel="noopener noreferrer">
                 <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/subplots_rea_regpop.jpeg" width="100%" >
             </a>
             <br><!-- /wp:html -->

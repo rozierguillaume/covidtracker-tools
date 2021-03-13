@@ -36,14 +36,14 @@
     </div>
     <div class="tab-pane fade" id="decesRegions" role="tabpanel" aria-labelledby="decesRegions-tab">
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/subplots_dc_new_regpop_rolling7.jpeg">
+            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/subplots_dc_new_regpop_rolling7.jpeg" target="_blank" rel="noopener noreferrer">
                 <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/subplots_dc_new_regpop_rolling7.jpeg" width="100%">
             </a>
         </p>
     </div>
     <div class="tab-pane fade" id="decesDepartements" role="tabpanel" aria-labelledby="decesDepartements-tab">
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/subplots_dep_dc_new_deppop_rolling7.jpeg">
+            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/subplots_dep_dc_new_deppop_rolling7.jpeg" target="_blank" rel="noopener noreferrer">
                 <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/subplots_dep_dc_new_deppop_rolling7.jpeg" width="100%">
             </a>
         </p>
