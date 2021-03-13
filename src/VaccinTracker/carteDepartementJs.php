@@ -18,7 +18,6 @@
         var typeCarteDepartement = 'n_dose1_cumsum_pop';
         var dateMaj = "";
         var tableauValeurs = [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5]
-        //let couleurs = ["#DCECCD", "#BDE0AE", "#98D390", "#73C679", "#55B86F", "#39A96B", "#1D9A6C", "#178973", "#117876"]
         var tableauCouleurs= [
             "#cfdde6",
             "#b8d4e6",
@@ -30,6 +29,15 @@
             "#2e9fe6",
             "#1796e6",
             "#0076bf"
+        ]; // HSV(203, xx, 90) avec xx de 10 à 100
+
+        var tableauValeurs = [0, 1.75, 3.5, 5.25, 7]
+        var tableauCouleurs= [  
+            "#d5dee3",
+            "#b8d4e6",
+            "#5cb1e6",
+            "#1490de",
+            "#005387"
         ]; // HSV(203, xx, 90) avec xx de 10 à 100
 
         fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/vacsi-dep.json')

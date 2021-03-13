@@ -1,5 +1,5 @@
 <div id="menu" class="row">
-    <div class="col-md-5 col-md-push-7" style="padding-top: 20px;">
+    <div class="col-md-4 col-md-push-7" style="padding-top: 20px;">
         <p>
             Retrouvez les graphiques CovidTracker pour les départements de votre choix :
         <ul>
@@ -24,7 +24,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-7 text-center col-md-pull-5">
+    <div class="col-md-8 text-center col-md-pull-5">
         <div class="row">
             <div class="col-xs-12">
                 <div id="choixTypeCarte" class="btn-group" role="group">
@@ -38,10 +38,17 @@
                                 <a href="#" class="selected">Taux d'incidence (4 couleurs)</a>
                             </li>
                             <li data-carte="incidence-cas-12-couleurs">
-                                <a href="#" class="">Taux d'incidence (12 couleurs)</a>
+                                <a href="#" class="">Taux d'incidence (13 couleurs)</a>
+                            </li>
+                            <li data-carte="var_uk">
+                                <a href="#" class="">Variant UK</a>
+                            </li>
+                            <li data-carte="var_sa_bz">
+                                <a href="#" class="">Variants SA et BZ</a>
                             </li>
                             <li data-carte="evolution-cas"><a href="#">Évolution du taux d'incidence</a></li>
-                            <li data-carte="taux-positivite"><a href="#">Taux de positivité</a></li>
+                            <li data-carte="taux-positivite-restreint"><a href="#">Taux de positivité</a></li>
+                            <!--<li data-carte="taux-positivite"><a href="#">Taux de positivité (13 couleurs)</a></li> --> 
                         </ul>
                     </div>
                     <div class="btn-group">
@@ -90,9 +97,18 @@
                 </div>
             </div>
             <br>
-
-            <span id="titreCarte"></span><br>
-            <span id="descriptionCarte"></span>
+            <br>
+            <span id="titreCarte"></span>
+            
+            <span id="descriptionCarte"></span> au 
+            <span id="dateCarte">--/--</span>
+            <br>
+            <img
+                src="https://files.covidtracker.fr/covidtracker_vect.svg"
+                alt="un triangle aux trois côtés égaux"
+                height="87px"
+                width="130px" 
+            />
             <br>
             <br>
             <div class="col-xs-10">

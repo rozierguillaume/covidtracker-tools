@@ -5,8 +5,9 @@ Mise à jour : <span id="dateMajParAge">--/--</span>
 
 <div>
     <select name="type_age" id="type_age" onchange="typeDonneesBarChartAge()">
-        <option value="abs">Personnes vaccinées</option>
+        
         <option value="pop">Proportion de la population</option>
+        <option value="abs">Personnes vaccinées</option>
     </select>
     </div>
 
@@ -28,7 +29,7 @@ fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data
        })
        .then(json => {
           this.data_age = json;
-          buildLineChartAge();
+          buildLineChartAgePop();
         })
        .catch(function () {
            this.dataError = true;
@@ -47,8 +48,7 @@ function typeDonneesBarChartAge(){
 }
 
 function buildLineChartAge(type){
-    let date = data_age.date
-    document.getElementById("dateMajParAge").innerHTML = date.slice(8) + "/" + date.slice(5, 7);
+    
     
     var ctx = document.getElementById('barChartAge').getContext('2d');
 
@@ -96,7 +96,7 @@ function buildLineChartAge(type){
                                         return value/1000 +" k";
                                     }
                                 },
-							stacked: true,
+							stacked: false,
                             
 						}],
 						yAxes: [{
@@ -123,6 +123,9 @@ function buildLineChartAge(type){
     }
 
     function buildLineChartAgePop(){
+        let date = data_age.date
+        document.getElementById("dateMajParAge").innerHTML = date.slice(8) + "/" + date.slice(5, 7);
+
         var ctx = document.getElementById('barChartAge').getContext('2d');
 
         this.barChartAge = new Chart(ctx, {
@@ -146,11 +149,22 @@ function buildLineChartAge(type){
                     borderWidth: 0,
                     cubicInterpolationMode: 'monotone',
                 },
+                {
+                    label: 'Non vaccinés ',
+                    data: data_age["n_dose1_pop"].map((value, idx)=> ([100])),
+                    borderWidth: 3,
+                    backgroundColor: "#ededed",
+                    borderWidth: 0,
+                    cubicInterpolationMode: 'monotone',
+                },
             
                 ]
             },
             options: {
                 tooltips: {
+                    filter: function (tooltipItem) {
+                        return tooltipItem.datasetIndex != 2;
+                    },
                     callbacks: {
                         label: function(tooltipItem, data) {
                         return data['datasets'][tooltipItem.datasetIndex]['label'] + ': ' + data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']] + ' %';

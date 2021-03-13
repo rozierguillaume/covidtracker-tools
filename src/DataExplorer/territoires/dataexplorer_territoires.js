@@ -1,92 +1,3 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
-
-<div shadow="" style="width: 100%;">
-    <div class="row">
-        <div class="col-sm-3" style="min-width: 100px; max-width: 90%;">
-        <span style="font-size: 200%"><b>CovidExplorer</b></span><br>
-        <span style="font-size: 180%">Territoires</span><br><br>
-            <b>Donnée à afficher</b>
-                <div style="border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
-                    
-                <select name="type" id="typeDonees" onchange="secureChangeTime()" style="margin-top:10px;">
-                    <optgroup label="Indicateurs épidémiques">
-                        <option value="incidence">Taux d'incidence</option>
-                        <option value="cas">Cas positifs</option>
-                        <option value="tests">Dépistage</option>
-                        <option value="taux_positivite">Taux de positivite</option>
-                    </optgroup>
-                    <optgroup label="Indicateurs sanitaires">
-                        <option value="hospitalisations">Hospitalisations</option>
-                        <option value="incid_hospitalisations">Admissions à l'hôpital</option>
-                        <option value="reanimations">Réanimations</option>
-                        <option value="incid_reanimations">Admissions en réanimation</option>
-                    
-                        <option value="nbre_acte_corona">Actes SOS médecin</option>
-                        <option value="nbre_pass_corona">Passages aux urgences</option>
-                        <option value="deces_hospitaliers">Décès hospitaliers</option>
-                        <option value="deces_ehpad">Décès EHPAD</option>
-                    </optgroup>
-                </select>
-                <br>
-                <input type='checkbox' id='pour100k' onchange="pour100kChecked()" style="margin-bottom:10px;"> Pour 100 k habitants
-                
-                </div>
-            <br>
-            
-            <label>Territoires</label>
-            <div id="checkboxes" style="text-align: left; height:80vw; max-height: 400px; overflow-y:scroll; padding: 10px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
-                    <div class="checkbox">
-                        <label>
-                            <input type='checkbox' id='france' checked onchange="boxChecked('france')">France
-                        </label>
-                    </div>
-                    <br>
-                    <span id="territoiresCheckboxes"></span>
-                
-            </div>
-        </div>
-        
-        <div class="col-sm-9" style="min-width: 300px;">
-            <h3 id="titre">Chargement...</h3>
-            
-            <span id="description">...</span><br>
-            <img
-                src="https://files.covidtracker.fr/covidtracker_vect.svg"
-                alt="un triangle aux trois côtés égaux"
-                height="87px"
-                width="130px" 
-            />
-            
-                <div class="chart-container" style="position: relative; height:70vh; width:100%; max-height: 75%">
-                    <canvas id="dataExplorerChart" style="margin-top:20px; max-height: 800px; max-width: 1500px;"></canvas>
-                    
-                </div>
-                <div id="sliderUI" style="margin-top:10px; margin-bottom: 10px;">
-                </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-<div>
-    Palette de couleurs : 
-    <select name="type" id="colorSeqSelect" onchange="changeColorSeq()" style="margin-top:10px;">
-        <option value="mpn65">Par défaut (mpn65)</option>
-        <option value="tol">tol</option>
-        <option value="tol-dv">tol-dv</option>
-        <option value="tol-sq">tol-sq</option>
-        <option value="tol-rainbow">tol-rainbow</option>
-        <option value="cb-Paired">cb-Paired </option>
-        <option value="cb-BrBG">cb-BrBG</option>
-    </select>
-</div>
-
-<br>
-
-<script>
-
-
 var dataExplorerChart;
 var selected_data=["incidence"];
 var selected_territoires=["france"];
@@ -266,7 +177,7 @@ function checkPour100k(selected_data){
         document.getElementById("pour100k").setAttribute("disabled", "");
         return false;
 
-    } else if (selected_data == "taux_positivite") {
+    } else if (selected_data == "taux_positivite"){
         console.log(document.getElementById("pour100k").attributes)
         
         document.getElementById("pour100k").checked = false;
@@ -523,7 +434,7 @@ function buildEmptyChart() {
         options: {
             layout: {
                 padding: {
-                    left: -2,
+                    left: 0,
                     right: 100,
                     top: 0,
                     bottom: 0
@@ -610,4 +521,3 @@ function buildSlider(){
     
 }
 
-</script>

@@ -60,6 +60,7 @@
 
         function colorerCarte() {
             pourcentage = false;
+            $('#dateCarte').html(dateMaj)
             if (typeCarte == 'incidence-cas') {
                 $('#titreCarte').html("Taux d'incidence");
                 $('#descriptionCarte').html("Nombre de cas cette semaine pour 100k habitants");

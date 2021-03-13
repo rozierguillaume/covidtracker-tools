@@ -3,7 +3,7 @@
         background-color: white !important;
         color: black;
         border: 1px grey;
-        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 2px 2px 10px #d6d6d6;
     }
 
 

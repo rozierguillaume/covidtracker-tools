@@ -5,13 +5,21 @@
             var valeurs_cas = [">", "250", "150", "50"];
             var couleurs_cas = ["#3c0000", "#c80000", "#f95228", "#98ac3b"];
 
-            var valeurs_n_dose1_cumsum_pop = [">", "5.5", "5", "4.5", "4", "3.5", "3", "2.5", "2", "1.5"];
+            var valeurs_n_dose1_cumsum_pop = [">", "10", "9", "8", "7", "6", "5", "4", "3", "2"];
             //var couleurs_n_dose1_cumsum_pop = ["#98ac3b", "#3c0000", "#c80000", "#f95228"];
             var couleurs_n_dose1_cumsum_pop = ["#0076bf", "#1796e6",  "#2e9fe6", "#45a8e6",  "#5cb1e6", "#73bae6", "#8ac2e6", "#a1cbe6", "#b8d4e6",  "#cfdde6"]
             
             var valeurs_cas_12_couleurs = [">", "500", "450", "400", "350", "300", "250", "200", "150", "100", "75", "50", "25"];
             var couleurs_cas_12_couleurs = ["#3c0000", "#4c0000", "#6a0000", "#840000", "#a00000", "#c40001", "#d50100", "#e20001", "#f50e07", "#f95228", "#fb9449", "#98ac3b", "#118408"];
 
+            var valeurs_positivite_restreint = [ "> 13", "13", "10", "7", "4", "1"];
+            var couleurs_positivite_restreint = ['black', '#6a0000', '#c40001', '#f50e07', '#fb9449', '#118408'];
+
+            var valeurs_var_uk = ["100", "82", "74", "66", "58", "50", "42", "34", "26", "18", "10", "2"]//["100", "95", "90", "85", "80", "75", "70", "65", "60", "55", "45", "40"];
+            var couleurs_var_uk = ['#00004d', '#17175a', '#292b68', '#393f76', '#475484', '#566a92', '#6680a0', '#7696ae', '#88adbd', '#9cc4cb', '#b5dada', '#e9e9e9']//['#000f5c', '#162169', '#263376', '#334683', '#405990', '#4d6d9d', '#5a80a9', '#6995b5', '#79a9c0', '#8dbdcb', '#a5d1d3', '#dedecc']//['#00429d', '#2250a4', '#345eaa', '#436db0', '#507cb7', '#5e8bbd', '#6b9ac2', '#78a9c8', '#87b9cd', '#97c8d1', '#aad7d4', '#dedecc']//['#00429d', '#2552a5', '#3863ad', '#4874b4', '#5786bc', '#6497c4', '#72a9cc', '#80bbd5', '#90cedd', '#a0e0e6', '#b5f1f0', '#d8ffff']
+
+            var valeurs_var_sa_bz = ["100", "82", "74", "66", "58", "50", "42", "34", "26", "18", "10", "2"];//["55", "50", "45", "40", "35", "30", "25", "20", "15", "10", "5", "0"]; //["55", "50", "45", "40", "35", "30", "25", "20", "15", "10", "5", "0"];
+            var couleurs_var_sa_bz = ['#00004d', '#17175a', '#292b68', '#393f76', '#475484', '#566a92', '#6680a0', '#7696ae', '#88adbd', '#9cc4cb', '#b5dada', '#e9e9e9']//['#000f5c', '#162169', '#263376', '#334683', '#405990', '#4d6d9d', '#5a80a9', '#6995b5', '#79a9c0', '#8dbdcb', '#a5d1d3', '#dedecc']//couleurs_var_uk//['#00429d', '#2653a5', '#3a64ad', '#4b75b4', '#5b87bc', '#6b99c3', '#7bacca', '#8cbed0', '#9fd0d6', '#b5e2dc', '#d1f3e0', '#ffffe0']
 
             var valeurs_evolution = [">", "40", "30", "20", "10", "5", "0", "-5", "-10", "-20", "-30", "-40", "-50"];
             var couleurs_evolution = [
@@ -28,7 +36,7 @@
                 "#1c7b21",
                 "#116522",
                 "#084004"];
-
+            var couleurs_evolution = ['#93003a', '#bb1d4b', '#d84560', '#ec6e77', '#f79792', '#f8c2af', '#ededce', '#a8d6d4', '#87b8cc', '#6b9ac2', '#517bb6', '#345eaa', '#00429d'];
 
             var valeurs_hosp = [">", "50", "45", "40", "35", "30", "25", "20", "15", "10", "9", "6", "3"];
             var valeurs_lits_hosp = [">", "90", "80", "70", "60", "50", "40", "30", "25", "20", "15", "10", "5"];
@@ -74,6 +82,7 @@
                         return response.json();
                     })
                     .then(json => {
+
                         donneesDepartements = json['donnees_departements'];
                         donneesFrance = json['donnees_france'];
                         dateMaj = json["date_update"];
@@ -82,7 +91,7 @@
                     });
             }
 
-            function construireLegende(values = [], colors = [], pourcentage = false) {
+            function construireLegende(values = [], colors = [], pourcentage = false, pourcentage_abs = false) {
                 content = $('#legendTemplatePre').html();
                 values.map((val, idx) => {
                     if (pourcentage && (val != '>')) {
@@ -91,6 +100,8 @@
                         } else {
                             content += $('#legendTemplateMid').html().replaceAll("valeur", val + ' %').replaceAll("colorBg", colors[idx]);
                         }
+                    } else if (pourcentage_abs){
+                        content += $('#legendTemplateMid').html().replaceAll("valeur", val + " %").replaceAll("colorBg", colors[idx]);
                     } else {
                         content += $('#legendTemplateMid').html().replaceAll("valeur", val).replaceAll("colorBg", colors[idx]);
                     }
@@ -112,93 +123,116 @@
 
             function colorerCarte() {
                 pourcentage = false;
+                pourcentage_abs=false;
                 plus = "+";
                 vaccination = false;
                 if (typeCarte == 'incidence-cas') {
-                    $('#titreCarte').html("Taux d'incidence");
+                    $('#titreCarte').html("<h3>Taux d'incidence</h3>");
                     $('#descriptionCarte').html("Nombre de cas cette semaine pour 100k habitants");
                     tableauValeurs = valeurs_cas;
                     tableauCouleurs = couleurs_cas;
                     nomDonnee = "incidence_cas";
                 } else if (typeCarte == 'incidence-cas-12-couleurs') {
-                    $('#titreCarte').html("Taux d'incidence");
+                    $('#titreCarte').html("<h3>Taux d'incidence</h3>");
                     $('#descriptionCarte').html("Nombre de cas cette semaine pour 100k habitants");
                     tableauValeurs = valeurs_cas_12_couleurs;
                     tableauCouleurs = couleurs_cas_12_couleurs;
                     nomDonnee = "incidence_cas";
+                } else if (typeCarte == 'var_uk') {
+                    $('#titreCarte').html("<h3>Proportion de variant anglais</h3>");
+                    $('#descriptionCarte').html("Proportion des cas criblés issus du variant UK (en %)");
+                    tableauValeurs = valeurs_var_uk;
+                    tableauCouleurs = couleurs_var_uk;
+                    nomDonnee = "var_uk";
+                    pourcentage_abs = true;
+                } else if (typeCarte == 'var_sa_bz') {
+                    $('#titreCarte').html("<h3>Proportion de variants sud-africain et brésilien</h3>");
+                    $('#descriptionCarte').html("Proportion des cas criblés issus des variants SA et BZ (en %)");
+                    tableauValeurs = valeurs_var_sa_bz;
+                    tableauCouleurs = couleurs_var_sa_bz;
+                    nomDonnee = "var_sa_bz";
+                    pourcentage_abs = true;
                 } else if (typeCarte == 'evolution-cas') {
-                    $('#titreCarte').html("Évolution du nombre de cas sur les 7 derniers jours");
-                    $('#descriptionCarte').html("Lecture : du rouge signifie une augmentation du nombre de cas sur les 7 derniers jours par rapport aux 7 jours précédents");
+                    $('#titreCarte').html("<h3>Évolution du nombre de cas sur 7 jours</h3>");
+                    $('#descriptionCarte').html("Lecture : du rouge signifie une augmentation du nombre de cas cette semaine par rapport à la semaine précédente");
                     tableauValeurs = valeurs_evolution;
                     tableauCouleurs = couleurs_evolution;
                     nomDonnee = "incidence_evol";
                     pourcentage = true;
                 } else if (typeCarte == 'taux-positivite') {
-                    $('#titreCarte').html("Taux de positivité");
+                    $('#titreCarte').html("<h3>Taux de positivité</h3>");
                     $('#descriptionCarte').html("Proportion des tests positifs cette semaine");
                     tableauValeurs = valeurs_positivite;
                     tableauCouleurs = couleurs_positivite;
                     nomDonnee = "taux_positivite";
+                    pourcentage_abs=true;
+                } else if (typeCarte == 'taux-positivite-restreint') {
+                    $('#titreCarte').html("<h3>Taux de positivité</h3>");
+                    $('#descriptionCarte').html("Proportion des tests positifs cette semaine");
+                    tableauValeurs = valeurs_positivite_restreint;
+                    tableauCouleurs = couleurs_positivite_restreint;
+                    nomDonnee = "taux_positivite";
+                    pourcentage_abs=true;
                 } else if (typeCarte == 'incidence-hospitalisations') {
-                    $('#titreCarte').html("Admissions à l'hôpital avec Covid19");
-                    $('#descriptionCarte').html("cette semaine et pour 100k habitants de chaque département");
+                    $('#titreCarte').html("<h3>Admissions à l'hôpital</h3>");
+                    $('#descriptionCarte').html("pour Covid19, cette semaine et pour 100k habitants de chaque département");
                     tableauValeurs = valeurs_hosp;
                     tableauCouleurs = couleurs_hosp;
                     nomDonnee = "incidence_hosp";
                 } else if (typeCarte == 'lits-hospitalisations') {
-                    $('#titreCarte').html("Nombre de lits occupés à l'hôpital pour Covid19");
-                    $('#descriptionCarte').html("pour 100k habitants de chaque département");
+                    $('#titreCarte').html("<h3>Nombre de lits occupés à l'hôpital</h3>");
+                    $('#descriptionCarte').html("pour Covid19 et pour 100k habitants de chaque département");
                     tableauValeurs = valeurs_lits_hosp;
                     tableauCouleurs = couleurs_hosp;
                     nomDonnee = "lits_hosp";
                 } else if (typeCarte == 'evolution-lits-hospitalisations') {
-                    $('#titreCarte').html("Évolution du nombre de lits occupés à l'hôpital pour Covid19 sur les 7 derniers jours");
-                    $('#descriptionCarte').html("Du rouge signifie une augmentation du nombre de lits occupés par des patients Covid19 à l'hôpital");
+                    $('#titreCarte').html("<h3>Évolution du nombre de lits occupés sur 7 jours</h3>");
+                    $('#descriptionCarte').html("Lecture : du rouge signifie une augmentation du nombre de lits occupés par des patients Covid19 à l'hôpital cette semaine par rapport à la semaine précédente");
                     tableauValeurs = valeurs_evolution;
                     tableauCouleurs = couleurs_evolution;
                     nomDonnee = "lits_hosp_evol";
                     pourcentage = true;
                 } else if (typeCarte == 'incidence-deces') {
-                    $('#titreCarte').html("Nombre de décès avec Covid19");
-                    $('#descriptionCarte').html("cette semaine pour 100k habitants.");
+                    $('#titreCarte').html("<h3>Nombre de décès hospitaliers</h3>");
+                    $('#descriptionCarte').html("avec Covid19, cette semaine et pour 100k habitants");
                     tableauValeurs = valeurs_dc;
                     tableauCouleurs = couleurs_dc;
                     nomDonnee = "incidence_dc";
                 } else if (typeCarte == 'evolution-deces') {
-                    $('#titreCarte').html("Évolution du nombre de décès");
-                    $('#descriptionCarte').html("sur les 7 derniers jours par rapport aux 7 jours précédents");
+                    $('#titreCarte').html("<h3>Évolution des décès hospitaliers sur 7 jours</h3>");
+                    $('#descriptionCarte').html("avec Covid19, sur la dernière semaine par rapport à la semaine précédente");
                     tableauValeurs = valeurs_evolution;
                     tableauCouleurs = couleurs_evolution;
                     nomDonnee = "incidence_dc_evol";
                     pourcentage = true;
                 } else if (typeCarte == 'incidence-reanimations') {
-                    $('#titreCarte').html("Admissions à l'hôpital avec Covid19");
-                    $('#descriptionCarte').html("cette semaine et pour 100k habitants de chaque département");
+                    $('#titreCarte').html("<h3>Admissions à l'hôpital</h3>");
+                    $('#descriptionCarte').html("pour Covid19, cette semaine et pour 100k habitants de chaque département");
                     tableauValeurs = valeurs_rea;
                     tableauCouleurs = couleurs_rea;
                     nomDonnee = "incidence_rea";
                 } else if (typeCarte == 'saturation-reanimations') {
-                    $('#titreCarte').html("Taux d'occupation des lits de réanimation");
-                    $('#descriptionCarte').html("uniquement par les patients Covid19");
+                    $('#titreCarte').html("<h3>Taux d'occupation des lits de réanimation</h3>");
+                    $('#descriptionCarte').html("proportion des lits de réanimation occupés uniquement par les patients Covid19");
                     tableauValeurs = valeurs_saturation_rea;
                     tableauCouleurs = couleurs_saturation_rea;
                     nomDonnee = "saturation_rea";
                 } else if (typeCarte == 'lits-reanimations') {
-                    $('#titreCarte').html("Nombre de lits de réanimation occupés pour Covid19");
-                    $('#descriptionCarte').html("pour 100k habitants de chaque département");
+                    $('#titreCarte').html("<h3>Nombre de lits de réanimation occupés</h3>");
+                    $('#descriptionCarte').html("pour Covid10 et pour 100k habitants de chaque département");
                     tableauValeurs = valeurs_lits_rea;
                     tableauCouleurs = couleurs_hosp;
                     nomDonnee = "lits_rea";
                 } else if (typeCarte == 'evolution-lits-reanimations') {
-                    $('#titreCarte').html("Évolution du nombre de lits de réanimation occupés pour Covid19 sur les 7 derniers jours");
-                    $('#descriptionCarte').html("Du rouge signifie une augmentation du nombre de lits de réanimation occupés par des patients Covid19");
+                    $('#titreCarte').html("<h3>Évolution des lits de réanimation occupés sur 7 jours</h3>");
+                    $('#descriptionCarte').html("Lecture : du rouge signifie une augmentation du nombre de lits de réanimation occupés par des patients Covid19 cette semaine par rapport à la semaine précédente");
                     tableauValeurs = valeurs_evolution;
                     tableauCouleurs = couleurs_evolution;
                     nomDonnee = "lits_rea_evol";
                     pourcentage = true;
                 } else if (typeCarte == 'n_dose1_cumsum_pop') {
-                    $('#titreCarte').html("Proportion population partiellement vaccinée");
-                    $('#descriptionCarte').html("Proportion de la population ayant reçu au moins une dose de vaccin.");
+                    $('#titreCarte').html("<h3>Proportion population partiellement vaccinée</h3>");
+                    $('#descriptionCarte').html("Proportion de la population ayant reçu au moins une dose de vaccin");
                     tableauValeurs = valeurs_n_dose1_cumsum_pop;
                     tableauCouleurs = couleurs_n_dose1_cumsum_pop;
                     nomDonnee = "n_dose1_cumsum_pop";
@@ -210,7 +244,9 @@
                     return;
                 }
 
-                construireLegende(tableauValeurs, tableauCouleurs, pourcentage);
+                construireLegende(tableauValeurs, tableauCouleurs, pourcentage, pourcentage_abs);
+
+                $('#dateCarte').html(dateMaj)
 
                 for (departement in donneesDepartements) {
                     // console.log(departement);
@@ -410,7 +446,13 @@
                     }
                     $('#carte #map title').text(nomDepartement + ' (evolution cas : ' + signe + $(this).data("incidence_evol") + '%)');
                 } else if (typeCarte == 'taux-positivite') {
-                    $('#carte #map title').text(nomDepartement + ' (taux positivité : ' + $(this).data("taux_positivite").toFixed(2) + ')');
+                    $('#carte #map title').text(nomDepartement + ' (taux positivité : ' + $(this).data("taux_positivite").toFixed(2) + ' %)');
+                } else if (typeCarte == 'taux-positivite-restreint') {
+                    $('#carte #map title').text(nomDepartement + ' (taux positivité : ' + $(this).data("taux_positivite").toFixed(2) + ' %)');
+                } else if (typeCarte == 'var_uk') {
+                    $('#carte #map title').text(nomDepartement + ' (variants UK : ' + $(this).data("var_uk").toFixed(2) + ' %)');
+                } else if (typeCarte == 'var_sa_bz') {
+                    $('#carte #map title').text(nomDepartement + ' (variants SA + BZ : ' + $(this).data("var_sa_bz").toFixed(2) + ' %)');
                 } else if (typeCarte == 'n_dose1_cumsum_pop') {
                     $('#carte #map title').text(nomDepartement + ' (' + $(this).data("n_dose1_cumsum_pop").toFixed(2) + ' %)');
                 } else if (typeCarte == 'incidence-hospitalisations') {

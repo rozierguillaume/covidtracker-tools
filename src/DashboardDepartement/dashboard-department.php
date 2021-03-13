@@ -106,6 +106,16 @@ if (isset($_GET['dep']) and $_GET['dep']) {
             </div>
         </div>
 
+        <h3 style="margin-top: 40px;">Nombre de variants</h3>
+        <p>Estimation du nombre de chaque variants dans les cas détectés. L'estimation est réalisée à partir de la proportion de chaque variants dans les tests positifs criblés, et du nombre total de tests positifs.</p>
+        <p align="center">
+            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/variants_nombre_nomDepartement.jpeg"
+               target="_blank" rel="noopener noreferrer">
+                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/variants_nombre_nomDepartement.jpeg"
+                     width="100%" style="max-width: 1000px;">
+            </a>
+        </p>
+
         <h3 style="margin-top: 40px;">Incidence par tranche d'âge</h3>
         <p>Le taux d'incidence correspond au nombre de cas cumulé sur 7 jours rapporté à 100 000 habitants du
             département. Cet indicateur représente l'activité épidémique du virus. Le seuil d'alerte est de 50.</p>

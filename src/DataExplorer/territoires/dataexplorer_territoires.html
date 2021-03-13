@@ -1,0 +1,101 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/google-palette/1.1.0/palette.js" integrity="sha512-C8lBe+d5Peg8kU+0fyU+JfoDIf0kP1rQBuPwRSBNHqqvqaPu+rkjlY0zPPAqdJOLSFlVI+Wku32S7La7eFhvlA==" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js" integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.css" integrity="sha512-XXtRBFtk/QfR8GEWwQPYjrQBHQwjidXg0wo8HJi9YOaFycWqd2uWkjJoAyx8Mb/+H8uhvmf70EAIxDnQxrwrvw==" crossorigin="anonymous" />
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+
+<div style="padding: 10">
+    <div shadow="" >
+        <div class="row">
+            <div class="col-sm-3" style="min-width: 100px; max-width: 90%;">
+            <span style="font-size: 200%"><b>CovidExplorer</b></span><br>
+            <span style="font-size: 180%">Territoires</span><br><br>
+                <b>Donnée à afficher</b>
+                    <div style="border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
+                        
+                    <select name="type" id="typeDonees" onchange="secureChangeTime()" style="margin-top:10px;">
+                        <optgroup label="Indicateurs épidémiques">
+                            <option value="incidence">Taux d'incidence</option>
+                            <option value="cas">Cas positifs</option>
+                            <option value="tests">Dépistage</option>
+                            <option value="taux_positivite">Taux de positivite</option>
+                        </optgroup>
+                        <optgroup label="Indicateurs sanitaires">
+                            <option value="hospitalisations">Hospitalisations</option>
+                            <option value="incid_hospitalisations">Admissions à l'hôpital</option>
+                            <option value="reanimations">Réanimations</option>
+                            <option value="incid_reanimations">Admissions en réanimation</option>
+                        
+                            <option value="nbre_acte_corona">Actes SOS médecin</option>
+                            <option value="nbre_pass_corona">Passages aux urgences</option>
+                            <option value="deces_hospitaliers">Décès hospitaliers</option>
+                            <option value="deces_ehpad">Décès EHPAD</option>
+                        </optgroup>
+                    </select>
+                    <br>
+                    <input type='checkbox' id='pour100k' onchange="pour100kChecked()" style="margin-bottom:10px;"> Pour 100 k habitants
+                    
+                    </div>
+                <br>
+                
+                <label>Territoires</label>
+                <div id="checkboxes" style="text-align: left; height:80vw; max-height: 500px; overflow-y:scroll; padding: 10px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
+                        <div class="checkbox">
+                            <label>
+                                <input type='checkbox' id='france' checked onchange="boxChecked('france')">France
+                            </label>
+                        </div>
+                        <br>
+                        <span id="territoiresCheckboxes"></span>
+                    
+                </div>
+            </div>
+            
+            <div class="col-sm-9" style="min-width: 300px;">
+                <h3 id="titre">Chargement...</h3>
+                
+                <span id="description">...</span><br>
+                <img
+                    src="https://files.covidtracker.fr/covidtracker_vect.svg"
+                    alt="un triangle aux trois côtés égaux"
+                    height="87px"
+                    width="130px" 
+                />
+                
+                    <div class="chart-container" style="position: relative; height:60vh; width:100%">
+                        <canvas id="dataExplorerChart" style="margin-top:20px; max-height: 800px; max-width: 1500px;"></canvas>
+                        
+                    </div>
+                    <div id="sliderUI" style="margin-top:10px; margin-bottom: 10px;">
+                    </div>
+            </div>
+            
+            
+        </div>
+    </div>
+
+    <div>
+        Palette de couleurs : 
+        <select name="type" id="colorSeqSelect" onchange="changeColorSeq()" style="margin-top:10px;">
+            <option value="mpn65">Par défaut (mpn65)</option>
+            <option value="tol">tol</option>
+            <option value="tol-dv">tol-dv</option>
+            <option value="tol-sq">tol-sq</option>
+            <option value="tol-rainbow">tol-rainbow</option>
+            <option value="cb-Paired">cb-Paired </option>
+            <option value="cb-BrBG">cb-BrBG</option>
+        </select>
+    </div>
+
+    <br>
+</div>
+<script src="dataexplorer_territoires.js" ></script>
+<link rel="stylesheet" href="../styles.css">

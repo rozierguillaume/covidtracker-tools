@@ -10,7 +10,7 @@
             Dont France : 75M (+ option 15M)<br>
             Doses à injecter : 2<br>
             Statut : autorisé (UE, France)<br>
-            <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2034577">Article</a>
+            <a target="_blank" title="Article sur le vaccin Pfizer-BioNTech" href="https://www.nejm.org/doi/full/10.1056/NEJMoa2034577">Article</a>
         </card>
 
         <card class="shadow-btn-green col-xs-11 col-md-4"><b>🇺🇸 Moderna</b><br>
@@ -21,7 +21,7 @@
             Dont France : 24M + 22.5M (+ option 22.5M)<br>
             Doses à injecter : 2<br>
             Statut : autorisé (UE, France)<br>
-            <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2035389">Article</a>
+            <a target="_blank" title="Article sur le vaccin Moderna" href="https://www.nejm.org/doi/full/10.1056/NEJMoa2035389">Article</a>
         </card>
         
         <card class="shadow-btn-green col-xs-11 col-md-4"><b>🇬🇧🇸🇪 AstraZeneca/Oxford</b><br>
@@ -32,22 +32,31 @@
             Dont France : 45M (+ option 15M)<br>
             Doses à injecter : 2<br>
             Statut : autorisé (UE, France)<br>
-            <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)32661-1">Article</a>
+            <a target="_blank" title="Article sur le vaccin AstraZeneca" href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)32661-1">Article</a>
+        </card>
+    </div>
+    <div class="row">
+        <card class="shadow-btn-green col-xs-11 col-md-4"><b>🇺🇸🇧🇪 Janssen J&J</b><br>
+            Type : Vecteur viral<br>
+            Efficacité annoncée : 66%<br>
+            Conservation : +5°C<br>
+            Commandes UE : 200M (+ option 200M)<br>
+            Doses à injecter : 1 (essai en cours) ou 2<br>
+            Statut : autorisé (UE, France)
         </card>
     </div>
 
     <h3 style="margin-top : 50px;">Vaccins en cours d'autorisation</h3>
     <div class="row">
-        <card class="shadow-btn-orange col-xs-11 col-md-4"><b>🇺🇸🇧🇪 Janssen J&J</b><br>
+        <card class="shadow-btn-orange col-xs-11 col-md-4"><b>🇷🇺 Sputnik V</b><br>
+            <i>Ce vaccin n'a pas été pré-commandé par l'UE</i><br>
             Phase 3/3<br>
             Type : Vecteur viral<br>
-            Efficacité annoncée : --%<br>
-            Prêt : fin janvier 2021<br>
+            Efficacité annoncée : 90%<br>
+            Prêt : oui<br>
             Conservation : +5°C<br>
-            Commandes UE : 200M (+ option 200M)<br>
-            Dont France : 30M (+ option 30M)<br>
-            Doses à injecter : 1 (essai en cours) ou 2<br>
-            Statut : décision UE (mi-mars 2021)
+            Doses à injecter : 2<br>
+            Statut : vaccin en <a target="_blank" href="https://www.ema.europa.eu/en/news/ema-starts-rolling-review-sputnik-v-covid-19-vaccine">cours d'évaluation</a> par l'AEM
         </card>
     </div>
 

@@ -45,7 +45,14 @@
 </div>
 
 <!-- wp:spacer {"height":20} -->
-<div style="height:10px" aria-hidden="true" class="wp-block-spacer"></div>
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<p>Ce graphique permet de suivre l'évolution du nombre de variants dans les cas détectés. Ce nombre est évalué à partir de la proportion de variants dans les tests criblés. Une majorité des tests est criblée.</p>
+<p id="variants" align="center"><a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/variants_nombre.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/variants_nombre.jpeg" style="max-width: 2000px;" width="100%"></a></p>
+
+
+<!-- wp:spacer {"height":50} -->
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
 <p>Ce graphique permet de visualiser en un coup d'oeil la situation de chaque département : </p>

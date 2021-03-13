@@ -8,7 +8,46 @@
         
         <span style="font-size: 200%"><b>CovidExplorer</b></span><br>
         
-        <span style="font-size: 180%">Tranches d'âge</span><br><br>
+        <span style="font-size: 180%">Types</span><br><br>
+
+            <b>Tranche d'âge</b>
+                <div style="border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
+                    
+                <select name="type" id="typeDoneesAge" onchange="secureChangeTime_age()" style="margin-top:10px;">
+                    <optgroup label="Indicateurs épidémiques">
+                        <option value="incidence">Taux d'incidence</option>
+                        <option value="cas">Cas positifs</option>
+                        <option value="tests">Dépistage</option>
+                        <option value="taux_positivite">Taux de positivite</option>
+                    </optgroup>
+                    <optgroup label="Indicateurs sanitaires">
+                        <option value="hospitalisations">Hospitalisations</option>
+                        <option value="reanimations">Réanimations</option>
+                        <option value="deces_hospitaliers">Décès hospitaliers</option>
+                    </optgroup>
+                </select>
+                <br>
+                <input type='checkbox' id='age_pour100kAge' onchange="age_pour100kAgeChecked()" style="margin-bottom:10px;"> Pour 100 k habitants
+                
+                </div>
+
+            <b>Territoire</b>
+                <div style="border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
+                <br>
+                <select name="type" id="territoireAge" onchange="buildChartAge()" style="margin-top:10px;">
+                    <optgroup label="">
+                        <option value="france">France</option>
+                    </optgroup>
+                    
+                </select>      
+                <br><br>          
+                </div>
+            <br>
+            <label>Tranches d'âge</label>
+            <div id="checkboxes" style="text-align: left; height:300px; overflow-y:scroll; padding: 5px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
+                    <span id="agesCheckboxes"></span>
+            </div>
+
             <b>Donnée à afficher</b>
                 <div style="border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
                     
@@ -30,23 +69,6 @@
                 
                 </div>
             <br>
-
-            <b>Territoire</b>
-                <div style="border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
-                <br>
-                <select name="type" id="territoireAge" onchange="buildChartAge()" style="margin-top:10px;">
-                    <optgroup label="">
-                        <option value="france">France</option>
-                    </optgroup>
-                    
-                </select>      
-                <br><br>          
-                </div>
-            <br>
-            <label>Tranches d'âge</label>
-            <div id="checkboxes" style="text-align: left; height:300px; overflow-y:scroll; padding: 5px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
-                    <span id="agesCheckboxes"></span>
-            </div>
         </div>
         
         <div class="col-sm-9" style="min-width: 300px;">
