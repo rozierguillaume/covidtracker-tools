@@ -41,7 +41,7 @@
             Efficacité annoncée : 66%<br>
             Conservation : +5°C<br>
             Commandes UE : 200M (+ option 200M)<br>
-            Doses à injecter : 1 (essai en cours) ou 2<br>
+            Doses à injecter : 1<br>
             Statut : autorisé (UE, France)
         </card>
     </div>
