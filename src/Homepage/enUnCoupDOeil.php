@@ -33,10 +33,33 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
     <div class="row" style="margin-bottom:10px;">
         <div class="col-md-6">
             <div style="text-align: left; margin-top:5px;" shadow="">
-                <centering><h3>Cas positifs</h3></centering>
-                <p>On prélève en moyenne <b>
+                <div class="row flex-nowrap">
+                        <div class="col-xs-7" style="">
+                            <centering><h3>Cas positifs</h3></centering>
+                        </div>
+
+                        <div class="col-xs-5" style="text-align: right;">
+                        <div id="choixDonneesCas" class="btn-group" role="group" style="margin-top: 5px;">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary dropdown-toggle selected" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">Plus
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li data-carte="cas-btn" onclick="dataSelectedCas('cas')">
+                                        <a id="cas-btn" class="selected">En date de prélèvement</a>
+                                    </li>
+                                    <li data-carte="cas_spf-btn" onclick="dataSelectedCas('cas_spf')">
+                                        <a id="cas_spf-btn" class="">En date de remontée</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p><span id="cas_p1"></span> <b>
                         <span id="cas_moyen_quotidien">--</span> tests</b>
-                    positifs au Covid19 chaque jour,
+                    positifs au Covid19 <span id="cas_p2"></span>chaque jour,
                     <span id="croissance_cas">--</span>
                     par rapport à la semaine dernière.
                 </p>
@@ -57,11 +80,11 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
         <div class="col-md-6">
             <div style="text-align: left; margin-top:5px;" shadow="">
                 <div class="row flex-nowrap">
-                    <div class="col-xs-6" style="">
+                    <div class="col-xs-7" style="">
                         <centering><h3 id='titreHospitDiv'>--</h3></centering>
                     </div>
 
-                    <div class="col-xs-6" style="text-align: right;">
+                    <div class="col-xs-5" style="text-align: right;">
                         <div id="choixDonneesHospit" class="btn-group" role="group" style="margin-top: 5px;">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-primary dropdown-toggle selected" data-toggle="dropdown"

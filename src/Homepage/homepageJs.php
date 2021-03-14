@@ -20,7 +20,7 @@
             updateHospitDiv('rea');
             //calculerProjection();
 
-            buildLineChart();
+            buildLineChart("cas");
             buildBarChart('rea');
 
         })
@@ -129,6 +129,19 @@
         
     }
 
+    function dataSelectedCas(selected_data){
+        lineChart.destroy();
+        casDiv(selected_data);
+        //updateHospitDiv(selected_data)
+        buildLineChart(selected_data)
+
+        document.getElementById("cas-btn").classList.remove("selected")
+        document.getElementById("cas_spf-btn").classList.remove("selected")
+
+        document.getElementById(selected_data + "-btn").classList.add("selected")
+        
+    }
+
     function updateHospitDiv(dataSelected){
         if(dataSelected=="rea"){
             dataSelectedString="en réanimation"
@@ -159,24 +172,36 @@
 
     }
 
-    function updateDataDiv(){
-        
-        cas_actu = data["cas"]["values"][data["cas"]["values"].length-1]
-        cas_j7 = data["cas"]["values"][data["cas"]["values"].length-8]
+    function casDiv(selected_data){
+        phrase = {
+            "cas": ["On prélève en moyenne", ""],
+            "cas_spf": ["En moyenne", "sont remontés "]
+        }
+        document.getElementById("cas_p1").innerHTML = phrase[selected_data][0];
+        document.getElementById("cas_p2").innerHTML = phrase[selected_data][1];
 
-        update_date = data["rea"]["dates"][data["rea"]["dates"].length-1]
-        //update_date = update_date.slice(8) + "/" + update_date.slice(5, 7);
-        update_date_cas = data["cas"]["dates"][data["cas"]["dates"].length-1]
-        update_date_cas = update_date_cas.slice(8) + "/" + update_date_cas.slice(5, 7);
-
+        cas_actu = data[selected_data]["values"][data["cas"]["values"].length-1]
         document.getElementById("cas_moyen_quotidien").innerHTML = numberWithSpaces(cas_actu);
+
+        cas_j7 = data["cas"]["values"][data["cas"]["values"].length-8]
 
         if (cas_j7 > cas_actu){
             document.getElementById("croissance_cas").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((cas_actu-cas_j7)/cas_j7*100))+ "&nbsp;%) ";
         } else {
             document.getElementById("croissance_cas").innerHTML = "en hausse (+&nbsp;" + Math.round((cas_actu-cas_j7)/cas_j7*100)+ "&nbsp;%) ";
         }
-        
+    }
+
+    function updateDataDiv(){
+        casDiv("cas");
+
+        cas_actu = data["cas"]["values"][data["cas"]["values"].length-1]
+
+        update_date = data["rea"]["dates"][data["rea"]["dates"].length-1]
+
+        update_date_cas = data["cas"]["dates"][data["cas"]["dates"].length-1]
+        update_date_cas = update_date_cas.slice(8) + "/" + update_date_cas.slice(5, 7);
+
         const oneDay = (1000 * 60 * 60 * 24) ;
         maj_int = (moment() - Date.parse("2021-"+update_date.slice(5,7)+"-"+update_date.slice(8,10)))/oneDay
         
@@ -193,17 +218,17 @@
     }
 
     var lineChart;
-    function buildLineChart(projection_cas, labels_cas, projection_rea){
+    function buildLineChart(selected_data){
 
         var ctx = document.getElementById('lineCasChart').getContext('2d');
 
         lineChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: data["cas"]["dates"],
+                labels: data[selected_data]["dates"],
                 datasets: [{
                     label: 'Cas positifs',
-                    data: data["cas"]["values"],
+                    data: data[selected_data]["values"],
                     borderWidth: 3,
                     pointRadius: 1,
                     backgroundColor: 'rgba(0, 168, 235, 0.5)',
