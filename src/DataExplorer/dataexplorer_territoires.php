@@ -14,12 +14,14 @@
                         <option value="cas">Cas positifs</option>
                         <option value="tests">Dépistage</option>
                         <option value="taux_positivite">Taux de positivite</option>
+                        <!--<option value="taux_positivite_rolling_before">Taux de positivite rolling before</option>-->
                     </optgroup>
                     <optgroup label="Indicateurs sanitaires">
                         <option value="hospitalisations">Hospitalisations</option>
                         <option value="incid_hospitalisations">Admissions à l'hôpital</option>
                         <option value="reanimations">Réanimations</option>
                         <option value="incid_reanimations">Admissions en réanimation</option>
+                        <option value="saturation_reanimations">Saturation des réanimations</option>
                     
                         <option value="nbre_acte_corona">Actes SOS médecin</option>
                         <option value="nbre_pass_corona">Passages aux urgences</option>
@@ -107,6 +109,7 @@ var descriptions = {
     "tests": "Nombre de tests quotidiens (positifs et négatifs) (moyenne glissante 7 jours).",
     "nbre_acte_corona": "Nombre d'actes SOS médecin pour suspicion Covid19 (moyenne glissante 7 jours).",
     "nbre_pass_corona": "Nombre de passages aux urgences pour suspicion Covid19 (moyenne glissante 7 jours).",
+    "saturation_reanimations": "Proportion des lits disponibles avant l'épidémie (DREES 2018) occupés uniquement par les patients Covid19 (en %).",
 }
 
 var titres = {
@@ -122,6 +125,7 @@ var titres = {
     "tests": "Dépistage",
     "nbre_acte_corona": "Actes SOS médecin pour Covid19",
     "nbre_pass_corona": "Passages aux urgences pour Covid19",
+    "saturation_reanimations": "Saturation des réanimations par les patients Covid19",
 }
 
 var noms_zones = {
