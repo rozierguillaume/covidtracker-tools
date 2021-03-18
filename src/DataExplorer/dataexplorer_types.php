@@ -284,10 +284,11 @@ function buildChartTypes(){
     types_dataExplorerAgeChart.options.scales.yAxes = []
     
     types_selected_age_data = [types_selected[0]]
-    
+
+    document.getElementById("types_description").innerHTML = "";
     types_selected.map((type_data, idx_temp) => {
         addTraceTypes(type_data, document.getElementById("types_territoireAge").value);
-    
+        document.getElementById("types_description").innerHTML += types_titres[type_data] + " : " + types_descriptions[type_data] + " ";
     })
 
     var complement="";
@@ -302,7 +303,6 @@ function buildChartTypes(){
 
     document.getElementById("types_titre").innerHTML = territoire_temp + " " + complement;
 
-    document.getElementById("types_description").innerHTML = "";//types_descriptions[types_selected_age_data[0]] + age_credits;
     changeTimeTypes();
 }
 
