@@ -445,6 +445,7 @@ function fetchData(){
                 buildChart()
                 console.log("2")
                 majDataUpdate();
+                startTypesChart();
             })
         .catch(function () {
             this.dataError = true;

@@ -13,7 +13,7 @@
             <b>Territoire</b>
                 <div style="border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
                 <br>
-                <select name="type" id="territoireAge" onchange="buildChartAge()" style="margin-top:10px;">
+                <select name="type" id="types_territoireAge" onchange="buildChartTypes()" style="margin-top:10px;">
                     <optgroup label="">
                         <option value="france">France</option>
                     </optgroup>
@@ -24,23 +24,23 @@
             <br>
             <label>Données à afficher</label>
             <div id="checkboxes" style="text-align: left; height:300px; overflow-y:scroll; padding: 5px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
-                    <div class='checkbox'><label> <input type='checkbox' id="types_incidence" onchange='boxTypeChecked("incidence")'>Taux d'incidence </label></div> <br>
-                    <div class='checkbox'><label> <input type='checkbox' id="types_incidence" onchange='boxTypeChecked("incidence")'>Cas positifs </label></div> <br>
-                    <div class='checkbox'><label> <input type='checkbox' id="types_incidence" onchange='boxTypeChecked("incidence")'>Dépistage </label></div> <br>
-                    <div class='checkbox'><label> <input type='checkbox' id="types_incidence" onchange='boxTypeChecked("incidence")'>Taux de positivite </label></div> <br>
-                    <div class='checkbox'><label> <input type='checkbox' id="types_incidence" onchange='boxTypeChecked("incidence")'>Hospitalisations </label></div> <br>
-                    <div class='checkbox'><label> <input type='checkbox' id="types_incidence" onchange='boxTypeChecked("incidence")'>Admissions à l'hôpital </label></div> <br>
-                    <div class='checkbox'><label> <input type='checkbox' id="types_incidence" onchange='boxTypeChecked("incidence")'>Réanimations </label></div> <br>
-                    <div class='checkbox'><label> <input type='checkbox' id="types_incidence" onchange='boxTypeChecked("incidence")'>Admissions en réanimation </label></div> <br>
-                    <div class='checkbox'><label> <input type='checkbox' id="types_incidence" onchange='boxTypeChecked("incidence")'>Décès hospitaliers </label></div> <br>
+                    <div class='checkbox'><label> <input type='checkbox' id="types_incidence" onchange='boxTypeChecked("incidence")' checked>Taux d'incidence </label></div> <br>
+                    <div class='checkbox'><label> <input type='checkbox' id="types_cas" onchange='boxTypeChecked("cas")'>Cas positifs </label></div> <br>
+                    <div class='checkbox'><label> <input type='checkbox' id="types_tests" onchange='boxTypeChecked("tests")'>Dépistage </label></div> <br>
+                    <div class='checkbox'><label> <input type='checkbox' id="types_taux_positivite" onchange='boxTypeChecked("taux_positivite")'>Taux de positivite </label></div> <br>
+                    <div class='checkbox'><label> <input type='checkbox' id="types_hospitalisations" onchange='boxTypeChecked("hospitalisations")'>Hospitalisations </label></div> <br>
+                    <div class='checkbox'><label> <input type='checkbox' id="types_incid_hospitalisations" onchange='boxTypeChecked("incid_hospitalisations")'>Admissions à l'hôpital </label></div> <br>
+                    <div class='checkbox'><label> <input type='checkbox' id="types_reanimations" onchange='boxTypeChecked("reanimations")' checked>Réanimations </label></div> <br>
+                    <div class='checkbox'><label> <input type='checkbox' id="types_incid_reanimations" onchange='boxTypeChecked("incid_reanimations")'>Admissions en réanimation </label></div> <br>
+                    <div class='checkbox'><label> <input type='checkbox' id="types_deces_hospitaliers" onchange='boxTypeChecked("deces_hospitaliers")'>Décès hospitaliers </label></div> <br>
             </div>
 
             <br>
         </div>
         
         <div class="col-sm-9" style="min-width: 300px;">
-        <h3 id="age_titre">Chargement...</h3>
-        <span id="age_description">...</span>
+        <h3 id="types_titre">Chargement...</h3>
+        <span id="types_description">...</span>
         <br>
         <img
                 src="https://files.covidtracker.fr/covidtracker_vect.svg"
@@ -49,13 +49,13 @@
                 width="130px" 
         />
             <div class="chart-container" style="position: relative; height:60vh; width:100%">
-                <canvas id="age_dataExplorerAgeChart" style="margin-top:20px; max-height: 800px; max-width: 1500px;"></canvas>
+                <canvas id="types_dataExplorerAgeChart" style="margin-top:20px; max-height: 800px; max-width: 1500px;"></canvas>
                 
             </div>
-            <div id="sliderUIAge" style="margin-top:10px; margin-bottom: 10px;"></div>
+            <div id="sliderUITypes" style="margin-top:10px; margin-bottom: 10px;"></div>
             <!--
             <div class="slidecontainer" style="margin-top: 10px; margin-bottom: 5px;">
-                    <input type="range" min="0" max="1" value="0" class="slider" id="timeSlider" oninput="changeTimeAge()" onchange="changeTimeAge()">
+                    <input type="range" min="0" max="1" value="0" class="slider" id="timeSlider" oninput="changeTimeTypes()" onchange="changeTimeTypes()">
                 </div>
                 -->
         </div>
@@ -66,7 +66,7 @@
 <div class="row">
     <div class="col-sm-4">
         Palette de couleurs : 
-        <select name="type" id="age_colorage_seqSelect" onchange="age_changeColorage_seq()" style="margin-top:10px;" style="width:100%">
+        <select name="type" id="types_colorage_seqSelect" onchange="types_changeColorage_seq()" style="margin-top:10px;" style="width:100%">
             <option value="mpn65">Par défaut (mpn65)</option>
             <option value="tol">tol</option>
             <option value="tol-dv">tol-dv</option>
@@ -83,16 +83,13 @@
 <script>
 
 
-var age_dataExplorerAgeChart;
-var age_selected_age_data=["incidence"];
-var age_selected_territoires=["france"];
-var age_selected_tranches=["tous"];
-var age_data;
+var types_dataExplorerAgeChart;
+var types_selected_age_data=["incidence"];
+var data;
 var age_seq = palette('mpn65', 40).slice(1, 40);
 var age_pour100k = false;
-var associationTranchesNoms = {}
 
-var age_descriptions = {
+var types_descriptions = {
     "hospitalisations": "Nombre de lits occupés à l'hôpital pour Covid19.",
     "incid_hospitalisations": "Nombre d'admissions quotidiennes à l'hôpital pour Covid19 (moyenne glissante 7 jours).",
     "incidence": "Nombre de cas par semaine pour 100 000 habitants.",
@@ -106,7 +103,7 @@ var age_descriptions = {
     "nbre_pass_corona": "Nombre de passages aux urgences pour suspicion Covid19 (moyenne glissante 7 jours).",
 }
 
-var age_titres = {
+var types_titres = {
     "hospitalisations": "Hospitalisations",
     "incid_hospitalisations": "Nouvelles admissions à l'hôpital",
     "incidence": "Taux d'incidence",
@@ -135,22 +132,23 @@ var noms_tranches = {
 }
 
 var age_credits = ""//"<br><small>CovidTracker.fr/<b>CovidExplorer</b> - Données : Santé publique France</small>"
-let incompatibles_age_pour100k = ["incidence", "taux_positivite"]
-let types_selected = []
+//let incompatibles_age_pour100k = ["incidence", "taux_positivite"]
+let types_selected = ["incidence", "reanimations"]
 
 function boxTypeChecked(value){
     if (document.getElementById("types_"+value).checked) {
         types_selected.push(value);
+        console.log(types_selected)
     } else {
         types_selected = removeElementArray(types_selected, value);
         
     }
-    buildChartAge();
+    buildChartTypes();
 
 }
 
-function age_changeColorage_seq(){
-    let type_age_seq = document.getElementById("age_colorage_seqSelect").value;
+function types_changeColorage_seq(){
+    let type_age_seq = document.getElementById("types_colorage_seqSelect").value;
 
     let N = 11;
 
@@ -162,16 +160,16 @@ function age_changeColorage_seq(){
         age_seq = age_seq.slice(1, 40)
     }
 
-    buildChartAge();
+    buildChartTypes();
 
 }
 
-function indexOf_age(jour){
-    var nom_jour = age_data["france"]["tous"][age_selected_age_data]["jour_nom"]
+function indexOf_types(jour){
+    var nom_jour = data["france"]["tous"][types_selected_age_data]["jour_nom"]
 
     var to_return = true
-    for (var idx = 0; idx < age_data["france"][nom_jour].length; idx++) {
-        value = age_data["france"][nom_jour][idx]
+    for (var idx = 0; idx < data["france"][nom_jour].length; idx++) {
+        value = data["france"][nom_jour][idx]
         if ( moment(value) >= moment(jour) ){
             return idx;
             to_return = false;
@@ -184,23 +182,23 @@ function indexOf_age(jour){
     
 }
 
-function secureChangeTime_age(){
-    var sliderNoUi = document.getElementById('sliderUIAge');
-    let idx = document.getElementById('sliderUIAge').noUiSlider.get(); // document.getElementById("timeSlider").value
+function secureChangeTime_types(){
+    var sliderNoUi = document.getElementById('sliderUITypes');
+    let idx = document.getElementById('sliderUITypes').noUiSlider.get(); // document.getElementById("timeSlider").value
     let idx_min = parseInt(idx[0])
     let idx_max = parseInt(idx[1])
 
-    var nom_jour = age_data["france"]["tous"][age_selected_age_data]["jour_nom"]
-    let date_min = age_data["france"][nom_jour][idx_min]
-    let date_max = age_data["france"][nom_jour][idx_max]
+    var nom_jour = data["france"]["tous"][types_selected_age_data]["jour_nom"]
+    let date_min = data["france"][nom_jour][idx_min]
+    let date_max = data["france"][nom_jour][idx_max]
 
-    buildChartAge();
+    buildChartTypes();
     
-    var dmin = indexOf_age(date_min)
-    var dmax = indexOf_age(date_max)
+    var dmin = indexOf_types(date_min)
+    var dmax = indexOf_types(date_max)
 
-    var nom_jour = age_data["france"]["tous"][age_selected_age_data]["jour_nom"]
-    let N_temp = age_data["france"][nom_jour].length
+    var nom_jour = data["france"]["tous"][types_selected_age_data]["jour_nom"]
+    let N_temp = data["france"][nom_jour].length
     if(dmax==0){
         dmax = N_temp-1;
     }
@@ -212,25 +210,24 @@ function secureChangeTime_age(){
     changeTime();
 }
 
-function changeTimeAge(){
-    let age_selected_age_data = types_selected[0]
+function changeTimeTypes(){
+    let types_selected_age_data = types_selected[0]
+    let nom_jour = data["france"][types_selected_age_data]["jour_nom"]
     
-    let nom_jour = age_data["france"]["tous"][age_selected_age_data]["jour_nom"]
-    
-    let idx = document.getElementById('sliderUIAge').noUiSlider.get(); // document.getElementById("timeSlider").value
+    let idx = document.getElementById('sliderUITypes').noUiSlider.get(); // document.getElementById("timeSlider").value
     
     let idx_min = parseInt(idx[0])
     let idx_max = parseInt(idx[1])
-
-    let x_min = age_data["france"][nom_jour][idx_min]
     
-    age_dataExplorerAgeChart.options.scales.xAxes[0].ticks = {
+    let x_min = data["france"][nom_jour][idx_min]
+    
+    types_dataExplorerAgeChart.options.scales.xAxes[0].ticks = {
         min: x_min,
-        max: age_data["france"][nom_jour][idx_max]
+        max: data["france"][nom_jour][idx_max]
         }
     var y_max = 0
 
-    age_dataExplorerAgeChart.data.datasets.map((age_dataset, idx_age_dataset) => {
+    types_dataExplorerAgeChart.data.datasets.map((age_dataset, idx_age_dataset) => {
         
         age_dataset.data.map((value, idx_age_data) => {
             if(value.x > x_min){
@@ -242,48 +239,20 @@ function changeTimeAge(){
         })
     })
     
-    age_dataExplorerAgeChart.options.scales.yAxes.map((axis, idx) => {
-        axis.ticks = {
-        min: 0,
-        max: y_max
-        }
-    })
-    
-    age_dataExplorerAgeChart.update()
+    types_dataExplorerAgeChart.update()
 
 }
 
-function checkage_pour100kAge(age_selected_age_data){
+
+function updateSliderTypes(){
+    var sliderNoUi = document.getElementById('sliderUITypes');
+
+    let types_selected_age_data = types_selected[0]
     
-    if (age_selected_age_data == "incidence"){
-        document.getElementById("age_pour100kAge").checked = true;
-        document.getElementById("age_pour100kAge").setAttribute("disabled", "");
-        return false;
-
-    } else if (age_selected_age_data == "taux_positivite") {
-        
-        document.getElementById("age_pour100kAge").checked = false;
-        document.getElementById("age_pour100kAge").setAttribute("disabled", "");
-        return false;
-    } else {
-        document.getElementById("age_pour100kAge").removeAttribute("disabled");
-        if(!age_pour100k){
-            document.getElementById("age_pour100kAge").checked = false;
-        }
-
-        return age_pour100k;
-    }
-}
-
-function updateSliderAge(){
-    var sliderNoUi = document.getElementById('sliderUIAge');
-
-    let age_selected_age_data = types_selected[0]
+    let jour_nom = data["france"][types_selected_age_data]["jour_nom"]
+    let N = data["france"][jour_nom].length;
     
-    let jour_nom = age_data["france"]["tous"][age_selected_age_data]["jour_nom"]
-    let N = age_data["france"][jour_nom].length;
-    
-    let idx = document.getElementById('sliderUIAge').noUiSlider.get();
+    let idx = document.getElementById('sliderUITypes').noUiSlider.get();
     let idx_min = 0
     let idx_max = N-1
 
@@ -304,67 +273,62 @@ function updateSliderAge(){
     //slider.max = N-1;  
 }
 
-function buildChartAge(){
-    updateSliderAge();
-    age_dataExplorerAgeChart.destroy();
-    buildEmptyChartAge();
+function buildChartTypes(){
 
-    age_dataExplorerAgeChart.data.datasets = []
-    age_dataExplorerAgeChart.options.scales.yAxes = []
-    age_selected_age_data = [types_selected[0]]
+    updateSliderTypes();
     
-    age_pour100k_temp = checkage_pour100kAge(age_selected_age_data[0]);
-
-    if(document.querySelector('#territoireAge option:checked').parentElement.label == "Départements"){
-        if(document.querySelector('#typeDoneesAge option:checked').parentElement.label == "Indicateurs sanitaires"){
-            window.alert("Santé publique France ne publie pas les données hospitaliaires par tranche d'âge au niveau départemental. Merci de sélectionner un indicateur épidémique, ou de sélectionner un autre territoire (region, France entière).");
-        }
-    }
-    age_selected_territoires.map((territoire_temp, idx_temp) => {
-        age_selected_tranches.map((value, idx) => {
-        addTraceAge(age_selected_age_data[0], value, age_pour100k_temp, document.getElementById("territoireAge").value);
+    types_dataExplorerAgeChart.destroy();
+    buildEmptyChartTypes();
+    
+    types_dataExplorerAgeChart.data.datasets = []
+    types_dataExplorerAgeChart.options.scales.yAxes = []
+    
+    types_selected_age_data = [types_selected[0]]
+    
+    types_selected.map((type_data, idx_temp) => {
+        addTraceTypes(type_data, document.getElementById("types_territoireAge").value);
+    
     })
-    })
 
-    var territoire_temp = document.getElementById("territoireAge").value
+    var complement="";
+    var territoire_temp = document.getElementById("types_territoireAge").value
     if(territoire_temp in noms_zones){
         territoire_temp=noms_zones[territoire_temp]
     }
-
-    document.getElementById("age_titre").innerHTML = age_titres[age_selected_age_data[0]] + " - " + territoire_temp;
-
-    if (age_pour100k){
-        if(! incompatibles_age_pour100k.includes(age_selected_age_data[0])){
-            document.getElementById("age_titre").innerHTML += " pour 100k habitants";
-        }
+    if (territoire_temp in data.departements_noms){
+        console.log(data.departements_noms[territoire_temp])
+        complement += data.departements_noms[territoire_temp];
     }
-    document.getElementById("age_description").innerHTML = age_descriptions[age_selected_age_data[0]] + age_credits;
-    changeTimeAge();
+
+    document.getElementById("types_titre").innerHTML = territoire_temp + " " + complement;
+
+    document.getElementById("types_description").innerHTML = "";//types_descriptions[types_selected_age_data[0]] + age_credits;
+    changeTimeTypes();
 }
 
 function populateTerritoires(){
     console.log("enter_populate_territoires")
 
     html_code = "<optgroup label='Régions'>"
-    age_data.regions.map((value, idx) => {
+    data.regions.map((value, idx) => {
         html_code += "<option value='" + replaceBadCharacters(value) + "'>" + value + "</option>"
     })
     html_code += "</optgroup>"
 
     html_code += "<optgroup label='Départements'>"
 
-    age_data.departements.map((value, idx) => {
-        html_code += "<option value='" + replaceBadCharacters(value) + "'>" + value + " " + age_data.departements_noms[value] + "</option>"
+    data.departements.map((value, idx) => {
+        html_code += "<option value='" + replaceBadCharacters(value) + "'>" + value + " " + data.departements_noms[value] + "</option>"
     })
     html_code += "</optgroup>"
 
-    document.getElementById("territoireAge").innerHTML += html_code;
+    document.getElementById("types_territoireAge").innerHTML += html_code;
     console.log("exit_populate_territoires")
 }
 
-fetchage_data();
-function fetchage_data(){
-    fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/dataexplorer_compr_age.json', {cache: 'no-cache'})
+fetchtype_data()
+function fetchtype_data(){
+    fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/dataexplorer_compr.json', {cache: 'no-cache'})
         .then(response => {
             if (!response.ok) {
                 throw new Error("HTTP error " + response.status);
@@ -372,31 +336,27 @@ function fetchage_data(){
             return response.json();
         })
         .then(json => {
-                this.age_data = json;
-                console.log("init-a")
-                associationTranches();
-                console.log("association-a")
+                this.data = json;
+                console.log("HEYYYY")
+                console.log(data)
+                console.log("init-t")
+                //associationTranches();
+                console.log("association-t")
                 //populateAgesSelect();
-                console.log("populate-a")
+                console.log("populate-t")
                 //Erreur au-dessus
                 populateTerritoires()
-                console.log("populate-territoires-a")
-                buildSliderAge();
-                console.log("done-a")
+                console.log("populate-territoires-t")
+                buildSliderTypes();
+                console.log("done-t")
                 //telechargerImage()
                 
             })
         .catch(function () {
-            this.age_dataError = true;
-            console.log("error-x-a")
+            this.types_dataError = true;
+            console.log("error-x-t")
         }
         )
-}
-
-function associationTranches(){
-    console.log("enter associationTranches")
-    age_data.france.tranches_noms.map((value, idx) => {associationTranchesNoms[value]=age_data.france.tranches_noms_affichage[idx]})
-    console.log("enter associationTranches")
 }
 
 function removeElementArray(arr, element){
@@ -413,31 +373,28 @@ function replaceBadCharacters(dep){
     return dep.replace("'", "&apos;").replace("ô", "&ocirc;")
   }
 
-function addTraceAge(value, tranche, age_pour100k_temp, territoire_temp){
+function addTraceTypes(value, territoire_temp){
     diviseur = 1;
-    if (age_pour100k_temp){
-        diviseur = 1
-        diviseur = age_data[territoire_temp][tranche]["population"]/100000;
-    }
     
-    var jour_nom = age_data[territoire_temp][tranche][value]["jour_nom"]
-    age_data_temp = age_data[territoire_temp][tranche][value]["valeur"].map((val, idx) => ({x: age_data["france"][jour_nom][idx], y: val/diviseur}))
+    var jour_nom = data[territoire_temp][value]["jour_nom"]
+    data_temp = data[territoire_temp][value]["valeur"].map((val, idx) => ({x: data["france"][jour_nom][idx], y: val}))
     
-    var N = age_dataExplorerAgeChart.data.datasets.length
+    var N = types_dataExplorerAgeChart.data.datasets.length
     if(N>=age_seq.length-1){
         N = 0
     }
     
     complement = " ";
-
-    if(tranche in noms_tranches){
-        tranche=noms_tranches[tranche]
+    if (territoire_temp in data.departements_noms){
+        console.log(data.departements_noms[territoire_temp])
+        complement += data.departements_noms[territoire_temp];
     }
     
-    age_dataExplorerAgeChart.data.datasets.push({
+    
+    types_dataExplorerAgeChart.data.datasets.push({
         yAxisID: value,
-        label: associationTranchesNoms[tranche] + complement,
-        data: age_data_temp,
+        label: value,
+        data: data_temp,
         pointRadius: 0,
         backgroundColor: 'rgba(0, 168, 235, 0)',
         borderColor: "#"+age_seq[N],
@@ -446,7 +403,7 @@ function addTraceAge(value, tranche, age_pour100k_temp, territoire_temp){
         pointHoverBackgroundColor: "#"+age_seq[N],
     })
 
-    age_dataExplorerAgeChart.options.scales.yAxes.push({
+    types_dataExplorerAgeChart.options.scales.yAxes.push({
         id: value,
         display: true,
         gridLines: {
@@ -454,17 +411,17 @@ function addTraceAge(value, tranche, age_pour100k_temp, territoire_temp){
                     },
     })
     
-    age_dataExplorerAgeChart.update();
+    types_dataExplorerAgeChart.update();
 }
 
-buildEmptyChartAge();
-function buildEmptyChartAge() {
-    var ctx = document.getElementById('age_dataExplorerAgeChart').getContext('2d');
+buildEmptyChartTypes();
+function buildEmptyChartTypes() {
+    var ctx = document.getElementById('types_dataExplorerAgeChart').getContext('2d');
 
-    this.age_dataExplorerAgeChart = new Chart(ctx, {
+    this.types_dataExplorerAgeChart = new Chart(ctx, {
         type: 'line',
-        age_data: {
-            age_datasets: []
+        data: {
+            datasets: []
         },
         options: {
             layout: {
@@ -484,7 +441,7 @@ function buildEmptyChartAge() {
                         return ctx.dataset.borderColor
                     },
                     formatter: function(value, context) {
-                        if (context.dataset.data[context.dataIndex].x == age_dataExplorerAgeChart.options.scales.xAxes[0].ticks.max)
+                        if (context.dataset.data[context.dataIndex].x == types_dataExplorerAgeChart.options.scales.xAxes[0].ticks.max)
                         {
                             return  context.dataset.label;
                         }
@@ -535,8 +492,8 @@ function buildEmptyChartAge() {
     });
 }
 
-function buildSliderAge(){
-    var slider = document.getElementById('sliderUIAge');
+function buildSliderTypes(){
+    var slider = document.getElementById('sliderUITypes');
 
     noUiSlider.create(slider, {
         start: [0, 0],
@@ -551,10 +508,10 @@ function buildSliderAge(){
     });
     
     slider.noUiSlider.on('update', function (values, handle) {
-        changeTimeAge()
+        changeTimeTypes()
     });
-
-    buildChartAge();
+    
+    buildChartTypes();
     
 }
 
