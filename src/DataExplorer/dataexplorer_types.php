@@ -393,7 +393,7 @@ function addTraceTypes(value, territoire_temp){
     
     types_dataExplorerAgeChart.data.datasets.push({
         yAxisID: value,
-        label: value,
+        label: types_titres[value],
         data: data_temp,
         pointRadius: 0,
         backgroundColor: 'rgba(0, 168, 235, 0)',
