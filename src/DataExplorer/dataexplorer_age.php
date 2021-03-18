@@ -1,6 +1,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 
-<div id="age"><p><i>CovidExplorer Tranches d'âge</i> permet d'explorer l'évolution dans les différentes tranches d'âge. Il est possible de sélectionner une région en particulier, ou la France entière.</p>
+<div><p><i>CovidExplorer Tranches d'âge</i> permet d'explorer l'évolution dans les différentes tranches d'âge. Il est possible de sélectionner une région en particulier, ou la France entière.</p>
 </div>
 <div shadow="" id="age_box">
     <div class="row">

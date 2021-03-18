@@ -29,18 +29,18 @@ Le deuxième, plus bas, permet d'explorer l'évolution de l'épidémie dans les 
 
 <br><br>
 
-<h3>Explorez les territoires</h3>
+<h3 id="territoires">Explorez les territoires</h3>
 <p>Sélectionnez un type de données ainsi qu'un ou plusieurs territoires ci-dessous, puis la courbe s'affichera à droite (ou en-dessous sur mobile). 
 </p>
 
 <?php include(__DIR__ . '/dataexplorer_territoires.php'); ?>
 
 <br><br><br>
-<h3>Explorez les tranches d'âge</h3>
+<h3 id="ages">Explorez les tranches d'âge</h3>
 <?php include(__DIR__ . '/dataexplorer_age.php'); ?>
 
 <br><br><br>
-<h3>Explorez les types de données</h3>
+<h3 id="types">Explorez les types de données</h3>
 <?php include(__DIR__ . '/dataexplorer_types.php'); ?>
 
 <?php include(__DIR__ . '/menuBasPage.php'); ?>

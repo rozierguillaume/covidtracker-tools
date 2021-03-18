@@ -1,6 +1,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 
-<div id="age"><p><i>CovidExplorer Types</i> permet d'explorer l'évolution des différents types de données. Il est possible de sélectionner un territoire, et de comparer des données différentes.</p>
+<div><p><i>CovidExplorer Types</i> permet d'explorer l'évolution des différents types de données. Il est possible de sélectionner un territoire, et de comparer des données différentes.</p>
 </div>
 <div shadow="" id="age_box">
     <div class="row">
