@@ -314,7 +314,7 @@ function buildChartTypes(){
     changeTimeTypes();
 }
 
-function populateTerritoires(){
+function populateTerritoiresTypes(){
     console.log("enter_populate_territoires")
 
     html_code = "<optgroup label='Régions'>"
@@ -353,7 +353,7 @@ function fetchtype_data(){
                 //populateAgesSelect();
                 console.log("populate-t")
                 //Erreur au-dessus
-                populateTerritoires()
+                populateTerritoiresTypes()
                 console.log("populate-territoires-t")
                 buildSliderTypes();
                 console.log("done-t")
