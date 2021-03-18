@@ -13,8 +13,8 @@
                         <option value="incidence">Taux d'incidence</option>
                         <option value="cas">Cas positifs</option>
                         <option value="tests">Dépistage</option>
-                        <option value="taux_positivite">Taux de positivite</option>
-                        <!--<option value="taux_positivite_rolling_before">Taux de positivite rolling before</option>-->
+                        <option value="taux_positivite">Taux de positivite (1)</option>
+                        <option value="taux_positivite_rolling_before">Taux de positivite (2)</option>
                     </optgroup>
                     <optgroup label="Indicateurs sanitaires">
                         <option value="hospitalisations">Hospitalisations</option>
@@ -100,7 +100,8 @@ var descriptions = {
     "hospitalisations": "Nombre de lits occupés à l'hôpital pour Covid19.",
     "incid_hospitalisations": "Nombre d'admissions quotidiennes à l'hôpital pour Covid19 (moyenne glissante 7 jours).",
     "incidence": "Nombre de cas par semaine pour 100 000 habitants.",
-    "taux_positivite": "Proportion des tests qui sont positifs (en %).",
+    "taux_positivite": "Proportion des tests qui sont positifs (en %). *Calcul : moyenne(positifs / total).",
+    "taux_positivite_rolling_before": "Proportion des tests qui sont positifs (en %). *Calcul : moyenne(positifs) / moyenne(total).",
     "reanimations": "Nombre de lits de réanimation occupés à l'hôpital pour Covid19.",
     "incid_reanimations": "Nombre d'admissions quotidiennes en réanimation pour Covid19 (moyenne glissante 7 jours).",
     "deces_hospitaliers": "Nombre de décès quotidiens pour Covid19 à l'hôpital (moyenne glissante 7 jours).",
@@ -116,7 +117,8 @@ var titres = {
     "hospitalisations": "Hospitalisations",
     "incid_hospitalisations": "Nouvelles admissions à l'hospital",
     "incidence": "Taux d'incidence",
-    "taux_positivite": "Taux de positivité",
+    "taux_positivite": "Taux de positivité*",
+    "taux_positivite_rolling_before": "Taux de positivité*",
     "reanimations": "Réanimations",
     "incid_reanimations": "Nouvelles admissions en réanimation",
     "deces_hospitaliers": "Décès hospitaliers",

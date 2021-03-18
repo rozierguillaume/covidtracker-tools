@@ -10,27 +10,6 @@
         
         <span style="font-size: 180%">Types</span><br><br>
 
-            <b>Tranche d'âge</b>
-                <div style="border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
-                    
-                <select name="type" id="typeDoneesAge" onchange="secureChangeTime_age()" style="margin-top:10px;">
-                    <optgroup label="Indicateurs épidémiques">
-                        <option value="incidence">Taux d'incidence</option>
-                        <option value="cas">Cas positifs</option>
-                        <option value="tests">Dépistage</option>
-                        <option value="taux_positivite">Taux de positivite</option>
-                    </optgroup>
-                    <optgroup label="Indicateurs sanitaires">
-                        <option value="hospitalisations">Hospitalisations</option>
-                        <option value="reanimations">Réanimations</option>
-                        <option value="deces_hospitaliers">Décès hospitaliers</option>
-                    </optgroup>
-                </select>
-                <br>
-                <input type='checkbox' id='age_pour100kAge' onchange="age_pour100kAgeChecked()" style="margin-bottom:10px;"> Pour 100 k habitants
-                
-                </div>
-
             <b>Territoire</b>
                 <div style="border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
                 <br>
@@ -43,31 +22,19 @@
                 <br><br>          
                 </div>
             <br>
-            <label>Tranches d'âge</label>
+            <label>Données à afficher</label>
             <div id="checkboxes" style="text-align: left; height:300px; overflow-y:scroll; padding: 5px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
-                    <span id="agesCheckboxes"></span>
+                    <div class='checkbox'><label> <input type='checkbox' id="types_incidence" onchange='boxTypeChecked("incidence")'>Taux d'incidence </label></div> <br>
+                    <div class='checkbox'><label> <input type='checkbox' id="types_incidence" onchange='boxTypeChecked("incidence")'>Cas positifs </label></div> <br>
+                    <div class='checkbox'><label> <input type='checkbox' id="types_incidence" onchange='boxTypeChecked("incidence")'>Dépistage </label></div> <br>
+                    <div class='checkbox'><label> <input type='checkbox' id="types_incidence" onchange='boxTypeChecked("incidence")'>Taux de positivite </label></div> <br>
+                    <div class='checkbox'><label> <input type='checkbox' id="types_incidence" onchange='boxTypeChecked("incidence")'>Hospitalisations </label></div> <br>
+                    <div class='checkbox'><label> <input type='checkbox' id="types_incidence" onchange='boxTypeChecked("incidence")'>Admissions à l'hôpital </label></div> <br>
+                    <div class='checkbox'><label> <input type='checkbox' id="types_incidence" onchange='boxTypeChecked("incidence")'>Réanimations </label></div> <br>
+                    <div class='checkbox'><label> <input type='checkbox' id="types_incidence" onchange='boxTypeChecked("incidence")'>Admissions en réanimation </label></div> <br>
+                    <div class='checkbox'><label> <input type='checkbox' id="types_incidence" onchange='boxTypeChecked("incidence")'>Décès hospitaliers </label></div> <br>
             </div>
 
-            <b>Donnée à afficher</b>
-                <div style="border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
-                    
-                <select name="type" id="typeDoneesAge" onchange="secureChangeTime_age()" style="margin-top:10px;">
-                    <optgroup label="Indicateurs épidémiques">
-                        <option value="incidence">Taux d'incidence</option>
-                        <option value="cas">Cas positifs</option>
-                        <option value="tests">Dépistage</option>
-                        <option value="taux_positivite">Taux de positivite</option>
-                    </optgroup>
-                    <optgroup label="Indicateurs sanitaires">
-                        <option value="hospitalisations">Hospitalisations</option>
-                        <option value="reanimations">Réanimations</option>
-                        <option value="deces_hospitaliers">Décès hospitaliers</option>
-                    </optgroup>
-                </select>
-                <br>
-                <input type='checkbox' id='age_pour100kAge' onchange="age_pour100kAgeChecked()" style="margin-bottom:10px;"> Pour 100 k habitants
-                
-                </div>
             <br>
         </div>
         
@@ -167,27 +134,19 @@ var noms_tranches = {
     "france": "France"
 }
 
-function telechargerImage(){
-    document.getElementById("link").href = age_dataExplorerAgeChart.toBase64Image()
-}
-
 var age_credits = ""//"<br><small>CovidTracker.fr/<b>CovidExplorer</b> - Données : Santé publique France</small>"
 let incompatibles_age_pour100k = ["incidence", "taux_positivite"]
+let types_selected = []
 
-function boxAgeChecked(value){
-    if (document.getElementById("ages_"+value).checked) {
-        age_selected_tranches.push(value);
+function boxTypeChecked(value){
+    if (document.getElementById("types_"+value).checked) {
+        types_selected.push(value);
     } else {
-        age_selected_tranches = removeElementArray(age_selected_tranches, value);
+        types_selected = removeElementArray(types_selected, value);
         
     }
     buildChartAge();
 
-}
-
-function age_pour100kAgeChecked(){
-    age_pour100k = !age_pour100k;
-    buildChartAge();
 }
 
 function age_changeColorage_seq(){
@@ -254,7 +213,7 @@ function secureChangeTime_age(){
 }
 
 function changeTimeAge(){
-    let age_selected_age_data = document.getElementById("typeDoneesAge").value
+    let age_selected_age_data = types_selected[0]
     
     let nom_jour = age_data["france"]["tous"][age_selected_age_data]["jour_nom"]
     
@@ -319,7 +278,7 @@ function checkage_pour100kAge(age_selected_age_data){
 function updateSliderAge(){
     var sliderNoUi = document.getElementById('sliderUIAge');
 
-    let age_selected_age_data = document.getElementById("typeDoneesAge").value
+    let age_selected_age_data = types_selected[0]
     
     let jour_nom = age_data["france"]["tous"][age_selected_age_data]["jour_nom"]
     let N = age_data["france"][jour_nom].length;
@@ -352,7 +311,7 @@ function buildChartAge(){
 
     age_dataExplorerAgeChart.data.datasets = []
     age_dataExplorerAgeChart.options.scales.yAxes = []
-    age_selected_age_data = [document.getElementById("typeDoneesAge").value]
+    age_selected_age_data = [types_selected[0]]
     
     age_pour100k_temp = checkage_pour100kAge(age_selected_age_data[0]);
 
@@ -381,29 +340,6 @@ function buildChartAge(){
     }
     document.getElementById("age_description").innerHTML = age_descriptions[age_selected_age_data[0]] + age_credits;
     changeTimeAge();
-}
-
-function populateAgesSelect(){
-    console.log("enter populateAgesSelect")
-    var html_code = "";
-    //html_code += "<br><i>Tranches d'âge</i><br>"
-    
-    age_data.france.tranches_noms.map((tranche, idx) => {
-        complement = " ";
-        html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + "ages_" + tranche + "' onchange='boxAgeChecked(\"" + tranche +"\")'> "+ age_data.france.tranches_noms_affichage[idx] + complement + "</label></div>" + "<br>"
-    })
-    
-    document.getElementById("agesCheckboxes").innerHTML = html_code;
-    document.getElementById("ages_tous").checked = true;
-
-    document.getElementById("ages_"+age_data.france.tranches_noms[1]).checked = true;
-    document.getElementById("ages_"+age_data.france.tranches_noms[5]).checked = true;
-
-    age_selected_tranches.push(age_data.france.tranches_noms[1])
-    age_selected_tranches.push(age_data.france.tranches_noms[5])
-    
-    console.log("exit populateAgesSelect")
-    
 }
 
 function populateTerritoires(){
@@ -440,14 +376,14 @@ function fetchage_data(){
                 console.log("init-a")
                 associationTranches();
                 console.log("association-a")
-                populateAgesSelect();
+                //populateAgesSelect();
                 console.log("populate-a")
                 //Erreur au-dessus
                 populateTerritoires()
                 console.log("populate-territoires-a")
                 buildSliderAge();
                 console.log("done-a")
-                telechargerImage()
+                //telechargerImage()
                 
             })
         .catch(function () {
