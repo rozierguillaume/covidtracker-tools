@@ -407,8 +407,15 @@ function addTraceTypes(value, territoire_temp){
         id: value,
         display: true,
         gridLines: {
-                        display: true
+                        display: true,
+                        lineWidth: 1,
+                        borderDash: [0.8, 2],
+                        color: "#"+age_seq[N],
                     },
+        ticks: {
+            fontColor: "#"+age_seq[N],
+            fontSize: 8
+        }
     })
     
     types_dataExplorerAgeChart.update();

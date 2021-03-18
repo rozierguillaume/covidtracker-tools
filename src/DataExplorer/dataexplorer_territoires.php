@@ -512,7 +512,7 @@ function addTrace(value, territoire, pour100k_temp){
         display: true,
         gridLines: {
                         display: true
-                    },
+                    }
     })
     
     dataExplorerChart.update();
@@ -575,7 +575,7 @@ function buildEmptyChart() {
                         display: false
                     },
                     ticks: {
-                        min: 0
+                        min: 0,
                     },
 
                 }],
