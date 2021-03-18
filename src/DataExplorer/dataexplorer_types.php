@@ -212,17 +212,25 @@ function secureChangeTime_types(){
 
 function changeTimeTypes(){
     let types_selected_age_data = types_selected[0]
-    let nom_jour = data["france"][types_selected_age_data]["jour_nom"]
+    
     
     let idx = document.getElementById('sliderUITypes').noUiSlider.get(); // document.getElementById("timeSlider").value
-    
+    let nom_jour = data["france"]["reanimations"]["jour_nom"]
+
     let idx_min = parseInt(idx[0])
     let idx_max = parseInt(idx[1])
+
+    var x_min_minimum = data["france"][data["france"]["incidence"]["jour_nom"]][idx_min];
     
-    let x_min = data["france"][nom_jour][idx_min]
+    types_selected.map((value, idx) => {
+        x = data["france"][data["france"][value]["jour_nom"]][idx_min]
+        if (x<x_min_minimum){
+            x_min_minimum = x
+        }
+    })
     
     types_dataExplorerAgeChart.options.scales.xAxes[0].ticks = {
-        min: x_min,
+        min: x_min_minimum,
         max: data["france"][nom_jour][idx_max]
         }
     var y_max = 0
@@ -230,7 +238,7 @@ function changeTimeTypes(){
     types_dataExplorerAgeChart.data.datasets.map((age_dataset, idx_age_dataset) => {
         
         age_dataset.data.map((value, idx_age_data) => {
-            if(value.x > x_min){
+            if(value.x > x_min_minimum){
                 if(value.y*1.1 > y_max){
                     y_max = value.y*1.1
                 }
@@ -249,7 +257,7 @@ function updateSliderTypes(){
 
     let types_selected_age_data = types_selected[0]
     
-    let jour_nom = data["france"][types_selected_age_data]["jour_nom"]
+    let jour_nom = data["france"]["reanimations"]["jour_nom"]
     let N = data["france"][jour_nom].length;
     
     let idx = document.getElementById('sliderUITypes').noUiSlider.get();
@@ -396,6 +404,7 @@ function addTraceTypes(value, territoire_temp){
         label: types_titres[value],
         data: data_temp,
         pointRadius: 0,
+        pointHitRadius: 0.5,
         backgroundColor: 'rgba(0, 168, 235, 0)',
         borderColor: "#"+age_seq[N],
         cubicInterpolationMode: 'monotone',
@@ -457,6 +466,7 @@ function buildEmptyChartTypes() {
                 },
             },
             hover: {
+                mode: 'x',
                 intersect: false
             },
             tooltips: {
