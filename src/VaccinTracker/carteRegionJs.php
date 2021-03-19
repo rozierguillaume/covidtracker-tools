@@ -238,9 +238,9 @@
 
                 vaccinesRegions = vaccinesRegions.asortBy('couvertureVaccinale');
                 
-                valeurs = []
+                //valeurs = []
                 for(var i=0; i<10; i++){
-                    valeurs.push( vaccinesRegions[vaccinesRegions.length-1].couvertureVaccinale + (vaccinesRegions[0].couvertureVaccinale - vaccinesRegions[vaccinesRegions.length-1].couvertureVaccinale) * i / 10 )
+                    //valeurs.push( vaccinesRegions[vaccinesRegions.length-1].couvertureVaccinale + (vaccinesRegions[0].couvertureVaccinale - vaccinesRegions[vaccinesRegions.length-1].couvertureVaccinale) * i / 10 )
                 }
                 vaccinesRegions.map(data =>{
 
