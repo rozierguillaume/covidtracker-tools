@@ -6,8 +6,11 @@
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-deferred@1"></script>
 
 <div class="alert alert-warning" role="alert">
-19 mars à 19h - Information données.</b> Santé publique France n'a pas publié les données du jour en raison d'un problème technique.
-</div>
+    <i>19 mars à 19h • </i>
+    <b>Pas de mise à jour des données</b><br>
+    Santé publique France n'a pas publié les données Covid19 du jour en raison d'un problème technique, CovidTracker sera mis à jour dès que cela sera le cas.
+    
+<br></div>
 
 <?php include(dirname(__FILE__) . '/homepageCss.php') ?>
 <?php include(dirname(__FILE__) . '/homepageJs.php') ?>
