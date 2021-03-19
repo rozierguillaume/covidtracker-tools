@@ -183,7 +183,7 @@
         var vaccinesRegionsHistorique = {};
         var dateMaj = "";
         var numeroRegion;
-        let valeurs = [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5]
+        let valeurs = [6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5]
         //let couleurs = ["#DCECCD", "#BDE0AE", "#98D390", "#73C679", "#55B86F", "#39A96B", "#1D9A6C", "#178973", "#117876"]
         let couleurs= ["#cfdde6", "#b8d4e6", "#a1cbe6", "#8ac2e6", "#73bae6", "#5cb1e6", "#45a8e6", "#2e9fe6", "#1796e6", "#0076bf"] // HSV(203, xx, 90) avec xx de 10 à 100
 

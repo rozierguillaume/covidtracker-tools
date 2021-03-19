@@ -31,7 +31,7 @@
             "#0076bf"
         ]; // HSV(203, xx, 90) avec xx de 10 à 100
 
-        var tableauValeurs = [0, 1.75, 3.5, 5.25, 7]
+        var tableauValeurs = [6, 7, 8, 9, 10]
         var tableauCouleurs= [  
             "#d5dee3",
             "#b8d4e6",
