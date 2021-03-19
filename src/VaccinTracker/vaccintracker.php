@@ -25,7 +25,7 @@
 <div class="alert alert-info clearFix" style="font-size: 18px;">
     <div class="row">
         <div class="col-md-8">
-            Bonne année 2021 ! CovidTracker est gratuit, sans pub et développé bénévolement.<br>
+            CovidTracker est gratuit.<br>
         </div>
         <div class="col-md-4 text-right">
             <button class="btn-shadow">
