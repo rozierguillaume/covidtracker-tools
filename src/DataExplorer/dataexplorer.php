@@ -6,6 +6,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.css" integrity="sha512-XXtRBFtk/QfR8GEWwQPYjrQBHQwjidXg0wo8HJi9YOaFycWqd2uWkjJoAyx8Mb/+H8uhvmf70EAIxDnQxrwrvw==" crossorigin="anonymous" />
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
 
+<?php include(dirname(__DIR__) . '/message_erreur.php') ?>
+
 <p style="font-size:130%;">CovidExplorer est un outil de CovidTracker permettant d'explorer les données de l'épidémie en France. Trois modules sont proposés : <i>Territoires</i>, <i>Tranches d'âge</i> et <i>Types</i>.
 Le premier, ci-dessous, permet de comparer plusieurs territoires (régions, départements, France entière) entre eux.
 Le deuxième, plus bas, permet d'explorer l'évolution de l'épidémie dans les tranches d'âge. Le troisième, en bas de page, permet d'explorer les différents types de données.

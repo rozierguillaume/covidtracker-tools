@@ -1,3 +1,5 @@
+<?php include(dirname(__DIR__) . '/message_erreur.php') ?>
+
 <div id="menu" class="row">
     <div class="col-md-4 col-md-push-7" style="padding-top: 20px;">
         <p>
