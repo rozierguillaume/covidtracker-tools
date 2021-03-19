@@ -345,6 +345,8 @@ function buildChartAge(){
     })
     })
 
+    age_dataExplorerAgeChart.update();
+    
     var territoire_temp = document.getElementById("territoireAge").value
     if(territoire_temp in noms_zones){
         territoire_temp=noms_zones[territoire_temp]
@@ -495,8 +497,6 @@ function addTraceAge(value, tranche, age_pour100k_temp, territoire_temp){
                         display: true
                     },
     })
-    
-    age_dataExplorerAgeChart.update();
 }
 
 buildEmptyChartAge();

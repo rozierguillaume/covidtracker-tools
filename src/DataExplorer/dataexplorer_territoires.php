@@ -159,7 +159,7 @@ function pour100kChecked(){
 
 function changeColorSeq(){
     let type_seq = document.getElementById("colorSeqSelect").value;
-    console.log(type_seq)
+
     let N = 11;
 
     seq = palette(type_seq, N) 
@@ -186,7 +186,7 @@ function secureChangeTime(){
     let date_max = data["france"][nom_jour][idx_max]
 
     buildChart();
-    console.log("idx")
+
     var dmin = indexOf(date_min)
     var dmax = indexOf(date_max)
 
@@ -273,7 +273,6 @@ function checkPour100k(selected_data){
         return false;
 
     } else if (selected_data == "taux_positivite") {
-        console.log(document.getElementById("pour100k").attributes)
         
         document.getElementById("pour100k").checked = false;
         document.getElementById("pour100k").setAttribute("disabled", "");
@@ -337,7 +336,8 @@ function buildChart(){
         }
         addTrace(selected_data[0], value, pour100k_temp);
     })
-    console.log(show_alert)
+    dataExplorerChart.update();
+
     if(show_alert==true){
         if(selected_data=="deces_ehpad"){
             window.alert("Santé publique France ne publie pas les décès en EHPAD au niveau départemental ou régional. Merci de sélectionner un indicateur épidémique, ou de sélectionner le territorie France entière).");
@@ -515,7 +515,6 @@ function addTrace(value, territoire, pour100k_temp){
                     }
     })
     
-    dataExplorerChart.update();
 }
 
 buildEmptyChart();

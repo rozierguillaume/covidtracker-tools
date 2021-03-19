@@ -246,8 +246,6 @@ function changeTimeTypes(){
 
         })
     })
-    
-    types_dataExplorerAgeChart.update()
 
 }
 
@@ -298,7 +296,8 @@ function buildChartTypes(){
         addTraceTypes(type_data, document.getElementById("types_territoireAge").value);
         document.getElementById("types_description").innerHTML += types_titres[type_data] + " : " + types_descriptions[type_data] + " ";
     })
-
+    types_dataExplorerAgeChart.update()
+    
     var complement="";
     var territoire_temp = document.getElementById("types_territoireAge").value
     if(territoire_temp in noms_zones){
@@ -394,7 +393,6 @@ function addTraceTypes(value, territoire_temp){
     
     complement = " ";
     if (territoire_temp in data.departements_noms){
-        console.log(data.departements_noms[territoire_temp])
         complement += data.departements_noms[territoire_temp];
     }
     
