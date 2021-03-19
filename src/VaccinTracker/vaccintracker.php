@@ -9,6 +9,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-deferred@1"></script>
 
 
+<?php include(dirname(__DIR__) . '/message_erreur.php') ?>
 
 <?php include(__DIR__ . '/vaccintrackerCss.php'); ?>
 
