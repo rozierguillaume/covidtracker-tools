@@ -21,6 +21,7 @@
             //calculerProjection();
 
             buildLineChart("cas_spf");
+            dataSelectedCas("cas_spf")
             buildBarChart('rea');
 
         })
