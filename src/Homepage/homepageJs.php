@@ -20,7 +20,7 @@
             updateHospitDiv('rea');
             //calculerProjection();
 
-            buildLineChart("cas");
+            buildLineChart("cas_spf");
             buildBarChart('rea');
 
         })
@@ -180,10 +180,10 @@
         document.getElementById("cas_p1").innerHTML = phrase[selected_data][0];
         document.getElementById("cas_p2").innerHTML = phrase[selected_data][1];
 
-        cas_actu = data[selected_data]["values"][data["cas"]["values"].length-1]
+        cas_actu = data[selected_data]["values"][data[selected_data]["values"].length-1]
         document.getElementById("cas_moyen_quotidien").innerHTML = numberWithSpaces(cas_actu);
 
-        cas_j7 = data["cas"]["values"][data["cas"]["values"].length-8]
+        cas_j7 = data[selected_data]["values"][data[selected_data]["values"].length-8]
 
         if (cas_j7 > cas_actu){
             document.getElementById("croissance_cas").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((cas_actu-cas_j7)/cas_j7*100))+ "&nbsp;%) ";
