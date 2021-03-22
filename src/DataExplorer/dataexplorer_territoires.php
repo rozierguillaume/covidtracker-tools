@@ -13,8 +13,7 @@
                         <option value="incidence">Taux d'incidence</option>
                         <option value="cas">Cas positifs</option>
                         <option value="tests">Dépistage</option>
-                        <option value="taux_positivite">Taux de positivite (1)</option>
-                        <option value="taux_positivite_rolling_before">Taux de positivite (2)</option>
+                        <option value="taux_positivite_rolling_before">Taux de positivite</option>
                     </optgroup>
                     <optgroup label="Indicateurs sanitaires">
                         <option value="hospitalisations">Hospitalisations</option>
