@@ -2,8 +2,8 @@
     jQuery(document).ready(function ($) {
             $('.dropdown-toggle').dropdown();
 
-            var valeurs_cas = [">", "250", "150", "50"];
-            var couleurs_cas = ["#3c0000", "#c80000", "#f95228", "#98ac3b"];
+            var valeurs_cas = [">", "400", "250", "150", "50"];
+            var couleurs_cas = ["purple", "#3c0000", "#c80000", "#f95228", "#98ac3b"];
 
             var valeurs_n_dose1_cumsum_pop = [">", "10", "9", "8", "7", "6", "5", "4", "3", "2"];
             //var couleurs_n_dose1_cumsum_pop = ["#98ac3b", "#3c0000", "#c80000", "#f95228"];
