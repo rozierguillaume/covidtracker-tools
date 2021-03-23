@@ -25,7 +25,8 @@
             <label>Données à afficher</label>
             <div id="checkboxes" style="text-align: left; height:300px; overflow-y:scroll; padding: 5px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
                     <div class='checkbox'><label> <input type='checkbox' id="types_incidence" onchange='boxTypeChecked("incidence")' checked>Taux d'incidence </label></div> <br>
-                    <div class='checkbox'><label> <input type='checkbox' id="types_cas" onchange='boxTypeChecked("cas")'>Cas positifs </label></div> <br>
+                    <div class='checkbox'><label> <input type='checkbox' id="types_cas" onchange='boxTypeChecked("cas")'>Cas positifs (prélèvement)</label></div> <br>
+                    <div class='checkbox'><label> <input type='checkbox' id="types_cas_spf" onchange='boxTypeChecked("cas_spf")'>Cas positifs (remontée)</label></div> <br>
                     <div class='checkbox'><label> <input type='checkbox' id="types_tests" onchange='boxTypeChecked("tests")'>Dépistage </label></div> <br>
                     <div class='checkbox'><label> <input type='checkbox' id="types_taux_positivite" onchange='boxTypeChecked("taux_positivite")'>Taux de positivite </label></div> <br>
                     <div class='checkbox'><label> <input type='checkbox' id="types_hospitalisations" onchange='boxTypeChecked("hospitalisations")'>Hospitalisations </label></div> <br>
@@ -97,7 +98,8 @@ var types_descriptions = {
     "reanimations": "Nombre de lits de réanimation occupés à l'hôpital pour Covid19.",
     "incid_reanimations": "Nombre d'admissions quotidiennes en réanimation pour Covid19 (moyenne glissante 7 jours).",
     "deces_hospitaliers": "Nombre de décès quotidiens pour Covid19 à l'hôpital (moyenne glissante 7 jours).",
-    "cas": "Nombre de tests positifs quotidiens (RT-PCR et antigéniques) (moyenne glissante 7 jours).",
+    "cas": "Nombre de tests positifs quotidiens par date de prélèvement (J-3) (RT-PCR et antigéniques) (moyenne glissante 7 jours).",
+    "cas_spf": "Nombre de tests positifs quotidiens par date de remontée du résultat (RT-PCR et antigéniques) (moyenne glissante 7 jours).",
     "tests": "Nombre de tests quotidiens (positifs et négatifs) (moyenne glissante 7 jours).",
     "nbre_acte_corona": "Nombre d'actes SOS médecin pour suspicion Covid19 (moyenne glissante 7 jours).",
     "nbre_pass_corona": "Nombre de passages aux urgences pour suspicion Covid19 (moyenne glissante 7 jours).",
@@ -111,7 +113,8 @@ var types_titres = {
     "reanimations": "Réanimations",
     "incid_reanimations": "Nouvelles admissions en réanimation",
     "deces_hospitaliers": "Décès hospitaliers",
-    "cas": "Cas positifs",
+    "cas": "Cas positifs (prélèvement)",
+    "cas_spf": "Cas positifs (remontée)",
     "tests": "Dépistage",
     "nbre_acte_corona": "Actes SOS médecin pour Covid19",
     "nbre_pass_corona": "Passages aux urgences pour Covid19",
