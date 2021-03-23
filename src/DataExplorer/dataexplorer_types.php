@@ -212,8 +212,7 @@ function secureChangeTime_types(){
 
 function changeTimeTypes(){
     let types_selected_age_data = types_selected[0]
-    
-    
+
     let idx = document.getElementById('sliderUITypes').noUiSlider.get(); // document.getElementById("timeSlider").value
     let nom_jour = data["france"]["reanimations"]["jour_nom"]
 
@@ -246,7 +245,7 @@ function changeTimeTypes(){
 
         })
     })
-
+    types_dataExplorerAgeChart.update()
 }
 
 
