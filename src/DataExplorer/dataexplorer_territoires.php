@@ -254,8 +254,8 @@ function changeTime(){
 
     dataExplorerChart.options.scales.yAxes.map((axis, idx) => {
         axis.ticks = {
-        min: 0,
-        max: y_max
+            min: 0,
+            max: y_max
         }
     })
     

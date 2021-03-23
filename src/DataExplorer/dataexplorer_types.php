@@ -412,20 +412,27 @@ function addTraceTypes(value, territoire_temp){
         pointHoverBackgroundColor: "#"+age_seq[N],
     })
 
-    types_dataExplorerAgeChart.options.scales.yAxes.push({
+    var axes = {
         id: value,
         display: true,
         gridLines: {
-                        display: true,
-                        lineWidth: 1,
-                        borderDash: [0.8, 2],
-                        color: "#"+age_seq[N],
+                    display: true,
+                    lineWidth: 1,
+                    borderDash: [0.8, 2],
+                    color: "#"+age_seq[N],
                     },
         ticks: {
             fontColor: "#"+age_seq[N],
-            fontSize: 8
+            fontSize: 8,
+
         }
-    })
+    }
+
+    if(value.includes("cas")){
+        axes.ticks.max = 50000;
+    }
+
+    types_dataExplorerAgeChart.options.scales.yAxes.push(axes)
     
     types_dataExplorerAgeChart.update();
 }
