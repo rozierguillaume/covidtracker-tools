@@ -306,7 +306,6 @@ function buildChartTypes(){
         territoire_temp=noms_zones[territoire_temp]
     }
     if (territoire_temp in data.departements_noms){
-        console.log(data.departements_noms[territoire_temp])
         complement += data.departements_noms[territoire_temp];
     }
 
@@ -398,7 +397,6 @@ function addTraceTypes(value, territoire_temp){
         complement += data.departements_noms[territoire_temp];
     }
     
-    
     types_dataExplorerAgeChart.data.datasets.push({
         yAxisID: value,
         label: types_titres[value],
@@ -429,7 +427,7 @@ function addTraceTypes(value, territoire_temp){
     }
 
     if(value.includes("cas")){
-        axes.ticks.max = 50000;
+        axes.ticks.max = 55000;
     }
 
     types_dataExplorerAgeChart.options.scales.yAxes.push(axes)
@@ -464,9 +462,23 @@ function buildEmptyChartTypes() {
                         return ctx.dataset.borderColor
                     },
                     formatter: function(value, context) {
+                        let idx = parseInt(document.getElementById('sliderUITypes').noUiSlider.get()[1]);
+
+                        let min_x = types_dataExplorerAgeChart.options.scales.xAxes[0].ticks.max
+                        if(context.dataset.data[context.dataset.data.length-1].x < types_dataExplorerAgeChart.options.scales.xAxes[0].ticks.max){
+                            min_x = context.dataset.data[context.dataset.data.length-1].x
+                        }
+                        
+                        if(context.dataset.data[context.dataIndex].x == min_x){
+                            return  context.dataset.label;
+                        }
+                        
                         if (context.dataset.data[context.dataIndex].x == types_dataExplorerAgeChart.options.scales.xAxes[0].ticks.max)
                         {
-                            return  context.dataset.label;
+                            console.log(context)
+                            console.log()
+                            //return  context.dataset.label;
+                            //return  context.dataset.label;
                         }
                         return "";
                     }
