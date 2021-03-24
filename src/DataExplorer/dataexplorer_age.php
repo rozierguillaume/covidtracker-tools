@@ -131,12 +131,7 @@ var age_titres = {
     "nbre_pass_corona": "Passages aux urgences pour Covid19",
 }
 
-var noms_zones = {
-    "zone_a": "Zone A",
-    "zone_b": "Zone B",
-    "zone_c": "Zone C",
-    "france": "France"
-}
+
 
 var noms_tranches = {
     "zone_a": "Zone A",

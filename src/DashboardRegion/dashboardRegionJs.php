@@ -19,6 +19,7 @@
             })
 
             .then(json => {
+                console.log(json)
                 donneesRegions = json['donnees_regions'];
                 donneesFrance = json['donnees_france'];
                 dateMaj = json["date_update"]

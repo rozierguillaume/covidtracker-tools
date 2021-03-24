@@ -120,19 +120,6 @@ var types_titres = {
     "nbre_pass_corona": "Passages aux urgences pour Covid19",
 }
 
-var noms_zones = {
-    "zone_a": "Zone A",
-    "zone_b": "Zone B",
-    "zone_c": "Zone C",
-    "france": "France"
-}
-
-var noms_tranches = {
-    "zone_a": "Zone A",
-    "zone_b": "Zone B",
-    "zone_c": "Zone C",
-    "france": "France"
-}
 
 var age_credits = ""//"<br><small>CovidTracker.fr/<b>CovidExplorer</b> - Données : Santé publique France</small>"
 //let incompatibles_age_pour100k = ["incidence", "taux_positivite"]

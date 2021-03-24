@@ -130,10 +130,12 @@ var titres = {
 }
 
 var noms_zones = {
+    "confines_mars_2021": "Dép. confinés (03/21)",
     "zone_a": "Zone A",
     "zone_b": "Zone B",
     "zone_c": "Zone C",
-    "france": "France"
+    "france": "France",
+   
 }
 
 var credits = ""//"<br><small>CovidTracker.fr/<b>CovidExplorer</b></small>"
@@ -371,6 +373,10 @@ function populateTerritoireSelect(){
     var html_code = "";
 
     if (typeDonnees!="deces_ehpad"){
+
+        
+        html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters("confines_mars_2021") + "' onchange='boxChecked(\"" + replaceBadCharacters("confines_mars_2021") +"\")'>Dép. confinés (19/03/21)</label></div>" + "<br>"
+        
         html_code += "<br><i>Zones de vacances</i><br>"
         
         data.zones_vacances.map((zone, idx) => {
@@ -493,6 +499,9 @@ function addTrace(value, territoire, pour100k_temp){
     if(territoire in noms_zones){
         territoire=noms_zones[territoire]
     }
+    console.log(territoire)
+    console.log(noms_zones)
+    console.log(territoire in noms_zones)
 
     dataExplorerChart.data.datasets.push({
         yAxisID: value,
