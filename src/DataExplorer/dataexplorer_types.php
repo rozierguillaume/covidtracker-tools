@@ -34,6 +34,7 @@
                     <div class='checkbox'><label> <input type='checkbox' id="types_reanimations" onchange='boxTypeChecked("reanimations")' checked>Réanimations </label></div> <br>
                     <div class='checkbox'><label> <input type='checkbox' id="types_incid_reanimations" onchange='boxTypeChecked("incid_reanimations")'>Admissions en réanimation </label></div> <br>
                     <div class='checkbox'><label> <input type='checkbox' id="types_deces_hospitaliers" onchange='boxTypeChecked("deces_hospitaliers")'>Décès hospitaliers </label></div> <br>
+                    <div class='checkbox'><label> <input type='checkbox' id="types_n_cum_dose1" onchange='boxTypeChecked("n_cum_dose1")'>Personnes vaccinées </label></div> <br>
             </div>
 
             <br>
@@ -103,6 +104,7 @@ var types_descriptions = {
     "tests": "Nombre de tests quotidiens (positifs et négatifs) (moyenne glissante 7 jours).",
     "nbre_acte_corona": "Nombre d'actes SOS médecin pour suspicion Covid19 (moyenne glissante 7 jours).",
     "nbre_pass_corona": "Nombre de passages aux urgences pour suspicion Covid19 (moyenne glissante 7 jours).",
+    "n_cum_dose1": "Nombre de personnes ayant reçu au moins une dose de vaccin (J-1).",
 }
 
 var types_titres = {
@@ -118,6 +120,7 @@ var types_titres = {
     "tests": "Dépistage",
     "nbre_acte_corona": "Actes SOS médecin pour Covid19",
     "nbre_pass_corona": "Passages aux urgences pour Covid19",
+    "n_cum_dose1": "Personnes vaccinées",
 }
 
 
