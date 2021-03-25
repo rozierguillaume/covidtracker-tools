@@ -27,6 +27,9 @@
                         <option value="deces_hospitaliers">Décès hospitaliers</option>
                         <option value="deces_ehpad">Décès EHPAD</option>
                     </optgroup>
+                    <optgroup label="Vaccination">
+                        <option value="n_cum_dose1">Personnes vaccinées</option>
+                    </optgroup>
                 </select>
                 <br>
                 <input type='checkbox' id='pour100k' onchange="pour100kChecked()" style="margin-bottom:10px;"> Pour 100 k habitants
@@ -110,6 +113,7 @@ var descriptions = {
     "nbre_acte_corona": "Nombre d'actes SOS médecin pour suspicion Covid19 (moyenne glissante 7 jours).",
     "nbre_pass_corona": "Nombre de passages aux urgences pour suspicion Covid19 (moyenne glissante 7 jours).",
     "saturation_reanimations": "Proportion des lits disponibles avant l'épidémie (DREES 2018) occupés uniquement par les patients Covid19 (en %).",
+    "n_cum_dose1": "Nombre de personnes ayant reçu au moins une dose de vaccin (J-1)."
 }
 
 var titres = {
@@ -127,6 +131,7 @@ var titres = {
     "nbre_acte_corona": "Actes SOS médecin pour Covid19",
     "nbre_pass_corona": "Passages aux urgences pour Covid19",
     "saturation_reanimations": "Saturation des réanimations par les patients Covid19",
+    "n_cum_dose1": "Personnes vaccinées"
 }
 
 var noms_zones = {
