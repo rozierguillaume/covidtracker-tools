@@ -40,7 +40,6 @@ tr:nth-child(even) {
             <option value="nbre_acte_corona">Actes SOS médecin</option>
             <option value="nbre_pass_corona">Passages aux urgences</option>
             <option value="deces_hospitaliers">Décès hospitaliers</option>
-            <option value="deces_ehpad">Décès EHPAD</option>
         </optgroup>
         <optgroup label="Vaccination">
             <option value="n_cum_dose1">Personnes vaccinées</option>
