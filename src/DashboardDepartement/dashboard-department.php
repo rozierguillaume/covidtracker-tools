@@ -2,6 +2,26 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 <?php include(dirname(__FILE__) . '/dashboardDepartementsCSS.php') ?>
 <?php include(dirname(__FILE__) . '/dashboardDepartementsJs.php') ?>
+
+<div class="alert alert-info clearFix" style="font-size: 18px; margin-top:10px; margin-bottom:40px;">
+    <div class="row">
+        <div class="col-md-8">
+            <small>NOUVEAU !</small>
+            <br>
+            <b>Explorez les données avec CovidExplorer</b>
+            <br>
+            Comment évolue le taux d'incidence dans votre département par rapport à votre région ? Quelle est la courbe des hospitalisations en France ?...<br>
+        </div>
+        <div class="col-md-4 text-right">
+            <button class="btn-shadow">
+                <a href="https://covidtracker.fr/covidexplorer" target="_blank" rel="noreferrer noopener">Accéder à 🔎
+                    <b>CovidExplorer</b></a>
+            </button> &nbsp;&nbsp;
+        </div>
+    </div>
+</div>
+
+
 <?php
 if (isset($_GET['dep']) and $_GET['dep']) {
     $department = $_GET['dep'];
