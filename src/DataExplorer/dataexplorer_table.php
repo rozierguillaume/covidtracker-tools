@@ -161,17 +161,19 @@ function populateTable(){
                     evolution_abs = valeur_j0 - valeur_j7
                     evolution = ((evolution_abs) / valeur_j7 * 100).toFixed(1)
                     
+                    
                     if(evolution>=0){
                         prefixe_evolution = "+"
                     }
+                    evolution = evolution.replace(".", ",")
+                    evolution_abs = evolution_abs.toFixed(1).replace(".", ",")
+                    
                 } else {
                     evolution = "--"
                     evolution_abs="--"
                 }
 
                 valeur_j0 = valeur_j0.toFixed(1).replace(".", ",")
-                evolution = evolution.replace(".", ",")
-                evolution_abs = evolution_abs.toFixed(1).replace(".", ",")
 
                 confine=""
 
