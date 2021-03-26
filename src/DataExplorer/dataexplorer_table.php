@@ -126,6 +126,7 @@ function pour100kChangeStyleTable(){
         }
     }
 }
+var confines_19_mars_21 = ["02", "06", "27", "59", "60", "62", "75", "76", "77", "78", "80", "91", "92", "93", "94", "95"]
 
 function populateTable(){
 
@@ -173,8 +174,15 @@ function populateTable(){
                 evolution = evolution.replace(".", ",")
                 evolution_abs = evolution_abs.toFixed(1).replace(".", ",")
 
+                confine=""
+
+                if(confines_19_mars_21.includes(dep_id)){
+                    confine="<i><span style='color: red'>Confiné (19 mars)</span></i>"
+                }
+                
+
                 content_html += "<tr>"
-                content_html += "<td>" + dep_id + " " + data_table.departements_noms[dep_id] + "</td>"
+                content_html += "<td><b>" + dep_id + " " + data_table.departements_noms[dep_id] + "</b><br>" + confine + "</td>"
                 content_html += "<td>" + valeur_j0 + suffixe + "</td>"
                 content_html += "<td>" + prefixe_evolution + evolution + " % </td>"
                 content_html += "<td>" + prefixe_evolution + evolution_abs + " </td>"
