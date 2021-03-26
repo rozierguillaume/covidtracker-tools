@@ -7,7 +7,7 @@ th {
 table {
   border-spacing: 0;
   width: 100%;
-  border: 1px solid #ddd;
+  border: 0px solid #ddd;
 }
 
 th, td {
@@ -49,7 +49,7 @@ tr:nth-child(even) {
 <input type='checkbox' id='pour100kTable' onchange="pour100kTableChecked()" style="margin-bottom:10px;"> Pour 100k habitants<br>
 <h4><span id="descriptionTable"></span></h4>
 
-<div style="overflow:scroll; height:75vh">
+<div style="overflow:scroll; height:75vh" shadow="">
     <table id="myTable">
     </table>
 </div>
