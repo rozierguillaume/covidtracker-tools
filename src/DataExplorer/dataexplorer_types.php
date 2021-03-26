@@ -115,7 +115,7 @@ var types_titres = {
     "reanimations": "Réanimations",
     "incid_reanimations": "Nouvelles admissions en réanimation",
     "deces_hospitaliers": "Décès hospitaliers",
-    "cas": "Cas positifs (prélèvement)",
+    "cas": "   Cas positifs (prélèvement)",
     "cas_spf": "Cas positifs (remontée)",
     "tests": "Dépistage",
     "nbre_acte_corona": "Actes SOS médecin pour Covid19",
@@ -225,11 +225,11 @@ function changeTimeTypes(){
         min: x_min_minimum,
         max: data["france"][nom_jour][idx_max]
         }
-    var y_max = 0
+    
 
-    types_dataExplorerAgeChart.data.datasets.map((age_dataset, idx_age_dataset) => {
-        
-        age_dataset.data.map((value, idx_age_data) => {
+    types_dataExplorerAgeChart.data.datasets.map((type_dataset, idx_type_dataset) => {
+        var y_max = 0
+        type_dataset.data.map((value, idx_type_data) => {
             if(value.x > x_min_minimum){
                 if(value.y*1.1 > y_max){
                     y_max = value.y*1.1
@@ -237,7 +237,15 @@ function changeTimeTypes(){
             }
 
         })
-    })
+        console.log(type_dataset.label)
+        if(type_dataset.label.includes("Cas")){
+            y_max = 55000;
+        }
+
+        types_dataExplorerAgeChart.options.scales.yAxes[idx_type_dataset].ticks.max = y_max
+        })
+    
+
     types_dataExplorerAgeChart.update()
 }
 
@@ -406,13 +414,12 @@ function addTraceTypes(value, territoire_temp){
         gridLines: {
                     display: true,
                     lineWidth: 1,
-                    borderDash: [0.8, 2],
+                    borderDash: [0.2, 2],
                     color: "#"+age_seq[N],
                     },
         ticks: {
             fontColor: "#"+age_seq[N],
             fontSize: 8,
-
         }
     }
 
