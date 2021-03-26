@@ -225,6 +225,9 @@ function buildLittleChart(dep_id){
             }]
         },
         options: {
+            animation: {
+                duration: 0
+            },
             responsive: false,
             maintainAspectRatio: false,
             legend: {
