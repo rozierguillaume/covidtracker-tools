@@ -1,0 +1,319 @@
+
+<style>
+th {
+  cursor: pointer;
+}
+
+table {
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+</style>
+</head>
+<body>
+
+<h3 id="table">Table de données</h3>
+<select name="type" id="typeDoneesTable" onchange="selectDataTable()" style="margin-top:10px;">
+        <optgroup label="Indicateurs épidémiques">
+            <option value="incidence">Taux d'incidence</option>
+            <option value="cas">Cas positifs</option>
+            <option value="tests">Dépistage</option>
+            <option value="taux_positivite_rolling_before">Taux de positivite</option>
+        </optgroup>
+        <optgroup label="Indicateurs sanitaires">
+            <option value="hospitalisations">Hospitalisations</option>
+            <option value="incid_hospitalisations">Admissions à l'hôpital</option>
+            <option value="reanimations">Réanimations</option>
+            <option value="incid_reanimations">Admissions en réanimation</option>
+            <option value="saturation_reanimations">Saturation des réanimations</option>
+        
+            <option value="nbre_acte_corona">Actes SOS médecin</option>
+            <option value="nbre_pass_corona">Passages aux urgences</option>
+            <option value="deces_hospitaliers">Décès hospitaliers</option>
+            <option value="deces_ehpad">Décès EHPAD</option>
+        </optgroup>
+        <optgroup label="Vaccination">
+            <option value="n_cum_dose1">Personnes vaccinées</option>
+        </optgroup>
+</select>
+<input type='checkbox' id='pour100kTable' onchange="pour100kTableChecked()" style="margin-bottom:10px;"> Pour 100k habitants<br>
+<h4><span id="descriptionTable"></span></h4>
+
+<div style="overflow:scroll; height:75vh">
+    <table id="myTable">
+    </table>
+</div>
+
+<script>
+var datatype_table = "incidence"
+var data_table;
+var lastsort=0;
+
+fetchDataTable();
+function fetchDataTable(){
+    fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/dataexplorer_compr.json', {cache: 'no-cache'})
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("HTTP error " + response.status);
+            }
+            return response.json();
+        })
+        .then(json => {
+                this.data_table = json;
+                populateTable()
+            })
+        .catch(function () {
+            this.dataError = true;
+            console.log("error-x1")
+        }
+        )
+}
+function header_table(){
+    jour_nom = data_table['france'][datatype_table].jour_nom
+    N = data_table['france'][datatype_table].valeur.length
+    var date = data_table['france'][jour_nom][N-1]
+return `
+    <tr>
+        <th onclick='sortTable(0)'>Département <span id='col0'>▼</span></th>
+        <th onclick='sortTable(1)'>`+ "Valeur (" + date +`) <span id='col1'>▽</span></th>
+        <th onclick='sortTable(2)'>Évolution (7 j.) <span id='col2'>▽</span></th>
+        <th></th>
+    </tr>
+  `
+}
+
+function selectDataTable(){
+    datatype_table = document.getElementById("typeDoneesTable").value
+    pour100kChangeStyleTable();
+    populateTable();
+}
+
+var pour100kTable=false
+function pour100kTableChecked(){
+    pour100kTable = !pour100kTable;
+    populateTable();
+}
+
+function pour100kChangeStyleTable(){
+    if (datatype_table == "incidence"){
+        document.getElementById("pour100kTable").checked = true;
+        document.getElementById("pour100kTable").setAttribute("disabled", "");
+        
+
+    } else if (datatype_table == "taux_positivite") {
+        document.getElementById("pour100kTable").checked = false;
+        document.getElementById("pour100kTable").setAttribute("disabled", "");
+        
+    } else {
+        document.getElementById("pour100kTable").removeAttribute("disabled");
+        if(!pour100kTable){
+            document.getElementById("pour100kTable").checked = false;
+        } else {
+            document.getElementById("pour100kTable").checked = true;
+        }
+    }
+}
+
+function populateTable(){
+
+    document.getElementById("descriptionTable").innerHTML = descriptions[datatype_table]
+
+    if(pour100kTable){
+        document.getElementById("descriptionTable").innerHTML += " Pour 100k habitants."
+    }
+
+    var content_html=header_table()
+        data_table.departements.map((dep_id, idx) => {
+            if(datatype_table in data_table[dep_id]){
+                population = 1
+
+                if(pour100kTable){
+                    population = data_table[dep_id].population/100000
+                }
+
+                suffixe = ""
+
+                if(datatype_table.includes("positiv")){
+                    suffixe="%"
+                }
+
+                N = data_table[dep_id][datatype_table].valeur.length
+                valeur_j0 = data_table[dep_id][datatype_table].valeur[N-1]/population
+                valeur_j7 = data_table[dep_id][datatype_table].valeur[N-8]/population
+
+                prefixe_evolution = ""
+                if(valeur_j7!=0){
+                    evolution = ((valeur_j0 - valeur_j7) / valeur_j7 * 100).toFixed(1)
+                    
+                    if(evolution>=0){
+                        prefixe_evolution = "+"
+                    }
+                } else {
+                    evolution = "--"
+                }
+
+                evolution = evolution.replace(".", ",")
+
+                content_html += "<tr>"
+                content_html += "<td>" + dep_id + " " + data_table.departements_noms[dep_id] + "</td>"
+                content_html += "<td>" + valeur_j0.toFixed(0) + suffixe + "</td>"
+                content_html += "<td>" + prefixe_evolution + evolution + " % </td>"
+                content_html += "<td>" + "<div><canvas id='littleChart"+ dep_id +"' width='150' height='50'></canvas></div>" + "</td>"
+                
+                content_html += "</tr>"
+            }
+            })
+
+            document.getElementById("myTable").innerHTML = content_html
+
+            data_table.departements.map((dep_id, idx) => {
+                if(datatype_table in data_table[dep_id]){
+                    buildLittleChart(dep_id)
+                }
+            })
+        
+    sortTable(lastsort)
+    
+}
+
+var ctx_list = []
+var chart_list = []
+function buildLittleChart(dep_id){
+    
+
+    var ctx = document.getElementById('littleChart'+dep_id).getContext('2d');
+    
+
+    ctx_list.push(ctx)
+
+    jour_nom = data_table[dep_id][datatype_table].jour_nom
+    N = data_table[dep_id][datatype_table].valeur.length
+    DEB = N-40
+    data_ch = data_table[dep_id][datatype_table].valeur.slice(DEB, N).map((value, idx) => ({x: data_table['france'][jour_nom][idx+DEB], y:value}))
+
+    var gradient = ctx_list[ctx_list.length-1].createLinearGradient(180, 0, 0, 0);
+    gradient.addColorStop(0, 'rgba(58, 94, 153,0.2)');   
+    gradient.addColorStop(1, 'rgba(68, 110, 179,0)');
+
+    var gradientbis = ctx_list[ctx_list.length-1].createLinearGradient(0, 0, 200, 0);
+    gradientbis.addColorStop(0, 'rgba(58, 94, 153,0.1)');   
+    gradientbis.addColorStop(1, 'rgba(68, 110, 179,1)');
+
+
+    var myChart = new Chart(ctx_list[ctx_list.length-1], {
+        
+        type: 'line',
+        data: {
+            datasets: [{
+                label: '',
+                data: data_ch,
+                borderWidth: 3,
+                pointRadius: 0.1,
+                borderColor: gradientbis,
+                backgroundColor: gradient,
+                pointHitRadius: 5
+            }]
+        },
+        options: {
+            responsive: false,
+            maintainAspectRatio: false,
+            legend: {
+                display: false,
+            },
+            scales: {
+                yAxes: [{
+                    display: false,
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        min: 0,
+                    },
+
+                }],
+                xAxes: [{
+                    type: 'time',
+                    distribution: 'linear',
+                    display: false,
+                    gridLines: {
+                        display: false
+                     }
+                }]
+            },
+            plugins: {
+                datalabels: {
+                    anchor: "end",
+                    clamp: true,
+                    align: 'right',
+                    color: function(ctx) {
+                        return ctx.dataset.borderColor
+                    },
+                    formatter: function(value, context) {
+                        return ""
+                    }
+                },
+            },
+        }
+    });
+    chart_list.push(myChart)
+
+}
+
+function sortTable(idxToSort) {
+    lastsort = idxToSort
+    document.getElementById('col'+'0').innerHTML = "▽"
+    document.getElementById('col'+'1').innerHTML = "▽"
+    document.getElementById('col'+'2').innerHTML = "▽"
+
+    document.getElementById('col'+idxToSort).innerHTML = "▼"
+
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("myTable");
+  //console.log(table.innerHTML)
+  switching = true;
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    //console.log(rows)
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[idxToSort];
+      y = rows[i + 1].getElementsByTagName("TD")[idxToSort];
+      //check if the two rows should switch place:
+      if (parseInt(x.innerHTML.toLowerCase()) < parseInt(y.innerHTML.toLowerCase())) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+</script>
+
+</body>
+</html>
+

@@ -13,7 +13,7 @@
                         <option value="incidence">Taux d'incidence</option>
                         <option value="cas">Cas positifs</option>
                         <option value="tests">Dépistage</option>
-                        <option value="taux_positivite_rolling_before">Taux de positivite</option>
+                        <option value="taux_positivite_rolling_before">Taux de positivité</option>
                     </optgroup>
                     <optgroup label="Indicateurs sanitaires">
                         <option value="hospitalisations">Hospitalisations</option>
@@ -32,7 +32,7 @@
                     </optgroup>
                 </select>
                 <br>
-                <input type='checkbox' id='pour100k' onchange="pour100kChecked()" style="margin-bottom:10px;"> Pour 100 k habitants
+                <input type='checkbox' id='pour100k' onchange="pour100kChecked()" style="margin-bottom:10px;"> Pour 100k habitants
                 
                 </div>
             <br>
@@ -120,7 +120,7 @@ var titres = {
     "hospitalisations": "Hospitalisations",
     "incid_hospitalisations": "Nouvelles admissions à l'hospital",
     "incidence": "Taux d'incidence",
-    "taux_positivite": "Taux de positivité*",
+    "taux_positivite": "Taux de positivité",
     "taux_positivite_rolling_before": "Taux de positivité*",
     "reanimations": "Réanimations",
     "incid_reanimations": "Nouvelles admissions en réanimation",
@@ -144,7 +144,7 @@ var noms_zones = {
 }
 
 var credits = ""//"<br><small>CovidTracker.fr/<b>CovidExplorer</b></small>"
-let incompatibles_pour100k = ["incidence", "taux_positivite"]
+let incompatibles_pour100k = ["incidence", "taux_positivite", "taux_positivite_rolling_before"]
 
 function boxChecked(value){
 

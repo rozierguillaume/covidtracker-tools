@@ -52,8 +52,8 @@
         />
             <div class="chart-container" style="position: relative; height:60vh; width:100%">
                 <canvas id="types_dataExplorerAgeChart" style="margin-top:20px; max-height: 800px; max-width: 1500px;"></canvas>
-                
             </div>
+            
             <div id="sliderUITypes" style="margin-top:10px; margin-bottom: 10px;"></div>
             <!--
             <div class="slidecontainer" style="margin-top: 10px; margin-bottom: 5px;">
