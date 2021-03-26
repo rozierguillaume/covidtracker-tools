@@ -22,7 +22,7 @@ tr:nth-child(even) {
 </head>
 <body>
 
-<h3 id="table">Table de données</h3>
+<h3 id="table" style="margin-top: 40px;">Table de données</h3>
 <select name="type" id="typeDoneesTable" onchange="selectDataTable()" style="margin-top:10px;">
         <optgroup label="Indicateurs épidémiques">
             <option value="incidence">Taux d'incidence</option>
@@ -58,6 +58,7 @@ tr:nth-child(even) {
 var datatype_table = "incidence"
 var data_table;
 var lastsort=0;
+var lastorder="asc";
 
 fetchDataTable();
 function fetchDataTable(){
@@ -84,10 +85,10 @@ function header_table(){
     var date = data_table['france'][jour_nom][N-1]
 return `
     <tr>
-        <th onclick='sortTable(0)'>Département <span id='col0'>▼</span></th>
-        <th onclick='sortTable(1)'>`+ "Valeur (" + date +`) <span id='col1'>▽</span></th>
-        <th onclick='sortTable(2)'>Évolution (7 j.) <span id='col2'>▽</span></th>
-        <th onclick='sortTable(3)'>Évolution absolue (7 j.) <span id='col3'>▽</span></th>
+        <th onclick='sortTable(0, "ind")'>Département <span id='col0'>▼</span></th>
+        <th onclick='sortTable(1, "ind")'>`+ "Valeur (" + date +`) <span id='col1'>▽</span></th>
+        <th onclick='sortTable(2, "ind")'>Évolution (7 j.) <span id='col2'>▽</span></th>
+        <th onclick='sortTable(3, "ind")'>Évolution absolue (7 j.) <span id='col3'>▽</span></th>
         <th></th>
     </tr>
   `
@@ -105,13 +106,14 @@ function pour100kTableChecked(){
     populateTable();
 }
 
+pour100kChangeStyleTable()
 function pour100kChangeStyleTable(){
     if (datatype_table == "incidence"){
         document.getElementById("pour100kTable").checked = true;
         document.getElementById("pour100kTable").setAttribute("disabled", "");
         
 
-    } else if (datatype_table == "taux_positivite") {
+    } else if (datatype_table == "taux_positivite_rolling_before") {
         document.getElementById("pour100kTable").checked = false;
         document.getElementById("pour100kTable").setAttribute("disabled", "");
         
@@ -139,7 +141,9 @@ function populateTable(){
                 population = 1
 
                 if(pour100kTable){
+                    if(!incompatibles_pour100k.includes(datatype_table)){
                     population = data_table[dep_id].population/100000
+                    }
                 }
 
                 suffixe = ""
@@ -188,7 +192,7 @@ function populateTable(){
                 }
             })
         
-    sortTable(lastsort)
+    sortTable(lastsort, lastorder)
     
 }
 
@@ -278,13 +282,35 @@ function buildLittleChart(dep_id){
 
 }
 
-function sortTable(idxToSort) {
+function sortTable(idxToSort, order) {
+    
+    if(lastsort==idxToSort){
+        if(lastorder=="desc"){
+            lastorder="asc"
+        }else if(lastorder=="asc"){
+            lastorder="desc"
+        }
+    }
+    if (order=="ind"){
+        order=lastorder
+    }
     lastsort = idxToSort
-    document.getElementById('col'+'0').innerHTML = "▽"
-    document.getElementById('col'+'1').innerHTML = "▽"
-    document.getElementById('col'+'2').innerHTML = "▽"
+    lastorder = order
 
-    document.getElementById('col'+idxToSort).innerHTML = "▼"
+    if(lastorder=="asc"){
+        document.getElementById('col'+'0').innerHTML = "▽"
+        document.getElementById('col'+'1').innerHTML = "▽"
+        document.getElementById('col'+'2').innerHTML = "▽"
+        document.getElementById('col'+'3').innerHTML = "▽"
+        document.getElementById('col'+idxToSort).innerHTML = "▼"
+    } else {
+        document.getElementById('col'+'0').innerHTML = "△"
+        document.getElementById('col'+'1').innerHTML = "△"
+        document.getElementById('col'+'2').innerHTML = "△"
+        document.getElementById('col'+'3').innerHTML = "△"
+        document.getElementById('col'+idxToSort).innerHTML = "▲"
+    }
+    
 
   var table, rows, switching, i, x, y, shouldSwitch;
   table = document.getElementById("myTable");
@@ -307,7 +333,15 @@ function sortTable(idxToSort) {
       x = rows[i].getElementsByTagName("TD")[idxToSort];
       y = rows[i + 1].getElementsByTagName("TD")[idxToSort];
       //check if the two rows should switch place:
-      if (parseInt(x.innerHTML.toLowerCase()) < parseInt(y.innerHTML.toLowerCase())) {
+      
+      assess=false
+      if(order=="desc"){
+          assess = (parseInt(x.innerHTML.toLowerCase()) < parseInt(y.innerHTML.toLowerCase()))
+      } 
+      if(order=="asc") {
+          assess = (parseInt(x.innerHTML.toLowerCase()) > parseInt(y.innerHTML.toLowerCase()))
+      }
+      if (assess) {
         //if so, mark as a switch and break the loop:
         shouldSwitch = true;
         break;

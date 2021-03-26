@@ -278,7 +278,7 @@ function checkPour100k(selected_data){
         document.getElementById("pour100k").setAttribute("disabled", "");
         return false;
 
-    } else if (selected_data == "taux_positivite") {
+    } else if (selected_data == "taux_positivite_rolling_before") {
         
         document.getElementById("pour100k").checked = false;
         document.getElementById("pour100k").setAttribute("disabled", "");
