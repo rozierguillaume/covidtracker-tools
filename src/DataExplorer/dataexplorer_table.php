@@ -162,15 +162,18 @@ function populateTable(){
                     }
                 } else {
                     evolution = "--"
+                    evolution_abs="--"
                 }
 
+                valeur_j0 = valeur_j0.toFixed(1).replace(".", ",")
                 evolution = evolution.replace(".", ",")
+                evolution_abs = evolution_abs.toFixed(1).replace(".", ",")
 
                 content_html += "<tr>"
                 content_html += "<td>" + dep_id + " " + data_table.departements_noms[dep_id] + "</td>"
-                content_html += "<td>" + valeur_j0.toFixed(0) + suffixe + "</td>"
+                content_html += "<td>" + valeur_j0 + suffixe + "</td>"
                 content_html += "<td>" + prefixe_evolution + evolution + " % </td>"
-                content_html += "<td>" + prefixe_evolution + evolution_abs.toFixed(1) + " </td>"
+                content_html += "<td>" + prefixe_evolution + evolution_abs + " </td>"
                 content_html += "<td>" + "<div><canvas id='littleChart"+ dep_id +"' width='150' height='50'></canvas></div>" + "</td>"
                 
                 content_html += "</tr>"
