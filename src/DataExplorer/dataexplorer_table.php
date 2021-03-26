@@ -87,6 +87,7 @@ return `
         <th onclick='sortTable(0)'>Département <span id='col0'>▼</span></th>
         <th onclick='sortTable(1)'>`+ "Valeur (" + date +`) <span id='col1'>▽</span></th>
         <th onclick='sortTable(2)'>Évolution (7 j.) <span id='col2'>▽</span></th>
+        <th onclick='sortTable(3)'>Évolution absolue (7 j.) <span id='col3'>▽</span></th>
         <th></th>
     </tr>
   `
@@ -153,7 +154,8 @@ function populateTable(){
 
                 prefixe_evolution = ""
                 if(valeur_j7!=0){
-                    evolution = ((valeur_j0 - valeur_j7) / valeur_j7 * 100).toFixed(1)
+                    evolution_abs = valeur_j0 - valeur_j7
+                    evolution = ((evolution_abs) / valeur_j7 * 100).toFixed(1)
                     
                     if(evolution>=0){
                         prefixe_evolution = "+"
@@ -168,6 +170,7 @@ function populateTable(){
                 content_html += "<td>" + dep_id + " " + data_table.departements_noms[dep_id] + "</td>"
                 content_html += "<td>" + valeur_j0.toFixed(0) + suffixe + "</td>"
                 content_html += "<td>" + prefixe_evolution + evolution + " % </td>"
+                content_html += "<td>" + prefixe_evolution + evolution_abs.toFixed(1) + " </td>"
                 content_html += "<td>" + "<div><canvas id='littleChart"+ dep_id +"' width='150' height='50'></canvas></div>" + "</td>"
                 
                 content_html += "</tr>"
