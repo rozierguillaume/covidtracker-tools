@@ -1,15 +1,6 @@
 
 <style>
 
-th {
-  position: -webkit-sticky;
-  position: sticky;
-  top: -15;
-  z-index: 2;
-  background-color: white;
-  cursor: pointer;
-}
-
 .btn-group{
         box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
     }
@@ -44,6 +35,16 @@ th, td {
 tr:nth-child(even) {
   background-color: #f2f2f2
 }
+
+th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: -15;
+  z-index: 2;
+  background-color: white;
+  cursor: pointer;
+}
+
 </style>
 </head>
 <body>
