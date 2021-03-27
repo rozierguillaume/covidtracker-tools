@@ -2,10 +2,12 @@
 <style>
 
 .btn-group{
-        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+    box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
     }
+
 .btn{
     color: black;
+    border: 1px solid grey;
     
 }
 .btn.active{
@@ -150,7 +152,7 @@ return `
         <tr>
             <th onclick='sortTable(0, "ind")'>Territoire <span id='col0'>▼</span></th>
             <th onclick='sortTable(1, "ind")'>`+ "Valeur (" + date +`) <span id='col1'>▽</span></th>
-            <th onclick='sortTable(2, "ind")'>Évolution (7 j.) <span id='col2'>▽</span></th>
+            <th onclick='sortTable(2, "ind")'>Évolution relative (7 j.) <span id='col2'>▽</span></th>
             <th onclick='sortTable(3, "ind")'>Évolution absolue (7 j.) <span id='col3'>▽</span></th>
             <th></th>
         </tr>
@@ -267,7 +269,7 @@ function populateTable(){
             content_html += "<td>" + valeur_j0 + suffixe + "</td>"
             content_html += "<td>" + prefixe_evolution + evolution + " % </td>"
             content_html += "<td>" + prefixe_evolution + evolution_abs + " </td>"
-            content_html += "<td>" + "<div><canvas id='littleChart" + replaceBadCharacters(dep_id) + "' width='150' height='50'></canvas></div>" + "</td>"
+            content_html += "<td style='text-align: right; padding: 0px 0px 0px 0px;'>" + "<div><canvas id='littleChart" + replaceBadCharacters(dep_id) + "' width='170' height='50'></canvas></div>" + "</td>"
             
             content_html += "</tr>"
         }
@@ -302,11 +304,11 @@ function buildLittleChart(dep_id){
     data_ch = data_table[dep_id][datatype_table].valeur.slice(DEB, N).map((value, idx) => ({x: data_table['france'][jour_nom][idx+DEB], y:value}))
 
     var gradient = ctx_list[ctx_list.length-1].createLinearGradient(180, 0, 0, 0);
-    gradient.addColorStop(0, 'rgba(58, 94, 153,0.2)');   
-    gradient.addColorStop(1, 'rgba(68, 110, 179,0)');
+    gradient.addColorStop(0, 'rgba(58, 94, 153, 0.2)');   
+    gradient.addColorStop(1, 'rgba(68, 110, 179, 0)');
 
     var gradientbis = ctx_list[ctx_list.length-1].createLinearGradient(0, 0, 200, 0);
-    gradientbis.addColorStop(0, 'rgba(58, 94, 153,0.1)');   
+    gradientbis.addColorStop(0, 'rgba(58, 94, 153, 0.1)');   
     gradientbis.addColorStop(1, 'rgba(68, 110, 179,1)');
 
 
