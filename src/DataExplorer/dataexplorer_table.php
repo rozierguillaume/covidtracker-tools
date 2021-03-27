@@ -167,7 +167,7 @@ function populateTable(){
                     }
                     evolution = evolution.replace(".", ",")
                     evolution_abs = evolution_abs.toFixed(1).replace(".", ",")
-                    
+
                 } else {
                     evolution = "--"
                     evolution_abs="--"
@@ -183,7 +183,7 @@ function populateTable(){
                 
 
                 content_html += "<tr>"
-                content_html += "<td><b>" + dep_id + " " + data_table.departements_noms[dep_id] + "</b><br>" + confine + "</td>"
+                content_html += "<td>" + dep_id + " " + data_table.departements_noms[dep_id] + "<br>" + confine + "</td>"
                 content_html += "<td>" + valeur_j0 + suffixe + "</td>"
                 content_html += "<td>" + prefixe_evolution + evolution + " % </td>"
                 content_html += "<td>" + prefixe_evolution + evolution_abs + " </td>"
