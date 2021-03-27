@@ -25,9 +25,7 @@ table {
   border: 0px solid #ddd;
 }
 
-.td-b{
-    font-weight: bold;
-}
+
 
 th, td {
   text-align: left;
@@ -47,8 +45,9 @@ th {
 }
 
 </style>
-</head>
+
 <body>
+
 
 <h3 id="table" style="margin-top: 40px;">Table de données</h3>
 <select name="type" id="typeDoneesTable" onchange="selectDataTable()" style="margin-top:10px; margin-right: 10px;">
@@ -88,13 +87,12 @@ th {
 
 <h4 style="margin-top: 25px;"><span id="descriptionTable" ></span></h4>
 
-<div style="overflow:scroll; height:75vh" shadow="">
+<div style="overflow:scroll; height:85vh" shadow="">
     <table id="myTable">
     </table>
 </div>
 
 <script type="text/javascript">
-
 
 var territoire = "departements"
     jQuery(document).ready(function ($) {
@@ -122,7 +120,7 @@ function replaceBadCharacters(dep){
 var datatype_table = "incidence"
 var data_table;
 var lastsort=0;
-var lastorder="asc";
+var lastorder="desc";
 
 fetchDataTable();
 function fetchDataTable(){
@@ -152,9 +150,9 @@ return `
         <tr>
             <th onclick='sortTable(0, "ind")'>Territoire <span id='col0'>▼</span></th>
             <th onclick='sortTable(1, "ind")'>`+ "Valeur (" + date +`) <span id='col1'>▽</span></th>
-            <th onclick='sortTable(2, "ind")'>Évolution relative (7 j.) <span id='col2'>▽</span></th>
-            <th onclick='sortTable(3, "ind")'>Évolution absolue (7 j.) <span id='col3'>▽</span></th>
-            <th></th>
+            <th onclick='sortTable(2, "ind")'>Évolution (7 j.) <span id='col2'>▽</span></th>
+            <th onclick='sortTable(3, "ind")'>Évolution (3 j.) <span id='col3'>▽</span></th>
+            <th>Depuis sept. 2020</th>
         </tr>
 
   `
@@ -193,6 +191,7 @@ function pour100kChangeStyleTable(){
     }
 }
 var confines_19_mars_21 = ["02", "06", "27", "59", "60", "62", "75", "76", "77", "78", "80", "91", "92", "93", "94", "95"]
+var confines_27_mars_21 = ["69", "58"]
 
 function populateTable(){
     document.getElementById("descriptionTable").innerHTML = "<b>" + titres[datatype_table] + ".</b> " + descriptions[datatype_table]
@@ -204,8 +203,6 @@ function populateTable(){
     var content_html=header_table()
     var matrice = data_table[territoire].slice()
     matrice.push('france')
-
-    console.log(matrice)
 
     matrice.map((dep_id, idx) => {
         if(datatype_table in data_table[dep_id]){
@@ -226,14 +223,17 @@ function populateTable(){
             N = data_table[dep_id][datatype_table].valeur.length
             valeur_j0 = data_table[dep_id][datatype_table].valeur[N-1]/population
             valeur_j7 = data_table[dep_id][datatype_table].valeur[N-8]/population
+            valeur_j3 = data_table[dep_id][datatype_table].valeur[N-4]/population
 
             prefixe_evolution = ""
+            color="black"
             if(valeur_j7!=0){
                 evolution_abs = valeur_j0 - valeur_j7
                 evolution = ((evolution_abs) / valeur_j7 * 100).toFixed(1)
                 
-                
+                color="green"
                 if(evolution>=0){
+                    color="red"
                     prefixe_evolution = "+"
                 }
                 evolution = evolution.replace(".", ",")
@@ -244,13 +244,35 @@ function populateTable(){
                 evolution_abs="--"
             }
 
+            prefixe_evolution_j3 = ""
+            color_j3="black"
+            if(valeur_j3!=0){
+                evolution_abs_j3 = valeur_j0 - valeur_j3
+                evolution_j3 = ((evolution_abs_j3) / valeur_j3 * 100).toFixed(1)
+                
+                color_j3 = "green"
+                if(evolution_j3>=0){
+                    prefixe_evolution_j3 = "+"
+                    color_j3="red"
+                }
+                evolution_j3 = evolution_j3.replace(".", ",")
+                evolution_abs_j3 = evolution_abs_j3.toFixed(1).replace(".", ",")
+
+            } else {
+                evolution_j3 = "--"
+                evolution_abs_j3="--"
+            }
+
             valeur_j0 = valeur_j0.toFixed(1).replace(".", ",")
 
             confine=""
             nom = dep_id
 
             if(confines_19_mars_21.includes(dep_id)){
-                confine="<i><span style='color: red'>Confiné (19 mars)</span></i>"
+                confine="<span style='font-size: 60%; color: white; background-color: black; padding: 2px; border-radius: 5px; opacity: 0.5;'>Confiné (19 mars)</span>"
+            }
+            if(confines_27_mars_21.includes(dep_id)){
+                confine="<span style='font-size: 60%; color: white; background-color: black; padding: 2px; border-radius: 5px; opacity: 0.5;'>Confiné (27 mars)</span>"
             }
 
             complement_territoire = ""
@@ -265,11 +287,12 @@ function populateTable(){
             }
             
             content_html += "<tr>"
-            content_html += "<td class='td-b'>" + nom + " " + complement_territoire + "<br>" + confine + "</td>"
-            content_html += "<td>" + valeur_j0 + suffixe + "</td>"
-            content_html += "<td>" + prefixe_evolution + evolution + " % </td>"
-            content_html += "<td>" + prefixe_evolution + evolution_abs + " </td>"
-            content_html += "<td style='text-align: right; padding: 0px 0px 0px 0px;'>" + "<canvas style='display: inline-block;' id='littleChart" + replaceBadCharacters(dep_id) + "' width='170' height='50'></canvas>" + "</td>"
+            content_html += "<td class='td-b'><span style='font-size: 125%;'>" + nom + " " + complement_territoire + "</span><br>" + confine + "</td>"
+            content_html += "<td><span></span><span style='font-size: 125%;'>" + valeur_j0 + suffixe + "</span></td>"
+            content_html += `<!--{{val}}--><td><span style="background:{{color}}; color: black; border-radius: 10px; padding: 2px; margin-right: 5px;"></span><span>`.replace("{{color}}", color).replace("{{val}}", evolution) + prefixe_evolution + evolution + " % </span></td>"
+            content_html += `<td><span style="background:{{color}}; color: black; border-radius: 10px; padding: 2px; margin-right: 5px;"></span><span>`.replace("{{color}}", color_j3) + prefixe_evolution_j3 + evolution_j3 + " % </span></td>"
+            //content_html += "<td>" + prefixe_evolution + evolution_abs + " </td>"
+            content_html += "<td style='text-align: right; padding: 0px 0px 0px 0px;'>" + "<canvas style='display: inline-block;' id='littleChart" + replaceBadCharacters(dep_id) + "' width='300' height='50'></canvas>" + "</td>"
             
             content_html += "</tr>"
         }
@@ -300,7 +323,7 @@ function buildLittleChart(dep_id){
 
     jour_nom = data_table[dep_id][datatype_table].jour_nom
     N = data_table[dep_id][datatype_table].valeur.length
-    DEB = N-40
+    DEB = 130
     data_ch = data_table[dep_id][datatype_table].valeur.slice(DEB, N).map((value, idx) => ({x: data_table['france'][jour_nom][idx+DEB], y:value}))
 
     var gradient = ctx_list[ctx_list.length-1].createLinearGradient(180, 0, 0, 0);
@@ -409,6 +432,7 @@ function sortTable(idxToSort, order) {
   switching = true;
   /*Make a loop that will continue until
   no switching has been done:*/
+  var j = 0
   while (switching) {
     //start by saying: no switching is done:
     switching = false;
@@ -424,35 +448,36 @@ function sortTable(idxToSort, order) {
       x = rows[i].getElementsByTagName("TD")[idxToSort];
       y = rows[i + 1].getElementsByTagName("TD")[idxToSort];
       //check if the two rows should switch place:
-      
-      if(idxToSort>0){
-        assess=false
-        if(order=="desc"){
-            assess = (parseInt(x.innerHTML.toLowerCase()) > parseInt(y.innerHTML.toLowerCase()))
-        } 
-        if(order=="asc") {
-            assess = (parseInt(x.innerHTML.toLowerCase()) < parseInt(y.innerHTML.toLowerCase()))
-        }
-      }
+      assess=false
 
-      if(idxToSort==0){
-        assess=false
+      if(idxToSort>0){
+        if(order=="desc"){
+            //console.log("___")
+            //console.log(idxToSort)
+            //console.log(x.getElementsByTagName('span')[1].innerHTML)
+
+            assess = (parseInt(x.getElementsByTagName('span')[1].innerHTML.toLowerCase()) > parseInt(y.getElementsByTagName('span')[1].innerHTML.toLowerCase()))
+        } else if(order=="asc") {
+            assess = (parseInt(x.getElementsByTagName('span')[1].innerHTML.toLowerCase()) < parseInt(y.getElementsByTagName('span')[1].innerHTML.toLowerCase()))
+        }
+      } else if(idxToSort==0){
         if(order=="desc"){
             //assess = (parseInt(x.innerHTML.toLowerCase()) < parseInt(y.innerHTML.toLowerCase()))
-            assess = (('' + x.innerHTML).localeCompare(y.innerHTML))
-        } 
-        if(order=="asc") {
+            assess = (('' + x.getElementsByTagName('span')[0].innerHTML).localeCompare(y.getElementsByTagName('span')[0].innerHTML))
+            assess = (assess == 1)
+        } else if(order=="asc") {
             //assess = (parseInt(x.innerHTML.toLowerCase()) > parseInt(y.innerHTML.toLowerCase()))
-            assess = (('' + y.innerHTML).localeCompare(x.innerHTML))
+            assess = (('' + y.getElementsByTagName('span')[0].innerHTML).localeCompare(x.getElementsByTagName('span')[0].innerHTML))
+            assess = (assess == 1)
         }
       }
-
-      if (assess==1) {
+      if (assess==true) {
         //if so, mark as a switch and break the loop:
         shouldSwitch = true;
         break;
       }
     }
+
     if (shouldSwitch) {
       /*If a switch has been marked, make the switch
       and mark that a switch has been done:*/
