@@ -39,7 +39,7 @@ tr:nth-child(even) {
 th {
   
   position: sticky;
-  top: 0;
+  top: -10px;
   z-index: 2;
   background-color: white;
   cursor: pointer;
