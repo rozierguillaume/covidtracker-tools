@@ -37,9 +37,9 @@ tr:nth-child(even) {
 }
 
 th {
-  position: -webkit-sticky;
+  
   position: sticky;
-  top: -15;
+  top: 0;
   z-index: 2;
   background-color: white;
   cursor: pointer;
