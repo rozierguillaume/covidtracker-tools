@@ -1,5 +1,32 @@
 
 <style>
+
+th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: -15;
+  z-index: 2;
+  background-color: white;
+}
+
+.btn-group{
+        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+    }
+.btn{
+    color: black;
+    
+}
+.btn.active{
+    background-color: grey;
+    color: white;
+    
+}
+#choixTable button{
+    margin: 0px;
+}
+
+
+
 th {
   cursor: pointer;
 }
@@ -8,6 +35,10 @@ table {
   border-spacing: 0;
   width: 100%;
   border: 0px solid #ddd;
+}
+
+.td-b{
+    font-weight: bold;
 }
 
 th, td {
@@ -23,7 +54,7 @@ tr:nth-child(even) {
 <body>
 
 <h3 id="table" style="margin-top: 40px;">Table de données</h3>
-<select name="type" id="typeDoneesTable" onchange="selectDataTable()" style="margin-top:10px;">
+<select name="type" id="typeDoneesTable" onchange="selectDataTable()" style="margin-top:10px; margin-right: 10px;">
         <optgroup label="Indicateurs épidémiques">
             <option value="incidence">Taux d'incidence</option>
             <option value="cas">Cas positifs</option>
@@ -46,14 +77,51 @@ tr:nth-child(even) {
         </optgroup>
 </select>
 <input type='checkbox' id='pour100kTable' onchange="pour100kTableChecked()" style="margin-bottom:10px;"> Pour 100k habitants<br>
-<h4><span id="descriptionTable"></span></h4>
+
+<div id="choixTable">
+    <div class="btn-group-sm" role="group" aria-label="Choix table">
+        <button id="choixTableDepartement" type="button" class="btn btn-secondary active">
+            Par département
+        </button>
+        <button id="choixTableRegion" type="button" class="btn btn-secondary">
+            Par région
+        </button>
+    </div>
+</div>
+
+<h4 style="margin-top: 25px;"><span id="descriptionTable" ></span></h4>
 
 <div style="overflow:scroll; height:75vh" shadow="">
     <table id="myTable">
     </table>
 </div>
 
-<script>
+<script type="text/javascript">
+
+
+var territoire = "departements"
+    jQuery(document).ready(function ($) {
+        $('#choixTableDepartement').click(function(){
+            $('#choixTableDepartement').addClass('active');
+            $('#choixTableRegion').removeClass('active');
+
+            territoire = "departements"
+            populateTable()
+        });
+
+        $('#choixTableRegion').click(function(){
+            $('#choixTableRegion').addClass('active');
+            $('#choixTableDepartement').removeClass('active');
+
+            territoire = "regions"
+            populateTable()            
+        });
+    });
+
+function replaceBadCharacters(dep){
+    return dep.replace("'", "&apos;").replace("ô", "&ocirc;")
+}
+
 var datatype_table = "incidence"
 var data_table;
 var lastsort=0;
@@ -83,13 +151,15 @@ function header_table(){
     N = data_table['france'][datatype_table].valeur.length
     var date = data_table['france'][jour_nom][N-1]
 return `
-    <tr>
-        <th onclick='sortTable(0, "ind")'>Département <span id='col0'>▼</span></th>
-        <th onclick='sortTable(1, "ind")'>`+ "Valeur (" + date +`) <span id='col1'>▽</span></th>
-        <th onclick='sortTable(2, "ind")'>Évolution (7 j.) <span id='col2'>▽</span></th>
-        <th onclick='sortTable(3, "ind")'>Évolution absolue (7 j.) <span id='col3'>▽</span></th>
-        <th></th>
-    </tr>
+
+        <tr>
+            <th onclick='sortTable(0, "ind")'>Territoire <span id='col0'>▼</span></th>
+            <th onclick='sortTable(1, "ind")'>`+ "Valeur (" + date +`) <span id='col1'>▽</span></th>
+            <th onclick='sortTable(2, "ind")'>Évolution (7 j.) <span id='col2'>▽</span></th>
+            <th onclick='sortTable(3, "ind")'>Évolution absolue (7 j.) <span id='col3'>▽</span></th>
+            <th></th>
+        </tr>
+
   `
 }
 
@@ -128,91 +198,107 @@ function pour100kChangeStyleTable(){
 var confines_19_mars_21 = ["02", "06", "27", "59", "60", "62", "75", "76", "77", "78", "80", "91", "92", "93", "94", "95"]
 
 function populateTable(){
-
-    document.getElementById("descriptionTable").innerHTML = descriptions[datatype_table]
+    document.getElementById("descriptionTable").innerHTML = "<b>" + titres[datatype_table] + ".</b> " + descriptions[datatype_table]
 
     if(pour100kTable){
         document.getElementById("descriptionTable").innerHTML += " Pour 100k habitants."
     }
 
     var content_html=header_table()
-        data_table.departements.map((dep_id, idx) => {
-            if(datatype_table in data_table[dep_id]){
-                population = 1
+    var matrice = data_table[territoire].slice()
+    matrice.push('france')
 
-                if(pour100kTable){
-                    if(!incompatibles_pour100k.includes(datatype_table)){
-                    population = data_table[dep_id].population/100000
-                    }
+    console.log(matrice)
+
+    matrice.map((dep_id, idx) => {
+        if(datatype_table in data_table[dep_id]){
+            population = 1
+
+            if(pour100kTable){
+                if(!incompatibles_pour100k.includes(datatype_table)){
+                population = data_table[dep_id].population/100000
                 }
-
-                suffixe = ""
-
-                if(datatype_table.includes("positiv")){
-                    suffixe="%"
-                }
-
-                N = data_table[dep_id][datatype_table].valeur.length
-                valeur_j0 = data_table[dep_id][datatype_table].valeur[N-1]/population
-                valeur_j7 = data_table[dep_id][datatype_table].valeur[N-8]/population
-
-                prefixe_evolution = ""
-                if(valeur_j7!=0){
-                    evolution_abs = valeur_j0 - valeur_j7
-                    evolution = ((evolution_abs) / valeur_j7 * 100).toFixed(1)
-                    
-                    
-                    if(evolution>=0){
-                        prefixe_evolution = "+"
-                    }
-                    evolution = evolution.replace(".", ",")
-                    evolution_abs = evolution_abs.toFixed(1).replace(".", ",")
-
-                } else {
-                    evolution = "--"
-                    evolution_abs="--"
-                }
-
-                valeur_j0 = valeur_j0.toFixed(1).replace(".", ",")
-
-                confine=""
-
-                if(confines_19_mars_21.includes(dep_id)){
-                    confine="<i><span style='color: red'>Confiné (19 mars)</span></i>"
-                }
-                
-
-                content_html += "<tr>"
-                content_html += "<td>" + dep_id + " " + data_table.departements_noms[dep_id] + "<br>" + confine + "</td>"
-                content_html += "<td>" + valeur_j0 + suffixe + "</td>"
-                content_html += "<td>" + prefixe_evolution + evolution + " % </td>"
-                content_html += "<td>" + prefixe_evolution + evolution_abs + " </td>"
-                content_html += "<td>" + "<div><canvas id='littleChart"+ dep_id +"' width='150' height='50'></canvas></div>" + "</td>"
-                
-                content_html += "</tr>"
             }
-            })
 
-            document.getElementById("myTable").innerHTML = content_html
+            suffixe = ""
 
-            data_table.departements.map((dep_id, idx) => {
-                if(datatype_table in data_table[dep_id]){
-                    buildLittleChart(dep_id)
+            if(datatype_table.includes("positiv")){
+                suffixe="%"
+            }
+
+            N = data_table[dep_id][datatype_table].valeur.length
+            valeur_j0 = data_table[dep_id][datatype_table].valeur[N-1]/population
+            valeur_j7 = data_table[dep_id][datatype_table].valeur[N-8]/population
+
+            prefixe_evolution = ""
+            if(valeur_j7!=0){
+                evolution_abs = valeur_j0 - valeur_j7
+                evolution = ((evolution_abs) / valeur_j7 * 100).toFixed(1)
+                
+                
+                if(evolution>=0){
+                    prefixe_evolution = "+"
                 }
-            })
-        
+                evolution = evolution.replace(".", ",")
+                evolution_abs = evolution_abs.toFixed(1).replace(".", ",")
+
+            } else {
+                evolution = "--"
+                evolution_abs="--"
+            }
+
+            valeur_j0 = valeur_j0.toFixed(1).replace(".", ",")
+
+            confine=""
+            nom = dep_id
+
+            if(confines_19_mars_21.includes(dep_id)){
+                confine="<i><span style='color: red'>Confiné (19 mars)</span></i>"
+            }
+
+            complement_territoire = ""
+
+            if (territoire=="departements"){
+                complement_territoire = data_table.departements_noms[dep_id]
+            }
+
+            if(dep_id == "france"){
+                complement_territoire = "🇫🇷"
+                nom = "France"
+            }
+            
+            content_html += "<tr>"
+            content_html += "<td class='td-b'>" + nom + " " + complement_territoire + "<br>" + confine + "</td>"
+            content_html += "<td>" + valeur_j0 + suffixe + "</td>"
+            content_html += "<td>" + prefixe_evolution + evolution + " % </td>"
+            content_html += "<td>" + prefixe_evolution + evolution_abs + " </td>"
+            content_html += "<td>" + "<div><canvas id='littleChart" + replaceBadCharacters(dep_id) + "' width='150' height='50'></canvas></div>" + "</td>"
+            
+            content_html += "</tr>"
+        }
+        })
+
+        document.getElementById("myTable").innerHTML = content_html
+
+        ctx_list = []
+        chart_list = []
+
+        matrice.map((dep_id, idx) => {
+            if(datatype_table in data_table[dep_id]){
+                buildLittleChart(dep_id)
+            } else {
+                console.log(dep_id)
+            }
+        })
+
     sortTable(lastsort, lastorder)
-    
 }
 
 var ctx_list = []
 var chart_list = []
 function buildLittleChart(dep_id){
-    
 
     var ctx = document.getElementById('littleChart'+dep_id).getContext('2d');
-    
-
     ctx_list.push(ctx)
 
     jour_nom = data_table[dep_id][datatype_table].jour_nom
@@ -230,7 +316,6 @@ function buildLittleChart(dep_id){
 
 
     var myChart = new Chart(ctx_list[ctx_list.length-1], {
-        
         type: 'line',
         data: {
             datasets: [{
@@ -343,14 +428,29 @@ function sortTable(idxToSort, order) {
       y = rows[i + 1].getElementsByTagName("TD")[idxToSort];
       //check if the two rows should switch place:
       
-      assess=false
-      if(order=="desc"){
-          assess = (parseInt(x.innerHTML.toLowerCase()) < parseInt(y.innerHTML.toLowerCase()))
-      } 
-      if(order=="asc") {
-          assess = (parseInt(x.innerHTML.toLowerCase()) > parseInt(y.innerHTML.toLowerCase()))
+      if(idxToSort>0){
+        assess=false
+        if(order=="desc"){
+            assess = (parseInt(x.innerHTML.toLowerCase()) < parseInt(y.innerHTML.toLowerCase()))
+        } 
+        if(order=="asc") {
+            assess = (parseInt(x.innerHTML.toLowerCase()) > parseInt(y.innerHTML.toLowerCase()))
+        }
       }
-      if (assess) {
+
+      if(idxToSort==0){
+        assess=false
+        if(order=="desc"){
+            //assess = (parseInt(x.innerHTML.toLowerCase()) < parseInt(y.innerHTML.toLowerCase()))
+            assess = (('' + x.innerHTML).localeCompare(y.innerHTML))
+        } 
+        if(order=="asc") {
+            //assess = (parseInt(x.innerHTML.toLowerCase()) > parseInt(y.innerHTML.toLowerCase()))
+            assess = (('' + y.innerHTML).localeCompare(x.innerHTML))
+        }
+      }
+
+      if (assess==1) {
         //if so, mark as a switch and break the loop:
         shouldSwitch = true;
         break;
