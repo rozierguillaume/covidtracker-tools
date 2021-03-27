@@ -7,6 +7,7 @@ th {
   top: -15;
   z-index: 2;
   background-color: white;
+  cursor: pointer;
 }
 
 .btn-group{
@@ -23,12 +24,6 @@ th {
 }
 #choixTable button{
     margin: 0px;
-}
-
-
-
-th {
-  cursor: pointer;
 }
 
 table {
