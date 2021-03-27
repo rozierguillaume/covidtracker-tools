@@ -30,6 +30,7 @@ table {
 th, td {
   text-align: left;
   padding: 16px;
+  font-weight: normal;
 }
 
 tr:nth-child(even) {
@@ -87,10 +88,12 @@ th {
 
 <h4 style="margin-top: 25px;"><span id="descriptionTable" ></span></h4>
 
+
 <div style="overflow:scroll; height:85vh" shadow="">
     <table id="myTable">
     </table>
 </div>
+<i>Cliquez sur une entête pour ordonner la colonne correspondante. </i>
 
 <script type="text/javascript">
 
@@ -148,11 +151,11 @@ function header_table(){
 return `
 
         <tr>
-            <th onclick='sortTable(0, "ind")'>Territoire <span id='col0'>▼</span></th>
-            <th onclick='sortTable(1, "ind")'>`+ "Valeur (" + date +`) <span id='col1'>▽</span></th>
-            <th onclick='sortTable(2, "ind")'>Évolution (7 j.) <span id='col2'>▽</span></th>
-            <th onclick='sortTable(3, "ind")'>Évolution (3 j.) <span id='col3'>▽</span></th>
-            <th>Depuis sept. 2020</th>
+            <th onclick='sortTable(0, "ind")'><b>Territoire</b> <span id='col0'>▼</span></th>
+            <th onclick='sortTable(1, "ind")'>`+ "<b>Valeur</b> au<br>" + date +` <span id='col1'>▽</span></th>
+            <th onclick='sortTable(2, "ind")'><b>Croissance hebdomadaire</b><br></b>aujourd'hui <span id='col2'>▽</span></th>
+            <th onclick='sortTable(3, "ind")'><b>Croissance hebdomadaire</b><br>à J-3 <span id='col3'>▽</span></th>
+            <th>Évolution depuis sept. 2020</th>
         </tr>
 
   `
@@ -223,7 +226,7 @@ function populateTable(){
             N = data_table[dep_id][datatype_table].valeur.length
             valeur_j0 = data_table[dep_id][datatype_table].valeur[N-1]/population
             valeur_j7 = data_table[dep_id][datatype_table].valeur[N-8]/population
-            valeur_j3 = data_table[dep_id][datatype_table].valeur[N-4]/population
+            valeur_j3 = data_table[dep_id][datatype_table].valeur[N-15]/population
 
             prefixe_evolution = ""
             color="black"
@@ -247,7 +250,7 @@ function populateTable(){
             prefixe_evolution_j3 = ""
             color_j3="black"
             if(valeur_j3!=0){
-                evolution_abs_j3 = valeur_j0 - valeur_j3
+                evolution_abs_j3 = valeur_j7 - valeur_j3
                 evolution_j3 = ((evolution_abs_j3) / valeur_j3 * 100).toFixed(1)
                 
                 color_j3 = "green"
