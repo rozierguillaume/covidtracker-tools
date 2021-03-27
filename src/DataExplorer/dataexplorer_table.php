@@ -269,7 +269,7 @@ function populateTable(){
             content_html += "<td>" + valeur_j0 + suffixe + "</td>"
             content_html += "<td>" + prefixe_evolution + evolution + " % </td>"
             content_html += "<td>" + prefixe_evolution + evolution_abs + " </td>"
-            content_html += "<td style='text-align: right; padding: 0px 0px 0px 0px;'>" + "<div><canvas id='littleChart" + replaceBadCharacters(dep_id) + "' width='170' height='50'></canvas></div>" + "</td>"
+            content_html += "<td style='text-align: right; padding: 0px 0px 0px 0px;'>" + "<canvas style='display: inline-block;' id='littleChart" + replaceBadCharacters(dep_id) + "' width='170' height='50'></canvas>" + "</td>"
             
             content_html += "</tr>"
         }
