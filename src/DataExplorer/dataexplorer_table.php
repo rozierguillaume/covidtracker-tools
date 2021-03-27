@@ -37,7 +37,6 @@ tr:nth-child(even) {
 }
 
 th {
-  
   position: sticky;
   top: -10px;
   z-index: 2;
@@ -427,10 +426,10 @@ function sortTable(idxToSort, order) {
       if(idxToSort>0){
         assess=false
         if(order=="desc"){
-            assess = (parseInt(x.innerHTML.toLowerCase()) < parseInt(y.innerHTML.toLowerCase()))
+            assess = (parseInt(x.innerHTML.toLowerCase()) > parseInt(y.innerHTML.toLowerCase()))
         } 
         if(order=="asc") {
-            assess = (parseInt(x.innerHTML.toLowerCase()) > parseInt(y.innerHTML.toLowerCase()))
+            assess = (parseInt(x.innerHTML.toLowerCase()) < parseInt(y.innerHTML.toLowerCase()))
         }
       }
 
