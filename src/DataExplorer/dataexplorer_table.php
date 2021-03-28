@@ -414,7 +414,8 @@ function sortTable(idxToSort, order) {
     lastsort = idxToSort
     lastorder = order
 
-    if(lastorder=="asc"){
+    // Down arrow is supposed to be for descending order I guess, grom highest to lowest
+    if(lastorder=="desc"){
         document.getElementById('col'+'0').innerHTML = "▽"
         document.getElementById('col'+'1').innerHTML = "▽"
         document.getElementById('col'+'2').innerHTML = "▽"
@@ -429,65 +430,39 @@ function sortTable(idxToSort, order) {
     }
     
 
-  var table, rows, switching, i, x, y, shouldSwitch;
-  table = document.getElementById("myTable");
-  //console.log(table.innerHTML)
-  switching = true;
-  /*Make a loop that will continue until
-  no switching has been done:*/
-  var j = 0
-  while (switching) {
-    //start by saying: no switching is done:
-    switching = false;
-    rows = table.rows;
-    //console.log(rows)
-    /*Loop through all table rows (except the
-    first, which contains table headers):*/
-    for (i = 1; i < (rows.length - 1); i++) {
-      //start by saying there should be no switching:
-      shouldSwitch = false;
-      /*Get the two elements you want to compare,
-      one from current row and one from the next:*/
-      x = rows[i].getElementsByTagName("TD")[idxToSort];
-      y = rows[i + 1].getElementsByTagName("TD")[idxToSort];
-      //check if the two rows should switch place:
-      assess=false
+    var table, rows, x, y;
+    table = document.getElementById("myTable");
 
-      if(idxToSort>0){
-        if(order=="desc"){
-            //console.log("___")
-            //console.log(idxToSort)
-            //console.log(x.getElementsByTagName('span')[1].innerHTML)
 
-            assess = (parseInt(x.getElementsByTagName('span')[1].innerHTML.toLowerCase()) > parseInt(y.getElementsByTagName('span')[1].innerHTML.toLowerCase()))
-        } else if(order=="asc") {
-            assess = (parseInt(x.getElementsByTagName('span')[1].innerHTML.toLowerCase()) < parseInt(y.getElementsByTagName('span')[1].innerHTML.toLowerCase()))
-        }
-      } else if(idxToSort==0){
-        if(order=="desc"){
-            //assess = (parseInt(x.innerHTML.toLowerCase()) < parseInt(y.innerHTML.toLowerCase()))
-            assess = (('' + x.getElementsByTagName('span')[0].innerHTML).localeCompare(y.getElementsByTagName('span')[0].innerHTML))
-            assess = (assess == 1)
-        } else if(order=="asc") {
-            //assess = (parseInt(x.innerHTML.toLowerCase()) > parseInt(y.innerHTML.toLowerCase()))
-            assess = (('' + y.getElementsByTagName('span')[0].innerHTML).localeCompare(x.getElementsByTagName('span')[0].innerHTML))
-            assess = (assess == 1)
-        }
-      }
-      if (assess==true) {
-        //if so, mark as a switch and break the loop:
-        shouldSwitch = true;
-        break;
-      }
-    }
 
-    if (shouldSwitch) {
-      /*If a switch has been marked, make the switch
-      and mark that a switch has been done:*/
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-    }
-  }
+ 	function compareRows(row1,row2) {
+	    x = row1.getElementsByTagName("TD")[idxToSort];
+	    y = row2.getElementsByTagName("TD")[idxToSort];
+        
+	    if(idxToSort > 0){
+            // Put back decimal point and use ParseFloat
+	    	x = parseFloat(x.getElementsByTagName('span')[1].innerHTML.toLowerCase().replace(",","."));
+	    	y = parseFloat(y.getElementsByTagName('span')[1].innerHTML.toLowerCase().replace(",","."));
+	    	if(x == NaN) return 1;
+	    	if(y == NaN) return -1;
+
+	        if(order == "desc")
+	           return y - x;
+	        else if(order == "asc")
+	            return x - y;
+	    }
+	    else if(idxToSort == 0) {
+		    if(order == "desc")
+		     	return (('' + y.getElementsByTagName('span')[0].innerHTML).localeCompare(x.getElementsByTagName('span')[0].innerHTML));
+		    else if(order == "asc")
+		    	return (('' + x.getElementsByTagName('span')[0].innerHTML).localeCompare(y.getElementsByTagName('span')[0].innerHTML));
+		        
+		}	
+	}		
+
+    // Used built-it javascript sort function instead of risking using a handwritten algorithm that might have mistakes
+    rows = Array.from(table.rows).slice(1);
+    rows.sort(compareRows).forEach(function(r) {r.parentNode.appendChild(r);});
 }
 </script>
 
