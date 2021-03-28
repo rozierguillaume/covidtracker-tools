@@ -440,9 +440,9 @@ function sortTable(idxToSort, order) {
 	    y = row2.getElementsByTagName("TD")[idxToSort];
         
 	    if(idxToSort > 0){
-            // Put back decimal point and use ParseFloat
-	    	x = parseFloat(x.getElementsByTagName('span')[1].innerHTML.toLowerCase().replace(",","."));
-	    	y = parseFloat(y.getElementsByTagName('span')[1].innerHTML.toLowerCase().replace(",","."));
+            // Put back decimal point and use ParseFloat, and take care of "+-0,0" value that caused a NaN
+	    	x = parseFloat(x.getElementsByTagName('span')[1].innerHTML.toLowerCase().replace(",",".").replace("+-", ""));
+	    	y = parseFloat(y.getElementsByTagName('span')[1].innerHTML.toLowerCase().replace(",",".").replace("+-", ""));
 	    	if(x == NaN) return 1;
 	    	if(y == NaN) return -1;
 
