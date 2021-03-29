@@ -1,0 +1,191 @@
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+crossorigin=""></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js" integrity="sha512-MQlyPV+ol2lp4KodaU/Xmrn+txc1TP15pOBF/2Sfre7MRsA/pB4Vy58bEqe9u7a7DczMLtU5wT8n7OblJepKbg==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css" integrity="sha512-BBToHPBStgMiw0lD4AtkRIZmdndhB6aQbXpX7omcrXeG2PauGBl2lzq2xUZTxaLxYz5IDHlmneCZ1IJ+P3kYtQ==" crossorigin="anonymous" />
+
+<h3 style="margin-top : 80px;" id="centres-vaccination">Centres de vaccination</h3>
+Carte des centres de vaccination. Source des données : Ministère de la Santé. Mise à jour plusieurs fois par jour.
+<br><br>
+<b>Nos conseils pour trouver un RDV</b><br>
+Les données affichées sur cette carte proviennent du Ministère de la Santé. Pour trouver un rendez-vous rapidement, nous vous conseillons de cliquer sur les centres les plus poches de chez vous, puis de cliquer sur le lien Doctolib, Keldoc ou Maiia présente sur la fiche du centre, lorsqu'il est renseigné. Vous pouvez aussi appeler le centre si son numéro est renseigné. N'hésitez pas à revenir plusieurs fois par jour, les données sont très régulièrement mises à jour.
+<br><br>
+<div id="mapid" style="height: 80vh; width: 90vw; max-width: 1000px; max-height: 600px;"></div>
+
+<br>
+<br>
+
+
+<script>
+
+
+    // ref: http://stackoverflow.com/a/1293163/2343
+    // This will parse a delimited string into an array of
+    // arrays. The default delimiter is the comma, but this
+    // can be overriden in the second argument.
+    function CSVToArray( strData, strDelimiter ){
+        // Check to see if the delimiter is defined. If not,
+        // then default to comma.
+        strDelimiter = (strDelimiter || ",");
+
+        // Create a regular expression to parse the CSV values.
+        var objPattern = new RegExp(
+            (
+                // Delimiters.
+                "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
+
+                // Quoted fields.
+                "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
+
+                // Standard fields.
+                "([^\"\\" + strDelimiter + "\\r\\n]*))"
+            ),
+            "gi"
+            );
+
+
+        // Create an array to hold our data. Give the array
+        // a default empty first row.
+        var arrData = [[]];
+
+        // Create an array to hold our individual pattern
+        // matching groups.
+        var arrMatches = null;
+
+
+        // Keep looping over the regular expression matches
+        // until we can no longer find a match.
+        while (arrMatches = objPattern.exec( strData )){
+
+            // Get the delimiter that was found.
+            var strMatchedDelimiter = arrMatches[ 1 ];
+
+            // Check to see if the given delimiter has a length
+            // (is not the start of string) and if it matches
+            // field delimiter. If id does not, then we know
+            // that this delimiter is a row delimiter.
+            if (
+                strMatchedDelimiter.length &&
+                strMatchedDelimiter !== strDelimiter
+                ){
+
+                // Since we have reached a new row of data,
+                // add an empty row to our data array.
+                arrData.push( [] );
+
+            }
+
+            var strMatchedValue;
+
+            // Now that we have our delimiter out of the way,
+            // let's check to see which kind of value we
+            // captured (quoted or unquoted).
+            if (arrMatches[ 2 ]){
+
+                // We found a quoted value. When we capture
+                // this value, unescape any double quotes.
+                strMatchedValue = arrMatches[ 2 ].replace(
+                    new RegExp( "\"\"", "g" ),
+                    "\""
+                    );
+
+            } else {
+
+                // We found a non-quoted value.
+                strMatchedValue = arrMatches[ 3 ];
+
+            }
+
+
+            // Now that we have our value string, let's add
+            // it to the data array.
+            arrData[ arrData.length - 1 ].push( strMatchedValue );
+        }
+
+        // Return the parsed data.
+        return( arrData );
+    }
+
+    var data = [];
+    var longitudes = [];
+    var latitudes = [];
+    var noms = [];
+    var reservation = [];
+    var rdv_tel = [];
+    var adresses = [];
+    var modalites = [];
+    var date_ouverture = [];
+    var maj = [];
+
+    const div = document.querySelector('div');
+    const url="https://www.data.gouv.fr/fr/datasets/r/5cb21a85-b0b0-4a65-a249-806a040ec372"
+
+    let request = fetch(url)
+    .then(response => response.arrayBuffer())
+    .then(buffer => {
+        let decoder = new TextDecoder();
+        let csv = decoder.decode(buffer);
+        data_array = CSVToArray(csv, ";");
+          
+        data_array.slice(1, data_array.length-1).map((value, idx) => {
+          longitudes.push(value[10])
+          latitudes.push(value[11])
+          noms.push(value[1])
+          reservation.push(value[34])
+          date_ouverture.push(value[33])
+          rdv_tel.push(value[35])
+          modalites.push(value[35])
+          adresses.push(value[5] + " " + value[6] + ", " + value[7] + " " + value[9])
+          maj.push(value[22].slice(0, 16))
+        })
+
+          ajouter_pins();
+    })
+    .catch(function () {
+           this.dataError = true;
+           console.log("error1")
+       });
+
+    var mymap = L.map('mapid').setView([46.505, 3], 6);
+    var markers = L.markerClusterGroup({ disableClusteringAtZoom: 9 });
+
+    var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(mymap);
+
+    
+    function ajouter_pins(){
+        latitudes.map((lat, idx)=>{
+            var reservation_str = ""
+            if (typeof reservation[idx] != 'undefined'){
+
+                if (reservation[idx].slice(0, 4)=="http"){
+                    reservation_str = "<a href='" + reservation[idx] + "'>" + reservation[idx]
+                } 
+            }
+            else{
+                reservation_str = reservation[idx]
+            }
+
+            var modalites_str = modalites[idx]
+            
+            var string_popup = "<span style='font-size: 150%;'>" + noms[idx] + "</span><br><b>Adresse :</b> " + adresses[idx] + "<br><b>Réservation :</b> " + reservation_str + "</a><br><b>Tél :</b> <a href:'tel:" + rdv_tel[idx] + "'>" + rdv_tel[idx] + "</a><br><b>Date d'ouverture :</b> "+ date_ouverture[idx] + "<br><b>Modalités :</b> " + modalites_str + "<br><b>Mise à jour :</b> " + maj[idx]
+            var marker = L.marker([longitudes[idx], lat]).bindPopup(string_popup) //.addTo(this.mymap);
+            marker.on('click', function(e) {this.openPopup();});
+            markers.addLayer(marker);
+            
+
+        })
+        mymap.addLayer(markers);
+    }
+    
+</script>
+
+<style>
+    #mapid { height: 180px; }
+</style>

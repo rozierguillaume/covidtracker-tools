@@ -1,4 +1,15 @@
 <style>
+    .btn-autre {
+        border: 1px solid;
+        margin: 10px;
+        padding: 15px;
+        font-size : 16px;
+        transition-duration: 0.4s;
+        background-color: #ffffff;
+        border-radius: 15px;
+
+    }
+
     .btn{
         background-color: white !important;
         color: black;

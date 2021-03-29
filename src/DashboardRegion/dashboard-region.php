@@ -11,7 +11,7 @@
             Comment évolue le taux d'incidence dans votre département par rapport à votre région ? Quelle est la courbe des hospitalisations en France ?...<br>
         </div>
         <div class="col-md-4 text-right">
-            <button class="btn-shadow">
+            <button class="btn-shadow btn-autre">
                 <a href="https://covidtracker.fr/covidexplorer" target="_blank" rel="noreferrer noopener">Accéder à 🔎
                     <b>CovidExplorer</b></a>
             </button> &nbsp;&nbsp;
