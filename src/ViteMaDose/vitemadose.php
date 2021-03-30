@@ -30,7 +30,7 @@
     <span id="rdv"></span>
 </div>
 
-<?php include('./vaccin-map.html') ?>
+<?php include(__DIR__ . '/vaccin-map.html') ?>
 
 <div class="alert alert-info clearFix"  style="font-size: 18px;">
     <div class="row">
@@ -65,6 +65,38 @@ button {
 .shadow-btn {
         color: black;
         border: 0px solid black;
+        padding: 12px;
+        font-size: 100%;
+        border-radius: 7px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        margin-top: 2px;
+        text-align: left;
+        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+        max-width: 350px;
+        background: #ffffff;
+        min-height:170px;
+    }
+
+    .shadow-btn-green {
+        color: black;
+        border: 1px solid green;
+        padding: 12px;
+        font-size: 100%;
+        border-radius: 7px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        margin-top: 2px;
+        text-align: left;
+        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+        max-width: 350px;
+        background: #ffffff;
+        min-height:170px;
+    }
+
+    .shadow-btn-red {
+        color: black;
+        border: 1px solid darkred;
         padding: 12px;
         font-size: 100%;
         border-radius: 7px;
@@ -156,9 +188,9 @@ function depChanged(){
 }
 
 function showRdvForDep(dep){
-    
+    html_txt = ""
     if("slots" in data_dep){
-        html_txt = "<h3 style='margin-top: 40px;'>Rendez-vous trouvés pour ce département (" + dep + ") :</h3>"
+        html_txt = "<h3 style='margin-top: 40px;'>✅ Rendez-vous trouvés pour ce département (" + dep + ") :</h3>"
 
         if ("scan_time" in data_dep){
             dernier_scan = data_dep.scan_time
@@ -168,13 +200,13 @@ function showRdvForDep(dep){
 
         nb_centres = data_dep.slots.length
         if(nb_centres>0){
-            html_txt += "Nous avons trouvé " + nb_centres + " centres ayant des disponibilités sur Doctolib. Dernier scan : " + dernier_scan + ".<br><br>" 
+            html_txt += "Nous avons trouvé " + nb_centres + " centre(s) ayant des disponibilités sur Doctolib. Dernier scan : " + dernier_scan + ".<br><br>" 
             html_txt += "<div class='row'>"
 
             data_dep.slots.map((value, idx) => {
                 html_txt += ` 
                     <a target="_blank" title="Doctolib" href="{{lien}}">
-                    <card class="shadow-btn col-xs-11 col-md-4">
+                    <card class="shadow-btn-green col-xs-11 col-md-4">
                         <b><span style='font-size: 120%'>{{date}}</span><br></b>
                         {{nom}}<br>
                         <i>Réservation Doctolib</i>
@@ -184,16 +216,17 @@ function showRdvForDep(dep){
                     .replace("{{lien}}", data_dep.urls[idx] )
                     .replace("{{date}}", value)
             })
+            html_txt+= "</div>"
 
     } else {
-        html_txt = "<h3 style='margin-top: 40px;'>Aucun rendez-vous trouvé pour le département (" + dep + ")</h3>"
+        html_txt = "<h3 style='margin-top: 40px;'>❌ Aucun rendez-vous trouvé pour le département (" + dep + ")</h3>"
         html_txt += "Nous n'avons trouvé aucun centre ayant des disponibilités sur Doctolib. Dernier scan : " + dernier_scan + ".<br><br>" 
         html_txt += `  
             <div class='row'>
             <card class="shadow-btn col-xs-11 col-md-4" style="margin-bottom: 50px;">
                         <i>
                         La recherche de Vite Ma Dose ! n'est pas exhaustive. Essayez de chercher manuellement via les plateformes de réservation (Doctolib, Maiia, Keldoc) ou en appelant les centres.</i>
-                </card>
+                </card></div>
                 `
     }
 
@@ -204,11 +237,32 @@ function showRdvForDep(dep){
                 <card class="shadow-btn col-md-11" style="margin-bottom: 50px;">
                     <i>
                     La recherche de Vite Ma Dose ! n'est pas exhaustive. Essayez de chercher manuellement via les plateformes de réservation (Doctolib, Maiia, Keldoc) ou en appelant les centres.</i>
-                </card>
+                </card></div>
                 `
         
     }
     document.getElementById("rdv").innerHTML = html_txt
+
+    if ("urls_pas_de_rdv" in data_dep) {
+        html_txt = "<h3 style='margin-top: 40px;'>Autres centres sur Doctolib</h3>Aucun rendez-vous détecté dans ces centres, mais nous vous consillons néanmoins de parcourir les liens, au cas où.<br><br>"
+        html_txt += "<div class='row'>"
+
+        data_dep.urls_pas_de_rdv.map((value, idx) => {
+                html_txt += ` 
+                    <a target="_blank" title="Doctolib" href="{{lien}}">
+                    <card class="shadow-btn-red col-xs-11 col-md-4">
+                        <b><span style='font-size: 120%'>Aucun RDV détecté</span><br></b>
+                        {{nom}}<br>
+                        <i>Réservation Doctolib</i>
+                        
+                    </card></a>
+                    `.replace("{{nom}}", data_dep.noms_pas_de_rdv[idx])
+                    .replace("{{lien}}", value )
+            })
+        
+        document.getElementById("rdv").innerHTML += html_txt
+
+    }
 }
 
 </script>
