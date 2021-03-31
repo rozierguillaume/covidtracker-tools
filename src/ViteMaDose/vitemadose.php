@@ -80,7 +80,7 @@ button {
 
     .shadow-btn-green {
         color: black;
-        border: 1px solid green;
+        border: 2.5px solid rgba(139, 201, 170, 0.7);
         padding: 12px;
         font-size: 100%;
         border-radius: 7px;
@@ -90,13 +90,20 @@ button {
         text-align: left;
         box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
         max-width: 350px;
-        background: #ffffff;
+        background: rgba(242, 255, 242, 0.3);
         min-height:170px;
+
+        
+    }
+
+    .shadow-btn-green:hover {
+        border: 2.5px solid rgba(139, 201, 170, 1);
+        
     }
 
     .shadow-btn-red {
         color: black;
-        border: 1px solid darkred;
+        border: 2.5px solid rgba(201, 139, 139, 0.7);
         padding: 12px;
         font-size: 100%;
         border-radius: 7px;
@@ -106,8 +113,34 @@ button {
         text-align: left;
         box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
         max-width: 350px;
-        background: #ffffff;
+        background: rgba(255, 242, 243, 0.3);
         min-height:170px;
+    }
+
+    .shadow-btn-red:hover {
+        border: 2.5px solid rgba(201, 139, 139, 1);
+        
+    }
+
+    .shadow-btn-black {
+        color: black;
+        border: 2px solid rgba(0, 0, 0, 0.3);
+        padding: 12px;
+        font-size: 100%;
+        border-radius: 7px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        margin-top: 2px;
+        text-align: left;
+        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+        max-width: 350px;
+        background: rgba(237, 237, 237, 0.3);
+        min-height:100px;
+    }
+
+    .shadow-btn-black:hover {
+        border: 2.5px solid rgba(0, 0, 0, 0.5);
+        
     }
 
 .div-doses{
@@ -244,7 +277,7 @@ function showRdvForDep(dep){
     document.getElementById("rdv").innerHTML = html_txt
 
     if ("urls_pas_de_rdv" in data_dep) {
-        html_txt = "<h3 style='margin-top: 40px;'>Autres centres sur Doctolib</h3>Aucun rendez-vous détecté dans ces centres, mais nous vous consillons néanmoins de parcourir les liens, au cas où.<br><br>"
+        html_txt = "<h3 style='margin-top: 40px;'>❌ Autres centres sur Doctolib</h3>Aucun rendez-vous détecté dans ces centres, mais nous vous consillons néanmoins de parcourir les liens, au cas où.<br><br>"
         html_txt += "<div class='row'>"
 
         data_dep.urls_pas_de_rdv.map((value, idx) => {
@@ -258,6 +291,40 @@ function showRdvForDep(dep){
                     </card></a>
                     `.replace("{{nom}}", data_dep.noms_pas_de_rdv[idx])
                     .replace("{{lien}}", value )
+            })
+        
+        document.getElementById("rdv").innerHTML += html_txt
+
+    }
+
+    if ("urls_autres" in data_dep) {
+        html_txt = "<h3 style='margin-top: 40px;'>🤷🏻‍♂️ Autres centres sur d'autres plateformes</h3>Nous ne pouvons pas détecter les RDV sur ces plateformes.<br><br>"
+        html_txt += "<div class='row'>"
+
+        data_dep.urls_autres.map((value, idx) => {
+            nom_plateforme = "--"
+
+            if(value.includes('maiia')){
+                nom_plateforme = "Maiia"
+            } else if(value.includes('keldoc')){
+                nom_plateforme="Keldoc"
+            } else if(value.includes('doctolib')){
+                nom_plateforme="Doctolib"
+            } else{
+                nom_plateforme = "autre plateforme"
+            }
+
+            html_txt += ` 
+                <a target="_blank" title="Doctolib" href="{{lien}}">
+                <card class="shadow-btn-black col-xs-11 col-md-4">
+                    <b></b>
+                    {{nom}}<br>
+                    <i>Réservation {{nom_plateforme}}</i>
+                    
+                </card></a>
+                `.replace("{{nom}}", data_dep.noms_autres[idx])
+                .replace("{{lien}}", value )
+                .replace("{{nom_plateforme}}", nom_plateforme)
             })
         
         document.getElementById("rdv").innerHTML += html_txt
