@@ -61,7 +61,7 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
                         <span id="cas_moyen_quotidien">--</span> tests</b>
                     positifs au Covid19 <span id="cas_p2"></span>chaque jour,
                     <span id="croissance_cas">--</span>
-                    par rapport à la semaine dernière.
+                    par rapport à la semaine dernière <span id="type_jour"></span>.
                 </p>
 
                 <div>
@@ -70,9 +70,9 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
                 <br>
                 <span style="font-size: 100%">Derniers chiffres :
                 <span id="cas_opencovid">--</span> tests positifs remontés le
-                <span id="date_opencovid">-/-</span> (Ministère de la Santé),
+                <span id="date_opencovid">-/-</span> (SpF),
                 <span id="cas_sidep">--</span> tests positifs prélevés le
-                <span id="date_sidep">-/-</span> (Santé publique France).
+                <span id="date_sidep">-/-</span> (SI-DEP).
             </span>
 
             </div>
@@ -108,7 +108,7 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
 
                 <p>Il y a actuellement <b><span id="reanimations">--</span>
                         personnes <span id="typePersonnes">en réanimation</span></b> pour Covid19,
-                    <span id="croissance_rea">--</span> par rapport à la semaine dernière.
+                    <span id="croissance_rea">--</span> par rapport à la semaine dernière.<br><br>
                 </p>
                 <div>
                     <canvas id="barChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
