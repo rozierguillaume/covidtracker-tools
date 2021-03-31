@@ -1,53 +1,5 @@
 
 
-
-<p>
-    Vite Ma Dose ! est un outil de CovidTracker permettant de détecter les rendez-vous disponibles dans votre département afin de vous faire vacciner (sous réserve d'éligibilité). Pour l'instant, seule la plateforme Doctolib est supportée. <i>Vite Ma Dose ! n'est pas un outil officiel, n'est pas exhaustif et ne remplace pas une recherche manuelle.</i>
-</p>
-<br><br>
-
-<div class="alert alert-info clearFix" style="font-size: 18px;">
-    <div class="row">
-        <div class="col-md-8">
-            CovidTracker est gratuit, indépendant et sans publicités.<br>
-        </div>
-        <div class="col-md-4 text-right">
-            <button class="btn-shadow">
-                <a href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">🍪
-                    Offrez-moi un cookie</a>
-            </button> &nbsp;&nbsp;
-        </div>
-    </div>
-</div>
-
-<div class="div-doses">
-    <select id="dep-select" onchange="depChanged()" style="margin-top: 20px;">
-        <option value="">-- Choisissez une option --</option>
-    </select>
-
-    <span id="rdv"></span>
-</div>
-
-<?php include(__DIR__ . '/vaccin-map.html') ?>
-
-<div class="alert alert-info clearFix"  style="font-size: 18px;">
-    <div class="row">
-        <div class="col-md-8">
-            <small>À VOIR AUSSI...</small><br>
-            Combien de personnes ont été vaccinées ? Suivez la campagne vaccinale sur VaccinTracker.<br>
-        </div>
-        <div class="col-md-4 text-right">
-            <button class="btn-shadow">
-                <a href="https://covidtracker.fr/vaccintracker" target="_blank" rel="noreferrer noopener">Accéder à 💉 <b>VaccinTracker</b></a>
-            </button> &nbsp;&nbsp;
-        </div>
-    </div>
-</div>
-<br>
-
-<br>
-Auteur : Guillaume Rozier
-
 <style>
 button {
     border: 1px solid;
@@ -152,10 +104,58 @@ button {
 }
 
 .p {
-    font-size: 150% !important;
+    font-size: 170% !important;
 }
     
 </style>
+
+<p>
+    Vite Ma Dose ! est un outil de CovidTracker permettant de détecter les rendez-vous disponibles dans votre département afin de vous faire vacciner (sous réserve d'éligibilité). Pour l'instant, seule la plateforme Doctolib est supportée. <i>Vite Ma Dose ! n'est pas un outil officiel, n'est pas exhaustif et ne remplace pas une recherche manuelle.</i>
+</p>
+<br><br>
+
+<div class="alert alert-info clearFix" style="font-size: 18px;">
+    <div class="row">
+        <div class="col-md-8">
+            CovidTracker est gratuit, indépendant et sans publicités.<br>
+        </div>
+        <div class="col-md-4 text-right">
+            <button class="btn-shadow">
+                <a href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">🍪
+                    Offrez-moi un cookie</a>
+            </button> &nbsp;&nbsp;
+        </div>
+    </div>
+</div>
+
+<div class="div-doses">
+    <select id="dep-select" onchange="depChanged()" style="margin-top: 20px;">
+        <option value="">-- Choisissez une option --</option>
+    </select>
+
+    <span id="rdv"></span>
+</div>
+
+<?php include(__DIR__ . '/vaccin-map.html') ?>
+
+<div class="alert alert-info clearFix"  style="font-size: 18px;">
+    <div class="row">
+        <div class="col-md-8">
+            <small>À VOIR AUSSI...</small><br>
+            Combien de personnes ont été vaccinées ? Suivez la campagne vaccinale sur VaccinTracker.<br>
+        </div>
+        <div class="col-md-4 text-right">
+            <button class="btn-shadow">
+                <a href="https://covidtracker.fr/vaccintracker" target="_blank" rel="noreferrer noopener">Accéder à 💉 <b>VaccinTracker</b></a>
+            </button> &nbsp;&nbsp;
+        </div>
+    </div>
+</div>
+<br>
+
+<br>
+Auteur : Guillaume Rozier
+
 
 <script>
 
