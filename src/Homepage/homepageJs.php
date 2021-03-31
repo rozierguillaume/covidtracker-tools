@@ -30,7 +30,7 @@
             }
         )
 
-    fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/opencovid.json')
+    fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/vue-ensemble.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error("HTTP error " + response.status);
@@ -85,7 +85,7 @@
         )
 
     function updateDataDivOpenCovid(){
-        var cas_open_covid = data_opencovid["cas"]
+        var cas_open_covid = numberWithSpaces(data_opencovid["cas"])
         if(cas_open_covid<=0){
             cas_open_covid = "--"
         }
