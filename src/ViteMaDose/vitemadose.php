@@ -103,8 +103,8 @@ button {
     background: rgb(245, 245, 245, 0.8);
 }
 
-.p {
-    font-size: 170% !important;
+p {
+    font-size: 120% !important;
 }
     
 </style>
