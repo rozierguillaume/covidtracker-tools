@@ -251,7 +251,7 @@ function showRdvForDep(dep){
                     html_txt += ` 
                         <a target="_blank" title="Doctolib" href="{{lien}}">
                         <card class="shadow-btn-green col-xs-11 col-md-4">
-                            <b><span style='font-size: 120%'>{{date}}</span><br></b>
+                            Prochain : <b><span style='font-size: 120%'>{{date}}</span><br></b>
                             {{nom}}<br>
                             <img style="position: absolute; bottom: 5; right: 5;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Logo_Doctolib.svg/1024px-Logo_Doctolib.svg.png" width="70px"></img>
                             
