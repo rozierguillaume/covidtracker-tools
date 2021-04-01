@@ -38,7 +38,7 @@ button {
         margin-bottom: 5px;
         margin-top: 2px;
         text-align: left;
-        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 2px 2px 10px #d6d6d6;
         max-width: 350px;
         background: rgba(242, 255, 242, 0.3);
         min-height:130px;
@@ -62,7 +62,7 @@ button {
         margin-bottom: 5px;
         margin-top: 2px;
         text-align: left;
-        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 2px 2px 10px #d6d6d6;
         max-width: 350px;
         background: rgba(255, 242, 243, 0.3);
         min-height:130px;
@@ -84,7 +84,7 @@ button {
         margin-bottom: 5px;
         margin-top: 2px;
         text-align: left;
-        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 2px 2px 10px #d6d6d6;
         max-width: 350px;
         background: rgba(237, 237, 237, 0.3);
         min-height:100px;
