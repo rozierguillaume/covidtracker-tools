@@ -82,7 +82,6 @@
             for(var i=0; i<5; i++){
                 tableauValeurs.push((min_tab + (max_tab-min_tab)*i/5).toFixed(1))
             }
-            console.log(tableauValeurs)
 
             construireLegende(tableauValeurs, tableauCouleurs);
 

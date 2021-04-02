@@ -238,12 +238,25 @@
 
                 vaccinesRegions = vaccinesRegions.asortBy('couvertureVaccinale');
                 
-                //valeurs = []
-                for(var i=0; i<10; i++){
-                    //valeurs.push( vaccinesRegions[vaccinesRegions.length-1].couvertureVaccinale + (vaccinesRegions[0].couvertureVaccinale - vaccinesRegions[vaccinesRegions.length-1].couvertureVaccinale) * i / 10 )
+                var max_tab=0
+                var min_tab=100
+                for (reg in vaccinesRegions){
+                    value=vaccinesRegions[reg].n_dose1_cumsum / vaccinesRegions[reg].population * 100
+                    console.log(reg)
+                    if(max_tab<value){
+                        max_tab=value
+                    }
+                    if(min_tab>value){
+                        min_tab=value
+                    }
                 }
-                vaccinesRegions.map(data =>{
+                console.log(max_tab)
+                valeurs=[]
+                for(var i=0; i<9; i++){
+                    valeurs.push((min_tab + (max_tab-min_tab)*i/10).toFixed(1))
+                }
 
+                vaccinesRegions.map(data =>{
                     let data_reg = (data.n_dose1_cumsum / data.population) * 100;
 
                     if (data.code == '06') {
