@@ -31,7 +31,7 @@
             "#0076bf"
         ]; // HSV(203, xx, 90) avec xx de 10 à 100
 
-        var tableauValeurs = [6, 7, 8, 9, 10]
+        var tableauValeurs = [8, 10, 12, 14, 16]
         var tableauCouleurs= [  
             "#d5dee3",
             "#b8d4e6",
@@ -65,6 +65,24 @@
                 $('#carte path').css("fill", "#c4c4cb");
                 return;
             }
+            min_tab=100;
+            max_tab=0;
+            console.log("lol")
+
+            for (dep in donneesDepartementsVaccination){
+                value=donneesDepartementsVaccination[dep].n_dose1_cumsum_pop
+                if(max_tab<value){
+                    max_tab=value
+                }
+                if(min_tab>value){
+                    min_tab=value
+                }
+            }
+            tableauValeurs=[]
+            for(var i=0; i<5; i++){
+                tableauValeurs.push((min_tab + (max_tab-min_tab)*i/5).toFixed(1))
+            }
+            console.log(tableauValeurs)
 
             construireLegende(tableauValeurs, tableauCouleurs);
 
