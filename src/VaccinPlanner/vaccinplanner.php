@@ -8,7 +8,7 @@
 <form id="queue-vaccin" action="#">
     <ul id="section-tabs">
       <li class="current active"><span>1.</span> Profil</li>
-      <li><span>2.</span> Contre-indications</li>
+      <li><span>2.</span> Compléments</li>
       <li><span>3.</span> Résultat</li>
     </ul>
   <div id="fieldsets">
@@ -18,12 +18,13 @@
   	<p><label for="soignant" class="checkbox-label"><input type="checkbox" name="soignant" value="1" id="soignant">  <span class="checkmark"></span> Je suis professionnel en santé, aide à domicile ou pompier</label></p>
   	<p><label for="handicap" class="checkbox-label"><input type="checkbox" name="handicap" value="1" id="handicap">  <span class="checkmark"></span> Je travaille ou réside en maison d’accueil spécialisée/médicalisée</label></p>
 	<p><label for="high-risky" class="checkbox-label"><input type="checkbox" name="high-risky" value="1" id="high-risky">  <span class="checkmark"></span> Je suis à très haut risque <span class="tooltip"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/VisualEditor_-_Icon_-_Help.svg/1200px-VisualEditor_-_Icon_-_Help.svg.png" alt="Aide" style="width: 20px;"><span class="tooltiptext">Actuellement sous chimiothérapie, porteur de maladie rénale chronique sévère, transplanté d'organes solides, ayant 2 insuffisances d'organes, maladies rares à risque en cas d'infection, trisomie 21 ou transplanté par allogreffe.</span></span></label></p>
-	<p><label for="comobidities" class="checkbox-label"><input type="checkbox" name="comobidities" value="1" id="comobidities">  <span class="checkmark"></span> Je présente d'autres pathologies</label></p>
+  <p><label for="comobidities" class="checkbox-label"><input type="checkbox" name="comobidities" value="1" id="comobidities">  <span class="checkmark"></span> Je présente d'autres pathologies</label></p>
+  <p><label for="foyer-migrant" class="checkbox-label"><input type="checkbox" name="foyer-migrant" value="1" id="foyer-migrant">  <span class="checkmark"></span> Je réside en foyer de travailleurs migrants</label></p>
 
   </fieldset>
   <fieldset class="next">
   	<p>
-      <label for="pregnant" class="checkbox-label"><input type="checkbox" name="pregnant" value="1" id="pregnant">  <span class="checkmark"></span> Je suis enceinte</label>
+      <label for="pregnant" class="checkbox-label"><input type="checkbox" name="pregnant" value="1" id="pregnant">  <span class="checkmark"></span> Je suis enceinte depuis + de 3 mois</label>
     </p>
      <p>
       <label for="allergic" class="checkbox-label"><input type="checkbox" name="allergic" value="1" id="allergic">  <span class="checkmark"></span> Je souffre d'allergies graves</label>
@@ -42,7 +43,7 @@
     </p>
   </fieldset>
   <fieldset class="next">
-  	<p class="strong-hide"><span id="verdict-vaccin">❌</span> Compte tenu des données renseignées, <strong id="vaccination-impossible"> vous ne pouvez pas vous faire vacciner (<span id="raison"></span>)</strong><strong id="vaccination-impossible-temporaire">vous ne pouvez pas vous faire vacciner pour le moment (<span id="raison-temporaire"></span>)</strong><strong id="vaccination-deja-possible">vous pouvez déjà vous faire vacciner</strong><strong id="vaccination-attente">vous ne pouvez pas encore vous faire vacciner</strong>. </p>
+  	<p class="strong-hide"><span id="verdict-vaccin">❌</span> Compte tenu des données renseignées, <strong id="vaccination-impossible"> vous ne pouvez pas vous faire vacciner (<span id="raison"></span>)</strong><strong id="vaccination-impossible-temporaire">vous ne pouvez pas vous faire vacciner pour le moment (<span id="raison-temporaire"></span>)</strong><strong id="vaccination-deja-possible">vous pouvez déjà vous faire vacciner</strong><strong id="vaccination-attente">vous ne pouvez pas encore vous faire vacciner (éligibilité le <span id="date-eligibilite">--/--/----</span>)</strong>. </p>
 
   	<p id="dates-vaccin"><br><strong style="font-size: 110%;">Temps d'attente</strong> <small>(au rythme actuel)</small><br><strong style="font-size: 140%;" id="temps-attente">- jours</strong><br><br>Au rythme actuel de vaccination <em>(<span id="moyenne-vaccin">-</span> doses administrées par jour en moyenne)</em> et selon votre profil, vous devriez pouvoir être vacciné entre le <span id="dateMin">-</span> et le <span id="dateMax">-</span><em id="reserve-contre-indication"> (sous réserve de ne plus avoir de contre-indication)</em>. Au moins <span id="nb-prio-1">-</span> personnes doivent se faire vacciner avant vous.<br>Projection réalisée en considérant que <input type="number" min="1" max="100" id="pourcentage-volontaire" value="-" onChange="majVolontaires()" onInput="majVolontaires()" />% de la pop. souhaite être vaccinée</p>
     <p id="notice-medicale"></p>
@@ -626,17 +627,16 @@ Array.prototype.sortBy = function(p) {
 }
 
 
-	const VACCINATION_AGE_MIN = 75; // Vaccination déjà possible à partir de...
-	const VACCINATION_AGE_MIN_SOIGNANT = 50; // Âge min vaccionation soignant
+	const VACCINATION_AGE_MIN = 70; // Vaccination déjà possible à partir de...
+	const VACCINATION_AGE_MIN_SOIGNANT = 0; // Âge min vaccionation soignant
 	const VACCIONATION_EHPAD = true;
 	const VACCINATION_HAUT_RISQUE = true; // Les personnes à haut risque peuvent se faire vacciner ?
-	const VACCINATION_COMORBIDITES = false; // Les personnes à comorbidités peuvent se faire vacciner ?
+	const VACCINATION_COMORBIDITES = 50; // Âge min personnes à comorbidités pouvant se faire vacciner
 	const VACCINATIONS_PAR_PHASES = [
-		8400000, // nb personnes vaccinables phase 1
-		3875029+3681057, // nb personnes vaccinables phase 2 (65-75 ans)
-		4125774+4390050+4423849+1882400-1290000, // nb personnes vaccinables phase 3 (50-65 ans + personnels soignants non vaccinés)
-		6251974, // nb personnes vaccinables phase 4 (comorbidités non vaccinées)
-		15869827 // reste des majeurs
+		1882400+9193415+380000+2500000, // nb personnes vaccinables phase principale : soignants + personnes de + de 70 ans + femme enceintes 2/3ème trimestre + nb comorbidités > 50 ans
+    7000700, // nb 60-70 ans sans comorbidités
+    7572660, // nb 50-60 ans sans comorbidités
+    23031383 // nb personnes majeures restantes
 	];
 
 	let vaccinationDejaPossible = false; // le patient peut se faire vacciner dès maintenant
@@ -655,7 +655,8 @@ Array.prototype.sortBy = function(p) {
 	let maisonMedicalisee = false;
 	let hautRisque = false;
 	let pathologies = false;
-	let enceinte = false;
+  let enceinte = false;
+  let migrant = false;
 	let allergique = false;
 	let covid = false;
 	let grippe = false;
@@ -740,7 +741,7 @@ $('#pourcentage-volontaire').on('change', majVolontaires);
 	fievre = $('#sick').is(":checked");
 	cluster = $('#cluster').is(":checked");
 	
-	vaccinationProscritePermanent =  age < 18 || allergique || enceinte;
+	vaccinationProscritePermanent =  age < 18 || allergique;
 	vaccinationProscriteTemporaire = !vaccinationProscritePermanent && (covid || fievre || cluster || grippe);
 	vaccinationDejaPossible = !vaccinationProscritePermanent && !vaccinationProscriteTemporaire && (
 		age >= VACCINATION_AGE_MIN
@@ -748,14 +749,14 @@ $('#pourcentage-volontaire').on('change', majVolontaires);
 		|| ehpad
 		|| maisonMedicalisee
 		|| hautRisque
+    || (pathologies && age >= VACCINATION_COMORBIDITES)
+    || enceinte
 	);
 
 	phaseConcernee = (
-		(ehpad || age >= 75 || (professionnelSante && age >= 50) || maisonMedicalisee || hautRisque) ? 0 : (
-			age >= 65 ? 1 : (
-				age >= 50 || professionnelSante ? 2 : (
-					pathologies ? 3 : 4
-				)
+		(ehpad || age >= VACCINATION_AGE_MIN || (professionnelSante && age >= VACCINATION_AGE_MIN_SOIGNANT) || maisonMedicalisee || hautRisque || (pathologies && age >= VACCINATION_COMORBIDITES) || enceinte) ? 0 : (
+			age >= 60 ? 1 : (
+				age >= 50 ? 2 : 3
 			)
 		)
 
@@ -773,7 +774,7 @@ $('#pourcentage-volontaire').on('change', majVolontaires);
 	if(vaccinationProscritePermanent) {
     $('#verdict-vaccin').text('❌');
 		$('#vaccination-impossible').show();
-		$('#raison').text(age < 18 ? "mineur" : (allergique ? "allergie" : "enceinte"));
+		$('#raison').text(age < 18 ? "mineur" : ("allergique"));
 		$('#notice-medicale').html("<br>Cet outil ne constitue pas un avis médical. Consultez votre médecin pour plus d'informations");
 	}
 	else if(vaccinationProscriteTemporaire) {
@@ -806,6 +807,7 @@ $('#pourcentage-volontaire').on('change', majVolontaires);
     $('#dateMax').html(dateMaxString);
     $('#pourcentage-volontaire').val(pourcentageVolontaire);
     $("#temps-attente").text(moment(dateEstimationDebut).toNow(true));
+    $('#date-eligibilite').text(age < 50 ? '15/06/2021' : (age < 60 ? '15/05/2021' : '16/04/2021'));
 	}
  }
 
