@@ -403,7 +403,7 @@
         <div class="col-md-12">
             <div class="content">
                 <div id="post-1648" class="post-1648 page type-page status-publish hentry"><h2 class="entry-title">
-                        vitemadose</h2>
+                        Vite Ma Dose (local)</h2>
                     <div class="entry">
                         <?php include('./vitemadose.php') ?>
                     </div>
