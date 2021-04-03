@@ -26,7 +26,7 @@
 
                                 <?php else : ?>
 
-                                <?php esc_html_e('2020 - Guillaume Rozier - Tous droits réservés'); ?>
+                                <?php esc_html_e(sprintf('%d - Guillaume Rozier - Tous droits réservés', date('Y'))); ?>
 
 
                                 <?php endif; ?>
