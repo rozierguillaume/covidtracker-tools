@@ -20,13 +20,15 @@
     </div>
 </div>
 
-<div class="div-doses">
-    <select id="dep-select" onchange="depChanged()" style="margin-top: 20px;">
+<form class="div-doses doses">
+    <select id="dep-select" style="margin-top: 20px;">
         <option value="">-- Choisissez une option --</option>
     </select>
 
-    <span id="rdv"></span>
-</div>
+    <div id="rdv">
+      <label for="dep-select">Indiquez votre département</label>
+    </div>
+</form>
 
 <?php include(__DIR__ . '/carteCentres.html') ?>
 

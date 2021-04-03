@@ -43,12 +43,12 @@ button {
     min-height:130px;
     max-height:130px;
 
-    
+
 }
 
 .shadow-btn-green:hover {
     border: 2.5px solid rgba(139, 201, 170, 1);
-    
+
 }
 
 .shadow-btn-red {
@@ -70,7 +70,7 @@ button {
 
 .shadow-btn-red:hover {
     border: 2.5px solid rgba(201, 139, 139, 1);
-    
+
 }
 
 .shadow-btn-black {
@@ -92,7 +92,7 @@ button {
 
 .shadow-btn-black:hover {
     border: 2.5px solid rgba(0, 0, 0, 0.5);
-    
+
 }
 
 .div-doses{
@@ -102,8 +102,35 @@ button {
     background: rgb(245, 245, 245, 0.8);
 }
 
+.div-doses label[for=dep-select] {
+  display: block;
+  text-align: center;
+  font-size: 2em;
+  cursor: pointer;
+}
+#rdv h2 {
+  margin-top: 30px;
+}
+#rdv h3 {
+  margin-top: 40px;
+}
+#rdv.loaded {
+  animation: fade-in 200ms ease-in-out 200ms;
+  animation-fill-mode: backwards;
+  opacity: 1;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
 p {
     font-size: 120% !important;
 }
-    
+
 </style>
