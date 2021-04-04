@@ -95,7 +95,7 @@ function renderCentreDisponible (centre) {
   const date = new Date(centre.prochain_rdv).toLocaleString('fr-FR', {day: '2-digit', month: 'long', hour: '2-digit', minute: '2-digit'})
   const logoSrc = LOGO[centre.plateforme]
   return `
-    <a href="${centre.url}" target="_blank" title="${centre.nom} sur ${centre.plateforme}">
+    <a href="${centre.url}" target="_blank" title="${centre.nom} sur ${centre.plateforme}" rel="noreferrer noopener">
       <card class="shadow-btn-green col-xs-11 col-md-4">
         Prochain : <b>
           <span style='font-size: 120%'>
@@ -128,7 +128,7 @@ function renderSlotsIndisponibles ({ dernierScan, centres }) {
 function renderCentreIndisponible (centre) {
   const logoSrc = LOGO[centre.plateforme]
   return `
-    <a href="${centre.url}" target="_blank" title="${centre.nom} sur ${centre.plateforme}">
+    <a href="${centre.url}" target="_blank" title="${centre.nom} sur ${centre.plateforme}" rel="noreferrer noopener">
       <card class="shadow-btn-red col-xs-11 col-md-4">
         <b><span style='font-size: 120%'>${centre.url !== '' ? 'Aucun RDV détecté' : 'RDV en ligne non disponible'}</span><br></b>
         ${centre.nom}
