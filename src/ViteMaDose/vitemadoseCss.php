@@ -101,6 +101,34 @@ button {
   font-family: Roboto, Ubuntu, monospace;
 }
 
+
+.dpt-select {
+    background: #FFFFFF;
+    border: 3px solid #629CEA;
+    border-radius: 6px;
+    box-sizing: border-box;
+    box-shadow: 0px 5px 3px rgba(173, 173, 173, 0.25);
+    display: block;
+    color: #44516B;
+    font-size:1.3rem;
+    font-weight: 500;
+    margin: 1.6rem auto 2.1rem auto;
+    padding: 1rem 0.5rem 1rem;
+    width:299px;
+
+    /* select arrow-down customization */
+    background: url(./arrow-down-circle.svg) no-repeat right #FFFFFF;
+    background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='%232F80ED' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-arrow-down-circle'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cpolyline points='8 12 12 16 16 12'%3E%3C/polyline%3E%3Cline x1='12' y1='8' x2='12' y2='16'%3E%3C/line%3E%3C/svg%3E");
+    font-family: Roboto, Ubuntu, monospace;
+    -webkit-appearance: none;
+    background-position-x: 256px;
+}
+
+.dpt-select:hover, .dpt-select option {
+    cursor:pointer;
+}
+
+
 /* ---- SELECTED DPT TITLE & INFO ---- */
 
 .dpt-selected {
@@ -310,10 +338,11 @@ button {
     background: rgb(245, 245, 245, 0.8);
 }
 
-.div-doses label[for=dep-select] {
+.div-doses label[for=dpt-select] {
   display: block;
   text-align: center;
-  font-size: 2em;
+  font-size: 1em;
+  margin: 2em;
   cursor: pointer;
 }
 
