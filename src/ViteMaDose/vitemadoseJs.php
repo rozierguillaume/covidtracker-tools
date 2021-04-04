@@ -115,7 +115,7 @@ function renderSlotsIndisponibles ({ dernierScan, centres }) {
   const nbCentres = centres.length
   const titre = `
     <h3>❌ Autres centres de vaccination</h3>
-    <p>Aucun rendez-vous détecté dans ces centres, mais nous vous conseillons néanmoins de parcourir les liens, au cas où (des rendez-vous peuvent avoir été ajoutés depuis le deriner scan).</p>
+    <p>Aucun rendez-vous détecté dans ces centres, mais nous vous conseillons néanmoins de parcourir les liens, au cas où (des rendez-vous peuvent avoir été ajoutés depuis le dernier scan).</p>
   `
   return `
     ${titre}
