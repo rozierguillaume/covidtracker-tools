@@ -17,7 +17,6 @@ main()
 async function main() {
   const departements = await fetchDepartements()
   const departementsParNumero = departements.reduce((all, dep) => ({[dep.code_departement]: dep, ...all}), {})
-  console.log(departementsParNumero)
   const doseFormEl = document.querySelector("form.doses")
   const departementSelectEl = doseFormEl.querySelector('select')
   for (const departement of departements) {
@@ -28,22 +27,35 @@ async function main() {
   }
   const renduEl = doseFormEl.querySelector('#rdv')
 
-  departementSelectEl.addEventListener('change', (e) => {
-    const départementSélectionné = departementsParNumero[departementSelectEl.value]
-    if (départementSélectionné) {
-      afficherLesSlotsPourDepartement(renduEl, départementSélectionné)
+  let départementHash = null
+  if (location.hash && /^#dep-[AB0-9]+$/.test(location.hash)) {
+    départementHash = location.hash.substr(5)
+    if (departementsParNumero[départementHash]) {
+      departementSelectEl.value = départementHash
+      onDépartementSelectionné(départementHash)
     }
+  }
+
+  departementSelectEl.addEventListener('change', (e) => {
+    onDépartementSelectionné(departementSelectEl.value)
   })
 
+
+  function onDépartementSelectionné (codeDépartement) {
+    const départementSélectionné = departementsParNumero[codeDépartement]
+    if (départementSélectionné) {
+      afficherLesSlotsPourDepartement(renduEl, départementSélectionné)
+      location.hash = `dep-${codeDépartement}`
+    }
+  }
 }
 
 async function afficherLesSlotsPourDepartement(renduEl, départementSélectionné) {
   renduEl.className = "loading"
   renduEl.innerHTML = "<p>Chargement des données…<p>"
   const slots = await fetchSlotsForDepartement(départementSélectionné.code_departement)
-  console.log(slots)
-  const titre = `<h2>Résultats pour : ${départementSélectionné.nom_departement} (${départementSélectionné.code_departement})</h2>`
   dernierScan = (new Date(slots.last_updated)).toLocaleString('fr-FR', {day: '2-digit',month: '2-digit', hour: '2-digit', minute: '2-digit'});
+  const titre = renderTitre(départementSélectionné, dernierScan)
 
   const slotsDisponibles = renderSlotsDisponibles({
     centres: slots.centres_disponibles,
@@ -59,6 +71,15 @@ async function afficherLesSlotsPourDepartement(renduEl, départementSélectionn�
     ${titre}
     ${slotsDisponibles}
     ${slotsIndisponibles}
+  `
+}
+
+function renderTitre (départementSélectionné, dernierScan) {
+  return `
+    <div class="titre-results">
+      <h3 class="dpt-selected">Résultats pour : ${départementSélectionné.nom_departement} (${départementSélectionné.code_departement})</h3>
+      <p class="last-update-info" role="doc-subtitle">dernière vérification : <span>${dernierScan}</span></p>
+    </div>
   `
 }
 

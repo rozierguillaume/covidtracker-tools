@@ -95,6 +95,36 @@ button {
 
 }
 
+/* ==== JE SAIS C'EST MOCHE MAIS POUR L'INSTANT ÇA M'AIDE A M'Y RETROUVER ==== */
+
+#rdv {
+  font-family: Roboto;
+}
+
+#rdv .dpt-selected {
+    color: #44516B;
+    font-size: 1.875rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+#rdv .last-update-info {
+    color: #636363;
+    display: block;
+    text-align: center;
+}
+
+#rdv .last-update-info span {
+    color:#44516B;
+    font-weight: 600;
+}
+
+
+
+
+
+
+
 .div-doses{
     border: 2px solid rgba(222, 222, 222, 1);
     padding: 30px;
