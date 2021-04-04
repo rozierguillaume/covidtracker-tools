@@ -91,7 +91,7 @@ function renderSlotsDisponibles ({ dernierScan, centres, départementSélectionn
     </div>
 
     <h3>✅ Rendez-vous trouvés</h3>
-    <p>Nous avons trouvé ${nbCentres} centre(s) ayant des disponibilités sur Doctolib, Maiia ou Keldoc. Dernier scan : ${dernierScan}.</p>
+    <p>Nous avons trouvé ${nbCentres} centre(s) ayant des disponibilités sur Doctolib, Maiia ou Keldoc.</p>
   `
   return `
     <section class="results">
@@ -150,11 +150,12 @@ function renderSlotsIndisponibles ({ dernierScan, centres }) {
 function renderCentreAVerifier (centre) {
   const trademark = TRADEMARK[centre.plateforme]
   const verifierAvec = trademark ? `avec ${trademark}` : "sur internet"
+  const motif = trademark ? "Aucun rendez-vous détecté" : "Plateforme non supportée"
   return `
     <a href="${centre.url}" class="linking-container">
       <card class="card inactive-center">
           <span class="card__info-area">
-              <div class="card__info card__date">aucun rdv détecté</div>
+              <div class="card__info card__date">${motif}</div>
               <div class="card__info card__location">${centre.nom}</div>
           </span>
           <span class="card__booking-area">
