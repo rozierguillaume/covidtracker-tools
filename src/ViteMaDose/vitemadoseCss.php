@@ -97,10 +97,20 @@ button {
 
 /* ==== JE SAIS C'EST MOCHE MAIS POUR L'INSTANT ÇA M'AIDE A M'Y RETROUVER ==== */
 
+form.doses,
 #rdv {
   font-family: Roboto, Ubuntu, monospace;
+  letter-spacing: initial;
 }
 
+#rdv h1,
+#rdv h2,
+#rdv h3,
+#rdv h4,
+#rdv h5,
+#rdv h6 {
+  letter-spacing: initial;
+}
 
 .dpt-select {
     background: #FFFFFF;
