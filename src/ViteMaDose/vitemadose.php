@@ -48,5 +48,5 @@
 <br>
 
 <br>
-Remerciement aux <a rel="noreferrer nofollow" href="https://github.com/CovidTrackerFr/vitemadose/graphs/contributors">contributeurs</a>.<br>
+Remerciement aux <a rel="external" href="https://github.com/CovidTrackerFr/vitemadose/graphs/contributors">contributeurs</a>.<br>
 Un bug ? Une idée d'amélioration ? Contributions bienvenues sur Github : <a target="_blank" rel="external" href="https://github.com/rozierguillaume/covidtracker-tools/tree/main/src/ViteMaDose">front-end</a>, <a target="_blank" rel="external" href="https://github.com/CovidTrackerFr/vitemadose">algorithme de détection</a>.
