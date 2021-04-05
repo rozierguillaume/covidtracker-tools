@@ -99,7 +99,7 @@ button {
 
 form.doses,
 #rdv {
-  font-family: Roboto, Ubuntu, monospace;
+  font-family: Roboto, Ubuntu, sans-serif;
   letter-spacing: initial;
 }
 
@@ -129,7 +129,7 @@ form.doses,
     /* select arrow-down customization */
     background: url(./arrow-down-circle.svg) no-repeat right #FFFFFF;
     background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='%232F80ED' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-arrow-down-circle'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cpolyline points='8 12 12 16 16 12'%3E%3C/polyline%3E%3Cline x1='12' y1='8' x2='12' y2='16'%3E%3C/line%3E%3C/svg%3E");
-    font-family: Roboto, Ubuntu, monospace;
+    font-family: Roboto, Ubuntu, sans-serif;
     -webkit-appearance: none;
     background-position-x: 256px;
 }
