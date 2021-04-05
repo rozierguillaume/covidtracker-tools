@@ -16,7 +16,8 @@ const LOGO = {
 const TRADEMARK = {
   Doctolib: "Doctolib.fr",
   Keldoc: "Keldoc.com",
-  Maiia: "Maiia.com"
+  Maiia: "Maiia.com",
+  Ordoclic: "Ordoclic.fr"
 }
 main()
 
