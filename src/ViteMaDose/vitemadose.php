@@ -13,7 +13,7 @@
         </div>
         <div class="col-md-4 text-right">
             <button class="btn-shadow">
-                <a href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">🍪
+                <a href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="external">🍪
                     Offrez-moi un cookie</a>
             </button> &nbsp;&nbsp;
         </div>
@@ -21,7 +21,7 @@
 </div>
 
 <form class="div-doses doses">
-    <select id="dpt-select" class="dpt-select" >
+    <select id="dpt-select" class="dpt-select">
         <option value="">Indiquez votre département</option>
     </select>
 
@@ -32,7 +32,7 @@
 
 <?php include(__DIR__ . '/carteCentres.html') ?>
 
-<div class="alert alert-info clearFix"  style="font-size: 18px;">
+<div class="alert alert-info clearFix" style="font-size: 18px;">
     <div class="row">
         <div class="col-md-8">
             <small>À VOIR AUSSI...</small><br>
@@ -48,5 +48,5 @@
 <br>
 
 <br>
-Remerciement aux <a href="https://github.com/CovidTrackerFr/vitemadose/graphs/contributors">contributeurs</a>.<br>
-Un bug ? Une idée d'amélioration ? Contributions bienvenues sur Github : <a href="https://github.com/rozierguillaume/covidtracker-tools/tree/main/src/ViteMaDose">front-end</a>, <a href="https://github.com/CovidTrackerFr/vitemadose">algorithme de détection</a>.
+Remerciement aux <a rel="noreferrer nofollow" href="https://github.com/CovidTrackerFr/vitemadose/graphs/contributors">contributeurs</a>.<br>
+Un bug ? Une idée d'amélioration ? Contributions bienvenues sur Github : <a target="_blank" rel="external" href="https://github.com/rozierguillaume/covidtracker-tools/tree/main/src/ViteMaDose">front-end</a>, <a target="_blank" rel="external" href="https://github.com/CovidTrackerFr/vitemadose">algorithme de détection</a>.
