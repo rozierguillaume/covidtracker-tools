@@ -21,12 +21,12 @@
 </div>
 
 <form class="div-doses doses">
-    <select id="dep-select" style="margin-top: 20px;">
-        <option value="">-- Choisissez une option --</option>
+    <select id="dpt-select" class="dpt-select" >
+        <option value="">Indiquez votre département</option>
     </select>
 
     <div id="rdv">
-      <label for="dep-select">Indiquez votre département</label>
+      <label for="dpt-select">pour commencer votre recherche, veuillez indiquer votre département.</label>
     </div>
 </form>
 
