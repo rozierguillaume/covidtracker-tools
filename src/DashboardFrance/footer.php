@@ -17,12 +17,12 @@
 <div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
 <p><!-- /wp:spacer --></p>
 <p><!-- wp:paragraph --></p>
-<p>♥ <a href="https://guillaumerozier.fr/covidtracker-soutenir/">Soutenez CovidTracker</a></p>
+<p>♥ <a href="https://covidtracker.fr/covidtracker-soutenir/">Soutenez CovidTracker</a></p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:separator --></p>
 <hr class="wp-block-separator"><!-- /wp:separator --><p></p>
 <p><!-- wp:html --></p>
-<p><a href="https://guillaumerozier.fr/mentions-legales/">Mentions légales</a></p>
+<p><a href="https://covidtracker.fr/mentions-legales/">Mentions légales</a></p>
 <p><!-- /wp:html --></p>
 <p><!-- wp:html --><br>
     <!-- /wp:html --></p>
