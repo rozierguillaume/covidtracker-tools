@@ -114,8 +114,8 @@ function renderCentreReservable (centre) {
             <div class="card__info card__location">${centre.nom}</div>
         </span>
         <span class="card__booking-area">
-            <button class="card__btn active-btn">prendre rendez-vous</button>
-            <p class="card__booking-engine">${bookAvec} <img src="${logoUrl}" class="logo" /></p>
+            
+            <p class="card__booking-engine">Prendre rendez-vous ${bookAvec} <img src="${logoUrl}" class="logo" /></p>
         </span>
       </card>
     </a>
