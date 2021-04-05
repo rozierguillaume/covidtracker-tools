@@ -128,7 +128,7 @@ function pasDeCentresDisponibles ({ dernierScan, départementSélectionné  }) {
     <h3>❌ Aucun rendez-vous trouvé pour le département ${départementSélectionné.nom_departement} (${départementSélectionné.code_departement})</h3>
     <p>Nous n'avons trouvé aucun centre ayant des disponibilités sur Doctolib, Maiia et Keldoc. Dernier scan : ${dernierScan}.</p>
     <p>
-        <i>La recherche de Vite Ma Dose ! n'est pas exhaustive. Essayez de chercher manuellement via les plateformes de réservation (Doctolib, Maiia, Keldoc) ou en appelant les centres.</i>
+        <i>La recherche de Vite Ma Dose ! n'est pas exhaustive. Essayez de chercher manuellement via les plateformes de réservation (Doctolib, Maiia, Keldoc, Ordoclic) ou en appelant les centres.</i>
     </p>
   </section>
   `
