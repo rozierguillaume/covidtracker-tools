@@ -235,10 +235,18 @@ button {
     font-size: 0.88rem;
     margin:0px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .card__booking-engine:hover {
     color: #14488E;
+}
+
+.card__booking-engine .logo {
+  height: 1em;
 }
 
 

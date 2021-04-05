@@ -105,6 +105,7 @@ function renderCentreReservable (centre) {
   const date = new Date(centre.prochain_rdv).toLocaleString('fr-FR', {weekday: 'long', day: '2-digit', month: 'long', hour: '2-digit', minute: '2-digit'})
   const trademark = TRADEMARK[centre.plateforme]
   const bookAvec = trademark ? `avec ${trademark}` : "sur internet"
+  const logoUrl = LOGO[centre.plateforme]
   return `
     <a href="${centre.url}" target="_blank" class="linking-container">
       <card class="card">
@@ -114,7 +115,7 @@ function renderCentreReservable (centre) {
         </span>
         <span class="card__booking-area">
             <button class="card__btn active-btn">prendre rendez-vous</button>
-            <p class="card__booking-engine">${bookAvec}</p>
+            <p class="card__booking-engine">${bookAvec} <img src="${logoUrl}" class="logo" /></p>
         </span>
       </card>
     </a>
