@@ -166,7 +166,7 @@ button {
 */
 
 .linking-container /* link is all over the card, prevent the underline on all text inside the card */
-{ text-decoration: none;}
+{ text-decoration: none !important;}
 
 .card {
     background-color: white;
