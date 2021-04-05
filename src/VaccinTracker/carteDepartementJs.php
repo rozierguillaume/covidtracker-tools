@@ -17,8 +17,7 @@
         var donneesDepartementsVaccination;
         var typeCarteDepartement = 'n_dose1_cumsum_pop';
         var dateMaj = "";
-        var tableauValeurs = [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5]
-        var tableauCouleurs= [
+        var tableau10Couleurs= [
             "#cfdde6",
             "#b8d4e6",
             "#a1cbe6",
@@ -31,8 +30,7 @@
             "#0076bf"
         ]; // HSV(203, xx, 90) avec xx de 10 à 100
 
-        var tableauValeurs = [8, 10, 12, 14, 16]
-        var tableauCouleurs= [  
+        var tableau5Couleurs= [  
             "#d5dee3",
             "#b8d4e6",
             "#5cb1e6",
@@ -67,7 +65,6 @@
             }
             min_tab=100;
             max_tab=0;
-            console.log("lol")
 
             for (dep in donneesDepartementsVaccination){
                 value=donneesDepartementsVaccination[dep].n_dose1_cumsum_pop
@@ -83,7 +80,7 @@
                 tableauValeurs.push((min_tab + (max_tab-min_tab)*i/5).toFixed(1))
             }
 
-            construireLegende(tableauValeurs, tableauCouleurs);
+            construireLegende(tableauValeurs, tableau5Couleurs);
 
             for (numeroDepartement in donneesDepartementsVaccination) {
                 if (numeroDepartement == 'departements'){
@@ -95,7 +92,7 @@
                 //Affectation de la valeur de la donnée du département à sa représentation sur la carte. .
                 departementCarte.data(nomDonnee, donneesDepartement[nomDonnee]);
                 //Coloration du département sur la carte. .
-                departementCarte.css("fill", recupererCouleur(donneesDepartement[nomDonnee], tableauValeurs, tableauCouleurs));
+                departementCarte.css("fill", recupererCouleur(donneesDepartement[nomDonnee], tableauValeurs, tableau5Couleurs));
             }
         }
 
