@@ -9,7 +9,7 @@
 <div class="alert alert-info clearFix" style="font-size: 18px;">
     <div class="row">
         <div class="col-md-8">
-            CovidTracker est gratuit, indépendant et sans publicités.<br>
+            CovidTracker est gratuit, indépendant et sans publicité.<br>
         </div>
         <div class="col-md-4 text-right">
             <button class="btn-shadow">
