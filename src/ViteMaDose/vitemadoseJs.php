@@ -158,16 +158,16 @@ function renderCentreAVerifier (centre) {
   const verifierAvec = trademark ? `avec ${trademark}` : "sur internet"
   const motif = trademark ? "Aucun rendez-vous détecté" : "Plateforme non supportée"
   return `
-    <a href="${centre.url}" class="linking-container">
+    <a href="${centre.url ? centre.url : '#'}" class="linking-container">
       <card class="card inactive-center">
           <span class="card__info-area">
               <div class="card__info card__date">${motif}</div>
               <div class="card__info card__location">${centre.nom}</div>
           </span>
-          <span class="card__booking-area">
+          ${centre.url ? `<span class="card__booking-area">
               <input type="button" class="card__btn inactive-btn" value="vérifier ce centre"></input>
               <p class="card__booking-engine inactive-color">${verifierAvec}</p>
-          </span>
+          </span>` : ''}
       </card>
     </a>
   `
