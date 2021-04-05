@@ -94,8 +94,8 @@ var age_pour100k = false;
 var types_descriptions = {
     "hospitalisations": "Nombre de lits occupés à l'hôpital pour Covid19.",
     "incid_hospitalisations": "Nombre d'admissions quotidiennes à l'hôpital pour Covid19 (moyenne glissante 7 jours).",
-    "incidence": "Nombre de cas par semaine pour 100 000 habitants. Par date de prélèvment (J-3).",
-    "taux_positivite": "Proportion des tests qui sont positifs (en %). Par date de prélèvment (J-3).",
+    "incidence": "Nombre de cas par semaine pour 100 000 habitants. Par date de prélèvement (J-3).",
+    "taux_positivite": "Proportion des tests qui sont positifs (en %). Par date de prélèvement (J-3).",
     "reanimations": "Nombre de lits de réanimation occupés à l'hôpital pour Covid19.",
     "incid_reanimations": "Nombre d'admissions quotidiennes en réanimation pour Covid19 (moyenne glissante 7 jours).",
     "deces_hospitaliers": "Nombre de décès quotidiens pour Covid19 à l'hôpital (moyenne glissante 7 jours).",
