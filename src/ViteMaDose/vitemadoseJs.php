@@ -162,7 +162,7 @@ function renderCentreAVerifier (centre) {
               <div class="card__info card__location">${centre.nom}</div>
           </span>
           <span class="card__booking-area">
-              <button class="card__btn inactive-btn">vérifier ce centre</button>
+              <input type="button" class="card__btn inactive-btn" value="vérifier ce centre"></input>
               <p class="card__booking-engine inactive-color">${verifierAvec}</p>
           </span>
       </card>
