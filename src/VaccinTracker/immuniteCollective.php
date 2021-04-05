@@ -42,16 +42,6 @@ et 15 à 27 millions d'ici à juillet.
     <li>Personnes à risque de plus de 50 ans.</li>
 </ul>
 
-<h3 style="margin-top : 50px;">31 mars</h3>
-<ul>
-    <li>Personnes à risque de plus de 50 ans.</li>
-</ul>
-
-<h3 style="margin-top : 50px;">31 mars</h3>
-<ul>
-    <li>Personnes âgées de plus de 70 ans.</li>
-</ul>
-
 <h3 style="margin-top : 50px;">16 avril</h3>
 <ul>
     <li>Personnes âgées de plus de 60 ans,</li>
