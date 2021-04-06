@@ -219,9 +219,9 @@ async function renderStats(departement = null) {
     let numDep = departement !== null ? departement : "tout_departement";
     let stats = (await getStats(getVmdUrl(window.location)))[numDep];
     let indicationDep = departement !== null ? 'dans le ' + numDep : 'en France';
-    return `<div> <h2>${stats.disponibles}</h2> <div style="font-size: 15px;">centre${stats.disponibles > 1 ? 's':''} ouvert${stats.disponibles > 1 ? 's':''}<br>${indicationDep}</div> </div>
+    return `<div> <h2>${stats.disponibles}</h2> <div style="font-size: 15px;">centre${stats.disponibles > 1 ? 's':''} ayant des disponibilités<br>${indicationDep}</div> </div>
     <div> <h2>${stats.total}</h2> <div style="font-size: 15px;">centres détectés<br>${indicationDep}</div> </div> 
-    <div> <h2>${Math.round(stats.disponibles/stats.total*100)}%</h2> <div style="font-size: 15px;">de centres disponibles<br>${indicationDep}</div> </div>`;
+    <div> <h2>${Math.round(stats.disponibles/stats.total*100)}%</h2> <div style="font-size: 15px;">de centres ayant des disponibilités<br>${indicationDep}</div> </div>`;
 }
 
 function getVmdUrl(location) {

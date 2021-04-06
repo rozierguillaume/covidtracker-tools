@@ -22,8 +22,8 @@
 
 <form class="div-doses doses">
 <div class="stats-vmd" id="stats-vmd"> 
-    <div> <h2>-</h2> <div style="font-size: 15px;">centre ouvert<br>en France</div> </div>
-    <div> <h2>-</h2> <div style="font-size: 15px;">centre détecté<br>en France</div> </div> 
+    <div> <h2>-</h2> <div style="font-size: 15px;">centres ayant des disponibilités<br>en France</div> </div>
+    <div> <h2>-</h2> <div style="font-size: 15px;">centres détectés<br>en France</div> </div> 
     <div> <h2>-%</h2> <div style="font-size: 15px;">de centres disponibles<br>en France</div> </div> 
 </div>
     <select id="dpt-select" class="dpt-select" >
