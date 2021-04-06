@@ -66,6 +66,9 @@ async function main() {
       afficherLesSlotsPourDepartement(renduEl, départementSélectionné, vmdUrl)
       location.hash = `dep-${codeDépartement}`
       statsElt.innerHTML = await renderStats(codeDépartement);
+    } else {
+        document.getElementById("rdv").innerHTML = '<label for="dpt-select">pour commencer votre recherche, veuillez indiquer votre département.</label>';
+        statsElt.innerHTML = await renderStats();
     }
   }
 
