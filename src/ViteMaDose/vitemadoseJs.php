@@ -22,6 +22,8 @@ const TRADEMARK = {
   Maiia: "Maiia.com",
   Ordoclic: "Ordoclic.fr"
 }
+
+let stats = null;
 main()
 
 async function main() {
@@ -30,6 +32,7 @@ async function main() {
   const departementsParNumero = departements.reduce((all, dep) => ({[dep.code_departement]: dep, ...all}), {})
   const doseFormEl = document.querySelector("form.doses")
   const departementSelectEl = doseFormEl.querySelector('select')
+  const statsElt = document.getElementById('stats-vmd')
   for (const departement of departements) {
     const optionEl = document.createElement('OPTION')
     optionEl.value = departement.code_departement
@@ -44,7 +47,12 @@ async function main() {
     if (departementsParNumero[départementHash]) {
       departementSelectEl.value = départementHash
       onDépartementSelectionné(départementHash)
+      statsElt.innerHTML = await renderStats(départementHash);
+    } else {
+      statsElt.innerHTML = await renderStats();
     }
+  } else {
+    statsElt.innerHTML = await renderStats();    
   }
 
   departementSelectEl.addEventListener('change', (e) => {
@@ -52,13 +60,19 @@ async function main() {
   })
 
 
-  function onDépartementSelectionné (codeDépartement) {
+  async function onDépartementSelectionné (codeDépartement) {
     const départementSélectionné = departementsParNumero[codeDépartement]
     if (départementSélectionné) {
       afficherLesSlotsPourDepartement(renduEl, départementSélectionné, vmdUrl)
       location.hash = `dep-${codeDépartement}`
+      statsElt.innerHTML = await renderStats(codeDépartement);
+    } else {
+        document.getElementById("rdv").innerHTML = '<label for="dpt-select">pour commencer votre recherche, veuillez indiquer votre département.</label>';
+        statsElt.innerHTML = await renderStats();
     }
   }
+
+
 }
 
 async function afficherLesSlotsPourDepartement(renduEl, départementSélectionné, vmdUrl) {
@@ -190,6 +204,27 @@ async function fetchSlotsForDepartement(vmd_url, numeroDepartement) {
     throw new Error("HTTP error " + response.status);
   }
   return await response.json()
+}
+
+async function getStats(vmd_url) {
+    if(stats == null) {
+        const url = `${vmd_url}/stats.json`;
+        const response = await fetch(url)
+        if (!response.ok) {
+            throw new Error("HTTP error " + response.status);
+        }
+        stats = await response.json()
+    }
+    return stats;
+}
+
+async function renderStats(departement = null) {
+    let numDep = departement !== null ? departement : "tout_departement";
+    let stats = (await getStats(getVmdUrl(window.location)))[numDep];
+    let indicationDep = departement !== null ? 'dans le ' + numDep : 'en France';
+    return `<div> <h2>${stats.disponibles}</h2> <div style="font-size: 15px;">centre${stats.disponibles > 1 ? 's':''} ayant des disponibilités<br>${indicationDep}</div> </div>
+    <div> <h2>${stats.total}</h2> <div style="font-size: 15px;">centres détectés<br>${indicationDep}</div> </div> 
+    <div> <h2>${Math.round(stats.disponibles/stats.total*100)}%</h2> <div style="font-size: 15px;">de centres ayant des disponibilités<br>${indicationDep}</div> </div>`;
 }
 
 function getVmdUrl(location) {
