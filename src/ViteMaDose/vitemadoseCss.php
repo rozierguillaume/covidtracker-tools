@@ -397,4 +397,20 @@ p {
     font-size: 120% !important;
 }
 
+div.stats-vmd {
+    display: flex;
+    min-height: 12vh;
+    flex-wrap: wrap;
+    padding: 10px 20px;
+    text-align: center;
+    color: #5f6d88;
+}
+
+div.stats-vmd div {
+    flex: 1;
+    min-width: 200px;
+    min-height: 7vh;
+}
+
+
 </style>
