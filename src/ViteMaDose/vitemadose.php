@@ -2,14 +2,14 @@
 <?php include(__DIR__ . '/vitemadoseJs.php') ?>
 
 <p>
-    Vite Ma Dose ! est un outil de CovidTracker permettant de détecter les rendez-vous disponibles dans votre département afin de vous faire vacciner (sous réserve d'éligibilité). Pour l'instant, seule la plateforme Doctolib est supportée. <i>Vite Ma Dose ! n'est pas un outil officiel, n'est pas exhaustif et ne remplace pas une recherche manuelle.</i>
+    Vite Ma Dose ! est un outil de CovidTracker permettant de détecter les rendez-vous disponibles dans votre département afin de vous faire vacciner (sous réserve d'éligibilité). Pour l'instant, les plateformes supportées sont : Doctolib, Maiia, Keldoc et Ordoclic. <i>Vite Ma Dose ! n'est pas un outil officiel, n'est pas exhaustif et ne remplace pas une recherche manuelle.</i>
 </p>
 <br><br>
 
 <div class="alert alert-info clearFix" style="font-size: 18px;">
     <div class="row">
         <div class="col-md-8">
-            CovidTracker est gratuit, indépendant et sans publicités.<br>
+            CovidTracker est gratuit, indépendant et sans publicité.<br>
         </div>
         <div class="col-md-4 text-right">
             <button class="btn-shadow">
@@ -21,13 +21,19 @@
 </div>
 
 <form class="div-doses doses">
-    <select id="dep-select" style="margin-top: 20px;">
-        <option value="">-- Choisissez une option --</option>
+<div class="stats-vmd" id="stats-vmd"> 
+    <div> <h2>-</h2> <div style="font-size: 15px;">centres ayant des disponibilités<br>en France</div> </div>
+    <div> <h2>-</h2> <div style="font-size: 15px;">centres détectés<br>en France</div> </div> 
+    <div> <h2>-%</h2> <div style="font-size: 15px;">de centres ayant des disponibilités<br>en France</div> </div> 
+</div>
+    <select id="dpt-select" class="dpt-select" >
+        <option value="">Indiquez votre département</option>
     </select>
 
     <div id="rdv">
-      <label for="dep-select">Indiquez votre département</label>
+      <label for="dpt-select">pour commencer votre recherche, veuillez indiquer votre département.</label>
     </div>
+
 </form>
 
 <?php include(__DIR__ . '/carteCentres.html') ?>

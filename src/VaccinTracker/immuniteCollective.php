@@ -30,24 +30,31 @@ et 15 à 27 millions d'ici à juillet.
     </li>
 </ul>
 
-<h3 style="margin-top : 50px;">Février ou mars</h3>
+<h3 style="margin-top : 50px;">Début février</h3>
 <ul>
-    <li>Personnes âgées de plus de 65 ans.</li>
+    <li>Tous les professionnels de Santé. 
+    </li>
 </ul>
 
-<h3 style="margin-top : 50px;">Fin mars</h3>
+<h3 style="margin-top : 50px;">31 mars</h3>
 <ul>
-    <li>Personnes âgées de plus de 50 ans,</li>
-    <li>Personnes travaillant dans un secteur "essentiel" (*),</li>
-    <li>Personne vulnérable ou précaire,</li>
-    <li>Personne majeure vivant dans un hébergement confiné ou un lieu clos (**).</li>
+    <li>Personnes âgées de plus de 70 ans,</li>
+    <li>Personnes à risque de plus de 50 ans.</li>
+</ul>
+
+<h3 style="margin-top : 50px;">16 avril</h3>
+<ul>
+    <li>Personnes âgées de plus de 60 ans,</li>
+    <li>Les enseignants qui le désirent.</li>
+</ul>
+
+<h3 style="margin-top : 50px;">15 mai</h3>
+<ul>
+    <li>Personnes de 50 ans et plus.
+    </li>
 </ul>
 
 <h3 style="margin-top : 50px;">Été</h3>
 <ul>
     <li>Ensemble de la population.</li>
 </ul>
-<br>
-(*) Les secteurs considérés comme "essentiels" sont les domaines de la sécurité, de l'éducation et de l'alimentaire, indispensables "au fonctionnement du pays en période épidémique", selon le ministère de la Santé.
-(**) Le ministère de la Santé ne donne pas plus de précisions concernant "les hébergements confinés ou les lieux clos". Interrogée par franceinfo sur cette question, la DGS donne uniquement pour exemple les "foyers de travailleurs migrants".
-<br>

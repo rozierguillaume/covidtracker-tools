@@ -60,7 +60,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>♥ <a href="https://guillaumerozier.fr/covidtracker-soutenir/">Soutenez CovidTracker</a></p>
+<p>♥ <a href="https://covidtracker.fr/covidtracker-soutenir/">Soutenez CovidTracker</a></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:html -->
@@ -72,7 +72,7 @@ CovidTracker est gratuit et sans pub. <div class="wp-block-button is-style-outli
 <!-- /wp:separator -->
 
 <!-- wp:html -->
-<a href="https://guillaumerozier.fr/mentions-legales/">Mentions légales</a></p>
+<a href="https://covidtracker.fr/mentions-legales/">Mentions légales</a></p>
 <!-- /wp:html -->
 
 <!-- wp:paragraph {"fontSize":"small"} -->

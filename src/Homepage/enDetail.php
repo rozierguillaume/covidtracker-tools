@@ -32,6 +32,7 @@
                 <h3>Outils</h3><br></center>
             <p>Ces outils permettent de comparer les deux vagues, de calculer le risque de présence d'un cas de covid19, et d'estimer la durée du confinement en cours.</p>
             <center>
+                <a href="https://covidtracker.fr/vitemadose/" style="color:black"><button>🆕 <b>Vite Ma Dose !</b></button></a>
                 <a href="https://covidtracker.fr/covidexplorer/" style="color:black"><button>🔎 <b>CovidExplorer</b></button></a>
                 <a href="https://covidtracker.fr/vaccintracker/" style="color:black"><button>💉 <b>VaccinTracker</b></button></a>
                 <a href="https://covidtracker.fr/covidradius/" style="color:black"><button>📍 <b>CovidRadius</b></button></a>
