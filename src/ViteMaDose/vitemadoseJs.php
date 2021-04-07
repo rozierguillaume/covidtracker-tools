@@ -129,7 +129,7 @@ function renderCentreReservable (centre) {
   const bookAvec = trademark ? `avec ${trademark}` : "sur internet"
   const logoUrl = LOGO[centre.plateforme]
   return `
-    <a href="${centre.url}" target="_blank" class="linking-container">
+    <a href="${centre.url}" target="_blank" rel="noopener noreferrer" class="linking-container">
       <card class="card">
         <span class="card__info-area">
             <div class="card__info card__date">${date}</div>
@@ -175,7 +175,7 @@ function renderCentreAVerifier (centre) {
   const verifierAvec = trademark ? `avec ${trademark}` : "sur internet"
   const motif = trademark ? "Aucun rendez-vous détecté" : "Plateforme non supportée"
   return `
-    <a href="${centre.url ? centre.url : '#'}" class="linking-container">
+    <a href="${centre.url ? centre.url : '#'}" target="_blank" rel="noopener noreferrer" class="linking-container">
       <card class="card inactive-center">
           <span class="card__info-area">
               <div class="card__info card__date">${motif}</div>
