@@ -2,10 +2,10 @@
 <h2 style="margin-top : 80px;">Évolution</h2>
 Pour vacciner l'ensemble de la population adulte (52 millions de personnes) d'ici à août 2021, il faudrait injecter <b><span id="objectif_quotidien">--</span> doses</b> chaque jour.
 <br>
-Au rythme actuel <small>(moyenne des 7 derniers jours)</small>, l'objectif de vacciner l'ensemble de la population adulte serait atteint le <b><span id="date_projetee_objectif"></span></b>.
+Au rythme actuel <small>(moyenne des 15 derniers jours)</small>, l'objectif de vacciner l'ensemble de la population adulte serait atteint le <b><span id="date_projetee_objectif"></span></b>.
 
 <br><br>
-Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moins une dose de vaccin. 
+Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moins une dose de vaccin.
 <br><i><small>Les premières doses sont comptabilisées par date d'injection, les secondes doses par date de remontée. Des écarts peuvent donc être observés avec la réalité.</small></i>
 <br>
 <br>

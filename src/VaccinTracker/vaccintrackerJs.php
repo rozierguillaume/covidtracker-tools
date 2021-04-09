@@ -236,7 +236,7 @@
                 restantaVaccinerImmunite = 60 - dejaVaccines
                 this.objectifQuotidien = calculerObjectif();
                 fetch2ndDosesData();
-                
+
 
             })
             .catch(function () {
@@ -246,7 +246,7 @@
             )
 
         }
-    
+
     function fetch2ndDosesData(){
         fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/vacsi-fra-2doses.json', {cache: 'no-cache'})
             .then(response => {
@@ -261,7 +261,7 @@
                 majValeurs();
                 maj2Doses();
                 fetchStock();
-                
+
             })
             .catch(function () {
                     this.dataError = true;
@@ -303,7 +303,7 @@
                     console.log("errorStock")
                 }
             )
-        
+
     }
     var lineChart;
     function calculerObjectif(){
@@ -322,7 +322,7 @@
 
     function maj2Doses(){
         //log(vaccines_2doses)
-    
+
         let N = vaccines_2doses.n_dose2_cumsum.length
         //let vaccines_2doses_24h = vaccines_2doses.n_dose2_cumsum[N-1] - vaccines_2doses.n_dose2_cumsum[N-2]
         let vaccines_2doses_24h = data_france.n_dose2[data_france.n_dose2.length-1]
@@ -332,7 +332,7 @@
 
         document.getElementById("nb_vaccines_2_doses").innerHTML = numberWithSpaces(dejaVaccines2DosesNb);
         document.getElementById("nb_vaccines_24h_2_doses").innerHTML = numberWithSpaces(vaccines_2doses_24h);
-        
+
         date=vaccines_2doses.jour[N-1]
         document.getElementById("date_maj_2").innerHTML = date.slice(8) + "/" + date.slice(5, 7);
         document.getElementById("proportionVaccines2doses").innerHTML = (Math.round(dejaVaccines2Doses*10000000)/10000000).toFixed(2);
@@ -354,10 +354,11 @@
 
 
     function calculerDateProjeteeObjectif () {
+        const duréeLissageEnJours = 15
         const objectif = OBJECTIF_FIN_AOUT
-        const vdose1 = ( nb_vaccines[nb_vaccines.length -1].n_dose1 - nb_vaccines[nb_vaccines.length -8].n_dose1 ) / 7
+        const vdose1 = ( nb_vaccines[nb_vaccines.length -1].n_dose1 - nb_vaccines[nb_vaccines.length -(1+duréeLissageEnJours)].n_dose1 ) / duréeLissageEnJours
         const cumsum = vaccines_2doses.n_dose2_cumsum
-        const vdose2 = ( cumsum[cumsum.length -1] - cumsum[cumsum.length -8] ) / 7
+        const vdose2 = ( cumsum[cumsum.length -1] - cumsum[cumsum.length -(1+duréeLissageEnJours)] ) / duréeLissageEnJours
         const resteAVaccinerDose1 = objectif - nb_vaccines[nb_vaccines.length -1].n_dose1
         const joursDose1Complete = Math.ceil(resteAVaccinerDose1 / vdose1)
         const nDose2quandD1Complete = Math.floor(joursDose1Complete * vdose2)
@@ -419,7 +420,7 @@
 
         let data_values_2doses = vaccines_2doses.n_dose2_cumsum.map((value, idx)=> ({x: vaccines_2doses.jour[idx], y: parseInt(value)}))
         let labels=nb_vaccines.map(val => val.date)
-        
+
         debut_2nd_doses = labels.map((value, idx) => ({x: value, y:0}))
         let N_tot = labels.length;
         let N2 = data_values_2doses.length;
@@ -446,7 +447,7 @@
                         cubicInterpolationMode: 'monotone',
                         pointHitRadius: 1,
                     }
-                    
+
                 ]
         if(projectionsChecked==true){
             projections_dose2 = valeursProjection(data_france.n_dose2_cumsum, 50)
@@ -467,7 +468,7 @@
                         })
 
 
-            
+
             projections_dose1 = valeursProjection(data_france.n_dose1_cumsum, 50)
             projections_dates = datesProjection(data_france.dates[data_france.dates.length-1], 50)
 
@@ -521,7 +522,7 @@
                 hover: {
                     intersect: false
                 },
-                
+
                 maintainAspectRatio: false,
                 plugins: {
                     deferred: {
@@ -606,11 +607,11 @@
         var ctx = document.getElementById('lineVacChart').getContext('2d');
         let labels = nb_vaccines.map(val => val.date)
         let data_values = data.map((value, idx) => ({x: labels[idx], y: parseInt(value)}))
-        
+
         //let rollingMeanValues = rollingMean(data).map((value, idx)=> ({x: labels[idx+3], y: Math.round(value)}))
         let rollingMeanValues = somme_doses_rolling.n_dose_rolling.map((value, idx) => ({x:somme_doses_rolling.jour[idx], y:value}))
         let data_values_2doses = vaccines_2doses.n_dose2.map((value, idx)=> ({x: vaccines_2doses.jour[idx], y: parseInt(value)}))
-        
+
         debut_2nd_doses = labels.map((value, idx) => ({x: value, y:0}))
 
         let data_values_2nd = data_france.n_dose2.map((value, idx) => ({x: data_france.dates[idx], y: value}))
@@ -643,7 +644,7 @@
                         data: data_values_2nd, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
                         backgroundColor: '#1796e6',
                     },
-                    
+
                 ]
             },
             options: {
@@ -697,7 +698,7 @@
         if (type_donnees=="quotidien"){
             document.getElementById("afficherLivraisonsDiv").innerHTML = ``
             document.getElementById("afficherProjectionsDiv").innerHTML = ``
-            
+
             nb_vaccines_quot = [nb_vaccines[0].total]
             for(i=0; i<nb_vaccines.length-1; i++){
                 nb_vaccines_quot.push(nb_vaccines[i+1].n_dose1-nb_vaccines[i].n_dose1)
@@ -718,9 +719,9 @@
             obj = OBJECTIF_FIN_AOUT;
         }
         //console.log(this.lineChart.options.annotation)
-        
+
         if (this.lineChart.options.annotation.annotations.length==0){
-            
+
             this.lineChart.options.annotation.annotations.push(
                 {
                     drawTime: "afterDatasetsDraw",
@@ -785,17 +786,17 @@
     }
 
     function obtenirCumulStockActuel(){
-        
+
         var idx_max = 0;
         let today = moment();
-        
+
         livraisons.jour.map((value, idx)=>{
-            
+
             if(moment(value) <= today){
                 idx_max = idx
             }
         })
-        
+
         return {"jour": livraisons.jour[idx_max], "valeur": livraisons.nb_doses_tot_cumsum[idx_max]};
     }
 
@@ -820,7 +821,7 @@
 
         document.getElementById("nb_doses_injectees").innerHTML = numberWithSpaces(dejaVaccinesNb);
         document.getElementById("nb_doses_injectees_24h").innerHTML = numberWithSpaces(dejaVaccinesNb - nb_vaccines[nb_vaccines.length-2].n_dose1);
-        
+
         document.getElementById("proportionVaccinesMax").innerHTML = (Math.round(dejaVaccines*10000000)/10000000).toFixed(2);
         //console.log(dejaVaccines2Doses);
         //document.getElementById("proportionVaccinesMin").innerHTML = (Math.round(dejaVaccines/2*10000000)/10000000).toFixed(2);
@@ -839,7 +840,7 @@
         document.getElementById("date_maj_1").innerHTML = date;
         //document.getElementById("date_maj_2").innerHTML = date + " à " + heure;
         document.getElementById("date_maj_3").innerHTML = date;
-                
+
 
     }
 
