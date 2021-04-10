@@ -416,7 +416,7 @@
         let data_values = data_france.n_dose1_cumsum.map((val, idx) => ({x: data_france.dates[idx], y:parseInt(val)}));
         let data_values_2nd = data_france.n_dose2_cumsum.map((val, idx) => ({x: data_france.dates[idx], y:parseInt(val)}));
 
-        let data_object_stock = livraisons.nb_doses_tot_cumsum.map((value, idx)=> ({x: livraisons.jour[idx], y: parseInt(value)}))
+        let data_object_stock = livraisons.nb_doses_tot_cumsum.map((value, idx)=> ({x: moment(livraisons.jour[idx]).add(-3, 'd'), y: parseInt(value)}))
 
         let data_values_2doses = vaccines_2doses.n_dose2_cumsum.map((value, idx)=> ({x: vaccines_2doses.jour[idx], y: parseInt(value)}))
         let labels=nb_vaccines.map(val => val.date)
@@ -792,12 +792,12 @@
 
         livraisons.jour.map((value, idx)=>{
 
-            if(moment(value) <= today){
+            if(moment(value).add(-3, 'd') <= today){
                 idx_max = idx
             }
         })
 
-        return {"jour": livraisons.jour[idx_max], "valeur": livraisons.nb_doses_tot_cumsum[idx_max]};
+        return {"jour": moment(livraisons.jour[idx_max]).add(-3, 'd').format('YYYY-MM-DD'), "valeur": livraisons.nb_doses_tot_cumsum[idx_max]};
     }
 
     function majValeursStock(){

@@ -19,6 +19,6 @@
         <span id="nb_doses" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span><br>
         <b>Doses réceptionnées</b><br>
         Cumul des doses réceptionnées ou officiellement attendues depuis le 26 décembre. Deux doses espacées de trois semaines sont nécessaires pour vacciner un patient.<br>
-        <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span id="date_maj_4">--/--</span>.<br>Source : CovidTracker/Ministère de la Santé.</i></div>
+        <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée* : <span id="date_maj_4">--/--</span>.<br>Source : CovidTracker/Ministère de la Santé.</i></div>
     </div>
 </div>
