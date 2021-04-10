@@ -210,7 +210,7 @@ function buildChartTypesVaccins(){
                     {
                         yAxisID:"injections_stock",
                         label: 'Livraisons (passées et planifiées) ',
-                        data: typesVaccinsLivraisons[typeVaccin].jour.map((day, idx) => ({x: moment(day).add(-4, 'd'), y: typesVaccinsLivraisons[typeVaccin].nb_doses_tot_cumsum[idx]})),
+                        data: typesVaccinsLivraisons[typeVaccin].jour.map((day, idx) => ({x: moment(day).add(-3, 'd'), y: typesVaccinsLivraisons[typeVaccin].nb_doses_tot_cumsum[idx]})),
                         borderWidth: 3,
                         borderColor: "grey",
                         pointRadius: 0,
