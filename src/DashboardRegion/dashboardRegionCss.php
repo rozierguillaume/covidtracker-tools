@@ -34,7 +34,7 @@
 
     #map path {
         fill: #c4c4cb;
-        stroke: #000;
+        stroke: #FFF !important;
         stroke-width: 0.9;
         transition: fill 0.2s, stroke 0.3s;
         z-index: 1000;

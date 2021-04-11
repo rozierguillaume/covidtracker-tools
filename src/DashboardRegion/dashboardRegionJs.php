@@ -6,9 +6,8 @@
         var donneesFrance
         var saturationReaRegions
         var dateMaj
-        var valeurs_cas = [">", "250", "150", "50"]
-        var couleurs_cas = ["#3c0000", "#c80000", "#f95228", "#98ac3b"]
-
+        var valeurs_cas = [">", "400", "250", "150", "50"];
+        var couleurs_cas = ["purple", "#3c0000", "#c80000", "#f95228", "#98ac3b"];
 
         fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/incidence_regions.json')
             .then(response => {
@@ -77,13 +76,13 @@
         * Sans quoi chaque département commence son clignotement au moment où on lui attribue
         * la classe selected.
         */
-        var stopAnimation = function () {
-            $("#map").removeClass("animated")
-        }
-
-        var startAnimation = function () {
-            $("#map").addClass("animated")
-        }
+        // var stopAnimation = function () {
+        //     $("#map").removeClass("animated")
+        // }
+        //
+        // var startAnimation = function () {
+        //     $("#map").addClass("animated")
+        // }
 
         fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/reffectif_region.json')
             .then(response => {
@@ -175,8 +174,10 @@
 
             $('#donneesRegions').prepend(content);
             //trierRegions();
-            stopAnimation();
-            setTimeout(startAnimation, 0);
+            $("#map").removeClass("animated");
+            setTimeout(function () {
+                $("#map").addClass("animated");
+            }, 100);
         }
 
         function trierRegions() {
@@ -255,7 +256,7 @@
         $('#map path.region, #map g.region').hover(function (e) {
             numeroRegion = $(this).data("code_insee");
             nomRegion = $("#listeRegions option[data-num='" + numeroRegion + "']").val();
-            $('#carte #map title').text(nomRegion);
+            $('#carte #map title').text(nomRegion+' : '+$(this).data("incidence-cas"));
         });
 
         $('#map path.region, #map g.region').click(function (e) {
