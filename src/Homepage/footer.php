@@ -20,7 +20,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Le site a été développé par <a href="https://twitter.fr/guillaumerozier" target="_blank" rel="noopener noreferrer">Guillaume Rozier</a> (fondateur, ingénieur consultant en informatique) et Michaël Souvy (gérant d'une entreprise de services informatiques). Nicolas Furno s'occupe de l'administration, de l'hébergement et de la mise en production du site.</p>
+<p>Le site a été développé par <a href="https://twitter.com/guillaumerozier" target="_blank" rel="noopener noreferrer">Guillaume Rozier</a> (fondateur, ingénieur consultant en informatique) et Michaël Souvy (gérant d'une entreprise de services informatiques). Nicolas Furno s'occupe de l'administration, de l'hébergement et de la mise en production du site.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
