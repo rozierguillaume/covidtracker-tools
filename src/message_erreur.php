@@ -1,5 +1,4 @@
-<!--<div class="alert alert-warning" role="alert">
-    <i>31 mars à 22h •</i><b>  Données vaccination</b><br>
-    Santé publique France indique : "Les indicateurs issus de la base Vaccin Covid n’ont pas pu être produits ce jour en raison d’une indisponibilité des données transmises."
+<div class="alert alert-warning" role="alert">
+    <i>13 avril à 22h •</i><b>  Données incomplètes</b><br>
+    En raison de la publication de données incomplètes par Santé publique France, CovidTracker n'a pas pu être mis à jour le 13 avril. Il sera de nouveau à jour lors de la publication de l'ensemble des données.
 </div>
--->
