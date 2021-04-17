@@ -62,7 +62,7 @@
 
 
     <h3 style="margin-top : 50px;">Vaccins non encore soumis</h3>
-    <div class="row">
+    <div class="row">        
         <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇩🇪 CureVac</b><br>
             Phase 2/3<br>
             Type : ARN messager<br>
@@ -84,6 +84,18 @@
             Dont France : 15M (+ option 15M)<br>
             Doses à injecter : 2<br>
             Statut : examen continu (UE)
+        </card>
+        
+        <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇨🇳 Sinovac</b><br>
+            Phase 3/3<br>
+            Type : Inactivé<br>
+            Efficacité annoncée : 50% – 78%<br>
+            Prêt : Octobre 2020<br>
+            Conservation : --<br>
+            Commandes UE : 0<br>
+            Dont France : 0<br>
+            Doses à injecter : 2<br>
+            Statut : --
         </card>
         
         <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇫🇷🇬🇧 Sanofi/Pasteur-GSK</b><br>
