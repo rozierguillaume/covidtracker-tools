@@ -45,7 +45,6 @@ et 15 à 27 millions d'ici à juillet.
 <h3 style="margin-top : 50px;">16 avril</h3>
 <ul>
     <li>Personnes âgées de plus de 60 ans,</li>
-    <li>Les enseignants qui le désirent.</li>
 </ul>
 
 <h3 style="margin-top : 50px;">15 mai</h3>
