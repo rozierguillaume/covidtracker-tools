@@ -93,7 +93,7 @@ function buildChartTypesVaccins(){
 
             type: 'bar',
             data: {
-                labels: ["Vaccinations cumulées (1ères doses)"],
+                labels: ["Vaccinations cumulées"],
                 datasets: [
                     {
                     label: typesVaccins.noms_vaccins[1-1],
@@ -195,7 +195,7 @@ function buildChartTypesVaccins(){
                         backgroundColor: "lightblue",
                         borderColor: "lightblue",
                         pointRadius: 0,
-                        pointHitRadius: 10,
+                        pointHitRadius: 1,
                     },
                     {
                         yAxisID:"injections",
@@ -205,7 +205,7 @@ function buildChartTypesVaccins(){
                         backgroundColor: "#1796e6",
                         borderColor: "#1796e6",
                         pointRadius: 0,
-                        pointHitRadius: 10,
+                        pointHitRadius: 1,
                     },
                     {
                         yAxisID:"injections_stock",
@@ -214,7 +214,7 @@ function buildChartTypesVaccins(){
                         borderWidth: 3,
                         borderColor: "grey",
                         pointRadius: 0,
-                        pointHitRadius: 10,
+                        pointHitRadius: 1,
                         steppedLine: true,
                     }
                     
@@ -224,12 +224,18 @@ function buildChartTypesVaccins(){
                 aspectRatio: 0.7,
                 maintainAspectRatio: true,
                 tooltips: {
+                    mode: 'x',
+                    intersect: false,
                     callbacks: {
                         label: function(tooltipItem, data) {
                             let value = data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']].y.toString().split(/(?=(?:...)*$)/).join(' ');
                             return data['datasets'][tooltipItem.datasetIndex]['label'] + ': ' + value.toString();
                         }
                     }
+                },
+                hover: {
+                    intersect: false,
+                    mode: 'x'
                 },
                 maintainAspectRatio: false,
                 plugins: {
@@ -310,7 +316,7 @@ function buildChartTypesVaccins(){
                         backgroundColor: colors[1-1],
                         borderColor: colors[1-1],
                         pointRadius: 0,
-                        pointHitRadius: 10,
+                        pointHitRadius: 5,
                     },
                     {
                         yAxisID:"livraisons",
@@ -321,7 +327,7 @@ function buildChartTypesVaccins(){
                         backgroundColor: colors[2-1],
                         borderColor: colors[2-1],
                         pointRadius: 0,
-                        pointHitRadius: 10,
+                        pointHitRadius: 5,
                     },
                     {
                         yAxisID:"livraisons",
@@ -332,7 +338,7 @@ function buildChartTypesVaccins(){
                         backgroundColor: colors[3-1],
                         borderColor: colors[3-1],
                         pointRadius: 0,
-                        pointHitRadius: 10,
+                        pointHitRadius: 5,
                     },
                 ]
             },
@@ -340,12 +346,18 @@ function buildChartTypesVaccins(){
                 aspectRatio: 0.7,
                 maintainAspectRatio: true,
                 tooltips: {
+                    mode: 'x',
+                    intersect: false,
                     callbacks: {
                         label: function(tooltipItem, data) {
                             let value = data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']].y.toString().split(/(?=(?:...)*$)/).join(' ');
                             return data['datasets'][tooltipItem.datasetIndex]['label'] + ': ' + value.toString();
                         }
                     }
+                },
+                hover: {
+                    intersect: false,
+                    mode: 'x'
                 },
                 maintainAspectRatio: false,
                 plugins: {
@@ -425,7 +437,7 @@ function buildChartTypesVaccins(){
                         backgroundColor: colors[1-1],
                         borderColor: colors[1-1],
                         pointRadius: 0,
-                        pointHitRadius: 10,
+                        pointHitRadius: 1,
                     },
                     {
                         yAxisID:"injections",
@@ -436,7 +448,7 @@ function buildChartTypesVaccins(){
                         backgroundColor: colors[2-1],
                         borderColor: colors[2-1],
                         pointRadius: 0,
-                        pointHitRadius: 10,
+                        pointHitRadius: 1,
                     },
                     {
                         yAxisID:"injections",
@@ -447,7 +459,7 @@ function buildChartTypesVaccins(){
                         backgroundColor: colors[3-1],
                         borderColor: colors[3-1],
                         pointRadius: 0,
-                        pointHitRadius: 10,
+                        pointHitRadius: 1,
                     },
                 ]
             },
@@ -455,12 +467,18 @@ function buildChartTypesVaccins(){
                 aspectRatio: 0.7,
                 maintainAspectRatio: true,
                 tooltips: {
+                    mode: 'x',
+                    intersect: false,
                     callbacks: {
                         label: function(tooltipItem, data) {
                             let value = data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']].y.toString().split(/(?=(?:...)*$)/).join(' ');
                             return data['datasets'][tooltipItem.datasetIndex]['label'] + ': ' + value.toString();
                         }
                     }
+                },
+                hover: {
+                    intersect: false,
+                    mode: 'x'
                 },
                 maintainAspectRatio: false,
                 plugins: {

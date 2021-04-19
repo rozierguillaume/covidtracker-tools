@@ -416,7 +416,7 @@
         let data_values = data_france.n_dose1_cumsum.map((val, idx) => ({x: data_france.dates[idx], y:parseInt(val)}));
         let data_values_2nd = data_france.n_dose2_cumsum.map((val, idx) => ({x: data_france.dates[idx], y:parseInt(val)}));
 
-        let data_object_stock = livraisons.nb_doses_tot_cumsum.map((value, idx)=> ({x: moment(livraisons.jour[idx]).add(-3, 'd'), y: parseInt(value)}))
+        let data_object_stock = livraisons.nb_doses_tot_cumsum.map((value, idx)=> ({x: moment(livraisons.jour[idx]).add(-3, 'd').format("YYYY-MM-DD"), y: parseInt(value)}))
 
         let data_values_2doses = vaccines_2doses.n_dose2_cumsum.map((value, idx)=> ({x: vaccines_2doses.jour[idx], y: parseInt(value)}))
         let labels=nb_vaccines.map(val => val.date)
@@ -463,7 +463,7 @@
                             borderColor: '#127aba',
                             pointRadius: 0,
                             cubicInterpolationMode: 'linear',
-                            pointHitRadius: 3,
+                            pointHitRadius: 1,
                             borderDash: [3,2]
                         })
 
@@ -482,7 +482,7 @@
                             borderColor: '#3691c9',
                             pointRadius: 0,
                             cubicInterpolationMode: 'linear',
-                            pointHitRadius: 3,
+                            pointHitRadius: 1,
                             borderDash: [3,2]
                         })
         }
@@ -520,7 +520,8 @@
                     intersect: false
                 },
                 hover: {
-                    intersect: false
+                    intersect: false,
+                    mode: 'x'
                 },
 
                 maintainAspectRatio: false,
