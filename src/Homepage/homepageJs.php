@@ -5,6 +5,8 @@
     var projection_cas = [];
     var data_indicateurs;
 
+    window.alert("Données erronées publiées par Santé publique France");
+
     fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/objectif_deconfinement.json')
         .then(response => {
             if (!response.ok) {
