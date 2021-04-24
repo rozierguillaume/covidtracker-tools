@@ -61,7 +61,7 @@ function fetchTypesVaccins(){
 }
 
 function nextFetch(){
-    fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/flux-tot-nat.json', {cache: 'no-cache'})
+    fetch('https://raw.githubusercontent.com/BrunoSpy/vaccintracker/main/data/output/flux-tot-nat.json', {cache: 'no-cache'})
             .then(response => {
                 if (!response.ok) {
                     throw new Error("HTTP error " + response.status);
@@ -70,6 +70,8 @@ function nextFetch(){
             })
             .then(json => {
                 this.typesVaccinsLivraisons = json;
+                console.log('----');
+                console.log(json);
                 buildLineTypeChartLivraisons();
             })
             .catch(function () {
