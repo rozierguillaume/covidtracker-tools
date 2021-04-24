@@ -88,6 +88,7 @@ function buildChartTypesVaccins(){
         N1 = typesVaccins["1"]["jour"].length-1
         N2 = typesVaccins["2"]["jour"].length-1
         N3 = typesVaccins["3"]["jour"].length-1
+        N4 = typesVaccins["4"]["jour"].length-1
 
         this.barChartTypesVaccins = new Chart(ctx, {
 
@@ -116,6 +117,14 @@ function buildChartTypesVaccins(){
                     data: [{y: typesVaccins["3"]["n_cum_dose1"][N3] + typesVaccins["3"]["n_cum_dose2"][N3], x:"Vaccinations cumulées"}],
                     borderWidth: 3,
                     backgroundColor: colors[2],
+                    borderWidth: 0,
+                    cubicInterpolationMode: 'monotone',
+                },
+                {
+                    label: typesVaccins.noms_vaccins[4-1],
+                    data: [{y: typesVaccins["4"]["n_cum_dose1"][N4] + typesVaccins["4"]["n_cum_dose2"][N4], x:"Vaccinations cumulées"}],
+                    borderWidth: 3,
+                    backgroundColor: colors[3],
                     borderWidth: 0,
                     cubicInterpolationMode: 'monotone',
                 },
@@ -469,6 +478,17 @@ function buildChartTypesVaccins(){
                         fill: false,
                         backgroundColor: colors[3-1],
                         borderColor: colors[3-1],
+                        pointRadius: 0,
+                        pointHitRadius: 1,
+                    },
+                    {
+                        yAxisID:"injections",
+                        label: typesVaccins.noms_vaccins[4-1] + " ",
+                        data: typesVaccins["4"].jour.map((day, idx) => ({x: day, y: typesVaccins["4"].n_cum_dose1[idx]+typesVaccins["4"].n_cum_dose2[idx]})),
+                        borderWidth: 4,
+                        fill: false,
+                        backgroundColor: colors[4-1],
+                        borderColor: colors[4-1],
                         pointRadius: 0,
                         pointHitRadius: 1,
                     },
