@@ -46,7 +46,7 @@ function fetchTypesVaccins(){
             })
             .then(json => {
                 this.typesVaccins = json;
-                console.log(typesVaccins)
+                //console.log(typesVaccins)
                 buildChartTypesVaccins();
                 buildLineTypeChart_tous();
                 nextFetch();
@@ -70,8 +70,6 @@ function nextFetch(){
             })
             .then(json => {
                 this.typesVaccinsLivraisons = json;
-                console.log('----');
-                console.log(json);
                 buildLineTypeChartLivraisons();
             })
             .catch(function () {
@@ -177,7 +175,7 @@ function buildChartTypesVaccins(){
 
     function buildLineTypeChart(typeVaccin){
         typeVaccin = typeVaccin.toString()
-        console.log(typesVaccinsLivraisons)
+        //console.log(typesVaccinsLivraisons)
         N_livraisons = typesVaccinsLivraisons[typeVaccin].nb_doses_tot_cumsum.length
         max_value = typesVaccinsLivraisons[typeVaccin].nb_doses_tot_cumsum[N_livraisons-1]
 
