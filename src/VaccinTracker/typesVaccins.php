@@ -70,8 +70,6 @@ function nextFetch(){
             })
             .then(json => {
                 this.typesVaccinsLivraisons = json;
-                console.log('----');
-                console.log(json);
                 buildLineTypeChartLivraisons();
             })
             .catch(function () {
