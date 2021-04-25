@@ -1,5 +1,7 @@
 <style>
-
+    body {
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
 
     table,
     td {
@@ -421,6 +423,47 @@
     .dropdown-menu > li > a.selected{
         background-color: black !important;
         color: white;
+    }
+
+    #il-en-parle {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 10px 0;
+        margin-bottom: 0;
+    }
+
+    #il-en-parle > a {
+        flex: 0 0 155px;
+        padding: 5px;
+    }
+    @media screen and (max-width: 769px){
+        #il-en-parle > a {
+            flex: 0 0 50%;
+        }
+    }
+
+    .alert-soutient {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .links-tools-list {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -10px;
+    }
+    .links-tools-list > * {
+        flex: 0 0 auto;
+    }
+
+    @media screen and (max-width: 769px){
+        .links-tools-list > * {
+            flex: 0 0 100%;
+        }
     }
 
     

@@ -1,6 +1,16 @@
-<h2>En un coup d'œil</h2>
-Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
+
+<div class="row">
+    <div class="col-md-9">
+        <h2>En un coup d'œil</h2>
+    </div>
+    <div class="col-md-3 text-right">
+        <div class="text-muted" style="margin-top: 25px">
+            Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
+    </div>
+</div>
+
 <div style="text-align: center; width:100%; border-radius: 7px; padding: 0px 0px;"></div>
+</div>
 
 <div class="wrap" shadow="">
     <div class="one">
