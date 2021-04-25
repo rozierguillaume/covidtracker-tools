@@ -14,6 +14,7 @@
                         <option value="cas">Cas positifs</option>
                         <option value="tests">Dépistage</option>
                         <option value="taux_positivite_rolling_before">Taux de positivité</option>
+                        <option value="obepine">Eaux usées (Obépine)</option>
                     </optgroup>
                     <optgroup label="Indicateurs sanitaires">
                         <option value="hospitalisations">Hospitalisations</option>
@@ -113,7 +114,8 @@ var descriptions = {
     "nbre_acte_corona": "Nombre d'actes SOS médecin pour suspicion Covid19 (moyenne glissante 7 jours).",
     "nbre_pass_corona": "Nombre de passages aux urgences pour suspicion Covid19 (moyenne glissante 7 jours).",
     "saturation_reanimations": "Proportion des lits disponibles avant l'épidémie (DREES 2018) occupés uniquement par les patients Covid19 (en %).",
-    "n_cum_dose1": "Nombre de personnes ayant reçu au moins une dose de vaccin (J-1)."
+    "n_cum_dose1": "Nombre de personnes ayant reçu au moins une dose de vaccin (J-1).",
+    "obepine": "Concentration du Sars-Cov-2 dans les eaux usées (réseau Obépine)."
 }
 
 var titres = {
@@ -131,7 +133,8 @@ var titres = {
     "nbre_acte_corona": "Actes SOS médecin pour Covid19",
     "nbre_pass_corona": "Passages aux urgences pour Covid19",
     "saturation_reanimations": "Saturation des réanimations par les patients Covid19",
-    "n_cum_dose1": "Personnes vaccinées"
+    "n_cum_dose1": "Personnes vaccinées",
+    "obepine": "Covid19 dans les eaux usées"
 }
 
 var noms_zones = {
@@ -489,7 +492,12 @@ function addTrace(value, territoire, pour100k_temp){
         diviseur = data[territoire]["population"]/100000;
     }
     var jour_nom = data[territoire][value]["jour_nom"]
-    data_temp = data[territoire][value]["valeur"].map((val, idx) => ({x: data["france"][jour_nom][idx], y: val/diviseur}))
+    var liste_jours = data["france"][jour_nom]
+
+    if(value=="obepine"){
+        liste_jours=data[territoire][value]["jours"]
+    }
+    data_temp = data[territoire][value]["valeur"].map((val, idx) => ({x: liste_jours[idx], y: val/diviseur}))
     
     var N = dataExplorerChart.data.datasets.length
     if(N>=seq.length-1){
