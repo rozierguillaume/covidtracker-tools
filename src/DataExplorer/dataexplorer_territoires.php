@@ -1,4 +1,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <div shadow="" style="width: 100%;">
     <div class="row">
@@ -43,6 +44,10 @@
                     <span id="territoiresCheckboxes"></span>
                 
             </div>
+            <br>
+            Animation<br>
+            <a id="myLink" onclick="animation();"><i class="material-icons" style="cursor: pointer;">play_arrow</i></a>
+            <a id="stop" onclick="stopExec();"><i class="material-icons" style="cursor: pointer;">stop</i></a>
         </div>
         
         <div class="col-sm-9" style="min-width: 300px;">
@@ -182,6 +187,11 @@ function changeColorSeq(){
     buildChart();
 
 }
+
+function stopExec(){
+    clearTimeout(timeout)
+}
+
 function secureChangeTime(){
     populateTerritoireSelect();
 
@@ -229,6 +239,29 @@ function indexOf(jour){
     }
     
 }
+var timeout;
+function animation(){
+    let slider = document.getElementById('sliderUI');
+    let max = slider.noUiSlider.options.range.max
+
+    slider.noUiSlider.set([0, 1])
+
+    var i = parseInt(slider.noUiSlider.get()[1]);                  //  set your counter to 1
+
+    function myLoop() {         //  create a loop function
+        timeout = setTimeout(function() {   //  call a 3s setTimeout when the loop is called
+            console.log(slider.noUiSlider.get())
+            idx = slider.noUiSlider.get();
+            slider.noUiSlider.set([parseInt(idx[0]), parseInt(idx[1])+1]);   //  your code here
+            i++;                    //  increment the counter
+            if (i < max) {           //  if the counter < 10, call the loop function
+                myLoop();             //  ..  again which will trigger another 
+            }                       //  ..  setTimeout()
+        }, 30)
+    }
+    myLoop()
+
+}
 
 var x_min_date = ""
 var x_max_date = ""
@@ -253,9 +286,11 @@ function changeTime(){
     var y_max = 0
     dataExplorerChart.data.datasets.map((dataset, idx_dataset) => {
         dataset.data.map((value, idx_data) => {
-            if(value.x > x_min){
-                if(value.y*1.1 > y_max){
-                    y_max = value.y*1.1
+            if(value.x >= x_min){
+                if(value.x <= x_max){
+                    if(value.y*1.1 > y_max){
+                        y_max = value.y*1.1
+                    }
                 }
             }
 
@@ -360,13 +395,14 @@ function buildChart(){
             document.getElementById("titre").innerHTML += " pour 100k habitants";
         }
     }
-
+    
     document.getElementById("description").innerHTML = descriptions[selected_data[0]] + credits;
 
     if (cumsum){
         document.getElementById("titre").innerHTML += " -  cumulé<sup>1</sup>";
         document.getElementById("description").innerHTML += "<br><small><i><sup>1</sup> Le cumul des indicateurs comportant une moyenne mobile peut varier légèrement avec le cumul réel.</i></small>";
     }
+    
     changeTime();
 }
 

@@ -243,6 +243,7 @@ function changeTimeAge(){
     let idx_max = parseInt(idx[1])
 
     let x_min = age_data["france"][nom_jour][idx_min]
+    let x_max = age_data["france"][nom_jour][idx_max]
     
     age_dataExplorerAgeChart.options.scales.xAxes[0].ticks = {
         min: x_min,
@@ -253,9 +254,11 @@ function changeTimeAge(){
     age_dataExplorerAgeChart.data.datasets.map((age_dataset, idx_age_dataset) => {
         
         age_dataset.data.map((value, idx_age_data) => {
-            if(value.x > x_min){
-                if(value.y*1.1 > y_max){
-                    y_max = value.y*1.1
+            if(value.x >= x_min){
+                if(value.x <= x_max){
+                    if(value.y*1.1 > y_max){
+                        y_max = value.y*1.1
+                    }
                 }
             }
 
