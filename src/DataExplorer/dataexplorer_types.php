@@ -259,7 +259,7 @@ function changeTimeTypes(){
             y_max = 55000;
         }
 
-        types_dataExplorerAgeChart.options.scales.yAxes[idx_type_dataset].ticks.max = y_max
+        types_dataExplorerAgeChart.options.scales.yAxes[idx_type_dataset].ticks.max = Math.round(y_max)
         })
     
 

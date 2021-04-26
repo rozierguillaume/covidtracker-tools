@@ -268,7 +268,7 @@ function changeTimeAge(){
     age_dataExplorerAgeChart.options.scales.yAxes.map((axis, idx) => {
         axis.ticks = {
         min: 0,
-        max: y_max
+        max: Math.round(y_max)
         }
     })
     
