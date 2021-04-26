@@ -134,8 +134,10 @@
     var restantaVaccinerAutres = 100
     var objectifQuotidien;
     var dateProjeteeObjectif;
-    var dejaVaccines2Doses;
-    var dejaVaccines2DosesNb;
+    //var dejaVaccines2Doses;
+    //var dejaVaccines2DosesNb;
+    var proportionVaccinesPartiellement;
+    var proportionVaccinesTotalement;
     var livraisons;
 
     var somme_doses_rolling={};
@@ -327,15 +329,24 @@
         //let vaccines_2doses_24h = vaccines_2doses.n_dose2_cumsum[N-1] - vaccines_2doses.n_dose2_cumsum[N-2]
         let vaccines_2doses_24h = data_france.n_complet[data_france.n_complet.length-1]
 
-        dejaVaccines2DosesNb = vaccines_2doses.n_dose2_cumsum[N-1];
-        dejaVaccines2Doses = dejaVaccines2DosesNb*100/67000000;
+        //dejaVaccines2DosesNb = vaccines_2doses.n_dose2_cumsum[N-1];
+        //dejaVaccines2Doses = dejaVaccines2DosesNb*100/67000000;
 
-        document.getElementById("nb_vaccines_2_doses").innerHTML = numberWithSpaces(dejaVaccines2DosesNb);
-        document.getElementById("nb_vaccines_24h_2_doses").innerHTML = numberWithSpaces(vaccines_2doses_24h);
+        nbVaccinesComplet = data_france.n_cum_complet[data_france.n_cum_complet.length-1]
+        nbVaccinesComplet24h = nbVaccinesComplet - data_france.n_cum_complet[data_france.n_cum_complet.length-2]
 
-        date=vaccines_2doses.jour[N-1]
+        document.getElementById("nb_vaccines_totalement").innerHTML = numberWithSpaces(nbVaccinesComplet);
+        document.getElementById("nb_vaccines_24h_totalement").innerHTML = numberWithSpaces(nbVaccinesComplet24h);
+
+        proportionVaccinesPartiellement = dejaVaccinesNb / 67000000 * 100
+        proportionVaccinesTotalement = nbVaccinesComplet / 67000000 * 100
+
+        date=data_france.dates[data_france.dates.length-1]
         document.getElementById("date_maj_2").innerHTML = date.slice(8) + "/" + date.slice(5, 7);
-        document.getElementById("proportionVaccines2doses").innerHTML = (Math.round(dejaVaccines2Doses*10000000)/10000000).toFixed(2);
+        document.getElementById("proportionVaccinesTotalement").innerHTML = (Math.round(proportionVaccinesTotalement*10000000)/10000000).toFixed(2);
+        
+        
+
         tableVaccin(table);
     }
 
@@ -767,13 +778,13 @@
                     for(let l=0 ; l < 10 ; l++) {
                         let caseNb = i*10+j+0.1*k+0.01*l+0.01
                         let newsubrow = subrow.insertCell(l);
-                        if(caseNb <= dejaVaccines2Doses){
+                        if(caseNb <= proportionVaccinesTotalement){
                             newsubrow.classList.add('darkgreen');
-                        } else if(caseNb <= dejaVaccines2Doses+0.01) {
+                        } else if(caseNb <= proportionVaccinesTotalement+0.01) {
                             newsubrow.classList.add('animation-seconde-dose');
-                        } else if(caseNb <= dejaVaccines){
+                        } else if(caseNb <= proportionVaccinesPartiellement){
                             newsubrow.classList.add('green');
-                        } else if(caseNb <= dejaVaccines+0.01) {
+                        } else if(caseNb <= proportionVaccinesPartiellement+0.01) {
                             newsubrow.classList.add('animation-premiere-dose');
                         } else if(caseNb <= 60) {
                             newsubrow.classList.add("red");
