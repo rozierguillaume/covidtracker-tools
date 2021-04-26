@@ -33,8 +33,8 @@
                     </optgroup>
                 </select>
                 <br>
-                <input type='checkbox' id='pour100k' onchange="pour100kChecked()" style="margin-bottom:10px;"> Pour 100k habitants
-                
+                <input type='checkbox' id='pour100k' onchange="pour100kChecked()" style="margin-bottom:10px;"> Pour 100k habitants<br>
+                <input type='checkbox' id='cumsum' onchange="cumSumChecked()" style="margin-bottom:10px;"> Somme cumulée
                 </div>
             <br>
             
@@ -92,6 +92,7 @@ var selected_territoires=["france"];
 var data;
 var seq = palette('mpn65', 40).slice(1, 40);
 var pour100k = false;
+var cumsum = false;
 
 var descriptions = {
     "hospitalisations": "Nombre de lits occupés à l'hôpital pour Covid19.",
@@ -157,6 +158,11 @@ function boxChecked(value){
 
 function pour100kChecked(){
     pour100k = !pour100k;
+    buildChart();
+}
+
+function cumSumChecked(){
+    cumsum = !cumsum;
     buildChart();
 }
 
@@ -354,7 +360,13 @@ function buildChart(){
             document.getElementById("titre").innerHTML += " pour 100k habitants";
         }
     }
+
     document.getElementById("description").innerHTML = descriptions[selected_data[0]] + credits;
+
+    if (cumsum){
+        document.getElementById("titre").innerHTML += " -  cumulé<sup>1</sup>";
+        document.getElementById("description").innerHTML += "<br><small><i><sup>1</sup> Le cumul des indicateurs comportant une moyenne mobile peut varier légèrement avec le cumul réel.</i></small>";
+    }
     changeTime();
 }
 
@@ -507,7 +519,15 @@ function addTrace(value, territoire, pour100k_temp){
     if(value=="obepine"){
         liste_jours=data[territoire][value]["jours"]
     }
-    data_temp = data[territoire][value]["valeur"].map((val, idx) => ({x: liste_jours[idx], y: val/diviseur}))
+
+    y = 0
+    array_data_territoires = data[territoire][value]["valeur"]
+
+    if(cumsum==true){
+        array_data_territoires = array_data_territoires.map(d=>y+=d);
+    }
+
+    data_temp = array_data_territoires.map((val, idx) => ({x: liste_jours[idx], y: val/diviseur}))
     
     var N = dataExplorerChart.data.datasets.length
     if(N>=seq.length-1){
@@ -522,9 +542,6 @@ function addTrace(value, territoire, pour100k_temp){
     if(territoire in noms_zones){
         territoire=noms_zones[territoire]
     }
-    console.log(territoire)
-    console.log(noms_zones)
-    console.log(territoire in noms_zones)
 
     dataExplorerChart.data.datasets.push({
         yAxisID: value,

@@ -18,8 +18,9 @@
                         <option value="france">France</option>
                     </optgroup>
                     
-                </select>      
-                <br><br>          
+                </select> 
+                <br>
+                <input type='checkbox' id='type_cumsum' onchange="type_cumSumChecked()" style="margin-bottom:10px;"> Somme cumulée         
                 </div>
             <br>
             <label>Données à afficher</label>
@@ -90,7 +91,7 @@ var types_dataExplorerAgeChart;
 var types_selected_age_data=["incidence"];
 var data;
 var age_seq = palette('mpn65', 40).slice(1, 40);
-var age_pour100k = false;
+var type_cumsum = false;
 
 var types_descriptions = {
     "hospitalisations": "Nombre de lits occupés à l'hôpital pour Covid19.",
@@ -141,6 +142,11 @@ function boxTypeChecked(value){
     }
     buildChartTypes();
 
+}
+
+function type_cumSumChecked(){
+    type_cumsum = !type_cumsum;
+    buildChartTypes();
 }
 
 function types_changeColorage_seq(){
@@ -309,8 +315,15 @@ function buildChartTypes(){
     if (territoire_temp in data.departements_noms){
         complement += data.departements_noms[territoire_temp];
     }
-
+    
     document.getElementById("types_titre").innerHTML = territoire_temp + " " + complement;
+
+    if (type_cumsum){
+        document.getElementById("types_titre").innerHTML += " -  cumulé<sup>1</sup>";
+        document.getElementById("types_description").innerHTML += "<br><small><i><sup>1</sup> Le cumul des indicateurs comportant une moyenne mobile peut varier légèrement avec le cumul réel.</i></small>";
+    }
+
+    
 
     changeTimeTypes();
 }
@@ -392,8 +405,16 @@ function addTraceTypes(value, territoire_temp){
         liste_jours=data[territoire_temp][value]["jours"]
     }
 
-    data_temp = data[territoire_temp][value]["valeur"].map((val, idx) => ({x: liste_jours[idx], y: val}))
+    y = 0
+    array_data_types = data[territoire_temp][value]["valeur"]
+
+    if(type_cumsum){
+        array_data_types = array_data_types.map(d=>y+=d);
+    }
+
+    data_temp = array_data_types.map((val, idx) => ({x: liste_jours[idx], y: val}))
     
+
     var N = types_dataExplorerAgeChart.data.datasets.length
     if(N>=age_seq.length-1){
         N = 0

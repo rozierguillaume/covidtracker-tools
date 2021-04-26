@@ -26,8 +26,8 @@
                     </optgroup>
                 </select>
                 <br>
-                <input type='checkbox' id='age_pour100kAge' onchange="age_pour100kAgeChecked()" style="margin-bottom:10px;"> Pour 100 k habitants
-                
+                <input type='checkbox' id='age_pour100kAge' onchange="age_pour100kAgeChecked()" style="margin-bottom:10px;"> Pour 100 k habitants<br>
+                <input type='checkbox' id='age_cumsum' onchange="age_cumSumChecked()" style="margin-bottom:10px;"> Somme cumulée
                 </div>
             <br>
 
@@ -101,6 +101,7 @@ var age_selected_tranches=["tous"];
 var age_data;
 var age_seq = palette('mpn65', 40).slice(1, 40);
 var age_pour100k = false;
+var age_cumsum = false;
 var associationTranchesNoms = {}
 
 var age_descriptions = {
@@ -160,6 +161,11 @@ function boxAgeChecked(value){
 
 function age_pour100kAgeChecked(){
     age_pour100k = !age_pour100k;
+    buildChartAge();
+}
+
+function age_cumSumChecked(){
+    age_cumsum = !age_cumsum;
     buildChartAge();
 }
 
@@ -348,13 +354,18 @@ function buildChartAge(){
     }
 
     document.getElementById("age_titre").innerHTML = age_titres[age_selected_age_data[0]] + " - " + territoire_temp;
+    document.getElementById("age_description").innerHTML = age_descriptions[age_selected_age_data[0]] + age_credits;
 
     if (age_pour100k){
         if(! incompatibles_age_pour100k.includes(age_selected_age_data[0])){
-            document.getElementById("age_titre").innerHTML += " pour 100k habitants";
+            document.getElementById("age_titre").innerHTML += " - pour 100k habitants";
         }
     }
-    document.getElementById("age_description").innerHTML = age_descriptions[age_selected_age_data[0]] + age_credits;
+    if (age_cumsum){
+        document.getElementById("age_titre").innerHTML += " -  cumulé<sup>1</sup>";
+        document.getElementById("age_description").innerHTML += "<br><small><i><sup>1</sup> Le cumul des indicateurs comportant une moyenne mobile peut varier légèrement avec le cumul réel.</i></small>";
+    }
+    
     changeTimeAge();
 }
 
@@ -460,7 +471,15 @@ function addTraceAge(value, tranche, age_pour100k_temp, territoire_temp){
     }
     
     var jour_nom = age_data[territoire_temp][tranche][value]["jour_nom"]
-    age_data_temp = age_data[territoire_temp][tranche][value]["valeur"].map((val, idx) => ({x: age_data["france"][jour_nom][idx], y: val/diviseur}))
+
+    y = 0
+    array_data_age = age_data[territoire_temp][tranche][value]["valeur"]
+
+    if(age_cumsum==true){
+        array_data_age = array_data_age.map(d=>y+=d);
+    }
+
+    age_data_temp = array_data_age.map((val, idx) => ({x: age_data["france"][jour_nom][idx], y: val/diviseur}))
     
     var N = age_dataExplorerAgeChart.data.datasets.length
     if(N>=age_seq.length-1){
