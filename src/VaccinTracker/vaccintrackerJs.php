@@ -224,7 +224,7 @@
                         date: value,
                         heure: "",
                         total: 0,
-                        n_dose1: data["n_dose1_cumsum"][idx],
+                        n_dose1: data["n_cum_dose1"][idx],
                         source: "Ministère de la santé"
                     });
                 })
@@ -325,7 +325,7 @@
 
         let N = vaccines_2doses.n_dose2_cumsum.length
         //let vaccines_2doses_24h = vaccines_2doses.n_dose2_cumsum[N-1] - vaccines_2doses.n_dose2_cumsum[N-2]
-        let vaccines_2doses_24h = data_france.n_dose2[data_france.n_dose2.length-1]
+        let vaccines_2doses_24h = data_france.n_complet[data_france.n_complet.length-1]
 
         dejaVaccines2DosesNb = vaccines_2doses.n_dose2_cumsum[N-1];
         dejaVaccines2Doses = dejaVaccines2DosesNb*100/67000000;
@@ -413,8 +413,8 @@
         projectionsChecked = boxcheckedProjections
         //document.getElementById("afficherLivraisonsDiv").innerHTML = `<input type="checkbox" id="afficherLivraisons" onchange="boxCheckedLineChart()" checked> Afficher les livraisons`
         var ctx = document.getElementById('lineVacChart').getContext('2d');
-        let data_values = data_france.n_dose1_cumsum.map((val, idx) => ({x: data_france.dates[idx], y:parseInt(val)}));
-        let data_values_2nd = data_france.n_dose2_cumsum.map((val, idx) => ({x: data_france.dates[idx], y:parseInt(val)}));
+        let data_values = data_france.n_cum_dose1.map((val, idx) => ({x: data_france.dates[idx], y:parseInt(val)}));
+        let data_values_2nd = data_france.n_cum_complet.map((val, idx) => ({x: data_france.dates[idx], y:parseInt(val)}));
 
         let data_object_stock = livraisons.nb_doses_tot_cumsum.map((value, idx)=> ({x: moment(livraisons.jour[idx]).add(-3, 'd').format("YYYY-MM-DD"), y: parseInt(value)}))
 
@@ -450,7 +450,7 @@
 
                 ]
         if(projectionsChecked==true){
-            projections_dose2 = valeursProjection(data_france.n_dose2_cumsum, 50)
+            projections_dose2 = valeursProjection(data_france.n_cum_complet, 50)
             projections_dates = datesProjection(data_france.dates[data_france.dates.length-1], 50)
 
             datasets.push({
@@ -469,7 +469,7 @@
 
 
 
-            projections_dose1 = valeursProjection(data_france.n_dose1_cumsum, 50)
+            projections_dose1 = valeursProjection(data_france.n_cum_dose1, 50)
             projections_dates = datesProjection(data_france.dates[data_france.dates.length-1], 50)
 
             datasets.push({
@@ -615,7 +615,7 @@
 
         debut_2nd_doses = labels.map((value, idx) => ({x: value, y:0}))
 
-        let data_values_2nd = data_france.n_dose2.map((value, idx) => ({x: data_france.dates[idx], y: value}))
+        let data_values_2nd = data_france.n_complet.map((value, idx) => ({x: data_france.dates[idx], y: value}))
 
         let N_tot = labels.length;
         let N2 = data_values_2doses.length;
