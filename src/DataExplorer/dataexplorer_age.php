@@ -47,6 +47,10 @@
             <div id="checkboxes" style="text-align: left; height:300px; overflow-y:scroll; padding: 5px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
                     <span id="agesCheckboxes"></span>
             </div>
+            <br>
+            Animation<br>
+            <a id="myLink" onclick="animation_age();"><i class="material-icons" style="cursor: pointer;">play_arrow</i></a>
+            <a id="stop" onclick="stopExec_age();"><i class="material-icons" style="cursor: pointer;">stop</i></a>
         </div>
         
         <div class="col-sm-9" style="min-width: 300px;">
@@ -273,6 +277,33 @@ function changeTimeAge(){
     })
     
     age_dataExplorerAgeChart.update()
+
+}
+
+function stopExec_age(){
+    clearTimeout(timeout_age)
+}
+
+var timeout_age;
+function animation_age(){
+    let slider = document.getElementById('sliderUIAge');
+    let max = slider.noUiSlider.options.range.max
+
+    slider.noUiSlider.set([0, 1])
+
+    var i = parseInt(slider.noUiSlider.get()[1]);                  //  set your counter to 1
+
+    function myLoop() {         //  create a loop function
+        timeout_age = setTimeout(function() {   //  call a 3s setTimeout when the loop is called
+            idx = slider.noUiSlider.get();
+            slider.noUiSlider.set([parseInt(idx[0]), parseInt(idx[1])+1]);   //  your code here
+            i++;                    //  increment the counter
+            if (i < max) {           //  if the counter < 10, call the loop function
+                myLoop();             //  ..  again which will trigger another 
+            }                       //  ..  setTimeout()
+        }, 30)
+    }
+    myLoop()
 
 }
 

@@ -38,7 +38,10 @@
                     <div class='checkbox'><label> <input type='checkbox' id="types_n_cum_dose1" onchange='boxTypeChecked("n_cum_dose1")'>Personnes vaccinées </label></div> <br>
                     <!--<div class='checkbox'><label> <input type='checkbox' id="types_obepine" onchange='boxTypeChecked("obepine")'>Eaux usées (Obépine) </label></div> <br>-->
             </div>
-
+            <br>
+            Animation<br>
+            <a id="myLink" onclick="animation_types();"><i class="material-icons" style="cursor: pointer;">play_arrow</i></a>
+            <a id="stop" onclick="stopExec_types();"><i class="material-icons" style="cursor: pointer;">stop</i></a>
             <br>
         </div>
         
@@ -294,6 +297,33 @@ function updateSliderTypes(){
     
     sliderNoUi.noUiSlider.set([idx_min, idx_max])
     //slider.max = N-1;  
+}
+
+function stopExec_types(){
+    clearTimeout(timeout_types)
+}
+
+var timeout_types;
+function animation_types(){
+    let slider = document.getElementById('sliderUITypes');
+    let max = slider.noUiSlider.options.range.max
+
+    slider.noUiSlider.set([0, 1])
+
+    var i = parseInt(slider.noUiSlider.get()[1]);                  //  set your counter to 1
+
+    function myLoop() {         //  create a loop function
+        timeout_types = setTimeout(function() {   //  call a 3s setTimeout when the loop is called
+            idx = slider.noUiSlider.get();
+            slider.noUiSlider.set([parseInt(idx[0]), parseInt(idx[1])+1]);   //  your code here
+            i++;                    //  increment the counter
+            if (i < max) {           //  if the counter < 10, call the loop function
+                myLoop();             //  ..  again which will trigger another 
+            }                       //  ..  setTimeout()
+        }, 30)
+    }
+    myLoop()
+
 }
 
 function buildChartTypes(){
