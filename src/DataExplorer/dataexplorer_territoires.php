@@ -40,12 +40,6 @@
             
             <label>Territoires</label>
             <div id="checkboxes" style="text-align: left; height:80vw; max-height: 400px; overflow-y:scroll; padding: 10px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
-                    <div class="checkbox">
-                        <label>
-                            <input type='checkbox' id='france' checked onchange="boxChecked('france')">France
-                        </label>
-                    </div>
-                    <br>
                     <span id="territoiresCheckboxes"></span>
                 
             </div>
@@ -379,19 +373,13 @@ function populateTerritoireSelect(){
     
     var typeDonnees = document.getElementById("typeDonees").value;
     var html_code = "";
+    
+    if (typeDonnees!="obepine"){
+        html_code += "<br><i>France</i><br>"
+        html_code += "<div class='checkbox'><label>" + `<input type='checkbox' id='france' onchange="boxChecked('france')">France` + "</label></div>" + "<br>"
+    }
 
     if (typeDonnees!="deces_ehpad"){
-
-        
-        html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters("confines_mars_2021") + "' onchange='boxChecked(\"" + replaceBadCharacters("confines_mars_2021") +"\")'>Dép. confinés (19/03/21)</label></div>" + "<br>"
-        
-        html_code += "<br><i>Zones de vacances</i><br>"
-        
-        data.zones_vacances.map((zone, idx) => {
-            complement = " ";
-            html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(zone) + "' onchange='boxChecked(\"" + replaceBadCharacters(zone) +"\")'> "+ noms_zones[zone] + complement + "</label></div>" + "<br>"
-        })
-
 
         html_code += "<br><i>Régions</i><br>"
         data.regions.map((region, idx) => {
@@ -399,20 +387,36 @@ function populateTerritoireSelect(){
 
         })
 
-        html_code += "<br><i>Départements</i><br>"
-        
-        data.departements.map((departement, idx) => {
-            complement = " ";
-            if (departement in data["departements_noms"]) {
-                complement += data["departements_noms"][departement];
-            }
+        if (typeDonnees!="obepine"){
+            html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters("confines_mars_2021") + "' onchange='boxChecked(\"" + replaceBadCharacters("confines_mars_2021") +"\")'>Dép. confinés (19/03/21)</label></div>" + "<br>"
+            
+            html_code += "<br><i>Zones de vacances</i><br>"
+            
+            data.zones_vacances.map((zone, idx) => {
+                complement = " ";
+                html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(zone) + "' onchange='boxChecked(\"" + replaceBadCharacters(zone) +"\")'> "+ noms_zones[zone] + complement + "</label></div>" + "<br>"
+            })
 
-            html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(departement) + "' onchange='boxChecked(\"" + replaceBadCharacters(departement) +"\")'> "+ departement + complement + "</label></div>" + "<br>"
 
-        })
+
+            html_code += "<br><i>Départements</i><br>"
+            
+            data.departements.map((departement, idx) => {
+                complement = " ";
+                if (departement in data["departements_noms"]) {
+                    complement += data["departements_noms"][departement];
+                }
+
+                html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(departement) + "' onchange='boxChecked(\"" + replaceBadCharacters(departement) +"\")'> "+ departement + complement + "</label></div>" + "<br>"
+
+            })
+        } else {
+            html_code += "<br><i>Les données eaux usées ne sont publiés par Obépine que pour la France entière et les régions.</i>"
+            unselectAll();
+        }
     } else {
         html_code += "<br><i>Les décès en EHPAD ne sont publiés par Santé publique France que pour la France entière.</i>"
-        unselectAll();
+        unselectAll("france");
     }
 
     if (typeDonnees=="incidence"){
@@ -429,12 +433,18 @@ function populateTerritoireSelect(){
     updateBoxChecked();
 }
 
-function unselectAll(){
+function unselectAll(keep_selected){
     selected_territoires.map((value, idx)=>{
         document.getElementById(value).checked = false
     })
-    selected_territoires = ["france"]
-    document.getElementById("france").checked = true
+    
+    selected_territoires = []
+    document.getElementById("france").checked = false
+
+    if(keep_selected!=null){
+        selected_territoires = [keep_selected]
+        document.getElementById(keep_selected).checked = true
+    }
 }
 
 fetchData();

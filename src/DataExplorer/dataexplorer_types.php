@@ -35,7 +35,7 @@
                     <div class='checkbox'><label> <input type='checkbox' id="types_incid_reanimations" onchange='boxTypeChecked("incid_reanimations")'>Admissions en réanimation </label></div> <br>
                     <div class='checkbox'><label> <input type='checkbox' id="types_deces_hospitaliers" onchange='boxTypeChecked("deces_hospitaliers")'>Décès hospitaliers </label></div> <br>
                     <div class='checkbox'><label> <input type='checkbox' id="types_n_cum_dose1" onchange='boxTypeChecked("n_cum_dose1")'>Personnes vaccinées </label></div> <br>
-                    <div class='checkbox'><label> <input type='checkbox' id="types_obepine" onchange='boxTypeChecked("obepine")'>Eaux usées (Obépine) </label></div> <br>
+                    <!--<div class='checkbox'><label> <input type='checkbox' id="types_obepine" onchange='boxTypeChecked("obepine")'>Eaux usées (Obépine) </label></div> <br>-->
             </div>
 
             <br>
