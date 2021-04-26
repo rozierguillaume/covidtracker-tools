@@ -1,5 +1,4 @@
-<!--<div class="alert alert-warning" role="alert">
-    20 avril à 21h40 : c'est en cours de correction.<br>
-    <i>20 avril à 21h •</i><b>  Données erronées</b><br>
-    Santé publique France a publié ce soir des données contenant de nombreuses erreurs et problèmes de format. Nous nous excusons des bugs observés sur CovidTracker. Nous les avons contactés pour leur demander une résolution rapide.
-</div>-->
+<div class="alert alert-warning" role="alert">
+    <i>26 avril à 21h •</i><b> Données vaccination</b><br>
+    En raison d'un changement de format dans les données fournies par Santé publique France, VaccinTracker n'est pas à jour. Nous travaillons sur un correctif.
+</div>

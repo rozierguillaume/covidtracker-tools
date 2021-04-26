@@ -58,16 +58,16 @@ function buildLineChartAge(type){
             labels: data_age.age,
             datasets: [
                 {
-                label: 'Nombre de vaccinés (2 doses) ',
-                data: data_age["n_dose2"],
+                label: 'Nombre de vaccinés (complètement) ',
+                data: data_age["n_tot_complet"],
                 borderWidth: 3,
                 backgroundColor: "#1796e6",
                 borderWidth: 0,
                 cubicInterpolationMode: 'monotone',
             },
             {
-                label: 'Nombre de vaccinés (1 dose) ',
-                data: data_age["n_dose1"],
+                label: 'Nombre de vaccinés (partiellement) ',
+                data: data_age["n_tot_dose1"],
                 borderWidth: 3,
                 backgroundColor: "#a1cbe6",
                 borderWidth: 0,
@@ -123,27 +123,28 @@ function buildLineChartAge(type){
     }
 
     function buildLineChartAgePop(){
+        
         let date = data_age.date
         document.getElementById("dateMajParAge").innerHTML = date.slice(8) + "/" + date.slice(5, 7);
 
         var ctx = document.getElementById('barChartAge').getContext('2d');
-
+        console.log(data_age["couv_tot_complet"])
         this.barChartAge = new Chart(ctx, {
             type: 'horizontalBar',
             data: {
                 labels: data_age.age,
                 datasets: [
                     {
-                    label: 'Vaccinés (2 doses) ',
-                    data: data_age["n_dose2_pop"],
+                    label: 'Vaccinés (complètement) ',
+                    data: data_age["couv_tot_complet"],
                     borderWidth: 3,
                     backgroundColor: "#1796e6",
                     borderWidth: 0,
                     cubicInterpolationMode: 'monotone',
                 },
                 {
-                    label: 'Vaccinés (1 dose) ',
-                    data: data_age["n_dose1_pop"],
+                    label: 'Vaccinés (partiellement) ',
+                    data: data_age["couv_tot_dose1"],
                     borderWidth: 3,
                     backgroundColor: "#a1cbe6",
                     borderWidth: 0,
@@ -151,7 +152,7 @@ function buildLineChartAge(type){
                 },
                 {
                     label: 'Non vaccinés ',
-                    data: data_age["n_dose1_pop"].map((value, idx)=> ([100])),
+                    data: data_age["couv_tot_dose1"].map((value, idx)=> ([100])),
                     borderWidth: 3,
                     backgroundColor: "#ededed",
                     borderWidth: 0,
@@ -208,6 +209,7 @@ function buildLineChartAge(type){
             }
             }
         });
+        
         }
 
 
