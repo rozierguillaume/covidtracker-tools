@@ -581,7 +581,7 @@ function fetchOtherData(){
                     nb_vaccines.push({
                         date: value,
                         heure: "19h30",
-                        total: data["n_dose1_cumsum"][idx],
+                        total: data["n_cum_dose1"][idx],
                         source: "Ministère de la santé"
                     });
                 })
