@@ -124,6 +124,7 @@
 
     const OBJECTIF_FIN_JANVIER = 1000000 // 1_000_000
     const OBJECTIF_FIN_AOUT = 52000000 // 1_000_000
+    const OBJECTIF_MI_JUIN = 30000000
     var data;
     var data_france;
     var nb_vaccines = [];
@@ -302,7 +303,7 @@
             .then(json => {
                 this.livraisons = json;
                 majValeursStock();
-                buildLineChart();
+                buildEvolutionCharts();
             })
             .catch(function () {
                     this.dataError = true;
@@ -319,6 +320,20 @@
         let one_day = (1000 * 60 * 60 * 24)
         let jours_restant = (Date.parse("2021-08-31") - Date.parse(nb_vaccines[nb_vaccines.length - 1].date)) / one_day
         let objectif = OBJECTIF_FIN_AOUT;
+        let resteAVacciner = objectif - nb_vaccines[nb_vaccines.length - 1].n_dose1
+        //console.log(jours_restant)
+        if ((resteAVacciner >= 0) && (jours_restant >= 0)) {
+            return Math.round(resteAVacciner * 2 / jours_restant)
+        } else {
+            return -1
+        }
+    }
+
+    function calculerObjMiJuin()
+    {
+        let one_day = (1000 * 60 * 60 * 24)
+        let jours_restant = (Date.parse("2021-06-15") - Date.parse(nb_vaccines[nb_vaccines.length - 1].date)) / one_day
+        let objectif = OBJECTIF_MI_JUIN;
         let resteAVacciner = objectif - nb_vaccines[nb_vaccines.length - 1].n_dose1
         //console.log(jours_restant)
         if ((resteAVacciner >= 0) && (jours_restant >= 0)) {
@@ -642,7 +657,7 @@
     }
 
     function buildBarChart(data) {
-        var ctx = document.getElementById('lineVacChart').getContext('2d');
+        var ctx = document.getElementById('lineVacChartQuot').getContext('2d');
         let labels = nb_vaccines.map(val => val.date)
         let data_values = data.map((value, idx) => ({x: labels[idx], y: parseInt(value)}))
 
@@ -655,6 +670,9 @@
             x: vaccines_2doses.jour[idx],
             y: parseInt(value)
         }))
+        let objectif = calculerObjMiJuin();
+        let maxValue = Math.ceil(objectif/25000)*25000;
+        let dataObj = data.map((value, idx) => ({x: labels[idx], y: objectif}));
 
         debut_2nd_doses = labels.map((value, idx) => ({x: value, y: 0}))
 
@@ -673,7 +691,7 @@
                         data: rollingMeanValues,
                         type: 'line',
                         borderColor: 'black',
-                        pointBackgroundColor: 'rgba(0, 0, 0, 1',
+                        pointBackgroundColor: 'rgba(0, 0, 0, 1)',
                         backgroundColor: 'rgba(0, 168, 235, 0)',
                         pointRadius: 1,
                         pointHitRadius: 3
@@ -688,7 +706,16 @@
                         data: data_values_2nd, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
                         backgroundColor: '#1796e6',
                     },
-
+                    {
+                        yAxisID: 'objectif',
+                        label: 'Objectif mi-juin',
+                        data: dataObj,
+                        type: "line",
+                        borderColor: 'red',
+                        backgroundColor: 'white',
+                        fill: false,
+                        pointRadius: 0
+                    }
                 ]
             },
             options: {
@@ -703,12 +730,23 @@
                         stacked: true,
                         position: 'left',
                         gridLines: {
-                            display: false
+                            display: true
                         },
                         ticks: {
+                            max: maxValue,
+                            min: 0,
                             callback: function (value) {
                                 return value / 1000 + " k";
                             }
+                        }
+                    },
+                        {
+                        id: 'objectif',
+                        display: false,
+                        stacked: false,
+                        ticks: {
+                            max: maxValue,
+                            min: 0
                         }
                     }],
                     xAxes: [{
@@ -733,21 +771,13 @@
         });
     }
 
-    function typeDonneesChart() {
-        type_donnees = document.getElementById("type").value
-        this.lineChart.destroy()
-        //document.getElementById("objectif").checked=false;
-
-        if (type_donnees == "quotidien") {
-
-            nb_vaccines_quot = [nb_vaccines[0].total]
-            for (i = 0; i < nb_vaccines.length - 1; i++) {
+    function buildEvolutionCharts() {
+        nb_vaccines_quot = [nb_vaccines[0].total]
+        for (let i = 0; i < nb_vaccines.length - 1; i++) {
                 nb_vaccines_quot.push(nb_vaccines[i + 1].n_dose1 - nb_vaccines[i].n_dose1)
-            }
-            buildBarChart(nb_vaccines_quot);
-        } else {
-            buildLineChart();
         }
+        buildBarChart(nb_vaccines_quot);
+        buildLineChart();
     }
 
     function ajouterObjectifAnnotation() {

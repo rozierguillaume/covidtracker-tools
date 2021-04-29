@@ -11,23 +11,31 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
 <br>
 
 <div>
-    <!--
-    <div style="float:left; margin-left: 3px; margin-right:15px;">
-        <input type="checkbox" id="objectif" name="objectif" onchange="ajouterObjectifAnnotation()">
-        <label for="objectif" style="font-weight: normal;">Afficher objectif</label>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="evolutionlist">
+        <li role="presentation" class="active"><a href="#cumulvaccines" aria-controls="home" role="tab" data-toggle="tab">Cumul vaccinés</a></li>
+        <li role="presentation"><a href="#quotidien" aria-controls="profile" role="tab" data-toggle="tab">Vaccination quotidienne</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="cumulvaccines">
+            <div class="chart-container" style="position: relative; width:100%">
+                <canvas id="lineVacChart" style="margin-top:20px; max-height: 700px; "></canvas>
+            </div>
+            <small>Les projections sont réalisées en supposant que le rythme reste constant et similaire aux deux dernières semaines. Ce ne sont en aucun cas des prédictions.</small>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="quotidien">
+            <div class="chart-container-quot" style="position: relative; width:100%">
+                <canvas id="lineVacChartQuot" style="margin-top:20px; max-height: 700px; "></canvas>
+            </div>
+        </div>
     </div>
--->
-    <div>
-        <select class="form-control" name="type" id="type" onchange="typeDonneesChart()">
-            <option value="cumul"><b>Cumul</b> vaccinés</option>
-            <option value="quotidien">Vaccinations quotidiennes</option>
-        </select>
-    </div>
+
 </div>
 
-<div class="chart-container" style="position: relative; width:100%">
-    <canvas id="lineVacChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
-</div>
+
+
 
 Auteur : CovidTracker.fr - Données : Ministère de la Santé<br>
-<small>(1) : les projections sont réalisées en supposant que le rythme reste constant et similaire aux deux dernières semaines. Ce ne sont en aucun cas des prédictions.</small>
