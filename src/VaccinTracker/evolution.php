@@ -6,7 +6,6 @@ Au rythme actuel <small>(moyenne des 15 derniers jours)</small>, l'objectif de v
 
 <br><br>
 Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moins une dose de vaccin.
-<br><i><small>Les premières doses sont comptabilisées par date d'injection, les secondes doses par date de remontée. Des écarts peuvent donc être observés avec la réalité.</small></i>
 <br>
 <br>
 
@@ -14,8 +13,9 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
 
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="evolutionlist">
-        <li role="presentation" class="active"><a href="#cumulvaccines" aria-controls="home" role="tab" data-toggle="tab">Cumul vaccinés</a></li>
-        <li role="presentation"><a href="#quotidien" aria-controls="profile" role="tab" data-toggle="tab">Vaccination quotidienne</a></li>
+        <li role="presentation" class="active"><a href="#cumulvaccines" aria-controls="home" role="tab" data-toggle="tab">Cumul personnes vaccinées</a></li>
+        <li role="presentation"><a href="#quotidien" aria-controls="profile" role="tab" data-toggle="tab">Injections quotidiennes</a></li>
+        <li role="presentation"><a href="#cumul" aria-controls="profile" role="tab" data-toggle="tab">Cumul injections</a></li>
     </ul>
 
     <!-- Tab panes -->
@@ -29,6 +29,11 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
         <div role="tabpanel" class="tab-pane" id="quotidien">
             <div class="chart-container-quot" style="position: relative; width:100%">
                 <canvas id="lineVacChartQuot" style="margin-top:20px; max-height: 700px; "></canvas>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="cumul">
+            <div class="chart-container-quot" style="position: relative; width:100%">
+                <canvas id="lineVacChartCum" style="margin-top:20px; max-height: 700px; "></canvas>
             </div>
         </div>
     </div>
