@@ -18,7 +18,7 @@
   	<p><label for="soignant" class="checkbox-label"><input type="checkbox" name="soignant" value="1" id="soignant">  <span class="checkmark"></span> Je suis professionnel en santé, aide à domicile ou pompier</label></p>
   	<p><label for="handicap" class="checkbox-label"><input type="checkbox" name="handicap" value="1" id="handicap">  <span class="checkmark"></span> Je travaille ou réside en maison d’accueil spécialisée/médicalisée</label></p>
 	<p><label for="high-risky" class="checkbox-label"><input type="checkbox" name="high-risky" value="1" id="high-risky">  <span class="checkmark"></span> Je suis à très haut risque <span class="tooltip"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/VisualEditor_-_Icon_-_Help.svg/1200px-VisualEditor_-_Icon_-_Help.svg.png" alt="Aide" style="width: 20px;"><span class="tooltiptext">Actuellement sous chimiothérapie, porteur de maladie rénale chronique sévère, transplanté d'organes solides, ayant 2 insuffisances d'organes, maladies rares à risque en cas d'infection, trisomie 21 ou transplanté par allogreffe.</span></span></label></p>
-  <p><label for="comobidities" class="checkbox-label"><input type="checkbox" name="comobidities" value="1" id="comobidities">  <span class="checkmark"></span> Je présente d'autres pathologies</label></p>
+  <p><label for="comobidities" class="checkbox-label"><input type="checkbox" name="comobidities" value="1" id="comobidities">  <span class="checkmark"></span> Je présente une ou plusieurs comorbidités</label></p>
   <p><label for="foyer-migrant" class="checkbox-label"><input type="checkbox" name="foyer-migrant" value="1" id="foyer-migrant">  <span class="checkmark"></span> Je réside en foyer de travailleurs migrants</label></p>
 
   </fieldset>
@@ -627,11 +627,11 @@ Array.prototype.sortBy = function(p) {
 }
 
 
-	const VACCINATION_AGE_MIN = 70; // Vaccination déjà possible à partir de...
+	const VACCINATION_AGE_MIN = 55; // Vaccination déjà possible à partir de...
 	const VACCINATION_AGE_MIN_SOIGNANT = 0; // Âge min vaccionation soignant
 	const VACCIONATION_EHPAD = true;
 	const VACCINATION_HAUT_RISQUE = true; // Les personnes à haut risque peuvent se faire vacciner ?
-	const VACCINATION_COMORBIDITES = 50; // Âge min personnes à comorbidités pouvant se faire vacciner
+	const VACCINATION_COMORBIDITES = 18; // Âge min personnes à comorbidités pouvant se faire vacciner
 	const VACCINATIONS_PAR_PHASES = [
 		1882400+9193415+380000+2500000, // nb personnes vaccinables phase principale : soignants + personnes de + de 70 ans + femme enceintes 2/3ème trimestre + nb comorbidités > 50 ans
     7000700, // nb 60-70 ans sans comorbidités
