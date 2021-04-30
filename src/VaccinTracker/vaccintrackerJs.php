@@ -293,7 +293,7 @@
         )
 
     function fetchStock() {
-        fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/flux-tot-nat.json', {cache: 'no-cache'})
+        fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/flux-total-nat.json', {cache: 'no-cache'})
             .then(response => {
                 if (!response.ok) {
                     throw new Error("HTTP error " + response.status);
@@ -491,7 +491,7 @@
             y: parseInt(val)
         }));
 
-        let data_object_stock = livraisons.nb_doses_tot_cumsum.map((value, idx) => ({
+        let data_object_stock = livraisons.nb_doses_cum.map((value, idx) => ({
             x: moment(livraisons.jour[idx]).add(-3, 'd').format("YYYY-MM-DD"),
             y: parseInt(value)
         }))
@@ -651,7 +651,7 @@
         let data_values = data_france.n_cum_dose1.map((val, idx) => ({x: data_france.dates[idx], y:parseInt(val)}));
         let data_values_2nd = data_france.n_cum_complet.map((val, idx) => ({x: data_france.dates[idx], y:parseInt(val)}));
         
-        let data_object_stock = livraisons.nb_doses_tot_cumsum.map((value, idx)=> ({x: moment(livraisons.jour[idx]).add(-3, 'd').format("YYYY-MM-DD"), y: parseInt(value)}))
+        let data_object_stock = livraisons.nb_doses_cum.map((value, idx)=> ({x: moment(livraisons.jour[idx]).add(-3, 'd').format("YYYY-MM-DD"), y: parseInt(value)}))
         
         console.log("stock")
         console.log(data_object_stock)
@@ -697,7 +697,7 @@
                             steppedLine: true,
                             pointHitRadius: 3,
                         })
-            var max_value = livraisons.nb_doses_tot_cumsum[livraisons.nb_doses_tot_cumsum.length-1]
+            var max_value = livraisons.nb_doses_cum[livraisons.nb_doses_cum.length-1]
 
         console.log("datasets")
         console.log(max_value)
@@ -786,8 +786,7 @@
                     }]
                 }
             }
-        });
-        
+        }); 
     }
 
     function buildLineChartInjectionsCum2() {
@@ -1054,7 +1053,7 @@
 
         return {
             "jour": moment(livraisons.jour[idx_max]).add(-3, 'd').format('YYYY-MM-DD'),
-            "valeur": livraisons.nb_doses_tot_cumsum[idx_max]
+            "valeur": livraisons.nb_doses_cum[idx_max]
         };
     }
 

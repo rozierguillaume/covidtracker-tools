@@ -61,7 +61,7 @@ function fetchTypesVaccins(){
 }
 
 function nextFetch(){
-    fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/flux-tot-nat.json', {cache: 'no-cache'})
+    fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/flux-total-nat.json', {cache: 'no-cache'})
             .then(response => {
                 if (!response.ok) {
                     throw new Error("HTTP error " + response.status);
@@ -185,8 +185,8 @@ function buildChartTypesVaccins(){
     function buildLineTypeChart(typeVaccin){
         typeVaccin = typeVaccin.toString()
         //console.log(typesVaccinsLivraisons)
-        N_livraisons = typesVaccinsLivraisons[typeVaccin].nb_doses_tot_cumsum.length
-        max_value = typesVaccinsLivraisons[typeVaccin].nb_doses_tot_cumsum[N_livraisons-1]
+        N_livraisons = typesVaccinsLivraisons[typeVaccin].nb_doses_cum.length
+        max_value = typesVaccinsLivraisons[typeVaccin].nb_doses_cum[N_livraisons-1]
 
         document.getElementById("boutonFermer").innerHTML = "<button onclick='fermerPanneauTypes()' style='padding: 2px 5px 2px 5px; font-size: 13px;'>Afficher tous les vaccins</button>"
         var ctx = document.getElementById('lineChartTypesVaccins').getContext('2d');
@@ -219,7 +219,7 @@ function buildChartTypesVaccins(){
                     {
                         yAxisID:"injections_stock",
                         label: 'Livraisons (passées et planifiées) ',
-                        data: typesVaccinsLivraisons[typeVaccin].jour.map((day, idx) => ({x: moment(day).add(-3, 'd'), y: typesVaccinsLivraisons[typeVaccin].nb_doses_tot_cumsum[idx]})),
+                        data: typesVaccinsLivraisons[typeVaccin].jour.map((day, idx) => ({x: moment(day).add(-3, 'd').format("YYYY-MM-DD"), y: typesVaccinsLivraisons[typeVaccin].nb_doses_cum[idx]})),
                         borderWidth: 3,
                         borderColor: "grey",
                         pointRadius: 0,
@@ -319,7 +319,7 @@ function buildChartTypesVaccins(){
                     {
                         yAxisID:"livraisons",
                         label: typesVaccinsLivraisons.noms_vaccins[1-1] + " ",
-                        data: typesVaccinsLivraisons[1].jour.map((day, idx) => ({x: day, y: typesVaccinsLivraisons[1].nb_doses_tot_cumsum[idx]})),
+                        data: typesVaccinsLivraisons[1].jour.map((day, idx) => ({x: day, y: typesVaccinsLivraisons[1].nb_doses_cum[idx]})),
                         borderWidth: 4,
                         fill: true,
                         backgroundColor: colors[1-1],
@@ -330,7 +330,7 @@ function buildChartTypesVaccins(){
                     {
                         yAxisID:"livraisons",
                         label: typesVaccinsLivraisons.noms_vaccins[2-1] + " ",
-                        data: typesVaccinsLivraisons[2].jour.map((day, idx) => ({x: day, y: typesVaccinsLivraisons[2].nb_doses_tot_cumsum[idx]})),
+                        data: typesVaccinsLivraisons[2].jour.map((day, idx) => ({x: day, y: typesVaccinsLivraisons[2].nb_doses_cum[idx]})),
                         borderWidth: 4,
                         fill: true,
                         backgroundColor: colors[2-1],
@@ -341,7 +341,7 @@ function buildChartTypesVaccins(){
                     {
                         yAxisID:"livraisons",
                         label: typesVaccinsLivraisons.noms_vaccins[3-1] + " ",
-                        data: typesVaccinsLivraisons[3].jour.map((day, idx) => ({x: day, y: typesVaccinsLivraisons[3].nb_doses_tot_cumsum[idx]})),
+                        data: typesVaccinsLivraisons[3].jour.map((day, idx) => ({x: day, y: typesVaccinsLivraisons[3].nb_doses_cum[idx]})),
                         borderWidth: 4,
                         fill: true,
                         backgroundColor: colors[3-1],
@@ -352,7 +352,7 @@ function buildChartTypesVaccins(){
                     {
                         yAxisID:"livraisons",
                         label: typesVaccinsLivraisons.noms_vaccins[4-1] + " ",
-                        data: typesVaccinsLivraisons[4].jour.map((day, idx) => ({x: day, y: typesVaccinsLivraisons[4].nb_doses_tot_cumsum[idx]})),
+                        data: typesVaccinsLivraisons[4].jour.map((day, idx) => ({x: day, y: typesVaccinsLivraisons[4].nb_doses_cum[idx]})),
                         borderWidth: 4,
                         fill: true,
                         backgroundColor: colors[4-1],
