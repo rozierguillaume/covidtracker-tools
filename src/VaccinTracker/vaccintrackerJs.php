@@ -149,6 +149,7 @@
     var dosesRecues = 560000;
 
     var data_stock;
+    var ndose_fra;
     var dates_stock = [];
     var stock = [];
     var cumul_stock = 0;
@@ -266,7 +267,7 @@
                 this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
                 majValeurs();
                 maj2Doses();
-                fetchStock();
+                fetchNDoses();
 
             })
             .catch(function () {
@@ -291,6 +292,26 @@
                 console.log("errorY")
             }
         )
+
+    function fetchNDoses(){
+        fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/vacsi-ndose-fra.json', {cache: 'no-cache'})
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("HTTP error " + response.status);
+            }
+            return response.json();
+        })
+        .then(json => {
+            this.ndose_fra = json;
+            fetchStock();
+        })
+        .catch(function () {
+                this.dataError = true;
+                console.log("errorY")
+            }
+        )
+
+    }
 
     function fetchStock() {
         fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/flux-total-nat.json', {cache: 'no-cache'})
@@ -492,7 +513,7 @@
         }));
 
         let data_object_stock = livraisons.nb_doses_cum.map((value, idx) => ({
-            x: moment(livraisons.jour[idx]).add(-3, 'd').format("YYYY-MM-DD"),
+            x: moment(livraisons.jour[idx]).add(-4, 'd').format("YYYY-MM-DD"),
             y: parseInt(value)
         }))
 
@@ -594,7 +615,13 @@
                 aspectRatio: 0.6,
                 tooltips: {
                     mode: 'x',
-                    intersect: false
+                    intersect: false,
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            let value = data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']].y.toString().split(/(?=(?:...)*$)/).join(' ');
+                            return data['datasets'][tooltipItem.datasetIndex]['label'] + ': ' + value.toString();
+                        }
+                    }
                 },
                 hover: {
                     intersect: false,
@@ -648,19 +675,17 @@
     function buildLineChartInjectionsCum(checked=false, projectionsChecked=false){
         
         var ctx = document.getElementById('lineVacChartCum').getContext('2d');
-        let data_values = data_france.n_cum_dose1.map((val, idx) => ({x: data_france.dates[idx], y:parseInt(val)}));
-        let data_values_2nd = data_france.n_cum_complet.map((val, idx) => ({x: data_france.dates[idx], y:parseInt(val)}));
+        let data_values = ndose_fra.n_cum_dose1.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
+        let data_values_2nd = ndose_fra.n_cum_dose2.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
         
-        let data_object_stock = livraisons.nb_doses_cum.map((value, idx)=> ({x: moment(livraisons.jour[idx]).add(-3, 'd').format("YYYY-MM-DD"), y: parseInt(value)}))
+        let data_object_stock = livraisons.nb_doses_cum.map((value, idx)=> ({x: moment(livraisons.jour[idx]).add(-4, 'd').format("YYYY-MM-DD"), y: parseInt(value)}))
         
-        console.log("stock")
-        console.log(data_object_stock)
-        let data_values_2doses = vaccines_2doses.n_dose2_cumsum.map((value, idx)=> ({x: vaccines_2doses.jour[idx], y: parseInt(value)}))
+        //let data_values_2doses = vaccines_2doses.n_dose2_cumsum.map((value, idx)=> ({x: vaccines_2doses.jour[idx], y: parseInt(value)}))
         let labels=nb_vaccines.map(val => val.date)
 
         debut_2nd_doses = labels.map((value, idx) => ({x: value, y:0}))
         let N_tot = labels.length;
-        let N2 = data_values_2doses.length;
+        //let N2 = data_values_2doses.length;
         
         var datasets = [
                     {
@@ -698,9 +723,6 @@
                             pointHitRadius: 3,
                         })
             var max_value = livraisons.nb_doses_cum[livraisons.nb_doses_cum.length-1]
-
-        console.log("datasets")
-        console.log(max_value)
         
         var myChart = new Chart(ctx, {
             type: 'line',
@@ -738,6 +760,16 @@
                         }]
             },
             options: {
+                tooltips: {
+                    mode: "x",
+                    intersect: false,
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            let value = data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']].y.toString().split(/(?=(?:...)*$)/).join(' ');
+                            return data['datasets'][tooltipItem.datasetIndex]['label'] + ': ' + value.toString();
+                        }
+                    }
+                },
                 scales: {
                     yAxes: [
                         {
@@ -787,45 +819,6 @@
                 }
             }
         }); 
-    }
-
-    function buildLineChartInjectionsCum2() {
-        var ctx = document.getElementById('lineVacChartCum').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-        
     }
 
     function rollingMean(data){
@@ -903,6 +896,15 @@
                 ]
             },
             options: {
+                tooltips: {
+                    mode: "x",
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            let value = data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']].y.toString().split(/(?=(?:...)*$)/).join(' ');
+                            return data['datasets'][tooltipItem.datasetIndex]['label'] + ': ' + value.toString();
+                        }
+                    }
+                },
                 aspectRatio: 1.5,
                 //maintainAspectRatio: false,
                 legend: {
@@ -1046,13 +1048,13 @@
 
         livraisons.jour.map((value, idx) => {
 
-            if (moment(value).add(-3, 'd') <= today) {
+            if (moment(value).add(-4, 'd') <= today) {
                 idx_max = idx
             }
         })
 
         return {
-            "jour": moment(livraisons.jour[idx_max]).add(-3, 'd').format('YYYY-MM-DD'),
+            "jour": moment(livraisons.jour[idx_max]).add(-4, 'd').format('YYYY-MM-DD'),
             "valeur": livraisons.nb_doses_cum[idx_max]
         };
     }
