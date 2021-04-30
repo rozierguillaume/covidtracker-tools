@@ -22,17 +22,20 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="cumulvaccines">
             <div class="chart-container" style="position: relative; width:100%">
+                <h3>Nombre cumulé de personnes vaccinées</h3>
                 <canvas id="lineVacChart" style="margin-top:20px; max-height: 700px; "></canvas>
             </div>
             <small>Les projections sont réalisées en supposant que le rythme reste constant et similaire aux deux dernières semaines. Ce ne sont en aucun cas des prédictions.</small>
         </div>
         <div role="tabpanel" class="tab-pane" id="quotidien">
             <div class="chart-container-quot" style="position: relative; width:100%">
+                <h3>Nombre d'injections de vaccin effectuées chaque jour</h3>
                 <canvas id="lineVacChartQuot" style="margin-top:20px; max-height: 700px; "></canvas>
             </div>
         </div>
         <div role="tabpanel" class="tab-pane" id="cumul">
             <div class="chart-container-quot" style="position: relative; width:100%">
+                <h3>Nombre cumulé d'injections et livraisons de doses</h3>
                 <canvas id="lineVacChartCum" style="margin-top:20px; max-height: 700px; "></canvas>
             </div>
         </div>

@@ -858,6 +858,12 @@
         let N_tot = labels.length;
         let N2 = data_values_2doses.length;
 
+        let data_premieres_injections = ndose_fra.n_dose1.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
+        let data_secondes_injections = ndose_fra.n_dose2.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
+        let data_tot_rolling = ndose_fra.n_dose_tot_rolling.slice(0, ndose_fra.n_dose_tot_rolling.length-3).map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
+
+        console.log(data_premieres_injections)
+
         this.lineChart = new Chart(ctx, {
             type: 'bar',
             data: {
@@ -865,7 +871,7 @@
                 datasets: [
                     {
                         label: 'Moyenne quotidienne (total doses injectées) ',
-                        data: rollingMeanValues,
+                        data: data_tot_rolling,
                         type: 'line',
                         borderColor: 'black',
                         pointBackgroundColor: 'rgba(0, 0, 0, 1)',
@@ -875,12 +881,12 @@
                     },
                     {
                         label: 'Nombre de premières doses ',
-                        data: data_values,
+                        data: data_premieres_injections,
                         backgroundColor: 'rgba(0, 168, 235, 0.5)',
                     },
                     {
                         label: 'Nombre de deuxièmes doses ',
-                        data: data_values_2nd, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
+                        data: data_secondes_injections, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
                         backgroundColor: '#1796e6',
                     },
                     {
@@ -931,7 +937,7 @@
                         display: false,
                         stacked: false,
                         ticks: {
-                            max: maxValue,
+                            //max: maxValue,
                             min: 0
                         }
                     }],
