@@ -645,7 +645,152 @@
         });
     }
 
-    function buildLineChartInjectionsCum() {
+    function buildLineChartInjectionsCum(checked=false, projectionsChecked=false){
+        
+        var ctx = document.getElementById('lineVacChartCum').getContext('2d');
+        let data_values = data_france.n_cum_dose1.map((val, idx) => ({x: data_france.dates[idx], y:parseInt(val)}));
+        let data_values_2nd = data_france.n_cum_complet.map((val, idx) => ({x: data_france.dates[idx], y:parseInt(val)}));
+        
+        let data_object_stock = livraisons.nb_doses_tot_cumsum.map((value, idx)=> ({x: moment(livraisons.jour[idx]).add(-3, 'd').format("YYYY-MM-DD"), y: parseInt(value)}))
+        
+        console.log("stock")
+        console.log(data_object_stock)
+        let data_values_2doses = vaccines_2doses.n_dose2_cumsum.map((value, idx)=> ({x: vaccines_2doses.jour[idx], y: parseInt(value)}))
+        let labels=nb_vaccines.map(val => val.date)
+
+        debut_2nd_doses = labels.map((value, idx) => ({x: value, y:0}))
+        let N_tot = labels.length;
+        let N2 = data_values_2doses.length;
+        
+        var datasets = [
+                    {
+                        yAxisID:"injections",
+                        label: 'Secondes doses injectées ',
+                        data: data_values_2nd, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
+                        borderWidth: 0.1,
+                        backgroundColor: '#1796e6',
+                        borderColor: '#127aba',
+                        pointRadius: 0,
+                        pointHitRadius: 1,
+                    },
+                    {
+                        yAxisID:"injections",
+                        label: 'Premières doses injectées ',
+                        data: data_values,
+                        borderWidth: 0.1,
+                        backgroundColor: '#a1cbe6',
+                        borderColor: '#3691c9',
+                        pointRadius: 0,
+                        cubicInterpolationMode: 'monotone',
+                        pointHitRadius: 1,
+                    }
+
+                ]
+
+            datasets.push({
+                            yAxisID:"stock",
+                            label: 'Doses réceptionnées ou officiellement attendues ',
+                            data: data_object_stock,
+                            borderWidth: 3,
+                            borderColor: 'grey',
+                            pointRadius: 0,
+                            steppedLine: true,
+                            pointHitRadius: 3,
+                        })
+            var max_value = livraisons.nb_doses_tot_cumsum[livraisons.nb_doses_tot_cumsum.length-1]
+
+        console.log("datasets")
+        console.log(max_value)
+        
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                //labels: labels,
+                datasets: [{
+                        yAxisID:"injections",
+                        label: 'Premières doses injectées ',
+                        data: data_values,
+                        borderWidth: 0.1,
+                        backgroundColor: '#a1cbe6',
+                        borderColor: '#3691c9',
+                        pointRadius: 0,
+                        cubicInterpolationMode: 'monotone',
+                        pointHitRadius: 1,
+                    }, {
+                        yAxisID:"injections",
+                        label: 'Secondes doses injectées ',
+                        data: data_values_2nd, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
+                        borderWidth: 0.1,
+                        backgroundColor: '#1796e6',
+                        borderColor: '#127aba',
+                        pointRadius: 0,
+                        pointHitRadius: 1,
+                    },
+                    {
+                            yAxisID:"stock",
+                            label: 'Doses réceptionnées ou officiellement attendues ',
+                            data: data_object_stock,
+                            borderWidth: 3,
+                            borderColor: 'grey',
+                            pointRadius: 0,
+                            steppedLine: true,
+                            pointHitRadius: 3,
+                        }]
+            },
+            options: {
+                scales: {
+                    yAxes: [
+                        {
+                            id: "injections",
+                            stacked: true,
+                            gridLines: {
+                                display: true
+                            },
+                            ticks: {
+                                //max: max_value,
+                                min: 0,
+                                max: max_value,
+                                callback: function (value) {
+                                    return value / 1000000 + " M";
+                                }
+                            }
+                        },
+                        {
+                            id: "stock",
+                            display: false,
+                            stacked: false,
+                            gridLines: {
+                                display: true
+                            },
+                            ticks: {
+                                //max: max_value,
+                                min: 0,
+                                max: max_value,
+                                callback: function (value) {
+                                    return value / 1000000 + " M";
+                                }
+                            }
+                        }],
+                    xAxes: [{
+                        //offset: true,
+                        stacked: true,
+                        type: 'time',
+                        distribution: 'linear',
+                        gridLines: {
+                            display: false
+                        },
+                        time: {
+                            min: moment("2021-01-01"),
+                            //max: moment()
+                        }
+                    }]
+                }
+            }
+        });
+        
+    }
+
+    function buildLineChartInjectionsCum2() {
         var ctx = document.getElementById('lineVacChartCum').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
