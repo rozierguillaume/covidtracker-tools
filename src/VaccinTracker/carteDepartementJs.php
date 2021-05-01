@@ -67,7 +67,6 @@
             }
             min_tab=100;
             max_tab=0;
-            console.log("lol")
 
             for (dep in donneesDepartementsVaccination){
                 value=donneesDepartementsVaccination[dep].n_dose1_cumsum_pop

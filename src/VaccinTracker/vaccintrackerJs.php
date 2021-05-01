@@ -862,7 +862,7 @@
         let data_secondes_injections = ndose_fra.n_dose2.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
         let data_tot_rolling = ndose_fra.n_dose_tot_rolling.slice(0, ndose_fra.n_dose_tot_rolling.length-3).map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
 
-        console.log(data_premieres_injections)
+        //console.log(data_premieres_injections)
 
         this.lineChart = new Chart(ctx, {
             type: 'bar',
