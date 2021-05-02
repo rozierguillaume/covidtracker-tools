@@ -24,8 +24,7 @@
 
 <?php
 if (isset($_GET['dep']) and $_GET['dep']) {
-    $department = htmlspecialchars($_GET["dep"], ENT_QUOTES, 'UTF-8');
-    $department = substr($department,0,2);
+    $department = $_GET["dep"];
     if (is_numeric($department) || $department == "2A" || $department == "2B") {
         echo('<script id="numeroDepartementSearched" type="text/template">' .$department . '</script>');
     }
