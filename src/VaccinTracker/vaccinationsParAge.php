@@ -204,14 +204,13 @@ function buildLineChartAge(type){
                     }
                 },
                 tooltips: {
-                    filter: function (tooltipItem) {
-                        return tooltipItem.datasetIndex != 2;
-                    },
-                    callbacks: {
-                        label: function(tooltipItem, data) {
-                        return data['datasets'][tooltipItem.datasetIndex]['label'] + ': ' + data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']] + ' %';
-                        }
-                    }
+                    mode: "x",
+                    intersect: false,
+                    //callbacks: {
+                     //   label: function(tooltipItem, data) {
+                     //   return data['datasets'][tooltipItem.datasetIndex]['label'] + ': ' + data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']] + ' %';
+                      //  }
+                    //}
                 },
                 maintainAspectRatio: false,
                 scales: {
