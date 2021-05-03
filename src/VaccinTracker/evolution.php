@@ -36,7 +36,7 @@ Le graphique suivant présente le nombre cumulé de personnes ayant reçu au moi
         <div role="tabpanel" class="tab-pane" id="cumul">
             <div class="chart-container-quot" style="position: relative; width:100%">
                 <h3>Nombre cumulé d'injections et livraisons de doses</h3>
-                <canvas id="lineVacChartCum" style="margin-top:20px; max-height: 700px; "></canvas>
+                <canvas id="lineVacChartCum" style="margin-top:20px; max-height: 700px;"></canvas>
             </div>
         </div>
     </div>
