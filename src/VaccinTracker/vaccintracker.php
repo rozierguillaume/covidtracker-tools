@@ -1,5 +1,5 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js"
         integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw=="
         crossorigin="anonymous"></script>
@@ -8,6 +8,7 @@
         crossorigin="anonymous"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-deferred@1"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@1"></script>
 
 
 <?php include(dirname(__DIR__) . '/message_erreur.php') ?>

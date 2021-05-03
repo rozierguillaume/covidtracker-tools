@@ -23,8 +23,8 @@ CovidTracker.fr - Données : Ministère de la Santé
         <option value="totalement">Totalement vaccinés</option>
     </select>
 </div>
-<div class="chart-container" style="position: relative; height:50vh; width:100%">
-    <canvas id="lineChartAge" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
+<div class="chart-container" style="position: relative; height:80vh; width:100%">
+    <canvas id="lineChartAge" style="margin-top:20px; max-height: 700px;"></canvas>
 </div>
 CovidTracker.fr - Données : Ministère de la Santé
 <script>
@@ -166,13 +166,14 @@ function buildLineChartAge(type){
     }
 
     function buildLineChartAgePop(type_donnees){
-
+        
         var datasets = []
         var colorscale = chroma.scale(['#440154FF', '#39568CFF', '#1E968BFF', '#73D055FF', '#FDE725FF'])
-
+        var maxdate;
         Object.keys(data_age_all).map((value_age, idx) => {
             var data = data_age_all[value_age]
             var data_xy = data[type_donnees].map((value, idx) => ({x: data.jour[idx], y: value}))
+            maxdate = data.jour[data.jour.length-1]
             datasets.push({
                     label: value_age,
                     data: data_xy, //.map((value, index) => {x:data_age_all[value_age].jour[index], y: value}),
@@ -192,7 +193,16 @@ function buildLineChartAge(type){
                 labels: data_age_all["18 - 24 ans"].jour,
                 datasets: datasets
             },
+            plugins: [ChartDataLabels],
             options: {
+                layout: {
+                padding: {
+                    left: -2,
+                    right: 100,
+                    top: 0,
+                    bottom: 0
+                    }
+                },
                 tooltips: {
                     filter: function (tooltipItem) {
                         return tooltipItem.datasetIndex != 2;
@@ -207,21 +217,18 @@ function buildLineChartAge(type){
                 scales: {
                             xAxes: [{
                                 gridLines: {
-                                    display: true
+                                    display: false
                                 },
-                                ticks: {
-                                    
-                                },
-                                stacked: false,
-                                
+                                type: 'time',
+                                distribution: 'linear',
                             }],
                             yAxes: [{
                                 gridLines: {
-                                    display: false
+                                    display: true
                                 },
                                 ticks: {
                                     min: 0,
-                                    max:100,
+                                    max:105,
                                     callback: function (value) {
                                         return value + ' %';
                                     }
@@ -231,19 +238,19 @@ function buildLineChartAge(type){
                         },
                 plugins: {
                     datalabels: {
-                    anchor: "end",
-                    clamp: true,
-                    align: 'right',
-                    color: function(ctx) {
-                        return ctx.dataset.borderColor
-                    },
-                    formatter: function(value, context) {
-                        if (context.dataset.data[context.dataIndex].x == dataExplorerChart.options.scales.xAxes[0].ticks.max)
-                        {
-                            return  context.dataset.label;
+                        anchor: "end",
+                        clamp: true,
+                        align: 'right',
+                        color: function(ctx) {
+                            return ctx.dataset.borderColor
+                        },
+                        formatter: function(value, context) {
+                            if (context.dataset.data[context.dataIndex].x == maxdate)
+                            {
+                                return  context.dataset.label;
+                            }
+                            return "";
                         }
-                        return "";
-                    }
                 },
                     deferred: {
                         xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
@@ -251,11 +258,59 @@ function buildLineChartAge(type){
                         delay: 200      // delay of 500 ms after the canvas is considered inside the viewport
                     }
                     },
-                annotation: {
-                events: ["click"],
-                annotations: [
-                ]
-            }
+                    annotation: {
+                    events: ["click"],
+                    annotations: [
+                        {
+                            drawTime: "afterDatasetsDraw",
+                            type: "line",
+                            mode: "horizontal",
+                            scaleID: "y-axis-0",
+                            value: 100,
+                            borderWidth: 1,
+                            borderDash: [5, 5],
+                            borderColor: "darkgreen",
+                            label: {
+                                backgroundColor: 'darkgreen',
+                                content: "100 %",
+                                enabled: true,
+                                position: "top"
+                            }
+                        },
+                        {
+                            drawTime: "afterDatasetsDraw",
+                            type: "line",
+                            mode: "horizontal",
+                            scaleID: "y-axis-0",
+                            value: 80,
+                            borderWidth: 1,
+                            borderDash: [5, 5],
+                            borderColor: "green",
+                            label: {
+                                backgroundColor: 'green',
+                                content: "80 %",
+                                enabled: true,
+                                position: "top"
+                            }
+                        },
+                        {
+                            drawTime: "afterDatasetsDraw",
+                            type: "line",
+                            mode: "horizontal",
+                            scaleID: "y-axis-0",
+                            value: 60,
+                            borderWidth: 1,
+                            borderDash: [5, 5],
+                            borderColor: "grey",
+                            label: {
+                                backgroundColor: 'grey',
+                                content: "60 %",
+                                enabled: true,
+                                position: "top"
+                            }
+                        }
+                    ]
+                }
             }
         });
         
