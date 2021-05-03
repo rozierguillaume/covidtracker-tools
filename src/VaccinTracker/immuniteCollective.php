@@ -53,7 +53,7 @@ et 15 à 27 millions d'ici à juillet.
     </li>
 </ul>
 
-<h3 style="margin-top : 50px;">Été</h3>
+<h3 style="margin-top : 50px;">15 juin</h3>
 <ul>
-    <li>Ensemble de la population.</li>
+    <li>Ensemble de la population majeure.</li>
 </ul>
