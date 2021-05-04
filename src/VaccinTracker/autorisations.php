@@ -60,7 +60,6 @@
         </card>
     </div>
 
-
     <h3 style="margin-top : 50px;">Vaccins non encore soumis</h3>
     <div class="row">
         <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇩🇪 CureVac</b><br>
@@ -94,6 +93,27 @@
             Conservation : +5°C<br>
             Commandes UE : 300M<br>
             Dont France : 45M<br>
+            Doses à injecter : --<br>
+            Statut : --
+        </card>
+
+        <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇫🇷🇺🇸 Sanofi/Pasteur-Translate Bio</b><br>
+            Phase 2/3<br>
+            Type : ARN messager<br>
+            Efficacité annoncée : --%<br>
+            Prêt : 2022<br>
+            Conservation : -20°C<br>
+            Doses à injecter : --<br>
+            Statut : --
+        </card>
+
+        <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇫🇷 Valneva</b><br>
+            <i>Ce vaccin n'a pas été pré-commandé par l'UE</i><br>
+            Phase 3/3<br>
+            Type : Vaccin inactivé<br>
+            Efficacité annoncée : --%<br>
+            Prêt : fin 2021<br>
+            Conservation : entre +2°C et +8°C<br>
             Doses à injecter : --<br>
             Statut : --
         </card>
