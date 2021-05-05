@@ -33,13 +33,16 @@
       <label for="covid-recently" class="checkbox-label"><input type="checkbox" name="covid-recently" value="1" id="covid-recently">  <span class="checkmark"></span> J'ai eu la Covid-19 il y a moins de 3 mois</label>
     </p>
      <p>
-      <label for="vaccin-recently" class="checkbox-label"><input type="checkbox" name="vaccin-recently" value="1" id="vaccin-recently">  <span class="checkmark"></span> J'ai été vacciné contre la grippe il y a moins de 3 semaines</label>
+      <label for="vaccin-recently" class="checkbox-label"><input type="checkbox" name="vaccin-recently" value="1" id="vaccin-recently">  <span class="checkmark"></span> J'ai fait un autre vaccin il y a moins de 3 semaines</label>
     </p>
      <p>
       <label for="sick" class="checkbox-label"><input type="checkbox" name="sick" value="1" id="sick">  <span class="checkmark"></span> J'ai de la fièvre ou suis symptomatique</label>
     </p>
      <p>
       <label for="cluster" class="checkbox-label"><input type="checkbox" name="cluster" value="1" id="cluster">  <span class="checkmark"></span> J'ai récemment été en contact avec un cluster</label>
+    </p>
+     <p>
+      <label for="assesseur" class="checkbox-label"><input type="checkbox" name="assesseur" value="1" id="assesseur">  <span class="checkmark"></span> Je vais être assesseur pour les élections de juin 2021</label>
     </p>
   </fieldset>
   <fieldset class="next">
@@ -655,6 +658,7 @@ Array.prototype.sortBy = function(p) {
 	let maisonMedicalisee = false;
 	let hautRisque = false;
 	let pathologies = false;
+	let assesseur = false;
   let enceinte = false;
   let migrant = false;
 	let allergique = false;
@@ -735,6 +739,7 @@ $('#pourcentage-volontaire').on('change', majVolontaires);
 	hautRisque = $('#high-risky').is(":checked");
 	pathologies = $('#comobidities').is(":checked");;
 	enceinte = $('#pregnant').is(":checked");
+	assesseur = $('#assesseur').is(":checked");
 	allergique = $('#allergic').is(":checked");
 	covid = $('#covid-recently').is(":checked");
 	grippe = $('#vaccin-recently').is(":checked");
@@ -750,7 +755,7 @@ $('#pourcentage-volontaire').on('change', majVolontaires);
 		|| maisonMedicalisee
 		|| hautRisque
     || (pathologies && age >= VACCINATION_COMORBIDITES)
-    || enceinte
+    || enceinte || assesseur
 	);
 
 	phaseConcernee = (
