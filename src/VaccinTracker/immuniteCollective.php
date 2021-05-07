@@ -63,10 +63,14 @@ et 15 à 27 millions d'ici à juillet.
     <li>Personnes à risque de plus de 18 ans.</li>
 </ul>
 
-
-<h3 style="margin-top : 50px;">15 mai</h3>
+<h3 style="margin-top : 50px;">10 mai</h3>
 <ul>
     <li>Personnes âgées de plus de 50 ans.</li>
+</ul>
+
+<h3 style="margin-top : 50px;">12 mai</h3>
+<ul>
+    <li>Ensemble de la population de plus de 18 ans en cas de créneaux libres (Si et seulement si un créneau de vaccination est disponible la veille pour le lendemain)</li>
 </ul>
 
 <h3 style="margin-top : 50px;">15 juin</h3>
