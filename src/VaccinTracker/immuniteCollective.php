@@ -30,30 +30,55 @@ et 15 à 27 millions d'ici à juillet.
     </li>
 </ul>
 
-<h3 style="margin-top : 50px;">Début février</h3>
+<h3 style="margin-top : 50px;">6 février</h3>
 <ul>
-    <li>Tous les professionnels de Santé. 
+    <li>Tous les professionnels de Santé et du secteur médico-social, aux aides à domicile intervenant auprès de personnes vulnérables et aux sapeurs-pompiers quel que soit leur âge.
     </li>
 </ul>
 
-<h3 style="margin-top : 50px;">31 mars</h3>
+<h3 style="margin-top : 50px;">19 février</h3>
+<ul>
+    <li>Personnes de plus de 50 ans atteintes de comorbidité(s).
+    </li>
+</ul>
+
+<h3 style="margin-top : 50px;">27 mars</h3>
 <ul>
     <li>Personnes âgées de plus de 70 ans,</li>
     <li>Personnes à risque de plus de 50 ans.</li>
 </ul>
 
-<h3 style="margin-top : 50px;">16 avril</h3>
+<h3 style="margin-top : 50px;">8 avril</h3>
 <ul>
-    <li>Personnes âgées de plus de 60 ans,</li>
+    <li>Femmes enceintes.</li>
 </ul>
 
-<h3 style="margin-top : 50px;">15 mai</h3>
+<h3 style="margin-top : 50px;">12 avril</h3>
 <ul>
-    <li>Personnes de 50 ans et plus.
-    </li>
+    <li>Personnes âgées de plus de 55 ans.</li>
+</ul>
+
+<h3 style="margin-top : 50px;">1 mai</h3>
+<ul>
+    <li>Personnes à risque de plus de 18 ans.</li>
+</ul>
+
+
+<h3 style="margin-top : 50px;">10 mai</h3>
+<ul>
+    <li>Personnes âgées de plus de 50 ans.</li>
+</ul>
+
+<h3 style="margin-top : 50px;">12 mai</h3>
+<ul>
+    <li>Ensemble de la population de plus de 18 ans en cas de créneaux libres (Si et seulement si un créneau de vaccination est disponible la veille pour le lendemain)</li>
 </ul>
 
 <h3 style="margin-top : 50px;">15 juin</h3>
 <ul>
-    <li>Ensemble de la population majeure.</li>
+    <li>Ensemble de la population de plus de 18 ans.</li>
 </ul>
+
+Sources:
+<a target="_blank" title="Calendrier de la campagne de vaccination" href="https://solidarites-sante.gouv.fr/grands-dossiers/vaccin-covid-19/je-suis-un-particulier/article/foire-aux-questions-le-calendrier">Calendrier de la campagne de vaccination</a>
+<a target="_blank" title="La vaccination élargie dès le premier mai" href="https://www.lemonde.fr/planete/article/2021/04/30/la-vaccination-contre-le-covid-19-elargie-des-demain-a-quelque-4-millions-de-francais-fragiles-annonce-olivier-veran_6078605_3244.html">La vaccination élargie dès le premier mai</a>

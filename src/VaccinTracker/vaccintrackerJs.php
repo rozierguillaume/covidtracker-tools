@@ -937,7 +937,7 @@
                         display: false,
                         stacked: false,
                         ticks: {
-                            //max: maxValue,
+                            max: maxValue,
                             min: 0
                         }
                     }],
