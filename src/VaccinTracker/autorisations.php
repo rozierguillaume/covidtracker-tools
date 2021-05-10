@@ -4,7 +4,7 @@
     <div class="row">
         <card class="shadow-btn-green col-xs-11 col-md-4"><b>🇺🇸🇩🇪 Pfizer-BioNTech</b><br>
             Type : ARN messager<br>
-            Efficacité annoncée : 94.5%<br>
+            Efficacité annoncée : 94,5%<br>
             Conservation : -70°C<br>
             Commandes UE : 500M (+ option 100M)<br>
             Dont France : 75M (+ option 15M)<br>
@@ -52,11 +52,12 @@
             <i>Ce vaccin n'a pas été pré-commandé par l'UE</i><br>
             Phase 3/3<br>
             Type : Vecteur viral<br>
-            Efficacité annoncée : 90%<br>
+            Efficacité annoncée : 91,6%<br>
             Prêt : oui<br>
             Conservation : +5°C<br>
             Doses à injecter : 2<br>
-            Statut : vaccin en <a target="_blank" href="https://www.ema.europa.eu/en/news/ema-starts-rolling-review-sputnik-v-covid-19-vaccine">cours d'évaluation</a> par l'AEM
+            Statut : vaccin en <a target="_blank" href="https://www.ema.europa.eu/en/news/ema-starts-rolling-review-sputnik-v-covid-19-vaccine">cours d'évaluation</a> par l'AEM<br>
+            <a target="_blank" title="Sputnik V COVID-19 vaccine candidate appears safe and effective" href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)00191-4/fulltext">Article</a>
         </card>
     </div>
 
@@ -77,7 +78,7 @@
          <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇺🇸 Novavax</b><br>
             Phase 3/3<br>
             Type : Sous-unité protéique<br>
-            Efficacité annoncée : 89.3%<br>
+            Efficacité annoncée : 89,3%<br>
             Conservation : entre +2°C et +8°C<br>
             Commandes UE : 100M (+ option 100M)<br>
             Dont France : 15M (+ option 15M)<br>
