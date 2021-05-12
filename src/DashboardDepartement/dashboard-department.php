@@ -24,11 +24,9 @@
 
 <?php
 if (isset($_GET['dep']) and $_GET['dep']) {
-    $department = $_GET['dep'];
-    if (is_numeric($department) || $department =="2A" || $department=="2B"){
-        echo('<script id="numeroDepartementSearched" type="text/template">' . $_GET["dep"] . '</script>');
-    } else {
-        echo('<script id="departementSearched" type="text/template">' . $_GET["dep"] . '</script>');
+    $department = $_GET["dep"];
+    if (is_numeric($department) || $department == "2A" || $department == "2B") {
+        echo('<script id="numeroDepartementSearched" type="text/template">' .$department . '</script>');
     }
 }
 ?>

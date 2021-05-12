@@ -26,8 +26,8 @@
                     </optgroup>
                 </select>
                 <br>
-                <input type='checkbox' id='age_pour100kAge' onchange="age_pour100kAgeChecked()" style="margin-bottom:10px;"> Pour 100 k habitants
-                
+                <input type='checkbox' id='age_pour100kAge' onchange="age_pour100kAgeChecked()" style="margin-bottom:10px;"> Pour 100 k habitants<br>
+                <input type='checkbox' id='age_cumsum' onchange="age_cumSumChecked()" style="margin-bottom:10px;"> Somme cumulée
                 </div>
             <br>
 
@@ -47,6 +47,10 @@
             <div id="checkboxes" style="text-align: left; height:300px; overflow-y:scroll; padding: 5px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
                     <span id="agesCheckboxes"></span>
             </div>
+            <br>
+            Animation<br>
+            <a id="myLink" onclick="animation_age();"><i class="material-icons" style="cursor: pointer;">play_arrow</i></a>
+            <a id="stop" onclick="stopExec_age();"><i class="material-icons" style="cursor: pointer;">stop</i></a>
         </div>
         
         <div class="col-sm-9" style="min-width: 300px;">
@@ -101,6 +105,7 @@ var age_selected_tranches=["tous"];
 var age_data;
 var age_seq = palette('mpn65', 40).slice(1, 40);
 var age_pour100k = false;
+var age_cumsum = false;
 var associationTranchesNoms = {}
 
 var age_descriptions = {
@@ -160,6 +165,11 @@ function boxAgeChecked(value){
 
 function age_pour100kAgeChecked(){
     age_pour100k = !age_pour100k;
+    buildChartAge();
+}
+
+function age_cumSumChecked(){
+    age_cumsum = !age_cumsum;
     buildChartAge();
 }
 
@@ -237,6 +247,7 @@ function changeTimeAge(){
     let idx_max = parseInt(idx[1])
 
     let x_min = age_data["france"][nom_jour][idx_min]
+    let x_max = age_data["france"][nom_jour][idx_max]
     
     age_dataExplorerAgeChart.options.scales.xAxes[0].ticks = {
         min: x_min,
@@ -247,9 +258,11 @@ function changeTimeAge(){
     age_dataExplorerAgeChart.data.datasets.map((age_dataset, idx_age_dataset) => {
         
         age_dataset.data.map((value, idx_age_data) => {
-            if(value.x > x_min){
-                if(value.y*1.1 > y_max){
-                    y_max = value.y*1.1
+            if(value.x >= x_min){
+                if(value.x <= x_max){
+                    if(value.y*1.1 > y_max){
+                        y_max = value.y*1.1
+                    }
                 }
             }
 
@@ -259,11 +272,38 @@ function changeTimeAge(){
     age_dataExplorerAgeChart.options.scales.yAxes.map((axis, idx) => {
         axis.ticks = {
         min: 0,
-        max: y_max
+        max: Math.round(y_max)
         }
     })
     
     age_dataExplorerAgeChart.update()
+
+}
+
+function stopExec_age(){
+    clearTimeout(timeout_age)
+}
+
+var timeout_age;
+function animation_age(){
+    let slider = document.getElementById('sliderUIAge');
+    let max = slider.noUiSlider.options.range.max
+
+    slider.noUiSlider.set([0, 1])
+
+    var i = parseInt(slider.noUiSlider.get()[1]);                  //  set your counter to 1
+
+    function myLoop() {         //  create a loop function
+        timeout_age = setTimeout(function() {   //  call a 3s setTimeout when the loop is called
+            idx = slider.noUiSlider.get();
+            slider.noUiSlider.set([parseInt(idx[0]), parseInt(idx[1])+1]);   //  your code here
+            i++;                    //  increment the counter
+            if (i < max) {           //  if the counter < 10, call the loop function
+                myLoop();             //  ..  again which will trigger another 
+            }                       //  ..  setTimeout()
+        }, 30)
+    }
+    myLoop()
 
 }
 
@@ -348,13 +388,18 @@ function buildChartAge(){
     }
 
     document.getElementById("age_titre").innerHTML = age_titres[age_selected_age_data[0]] + " - " + territoire_temp;
+    document.getElementById("age_description").innerHTML = age_descriptions[age_selected_age_data[0]] + age_credits;
 
     if (age_pour100k){
         if(! incompatibles_age_pour100k.includes(age_selected_age_data[0])){
-            document.getElementById("age_titre").innerHTML += " pour 100k habitants";
+            document.getElementById("age_titre").innerHTML += " - pour 100k habitants";
         }
     }
-    document.getElementById("age_description").innerHTML = age_descriptions[age_selected_age_data[0]] + age_credits;
+    if (age_cumsum){
+        document.getElementById("age_titre").innerHTML += " -  cumulé<sup>1</sup>";
+        document.getElementById("age_description").innerHTML += "<br><small><i><sup>1</sup> Le cumul des indicateurs comportant une moyenne mobile peut varier légèrement avec le cumul réel.</i></small>";
+    }
+    
     changeTimeAge();
 }
 
@@ -460,7 +505,15 @@ function addTraceAge(value, tranche, age_pour100k_temp, territoire_temp){
     }
     
     var jour_nom = age_data[territoire_temp][tranche][value]["jour_nom"]
-    age_data_temp = age_data[territoire_temp][tranche][value]["valeur"].map((val, idx) => ({x: age_data["france"][jour_nom][idx], y: val/diviseur}))
+
+    y = 0
+    array_data_age = age_data[territoire_temp][tranche][value]["valeur"]
+
+    if(age_cumsum==true){
+        array_data_age = array_data_age.map(d=>y+=d);
+    }
+
+    age_data_temp = array_data_age.map((val, idx) => ({x: age_data["france"][jour_nom][idx], y: val/diviseur}))
     
     var N = age_dataExplorerAgeChart.data.datasets.length
     if(N>=age_seq.length-1){

@@ -1,5 +1,4 @@
 <!--<div class="alert alert-warning" role="alert">
-    <i>13 avril à 22h •</i><b>  Données incomplètes</b><br>
-    En raison de la publication de données incomplètes par Santé publique France, CovidTracker n'a pas pu être mis à jour le 13 avril. Il sera de nouveau à jour lors de la publication de l'ensemble des données.
-</div>
--->
+    <i>26 avril à 21h •</i><b> Données vaccination</b><br>
+    En raison d'un changement de format dans les données fournies par Santé publique France, VaccinTracker n'est pas à jour. Nous travaillons sur un correctif.
+</div>-->

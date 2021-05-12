@@ -1,4 +1,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <div shadow="" style="width: 100%;">
     <div class="row">
@@ -14,6 +15,7 @@
                         <option value="cas">Cas positifs</option>
                         <option value="tests">Dépistage</option>
                         <option value="taux_positivite_rolling_before">Taux de positivité</option>
+                        <option value="obepine">Eaux usées (Obépine)</option>
                     </optgroup>
                     <optgroup label="Indicateurs sanitaires">
                         <option value="hospitalisations">Hospitalisations</option>
@@ -32,22 +34,20 @@
                     </optgroup>
                 </select>
                 <br>
-                <input type='checkbox' id='pour100k' onchange="pour100kChecked()" style="margin-bottom:10px;"> Pour 100k habitants
-                
+                <input type='checkbox' id='pour100k' onchange="pour100kChecked()" style="margin-bottom:10px;"> Pour 100k habitants<br>
+                <input type='checkbox' id='cumsum' onchange="cumSumChecked()" style="margin-bottom:10px;"> Somme cumulée
                 </div>
             <br>
             
             <label>Territoires</label>
             <div id="checkboxes" style="text-align: left; height:80vw; max-height: 400px; overflow-y:scroll; padding: 10px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
-                    <div class="checkbox">
-                        <label>
-                            <input type='checkbox' id='france' checked onchange="boxChecked('france')">France
-                        </label>
-                    </div>
-                    <br>
                     <span id="territoiresCheckboxes"></span>
                 
             </div>
+            <br>
+            Animation<br>
+            <a id="myLink" onclick="animation();"><i class="material-icons" style="cursor: pointer;">play_arrow</i></a>
+            <a id="stop" onclick="stopExec();"><i class="material-icons" style="cursor: pointer;">stop</i></a>
         </div>
         
         <div class="col-sm-9" style="min-width: 300px;">
@@ -97,6 +97,7 @@ var selected_territoires=["france"];
 var data;
 var seq = palette('mpn65', 40).slice(1, 40);
 var pour100k = false;
+var cumsum = false;
 
 var descriptions = {
     "hospitalisations": "Nombre de lits occupés à l'hôpital pour Covid19.",
@@ -113,7 +114,8 @@ var descriptions = {
     "nbre_acte_corona": "Nombre d'actes SOS médecin pour suspicion Covid19 (moyenne glissante 7 jours).",
     "nbre_pass_corona": "Nombre de passages aux urgences pour suspicion Covid19 (moyenne glissante 7 jours).",
     "saturation_reanimations": "Proportion des lits disponibles avant l'épidémie (DREES 2018) occupés uniquement par les patients Covid19 (en %).",
-    "n_cum_dose1": "Nombre de personnes ayant reçu au moins une dose de vaccin (J-1)."
+    "n_cum_dose1": "Nombre de personnes ayant reçu au moins une dose de vaccin (J-1).",
+    "obepine": "Concentration du Sars-Cov-2 dans les eaux usées (réseau Obépine)."
 }
 
 var titres = {
@@ -131,7 +133,8 @@ var titres = {
     "nbre_acte_corona": "Actes SOS médecin pour Covid19",
     "nbre_pass_corona": "Passages aux urgences pour Covid19",
     "saturation_reanimations": "Saturation des réanimations par les patients Covid19",
-    "n_cum_dose1": "Personnes vaccinées"
+    "n_cum_dose1": "Personnes vaccinées",
+    "obepine": "Covid19 dans les eaux usées"
 }
 
 var noms_zones = {
@@ -163,6 +166,11 @@ function pour100kChecked(){
     buildChart();
 }
 
+function cumSumChecked(){
+    cumsum = !cumsum;
+    buildChart();
+}
+
 function changeColorSeq(){
     let type_seq = document.getElementById("colorSeqSelect").value;
 
@@ -179,6 +187,11 @@ function changeColorSeq(){
     buildChart();
 
 }
+
+function stopExec(){
+    clearTimeout(timeout)
+}
+
 function secureChangeTime(){
     populateTerritoireSelect();
 
@@ -226,6 +239,29 @@ function indexOf(jour){
     }
     
 }
+var timeout;
+function animation(){
+    let slider = document.getElementById('sliderUI');
+    let max = slider.noUiSlider.options.range.max
+
+    slider.noUiSlider.set([0, 1])
+
+    var i = parseInt(slider.noUiSlider.get()[1]);                  //  set your counter to 1
+
+    function myLoop() {         //  create a loop function
+        timeout = setTimeout(function() {   //  call a 3s setTimeout when the loop is called
+            console.log(slider.noUiSlider.get())
+            idx = slider.noUiSlider.get();
+            slider.noUiSlider.set([parseInt(idx[0]), parseInt(idx[1])+1]);   //  your code here
+            i++;                    //  increment the counter
+            if (i < max) {           //  if the counter < 10, call the loop function
+                myLoop();             //  ..  again which will trigger another 
+            }                       //  ..  setTimeout()
+        }, 30)
+    }
+    myLoop()
+
+}
 
 var x_min_date = ""
 var x_max_date = ""
@@ -250,9 +286,11 @@ function changeTime(){
     var y_max = 0
     dataExplorerChart.data.datasets.map((dataset, idx_dataset) => {
         dataset.data.map((value, idx_data) => {
-            if(value.x > x_min){
-                if(value.y*1.1 > y_max){
-                    y_max = value.y*1.1
+            if(value.x >= x_min){
+                if(value.x <= x_max){
+                    if(value.y*1.1 > y_max){
+                        y_max = value.y*1.1
+                    }
                 }
             }
 
@@ -262,7 +300,7 @@ function changeTime(){
     dataExplorerChart.options.scales.yAxes.map((axis, idx) => {
         axis.ticks = {
             min: 0,
-            max: y_max
+            max: Math.round(y_max)
         }
     })
     
@@ -357,7 +395,14 @@ function buildChart(){
             document.getElementById("titre").innerHTML += " pour 100k habitants";
         }
     }
+    
     document.getElementById("description").innerHTML = descriptions[selected_data[0]] + credits;
+
+    if (cumsum){
+        document.getElementById("titre").innerHTML += " -  cumulé<sup>1</sup>";
+        document.getElementById("description").innerHTML += "<br><small><i><sup>1</sup> Le cumul des indicateurs comportant une moyenne mobile peut varier légèrement avec le cumul réel.</i></small>";
+    }
+    
     changeTime();
 }
 
@@ -376,19 +421,13 @@ function populateTerritoireSelect(){
     
     var typeDonnees = document.getElementById("typeDonees").value;
     var html_code = "";
+    
+    if (typeDonnees!="obepine"){
+        html_code += "<br><i>France</i><br>"
+        html_code += "<div class='checkbox'><label>" + `<input type='checkbox' id='france' onchange="boxChecked('france')">France` + "</label></div>" + "<br>"
+    }
 
     if (typeDonnees!="deces_ehpad"){
-
-        
-        html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters("confines_mars_2021") + "' onchange='boxChecked(\"" + replaceBadCharacters("confines_mars_2021") +"\")'>Dép. confinés (19/03/21)</label></div>" + "<br>"
-        
-        html_code += "<br><i>Zones de vacances</i><br>"
-        
-        data.zones_vacances.map((zone, idx) => {
-            complement = " ";
-            html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(zone) + "' onchange='boxChecked(\"" + replaceBadCharacters(zone) +"\")'> "+ noms_zones[zone] + complement + "</label></div>" + "<br>"
-        })
-
 
         html_code += "<br><i>Régions</i><br>"
         data.regions.map((region, idx) => {
@@ -396,20 +435,36 @@ function populateTerritoireSelect(){
 
         })
 
-        html_code += "<br><i>Départements</i><br>"
-        
-        data.departements.map((departement, idx) => {
-            complement = " ";
-            if (departement in data["departements_noms"]) {
-                complement += data["departements_noms"][departement];
-            }
+        if (typeDonnees!="obepine"){
+            html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters("confines_mars_2021") + "' onchange='boxChecked(\"" + replaceBadCharacters("confines_mars_2021") +"\")'>Dép. confinés (19/03/21)</label></div>" + "<br>"
+            
+            html_code += "<br><i>Zones de vacances</i><br>"
+            
+            data.zones_vacances.map((zone, idx) => {
+                complement = " ";
+                html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(zone) + "' onchange='boxChecked(\"" + replaceBadCharacters(zone) +"\")'> "+ noms_zones[zone] + complement + "</label></div>" + "<br>"
+            })
 
-            html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(departement) + "' onchange='boxChecked(\"" + replaceBadCharacters(departement) +"\")'> "+ departement + complement + "</label></div>" + "<br>"
 
-        })
+
+            html_code += "<br><i>Départements</i><br>"
+            
+            data.departements.map((departement, idx) => {
+                complement = " ";
+                if (departement in data["departements_noms"]) {
+                    complement += data["departements_noms"][departement];
+                }
+
+                html_code += "<div class='checkbox'><label>" + "<input type='checkbox' id='" + replaceBadCharacters(departement) + "' onchange='boxChecked(\"" + replaceBadCharacters(departement) +"\")'> "+ departement + complement + "</label></div>" + "<br>"
+
+            })
+        } else {
+            html_code += "<br><i>Les données eaux usées ne sont publiés par Obépine que pour la France entière et les régions.</i>"
+            unselectAll();
+        }
     } else {
         html_code += "<br><i>Les décès en EHPAD ne sont publiés par Santé publique France que pour la France entière.</i>"
-        unselectAll();
+        unselectAll("france");
     }
 
     if (typeDonnees=="incidence"){
@@ -426,12 +481,18 @@ function populateTerritoireSelect(){
     updateBoxChecked();
 }
 
-function unselectAll(){
+function unselectAll(keep_selected){
     selected_territoires.map((value, idx)=>{
         document.getElementById(value).checked = false
     })
-    selected_territoires = ["france"]
-    document.getElementById("france").checked = true
+    
+    selected_territoires = []
+    document.getElementById("france").checked = false
+
+    if(keep_selected!=null){
+        selected_territoires = [keep_selected]
+        document.getElementById(keep_selected).checked = true
+    }
 }
 
 fetchData();
@@ -489,7 +550,20 @@ function addTrace(value, territoire, pour100k_temp){
         diviseur = data[territoire]["population"]/100000;
     }
     var jour_nom = data[territoire][value]["jour_nom"]
-    data_temp = data[territoire][value]["valeur"].map((val, idx) => ({x: data["france"][jour_nom][idx], y: val/diviseur}))
+    var liste_jours = data["france"][jour_nom]
+
+    if(value=="obepine"){
+        liste_jours=data[territoire][value]["jours"]
+    }
+
+    y = 0
+    array_data_territoires = data[territoire][value]["valeur"]
+
+    if(cumsum==true){
+        array_data_territoires = array_data_territoires.map(d=>y+=d);
+    }
+
+    data_temp = array_data_territoires.map((val, idx) => ({x: liste_jours[idx], y: val/diviseur}))
     
     var N = dataExplorerChart.data.datasets.length
     if(N>=seq.length-1){
@@ -504,9 +578,6 @@ function addTrace(value, territoire, pour100k_temp){
     if(territoire in noms_zones){
         territoire=noms_zones[territoire]
     }
-    console.log(territoire)
-    console.log(noms_zones)
-    console.log(territoire in noms_zones)
 
     dataExplorerChart.data.datasets.push({
         yAxisID: value,
