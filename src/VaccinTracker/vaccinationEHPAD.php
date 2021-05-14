@@ -7,6 +7,7 @@
     Coloration en fonction du pourcentage de personnes hébergées en EPHAD vaccinées.
     Données fournies par le Ministère de la Santé.
 </div>
+
 <br>
 
 <div id="menu" class="row">
@@ -21,6 +22,9 @@
             <div id="legendeCarteEHPAD1Dose" class="col-xs-2">
 
             </div>
+        </div>
+        <div class="alert alert-info">
+            Attention l'échelle de cette diffère de la carte précédente même si le code couleur utilisé est le même.
         </div>
     </div>
     <div class="col-md-6 text-center">

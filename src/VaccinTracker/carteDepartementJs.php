@@ -17,28 +17,21 @@
         var donneesDepartementsVaccination;
         var typeCarteDepartement = 'n_dose1_cumsum_pop';
         var dateMaj = "";
-        var tableauValeurs = [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5]
-        var tableauCouleurs= [
-            "#cfdde6",
-            "#b8d4e6",
-            "#a1cbe6",
-            "#8ac2e6",
-            "#73bae6",
-            "#5cb1e6",
-            "#45a8e6",
-            "#2e9fe6",
-            "#1796e6",
-            "#0076bf"
-        ]; // HSV(203, xx, 90) avec xx de 10 à 100
 
-        var tableauValeurs = [8, 10, 12, 14, 16]
-        var tableauCouleurs= [  
-            "#d5dee3",
-            "#b8d4e6",
+        var tableauValeurs = [">", "42", "39", "36", "33", "30", "24", "20", "10", "5"];
+        var tableauCouleurs = [
+            "#0076bf",
+            "#1796e6",
+            "#2e9fe6",
+            "#45a8e6",
             "#5cb1e6",
-            "#1490de",
-            "#005387"
-        ]; // HSV(203, xx, 90) avec xx de 10 à 100
+            "#73bae6",
+            "#8ac2e6",
+            "#a1cbe6",
+            "#b8d4e6",
+            "#cfdde6"
+        ]
+
 
         fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/vacsi-dep.json')
             .then(response => {
@@ -64,22 +57,6 @@
             } else {
                 $('#carte path').css("fill", "#c4c4cb");
                 return;
-            }
-            min_tab=100;
-            max_tab=0;
-
-            for (dep in donneesDepartementsVaccination){
-                value=donneesDepartementsVaccination[dep].n_dose1_cumsum_pop
-                if(max_tab<value){
-                    max_tab=value
-                }
-                if(min_tab>value){
-                    min_tab=value
-                }
-            }
-            tableauValeurs=[]
-            for(var i=0; i<5; i++){
-                tableauValeurs.push((min_tab + (max_tab-min_tab)*i/5).toFixed(1))
             }
 
             construireLegende(tableauValeurs, tableauCouleurs);
@@ -119,7 +96,7 @@
             for (i = tableauCouleurs.length - 1; i >= 0; i--) {
                 if (i == 0) {
                     return tableauCouleurs[i];
-                } else if (valeur >= tableauDonnees[i]) {
+                } else if (valeur <= tableauDonnees[i]) {
                     return tableauCouleurs[i];
                 }
             }

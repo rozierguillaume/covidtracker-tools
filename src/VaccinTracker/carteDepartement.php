@@ -10,10 +10,16 @@
                 <div id="carte" style="margin-top:20px;">
                     <?php include(__DIR__ . '/../DashboardDepartement/carteDepartements.php'); ?>
                 </div>
+
             </div>
             <div id="legendeCarte" class="col-xs-2">
 
             </div>
+
+        </div>
+        <div class="alert alert-info">
+            Attention, l'échelle est régulièrement réajustée pour prendre en compte l'évolution
+            de la vaccination et faire ressortir comparativement l'avancement de chaque département.
         </div>
     </div>
     <div class="col-md-6" style="" id="donneesDepartements">
