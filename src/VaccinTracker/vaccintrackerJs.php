@@ -853,6 +853,7 @@
         }))
         let objectif = calculerObjMiJuin();
         let maxValue = Math.ceil(objectif/25000)*25000;
+        maxValue = 800000
         let dataObj = data.map((value, idx) => ({x: labels[idx], y: objectif}));
 
         debut_2nd_doses = labels.map((value, idx) => ({x: value, y: 0}))
@@ -893,16 +894,16 @@
                         data: data_secondes_injections, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
                         backgroundColor: '#1796e6',
                     },
-                    {
-                        yAxisID: 'objectif',
-                        label: 'Objectif mi-juin',
-                        data: dataObj,
-                        type: "line",
-                        borderColor: 'red',
-                        backgroundColor: 'white',
-                        fill: false,
-                        pointRadius: 0
-                    }
+                    //{
+                       // yAxisID: 'objectif',
+                       // label: 'Objectif mi-juin',
+                       // data: dataObj,
+                       // type: "line",
+                       // borderColor: 'red',
+                       // backgroundColor: 'white',
+                       // fill: false,
+                       // pointRadius: 0
+                    //}
                 ]
             },
             options: {
