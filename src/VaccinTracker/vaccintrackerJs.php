@@ -351,6 +351,10 @@
         }
     }
 
+    /**
+     * Calcul le nombre de premières doses à injecter par jour
+     * pour tenir l'objectif mi-juin de 30M de primo-vaccinés
+     */
     function calculerObjMiJuin()
     {
         let one_day = (1000 * 60 * 60 * 24)
@@ -359,7 +363,7 @@
         let resteAVacciner = objectif - nb_vaccines[nb_vaccines.length - 1].n_dose1
         //console.log(jours_restant)
         if ((resteAVacciner >= 0) && (jours_restant >= 0)) {
-            return Math.round(resteAVacciner * 2 / jours_restant)
+            return Math.round(resteAVacciner / jours_restant)
         } else {
             return -1
         }
