@@ -418,7 +418,6 @@
                 dosesRecuesRegion = "--";
             }
 
-            dateMaj = dateMaj
             let fullDate = new Date(dateMaj);
             let fullDateRec = new Date(dateMajRec);
 

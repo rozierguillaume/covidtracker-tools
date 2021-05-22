@@ -3,7 +3,7 @@
 
 <?php include(__DIR__ . '/selectEtCarte.php') ?>
 <?php		
- if (isset($_GET['dep']) and $_GET['dep']) {		
+ if (isset($_GET['dep']) && $_GET['dep']) {
      echo('<script id="departementSearched" type="text/template">' . $_GET["dep"] . '</script>');		
  }		
  ?>

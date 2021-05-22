@@ -23,7 +23,7 @@
 
 
 <?php
-if (isset($_GET['dep']) and $_GET['dep']) {
+if (isset($_GET['dep']) && $_GET['dep']) {
     $department = $_GET["dep"];
     if (is_numeric($department) || $department === "2A" || $department === "2B") {
         echo('<script id="numeroDepartementSearched" type="text/template">' .$department . '</script>');
