@@ -5,7 +5,7 @@
             <h4 id="titre_map" class="" style="display: inline-block">Proportion de la population ayant reçu une dose :</h4>
             <div class="col-xs-10">
                 <div style="display:none;">
-                    <?php include(dirname(__FILE__) . '/../DashboardDepartement/selectDepartements.php') ?>
+                    <?php include(__DIR__ . '/../DashboardDepartement/selectDepartements.php') ?>
                 </div>
                 <div id="carte" style="margin-top:20px;">
                     <?php include(__DIR__ . '/../DashboardDepartement/carteDepartements.php'); ?>
@@ -34,8 +34,8 @@
     </div>
 </div>
 
-<?php include(dirname(__FILE__) . '/carteDepartementCss.php') ?>
-<?php include(dirname(__FILE__) . '/carteDepartementJs.php') ?>
+<?php include(__DIR__ . '/carteDepartementCss.php') ?>
+<?php include(__DIR__ . '/carteDepartementJs.php') ?>
 
 <script id="departementTemplate" type="text/template">
     <!-- wp:heading -->

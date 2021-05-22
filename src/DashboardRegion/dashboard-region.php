@@ -19,10 +19,10 @@
     </div>
 </div>
 
-<?php include(dirname(__FILE__) . '/dashboardRegionJs.php') ?>
-<?php include(dirname(__FILE__) . '/dashboardRegionCss.php') ?>
-<?php include(dirname(__FILE__) . '/selectEtCarte.php') ?>
-<?php include(dirname(__FILE__) . '/templateRegion.php') ?>
+<?php include(__DIR__ . '/dashboardRegionJs.php') ?>
+<?php include(__DIR__ . '/dashboardRegionCss.php') ?>
+<?php include(__DIR__ . '/selectEtCarte.php') ?>
+<?php include(__DIR__ . '/templateRegion.php') ?>
 
 <!-- wp:spacer {"height":50} -->
 <div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>

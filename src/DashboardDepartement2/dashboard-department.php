@@ -1,7 +1,7 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
-<?php include(dirname(__FILE__) . '/selectEtCarte.php') ?>
+<?php include(__DIR__ . '/selectEtCarte.php') ?>
 <?php		
  if (isset($_GET['dep']) and $_GET['dep']) {		
      echo('<script id="departementSearched" type="text/template">' . $_GET["dep"] . '</script>');		
