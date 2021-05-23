@@ -1,8 +1,7 @@
 <h2 style="margin-top: 40px;">
     Quand l'immunité collective sera-t-elle atteinte ?
 </h2>
-Sur VaccinTracker, le taux de 60% a été choisi comme seuil d'immunité collective. Cependant, on ne peut pas
-aujourd'hui connaître ce taux précisément.
+Nous ne pouvons pas aujourd'hui connaître le taux à atteindre pour bénéficier de l'immunité.
 La vidéo suivante du média Le Monde explique très bien la problématique à notre sens :
 <br><br>
 <div class="videoWrapper">
