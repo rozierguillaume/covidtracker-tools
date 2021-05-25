@@ -59,7 +59,7 @@
                 return;
             }
 
-            construireLegende(tableauValeurs, tableauCouleurs);
+            construireLegende(tableauValeurs, tableauCouleurs, true);
 
             for (numeroDepartement in donneesDepartementsVaccination) {
                 if (numeroDepartement == 'departements'){
@@ -78,15 +78,21 @@
         function construireLegende(values = [], colors = [], pourcentage = false) {
             content = $('#legendTemplatePre').html();
             values.map((val, idx) => {
-                if (pourcentage && (val != '>')) {
-                    if (val > 0) {
-                        content += $('#legendTemplateMid').html().replaceAll("valeur", plus + val + ' %').replaceAll("colorBg", colors[idx]);
+                if (pourcentage) {
+                    if (val == ">") {
+                        caseLegende = $('#legendTemplateMid').html().replaceAll("valeur", '> ' + plus + values[idx+1] + ' %').replaceAll("colorBg", colors[idx]);
+                    } else if (val > 0) {
+                        caseLegende = $('#legendTemplateMid').html().replaceAll("valeur", '< ' + plus + val + ' %').replaceAll("colorBg", colors[idx]);
                     } else {
-                        content += $('#legendTemplateMid').html().replaceAll("valeur", val + ' %').replaceAll("colorBg", colors[idx]);
+                        caseLegende = $('#legendTemplateMid').html().replaceAll("valeur", val + ' %').replaceAll("colorBg", colors[idx]);
                     }
                 } else {
-                    content += $('#legendTemplateMid').html().replaceAll("valeur", val).replaceAll("colorBg", colors[idx]);
+                    caseLegende = $('#legendTemplateMid').html().replaceAll("valeur", '< ' + val).replaceAll("colorBg", colors[idx]);
                 }
+                if (colors[idx]=='#cfdde6'){
+                    caseLegende = caseLegende.replaceAll("white", "#304b61");
+                }
+                content += caseLegende;
             });
             content += $('#legendTemplatePost').html();
             $('#legendeCarte').html(content);

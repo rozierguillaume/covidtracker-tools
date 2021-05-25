@@ -70,7 +70,7 @@
                 </div>
             </div>
             <br>
-            <div id="departement-graphique-age">
+            <div id="departement-graphique-age" style="display: none">
                 <div class="chart-container" style="position: relative; height:250px; width:100%">
                     <canvas id="chartDepartementAge"
                             style="margin-top:0px; max-height: 700px; max-width: 900px;"></canvas>

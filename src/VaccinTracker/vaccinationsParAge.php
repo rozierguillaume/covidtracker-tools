@@ -11,7 +11,7 @@ Mise à jour : <span id="dateMajParAge">--/--</span>
 </div>
 
 <div class="chart-container" style="position: relative; height:50vh; width:100%">
-    <canvas id="barChartAge" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
+    <canvas id="barChartAge" style="margin-top:20px; max-height: 700px; max-width: 100%;"></canvas>
 </div>
 CovidTracker.fr - Données : Ministère de la Santé
 <br>

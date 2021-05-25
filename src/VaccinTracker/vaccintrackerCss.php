@@ -80,6 +80,7 @@
         box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
         max-width: 350px;
         background: #ffffff;
+
     }
 
     .shadow-btn-green {
@@ -88,12 +89,14 @@
         font-size: 100%;
         border-radius: 7px;
         margin-right: 5px;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
         margin-top: 2px;
         text-align: left;
         box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px rgba(0, 128, 0, 0.317);
         max-width: 350px;
         background: #ffffff;
+        min-height: 300px;
+
     }
 
     .shadow-btn-orange {
@@ -116,12 +119,13 @@
         font-size: 100%;
         border-radius: 7px;
         margin-right: 5px;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
         margin-top: 2px;
         text-align: left;
         box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px rgba(128, 0, 0, 0.317);
         max-width: 350px;
         background: #ffffff;
+        min-height: 300px;
     }
 
     .shadow {
@@ -130,7 +134,6 @@
         border-radius: 7px;
         text-align: left;
         box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
-        max-width: 450px;
         background: #ffffff;
         margin-top: 10px;
     }

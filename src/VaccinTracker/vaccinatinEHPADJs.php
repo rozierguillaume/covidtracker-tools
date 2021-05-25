@@ -19,7 +19,7 @@
 
         var tableauValeurs = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90]
 
-        var tableauCouleurs1dose= [
+        var tableauCouleurs1dose = [
             "#cfdde6",
             "#b8d4e6",
             "#a1cbe6",
@@ -32,7 +32,7 @@
             "#0076bf"
         ];
 
-        var tableauCouleurs2doses= [
+        var tableauCouleurs2doses = [
             "#9cb394",
             "#90b384",
             "#80ae73",
@@ -70,7 +70,7 @@
             construireLegendesEHPAD(tableauValeurs, tableauCouleurs2doses, $("#legendeCarteEHPAD2Doses"));
 
             for (numeroDepartement in donneesDepartementsEhpadVaccination) {
-                if (numeroDepartement == '00'){
+                if (numeroDepartement == '00') {
                     continue;
                 }
                 donneesDepartement = donneesDepartementsEhpadVaccination[numeroDepartement];
@@ -99,14 +99,10 @@
         function construireLegendesEHPAD(values = [], colors = [], divLegende) {
             content = $('#legendTemplatePre').html();
             values.map((val, idx) => {
-                if (pourcentage && (val != '>')) {
-                    if (val > 0) {
-                        content += $('#legendTemplateMid').html().replaceAll("valeur", '+ ' + val + ' %').replaceAll("colorBg", colors[idx]);
-                    } else {
-                        content += $('#legendTemplateMid').html().replaceAll("valeur", val + ' %').replaceAll("colorBg", colors[idx]);
-                    }
+                if (val > 0) {
+                    content += $('#legendTemplateMid').html().replaceAll("valeur", '> ' + val + ' %').replaceAll("colorBg", colors[idx]);
                 } else {
-                    content += $('#legendTemplateMid').html().replaceAll("valeur", val).replaceAll("colorBg", colors[idx]);
+                    content += $('#legendTemplateMid').html().replaceAll("valeur", '< ' + values[idx + 1] + ' %');
                 }
             });
             content += $('#legendTemplatePost').html();
@@ -117,7 +113,7 @@
         $('#carteEHPAD1Dose .departement path').hover(function (e) {
             departement = $(this).data("num");
             nomDepartement = $("#listeDepartements option[data-num='" + departement + "']").val();
-            if ($(this).data("res_couv_tot_dose1")){
+            if ($(this).data("res_couv_tot_dose1")) {
                 $('#carteEHPAD1Dose #map title').text(nomDepartement + ' (' + $(this).data("res_couv_tot_dose1").toFixed(1) + ' %)');
             } else {
                 $('#carteEHPAD1Dose #map title').text(nomDepartement + ' : pas de donnée !');
@@ -128,7 +124,7 @@
         $('#carteEHPAD2Doses .departement path').hover(function (e) {
             departement = $(this).data("num");
             nomDepartement = $("#listeDepartements option[data-num='" + departement + "']").val();
-            if ($(this).data("res_couv_tot_dose2")){
+            if ($(this).data("res_couv_tot_dose2")) {
                 $('#carteEHPAD2Doses #map title').text(nomDepartement + ' (' + $(this).data("res_couv_tot_dose2").toFixed(1) + ' %)');
             } else {
                 $('#carteEHPAD2Doses #map title').text(nomDepartement + ' : pas de donnée !');
