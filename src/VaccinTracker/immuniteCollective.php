@@ -42,6 +42,7 @@ et 15 à 27 millions d'ici à juillet.
     </li>
 </ul>
 
+
 <h3 style="margin-top : 50px;">27 mars</h3>
 <ul>
     <li>Personnes âgées de plus de 70 ans,</li>
@@ -71,10 +72,15 @@ et 15 à 27 millions d'ici à juillet.
 
 <h3 style="margin-top : 50px;">12 mai</h3>
 <ul>
-    <li>Ensemble de la population de plus de 18 ans en cas de créneaux libres (Si et seulement si un créneau de vaccination est disponible la veille pour le lendemain)</li>
+    <li>Ensemble de la population de plus de 18 ans en cas de créneaux libres (Si et seulement si un créneau de vaccination est disponible la veille pour le lendemain).</li>
 </ul>
 
-<h3 style="margin-top : 50px;">15 juin</h3>
+<h3 style="margin-top : 50px;">24 mai</h3>
+<ul>
+    <li>Professionnels considérés comme plus exposés au virus, parmi lesquels le personnel éducatif, les forces de l'ordre, les chauffeurs, les métiers de la bouche, mais aussi d'autres professions ayant un contact avec le public.</li>
+</ul>
+
+<h3 style="margin-top : 50px;">31 mai</h3>
 <ul>
     <li>Ensemble de la population de plus de 18 ans.</li>
 </ul>
