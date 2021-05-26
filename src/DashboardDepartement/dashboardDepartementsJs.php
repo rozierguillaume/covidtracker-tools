@@ -60,6 +60,8 @@
             var donneesFrance;
             var dateMaj;
             var typeCarte = 'incidence-cas';
+            var tableauValeurs;
+            var nomDonnee;
             
             fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/vacsi-dep.json')
                 .then(response => {
@@ -96,19 +98,37 @@
                 values.map((val, idx) => {
                     if (pourcentage) {
                         if (val == '>'){
-                            caseLegende = $('#legendTemplateMid').html().replaceAll("valeur", "> " + plus +values[idx+1] + ' %').replaceAll("colorBg", colors[idx]);
+                            caseLegende = $('#legendTemplateMid').html()
+                                .replaceAll("valeur", "> " + plus +values[idx+1] + ' %')
+                                .replaceAll("colorBg", colors[idx])
+                                .replaceAll("index", idx);
                         } else if (val > 0) {
-                            caseLegende = $('#legendTemplateMid').html().replaceAll("valeur", '< ' + plus + val + ' %').replaceAll("colorBg", colors[idx]);
+                            caseLegende = $('#legendTemplateMid').html()
+                                .replaceAll("valeur", '< ' + plus + val + ' %')
+                                .replaceAll("colorBg", colors[idx])
+                                .replaceAll("index", idx);
                         } else {
-                            caseLegende = $('#legendTemplateMid').html().replaceAll("valeur", '< ' + val + ' %').replaceAll("colorBg", colors[idx]);
+                            caseLegende = $('#legendTemplateMid').html()
+                                .replaceAll("valeur", '< ' + val + ' %')
+                                .replaceAll("colorBg", colors[idx])
+                                .replaceAll("index", idx);
                         }
                     } else if (pourcentage_abs){
-                        caseLegende = $('#legendTemplateMid').html().replaceAll("valeur", val + " %").replaceAll("colorBg", colors[idx]);
+                        caseLegende = $('#legendTemplateMid').html()
+                            .replaceAll("valeur", val + " %")
+                            .replaceAll("colorBg", colors[idx])
+                            .replaceAll("index", idx);
                     } else {
                         if (val == '>'){
-                            caseLegende = $('#legendTemplateMid').html().replaceAll("valeur", val + ' ' + values[idx+1] ).replaceAll("colorBg", colors[idx]);
+                            caseLegende = $('#legendTemplateMid').html()
+                                .replaceAll("valeur", val + ' ' + values[idx+1] )
+                                .replaceAll("colorBg", colors[idx])
+                                .replaceAll("index", idx);
                         } else {
-                            caseLegende = $('#legendTemplateMid').html().replaceAll("valeur", "< " + val).replaceAll("colorBg", colors[idx]);
+                            caseLegende = $('#legendTemplateMid').html()
+                                .replaceAll("valeur", "< " + val)
+                                .replaceAll("colorBg", colors[idx])
+                                .replaceAll("index", idx);
                         }
                     }
                     if (colors[idx]=='#ededce'){
@@ -535,6 +555,33 @@
                     colorerCarte();
                 }
             });
+
+            $("#legendeCarte").on({
+                mouseenter: function(e){
+                    let idx = parseInt($(this).data('idx'));
+                    let value = tableauValeurs[idx];
+                    let borneinf, bornesup;
+                    if(value == ">") {
+                        bornesup = Infinity;
+                        borneinf = tableauValeurs[idx+1];
+                    } else if (idx == tableauValeurs.length -1 ) {
+                        console.log('test');
+                        bornesup = value;
+                        borneinf = - Infinity;
+                    } else {
+                        bornesup = value;
+                        borneinf = tableauValeurs[idx+1];
+                    }
+                    $("#carte").find('svg path').filter(function(){
+                        let val = $(this).data(nomDonnee);
+                        return val > borneinf && val <= bornesup;
+                    })
+                    .css({'stroke': 'yellow', 'stroke-width': '2.6'});
+                },
+                mouseleave: function (e){
+                    $("#carte").find('svg path').css({'stroke': '', 'stroke-width': ''});
+                }
+            }, '.legendValue');
         }
     )
 </script>
