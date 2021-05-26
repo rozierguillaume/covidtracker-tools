@@ -565,7 +565,6 @@
                         bornesup = Infinity;
                         borneinf = tableauValeurs[idx+1];
                     } else if (idx == tableauValeurs.length -1 ) {
-                        console.log('test');
                         bornesup = value;
                         borneinf = - Infinity;
                     } else {
