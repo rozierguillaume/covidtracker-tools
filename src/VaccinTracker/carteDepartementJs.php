@@ -268,7 +268,7 @@
                 if(value == ">") {
                     bornesup = 100;
                     borneinf = tableauValeurs[idx+1];
-                } else if (idx == tableauValeurs.length +1) {
+                } else if (idx == tableauValeurs.length -1) {
                     bornesup = value;
                     borneinf = 0;
                 } else {
