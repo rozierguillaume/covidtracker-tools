@@ -177,7 +177,7 @@ if (isset($_GET['dep']) and $_GET['dep']) {
 
 <script id="legendTemplateMid" type="text/template">
     <tr>
-        <td style="text-align: center; background-color: colorBg; color: white; font-size: 50%; padding: 5px;">valeur
+        <td style="text-align: center; background-color: colorBg; color: white; font-size: 50%; padding: 5px;" class="legendValue" data-idx="index">valeur
         </td>
     </tr>
 </script>
