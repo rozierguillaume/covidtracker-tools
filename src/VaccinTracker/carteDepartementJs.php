@@ -80,14 +80,26 @@
             values.map((val, idx) => {
                 if (pourcentage) {
                     if (val == ">") {
-                        caseLegende = $('#legendTemplateMid').html().replaceAll("valeur", '> ' + plus + values[idx+1] + ' %').replaceAll("colorBg", colors[idx]);
+                        caseLegende = $('#legendTemplateMid').html()
+                            .replaceAll("valeur", '> ' + plus + values[idx+1] + ' %')
+                            .replaceAll("colorBg", colors[idx])
+                            .replaceAll('idxval', idx);
                     } else if (val > 0) {
-                        caseLegende = $('#legendTemplateMid').html().replaceAll("valeur", '< ' + plus + val + ' %').replaceAll("colorBg", colors[idx]);
+                        caseLegende = $('#legendTemplateMid').html()
+                            .replaceAll("valeur", '< ' + plus + val + ' %')
+                            .replaceAll("colorBg", colors[idx])
+                            .replaceAll('idxval', idx);
                     } else {
-                        caseLegende = $('#legendTemplateMid').html().replaceAll("valeur", val + ' %').replaceAll("colorBg", colors[idx]);
+                        caseLegende = $('#legendTemplateMid').html()
+                            .replaceAll("valeur", val + ' %')
+                            .replaceAll("colorBg", colors[idx])
+                            .replaceAll('idxval', idx);
                     }
                 } else {
-                    caseLegende = $('#legendTemplateMid').html().replaceAll("valeur", '< ' + val).replaceAll("colorBg", colors[idx]);
+                    caseLegende = $('#legendTemplateMid').html()
+                        .replaceAll("valeur", '< ' + val)
+                        .replaceAll("colorBg", colors[idx])
+                        .replaceAll('idxval', idx);
                 }
                 if (colors[idx]=='#cfdde6'){
                     caseLegende = caseLegende.replaceAll("white", "#304b61");
@@ -247,6 +259,32 @@
             }
         });
 
+        //surlignage des dep au survol de la légende
+        $("#legendeCarte").on({
+            mouseenter: function(e){
+                let idx= parseInt($(this).data('idx'));
+                let value = tableauValeurs[idx];
+                let borneinf, bornesup;
+                if(value == ">") {
+                    bornesup = 100;
+                    borneinf = tableauValeurs[idx+1];
+                } else if (idx == tableauValeurs.length -1) {
+                    bornesup = value;
+                    borneinf = 0;
+                } else {
+                    bornesup = value;
+                    borneinf = tableauValeurs[idx+1];
+                }
+                $('#carte').find('svg path').filter(function(){
+                    let val = $(this).data('n_dose1_cumsum_pop');
+                    return val >= borneinf && val <= bornesup;
+                }).css({"stroke-width": '2.6', 'stroke': 'yellow'});
+            },
+            mouseleave: function(e){
+                $('#carte').find('svg path').css({'stroke-width': '', 'stroke': ''});
+            }
+        }, '.legendValue');
+
     });
 </script>
 
@@ -258,7 +296,11 @@
 
 <script id="legendTemplateMid" type="text/template">
     <tr>
-        <td style="text-align: center; background-color: colorBg; color: white; font-size: 50%; padding: 5px;">valeur
+        <td class="legendValue"
+            style="text-align: center; background-color: colorBg; color: white; font-size: 50%; padding: 5px;"
+            data-idx="idxval"
+        >
+            valeur
         </td>
     </tr>
 </script>
