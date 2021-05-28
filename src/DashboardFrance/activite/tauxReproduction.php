@@ -18,7 +18,7 @@
     </li>
     <li class="nav-item">
         <a class="nav-link" id="profile-tab" data-toggle="tab" href="#TRRegions" role="tab" aria-controls="profile" aria-selected="false">
-            Animation (rouge/vert)
+            Régions
         </a>
     </li>
 </ul>
