@@ -125,6 +125,7 @@
     const OBJECTIF_FIN_JANVIER = 1000000 // 1_000_000
     const OBJECTIF_FIN_AOUT = 52000000 // 1_000_000
     const OBJECTIF_MI_JUIN = 30000000
+    const PART_FRANCAIS_VACCINABLE = 81.2 // français >= 16 ans (vaccin homologué), src : https://www.insee.fr/fr/statistiques/3312958
     var data;
     var data_france;
     var nb_vaccines = [];
@@ -134,7 +135,7 @@
     let differentielVaccinesParJour;
     var dejaVaccinesNb;
     var dejaVaccines = 0;
-    var restantaVaccinerImmunite;
+    var restantaVaccinable;
     var restantaVaccinerAutres = 100
     var objectifQuotidien;
     var dateProjeteeObjectif;
@@ -240,7 +241,7 @@
                 nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
                 dejaVaccinesNb = nb_vaccines[nb_vaccines.length - 1].n_dose1
                 dejaVaccines = dejaVaccinesNb * 100 / 67000000;
-                restantaVaccinerImmunite = 60 - dejaVaccines
+                restantaVaccinable = PART_FRANCAIS_VACCINABLE - dejaVaccines
                 this.objectifQuotidien = calculerObjectif();
                 fetch2ndDosesData();
 
@@ -1041,7 +1042,7 @@
                             newsubrow.classList.add('green');
                         } else if (caseNb <= proportionVaccinesPartiellement + 0.01) {
                             newsubrow.classList.add('animation-premiere-dose');
-                        } else if (caseNb <= 60) {
+                        } else if (caseNb <= PART_FRANCAIS_VACCINABLE) {
                             newsubrow.classList.add("red");
                         } else {
                             newsubrow.classList.add("grey");
@@ -1097,7 +1098,7 @@
         //document.getElementById("proportionVaccinesMin").innerHTML = (Math.round(dejaVaccines/2*10000000)/10000000).toFixed(2);
         //document.getElementById("proportion_doses").innerHTML = (dejaVaccinesNb/cumul_stock*100).toFixed(1);
 
-        document.getElementById("proportionAVaccinerImmu").innerHTML = (Math.round(restantaVaccinerImmunite * 10000000) / 10000000).toFixed(2);
+        document.getElementById("proportionVaccinable").innerHTML = (Math.round(restantaVaccinable * 10000000) / 10000000).toFixed(2);
         document.getElementById("objectif_quotidien").innerHTML = numberWithSpaces(objectifQuotidien);
         document.getElementById("date_projetee_objectif").innerHTML = formaterDate(dateProjeteeObjectif);
         date = nb_vaccines[nb_vaccines.length - 1].date
