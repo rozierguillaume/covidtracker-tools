@@ -422,7 +422,7 @@
         const resteAVaccinerDose2 = objectif - nDose2quandD1Complete
         const joursDose2Complete = Math.ceil(resteAVaccinerDose2 / (vdose2 + vdose1))
         const date = new Date(nb_vaccines[nb_vaccines.length - 1].date)
-        date.setDate(date.getDate() + joursDose2Complete + joursDose1Complete)
+        date.setDate(date.getDate() + Math.max(joursDose2Complete, joursDose1Complete))
         return date
     }
 
@@ -456,57 +456,57 @@
         return dates_projections
     }
 
-    function calculateObjectifs(lastValue, lastDate, size)
-    {
+    // function calculateObjectifs(lastValue, lastDate, size)
+    // {
 
-        let values = [];
-        let dates = [];
+    //     let values = [];
+    //     let dates = [];
 
-        let lastDateM = moment(lastDate);
-        let objectif1 = moment("2021-05-15");
-        let objectif2 = moment("2021-06-15");
+    //     let lastDateM = moment(lastDate);
+    //     let objectif1 = moment("2021-05-15");
+    //     let objectif2 = moment("2021-06-15");
 
-        let daysToObj1 = objectif1.diff(lastDateM, 'days');
-        let daysToObj2 = objectif2.diff(lastDateM, 'days');
-        let daysBetweenObj = objectif2.diff(objectif1, 'days');
+    //     let daysToObj1 = objectif1.diff(lastDateM, 'days');
+    //     let daysToObj2 = objectif2.diff(lastDateM, 'days');
+    //     let daysBetweenObj = objectif2.diff(objectif1, 'days');
 
-        if(daysToObj1 > 0) {
-            //date avant 15/05
-            let croissance = (20000000 - lastValue) / daysToObj1;
-            for(let i = 1; i <= daysToObj1; i++) {
-                values.push(Math.round(lastValue + i*croissance));
-                dates.push(lastDateM.add(1, 'd').format('YYYY-MM-DD'));
-            }
-            croissance = (30000000 - 20000000)/daysBetweenObj;
-            for(let i = 1; i <= daysBetweenObj; i++) {
-                values.push(Math.round(20000000 + i*croissance));
-                dates.push(objectif1.add(1, 'd').format('YYYY-MM-DD'));
-            }
-            if(daysToObj2 <= size) {
-                //complete with same croissance
-                for(let i = 1; i <= (size - daysToObj2); i++) {
-                    values.push(Math.round(30000000 + i * croissance));
-                    dates.push(objectif2.add(1, 'd').format('YYYY-MM-DD'));
-                }
-            }
-        } else if (daysToObj2 > 0) {
-            // 15/05 passé
-            let croissance = (30000000 - lastValue) / daysToObj2;
-            for(let i = 1; i <= daysToObj2; i++) {
-                values.push(Math.round(lastValue + i*croissance));
-                dates.push(lastDateM.add(1, 'd').format('YYYY-MM-DD'));
-            }
-            if(daysToObj2 <= size) {
-                //complete with same croissance
-                for(let i = 1; i <= (size - daysToObj2); i++) {
-                    values.push(Math.round(30000000 + i * croissance));
-                    dates.push(objectif2.add(1, 'd').format('YYYY-MM-DD'));
-                }
-            }
-        }
+    //     if(daysToObj1 > 0) {
+    //         //date avant 15/05
+    //         let croissance = (20000000 - lastValue) / daysToObj1;
+    //         for(let i = 1; i <= daysToObj1; i++) {
+    //             values.push(Math.round(lastValue + i*croissance));
+    //             dates.push(lastDateM.add(1, 'd').format('YYYY-MM-DD'));
+    //         }
+    //         croissance = (30000000 - 20000000)/daysBetweenObj;
+    //         for(let i = 1; i <= daysBetweenObj; i++) {
+    //             values.push(Math.round(20000000 + i*croissance));
+    //             dates.push(objectif1.add(1, 'd').format('YYYY-MM-DD'));
+    //         }
+    //         if(daysToObj2 <= size) {
+    //             //complete with same croissance
+    //             for(let i = 1; i <= (size - daysToObj2); i++) {
+    //                 values.push(Math.round(30000000 + i * croissance));
+    //                 dates.push(objectif2.add(1, 'd').format('YYYY-MM-DD'));
+    //             }
+    //         }
+    //     } else if (daysToObj2 > 0) {
+    //         // 15/05 passé
+    //         let croissance = (30000000 - lastValue) / daysToObj2;
+    //         for(let i = 1; i <= daysToObj2; i++) {
+    //             values.push(Math.round(lastValue + i*croissance));
+    //             dates.push(lastDateM.add(1, 'd').format('YYYY-MM-DD'));
+    //         }
+    //         if(daysToObj2 <= size) {
+    //             //complete with same croissance
+    //             for(let i = 1; i <= (size - daysToObj2); i++) {
+    //                 values.push(Math.round(30000000 + i * croissance));
+    //                 dates.push(objectif2.add(1, 'd').format('YYYY-MM-DD'));
+    //             }
+    //         }
+    //     }
 
-        return values.map((value, idx) => ({x: dates[idx], y: value}));
-    }
+    //     return values.map((value, idx) => ({x: dates[idx], y: value}));
+    // }
 
     function buildLineChart() {
         var ctx = document.getElementById('lineVacChart').getContext('2d');
@@ -589,24 +589,24 @@
             pointHitRadius: 1,
             borderDash: [3, 2]
         });
-        //objectif mai et juin : 20M mi-mai, 30M mi-juin
-        let data_objectifs = calculateObjectifs(data_france.n_cum_dose1[data_france.n_cum_dose1.length -1],
-                                              data_france.dates[data_france.dates.length -1],
-                                              50);
+        // //objectif mai et juin : 20M mi-mai, 30M mi-juin
+        // let data_objectifs = calculateObjectifs(data_france.n_cum_dose1[data_france.n_cum_dose1.length -1],
+        //                                       data_france.dates[data_france.dates.length -1],
+        //                                       50);
 
-        datasets.push({
-            yAxisID: "injections",
-            label: 'Objectifs gouvernementaux ',
-            data: data_objectifs,
-            borderWidth: 2,
-            //backgroundColor: '#a1cbe6',
-            fill: false,
-            borderColor: '#cb1322',
-            pointRadius: 0,
-            cubicInterpolationMode: 'linear',
-            pointHitRadius: 1,
-            borderDash: [3, 2]
-        });
+        // datasets.push({
+        //     yAxisID: "injections",
+        //     label: 'Objectifs gouvernementaux ',
+        //     data: data_objectifs,
+        //     borderWidth: 2,
+        //     //backgroundColor: '#a1cbe6',
+        //     fill: false,
+        //     borderColor: '#cb1322',
+        //     pointRadius: 0,
+        //     cubicInterpolationMode: 'linear',
+        //     pointHitRadius: 1,
+        //     borderDash: [3, 2]
+        // });
 
 
         this.lineChart = new Chart(ctx, {
