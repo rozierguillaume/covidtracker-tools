@@ -18,7 +18,7 @@
         var typeCarteDepartement = 'n_dose1_cumsum_pop';
         var dateMaj = "";
 
-        var tableauValeurs = [">", "42", "39", "36", "33", "30", "24", "20", "10", "5"];
+        var tableauValeurs = [">", "53", "50", "47", "44", "41", "38", "35", "25", "15"];
         var tableauCouleurs = [
             "#0076bf",
             "#1796e6",
