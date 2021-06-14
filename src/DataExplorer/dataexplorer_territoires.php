@@ -115,7 +115,8 @@ var descriptions = {
     "nbre_acte_corona": "Nombre d'actes SOS médecin pour suspicion Covid19 (moyenne glissante 7 jours).",
     "nbre_pass_corona": "Nombre de passages aux urgences pour suspicion Covid19 (moyenne glissante 7 jours).",
     "saturation_reanimations": "Proportion des lits disponibles avant l'épidémie (DREES 2018) occupés uniquement par les patients Covid19 (en %).",
-    "n_cum_dose1": "Nombre de personnes ayant reçu au moins une dose de vaccin (J-1).",
+    "n_cum_dose1": "Nombre de personnes ayant reçu au moins une dose de vaccin (J-1, cumulé).",
+    "n_dose1": "Nombre de personnes ayant reçu au moins une dose de vaccin (J-1, quotidien).",
     "obepine": "Concentration du Sars-Cov-2 dans les eaux usées (réseau Obépine)."
 }
 
@@ -134,7 +135,8 @@ var titres = {
     "nbre_acte_corona": "Actes SOS médecin pour Covid19",
     "nbre_pass_corona": "Passages aux urgences pour Covid19",
     "saturation_reanimations": "Saturation des réanimations par les patients Covid19",
-    "n_cum_dose1": "Personnes vaccinées",
+    "n_cum_dose1": "Personnes ayant reçu une dose de vaccin",
+    "n_dose1": "Personnes ayant reçu une dose de vaccin",
     "obepine": "Covid19 dans les eaux usées"
 }
 
