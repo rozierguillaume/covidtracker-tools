@@ -30,7 +30,8 @@
                         <option value="deces_ehpad">Décès EHPAD</option>
                     </optgroup>
                     <optgroup label="Vaccination">
-                        <option value="n_cum_dose1">Personnes vaccinées</option>
+                        <option value="n_cum_dose1">Personnes vaccinées (cumul)</option>
+                        <option value="n_dose1">Personnes vaccinées (quotidien)</option>
                     </optgroup>
                 </select>
                 <br>
