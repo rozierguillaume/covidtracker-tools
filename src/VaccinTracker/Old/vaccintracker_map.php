@@ -841,7 +841,7 @@ function tableVaccin(tableElt, level){
                 if(first) {
                     if(level == 1) {
                         newrow.classList.add("blink_me");
-                        newrow.classList.add(dejaVaccines >= 60 ? "grey" : "red");
+                        newrow.classList.add(dejaVaccines >= 80 ? "grey" : "red");
                         first = false;
                     } else {
                         const subtable = document.createElement("table");
@@ -850,7 +850,7 @@ function tableVaccin(tableElt, level){
                         first = false;
                         tableVaccin(subtable, level+1);
                     }
-                } else if((caseNb <= 60 && level == 0) || ((dejaVaccines ?? 0) < 60 && level == 1)) {
+                } else if((caseNb <= 80 && level == 0) || ((dejaVaccines ?? 0) < 80 && level == 1)) {
                     newrow.classList.add("red");
                 } else {
                     newrow.classList.add("grey");
