@@ -594,7 +594,7 @@ function fetchOtherData(){
               nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
               dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1].total
               dejaVaccines = dejaVaccinesNb*100/67000000;
-              restantaVaccinerImmunite = 60 - dejaVaccines
+              restantaVaccinerImmunite = 80 - dejaVaccines
               this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
               date = nb_vaccines[nb_vaccines.length-1].date
               date = date.slice(8) + "/" + date.slice(5, 7)

@@ -240,7 +240,7 @@
                 nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
                 dejaVaccinesNb = nb_vaccines[nb_vaccines.length - 1].n_dose1
                 dejaVaccines = dejaVaccinesNb * 100 / 67000000;
-                restantaVaccinerImmunite = 60 - dejaVaccines
+                restantaVaccinerImmunite = 80 - dejaVaccines
                 this.objectifQuotidien = calculerObjectif();
                 fetch2ndDosesData();
 

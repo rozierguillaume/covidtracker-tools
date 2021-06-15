@@ -31,7 +31,7 @@ Ce tracker permet de suivre la proportion de Français déjà vaccinés contre l
 </div>
 
 <h2 style="margin-top : 80px;">Proportion de personnes vaccinées</h2>
-Chaque carré correspond à 1% des Français. Les carrés verts <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:rgb(45, 189, 84);" /></svg> correspondent aux Français ayant reçu au moins une dose de vaccin (deux sont nécessaires). Les carrés rouge vif <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:rgb(237, 88, 88);" /></svg> représentent les Français qu'il faut vacciner avant d'atteindre un taux de vaccination de 60%. 
+Chaque carré correspond à 1% des Français. Les carrés verts <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:rgb(45, 189, 84);" /></svg> correspondent aux Français ayant reçu au moins une dose de vaccin (deux sont nécessaires). Les carrés rouge vif <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:rgb(237, 88, 88);" /></svg> représentent les Français qu'il faut vacciner avant d'atteindre un taux de vaccination de 80%. 
 Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill: rgb(207, 169, 169);" /></svg>  représentent les autres Français non vaccinés. <i>Mise à jour : <span id="date_maj_3">--/--</span></i>
 
 
@@ -45,14 +45,14 @@ Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60"
     <div class="col-md-3" style="padding-top: 20px;">
         
         <span style="font-size: 200%; color: rgb(45, 189, 84)"><span id="proportionVaccines">--</span>%</span><br> des Français ont reçu au moins une dose de vaccin. <br><br> 
-        Il reste à vacciner au moins <br><span style="font-size: 200%; color: rgb(237, 88, 88);"><span id="proportionAVaccinerImmu">--</span>%</span><br>des Français avant d'atteindre un taux de vaccination de 60%. <br>
+        Il reste à vacciner au moins <br><span style="font-size: 200%; color: rgb(237, 88, 88);"><span id="proportionAVaccinerImmu">--</span>%</span><br>des Français avant d'atteindre un taux de vaccination de 80%. <br>
     </div>
 </div>
 <br>
 
 <div class="alert-data" style="margin-top: 15px;">
     <span style="font-size: 80%;">
-        N.B. : un taux de vaccination de 60% ne permet pas nécessairement d'atteindre une immunité collective.<br>
+        N.B. : un taux de vaccination de 80% ne permet pas nécessairement d'atteindre une immunité collective.<br>
 
         <b>Source des données</b> : CovidTracker / Ministère de la Santé.</a>
     </span>
@@ -147,7 +147,7 @@ Aucun.
 </div>
 <br>
 <h2>Quand l'immunité collective sera-t-elle atteinte ?</h2>
-Sur VaccinTracker, le taux de 60% a été choisi comme seuil d'immunité collective. Cependant, on ne peut pas aujourd'hui connaître ce taux précisément. 
+Sur VaccinTracker, le taux de 80% a été choisi comme seuil d'immunité collective. Cependant, on ne peut pas aujourd'hui connaître ce taux précisément. 
 La vidéo suivante du média Le Monde explique très bien la problématique à notre sens :
 <br><br>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bjFtFMilb34" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -583,7 +583,7 @@ function fetchOtherData(){
 
             this.dejaVaccinesNb = nb_vaccines[nb_vaccines.length-1]
             this.dejaVaccines = dejaVaccinesNb*100/67000000;
-            this.restantaVaccinerImmunite = 60 - dejaVaccines
+            this.restantaVaccinerImmunite = 80 - dejaVaccines
 
             this.objectifQuotidien = calculerObjectif();
             this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
