@@ -85,6 +85,10 @@ et 15 à 27 millions d'ici à juillet.
     <li>Ensemble de la population de plus de 18 ans.</li>
 </ul>
 
+<h3 style="margin-top : 50px;">15 juin</h3>
+<ul>
+    <li>Ensemble de la population de plus de 12 ans.</li>
+</ul>
+
 Sources:
 <a target="_blank" title="Calendrier de la campagne de vaccination" href="https://solidarites-sante.gouv.fr/grands-dossiers/vaccin-covid-19/je-suis-un-particulier/article/foire-aux-questions-le-calendrier">Calendrier de la campagne de vaccination</a>
-<a target="_blank" title="La vaccination élargie dès le premier mai" href="https://www.lemonde.fr/planete/article/2021/04/30/la-vaccination-contre-le-covid-19-elargie-des-demain-a-quelque-4-millions-de-francais-fragiles-annonce-olivier-veran_6078605_3244.html">La vaccination élargie dès le premier mai</a>
