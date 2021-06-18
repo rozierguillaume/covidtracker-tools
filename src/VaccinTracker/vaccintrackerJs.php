@@ -862,9 +862,14 @@
         let N_tot = labels.length;
         let N2 = data_values_2doses.length;
 
-        let data_premieres_injections = ndose_fra.n_dose1.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
-        let data_secondes_injections = ndose_fra.n_dose2.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
-        let data_tot_rolling = ndose_fra.n_dose_tot_rolling.slice(0, ndose_fra.n_dose_tot_rolling.length-3).map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
+        let data_premieres_injections = this.ndose_fra.n_dose1.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
+        let data_secondes_injections = this.ndose_fra.n_dose2.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
+        let data_tot_rolling = this.ndose_fra.n_dose_tot_rolling.slice(0, ndose_fra.n_dose_tot_rolling.length-3);
+        data_tot_rolling.unshift(0,0,0,);
+        data_tot_rolling = data_tot_rolling.map((val, idx) => ({x: this.ndose_fra.jour[idx], y:parseInt(val)}));
+        let data_ndose1_rolling = this.ndose_fra.n_dose1_rolling.slice(0, this.ndose_fra.n_dose1_rolling.length-3);
+        data_ndose1_rolling.unshift(0,0,0);
+        data_ndose1_rolling = data_ndose1_rolling.map((val, idx) => ({x: this.ndose_fra.jour[idx], y:parseInt(val)}));
 
         //console.log(data_premieres_injections)
 
@@ -881,7 +886,19 @@
                         pointBackgroundColor: 'rgba(0, 0, 0, 1)',
                         backgroundColor: 'rgba(0, 168, 235, 0)',
                         pointRadius: 1,
-                        pointHitRadius: 3
+                        pointHitRadius: 3,
+                        yAxisID: 'moyennes'
+                    },
+                    {
+                        label: 'Moyenne quotidienne des premières doses ',
+                        data: data_ndose1_rolling,
+                        type: 'line',
+                        borderColor: 'rgba(0, 168, 235, 1)',
+                        pointBackgroundColor: 'rgba(0, 0, 0, 1)',
+                        backgroundColor: 'rgba(0, 168, 235, 0)',
+                        pointRadius: 1,
+                        pointHitRadius: 3,
+                        yAxisID: 'moyennes'
                     },
                     {
                         label: 'Nombre de premières doses ',
@@ -892,17 +909,7 @@
                         label: 'Nombre de deuxièmes doses ',
                         data: data_secondes_injections, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
                         backgroundColor: '#1796e6',
-                    },
-                    //{
-                       // yAxisID: 'objectif',
-                       // label: 'Objectif mi-juin',
-                       // data: dataObj,
-                       // type: "line",
-                       // borderColor: 'red',
-                       // backgroundColor: 'white',
-                       // fill: false,
-                       // pointRadius: 0
-                    //}
+                    }
                 ]
             },
             options: {
@@ -937,14 +944,17 @@
                         }
                     },
                         {
-                        id: 'objectif',
-                        display: false,
-                        stacked: false,
-                        ticks: {
-                            max: maxValue,
-                            min: 0
-                        }
-                    }],
+                            id: 'moyennes',
+                            stacked: false,
+                            display: false,
+                            ticks: {
+                                max: maxValue,
+                                min: 0,
+                                callback: function (value) {
+                                    return value / 1000 + " k";
+                                }
+                            }
+                        }],
                     xAxes: [{
                         //offset: true,
                         stacked: true,
