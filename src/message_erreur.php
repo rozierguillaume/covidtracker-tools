@@ -1,4 +1,4 @@
-<!--<div class="alert alert-warning" role="alert">
-    <i>26 avril à 21h •</i><b> Données vaccination</b><br>
-    En raison d'un changement de format dans les données fournies par Santé publique France, VaccinTracker n'est pas à jour. Nous travaillons sur un correctif.
-</div>-->
+<div class="alert alert-warning" role="alert">
+    <i>25 juin •</i><b> Données vaccination</b><br>
+    Les données de vaccination ne sont plus publiées par Santé publique France depuis le 22 juin en raison de consolidations. VaccinTracker sera à jour dès que ces données seront de nouveau disponibles.
+</div>
