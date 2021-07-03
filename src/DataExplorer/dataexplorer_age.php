@@ -233,7 +233,7 @@ function secureChangeTime_age(){
     }
 
     sliderNoUi.noUiSlider.set([dmin, dmax])
-    changeTime();
+    changeTimeAge();
 }
 
 function changeTimeAge(){
