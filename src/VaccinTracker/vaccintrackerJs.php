@@ -240,7 +240,7 @@
                 nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
                 dejaVaccinesNb = nb_vaccines[nb_vaccines.length - 1].n_dose1
                 dejaVaccines = dejaVaccinesNb * 100 / 67000000;
-                restantaVaccinerImmunite = 60 - dejaVaccines
+                restantaVaccinerImmunite = 80 - dejaVaccines
                 this.objectifQuotidien = calculerObjectif();
                 fetch2ndDosesData();
 
@@ -1066,7 +1066,7 @@
                             newsubrow.classList.add('green');
                         } else if (caseNb <= proportionVaccinesPartiellement + 0.01) {
                             newsubrow.classList.add('animation-premiere-dose');
-                        } else if (caseNb <= 60) {
+                        } else if (caseNb <= 80) {
                             newsubrow.classList.add("red");
                         } else {
                             newsubrow.classList.add("grey");
