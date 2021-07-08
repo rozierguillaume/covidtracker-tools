@@ -20,11 +20,14 @@
             //buildBarChart();
             updateDataDiv();
             updateHospitDiv('rea');
-            //calculerProjection();
+            updateAdmHospitDiv('adm_rea');
+            updateDcDiv("dc");
 
             buildLineChart("cas");
+            buildLineChartAdmHosp("adm_rea");
             dataSelectedCas("cas")
             buildBarChart('rea');
+            buildDcLineChart();
 
         })
         .catch(function () {
@@ -126,9 +129,20 @@
 
         document.getElementById("rea-ligne").classList.remove("selected")
         document.getElementById("hosp-ligne").classList.remove("selected")
-        document.getElementById("dc-ligne").classList.remove("selected")
 
         document.getElementById(selected_data + "-ligne").classList.add("selected")
+        
+    }
+
+    function dataSelectedAdmHosp(selected_data){
+        lineChartAdmHosp.destroy();
+        updateAdmHospitDiv(selected_data)
+        buildLineChartAdmHosp(selected_data)
+
+        document.getElementById("adm_rea_ligne").classList.remove("selected")
+        document.getElementById("adm_hosp_ligne").classList.remove("selected")
+
+        document.getElementById(selected_data + "_ligne").classList.add("selected")
         
     }
 
@@ -152,10 +166,7 @@
         } else if(dataSelected=="hosp"){
             dataSelectedString="hospitalisées"
             dataSelectedStringTitle="Hospitalisations"
-        } else if(dataSelected=="dc"){
-            dataSelectedString="décédées à l'hôpital"
-            dataSelectedStringTitle="Décès hospitaliers"
-        }
+        } 
         document.getElementById("typePersonnes").innerHTML = dataSelectedString;
         document.getElementById("titreHospitDiv").innerHTML = dataSelectedStringTitle;
 
@@ -171,6 +182,51 @@
             document.getElementById("croissance_rea").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((val_actu-val_j7)/val_j7*100))+ "&nbsp;%) ";
         } else {
             document.getElementById("croissance_rea").innerHTML = "en hausse (+&nbsp;" + Math.round((val_actu-val_j7)/val_j7*100)+ "&nbsp;%) ";
+        }
+
+    }
+
+    function updateAdmHospitDiv(dataSelected){
+        if(dataSelected=="adm_rea"){
+            dataSelectedString="admissions en soins critiques"
+            dataSelectedStringTitle="Admissions réanimations"
+        } else if(dataSelected=="adm_hosp"){
+            dataSelectedString="admises à l'hospital"
+            dataSelectedStringTitle="Admissions hopital"
+        } 
+        document.getElementById("typePersonnesAdm").innerHTML = dataSelectedString;
+        document.getElementById("titreAdmissionsHospitDiv").innerHTML = dataSelectedStringTitle;
+
+        val_actu = data[dataSelected]["values"][data[dataSelected]["values"].length-1]
+        val_j7 = data[dataSelected]["values"][data[dataSelected]["values"].length-8]
+
+        update_date = data["rea"]["dates"][data["adm_rea"]["dates"].length-1]
+        update_date = update_date.slice(8) + "/" + update_date.slice(5, 7);
+
+        document.getElementById("adm-hospit-value").innerHTML = numberWithSpaces(val_actu);
+
+        if (val_j7 > val_actu){
+            document.getElementById("croissance-adm-hospit").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((val_actu-val_j7)/val_j7*100))+ "&nbsp;%) ";
+        } else {
+            document.getElementById("croissance-adm-hospit").innerHTML = "en hausse (+&nbsp;" + Math.round((val_actu-val_j7)/val_j7*100)+ "&nbsp;%) ";
+        }
+
+    }
+
+    function updateDcDiv(dataSelected="dc"){
+
+        val_actu = data[dataSelected]["values"][data[dataSelected]["values"].length-1]
+        val_j7 = data[dataSelected]["values"][data[dataSelected]["values"].length-8]
+
+        update_date = data["rea"]["dates"][data["dc"]["dates"].length-1]
+        update_date = update_date.slice(8) + "/" + update_date.slice(5, 7);
+
+        document.getElementById("dc_value").innerHTML = numberWithSpaces(val_actu);
+
+        if (val_j7 > val_actu){
+            document.getElementById("croissance_dc").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((val_actu-val_j7)/val_j7*100))+ "&nbsp;%) ";
+        } else {
+            document.getElementById("croissance_dc").innerHTML = "en hausse (+&nbsp;" + Math.round((val_actu-val_j7)/val_j7*100)+ "&nbsp;%) ";
         }
 
     }
@@ -298,12 +354,13 @@
                             scaleID: "y-axis-0",
                             value: 5000,
                             borderColor: "green",
-                            borderWidth: 3,
+                            borderWidth: 2,
                             label: {
                                 backgroundColor: "green",
                                 content: "Objectif",
                                 enabled: true
                             },
+                            borderDash: [6, 2],
                             onClick: function(e) {
                                 //console.log("Annotation", e.type, this);
                             }
@@ -314,12 +371,90 @@
         });
     }
 
+    var lineChartAdmHosp;
+    function buildLineChartAdmHosp(selected_data){ 
+
+        selected_color_background = 'rgba(201, 4, 4, 0.5)';
+        selected_color_border = 'rgba(201, 4, 4, 1)'; 
+        if (selected_data=="adm_hosp"){
+            selected_color_background = 'rgba(209, 102, 21,0.3)';
+            selected_color_border = 'rgba(209, 102, 21,1)';
+        }
+
+        var ctx = document.getElementById('admHospitChart').getContext('2d');
+
+        lineChartAdmHosp = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: data[selected_data]["dates"],
+                datasets: [{
+                    label: 'Cas positifs',
+                    data: data[selected_data]["values"],
+                    borderWidth: 3,
+                    pointRadius: 1,
+                    backgroundColor: selected_color_background,
+                    borderColor: selected_color_border
+                },
+                    {
+                        label: 'Projection cas positifs',
+                        data: projection_cas
+                    }]
+            },
+            options: {
+                plugins: {
+                    deferred: {
+                        xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
+                        yOffset: '50%', // defer until 50% of the canvas height are inside the viewport
+                        delay: 100      // delay of 500 ms after the canvas is considered inside the viewport
+                    }
+                },
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        gridLines: {
+                            display: true
+                        },
+                        ticks: {
+                            min: 0,
+                            userCallback: function(value, index, values) {
+                                return value/1000+"k"
+                            }
+                        },
+
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                            maxRotation: 0,
+                            minRotation: 0,
+                            maxTicksLimit: 6,
+                            callback: function(value, index, values) {
+                                return value.slice(8) + "/" + value.slice(5, 7);
+                            }
+                        }
+
+                    }]
+                },
+                annotation: {
+                    events: ["click"],
+                    annotations: [
+                        
+                    ]
+                }
+            }
+        });
+    }
+
     var lineChartDc;
     function buildDcLineChart(){
         
-        var ctx = document.getElementById('barChart').getContext('2d');
+        var ctx = document.getElementById('barChartDc').getContext('2d');
 
-        barChart = new Chart(ctx, {
+        lineChartDc = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: data["dc"]["dates"],
@@ -436,8 +571,8 @@
         // Emoji de couleur
 
         
-        buildLineChartDc();
-        buildBarChartHosp();
+        //buildLineChartDc();
+        //buildBarChartHosp();
 
     }
     function buildBarChart(dataSelected){
@@ -445,8 +580,6 @@
             buildReaBarChart()
         } else if(dataSelected=='hosp'){
             buildHospBarChart()
-        } else if(dataSelected=='dc'){
-            buildDcLineChart()
         }
     }
 
@@ -515,12 +648,13 @@
                             scaleID: "y-axis-0",
                             value: 3000,
                             borderColor: "green",
-                            borderWidth: 3,
+                            borderWidth: 2,
                             label: {
                                 backgroundColor: "green",
                                 content: "Objectif",
-                                enabled: true
+                                enabled: true,
                             },
+                            borderDash: [6, 2],
                             onClick: function(e) {
                                 console.log("Annotation", e.type, this);
                             }
@@ -599,12 +733,13 @@
                             scaleID: "y-axis-0",
                             value: 34000,
                             borderColor: "red",
-                            borderWidth: 3,
+                            borderWidth: 2,
                             label: {
                                 backgroundColor: "red",
                                 content: "Max. observé",
                                 enabled: true
                             },
+                            borderDash: [6, 2],
                             onClick: function(e) {
                                 console.log("Annotation", e.type, this);
                             }

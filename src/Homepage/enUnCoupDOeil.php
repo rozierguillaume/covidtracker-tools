@@ -81,6 +81,47 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
             <div style="text-align: left; margin-top:5px;" shadow="">
                 <div class="row flex-nowrap">
                     <div class="col-xs-7" style="">
+                        <centering><h3 id='titreAdmissionsHospitDiv'>--</h3></centering>
+                    </div>
+
+                    <div class="col-xs-5" style="text-align: right;">
+                        <div id="choixDonneesAdmissionsHospit" class="btn-group" role="group" style="margin-top: 5px;">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary dropdown-toggle selected" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">Plus
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li data-carte="adm-reanimations" onclick="dataSelectedAdmHosp('adm_rea')">
+                                        <a id="adm_rea_ligne" class="selected">Nouv. réanimations</a>
+                                    </li>
+                                    <li data-carte="adm-hospitalisations" onclick="dataSelectedAdmHosp('adm_hosp')">
+                                        <a id="adm_hosp_ligne" class="">Nouv. hospitalisations</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p>Il y a en moyenne <b><span id="adm-hospit-value">--</span>
+                         <span id="typePersonnesAdm">admissions en soins critiques</span></b> pour Covid19 chaque jour,
+                    <span id="croissance-adm-hospit">--</span> par rapport à la semaine dernière.<br><br>
+                </p>
+                <div>
+                    <canvas id="admHospitChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
+                </div>
+                <br><br><br>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="row" style="margin-bottom:10px;">
+    <div class="col-md-6">
+            <div style="text-align: left; margin-top:5px;" shadow="">
+                <div class="row flex-nowrap">
+                    <div class="col-xs-7" style="">
                         <centering><h3 id='titreHospitDiv'>--</h3></centering>
                     </div>
 
@@ -98,8 +139,6 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
                                     <li data-carte="hospitalisations" onclick="dataSelected('hosp')">
                                         <a id="hosp-ligne" class="">Hospitalisations</a>
                                     </li>
-                                    <li data-carte="dc-hospitaliers" onclick="dataSelected('dc')">
-                                        <a id="dc-ligne" class="">Décès hospitaliers</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -112,6 +151,29 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
                 </p>
                 <div>
                     <canvas id="barChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
+                </div>
+                <br><br><br>
+            </div>
+            
+        </div>
+        <div class="col-md-6">
+            <div style="text-align: left; margin-top:5px;" shadow="">
+                <div class="row flex-nowrap">
+                    <div class="col-xs-7" style="">
+                        <centering><h3 id='titreDcDiv'>Décès hospitaliers</h3></centering>
+                    </div>
+
+                    <div class="col-xs-5" style="text-align: right;">
+                        
+                    </div>
+                </div>
+
+                <p>Il y a en moyenne <b><span id="dc_value">--</span>
+                        décès hospitaliers</b> pour Covid19 chaque jour,
+                    <span id="croissance_dc">--</span> par rapport à la semaine dernière.<br><br>
+                </p>
+                <div>
+                    <canvas id="barChartDc" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
                 </div>
                 <br><br><br>
             </div>
