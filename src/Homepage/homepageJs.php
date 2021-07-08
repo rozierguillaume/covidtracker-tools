@@ -295,7 +295,7 @@
                     label: 'Cas positifs',
                     data: data[selected_data]["values"],
                     borderWidth: 3,
-                    pointRadius: 1,
+                    pointRadius: 0,
                     backgroundColor: 'rgba(0, 168, 235, 0.5)',
                     borderColor: 'rgba(0, 168, 235, 1)'
                 },
@@ -391,7 +391,7 @@
                     label: 'Cas positifs',
                     data: data[selected_data]["values"],
                     borderWidth: 3,
-                    pointRadius: 1,
+                    pointRadius: 0,
                     backgroundColor: selected_color_background,
                     borderColor: selected_color_border
                 },
@@ -462,7 +462,7 @@
                     label: 'Décès hospitaliers ',
                     data: data["dc"]["values"],
                     borderWidth: 3,
-                    pointRadius: 1,
+                    pointRadius: 0,
                     backgroundColor: 'rgba(0,0,0,0.4)',
                     borderColor: 'rgba(0,0,0,1)'
                 }]
