@@ -36,7 +36,9 @@ Les données sont issues de Santé Publique France et l’INSEE. <i>Mise à jour
 </div>
 
 
-<?php include(__DIR__ . '/vueDEnsemble.php') ?>
+<section id="vue-ensemble">
+  <?php include(__DIR__ . '/vueDEnsemble.php') ?>
+</section>
 
 <div class="alert alert-info clearFix" style="font-size: 18px; margin-top:10px; margin-bottom:40px;">
     <div class="row">
@@ -55,12 +57,22 @@ Les données sont issues de Santé Publique France et l’INSEE. <i>Mise à jour
         </div>
     </div>
 </div>
-<?php include(__DIR__ . '/activite.php') ?>
-<?php include(__DIR__ . '/indicateursEpidemiques.php') ?>
-<?php include(__DIR__ . '/hospitalisationsEtReanimations.php') ?>
-<?php include(__DIR__ . '/deces.php') ?>
-<?php include(__DIR__ . '/mortalite.php') ?>
-<?php include(__DIR__ . '/footer.php') ?>
 
-
-
+<section id="activité">
+  <?php include(__DIR__ . '/activite.php') ?>
+</section>
+<section id="indicateurs-épidémiques">
+  <?php include(__DIR__ . '/indicateursEpidemiques.php') ?>
+</section>
+<section id="hospitalisations-réanimations">
+  <?php include(__DIR__ . '/hospitalisationsEtReanimations.php') ?>
+</section>
+<section id="décès">
+  <?php include(__DIR__ . '/deces.php') ?>
+</section>
+<section id="mortalité">
+  <?php include(__DIR__ . '/mortalite.php') ?>
+</section>
+<section id="footer">
+  <?php include(__DIR__ . '/footer.php') ?>
+</section>
