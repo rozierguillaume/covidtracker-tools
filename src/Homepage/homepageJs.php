@@ -189,10 +189,10 @@
     function updateAdmHospitDiv(dataSelected){
         if(dataSelected=="adm_rea"){
             dataSelectedString="admissions en soins critiques"
-            dataSelectedStringTitle="Admissions réanimations"
+            dataSelectedStringTitle="Adm. soins critiques"
         } else if(dataSelected=="adm_hosp"){
-            dataSelectedString="admises à l'hospital"
-            dataSelectedStringTitle="Admissions hopital"
+            dataSelectedString="admissions à l'hôpital"
+            dataSelectedStringTitle="Admissions hôpital"
         } 
         document.getElementById("typePersonnesAdm").innerHTML = dataSelectedString;
         document.getElementById("titreAdmissionsHospitDiv").innerHTML = dataSelectedStringTitle;
