@@ -60,7 +60,7 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
                 <p><span id="cas_p1"></span> <b>
                         <span id="cas_moyen_quotidien">--</span> tests</b>
                     positifs au Covid19 <span id="cas_p2"></span>chaque jour,
-                    <span id="croissance_cas">--</span>
+                    <span id="croissance_cas" class="taux_croissance_stable">--</span>
                     par rapport à la semaine dernière <span id="type_jour"></span>.
                 </p>
 
@@ -106,7 +106,7 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
 
                 <p>Il y a en moyenne <b><span id="adm-hospit-value">--</span>
                          <span id="typePersonnesAdm">admissions en soins critiques</span></b> pour Covid19 chaque jour,
-                    <span id="croissance-adm-hospit">--</span> par rapport à la semaine dernière.<br><br>
+                    <span id="croissance-adm-hospit" class="taux_croissance_stable">--</span> par rapport à la semaine dernière.<br><br>
                 </p>
                 <div>
                     <canvas id="admHospitChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
@@ -147,7 +147,7 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
 
                 <p>Il y a actuellement <b><span id="reanimations">--</span>
                         personnes <span id="typePersonnes">en soins critiques</span></b> pour Covid19,
-                    <span id="croissance_rea">--</span> par rapport à la semaine dernière.<br><br>
+                    <span id="croissance_rea" class="taux_croissance_stable">--</span> par rapport à la semaine dernière.<br><br>
                 </p>
                 <div>
                     <canvas id="barChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
@@ -170,7 +170,7 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
 
                 <p>Il y a en moyenne <b><span id="dc_value">--</span>
                         décès hospitaliers</b> pour Covid19 chaque jour,
-                    <span id="croissance_dc">--</span> par rapport à la semaine dernière.<br><br>
+                    <span id="croissance_dc" class="taux_croissance_stable">--</span> par rapport à la semaine dernière.<br><br>
                 </p>
                 <div>
                     <canvas id="barChartDc" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
