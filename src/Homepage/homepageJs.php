@@ -179,10 +179,10 @@
         document.getElementById("reanimations").innerHTML = numberWithSpaces(val_actu);
 
         if (val_j7 > val_actu){
-            document.getElementById("croissance_rea").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((val_actu-val_j7)/val_j7*100))+ "&nbsp;%) ";
+            document.getElementById("croissance_rea").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((val_actu-val_j7)/val_j7*100))+ "&nbsp;%)";
             document.getElementById("croissance_rea").className = "taux_croissance_baisse"
         } else {
-            document.getElementById("croissance_rea").innerHTML = "en hausse (+&nbsp;" + Math.round((val_actu-val_j7)/val_j7*100)+ "&nbsp;%) ";
+            document.getElementById("croissance_rea").innerHTML = "en hausse (+&nbsp;" + Math.round((val_actu-val_j7)/val_j7*100)+ "&nbsp;%)";
             document.getElementById("croissance_rea").className = "taux_croissance_hausse"
         }
 
@@ -208,10 +208,10 @@
         document.getElementById("adm-hospit-value").innerHTML = numberWithSpaces(val_actu);
 
         if (val_j7 > val_actu){
-            document.getElementById("croissance-adm-hospit").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((val_actu-val_j7)/val_j7*100))+ "&nbsp;%) ";
+            document.getElementById("croissance-adm-hospit").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((val_actu-val_j7)/val_j7*100))+ "&nbsp;%)";
             document.getElementById("croissance-adm-hospit").className = "taux_croissance_baisse"
         } else {
-            document.getElementById("croissance-adm-hospit").innerHTML = "en hausse (+&nbsp;" + Math.round((val_actu-val_j7)/val_j7*100)+ "&nbsp;%) ";
+            document.getElementById("croissance-adm-hospit").innerHTML = "en hausse (+&nbsp;" + Math.round((val_actu-val_j7)/val_j7*100)+ "&nbsp;%)";
             document.getElementById("croissance-adm-hospit").className = "taux_croissance_hausse"
         }
 
@@ -228,10 +228,10 @@
         document.getElementById("dc_value").innerHTML = numberWithSpaces(val_actu);
 
         if (val_j7 > val_actu){
-            document.getElementById("croissance_dc").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((val_actu-val_j7)/val_j7*100))+ "&nbsp;%) ";
+            document.getElementById("croissance_dc").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((val_actu-val_j7)/val_j7*100))+ "&nbsp;%)";
             document.getElementById("croissance_dc").className = "taux_croissance_baisse"
         } else {
-            document.getElementById("croissance_dc").innerHTML = "en hausse (+&nbsp;" + Math.round((val_actu-val_j7)/val_j7*100)+ "&nbsp;%) ";
+            document.getElementById("croissance_dc").innerHTML = "en hausse (+&nbsp;" + Math.round((val_actu-val_j7)/val_j7*100)+ "&nbsp;%)";
             document.getElementById("croissance_dc").className = "taux_croissance_hausse"
         }
 
@@ -257,10 +257,10 @@
         cas_j7 = data[selected_data]["values"][data[selected_data]["values"].length-8]
 
         if (cas_j7 > cas_actu){
-            document.getElementById("croissance_cas").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((cas_actu-cas_j7)/cas_j7*100))+ "&nbsp;%) ";
+            document.getElementById("croissance_cas").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((cas_actu-cas_j7)/cas_j7*100))+ "&nbsp;%)";
             document.getElementById("croissance_cas").className = "taux_croissance_baisse"
         } else {
-            document.getElementById("croissance_cas").innerHTML = "en hausse (+&nbsp;" + Math.round((cas_actu-cas_j7)/cas_j7*100)+ "&nbsp;%) ";
+            document.getElementById("croissance_cas").innerHTML = "en hausse (+&nbsp;" + Math.round((cas_actu-cas_j7)/cas_j7*100)+ "&nbsp;%)";
             document.getElementById("croissance_cas").className = "taux_croissance_hausse"
         }
     }
