@@ -93,10 +93,10 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li data-carte="adm-reanimations" onclick="dataSelectedAdmHosp('adm_rea')">
-                                        <a id="adm_rea_ligne" class="selected">Nouv. réanimations</a>
+                                        <a id="adm_rea_ligne" class="selected">Adm. soins critiques</a>
                                     </li>
                                     <li data-carte="adm-hospitalisations" onclick="dataSelectedAdmHosp('adm_hosp')">
-                                        <a id="adm_hosp_ligne" class="">Nouv. hospitalisations</a>
+                                        <a id="adm_hosp_ligne" class="">Adm. hôpital</a>
                                     </li>
                                 </ul>
                             </div>
@@ -134,7 +134,7 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li data-carte="reanimations" onclick="dataSelected('rea')">
-                                        <a id="rea-ligne" class="selected">Réanimations</a>
+                                        <a id="rea-ligne" class="selected">Soins critiques</a>
                                     </li>
                                     <li data-carte="hospitalisations" onclick="dataSelected('hosp')">
                                         <a id="hosp-ligne" class="">Hospitalisations</a>
@@ -146,7 +146,7 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
                 </div>
 
                 <p>Il y a actuellement <b><span id="reanimations">--</span>
-                        personnes <span id="typePersonnes">en réanimation</span></b> pour Covid19,
+                        personnes <span id="typePersonnes">en soins critiques</span></b> pour Covid19,
                     <span id="croissance_rea">--</span> par rapport à la semaine dernière.<br><br>
                 </p>
                 <div>
