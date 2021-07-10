@@ -161,8 +161,8 @@
 
     function updateHospitDiv(dataSelected){
         if(dataSelected=="rea"){
-            dataSelectedString="en réanimation"
-            dataSelectedStringTitle="Réanimations"
+            dataSelectedString="en soins critiques"
+            dataSelectedStringTitle="Soins critiques"
         } else if(dataSelected=="hosp"){
             dataSelectedString="hospitalisées"
             dataSelectedStringTitle="Hospitalisations"
@@ -593,7 +593,7 @@
             data: {
                 labels: data["rea"]["dates"],
                 datasets: [{
-                    label: 'Personnes en réanimation',
+                    label: 'Personnes en soins critiques',
                     data: data["rea"]["values"],
                     borderWidth: 0.5,
                     backgroundColor: 'rgba(201, 4, 4, 0.5)',

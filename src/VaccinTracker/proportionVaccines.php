@@ -2,7 +2,7 @@
 <h2 style="margin-top : 80px;">Proportion de personnes vaccinées</h2>
 Chaque carré correspond à 1% des Français.
 Les carrés vert foncé <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:rgb(31, 128, 57);" /></svg> correspondent aux Français complètement vaccinés
-et les carrés vert clair <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:rgb(45, 189, 84);" /></svg> aux Français ayant commencé leur vaccination. Les carrés rouge vif <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:rgb(237, 88, 88);" /></svg> représentent les Français qu'il faut vacciner avant d'atteindre un taux de vaccination de 60%.
+et les carrés vert clair <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:rgb(45, 189, 84);" /></svg> aux Français ayant commencé leur vaccination. Les carrés rouge vif <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:rgb(237, 88, 88);" /></svg> représentent les Français qu'il faut vacciner avant d'atteindre un taux de vaccination de 80%.
 Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill: rgb(207, 169, 169);" /></svg>  représentent les autres Français non vaccinés. <i>Mise à jour : <span id="date_maj_3">--/--</span></i>
 
 
