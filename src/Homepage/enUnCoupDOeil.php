@@ -58,7 +58,7 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
                     </div>
                 </div>
                 <p><span id="cas_p1"></span> <b>
-                        <span id="cas_moyen_quotidien">--</span> tests</b>
+                        <span id="cas_moyen_quotidien" style="font-size: 20px;">--</span> cas</b>
                     positifs au Covid19 <span id="cas_p2"></span>chaque jour,
                     <span id="croissance_cas" class="taux_croissance_stable">--</span>
                     par rapport à la semaine dernière <span id="type_jour"></span>.
@@ -104,7 +104,7 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
                     </div>
                 </div>
 
-                <p>Il y a en moyenne <b><span id="adm-hospit-value">--</span>
+                <p>Il y a en moyenne <b><span id="adm-hospit-value" style="font-size: 20px;">--</span>
                          <span id="typePersonnesAdm">admissions en soins critiques</span></b> pour Covid19 chaque jour,
                     <span id="croissance-adm-hospit" class="taux_croissance_stable">--</span> par rapport à la semaine dernière.<br><br>
                 </p>
@@ -145,7 +145,7 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
                     </div>
                 </div>
 
-                <p>Il y a actuellement <b><span id="reanimations">--</span>
+                <p>Il y a actuellement <b><span id="reanimations" style="font-size: 20px;">--</span>
                         personnes <span id="typePersonnes">en soins critiques</span></b> pour Covid19,
                     <span id="croissance_rea" class="taux_croissance_stable">--</span> par rapport à la semaine dernière.<br><br>
                 </p>
@@ -168,7 +168,7 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
                     </div>
                 </div>
 
-                <p>Il y a en moyenne <b><span id="dc_value">--</span>
+                <p>Il y a en moyenne <b><span id="dc_value" style="font-size: 20px;">--</span>
                         décès hospitaliers</b> pour Covid19 chaque jour,
                     <span id="croissance_dc" class="taux_croissance_stable">--</span> par rapport à la semaine dernière.<br><br>
                 </p>
