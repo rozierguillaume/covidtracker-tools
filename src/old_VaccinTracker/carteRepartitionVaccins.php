@@ -121,8 +121,6 @@ Coloration en fonction de la proportion de population vaccinée.
             vaccinesRegion = donneesRegions[nomRegion]["vaccines"]
             vaccinesRegionPop = (vaccinesRegion/donneesRegions[nomRegion]["population"]*100).toFixed(3)
 
-            dateMaj = dateMaj
-
             if (vaccinesRegion<=0){
                 vaccinesRegion = "--"
             }

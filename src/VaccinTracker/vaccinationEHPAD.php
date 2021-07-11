@@ -1,7 +1,7 @@
 <h2 style="margin-top : 80px;">
     Vaccination en EHPAD
 </h2>
-<?php include(dirname(__FILE__) . '/vaccinatinEHPADJs.php') ?>
+<?php include(__DIR__ . '/vaccinatinEHPADJs.php') ?>
 
 <div class="" style="margin-bottom: 40px;">
     Coloration en fonction du pourcentage de personnes hébergées en EPHAD vaccinées.

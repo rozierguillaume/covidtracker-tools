@@ -46,7 +46,7 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
 <!--link href="carte.css" rel="stylesheet"/> -->
 
-<?php include(dirname(__FILE__) . '/carteRegionCss.php') ?>
+<?php include(__DIR__ . '/carteRegionCss.php') ?>
 
 <!--ENDBLOC JS -->
 <!--BLOC JS -->
@@ -58,7 +58,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-deferred@1"></script>
 
 <!--<script src="carte.js"></script> -->
-<?php include(dirname(__FILE__) . '/carteRegionJs.php') ?>
+<?php include(__DIR__ . '/carteRegionJs.php') ?>
 
 <script id="regionTemplate" type="text/template">
     <!-- wp:heading -->

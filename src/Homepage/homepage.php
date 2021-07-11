@@ -8,8 +8,8 @@
 
 <?php include(dirname(__DIR__) . '/message_erreur.php') ?>
 
-<?php include(dirname(__FILE__) . '/homepageCss.php') ?>
-<?php include(dirname(__FILE__) . '/homepageJs.php') ?>
+<?php include(__DIR__ . '/homepageCss.php') ?>
+<?php include(__DIR__ . '/homepageJs.php') ?>
 
 <!-- wp:paragraph {"fontSize":"normal"} -->
 <p class="has-normal-font-size"><strong>
@@ -24,8 +24,8 @@
 <!-- wp:spacer {"height":30} -->
 <div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
-<?php include(dirname(__FILE__) . '/enUnCoupDOeil.php') ?>
-<?php include(dirname(__FILE__) . '/carte.php') ?>
-<?php include(dirname(__FILE__) . '/enDetail.php') ?>
+<?php include(__DIR__ . '/enUnCoupDOeil.php') ?>
+<?php include(__DIR__ . '/carte.php') ?>
+<?php include(__DIR__ . '/enDetail.php') ?>
 
 

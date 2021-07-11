@@ -3,8 +3,8 @@
 
 <?php include(dirname(__DIR__) . '/message_erreur.php') ?>
 
-<?php include(dirname(__FILE__) . '/dashboardFranceJs.php') ?>
-<?php include(dirname(__FILE__) . '/dashboardFranceCss.php') ?>
+<?php include(__DIR__ . '/dashboardFranceJs.php') ?>
+<?php include(__DIR__ . '/dashboardFranceCss.php') ?>
 
 
 <b>

@@ -1,5 +1,5 @@
 
-<?php include(dirname(__FILE__) . '/ilsEnParlent.php') ?>
-<?php include(dirname(__FILE__) . '/footer.php') ?>
+<?php include(__DIR__ . '/ilsEnParlent.php') ?>
+<?php include(__DIR__ . '/footer.php') ?>
 
 

@@ -16,6 +16,6 @@
     </div>
 
     <div class="col-md-4">
-        <?php include(dirname(__FILE__) . '/newsletter.php') ?>
+        <?php include(__DIR__ . '/newsletter.php') ?>
     </div>
 </div>
