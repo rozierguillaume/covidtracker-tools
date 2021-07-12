@@ -133,6 +133,9 @@
             document.getElementById("nb_injections_variation").innerHTML = "en baisse (" + variation + ")";
             document.getElementById("nb_injections_variation").className = "taux_croissance_hausse";
         }
+
+        proportion_vaccines = Math.round(data["n_cum_dose1"][N-1]/67000)/10;
+        document.getElementById("vaccination_proportion_population").innerHTML = proportion_vaccines;
         
 
     }
