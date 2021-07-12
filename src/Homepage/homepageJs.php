@@ -4,6 +4,7 @@
     var data_sidep;
     var projection_cas = [];
     var data_indicateurs;
+    var data_vaccination;
 
     //window.alert("Santé publique France a publié des données incomplètes et erronées ce soir. Nous les avons contactés. CovidTracker sera de nouveau à jour dès leur correction.");
 
@@ -34,6 +35,25 @@
                 this.dataError = true;
             }
         )
+
+    fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/vacsi-fra.json')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("HTTP error " + response.status);
+        }
+        return response.json();
+    })
+    .then(json => {
+        data_vaccination = json;
+        buildChartVaccination(data_vaccination);
+        updateDivVaccination(data_vaccination);
+
+    })
+    .catch(function () {
+            this.dataError = true;
+        }
+    )
+
 
     fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/vue-ensemble.json')
         .then(response => {
@@ -96,6 +116,25 @@
         }
         document.getElementById("cas_opencovid").innerHTML = cas_open_covid;
         document.getElementById("date_opencovid").innerHTML = data_opencovid["update"];
+    }
+
+    function updateDivVaccination(data){
+        let N = data["n_dose1_moyenne7j"].length;
+        value_today = data["n_dose1_moyenne7j"][N-1];
+        value_j7 = data["n_dose1_moyenne7j"][N-8];
+        variation = Math.round((value_today-value_j7)/value_j7*100);
+
+        document.getElementById("nb_injections_jour").innerHTML = numberWithSpaces(value_today);
+
+        if (variation>0){
+            document.getElementById("nb_injections_variation").innerHTML = "en hausse (+ " + variation + " %)";
+            document.getElementById("nb_injections_variation").className = "taux_croissance_baisse"; //c'est normal, c'est inversé
+        } else {
+            document.getElementById("nb_injections_variation").innerHTML = "en baisse (" + variation + ")";
+            document.getElementById("nb_injections_variation").className = "taux_croissance_hausse";
+        }
+        
+
     }
 
     function updateDataDivSidep(){
@@ -575,13 +614,6 @@
             projection_rea.push(Math.round(data_rea[data_rea.length-1] * (1-croissance_rea)**idx))
         }
 
-
-        // Emoji de couleur
-
-        
-        //buildLineChartDc();
-        //buildBarChartHosp();
-
     }
     function buildBarChart(dataSelected){
         if(dataSelected=='rea'){
@@ -591,7 +623,57 @@
         }
     }
 
-    var barChart
+    var lineChartVaccnation;
+    function buildChartVaccination(data){
+        lineChartVaccnation = new Chart(document.getElementById("line-chart-vaccination"), {
+            type: 'line',
+            data: {
+            labels: data["dates"],
+            datasets: [
+                {
+                label: "",
+                backgroundColor: "rgba(185, 235, 203, 0.6)",
+                borderColor: "#9bc9ac",
+                data: data["n_dose1_moyenne7j"],
+                pointRadius: 0
+                }
+            ]
+            },
+            options: {
+            legend: { display: false },
+            scales: {
+                xAxes: [{
+                            gridLines: {
+                                display: false
+                            },
+                            ticks: {
+                                maxRotation: 0,
+                                minRotation: 0,
+                                maxTicksLimit: 6,
+                                callback: function(value, index, values) {
+                                    return value.slice(8) + "/" + value.slice(5, 7);
+                                }
+                            }
+
+                        }],
+                yAxes: [{
+                    ticks: {
+                        callback: function(value, index, values) {
+                            return value/1000 + " k";
+                        }
+                    }
+
+                }]
+            },
+            title: {
+                display: false,
+                text: ''
+            }
+            }
+        });
+    }
+
+    var barChart;
     function buildReaBarChart(){
 
         var ctx = document.getElementById('barChart').getContext('2d');
