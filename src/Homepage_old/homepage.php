@@ -26,7 +26,6 @@
 <!-- /wp:spacer -->
 <?php include(dirname(__FILE__) . '/enUnCoupDOeil.php') ?>
 <?php include(dirname(__FILE__) . '/carte.php') ?>
-<?php include(dirname(__FILE__) . '/vaccination.php') ?>
 <?php include(dirname(__FILE__) . '/enDetail.php') ?>
 
 

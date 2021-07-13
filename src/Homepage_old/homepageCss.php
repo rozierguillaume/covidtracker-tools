@@ -1,31 +1,5 @@
 <style>
 
-    .taux_croissance_stable {
-        color: black;
-        background-color: #ededed;
-        border-radius: 7px;
-        padding: 3px;
-        margin-right: 5px;
-        margin-left: 5px;
-    }
-
-    .taux_croissance_hausse {
-        color: black;
-        background-color: #ffdee3;
-        border-radius: 7px;
-        padding: 3px;
-        margin-right: 5px;
-        margin-left: 5px;
-    }
-
-    .taux_croissance_baisse {
-        color: black;
-        background-color: #e2f5e1;
-        border-radius: 7px;
-        padding: 3px;
-        margin-right: 5px;
-        margin-left: 5px;
-    }
 
     table,
     td {

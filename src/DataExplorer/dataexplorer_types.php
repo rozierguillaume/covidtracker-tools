@@ -212,7 +212,7 @@ function secureChangeTime_types(){
     }
 
     sliderNoUi.noUiSlider.set([dmin, dmax])
-    changeTime();
+    changeTimeTypes();
 }
 
 function changeTimeTypes(){
@@ -224,44 +224,30 @@ function changeTimeTypes(){
     let idx_min = parseInt(idx[0])
     let idx_max = parseInt(idx[1])
 
-    var x_min_minimum = data["france"][data["france"]["incidence"]["jour_nom"]][idx_min];
-    var x_max_maximum = data["france"][data["france"]["incidence"]["jour_nom"]][idx_max];
-    
-    types_selected.map((value, idx) => {
-        x1 = data["france"][data["france"][value]["jour_nom"]][idx_min]
-        if (x1<x_min_minimum){
-            x_min_minimum = x1
-        }
-        x2 = data["france"][data["france"][value]["jour_nom"]][idx_max]
-        if (x2>x_max_maximum){
-            x_max_maximum = x2
-        }
-    })
+    var x_min_minimum = data["france"][data["france"]["reanimations"]["jour_nom"]][idx_min];
+    var x_max_maximum = data["france"][data["france"]["reanimations"]["jour_nom"]][idx_max];
     
     types_dataExplorerAgeChart.options.scales.xAxes[0].ticks = {
         min: x_min_minimum,
         max: data["france"][nom_jour][idx_max]
         }
     
-    console.log("xmaxmax")
-    console.log(x_max_maximum)
     types_dataExplorerAgeChart.data.datasets.map((type_dataset, idx_type_dataset) => {
         var y_max = 0
         type_dataset.data.map((value, idx_type_data) => {
             if(value.x >= x_min_minimum){
-                //if(value.x <= x_max_maximum){
+                if(value.x <= x_max_maximum){
                     if(value.y*1.1 > y_max){
                         y_max = value.y*1.1
                     }
-                //}
+                }
             }
 
         })
-        console.log(type_dataset.label)
         if(type_dataset.label.includes("Cas")){
-            y_max = 55000;
+            y_max = 60000;
         }
-
+        console.log(y_max)
         types_dataExplorerAgeChart.options.scales.yAxes[idx_type_dataset].ticks.max = Math.round(y_max)
         })
     

@@ -15,11 +15,8 @@
             var valeurs_positivite_restreint = [ "> 13", "13", "10", "7", "4", "1"];
             var couleurs_positivite_restreint = ['black', '#6a0000', '#c40001', '#f50e07', '#fb9449', '#118408'];
 
-            var valeurs_var_uk = ["100", "82", "74", "66", "58", "50", "42", "34", "26", "18", "10", "2"]//["100", "95", "90", "85", "80", "75", "70", "65", "60", "55", "45", "40"];
-            var couleurs_var_uk = ['#00004d', '#17175a', '#292b68', '#393f76', '#475484', '#566a92', '#6680a0', '#7696ae', '#88adbd', '#9cc4cb', '#b5dada', '#e9e9e9']//['#000f5c', '#162169', '#263376', '#334683', '#405990', '#4d6d9d', '#5a80a9', '#6995b5', '#79a9c0', '#8dbdcb', '#a5d1d3', '#dedecc']//['#00429d', '#2250a4', '#345eaa', '#436db0', '#507cb7', '#5e8bbd', '#6b9ac2', '#78a9c8', '#87b9cd', '#97c8d1', '#aad7d4', '#dedecc']//['#00429d', '#2552a5', '#3863ad', '#4874b4', '#5786bc', '#6497c4', '#72a9cc', '#80bbd5', '#90cedd', '#a0e0e6', '#b5f1f0', '#d8ffff']
-
-            var valeurs_var_sa_bz = ["100", "82", "74", "66", "58", "50", "42", "34", "26", "18", "10", "2"];//["55", "50", "45", "40", "35", "30", "25", "20", "15", "10", "5", "0"]; //["55", "50", "45", "40", "35", "30", "25", "20", "15", "10", "5", "0"];
-            var couleurs_var_sa_bz = ['#00004d', '#17175a', '#292b68', '#393f76', '#475484', '#566a92', '#6680a0', '#7696ae', '#88adbd', '#9cc4cb', '#b5dada', '#e9e9e9']//['#000f5c', '#162169', '#263376', '#334683', '#405990', '#4d6d9d', '#5a80a9', '#6995b5', '#79a9c0', '#8dbdcb', '#a5d1d3', '#dedecc']//couleurs_var_uk//['#00429d', '#2653a5', '#3a64ad', '#4b75b4', '#5b87bc', '#6b99c3', '#7bacca', '#8cbed0', '#9fd0d6', '#b5e2dc', '#d1f3e0', '#ffffe0']
+            var valeurs_var_c1 = ["100", "82", "74", "66", "58", "50", "42", "34", "26", "18", "10", "2"]//["100", "95", "90", "85", "80", "75", "70", "65", "60", "55", "45", "40"];
+            var couleurs_var_c1 = ['#00004d', '#17175a', '#292b68', '#393f76', '#475484', '#566a92', '#6680a0', '#7696ae', '#88adbd', '#9cc4cb', '#b5dada', '#e9e9e9']//['#000f5c', '#162169', '#263376', '#334683', '#405990', '#4d6d9d', '#5a80a9', '#6995b5', '#79a9c0', '#8dbdcb', '#a5d1d3', '#dedecc']//['#00429d', '#2250a4', '#345eaa', '#436db0', '#507cb7', '#5e8bbd', '#6b9ac2', '#78a9c8', '#87b9cd', '#97c8d1', '#aad7d4', '#dedecc']//['#00429d', '#2552a5', '#3863ad', '#4874b4', '#5786bc', '#6497c4', '#72a9cc', '#80bbd5', '#90cedd', '#a0e0e6', '#b5f1f0', '#d8ffff']
 
             var valeurs_evolution = [">", "40", "30", "20", "10", "5", "0", "-5", "-10", "-20", "-30", "-40", "-50"];
             var couleurs_evolution = [
@@ -169,19 +166,12 @@
                     tableauValeurs = valeurs_cas_12_couleurs;
                     tableauCouleurs = couleurs_cas_12_couleurs;
                     nomDonnee = "incidence_cas";
-                } else if (typeCarte == 'var_uk') {
-                    $('#titreCarte').html("<h3>Proportion de variant anglais</h3>");
-                    $('#descriptionCarte').html("Proportion des cas criblés issus du variant UK (en %)");
-                    tableauValeurs = valeurs_var_uk;
-                    tableauCouleurs = couleurs_var_uk;
-                    nomDonnee = "var_uk";
-                    pourcentage_abs = true;
-                } else if (typeCarte == 'var_sa_bz') {
-                    $('#titreCarte').html("<h3>Proportion de variants sud-africain et brésilien</h3>");
-                    $('#descriptionCarte').html("Proportion des cas criblés issus des variants SA et BZ (en %)");
-                    tableauValeurs = valeurs_var_sa_bz;
-                    tableauCouleurs = couleurs_var_sa_bz;
-                    nomDonnee = "var_sa_bz";
+                } else if (typeCarte == 'var_c1') {
+                    $('#titreCarte').html("<h3>Proportion de mutation L452R (Delta)</h3>");
+                    $('#descriptionCarte').html("Proportion des cas criblés ayant la mutation L452R, présente sur le variant Delta (en %)");
+                    tableauValeurs = valeurs_var_c1;
+                    tableauCouleurs = couleurs_var_c1;
+                    nomDonnee = "var_c1";
                     pourcentage_abs = true;
                 } else if (typeCarte == 'evolution-cas') {
                     $('#titreCarte').html("<h3>Évolution du nombre de cas sur 7 jours</h3>");
@@ -480,10 +470,8 @@
                     $('#carte #map title').text(nomDepartement + ' (taux positivité : ' + $(this).data("taux_positivite").toFixed(2) + ' %)');
                 } else if (typeCarte == 'taux-positivite-restreint') {
                     $('#carte #map title').text(nomDepartement + ' (taux positivité : ' + $(this).data("taux_positivite").toFixed(2) + ' %)');
-                } else if (typeCarte == 'var_uk') {
-                    $('#carte #map title').text(nomDepartement + ' (variants UK : ' + $(this).data("var_uk").toFixed(2) + ' %)');
-                } else if (typeCarte == 'var_sa_bz') {
-                    $('#carte #map title').text(nomDepartement + ' (variants SA + BZ : ' + $(this).data("var_sa_bz").toFixed(2) + ' %)');
+                } else if (typeCarte == 'var_c1') {
+                    $('#carte #map title').text(nomDepartement + ' (mutations dont Delta : ' + $(this).data("var_c1").toFixed(2) + ' %)');
                 } else if (typeCarte == 'n_dose1_cumsum_pop') {
                     $('#carte #map title').text(nomDepartement + ' (' + $(this).data("n_dose1_cumsum_pop").toFixed(2) + ' %)');
                 } else if (typeCarte == 'incidence-hospitalisations') {

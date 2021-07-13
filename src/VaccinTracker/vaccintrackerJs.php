@@ -456,57 +456,35 @@
         return dates_projections
     }
 
-    // function calculateObjectifs(lastValue, lastDate, size)
-    // {
+    function calculateObjectifs(obj, lastValue, lastDate, size)
+    {
 
-    //     let values = [];
-    //     let dates = [];
+        let values = [];
+        let dates = [];
 
-    //     let lastDateM = moment(lastDate);
-    //     let objectif1 = moment("2021-05-15");
-    //     let objectif2 = moment("2021-06-15");
+        let lastDateM = moment(lastDate);
+        let objectif = moment("2021-08-31");
 
-    //     let daysToObj1 = objectif1.diff(lastDateM, 'days');
-    //     let daysToObj2 = objectif2.diff(lastDateM, 'days');
-    //     let daysBetweenObj = objectif2.diff(objectif1, 'days');
+        let daysToObj = objectif.diff(lastDateM, 'days');
 
-    //     if(daysToObj1 > 0) {
-    //         //date avant 15/05
-    //         let croissance = (20000000 - lastValue) / daysToObj1;
-    //         for(let i = 1; i <= daysToObj1; i++) {
-    //             values.push(Math.round(lastValue + i*croissance));
-    //             dates.push(lastDateM.add(1, 'd').format('YYYY-MM-DD'));
-    //         }
-    //         croissance = (30000000 - 20000000)/daysBetweenObj;
-    //         for(let i = 1; i <= daysBetweenObj; i++) {
-    //             values.push(Math.round(20000000 + i*croissance));
-    //             dates.push(objectif1.add(1, 'd').format('YYYY-MM-DD'));
-    //         }
-    //         if(daysToObj2 <= size) {
-    //             //complete with same croissance
-    //             for(let i = 1; i <= (size - daysToObj2); i++) {
-    //                 values.push(Math.round(30000000 + i * croissance));
-    //                 dates.push(objectif2.add(1, 'd').format('YYYY-MM-DD'));
-    //             }
-    //         }
-    //     } else if (daysToObj2 > 0) {
-    //         // 15/05 passé
-    //         let croissance = (30000000 - lastValue) / daysToObj2;
-    //         for(let i = 1; i <= daysToObj2; i++) {
-    //             values.push(Math.round(lastValue + i*croissance));
-    //             dates.push(lastDateM.add(1, 'd').format('YYYY-MM-DD'));
-    //         }
-    //         if(daysToObj2 <= size) {
-    //             //complete with same croissance
-    //             for(let i = 1; i <= (size - daysToObj2); i++) {
-    //                 values.push(Math.round(30000000 + i * croissance));
-    //                 dates.push(objectif2.add(1, 'd').format('YYYY-MM-DD'));
-    //             }
-    //         }
-    //     }
+        if (daysToObj > 0) {
+            // 15/05 passé
+            let croissance = (obj - lastValue) / daysToObj;
+            for(let i = 1; i <= daysToObj; i++) {
+                values.push(Math.round(lastValue + i*croissance));
+                dates.push(lastDateM.add(1, 'd').format('YYYY-MM-DD'));
+            }
+            if(daysToObj <= size) {
+                //complete with same croissance
+                for(let i = 1; i <= (size - daysToObj); i++) {
+                    values.push(Math.round(30000000 + i * croissance));
+                    dates.push(objectif.add(1, 'd').format('YYYY-MM-DD'));
+                }
+            }
+        }
 
-    //     return values.map((value, idx) => ({x: dates[idx], y: value}));
-    // }
+        return values.map((value, idx) => ({x: dates[idx], y: value}));
+    }
 
     function buildLineChart() {
         var ctx = document.getElementById('lineVacChart').getContext('2d');
@@ -589,24 +567,42 @@
             pointHitRadius: 1,
             borderDash: [3, 2]
         });
-        // //objectif mai et juin : 20M mi-mai, 30M mi-juin
-        // let data_objectifs = calculateObjectifs(data_france.n_cum_dose1[data_france.n_cum_dose1.length -1],
-        //                                       data_france.dates[data_france.dates.length -1],
-        //                                       50);
 
-        // datasets.push({
-        //     yAxisID: "injections",
-        //     label: 'Objectifs gouvernementaux ',
-        //     data: data_objectifs,
-        //     borderWidth: 2,
-        //     //backgroundColor: '#a1cbe6',
-        //     fill: false,
-        //     borderColor: '#cb1322',
-        //     pointRadius: 0,
-        //     cubicInterpolationMode: 'linear',
-        //     pointHitRadius: 1,
-        //     borderDash: [3, 2]
-        // });
+        let data_objectifs = calculateObjectifs(40000000, data_france.n_cum_dose1[data_france.n_cum_dose1.length -1],
+                                               data_france.dates[data_france.dates.length -1],
+                                               50);
+
+        datasets.push({
+            yAxisID: "injections",
+            label: 'Objectif 40M fin août ',
+            data: data_objectifs,
+            borderWidth: 2,
+            //backgroundColor: '#a1cbe6',
+            fill: false,
+            borderColor: '#cb1322',
+            pointRadius: 0,
+            cubicInterpolationMode: 'linear',
+            pointHitRadius: 1,
+            borderDash: [3, 2]
+        });
+
+        let data_objectifs2 = calculateObjectifs(35000000, data_france.n_cum_complet[data_france.n_cum_complet.length -1],
+            data_france.dates[data_france.dates.length -1],
+            50);
+
+        datasets.push({
+            yAxisID: "injections",
+            label: 'Objectif 35M fin août ',
+            data: data_objectifs2,
+            borderWidth: 2,
+            //backgroundColor: '#a1cbe6',
+            fill: false,
+            borderColor: '#cb1322',
+            pointRadius: 0,
+            cubicInterpolationMode: 'linear',
+            pointHitRadius: 1,
+            borderDash: [3, 2]
+        });
 
 
         this.lineChart = new Chart(ctx, {
@@ -658,6 +654,9 @@
                         }],
                     xAxes: [{
                         //stacked: true,
+                        time: {
+                            unit: 'month',
+                        },
                         ticks: {
                             source: 'auto'
                         },
@@ -863,11 +862,19 @@
         let N_tot = labels.length;
         let N2 = data_values_2doses.length;
 
-        let data_premieres_injections = ndose_fra.n_dose1.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
-        let data_secondes_injections = ndose_fra.n_dose2.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
-        let data_tot_rolling = ndose_fra.n_dose_tot_rolling.slice(0, ndose_fra.n_dose_tot_rolling.length-3).map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
+        let data_premieres_injections = this.ndose_fra.n_dose1.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
+        let data_secondes_injections = this.ndose_fra.n_dose2.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
+        let data_tot_rolling = this.ndose_fra.n_dose_tot_rolling.slice(0, ndose_fra.n_dose_tot_rolling.length-3);
+        data_tot_rolling.unshift(0,0,0,);
+        data_tot_rolling = data_tot_rolling.map((val, idx) => ({x: this.ndose_fra.jour[idx], y:parseInt(val)}));
 
-        //console.log(data_premieres_injections)
+        let data_ndose1_rolling = this.ndose_fra.n_dose1_rolling.slice(0, this.ndose_fra.n_dose1_rolling.length-3);
+        data_ndose1_rolling.unshift(0,0,0);
+        data_ndose1_rolling = data_ndose1_rolling.map((val, idx) => ({x: this.ndose_fra.jour[idx], y:parseInt(val)}));
+
+        let data_ndose2_rolling = this.ndose_fra.n_dose2_rolling.slice(0, this.ndose_fra.n_dose2_rolling.length-3);
+        data_ndose2_rolling.unshift(0,0,0);
+        data_ndose2_rolling = data_ndose2_rolling.map((val, idx) => ({x: this.ndose_fra.jour[idx], y:parseInt(val)}));
 
         this.lineChart = new Chart(ctx, {
             type: 'bar',
@@ -882,28 +889,43 @@
                         pointBackgroundColor: 'rgba(0, 0, 0, 1)',
                         backgroundColor: 'rgba(0, 168, 235, 0)',
                         pointRadius: 1,
-                        pointHitRadius: 3
+                        pointHitRadius: 3,
+                        yAxisID: 'moyennes'
+                    },
+                    {
+                        label: 'Moyenne quotidienne des premières doses ',
+                        data: data_ndose1_rolling,
+                        type: 'line',
+                        borderColor: 'rgba(0, 168, 235, 1)',
+                        pointBackgroundColor: 'rgba(0, 168, 235, 1)',
+                        backgroundColor: 'rgba(0, 168, 235, 0)',
+                        pointRadius: 1,
+                        pointHitRadius: 3,
+                        yAxisID: 'moyennes'
+                    },
+                    {
+                        label: 'Moyenne quotidienne des deuxièmes doses ',
+                        data: data_ndose2_rolling,
+                        type: 'line',
+                        borderColor: '#1796e6',
+                        pointBackgroundColor: 'rgba(0, 168, 235, 1)',
+                        backgroundColor: 'rgba(0, 168, 235, 0)',
+                        pointRadius: 1,
+                        pointHitRadius: 3,
+                        yAxisID: 'moyennes'
                     },
                     {
                         label: 'Nombre de premières doses ',
                         data: data_premieres_injections,
                         backgroundColor: 'rgba(0, 168, 235, 0.5)',
+                        hidden: true,
                     },
                     {
                         label: 'Nombre de deuxièmes doses ',
                         data: data_secondes_injections, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
                         backgroundColor: '#1796e6',
-                    },
-                    //{
-                       // yAxisID: 'objectif',
-                       // label: 'Objectif mi-juin',
-                       // data: dataObj,
-                       // type: "line",
-                       // borderColor: 'red',
-                       // backgroundColor: 'white',
-                       // fill: false,
-                       // pointRadius: 0
-                    //}
+                        hidden: true,
+                    }
                 ]
             },
             options: {
@@ -938,14 +960,17 @@
                         }
                     },
                         {
-                        id: 'objectif',
-                        display: false,
-                        stacked: false,
-                        ticks: {
-                            max: maxValue,
-                            min: 0
-                        }
-                    }],
+                            id: 'moyennes',
+                            stacked: false,
+                            display: false,
+                            ticks: {
+                                max: maxValue,
+                                min: 0,
+                                callback: function (value) {
+                                    return value / 1000 + " k";
+                                }
+                            }
+                        }],
                     xAxes: [{
                         //offset: true,
                         stacked: true,

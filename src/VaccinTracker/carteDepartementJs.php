@@ -18,20 +18,20 @@
         var typeCarteDepartement = 'n_dose1_cumsum_pop';
         var dateMaj = "";
 
-        var tableauValeurs = [">", "42", "39", "36", "33", "30", "24", "20", "10", "5"];
-        var tableauCouleurs = [
-            "#0076bf",
-            "#1796e6",
-            "#2e9fe6",
-            "#45a8e6",
-            "#5cb1e6",
-            "#73bae6",
-            "#8ac2e6",
-            "#a1cbe6",
-            "#b8d4e6",
-            "#cfdde6"
-        ]
+        var tableauValeurs = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90]
 
+        var tableauCouleurs = [
+            "#cfdde6",
+            "#b8d4e6",
+            "#a1cbe6",
+            "#8ac2e6",
+            "#73bae6",
+            "#5cb1e6",
+            "#45a8e6",
+            "#2e9fe6",
+            "#1796e6",
+            "#0076bf"
+        ];
 
         fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/vacsi-dep.json')
             .then(response => {
@@ -44,6 +44,71 @@
                 donneesDepartementsVaccination = json;
                 colorerCarte()
             });
+
+        function computeMean() {
+            let total = 0;
+            let count = 0;
+            for (numeroDepartement in donneesDepartementsVaccination) {
+                if (numeroDepartement == 'departements') {
+                    continue;
+                }
+                total += donneesDepartementsVaccination[numeroDepartement]["n_dose1_cumsum_pop"];
+                count++;
+            }
+            return total/count;
+        }
+
+        function computeMedian() {
+            let percentages = [];
+            for (numeroDepartement in donneesDepartementsVaccination) {
+                if (numeroDepartement == 'departements') {
+                    continue;
+                }
+                percentages.push(donneesDepartementsVaccination[numeroDepartement]["n_dose1_cumsum_pop"]);
+            }
+            percentages = percentages.sort();
+            let len = percentages.length;
+            let mid = Math.ceil(len/2);
+            let median = len % 2 === 0 ? (percentages[mid] + percentages[mid -1]) /2 : percentages[mid -1];
+            return median;
+        };
+
+        //from Picomath
+        function erf(x) {
+            // constants
+            var a1 =  0.254829592;
+            var a2 = -0.284496736;
+            var a3 =  1.421413741;
+            var a4 = -1.453152027;
+            var a5 =  1.061405429;
+            var p  =  0.3275911;
+
+            // Save the sign of x
+            var sign = 1;
+            if (x < 0) {
+                sign = -1;
+            }
+            x = Math.abs(x);
+
+            // A&S formula 7.1.26
+            var t = 1.0/(1.0 + p*x);
+            var y = 1.0 - (((((a5*t + a4)*t) + a3)*t + a2)*t + a1)*t*Math.exp(-x*x);
+
+            return sign*y;
+        }
+
+
+        function computeGaussScale() {
+            let tableauValeurs = []
+            tableauValeurs.push(0);
+            let median = computeMedian();
+            for(let i = 1; i <= 8; i++){
+                let y = 0.5 + 0.5 * erf((i/13-median/130)/Math.sqrt(2));
+                tableauValeurs.push(Math.floor(y *100));
+            }
+            tableauValeurs.push(90);
+            return tableauValeurs;
+        };
 
         function colorerCarte() {
             pourcentage = false;
@@ -59,6 +124,8 @@
                 return;
             }
 
+           tableauValeurs = computeGaussScale();
+
             construireLegende(tableauValeurs, tableauCouleurs, true);
 
             for (numeroDepartement in donneesDepartementsVaccination) {
@@ -66,7 +133,6 @@
                     continue;
                 }
                 donneesDepartement = donneesDepartementsVaccination[numeroDepartement];
-                // console.log(donneesDepartement);
                 var departementCarte = $('#carte path[data-num="' + numeroDepartement + '"]');
                 //Affectation de la valeur de la donnée du département à sa représentation sur la carte. .
                 departementCarte.data(nomDonnee, donneesDepartement[nomDonnee]);
@@ -86,7 +152,7 @@
                             .replaceAll('idxval', idx);
                     } else if (val > 0) {
                         caseLegende = $('#legendTemplateMid').html()
-                            .replaceAll("valeur", '< ' + plus + val + ' %')
+                            .replaceAll("valeur", '> ' + plus + val + ' %')
                             .replaceAll("colorBg", colors[idx])
                             .replaceAll('idxval', idx);
                     } else {
@@ -114,7 +180,7 @@
             for (i = tableauCouleurs.length - 1; i >= 0; i--) {
                 if (i == 0) {
                     return tableauCouleurs[i];
-                } else if (valeur <= tableauDonnees[i]) {
+                } else if (valeur >= tableauDonnees[i]) {
                     return tableauCouleurs[i];
                 }
             }
@@ -127,7 +193,6 @@
 
             $('.departement-detail').remove();
             donneesVaccinationDepartement = donneesDepartementsVaccination[numeroDepartement];
-            console.log(donneesVaccinationDepartement);
             donneesJournalieresDepartement = donneesVaccinationDepartement['n_dose1_cumsum'];
             datesJours = donneesVaccinationDepartement['dates'];
             vaccinesDepartement = donneesJournalieresDepartement[donneesJournalieresDepartement.length-1];
@@ -265,15 +330,12 @@
                 let idx= parseInt($(this).data('idx'));
                 let value = tableauValeurs[idx];
                 let borneinf, bornesup;
-                if(value == ">") {
-                    bornesup = 100;
-                    borneinf = tableauValeurs[idx+1];
-                } else if (idx == tableauValeurs.length -1) {
-                    bornesup = value;
-                    borneinf = 0;
+                if (idx == tableauValeurs.length -1) {
+                    bornesup = Infinity;
+                    borneinf = tableauValeurs[idx];
                 } else {
-                    bornesup = value;
-                    borneinf = tableauValeurs[idx+1];
+                    borneinf = value;
+                    bornesup = tableauValeurs[idx+1];
                 }
                 $('#carte').find('svg path').filter(function(){
                     let val = $(this).data('n_dose1_cumsum_pop');
