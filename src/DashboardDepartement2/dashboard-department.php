@@ -420,7 +420,7 @@
 
             $('#unselectAll').click(function () {
                 $("#listeDepartements option").each(function () {
-                    $(this).attr('selected', false);
+                    $(this).prop('selected', false);
                 });
                 $("#listeDepartements").trigger('change');
                 $('.departement').remove();
@@ -441,8 +441,8 @@
                 //Sélection des toutes les options du select.
                 $("#listeDepartements option").each(function () {
                     nomDepartement = $(this).val();
-                    if (!$(this).attr('selected')) {
-                        $(this).attr('selected', true);
+                    if (!$(this).prop('selected')) {
+                        $(this).prop('selected', true);
                         if ($("#listeDepartements").val()) {
                             $("#listeDepartements").val($.merge([nomDepartement], $("#listeDepartements").val()));
                         } else {
