@@ -477,7 +477,7 @@
             if(daysToObj <= size) {
                 //complete with same croissance
                 for(let i = 1; i <= (size - daysToObj); i++) {
-                    values.push(Math.round(30000000 + i * croissance));
+                    values.push(Math.round(obj + i * croissance));
                     dates.push(objectif.add(1, 'd').format('YYYY-MM-DD'));
                 }
             }
@@ -852,7 +852,7 @@
         }))
         let objectif = calculerObjMiJuin();
         let maxValue = Math.ceil(objectif/25000)*25000;
-        maxValue = 800000
+        maxValue = 900000
         let dataObj = data.map((value, idx) => ({x: labels[idx], y: objectif}));
 
         debut_2nd_doses = labels.map((value, idx) => ({x: value, y: 0}))
