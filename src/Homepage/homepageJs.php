@@ -218,7 +218,7 @@
         update_date = data["rea"]["dates"][data["rea"]["dates"].length-1]
         update_date = update_date.slice(8) + "/" + update_date.slice(5, 7);
 
-        document.getElementById("reanimations").innerHTML = numberWithSpaces(val_actu);
+        document.getElementById("reanimations").innerHTML = numberWithSpaces(val_actu.toFixed());
 
         if (val_j7 > val_actu){
             document.getElementById("croissance_rea").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((val_actu-val_j7)/val_j7*100))+ "&nbsp;%)";
@@ -247,7 +247,7 @@
         update_date = data["rea"]["dates"][data["adm_rea"]["dates"].length-1]
         update_date = update_date.slice(8) + "/" + update_date.slice(5, 7);
 
-        document.getElementById("adm-hospit-value").innerHTML = numberWithSpaces(val_actu);
+        document.getElementById("adm-hospit-value").innerHTML = numberWithSpaces(val_actu.toFixed());
 
         if (val_j7 > val_actu){
             document.getElementById("croissance-adm-hospit").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((val_actu-val_j7)/val_j7*100))+ "&nbsp;%)";
@@ -267,7 +267,7 @@
         update_date = data["rea"]["dates"][data["dc"]["dates"].length-1]
         update_date = update_date.slice(8) + "/" + update_date.slice(5, 7);
 
-        document.getElementById("dc_value").innerHTML = numberWithSpaces(val_actu);
+        document.getElementById("dc_value").innerHTML = numberWithSpaces(val_actu.toFixed());
 
         if (val_j7 > val_actu){
             document.getElementById("croissance_dc").innerHTML = "en baisse (-&nbsp;" + Math.round(Math.abs((val_actu-val_j7)/val_j7*100))+ "&nbsp;%)";
@@ -292,7 +292,7 @@
         document.getElementById("cas_p2").innerHTML = phrase[selected_data][1];
 
         cas_actu = data[selected_data]["values"][data[selected_data]["values"].length-1]
-        document.getElementById("cas_moyen_quotidien").innerHTML = numberWithSpaces(cas_actu);
+        document.getElementById("cas_moyen_quotidien").innerHTML = numberWithSpaces(cas_actu.toFixed());
 
         document.getElementById("type_jour").innerHTML = type_jour[selected_data];
 
