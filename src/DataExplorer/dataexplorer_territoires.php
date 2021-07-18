@@ -247,13 +247,12 @@ function animation(){
     let slider = document.getElementById('sliderUI');
     let max = slider.noUiSlider.options.range.max
 
-    slider.noUiSlider.set([0, 1])
-
-    var i = parseInt(slider.noUiSlider.get()[1]);                  //  set your counter to 1
+    var j = parseInt(slider.noUiSlider.get()[0])
+    slider.noUiSlider.set([j, j+1])
+    var i = parseInt(slider.noUiSlider.get()[1]); 
 
     function myLoop() {         //  create a loop function
         timeout = setTimeout(function() {   //  call a 3s setTimeout when the loop is called
-            console.log(slider.noUiSlider.get())
             idx = slider.noUiSlider.get();
             slider.noUiSlider.set([parseInt(idx[0]), parseInt(idx[1])+1]);   //  your code here
             i++;                    //  increment the counter

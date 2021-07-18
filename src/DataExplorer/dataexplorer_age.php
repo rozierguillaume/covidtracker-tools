@@ -289,9 +289,9 @@ function animation_age(){
     let slider = document.getElementById('sliderUIAge');
     let max = slider.noUiSlider.options.range.max
 
-    slider.noUiSlider.set([0, 1])
-
-    var i = parseInt(slider.noUiSlider.get()[1]);                  //  set your counter to 1
+    var j = parseInt(slider.noUiSlider.get()[0])
+    slider.noUiSlider.set([j, j+1])
+    var i = parseInt(slider.noUiSlider.get()[1]); 
 
     function myLoop() {         //  create a loop function
         timeout_age = setTimeout(function() {   //  call a 3s setTimeout when the loop is called
