@@ -363,7 +363,8 @@ function updateSlider(){
     //slider.max = N-1;  
 }
 
-function buildChart(){
+// This function will be debounced, see below.
+function _buildChart(){
     
     updateSlider();
     dataExplorerChart.destroy();
@@ -407,6 +408,10 @@ function buildChart(){
     
     changeTime();
 }
+
+// We debounce buildChart so that the user can click several checkboxes in a
+// row before the chart updates.
+const buildChart = lodash.debounce(_buildChart, /* wait */ 1000);
 
 function updateBoxChecked(){
     selected_territoires.map((territoire, idx)=>{
