@@ -59,10 +59,16 @@
             Statut : vaccin en <a target="_blank" href="https://www.ema.europa.eu/en/news/ema-starts-rolling-review-sputnik-v-covid-19-vaccine">cours d'évaluation</a> par l'AEM<br>
             <a target="_blank" title="Sputnik V COVID-19 vaccine candidate appears safe and effective" href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)00191-4/fulltext">Article</a>
         </card>
-    </div>
-
-    <h3 style="margin-top : 50px;">Vaccins non encore soumis</h3>
-    <div class="row">
+        <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇺🇸 Novavax</b><br>
+            Phase 3/3<br>
+            Type : Sous-unité protéique<br>
+            Efficacité annoncée : 89,3%<br>
+            Conservation : entre +2°C et +8°C<br>
+            Commandes UE : 100M (+ option 100M)<br>
+            Dont France : 15M (+ option 15M)<br>
+            Doses à injecter : 2<br>
+            Statut : vaccin en <a target="_blank" href="https://www.ema.europa.eu/en/news/ema-starts-rolling-review-novavaxs-covid-19-vaccine-nvx-cov2373">cours d'évaluation</a> par l'AEM<br>
+        </card>
         <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇩🇪 CureVac</b><br>
             Phase 2/3<br>
             Type : ARN messager<br>
@@ -72,20 +78,24 @@
             Commandes UE : 225M (+ option 180M)<br>
             Dont France : 33.75M (+ option 27M)<br>
             Doses à injecter : 2<br>
-            Statut : examen continu (UE)
+            Statut : vaccin en <a target="_blank" href="https://www.ema.europa.eu/en/news/ema-starts-rolling-review-curevacs-covid-19-vaccine-cvncov">cours d'évaluation</a> par l'AEM<br>
         </card>
-        
-         <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇺🇸 Novavax</b><br>
+    </div>
+    <div class="row">
+        <card class="shadow-btn-orange col-xs-11 col-md-4"><b>🇨🇳 Sinovac Life Sciences</b><br>
+            <i>Ce vaccin n'a pas été pré-commandé par l'UE</i><br>
             Phase 3/3<br>
-            Type : Sous-unité protéique<br>
-            Efficacité annoncée : 89,3%<br>
+            Type : Vaccin inactivé<br>
+            Efficacité annoncée : 83,5%<br>
+            Prêt : oui<br>
             Conservation : entre +2°C et +8°C<br>
-            Commandes UE : 100M (+ option 100M)<br>
-            Dont France : 15M (+ option 15M)<br>
             Doses à injecter : 2<br>
-            Statut : examen continu (UE)
+            Statut : vaccin en <a target="_blank" href="https://www.ema.europa.eu/en/news/ema-starts-rolling-review-covid-19-vaccine-vero-cell-inactivated">cours d'évaluation</a> par l'AEM<br>
         </card>
-        
+    </div>
+
+    <h3 style="margin-top : 50px;">Vaccins non encore soumis</h3>
+    <div class="row">
         <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇫🇷🇬🇧 Sanofi/Pasteur-GSK</b><br>
             Phase 2/3<br>
             Type : Protéines virales<br>
