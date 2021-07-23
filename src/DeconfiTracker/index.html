@@ -94,7 +94,38 @@
 </div>
 
 
+<h2 style="margin-top: 60px;">Admissions à l'hôpital</h2>
 
+<div class="wrap">
+    
+    <div class="two" style="max-width: 400px; margin-bottom: 60px;">
+        <div class="row">
+            <div class="col-md-2" style="margin-right: 10px;"> <span id="obj_adm_hosp" style="font-size: 300%;"></span></div>
+            <div class="col-md-9">
+                <b><span id="adm_hosp_actu" style="font-size: 200%;">--</span></b><span style="font-size: 200%;"></span>
+                <p>personnes admises à l'hôpital en moyenne le <span id="update_date_adm_hosp"></span></p>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="one align-middle" style="max-width: 400px; margin-bottom: 60px;">
+        <div class="row">
+            <div class="col-md-2" style="margin-right: 10px;"><span class="align-middle" style="font-size: 300%" id="obj_proj_adm_hosp"></span></div>
+            <div class="col-md-9">
+                <b><span id="adm_hosp_projection" style="font-size: 200%;">--</span></b><span style="font-size: 200%;"></span>
+                <p>projection des admissions à l'hôpital dans <span id="dureeProjectionAdmHosp">--</span> jours à croissance constante</p>
+                
+            </div>
+        </div>
+            
+    </div>
+
+</div>
+
+<div>
+    <canvas id="lineChartAdmHosp" style="max-height: 700px; max-width: 900px;"></canvas>
+</div>
 
 <h2 style="margin-top: 60px;">Personnes en réanimation</h2>
 <p>Le deuxième objectif à atteindre est entre 2 500 et 3 000 personnes en réanimation ou soins intensifs. La projection est réalisée en utilisant le taux d'évolution quotidien moyen sur les 7 derniers jours.</p>
@@ -151,8 +182,6 @@
           //buildBarChart();
           updateDataDiv();
           calculerProjection();
-          
-          
            
         })
        .catch(function () {
@@ -165,16 +194,27 @@ function numberWithSpaces(x) {
   }
 
 function updateDataDiv(){
+    
+    adm_hosp_actu = data["adm_hosp"]["values"][data["adm_hosp"]["values"].length-1].toFixed()
     rea_actu = data["rea"]["values"][data["rea"]["values"].length-1]
     cas_actu = data["cas"]["values"][data["cas"]["values"].length-1]
+
+    update_date_adm_hosp = data["adm_hosp"]["dates"][data["adm_hosp"]["dates"].length-1]
+    update_date_adm_hosp = update_date_adm_hosp.slice(8) + "/" + update_date_adm_hosp.slice(5, 7);
+
     update_date = data["rea"]["dates"][data["rea"]["dates"].length-1]
     update_date = update_date.slice(8) + "/" + update_date.slice(5, 7);
+
+    console.log("test")
 
     update_date_cas = data["cas"]["dates"][data["cas"]["dates"].length-1]
     update_date_cas = update_date_cas.slice(8) + "/" + update_date_cas.slice(5, 7);
 
+    var text_adm_hosp = "";
     var text_rea = "";
     var text_cas = "";
+
+    color_adm_hosp = "black";
 
     if (rea_actu > 3000){
         color_rea = "red";
@@ -194,6 +234,7 @@ function updateDataDiv(){
     document.getElementById("cas_actu").style.color = color_cas;
 
     document.getElementById("update_date").innerHTML = update_date;
+    document.getElementById("update_date_adm_hosp").innerHTML = update_date;
     document.getElementById("update_date_rea").innerHTML = update_date;
     document.getElementById("update_date_cas").innerHTML = update_date_cas;
 
@@ -203,6 +244,8 @@ function updateDataDiv(){
         document.getElementById("obj_cas").innerHTML = "❌"
     }
 
+
+    document.getElementById("adm_hosp_actu").innerHTML = numberWithSpaces(adm_hosp_actu);
     document.getElementById("rea_actu").innerHTML = numberWithSpaces(rea_actu);
     document.getElementById("rea_actu").style.color = color_rea;
 
@@ -291,6 +334,65 @@ function buildLineChart(projection_cas, labels_cas, projection_rea){
     });
 }
 
+var lineChartAdmHosp;
+function buildLineChartAdmHosp(projection_adm_hosp, labels_adm_hosp){
+    
+    var ctx = document.getElementById('lineChartAdmHosp').getContext('2d');
+
+    lineChart = new Chart(ctx, { 
+        type: 'line',
+        data: {
+            labels: data["adm_hosp"]["dates"].concat(labels_adm_hosp),
+            datasets: [{
+                label: 'Adm. hosp',
+                data: data["adm_hosp"]["values"],
+                borderWidth: 3,
+                backgroundColor: 'rgba(209, 102, 21,0.3)',
+                borderColor: 'rgba(209, 102, 21, 1)'
+            },
+            {
+                label: 'Projection adm hosp',
+                data: projection_adm_hosp
+            }]
+        },
+        options: {
+            legend: {
+                display: false
+            },
+            scales: {
+                yAxes: [{
+                    gridLines: {
+                        display: false
+                     },
+                    ticks: {
+                        min: 0,
+
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: false
+                     },
+                     ticks: {
+                        maxRotation: 0,
+                        minRotation: 0,
+                        maxTicksLimit: 6,
+                        callback: function(value, index, values) {
+                        return value.slice(8) + "/" + value.slice(5, 7);
+                     }
+                     }
+
+                }]
+            },
+            annotation: {
+            events: ["click"],
+            annotations: [
+            ]
+        }
+        }
+    });
+}
+
 var slider = document.getElementById('slider');
 buildNoUiSlider()
 function buildNoUiSlider(){
@@ -311,11 +413,13 @@ function buildNoUiSlider(){
 
 var jours_restants_cas = 10
 var jours_restants_rea = 10
+var jours_restants = 10
 
 function dureeProjectionChange(){
     duree_projection = Math.trunc(parseInt(slider.noUiSlider.get()));
     jours_restants_cas = duree_projection;
     jours_restants_rea = duree_projection;
+    jours_restants = duree_projection;
 
     lineChart.destroy()
     barChart.destroy()
@@ -328,14 +432,12 @@ function calculerProjection(){
     document.getElementById("dureeProjectionCas").innerHTML = jours_restants_cas;
     document.getElementById("dureeProjectionRea").innerHTML = jours_restants_rea;
     document.getElementById("dureeProjection").innerHTML = jours_restants_rea;
+    document.getElementById("dureeProjectionAdmHosp").innerHTML = jours_restants;
 
     let one_day = (1000 * 60 * 60 * 24)
-
-     //(Date.parse("2021-01-17") - Date.parse(data["cas"]["dates"][data["cas"]["dates"].length-1])) / one_day 
-     //(Date.parse("2021-01-20") - Date.parse(data["rea"]["dates"][data["rea"]["dates"].length-1])) / one_day 
-
-    data_cas = data["cas"]["values"]
     
+    // CAS
+    data_cas = data["cas"]["values"]
     var croissance_cas = 0;
     var croissance_cas_liste = [];
 
@@ -361,21 +463,56 @@ function calculerProjection(){
         projection_cas.push(NaN)
     }
 
-    console.log(1-croissance_cas)
-    console.log(1-croissance_croissance_cas)
-
     for (var idx = 1; idx <= jours_restants_cas; idx++) {
     
         var d = moment(data["cas"]["dates"][data["cas"]["dates"].length-1]).add(idx, 'd')
         labels_cas.push( d.format('YYYY-MM-DD') )
 
-        //projection_croissance = data_cas[data_cas.length-1] * (1-croissance_cas)**idx
         projection = Math.round(data_cas[data_cas.length-1] * (1-croissance_cas)**idx)
 
         projection_cas.push(projection)
     }
 
     document.getElementById("cas_projection").innerHTML = numberWithSpaces(projection_cas[projection_cas.length-1]);
+
+    // adm hosp
+    data_adm_hosp = data["adm_hosp"]["values"]
+    var croissance_adm_hosp = 0;
+    var croissance_adm_hosp_liste = [];
+
+    for(idx=1; idx<=7; idx++) {
+        croissance_adm_hosp_idx = (data_adm_hosp[data_adm_hosp.length-idx-1] - data_adm_hosp[data_adm_hosp.length-idx])/data_adm_hosp[data_adm_hosp.length-idx-1]
+
+        croissance_adm_hosp += croissance_adm_hosp_idx
+        croissance_adm_hosp_liste.push(1-croissance_adm_hosp_idx)
+    };
+    croissance_adm_hosp /= 7
+    
+    var croissance_croissance_adm_hosp = 0;
+    for(idx=1; idx<=6; idx++) {
+        croissance_croissance_adm_hosp_idx = (croissance_adm_hosp_liste[idx-1] - croissance_adm_hosp_liste[idx])/croissance_adm_hosp_liste[idx-1]
+        croissance_croissance_adm_hosp += croissance_croissance_adm_hosp_idx
+    };
+    croissance_croissance_adm_hosp /= 6
+
+    var projection_adm_hosp = []
+    var labels_adm_hosp = []
+
+    for (var idx = 1; idx <= data_adm_hosp.length; idx++) {
+        projection_adm_hosp.push(NaN)
+    }
+
+    for (var idx = 1; idx <= jours_restants; idx++) {
+    
+        var d = moment(data["adm_hosp"]["dates"][data["adm_hosp"]["dates"].length-1]).add(idx, 'd')
+        labels_adm_hosp.push( d.format('YYYY-MM-DD') )
+
+        projection = Math.round(data_adm_hosp[data_adm_hosp.length-1] * (1-croissance_adm_hosp)**idx)
+
+        projection_adm_hosp.push(projection)
+    }
+
+    document.getElementById("adm_hosp_projection").innerHTML = numberWithSpaces(projection_adm_hosp[projection_adm_hosp.length-1]);
 
     // REA
     data_rea = data["rea"]["values"]
@@ -436,6 +573,7 @@ function calculerProjection(){
     }
     buildLineChart(projection_cas, labels_cas);
     buildBarChart(projection_rea, labels_rea);
+    buildLineChartAdmHosp(projection_adm_hosp, labels_adm_hosp);
 
 }
 
