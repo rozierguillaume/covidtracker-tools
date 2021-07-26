@@ -568,13 +568,13 @@
             borderDash: [3, 2]
         });
 
-        let data_objectifs = calculateObjectifs(40000000, data_france.n_cum_dose1[data_france.n_cum_dose1.length -1],
+        let data_objectifs = calculateObjectifs(50000000, data_france.n_cum_dose1[data_france.n_cum_dose1.length -1],
                                                data_france.dates[data_france.dates.length -1],
                                                50);
 
         datasets.push({
             yAxisID: "injections",
-            label: 'Objectif 40M fin août ',
+            label: 'Objectif 50M fin août ',
             data: data_objectifs,
             borderWidth: 2,
             //backgroundColor: '#a1cbe6',
@@ -586,13 +586,13 @@
             borderDash: [3, 2]
         });
 
-        let data_objectifs2 = calculateObjectifs(35000000, data_france.n_cum_complet[data_france.n_cum_complet.length -1],
+        let data_objectifs2 = calculateObjectifs(40000000, data_france.n_cum_complet[data_france.n_cum_complet.length -1],
             data_france.dates[data_france.dates.length -1],
             50);
 
         datasets.push({
             yAxisID: "injections",
-            label: 'Objectif 35M fin août ',
+            label: 'Objectif 40M fin août ',
             data: data_objectifs2,
             borderWidth: 2,
             //backgroundColor: '#a1cbe6',
