@@ -8,7 +8,7 @@
 <?php include(__DIR__ . '/activite/carteIncidence.php') ?>
 <?php include(__DIR__ . '/activite/tauxReproduction.php') ?>
 <?php include(__DIR__ . '/activite/tauxPositivite.php') ?>
-<?php include(__DIR__ . '/activite/nouveauxTestsPositifs.php') ?>
+<?php /* include(__DIR__ . '/activite/nouveauxTestsPositifs.php') */ ?>
 <?php include(__DIR__ . '/activite/tauxIncidenceMetropoles.php') ?>
 <?php include(__DIR__ . '/activite/repartitionCas.php') ?>
 <?php include(__DIR__ . '/activite/tauxIncidenceRegions.php') ?>
