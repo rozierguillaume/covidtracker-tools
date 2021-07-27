@@ -7,35 +7,30 @@
 
             var valeurs_n_dose1_cumsum_pop = [">", "70", "67", "64", "61", "57", "54", "50", "20", "10"];
             //var couleurs_n_dose1_cumsum_pop = ["#98ac3b", "#3c0000", "#c80000", "#f95228"];
-            var couleurs_n_dose1_cumsum_pop = ["#0076bf", "#148dd9",  "#2e9fe6", "#45a8e6",  "#5cb1e6", "#73bae6", "#8ac2e6", "#a1cbe6", "#b8d4e6",  "#cfdde6"]
-            
+            var couleurs_n_dose1_cumsum_pop = [
+                "#0076bf", "#148dd9", "#2e9fe6", "#45a8e6", "#5cb1e6",
+                "#73bae6", "#8ac2e6", "#a1cbe6", "#b8d4e6", "#cfdde6"]
+
             var valeurs_cas_12_couleurs = [">", "500", "450", "400", "350", "300", "250", "200", "150", "100", "75", "50", "25"];
             var couleurs_cas_12_couleurs = ["#3c0000", "#4c0000", "#6a0000", "#840000", "#a00000", "#c40001", "#d50100", "#e20001", "#f50e07", "#f95228", "#fb9449", "#98ac3b", "#118408"];
 
-            var valeurs_positivite_restreint = [ "> 13", "13", "10", "7", "4", "1"];
+            var valeurs_positivite_restreint = ["> 13", "13", "10", "7", "4", "1"];
             var couleurs_positivite_restreint = ['black', '#6a0000', '#c40001', '#f50e07', '#fb9449', '#118408'];
 
             var valeurs_var_c1 = ["100", "82", "74", "66", "58", "50", "42", "34", "26", "18", "10", "2"]//["100", "95", "90", "85", "80", "75", "70", "65", "60", "55", "45", "40"];
             var couleurs_var_c1 = ['#00004d', '#17175a', '#292b68', '#393f76', '#475484', '#566a92', '#6680a0', '#7696ae', '#88adbd', '#9cc4cb', '#b5dada', '#e9e9e9']//['#000f5c', '#162169', '#263376', '#334683', '#405990', '#4d6d9d', '#5a80a9', '#6995b5', '#79a9c0', '#8dbdcb', '#a5d1d3', '#dedecc']//['#00429d', '#2250a4', '#345eaa', '#436db0', '#507cb7', '#5e8bbd', '#6b9ac2', '#78a9c8', '#87b9cd', '#97c8d1', '#aad7d4', '#dedecc']//['#00429d', '#2552a5', '#3863ad', '#4874b4', '#5786bc', '#6497c4', '#72a9cc', '#80bbd5', '#90cedd', '#a0e0e6', '#b5f1f0', '#d8ffff']
 
             var valeurs_evolution = [">", "40", "30", "20", "10", "5", "0", "-5", "-10", "-20", "-30", "-40", "-50"];
-            var couleurs_evolution = [
-                "#4c0000",
-                "#6a0000",
-                "#f50e07",
-                "#fb633b",
-                "#fb9449",
-                "#fbd763",
-                "#b1df52",
-                "#61c142",
-                "#56ab3d",
-                "#2e9c28",
-                "#1c7b21",
-                "#116522",
-                "#084004"];
-            var couleurs_evolution = ['#93003a', '#bb1d4b', '#d84560', '#ec6e77', '#f79792', '#f8c2af', '#ededce', '#a8d6d4', '#87b8cc', '#6b9ac2', '#517bb6', '#345eaa', '#00429d'];
+             var couleurs_evolution = ['#93003a', '#bb1d4b', '#d84560', '#ec6e77', '#f79792', '#f8c2af', '#ededce', '#a8d6d4', '#87b8cc', '#6b9ac2', '#517bb6', '#345eaa', '#00429d'];
 
-            var valeurs_hosp = [">", "50", "45", "40", "35", "30", "25", "20", "15", "10", "9", "6", "3"];
+        var valeurs_comparaison = [">", "20", "15", "10", "5", "2", "-2", "-5", "-10", "-15", "-20", "-30"];
+        var couleurs_comparaison = [
+            "#0076bf", "#2e9fe6", "#5cb1e6", "#8ac2e6", "#b8d4e6",
+            "#e1eff8",
+            "#fbd763","#fb9449","#fb633b","#f50e07","#6a0000","#4c0000", "#000"];
+
+
+        var valeurs_hosp = [">", "50", "45", "40", "35", "30", "25", "20", "15", "10", "9", "6", "3"];
             var valeurs_lits_hosp = [">", "90", "80", "70", "60", "50", "40", "30", "25", "20", "15", "10", "5"];
             var couleurs_hosp = ["#3c0000", "#4c0000", "#6a0000", "#840000", "#a00000", "#c40001", "#d50100", "#e20001", "#f50e07", "#f95228", "#fb9449", "#98ac3b", "#118408"];
 
@@ -59,7 +54,10 @@
             var typeCarte = 'incidence-cas';
             var tableauValeurs;
             var nomDonnee;
-            
+            var nb_vaccines = [];
+            var dejaVaccines = 0;
+            var proportionVaccines1doseFrance = 0;
+
             fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/vacsi-dep.json')
                 .then(response => {
                     if (!response.ok) {
@@ -69,10 +67,14 @@
                 })
                 .then(json => {
                     donneesDepartementsVaccination = json;
+                   // console.log(donneesDepartementsVaccination);
                     fetchOtherData();
+
                 });
 
-            function fetchOtherData(){
+
+
+            function fetchOtherData() {
                 fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/incidence_departements.json')
                     .then(response => {
                         if (!response.ok) {
@@ -88,15 +90,55 @@
                         colorerCarte();
                         selectionnerDepartement();
                     });
+
+
+                // Get data from health ministry csv
+                fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/vacsi-fra.json', {cache: 'no-cache'}) //https://www.data.gouv.fr/fr/datasets/r/b234a041-b5ea-4954-889b-67e64a25ce0d
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("HTTP error " + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(json => {
+
+                        this.data = json;
+                        console.log (this.data);
+
+                        //console.log(json)
+                        data["dates"].map((value, idx) => {
+                            nb_vaccines.push({
+                                date: value,
+                                heure: "",
+                                total: 0,
+                                n_dose1: data["n_cum_dose1"][idx],
+                                source: "Ministère de la santé"
+                            });
+                        })
+
+                        nb_vaccines = nb_vaccines.filter((v, i, a) => a.findIndex(t => (t.date == v.date)) === i); // suppression doublons
+                        nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
+                        dejaVaccinesNb = nb_vaccines[nb_vaccines.length - 1].n_dose1
+                        dejaVaccines = dejaVaccinesNb * 100 / 67000000;
+                        proportionVaccines1doseFrance = (Math.round(dejaVaccines * 10000000) / 10000000).toFixed(2);
+
+
+                    })
+                    .catch(function () {
+                            this.dataError = true;
+                            console.log("error4")
+                        }
+                    )
+
             }
 
             function construireLegende(values = [], colors = [], pourcentage = false, pourcentage_abs = false) {
                 content = $('#legendTemplatePre').html();
                 values.map((val, idx) => {
                     if (pourcentage) {
-                        if (val == '>'){
+                        if (val == '>') {
                             caseLegende = $('#legendTemplateMid').html()
-                                .replaceAll("valeur", "> " + plus +values[idx+1] + ' %')
+                                .replaceAll("valeur", "> " + plus + values[idx + 1] + ' %')
                                 .replaceAll("colorBg", colors[idx])
                                 .replaceAll("index", idx);
                         } else if (val > 0) {
@@ -110,15 +152,15 @@
                                 .replaceAll("colorBg", colors[idx])
                                 .replaceAll("index", idx);
                         }
-                    } else if (pourcentage_abs){
+                    } else if (pourcentage_abs) {
                         caseLegende = $('#legendTemplateMid').html()
                             .replaceAll("valeur", val + " %")
                             .replaceAll("colorBg", colors[idx])
                             .replaceAll("index", idx);
                     } else {
-                        if (val == '>'){
+                        if (val == '>') {
                             caseLegende = $('#legendTemplateMid').html()
-                                .replaceAll("valeur", val + ' ' + values[idx+1] )
+                                .replaceAll("valeur", val + ' ' + values[idx + 1])
                                 .replaceAll("colorBg", colors[idx])
                                 .replaceAll("index", idx);
                         } else {
@@ -128,7 +170,7 @@
                                 .replaceAll("index", idx);
                         }
                     }
-                    if (colors[idx]=='#ededce'){
+                    if (colors[idx] == '#ededce') {
                         caseLegende = caseLegende.replaceAll("white", "#304b61");
                     }
                     content += caseLegende;
@@ -151,7 +193,7 @@
 
             function colorerCarte() {
                 pourcentage = false;
-                pourcentage_abs=false;
+                pourcentage_abs = false;
                 plus = "+";
                 vaccination = false;
                 if (typeCarte == 'incidence-cas') {
@@ -186,14 +228,14 @@
                     tableauValeurs = valeurs_positivite;
                     tableauCouleurs = couleurs_positivite;
                     nomDonnee = "taux_positivite";
-                    pourcentage_abs=true;
+                    pourcentage_abs = true;
                 } else if (typeCarte == 'taux-positivite-restreint') {
                     $('#titreCarte').html("<h3>Taux de positivité</h3>");
                     $('#descriptionCarte').html("Proportion des tests positifs cette semaine");
                     tableauValeurs = valeurs_positivite_restreint;
                     tableauCouleurs = couleurs_positivite_restreint;
                     nomDonnee = "taux_positivite";
-                    pourcentage_abs=true;
+                    pourcentage_abs = true;
                 } else if (typeCarte == 'incidence-hospitalisations') {
                     $('#titreCarte').html("<h3>Admissions à l'hôpital</h3>");
                     $('#descriptionCarte').html("pour Covid19, cette semaine et pour 100k habitants de chaque département");
@@ -260,6 +302,15 @@
                     pourcentage = true;
                     vaccination = true;
                     plus = "";
+                } else if (typeCarte == 'n_dose1_comparaison') {
+                    $('#titreCarte').html("<h3>Comparaison population partiellement vaccinée</h3>");
+                    $('#descriptionCarte').html("Ecart en points de la population ayant reçu une dose par rapport à la moyenne nationale : "+proportionVaccines1doseFrance+" %");
+                    tableauValeurs = valeurs_comparaison;
+                    tableauCouleurs = couleurs_comparaison;
+                    nomDonnee = "n_dose1_comparaison";
+                    pourcentage = false;
+                    vaccination = true;
+                    plus = "";
                 } else {
                     $('#carte path').css("fill", "#c4c4cb");
                     return;
@@ -274,10 +325,13 @@
                     //Récupération du numéor de département à partir de la select.
                     numeroDepartement = $('#listeDepartements option[value="' + departement + '"]').data("num");
                     // console.log(numeroDepartement);
+
                     //Récupération des données du département.
-                    if(vaccination==true){
+                    if (vaccination == true) {
+                        donneesDepartement['numeroDepartement'] = numeroDepartement;
                         donneesDepartement = donneesDepartementsVaccination[numeroDepartement];
-                    }else{
+                        donneesDepartement['n_dose1_comparaison'] = donneesDepartement['n_dose1_cumsum_pop']-proportionVaccines1doseFrance;
+                    } else {
                         donneesDepartement = donneesDepartements[departement];
                     }
                     // console.log(donneesDepartement);
@@ -306,7 +360,7 @@
                         afficherDepartement(nomDepartement, numeroDepartement);
                         $('html,body').animate({scrollTop: $('#donneesDepartements').offset().top - 80}, 2000);
                     }
-                } else if($("#numeroDepartementSearched").length > 0){
+                } else if ($("#numeroDepartementSearched").length > 0) {
                     numeroDepartement = $("#numeroDepartementSearched").text();
                     nomDepartement = $("#listeDepartements option[data-num='" + numeroDepartement + "']").val();
                     if (numeroDepartement) {
@@ -474,6 +528,12 @@
                     $('#carte #map title').text(nomDepartement + ' (mutations dont Delta : ' + $(this).data("var_c1").toFixed(2) + ' %)');
                 } else if (typeCarte == 'n_dose1_cumsum_pop') {
                     $('#carte #map title').text(nomDepartement + ' (' + $(this).data("n_dose1_cumsum_pop").toFixed(2) + ' %)');
+                } else if (typeCarte == 'n_dose1_comparaison') {
+                    signe = '';
+                    if ($(this).data("n_dose1_comparaison") > 0) {
+                        signe = '+';
+                    }
+                    $('#carte #map title').text(nomDepartement + ' ('+ signe + $(this).data("n_dose1_comparaison").toFixed(1) + ' points)');
                 } else if (typeCarte == 'incidence-hospitalisations') {
                     $('#carte #map title').text(nomDepartement + ' (incidence : ' + $(this).data("incidence_hosp").toFixed(2) + ')');
                 } else if (typeCarte == 'lits-hospitalisations') {
@@ -545,30 +605,38 @@
             });
 
             $("#legendeCarte").on({
-                mouseenter: function(e){
+                mouseenter: function (e) {
                     let idx = parseInt($(this).data('idx'));
                     let value = tableauValeurs[idx];
                     let borneinf, bornesup;
-                    if(value == ">") {
+                    if (value == ">") {
                         bornesup = Infinity;
-                        borneinf = tableauValeurs[idx+1];
-                    } else if (idx == tableauValeurs.length -1 ) {
+                        borneinf = tableauValeurs[idx + 1];
+                    } else if (idx == tableauValeurs.length - 1) {
                         bornesup = value;
-                        borneinf = - Infinity;
+                        borneinf = -Infinity;
                     } else {
                         bornesup = value;
-                        borneinf = tableauValeurs[idx+1];
+                        borneinf = tableauValeurs[idx + 1];
                     }
-                    $("#carte").find('svg path').filter(function(){
+                    $("#carte").find('svg path').filter(function () {
                         let val = $(this).data(nomDonnee);
                         return val > borneinf && val <= bornesup;
                     })
-                    .css({'stroke': 'yellow', 'stroke-width': '2.6'});
+                        .css({'stroke': 'yellow', 'stroke-width': '2.6'});
                 },
-                mouseleave: function (e){
+                mouseleave: function (e) {
                     $("#carte").find('svg path').css({'stroke': '', 'stroke-width': ''});
                 }
             }, '.legendValue');
         }
+
+
     )
+
+    Array.prototype.sortBy = function (p) {
+        return this.slice(0).sort(function (a, b) {
+            return (a[p] > b[p]) ? 1 : (a[p] < b[p]) ? -1 : 0;
+        });
+    }
 </script>
