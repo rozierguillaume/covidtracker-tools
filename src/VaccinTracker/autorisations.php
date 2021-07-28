@@ -59,6 +59,18 @@
             Statut : vaccin en <a target="_blank" href="https://www.ema.europa.eu/en/news/ema-starts-rolling-review-sputnik-v-covid-19-vaccine">cours d'évaluation</a> par l'AEM<br>
             <a target="_blank" title="Sputnik V COVID-19 vaccine candidate appears safe and effective" href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)00191-4/fulltext">Article</a>
         </card>
+        
+        <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇫🇷🇬🇧 Sanofi/Pasteur-GSK</b><br>
+            Phase 3/3<br>
+            Type : Protéines virales<br>
+            Efficacité annoncée : --%<br>
+            Prêt : fin 2021<br>
+            Conservation : +5°C<br>
+            Commandes UE : 300M<br>
+            Dont France : 45M<br>
+            Doses à injecter : --<br>
+            Statut : vaccin en <a target="_blank" href="https://www.ema.europa.eu/en/news/ema-starts-rolling-review-covid-19-vaccine-vidprevtyn">cours d'évaluation</a> par l'AEM
+        </card>
     </div>
 
     <h3 style="margin-top : 50px;">Vaccins non encore soumis</h3>
@@ -84,18 +96,6 @@
             Dont France : 15M (+ option 15M)<br>
             Doses à injecter : 2<br>
             Statut : examen continu (UE)
-        </card>
-        
-        <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇫🇷🇬🇧 Sanofi/Pasteur-GSK</b><br>
-            Phase 2/3<br>
-            Type : Protéines virales<br>
-            Efficacité annoncée : --%<br>
-            Prêt : fin 2021<br>
-            Conservation : +5°C<br>
-            Commandes UE : 300M<br>
-            Dont France : 45M<br>
-            Doses à injecter : --<br>
-            Statut : --
         </card>
 
         <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇫🇷🇺🇸 Sanofi/Pasteur-Translate Bio</b><br>
