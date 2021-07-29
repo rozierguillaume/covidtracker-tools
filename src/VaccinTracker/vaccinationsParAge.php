@@ -345,7 +345,7 @@ function buildLineChartAge(type){
                 },
                 {
                     label: 'Non vaccinés ',
-                    data: data_age["couv_tot_dose1"].map((value, idx)=> ([100])),
+                    data: [100, 100, 100, 100, 100, 100],
                     borderWidth: 3,
                     backgroundColor: "#ededed",
                     borderWidth: 0,
