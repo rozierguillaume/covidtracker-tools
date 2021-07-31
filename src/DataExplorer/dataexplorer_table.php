@@ -226,7 +226,7 @@ function populateTable(){
 
             N = data_table[dep_id][datatype_table].valeur.length
             valeur_j0 = data_table[dep_id][datatype_table].valeur[N-1]/population
-            valeur_72h = data_table[dep_id][datatype_table].valeur[N-3]/population
+            valeur_72h = data_table[dep_id][datatype_table].valeur[N-4]/population
             valeur_j7 = data_table[dep_id][datatype_table].valeur[N-8]/population
             valeur_j3 = data_table[dep_id][datatype_table].valeur[N-15]/population
 
