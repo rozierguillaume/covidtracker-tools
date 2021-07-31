@@ -155,6 +155,7 @@ return `
             <th onclick='sortTable(1, "ind")'>`+ "<b>Valeur</b> au<br>" + date +` <span id='col1'>▽</span></th>
             <th onclick='sortTable(2, "ind")'><b>Croissance hebdomadaire</b><br></b>aujourd'hui <span id='col2'>▽</span></th>
             <th onclick='sortTable(3, "ind")'><b>Croissance hebdomadaire</b><br>à J-3 <span id='col3'>▽</span></th>
+            <th onclick='sortTable(4, "ind")'><b>Croissance sur 72 H</b><br>aujourd'hui<br><span id='col4'>▽</span></th>
             <th>Évolution depuis sept. 2020</th>
         </tr>
 
@@ -225,6 +226,7 @@ function populateTable(){
 
             N = data_table[dep_id][datatype_table].valeur.length
             valeur_j0 = data_table[dep_id][datatype_table].valeur[N-1]/population
+            valeur_72h = data_table[dep_id][datatype_table].valeur[N-3]/population
             valeur_j7 = data_table[dep_id][datatype_table].valeur[N-8]/population
             valeur_j3 = data_table[dep_id][datatype_table].valeur[N-15]/population
 
@@ -245,6 +247,25 @@ function populateTable(){
             } else {
                 evolution = "--"
                 evolution_abs="--"
+            }
+
+            prefixe_evolution_72h = ""
+            color_72h="black"
+            if(valeur_72h!=0){
+                evolution_abs_72h = valeur_j0 - valeur_72h
+                evolution_72h = ((evolution_abs_72h) / valeur_72h * 100).toFixed(1)
+                
+                color_72h="green"
+                if(evolution_72h>=0){
+                    color_72h="red"
+                    prefixe_evolution_72h = "+"
+                }
+                evolution_72h = evolution_72h.replace(".", ",")
+                evolution_abs_72h = evolution_abs_72h.toFixed(1).replace(".", ",")
+
+            } else {
+                evolution_72h = "--"
+                evolution_abs_72h="--"
             }
 
             prefixe_evolution_j3 = ""
@@ -271,12 +292,12 @@ function populateTable(){
             confine=""
             nom = dep_id
 
-            if(confines_19_mars_21.includes(dep_id)){
-                confine="<span style='font-size: 60%; color: white; background-color: black; padding: 2px; border-radius: 5px; opacity: 0.5;'>Confiné (19 mars)</span>"
-            }
-            if(confines_27_mars_21.includes(dep_id)){
-                confine="<span style='font-size: 60%; color: white; background-color: black; padding: 2px; border-radius: 5px; opacity: 0.5;'>Confiné (27 mars)</span>"
-            }
+            //if(confines_19_mars_21.includes(dep_id)){
+               // confine="<span style='font-size: 60%; color: white; background-color: black; padding: 2px; border-radius: 5px; opacity: 0.5;'>Confiné (19 mars)</span>"
+            //}
+            //if(confines_27_mars_21.includes(dep_id)){
+              //  confine="<span style='font-size: 60%; color: white; background-color: black; padding: 2px; border-radius: 5px; opacity: 0.5;'>Confiné (27 mars)</span>"
+            //}
 
             complement_territoire = ""
 
@@ -294,7 +315,7 @@ function populateTable(){
             content_html += "<td><span></span><span style='font-size: 125%;'>" + valeur_j0 + suffixe + "</span></td>"
             content_html += `<!--{{val}}--><td><span style="background:{{color}}; color: black; border-radius: 10px; padding: 2px; margin-right: 5px;"></span><span>`.replace("{{color}}", color).replace("{{val}}", evolution) + prefixe_evolution + evolution + " % </span></td>"
             content_html += `<td><span style="background:{{color}}; color: black; border-radius: 10px; padding: 2px; margin-right: 5px;"></span><span>`.replace("{{color}}", color_j3) + prefixe_evolution_j3 + evolution_j3 + " % </span></td>"
-            //content_html += "<td>" + prefixe_evolution + evolution_abs + " </td>"
+            content_html += `<td><span style="background:{{color}}; color: black; border-radius: 10px; padding: 2px; margin-right: 5px;"></span><span>`.replace("{{color}}", color_72h) + prefixe_evolution_72h + evolution_72h + " % </span></td>"
             content_html += "<td style='text-align: right; padding: 0px 0px 0px 0px;'>" + "<canvas style='display: inline-block;' id='littleChart" + replaceBadCharacters(dep_id) + "' width='300' height='50'></canvas>" + "</td>"
             
             content_html += "</tr>"
