@@ -49,36 +49,46 @@ p {
 <body>
     <p><b>Combien d'hospitalisations ont été évitées grâce au vaccin Covid19 ? Quelle est l'importance de la non-vaccination du Covid19 dans les décès hospitaliers ?</b> Cet outil permet d'évaluer l'impact de la vaccination sur les hospitalisations et décès de la Covid19. Ces statistiques s'appuient sur l'étude de la DREES effectuée entre le 30 mai et le 11 juin sur l'ensemble de la France. La méthodologie et les calculs sont décrits en bas de page.</p>
     <br>
-    <span style="font-size: 20px;">Âge :  <span id="age">--</span> ans</span>
-    <div id="slider" style="max-width: 400px; margin-top: 5px;"></div>
+
+    <div>
+    <input type="radio" id="ensemble-population" name="population" value="ensemble-population" onchange="radioButtonChanged('ensemble')" checked>
+    <label for="ensemble-population">Ensemble de la population</label>
+    </div>
+
+    <div>
+    <input type="radio" id="tranche-age" name="population" value="tranche-age" onchange="radioButtonChanged('tranche')">
+    <label for="tranche-age">Tranche d'âge : <span id="age">--</span> ans</label>
+    </div>
+
+    <div id="slider" style="max-width: 200px; margin-top: 5px;"></div>
 
     <h3 class="title">La vaccination diminue le risque d'hospitalisation</h3>
-    <p>Imaginons deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe2">--</span>  ans et l'autre non vaccinés. S'il y a une personne hospitalisée dans le groupe vacciné, alors il y aura probablement 21 hospitalisations dans le groupe non vacciné.</p>
+    <p>Imaginons deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe2">--</span>  ans et l'autre non vaccinés. S'il y a une personne hospitalisée dans le groupe vacciné, alors il y aura probablement <span id="chiffre-non-vax-hosp-paragraphe">--</span> hospitalisations dans le groupe non vacciné.</p>
     <div class="wrap" style="margin-top: 20px;">
             <div class="boxshadow" style="">
                 <span style="color:#4fafd9; font-size: 20px;">Groupe vacciné • </span>
-                <span style="color:#4fafd9; font-size: 20px; font-weight: bold;">1 hospitalisation</span><br>
-                <div id="figure-vax-hosp" style="margin-top: 10px;"></div>
+                <span style="color:#4fafd9; font-size: 20px; font-weight: bold;"><span id="chiffre-vax-hosp">--</span> hospitalisation</span><br>
+                <div id="figure-vax-hosp" style="margin-top: 20px;"></div>
             </div>
             <div class="boxshadow">
                 <span style="color:orange; font-size: 20px;">Groupe non vacciné • </span>
-                <span style="color:orange; font-size: 20px; font-weight: bold;">21 hospitalisations</span><br>
-                <div id="figure-non-vax-hosp" style="margin-top: 10px;"></div>
+                <span style="color:orange; font-size: 20px; font-weight: bold;"><span id="chiffre-non-vax-hosp">--</span> hospitalisations</span><br>
+                <div id="figure-non-vax-hosp" style="margin-top: 20px;"></div>
             </div>
     </div>
 
     <h3 class="title">La vaccination diminue le risque de décès</h3>
-    <p>Imaginons deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe3">--</span>  ans et l'autre non vaccinés. S'il y a un décès dans le groupe vacciné, alors il y aura probablement 21 décès dans le groupe non vacciné.</p>
+    <p>Imaginons deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe3">--</span>  ans et l'autre non vaccinés. S'il y a un décès dans le groupe vacciné, alors il y aura probablement <span id="chiffre-non-vax-paragraphe">--</span> décès dans le groupe non vacciné.</p>
     <div class="wrap" style="margin-top: 20px;">
             <div class="boxshadow" style="">
                 <span style="color:#4fafd9; font-size: 20px;">Groupe vacciné • </span>
-                <span style="color:#4fafd9; font-size: 20px; font-weight: bold;">1 décès</span><br>
-                <div id="figure-vax" style="margin-top: 10px;"></div>
+                <span style="color:#4fafd9; font-size: 20px; font-weight: bold;"><span id="chiffre-vax">--</span> décès</span><br>
+                <div id="figure-vax" style="margin-top: 20px;"></div>
             </div>
             <div class="boxshadow">
                 <span style="color:orange; font-size: 20px;">Groupe non vacciné • </span>
-                <span style="color:orange; font-size: 20px; font-weight: bold;">21 décès</span><br>
-                <div id="figure-non-vax" style="margin-top: 10px;"></div>
+                <span style="color:orange; font-size: 20px; font-weight: bold;"><span id="chiffre-non-vax">--</span> décès</span><br>
+                <div id="figure-non-vax" style="margin-top: 20px;"></div>
             </div>
     </div>
 
@@ -86,9 +96,9 @@ p {
     <div class="wrap" style="margin-top: 20px;">
             <div class="boxshadow-wide" style="">
                 <span style="color:black; font-size: 20px;">Hospitalisations attribuables à la non-vaccination • </span>
-                <span style="color:red; font-size: 20px; font-weight: bold;">84 %</span><br>
-                <p>Cela signifie que sur 100 hospitalisations de personnes ayant <span id="age_surrisque_hosp">--</span>  ans, 84 hospitalisations auraient pu être évités par la vaccination. </p>
-                <div id="figure-vax-hosp-evitables" style="margin-top: 10px;"></div>
+                <span style="color:red; font-size: 20px; font-weight: bold;"><span id="chiffre-vax-hosp-evitables">--</span> %</span><br>
+                <p>Cela signifie que sur 100 hospitalisations de personnes ayant <span id="age_surrisque_hosp">--</span>  ans, <span id="chiffre-vax-hosp-evitables-paragraphe">--</span> hospitalisations auraient pu être évités par la vaccination. </p>
+                <div id="figure-vax-hosp-evitables" style="margin-top: 20px;"></div>
             </div>
     </div>
 
@@ -96,9 +106,9 @@ p {
     <div class="wrap" style="margin-top: 20px;">
             <div class="boxshadow-wide" style="">
                 <span style="color:black; font-size: 20px;">Décès attribuables à la non-vaccination • </span>
-                <span style="color:red; font-size: 20px; font-weight: bold;">84 %</span><br>
-                <p>Cela signifie que sur 100 décès de personnes ayant <span id="age_surrisque">--</span>  ans, 84 décès auraient pu être évités par la vaccination. </p>
-                <div id="figure-vax-evitables" style="margin-top: 10px;"></div>
+                <span style="color:red; font-size: 20px; font-weight: bold;"><span id="chiffre-vax-evitables">--</span> %</span><br>
+                <p>Cela signifie que sur 100 décès de personnes ayant <span id="age_surrisque">--</span>  ans, <span id="chiffre-vax-evitables-paragraphe">--</span> décès auraient pu être évités par la vaccination. </p>
+                <div id="figure-vax-evitables" style="margin-top: 20px;"></div>
             </div>
     </div>
 
@@ -107,12 +117,37 @@ p {
     <h4>Méthodologie</h4>
     <p>Ces statistiques sont obtenues à partir des données publiées par la DREES. Elles seront mises à jour lors de la publication de nouvelles données.</p>
 
-    Auteurs : Sacha, Guillaume.
+    Auteurs : Sacha Guilhaumou, Guillaume Rozier.
     
 </body>
 
 <script>
+var slider = document.getElementById('slider');
 LIGHT_BLUE = "#4fafd9"
+MSG_DONNEES_INSUFFISANTES = ` 
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="15px" width="15px" x="0px" y="0px"
+        viewBox="0 0 512 512" style="enable-background:new 0 0 512 512; margin-right: 3px;" xml:space="preserve">
+    <g>
+        <g>
+            <path d="M256,0C114.497,0,0,114.507,0,256c0,141.503,114.507,256,256,256c141.503,0,256-114.507,256-256
+                C512,114.497,397.493,0,256,0z M256,472c-119.393,0-216-96.615-216-216c0-119.393,96.615-216,216-216
+                c119.393,0,216,96.615,216,216C472,375.393,375.385,472,256,472z"/>
+        </g>
+    </g>
+    <g>
+        <g>
+            <path d="M256,128.877c-11.046,0-20,8.954-20,20V277.67c0,11.046,8.954,20,20,20s20-8.954,20-20V148.877
+                C276,137.831,267.046,128.877,256,128.877z"/>
+        </g>
+    </g>
+    <g>
+        <g>
+            <circle cx="256" cy="349.16" r="27"/>
+        </g>
+    </g> 
+    <i>  Les données de la DREES sont insuffisantes pour calculer cet indicateur, sélectionnez une autre tranche d'âge.</i>
+    `
+
 var value_age = 6;
 DICT_AGES_STR = {
     0: "0 - 9",
@@ -127,7 +162,7 @@ DICT_AGES_STR = {
 }
 
 function get_icon_body(color="black"){
-    return `<svg id="Icons" height="35" viewBox="0 0 74 74" width="30" xmlns="http://www.w3.org/2000/svg" fill="${color}"><path d="m45.74 19.75h-17.48a6 6 0 0 0 -6 6v19.57a2.15 2.15 0 0 0 4.29 0v-11.32a1.11 1.11 0 0 1 2.22 0v34.44a3.56 3.56 0 0 0 7.12 0v-17.66a1.11 1.11 0 0 1 2.22 0v17.66a3.56 3.56 0 0 0 7.12 0v-34.44a1.11 1.11 0 0 1 2.22 0v11.32a2.15 2.15 0 0 0 4.29 0v-19.58a6 6 0 0 0 -6-5.99z"/><circle cx="37" cy="8.87" r="6.87"/></svg>`
+    return `<svg id="Icons" height="40" viewBox="0 0 74 74" width="31" xmlns="http://www.w3.org/2000/svg" fill="${color}"><path d="m45.74 19.75h-17.48a6 6 0 0 0 -6 6v19.57a2.15 2.15 0 0 0 4.29 0v-11.32a1.11 1.11 0 0 1 2.22 0v34.44a3.56 3.56 0 0 0 7.12 0v-17.66a1.11 1.11 0 0 1 2.22 0v17.66a3.56 3.56 0 0 0 7.12 0v-34.44a1.11 1.11 0 0 1 2.22 0v11.32a2.15 2.15 0 0 0 4.29 0v-19.58a6 6 0 0 0 -6-5.99z"/><circle cx="37" cy="8.87" r="6.87"/></svg>`
 }
 
 function get_bed_icon(color){
@@ -147,38 +182,21 @@ function get_bed_icon(color){
                     C0,718,13.4,731.5,30,731.5z"/>
             </g>
         </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
         </svg>
 `
+}
+
+function radioButtonChanged(type){
+    if(type=="ensemble"){
+        slider.setAttribute('disabled', true);
+        document.getElementById("age").innerHTML = "--";
+    }
+
+    if(type=="tranche"){
+        slider.removeAttribute('disabled');
+        sliderChanged();
+    }
+
 }
 
 function get_bodies(number, color="black"){
@@ -200,39 +218,70 @@ function get_beds(number, color="black"){
 }
 
 populateFigure()
-function populateFigure(){
+function populateFigure(sur_risque=0){
     let figure_vax = get_bodies(1, LIGHT_BLUE);
-    let figure_non_vax = get_bodies(21, "orange");
-    document.getElementById("figure-vax").innerHTML = figure_vax;
-    document.getElementById("figure-non-vax").innerHTML = figure_non_vax;
+    let figure_non_vax = get_bodies(sur_risque, "orange");
+    
+    if(sur_risque == 0){
+        document.getElementById("figure-vax").innerHTML = MSG_DONNEES_INSUFFISANTES;
+        document.getElementById("figure-non-vax").innerHTML = MSG_DONNEES_INSUFFISANTES;
+    }
+    else{
+        document.getElementById("figure-vax").innerHTML = figure_vax;
+        document.getElementById("chiffre-vax").innerHTML = 1;
+        document.getElementById("chiffre-non-vax").innerHTML = sur_risque;
+        document.getElementById("chiffre-non-vax-paragraphe").innerHTML = sur_risque;
+        document.getElementById("figure-non-vax").innerHTML = figure_non_vax;
+    }
 }
 
-populateFigureHosp()
+populateFigureHosp(sur_risque=0)
 function populateFigureHosp(){
     let figure_vax = get_beds(1, LIGHT_BLUE);
-    let figure_non_vax = get_beds(21, "orange");
-    document.getElementById("figure-vax-hosp").innerHTML = figure_vax;
-    document.getElementById("figure-non-vax-hosp").innerHTML = figure_non_vax;
+    let figure_non_vax = get_beds(sur_risque, "orange");
+
+    if(sur_risque == 0){
+        document.getElementById("figure-vax-hosp").innerHTML = MSG_DONNEES_INSUFFISANTES;
+        document.getElementById("figure-non-vax-hosp").innerHTML = MSG_DONNEES_INSUFFISANTES;
+    }
+    else{
+        document.getElementById("figure-vax-hosp").innerHTML = figure_vax;
+        document.getElementById("chiffre-vax-hosp").innerHTML = 1;
+        document.getElementById("chiffre-non-vax-hosp").innerHTML = sur_risque;
+        document.getElementById("chiffre-non-vax-hosp-paragraphe").innerHTML = sur_risque;
+        document.getElementById("figure-non-vax-hosp").innerHTML = figure_non_vax;
+    }
 }
 
-populateFigureDecesEvitables();
+populateFigureDecesEvitables(dc_evitables=0);
 function populateFigureDecesEvitables(){
-    var figure_vax = get_bodies(16, "grey");
-    figure_vax += get_bodies(84, "red");
+    var figure_vax = get_bodies(100-dc_evitables, "grey");
+    figure_vax += get_bodies(dc_evitables, "red");
 
-    document.getElementById("figure-vax-evitables").innerHTML = figure_vax;
+    if(dc_evitables == 0){
+        document.getElementById("figure-vax-evitables").innerHTML = MSG_DONNEES_INSUFFISANTES;
+    }
+    else{
+        document.getElementById("chiffre-vax-evitables").innerHTML = dc_evitables;
+        document.getElementById("chiffre-vax-evitables-paragraphe").innerHTML = dc_evitables;
+        document.getElementById("figure-vax-evitables").innerHTML = figure_vax;
+    }
 }
 
-populateFigureHospEvitables();
+populateFigureHospEvitables(hosp_evitables=0);
 function populateFigureHospEvitables(){
-    var figure_vax = get_beds(16, "grey");
-    figure_vax += get_beds(84, "red");
-
-    document.getElementById("figure-vax-hosp-evitables").innerHTML = figure_vax;
+    var figure_vax = get_beds(100-hosp_evitables, "grey");
+    figure_vax += get_beds(hosp_evitables, "red");
+    if(hosp_evitables == 0){
+        document.getElementById("figure-vax-hosp-evitables").innerHTML = MSG_DONNEES_INSUFFISANTES;
+    }
+    else{
+        document.getElementById("chiffre-vax-hosp-evitables").innerHTML = hosp_evitables;
+        document.getElementById("chiffre-vax-hosp-evitables-paragraphe").innerHTML = hosp_evitables;
+        document.getElementById("figure-vax-hosp-evitables").innerHTML = figure_vax;
+    }
 }
 
-
-var slider = document.getElementById('slider');
 buildNoUiSlider()
 
 function sliderChanged(){
@@ -254,9 +303,9 @@ function buildNoUiSlider(){
         range: {
             'min': 0,
             'max': 8,
-        }
+        },
     });
-    sliderChanged();
+    slider.setAttribute('disabled', true);
     slider.noUiSlider.on('change', function () { sliderChanged(); });
 }
 
