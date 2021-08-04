@@ -2,6 +2,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.css" integrity="sha512-XXtRBFtk/QfR8GEWwQPYjrQBHQwjidXg0wo8HJi9YOaFycWqd2uWkjJoAyx8Mb/+H8uhvmf70EAIxDnQxrwrvw==" crossorigin="anonymous" />
 
 <style>
+.wrap {
+        display: flex;
+        margin-top: 0px;
+        flex-wrap: wrap;
+    }
+.wrap>* {
+    flex: 1 1 200px;
+}
 .boxshadow {
         border: 0px solid black;
         margin-top: 20px;
@@ -16,6 +24,20 @@
         background: #ffffff;
     }
 
+.boxshadow-wide {
+    border: 0px solid black;
+    margin-top: 20px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 7px;
+    margin-right: 15px;
+    max-width: 800px;
+    text-align: left;
+    /*box-shadow: 6px 4px 25px #c3d19d;*/
+    box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+    width: 100%;
+    background: #ffffff;
+}
+
 .title {
     margin-top: 70px;
 }
@@ -26,66 +48,54 @@
     <span style="font-size: 20px;">Âge :  <span id="age">--</span> ans</span>
     <div id="slider" style="max-width: 400px; margin-top: 5px;"></div>
 
-    <br><br>
-    Le risque de décéder de la Covid19 à <span id="age_paragraphe">--</span> ans est <b>21 fois plus élevé chez les personnes non vaccinées</b> que chez les personnes totalement vaccinées.<br><br>
-    Cela signifie que si vous observez deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe2">--</span>  ans et l'autre non vaccinés, s'il y a un décès dans le groupe vacciné, alors il y aura 21 décès dans le groupe non vacciné.
-    <br>
-
-    <h4 class="title">La vaccination diminue le risque d'hôspitalisation</h4>
-    <div class="container" style="margin-top: 20px;">
-        <div class="row">
-            <div class="col-sm boxshadow" style="">
+    <h4 class="title">La vaccination diminue le risque d'hospitalisation</h4>
+    Imaginons deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe2">--</span>  ans et l'autre non vaccinés, s'il y a une personne hospitalisée dans le groupe vacciné, alors il y aura 21 hospitalisations dans le groupe non vacciné.
+    <div class="wrap" style="margin-top: 20px;">
+            <div class="boxshadow" style="">
                 <span style="color:#4fafd9; font-size: 20px;">Groupe vacciné • </span>
                 <span style="color:#4fafd9; font-size: 20px; font-weight: bold;">1 hospitalisation</span><br>
                 <div id="figure-vax-hosp" style="margin-top: 10px;"></div>
             </div>
-            <div class="col-sm boxshadow">
+            <div class="boxshadow">
                 <span style="color:orange; font-size: 20px;">Groupe non vacciné • </span>
                 <span style="color:orange; font-size: 20px; font-weight: bold;">21 hospitalisations</span><br>
                 <div id="figure-non-vax-hosp" style="margin-top: 10px;"></div>
             </div>
-        </div>
     </div>
 
     <h4 class="title">La vaccination diminue le risque de décès</h4>
-    <div class="container" style="margin-top: 20px;">
-        
-        <div class="row">
-            <div class="col-sm boxshadow" style="">
+    Imaginons deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe2">--</span>  ans et l'autre non vaccinés, s'il y a un décès dans le groupe vacciné, alors il y aura 21 décès dans le groupe non vacciné.
+    <div class="wrap" style="margin-top: 20px;">
+            <div class="boxshadow" style="">
                 <span style="color:#4fafd9; font-size: 20px;">Groupe vacciné • </span>
                 <span style="color:#4fafd9; font-size: 20px; font-weight: bold;">1 décès</span><br>
                 <div id="figure-vax" style="margin-top: 10px;"></div>
             </div>
-            <div class="col-sm boxshadow">
+            <div class="boxshadow">
                 <span style="color:orange; font-size: 20px;">Groupe non vacciné • </span>
                 <span style="color:orange; font-size: 20px; font-weight: bold;">21 décès</span><br>
                 <div id="figure-non-vax" style="margin-top: 10px;"></div>
             </div>
-        </div>
     </div>
 
     <h4 class="title">Combien d'hospitalisations peuvent-être évitées ?</h4>
-    <div class="container" style="margin-top: 20px;">
-        <div class="row">
-            <div class="col-sm boxshadow" style="">
+    <div class="wrap" style="margin-top: 20px;">
+            <div class="boxshadow-wide" style="">
                 <span style="color:black; font-size: 20px;">Hospitalisations attribuables à la non-vaccination • </span>
                 <span style="color:red; font-size: 20px; font-weight: bold;">84 %</span><br>
                 Cela signifie que sur 100 hospitalisations de personnes ayant <span id="age_surrisque_hosp">--</span>  ans, 84 hospitalisations auraient pu être évités par la vaccination. <br>
                 <div id="figure-vax-hosp-evitables" style="margin-top: 10px;"></div>
             </div>
-        </div>
     </div>
 
     <h4 class="title">Combien de décès peuvent-être évités ?</h4>
-    <div class="container" style="margin-top: 20px;">
-        <div class="row">
-            <div class="col-sm boxshadow" style="">
+    <div class="wrap" style="margin-top: 20px;">
+            <div class="boxshadow-wide" style="">
                 <span style="color:black; font-size: 20px;">Décès attribuables à la non-vaccination • </span>
                 <span style="color:red; font-size: 20px; font-weight: bold;">84 %</span><br>
                 Cela signifie que sur 100 décès de personnes ayant <span id="age_surrisque">--</span>  ans, 84 décès auraient pu être évités par la vaccination. <br>
                 <div id="figure-vax-evitables" style="margin-top: 10px;"></div>
             </div>
-        </div>
     </div>
 
     <br>
@@ -224,7 +234,7 @@ buildNoUiSlider()
 function sliderChanged(){
     let value = parseInt(slider.noUiSlider.get())
     document.getElementById("age").innerHTML = DICT_AGES_STR[value];
-    document.getElementById("age_paragraphe").innerHTML = DICT_AGES_STR[value];
+    //document.getElementById("age_paragraphe").innerHTML = DICT_AGES_STR[value];
     document.getElementById("age_paragraphe2").innerHTML = DICT_AGES_STR[value];
     document.getElementById("age_surrisque").innerHTML = DICT_AGES_STR[value];
     value_start = value;
