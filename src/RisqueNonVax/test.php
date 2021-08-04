@@ -405,7 +405,7 @@
                 <div id="post-1648" class="post-1648 page type-page status-publish hentry"><h2 class="entry-title">
                         RisqueNonVax</h2>
                     <div class="entry">
-                        <?php include('./index.php') ?>
+                        <?php include('./risquenonvax.php') ?>
                     </div>
                 </div>
             </div>

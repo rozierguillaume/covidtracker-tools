@@ -34,7 +34,7 @@ Template Name: risquenonvax
 					    
 					    <div class="entry">
 
-                            <?php include(dirname(__FILE__) . '/src/RisqueNonVax/index.php') ?>
+                            <?php include(dirname(__FILE__) . '/src/RisqueNonVax/risquenonvax.php') ?>
 
 					    </div>
 					     
