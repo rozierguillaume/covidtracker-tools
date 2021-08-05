@@ -34,7 +34,7 @@ Template Name: template_vaximpact
 					    
 					    <div class="entry">
 
-                            <?php include(dirname(__FILE__) . '/src/RisqueNonVax/risquenonvax.php') ?>
+                            <?php include(dirname(__FILE__) . '/src/VaxImpact/vaximpact.php') ?>
 
 					    </div>
 					     
