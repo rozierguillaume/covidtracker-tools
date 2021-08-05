@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: risquenonvax
+Template Name: template_vaximpact
 */
 ?>
 

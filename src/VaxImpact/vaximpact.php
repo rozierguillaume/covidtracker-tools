@@ -47,7 +47,7 @@ p {
 </style>
 
 <body>
-    <p><b>Combien d'hospitalisations ont été évitées grâce au vaccin Covid19 ? Quelle est l'importance de la non-vaccination du Covid19 dans les décès hospitaliers ?</b> Cet outil permet d'évaluer l'impact de la vaccination sur les hospitalisations et décès de la Covid19. Ces statistiques s'appuient sur l'étude de la DREES effectuée entre le 30 mai et le 11 juin sur l'ensemble de la France. La méthodologie et les calculs sont décrits en bas de page.</p>
+    <p><b>Combien d'hospitalisations ont été évitées grâce au vaccin Covid19 ? Quelle est l'importance de la non vaccination du Covid19 dans les décès hospitaliers ?</b> Cet outil permet d'évaluer l'impact de la vaccination sur les hospitalisations et décès de la Covid19. Ces statistiques s'appuient sur l'étude de la DREES effectuée entre le 30 mai et le 11 juin sur l'ensemble de la France. La méthodologie et les calculs sont décrits en bas de page.</p>
     <br>
 
     <div>
@@ -62,8 +62,8 @@ p {
 
     <div id="slider" style="max-width: 200px; margin-top: 5px;"></div>
 
-    <h3 class="title">La vaccination diminue le risque d'hospitalisation</h3>
-    <p>Imaginons deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe2">--</span>  ans et l'autre non vaccinés. S'il y a une personne hospitalisée dans le groupe vacciné, alors il y aura probablement <span id="chiffre-non-vax-hosp-paragraphe">--</span> hospitalisations dans le groupe non vacciné.</p>
+    <h3 class="title">Impact de la vaccination sur le risque d'hospitalisation</h3>
+    <p>Imaginons deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe2">--</span> et l'autre non vaccinés. S'il y a une personne hospitalisée dans le groupe vacciné, alors il y aura probablement <span id="chiffre-non-vax-hosp-paragraphe">--</span> hospitalisations dans le groupe non vacciné.</p>
     <div class="wrap" style="margin-top: 20px;">
             <div class="boxshadow" style="">
                 <span style="color:#4fafd9; font-size: 20px;">Groupe vacciné • </span>
@@ -77,8 +77,8 @@ p {
             </div>
     </div>
 
-    <h3 class="title">La vaccination diminue le risque de décès</h3>
-    <p>Imaginons deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe3">--</span>  ans et l'autre non vaccinés. S'il y a un décès dans le groupe vacciné, alors il y aura probablement <span id="chiffre-non-vax-paragraphe">--</span> décès dans le groupe non vacciné.</p>
+    <h3 class="title">Impact de la vaccination sur le risque de décès</h3>
+    <p>Imaginons deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe3">--</span> et l'autre non vaccinés. S'il y a un décès dans le groupe vacciné, alors il y aura probablement <span id="chiffre-non-vax-paragraphe">--</span> décès dans le groupe non vacciné.</p>
     <div class="wrap" style="margin-top: 20px;">
             <div class="boxshadow" style="">
                 <span style="color:#4fafd9; font-size: 20px;">Groupe vacciné • </span>
@@ -92,25 +92,31 @@ p {
             </div>
     </div>
 
-    <h3 class="title">Combien d'hospitalisations peuvent-être évitées ?</h3>
+    <h3 class="title">Combien d'hospitalisations pourraient-être évitées ?</h3>
+    Cet indicateur permet d'estimer la proportion des hospitalisations parmi les personnes non vaccinées qui auraient pu être évités s'ils avaient été vaccinés.
     <div class="wrap" style="margin-top: 20px;">
             <div class="boxshadow-wide" style="">
-                <span style="color:black; font-size: 20px;">Hospitalisations attribuables à la non-vaccination • </span>
-                <span style="color:red; font-size: 20px; font-weight: bold;"><span id="chiffre-vax-hosp-evitables">--</span> %</span><br>
-                <p>Cela signifie que sur 100 hospitalisations de personnes ayant <span id="age_surrisque_hosp">--</span>  ans, <span id="chiffre-vax-hosp-evitables-paragraphe">--</span> hospitalisations auraient pu être évités par la vaccination. </p>
+                <span style="color:black; font-size: 20px;">Hospitalisations attribuables à la non vaccination • </span>
+                <span style="color:#3ab55f; font-size: 20px; font-weight: bold;"><span id="chiffre-vax-hosp-evitables">--</span> %</span><br>
+                <p>Cela signifie que sur 100 hospitalisations de personnes non vaccinées ayant <span id="age_surrisque_hosp">--</span> , <span id="chiffre-vax-hosp-evitables-paragraphe">--</span> hospitalisations auraient pu être évités par la vaccination. </p>
                 <div id="figure-vax-hosp-evitables" style="margin-top: 20px;"></div>
             </div>
     </div>
+    <br>
+    En population générale, le nombre d'hospitalisations qui auraient pu être évitées par la vaccination est de -- % (attention cet indicateur dépend du taux de vaccination).
 
-    <h3 class="title">Combien de décès peuvent-être évités ?</h3>
+    <h3 class="title">Combien de décès pourraient-être évités ?</h3>
+    Cet indicateur permet d'estimer la proportion des décès parmi les personnes non vaccinées qui auraient pu être évités s'ils avaient été vaccinés.
     <div class="wrap" style="margin-top: 20px;">
             <div class="boxshadow-wide" style="">
-                <span style="color:black; font-size: 20px;">Décès attribuables à la non-vaccination • </span>
-                <span style="color:red; font-size: 20px; font-weight: bold;"><span id="chiffre-vax-evitables">--</span> %</span><br>
-                <p>Cela signifie que sur 100 décès de personnes ayant <span id="age_surrisque">--</span>  ans, <span id="chiffre-vax-evitables-paragraphe">--</span> décès auraient pu être évités par la vaccination. </p>
+                <span style="color:black; font-size: 20px;">Décès attribuables à la non vaccination • </span>
+                <span style="color:#3ab55f; font-size: 20px; font-weight: bold;"><span id="chiffre-vax-evitables">--</span> %</span><br>
+                <p>Cela signifie que sur 100 décès de personnes non vaccinées ayant <span id="age_surrisque">--</span> , <span id="chiffre-vax-evitables-paragraphe">--</span> décès auraient pu être évités par la vaccination. </p>
                 <div id="figure-vax-evitables" style="margin-top: 20px;"></div>
             </div>
     </div>
+    <br>
+    En population générale, le nombre de décès qui auraient pu être évités par la vaccination est de -- % (attention cet indicateur dépend du taux de vaccination).
 
     <br>
     <br>
@@ -124,6 +130,7 @@ p {
 <script>
 var slider = document.getElementById('slider');
 LIGHT_BLUE = "#4fafd9"
+LIGHT_GREEN = "#3ab55f" //"#4fd978"
 MSG_DONNEES_INSUFFISANTES = ` 
 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="15px" width="15px" x="0px" y="0px"
         viewBox="0 0 512 512" style="enable-background:new 0 0 512 512; margin-right: 3px;" xml:space="preserve">
@@ -150,15 +157,16 @@ MSG_DONNEES_INSUFFISANTES = `
 
 var value_age = 6;
 DICT_AGES_STR = {
-    0: "0 - 9",
-    1: "10 - 19",
-    2: "20 - 29",
-    3: "30 - 39",
-    4: "40 - 49",
-    5: "50 - 59",
-    6: "60 - 69",
-    7: "70 - 79",
-    8: "80 - 89",
+    100 : "tous âges",
+    0: "0 - 9 ans",
+    1: "10 - 19 ans",
+    2: "20 - 29 ans",
+    3: "30 - 39 ans",
+    4: "40 - 49 ans",
+    5: "50 - 59 ans",
+    6: "60 - 69 ans",
+    7: "70 - 79 ans",
+    8: "80 - 89 ans",
 }
 
 function get_icon_body(color="black"){
@@ -190,6 +198,7 @@ function radioButtonChanged(type){
     if(type=="ensemble"){
         slider.setAttribute('disabled', true);
         document.getElementById("age").innerHTML = "--";
+        change_ages(100);
     }
 
     if(type=="tranche"){
@@ -217,7 +226,14 @@ function get_beds(number, color="black"){
 
 }
 
-populateFigure()
+update_stats();
+function update_stats(){
+    populateFigureHosp(sur_risque=14);
+    populateFigure(sur_risque=12);
+    populateFigureDecesEvitables(dc_evitables=80);
+    populateFigureHospEvitables(hosp_evitables=82);
+}
+
 function populateFigure(sur_risque=0){
     let figure_vax = get_bodies(1, LIGHT_BLUE);
     let figure_non_vax = get_bodies(sur_risque, "orange");
@@ -235,7 +251,6 @@ function populateFigure(sur_risque=0){
     }
 }
 
-populateFigureHosp(sur_risque=0)
 function populateFigureHosp(){
     let figure_vax = get_beds(1, LIGHT_BLUE);
     let figure_non_vax = get_beds(sur_risque, "orange");
@@ -253,10 +268,9 @@ function populateFigureHosp(){
     }
 }
 
-populateFigureDecesEvitables(dc_evitables=0);
 function populateFigureDecesEvitables(){
     var figure_vax = get_bodies(100-dc_evitables, "grey");
-    figure_vax += get_bodies(dc_evitables, "red");
+    figure_vax += get_bodies(dc_evitables, LIGHT_GREEN);
 
     if(dc_evitables == 0){
         document.getElementById("figure-vax-evitables").innerHTML = MSG_DONNEES_INSUFFISANTES;
@@ -268,10 +282,9 @@ function populateFigureDecesEvitables(){
     }
 }
 
-populateFigureHospEvitables(hosp_evitables=0);
 function populateFigureHospEvitables(){
     var figure_vax = get_beds(100-hosp_evitables, "grey");
-    figure_vax += get_beds(hosp_evitables, "red");
+    figure_vax += get_beds(hosp_evitables, LIGHT_GREEN);
     if(hosp_evitables == 0){
         document.getElementById("figure-vax-hosp-evitables").innerHTML = MSG_DONNEES_INSUFFISANTES;
     }
@@ -284,14 +297,19 @@ function populateFigureHospEvitables(){
 
 buildNoUiSlider()
 
-function sliderChanged(){
-    let value = parseInt(slider.noUiSlider.get())
-    document.getElementById("age").innerHTML = DICT_AGES_STR[value];
-    //document.getElementById("age_paragraphe").innerHTML = DICT_AGES_STR[value];
+change_ages(100)
+function change_ages(value){
     document.getElementById("age_paragraphe2").innerHTML = DICT_AGES_STR[value];
     document.getElementById("age_paragraphe3").innerHTML = DICT_AGES_STR[value];
     document.getElementById("age_surrisque_hosp").innerHTML = DICT_AGES_STR[value];
     document.getElementById("age_surrisque").innerHTML = DICT_AGES_STR[value];
+}
+
+function sliderChanged(){
+    let value = parseInt(slider.noUiSlider.get())
+    document.getElementById("age").innerHTML = DICT_AGES_STR[value];
+    //document.getElementById("age_paragraphe").innerHTML = DICT_AGES_STR[value];
+    change_ages(value);
     value_start = value;
 }
 
