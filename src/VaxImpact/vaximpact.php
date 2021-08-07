@@ -49,7 +49,7 @@ p {
 <body>
     <p><b>Combien d'hospitalisations ont été évitées grâce au vaccin Covid19 ? Quelle est l'importance de la non vaccination du Covid19 dans les décès hospitaliers ?</b> Cet outil permet d'évaluer l'impact de la vaccination sur les hospitalisations et décès de la Covid19. Ces statistiques s'appuient sur l'étude de la DREES effectuée entre le 30 mai et le 11 juin sur l'ensemble de la France. La méthodologie et les calculs sont décrits en bas de page.</p>
     <br>
-
+    <!--
     <div>
     <input type="radio" id="ensemble-population" name="population" value="ensemble-population" onchange="radioButtonChanged('ensemble')" checked>
     <label for="ensemble-population">Ensemble de la population</label>
@@ -59,8 +59,33 @@ p {
     <input type="radio" id="tranche-age" name="population" value="tranche-age" onchange="radioButtonChanged('tranche')">
     <label for="tranche-age">Tranche d'âge : <span id="age">--</span> ans</label>
     </div>
+    
 
     <div id="slider" style="max-width: 200px; margin-top: 5px;"></div>
+    -->
+
+    <div class="row charts lineaire">
+            <div class="col-md-6">
+                <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/cas_journ.jpeg" target="_blank" rel="noopener noreferrer">
+                    <img id="imageTab" src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/cas_journ.jpeg" width="100%">
+                </a>
+            </div>
+            <div class="col-md-6">
+                <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hosp_journ.jpeg" target="_blank" rel="noopener noreferrer">
+                    <img id="imageTab" src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hc_proportion_selon_statut_vaccinal.jpeg" width="100%">
+                </a>
+            </div>
+            <div class="col-md-6">
+                <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/rea_journ.jpeg" target="_blank" rel="noopener noreferrer">
+                    <img id="imageTab" src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/sc_proportion_selon_statut_vaccinal.jpeg" width="100%">
+                </a>
+            </div>
+            <div class="col-md-6">
+                <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/dc_journ.jpeg" target="_blank" rel="noopener noreferrer">
+                    <img id="imageTab" src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/dc_proportion_selon_statut_vaccinal.jpeg" width="100%">
+                </a>
+            </div>
+    </div>
 
     <h3 class="title">Impact de la vaccination sur le risque d'hospitalisation</h3>
     <p>Imaginons deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe2">--</span> et l'autre non vaccinés. S'il y a une personne hospitalisée dans le groupe vacciné, alors il y aura probablement <span id="chiffre-non-vax-hosp-paragraphe">--</span> hospitalisations dans le groupe non vacciné.</p>
