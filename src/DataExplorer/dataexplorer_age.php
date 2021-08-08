@@ -118,7 +118,7 @@ var age_descriptions = {
     "incid_reanimations": "Nombre d'admissions quotidiennes en réanimation pour Covid19 (moyenne glissante 7 jours).",
     "deces_hospitaliers": "Nombre de décès quotidiens pour Covid19 à l'hôpital (moyenne glissante 7 jours).",
     "cas": "Nombre de tests positifs quotidiens (RT-PCR et antigéniques) (moyenne glissante 7 jours).",
-    "cas_croissance_hebdo": "Croissance du nombre de cas positifs entre J-0 et J-7 (en %).",
+    "cas_croissance_hebdo": "Croissance du nombre de cas positifs (moyenne mobile de 7 j.) sur une semaine (en %).",
     "tests": "Nombre de tests quotidiens (positifs et négatifs) (moyenne glissante 7 jours).",
     "nbre_acte_corona": "Nombre d'actes SOS médecin pour suspicion Covid19 (moyenne glissante 7 jours).",
     "nbre_pass_corona": "Nombre de passages aux urgences pour suspicion Covid19 (moyenne glissante 7 jours).",
