@@ -16,6 +16,7 @@
                     <optgroup label="Indicateurs épidémiques">
                         <option value="incidence">Taux d'incidence</option>
                         <option value="cas">Cas positifs</option>
+                        <option value="cas_croissance_hebdo">Croissance cas positifs</option>
                         <option value="tests">Dépistage</option>
                         <option value="taux_positivite">Taux de positivite</option>
                     </optgroup>
@@ -117,6 +118,7 @@ var age_descriptions = {
     "incid_reanimations": "Nombre d'admissions quotidiennes en réanimation pour Covid19 (moyenne glissante 7 jours).",
     "deces_hospitaliers": "Nombre de décès quotidiens pour Covid19 à l'hôpital (moyenne glissante 7 jours).",
     "cas": "Nombre de tests positifs quotidiens (RT-PCR et antigéniques) (moyenne glissante 7 jours).",
+    "cas_croissance_hebdo": "Croissance du nombre de cas positifs entre J-0 et J-7 (en %).",
     "tests": "Nombre de tests quotidiens (positifs et négatifs) (moyenne glissante 7 jours).",
     "nbre_acte_corona": "Nombre d'actes SOS médecin pour suspicion Covid19 (moyenne glissante 7 jours).",
     "nbre_pass_corona": "Nombre de passages aux urgences pour suspicion Covid19 (moyenne glissante 7 jours).",
@@ -131,6 +133,7 @@ var age_titres = {
     "incid_reanimations": "Nouvelles admissions en réanimation",
     "deces_hospitaliers": "Décès hospitaliers",
     "cas": "Cas positifs",
+    "cas_croissance_hebdo": "Croissance sur 7 jours des cas positifs",
     "tests": "Dépistage",
     "nbre_acte_corona": "Actes SOS médecin pour Covid19",
     "nbre_pass_corona": "Passages aux urgences pour Covid19",
@@ -269,9 +272,13 @@ function changeTimeAge(){
         })
     })
     
+    if(age_selected_age_data=="cas_croissance_hebdo"){
+        y_max=200
+    }
+
     age_dataExplorerAgeChart.options.scales.yAxes.map((axis, idx) => {
         axis.ticks = {
-        min: 0,
+        //min: 0,
         max: Math.round(y_max)
         }
     })
@@ -448,7 +455,7 @@ function populateTerritoires(){
 
 fetchage_data();
 function fetchage_data(){
-    fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/dataexplorer_compr_age.json', {cache: 'no-cache'})
+    fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/dataexplorer_compr_age_beta.json', {cache: 'no-cache'})
         .then(response => {
             if (!response.ok) {
                 throw new Error("HTTP error " + response.status);
@@ -603,9 +610,9 @@ function buildEmptyChartAge() {
                     gridLines: {
                         display: false
                     },
-                    ticks: {
-                        min: 0
-                    },
+                    //ticks: {
+                        //min: 0
+                    //},
 
                 }],
                 xAxes: [{

@@ -426,7 +426,8 @@ function populateTerritoireSelect(){
     
     if (typeDonnees!="obepine"){
         html_code += "<br><i>France</i><br>"
-        html_code += "<div class='checkbox'><label>" + `<input type='checkbox' id='france' onchange="boxChecked('france')">France` + "</label></div>" + "<br>"
+        html_code += "<div class='checkbox'><label>" + `<input type='checkbox' id='france' onchange="boxChecked('france')">France` + "</label></div><br>"
+        html_code += "<div class='checkbox'><label>" + `<input type='checkbox' id='metropole' onchange="boxChecked('metropole')">Métropole` + "</label></div>" + "<br>"
     }
 
     if (typeDonnees!="deces_ehpad"){
