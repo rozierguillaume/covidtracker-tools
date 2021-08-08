@@ -146,7 +146,8 @@ var noms_zones = {
     "zone_b": "Zone B",
     "zone_c": "Zone C",
     "france": "France",
-   
+    "metropole": "Métropole",
+    "drom_com": "DROM-COM",
 }
 
 var credits = ""//"<br><small>CovidTracker.fr/<b>CovidExplorer</b></small>"
@@ -428,6 +429,8 @@ function populateTerritoireSelect(){
         html_code += "<br><i>France</i><br>"
         html_code += "<div class='checkbox'><label>" + `<input type='checkbox' id='france' onchange="boxChecked('france')">France` + "</label></div><br>"
         html_code += "<div class='checkbox'><label>" + `<input type='checkbox' id='metropole' onchange="boxChecked('metropole')">Métropole` + "</label></div>" + "<br>"
+        html_code += "<div class='checkbox'><label>" + `<input type='checkbox' id='drom_com' onchange="boxChecked('drom_com')">DROM-COM` + "</label></div>" + "<br>"
+
     }
 
     if (typeDonnees!="deces_ehpad"){
