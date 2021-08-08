@@ -455,7 +455,7 @@ function populateTerritoires(){
 
 fetchage_data();
 function fetchage_data(){
-    fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/dataexplorer_compr_age_beta.json', {cache: 'no-cache'})
+    fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/dataexplorer_compr_age.json', {cache: 'no-cache'})
         .then(response => {
             if (!response.ok) {
                 throw new Error("HTTP error " + response.status);
