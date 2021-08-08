@@ -40,15 +40,18 @@ p {
     width: 100%;
     background: #ffffff;
 }
-
+.title_h2 {
+    margin-top: 100px;
+    margin-bottom: 10px;
+}
 .title {
-    margin-top: 70px;
+    margin-top: 40px;
 }
 </style>
 
 <body>
     <p><b>Combien d'hospitalisations ont été évitées grâce au vaccin Covid19 ? Quelle est l'importance de la non vaccination du Covid19 dans les décès hospitaliers ?</b> Cet outil permet d'évaluer l'impact de la vaccination sur les hospitalisations et décès de la Covid19. Ces statistiques s'appuient sur l'étude de la DREES effectuée entre le 30 mai et le 11 juin sur l'ensemble de la France. La méthodologie et les calculs sont décrits en bas de page.</p>
-    <br>
+    
     <!--
     <div>
     <input type="radio" id="ensemble-population" name="population" value="ensemble-population" onchange="radioButtonChanged('ensemble')" checked>
@@ -64,7 +67,7 @@ p {
     <div id="slider" style="max-width: 200px; margin-top: 5px;"></div>
     -->
 
-    <h3 class="title">Impact de la vaccination sur les indicateurs</h3>
+    <h2 class="title_h2">Impact de la vaccination sur les indicateurs</h2>
     <p>Ces quatre graphiques permettent de visualier les quatre principaux indicateurs de l'épidémie (cas symptomatiques, admissions à l'hôpital et en soins critiques, décès hospitaliers) suivant le statut vaccinal des personnes. Les données sont rapportées au nombre de personnes de chaque groupe afin d'écarter le biai lié à la couverture vaccinale.</p>
     <div class="row charts lineaire">
             <div class="col-md-6">
@@ -89,7 +92,8 @@ p {
             </div>
     </div>
 
-    <h3 class="title">Impact de la vaccination sur le risque d'hospitalisation</h3>
+    <h2 class="title_h2">Impact de la vaccination sur les formes graves</h2>
+    <h3 class="title">Risque d'hospitalisation</h3>
     <p>Imaginons deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe2">--</span> et l'autre non vaccinés. S'il y a une personne hospitalisée dans le groupe vacciné, alors il y aura probablement <span id="chiffre-non-vax-hosp-paragraphe">--</span> hospitalisations dans le groupe non vacciné.</p>
     <div class="wrap" style="margin-top: 20px;">
             <div class="boxshadow" style="">
@@ -104,7 +108,7 @@ p {
             </div>
     </div>
 
-    <h3 class="title">Impact de la vaccination sur le risque de décès</h3>
+    <h3 class="title">Risque de décès</h3>
     <p>Imaginons deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe3">--</span> et l'autre non vaccinés. S'il y a un décès dans le groupe vacciné, alors il y aura probablement <span id="chiffre-non-vax-paragraphe">--</span> décès dans le groupe non vacciné.</p>
     <div class="wrap" style="margin-top: 20px;">
             <div class="boxshadow" style="">
@@ -119,7 +123,8 @@ p {
             </div>
     </div>
 
-    <h3 class="title">Combien d'hospitalisations pourraient-être évitées ?</h3>
+    <h2 class="title_h2">Formes graves évitables par la vaccination</h2>
+    <h3 class="title">Hospitalisations</h3>
     Cet indicateur permet d'estimer la proportion des hospitalisations parmi les personnes non vaccinées qui auraient pu être évités s'ils avaient été vaccinés.
     <div class="wrap" style="margin-top: 20px;">
             <div class="boxshadow-wide" style="">
@@ -132,7 +137,7 @@ p {
     <br>
     En population générale, le nombre d'hospitalisations qui auraient pu être évitées par la vaccination est de -- % (attention cet indicateur dépend du taux de vaccination).
 
-    <h3 class="title">Combien de décès pourraient-être évités ?</h3>
+    <h3 class="title">Décès</h3>
     Cet indicateur permet d'estimer la proportion des décès parmi les personnes non vaccinées qui auraient pu être évités s'ils avaient été vaccinés.
     <div class="wrap" style="margin-top: 20px;">
             <div class="boxshadow-wide" style="">
@@ -147,10 +152,19 @@ p {
 
     <br>
     <br>
-    <h4>Méthodologie</h4>
-    <p>Ces statistiques sont obtenues à partir des données publiées par la DREES. Elles seront mises à jour lors de la publication de nouvelles données.</p>
-
-    Auteurs : Sacha Guilhaumou, Guillaume Rozier.
+    <br>
+    <br>
+    <div style="border:solid 2px rgba(0, 0, 0, 0.1); border-radius: 10px; padding: 30px;">
+        <h2>Méthodologie</h2>
+        <p>Ces statistiques sont obtenues à partir des données publiées par la DREES. Elles seront mises à jour lors de la publication de nouvelles données.</p>
+        <img src="https://raw.githubusercontent.com/CovidTrackerFr/data-utils/main/vaximpact/data/impact_vaccin_covid.jpg" style="max-width: 700px;"/>
+        <img src="https://raw.githubusercontent.com/CovidTrackerFr/data-utils/main/vaximpact/data/impact_vaccin_covid2.jpg" style="max-width: 700px;"/>
+        <img src="https://raw.githubusercontent.com/CovidTrackerFr/data-utils/main/vaximpact/data/impact_vaccin_covid3.jpg" style="max-width: 700px;"/>
+        <img src="https://raw.githubusercontent.com/CovidTrackerFr/data-utils/main/vaximpact/data/impact_vaccin_covid4.jpg" style="max-width: 700px;"/>
+        <img src="https://raw.githubusercontent.com/CovidTrackerFr/data-utils/main/vaximpact/data/impact_vaccin_covid5.jpg" style="max-width: 700px;"/>
+        <br>
+        Auteurs : Sacha Guilhaumou, Guillaume Rozier.
+    </div>
     
 </body>
 
