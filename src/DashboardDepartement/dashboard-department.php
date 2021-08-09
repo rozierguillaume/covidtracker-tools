@@ -124,6 +124,16 @@ if (isset($_GET['dep']) and $_GET['dep']) {
             </div>
         </div>
 
+        <h3 style="margin-top: 40px;">Comparaison cas et décès</h3>
+        <p>Ce graphique permet de comparer les cas positifs et les décès, en miroir, afin de visualiser l'effet de la vaccination.</p>
+        <p align="center">
+            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/comparaison_cas_dc_nomDepartement.jpeg"
+               target="_blank" rel="noopener noreferrer">
+                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/comparaison_cas_dc_nomDepartement.jpeg"
+                     width="100%" style="max-width: 1000px;">
+            </a>
+        </p>
+
         <h3 style="margin-top: 40px;">Nombre de variants</h3>
         <p>Estimation du nombre de chaque variants dans les cas détectés. L'estimation est réalisée à partir de la proportion de chaque variants dans les tests positifs criblés, et du nombre total de tests positifs.</p>
         <p align="center">
