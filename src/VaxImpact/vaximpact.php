@@ -50,7 +50,8 @@ p {
 </style>
 
 <body>
-    <p><b>Combien d'hospitalisations ont été évitées grâce au vaccin Covid19 ? Quelle est l'importance de la non vaccination du Covid19 dans les décès hospitaliers ?</b> Cet outil permet d'évaluer l'impact de la vaccination sur les hospitalisations et décès de la Covid19. Ces statistiques s'appuient sur l'étude de la DREES effectuée entre le 30 mai et le 11 juin sur l'ensemble de la France. La méthodologie et les calculs sont décrits en bas de page.</p>
+    <p><b>Combien d'hospitalisations ont été évitées grâce au vaccin Covid19 ? Quelle est l'importance de la non vaccination du Covid19 dans les décès hospitaliers ?</b> Cet outil permet d'évaluer l'impact de la vaccination sur les hospitalisations et décès de la Covid19.
+    Ces statistiques s'appuient sur les données issues des études de la DREES mises à jour chaque semaine (dernière : <span id="date-maj-1">-/-/-</span>). La méthodologie et les calculs sont décrits en bas de page.</p>
     
     <!--
     <div>
@@ -107,6 +108,7 @@ p {
                 <div id="figure-non-vax-hosp" style="margin-top: 20px;"></div>
             </div>
     </div>
+    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span id="date-maj-2">-/-/-</span> • Données DREES • VaxImpact.fr</div>
 
     <h3 class="title">Risque de décès</h3>
     <p>Imaginons deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe3">--</span> et l'autre non vaccinés. S'il y a un décès dans le groupe vacciné, alors il y aura probablement <span id="chiffre-non-vax-paragraphe">--</span> décès dans le groupe non vacciné.</p>
@@ -122,6 +124,8 @@ p {
                 <div id="figure-non-vax" style="margin-top: 20px;"></div>
             </div>
     </div>
+    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span id="date-maj-3">-/-/-</span> • Données DREES • VaxImpact.fr</div>
+
 
     <h2 class="title_h2">Formes graves évitables par la vaccination</h2>
     <h3 class="title">Hospitalisations</h3>
@@ -130,25 +134,27 @@ p {
             <div class="boxshadow-wide" style="">
                 <span style="color:black; font-size: 20px;">Hospitalisations attribuables à la non vaccination • </span>
                 <span style="color:#3ab55f; font-size: 20px; font-weight: bold;"><span id="chiffre-vax-hosp-evitables">--</span> %</span><br>
-                <p>Cela signifie que sur 100 hospitalisations de personnes non vaccinées ayant <span id="age_surrisque_hosp">--</span> , <span id="chiffre-vax-hosp-evitables-paragraphe">--</span> hospitalisations auraient pu être évités par la vaccination. </p>
+                <p>Cela signifie que sur 100 hospitalisations de personnes non vaccinées ayant <span id="age_surrisque_hosp">--</span>, <span id="chiffre-vax-hosp-evitables-paragraphe">--</span> hospitalisations auraient pu être évités par la vaccination. </p>
                 <div id="figure-vax-hosp-evitables" style="margin-top: 20px;"></div>
             </div>
     </div>
+    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span id="date-maj-4">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
-    En population générale, le nombre d'hospitalisations qui auraient pu être évitées par la vaccination est de -- % (attention cet indicateur dépend du taux de vaccination).
-
+    En population générale, le nombre d'hospitalisations qui auraient pu être évitées par la vaccination est de <span id="chiffre-vax-hosp-evitables-pop-generale">--</span> % (attention cet indicateur dépend du taux de vaccination).
+    
     <h3 class="title">Décès</h3>
     Cet indicateur permet d'estimer la proportion des décès parmi les personnes non vaccinées qui auraient pu être évités s'ils avaient été vaccinés.
     <div class="wrap" style="margin-top: 20px;">
             <div class="boxshadow-wide" style="">
                 <span style="color:black; font-size: 20px;">Décès attribuables à la non vaccination • </span>
                 <span style="color:#3ab55f; font-size: 20px; font-weight: bold;"><span id="chiffre-vax-evitables">--</span> %</span><br>
-                <p>Cela signifie que sur 100 décès de personnes non vaccinées ayant <span id="age_surrisque">--</span> , <span id="chiffre-vax-evitables-paragraphe">--</span> décès auraient pu être évités par la vaccination. </p>
+                <p>Cela signifie que sur 100 décès de personnes non vaccinées ayant <span id="age_surrisque">--</span>, <span id="chiffre-vax-evitables-paragraphe">--</span> décès auraient pu être évités par la vaccination. </p>
                 <div id="figure-vax-evitables" style="margin-top: 20px;"></div>
             </div>
     </div>
+    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span id="date-maj-5">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
-    En population générale, le nombre de décès qui auraient pu être évités par la vaccination est de -- % (attention cet indicateur dépend du taux de vaccination).
+    En population générale, le nombre de décès qui auraient pu être évités par la vaccination est de <span id="chiffre-vax-evitables-pop-generale">--</span> % (attention cet indicateur dépend du taux de vaccination).
 
     <br>
     <br>
@@ -170,9 +176,9 @@ p {
 
 <script>
 var slider = document.getElementById('slider');
-LIGHT_BLUE = "#4fafd9"
-LIGHT_GREEN = "#3ab55f" //"#4fd978"
-MSG_DONNEES_INSUFFISANTES = ` 
+let LIGHT_BLUE = "#4fafd9"
+let LIGHT_GREEN = "#3ab55f" //"#4fd978"
+let MSG_DONNEES_INSUFFISANTES = ` 
 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="15px" width="15px" x="0px" y="0px"
         viewBox="0 0 512 512" style="enable-background:new 0 0 512 512; margin-right: 3px;" xml:space="preserve">
     <g>
@@ -197,7 +203,8 @@ MSG_DONNEES_INSUFFISANTES = `
     `
 
 var value_age = 6;
-DICT_AGES_STR = {
+let DATE_MAX = "26/07/2021"
+let DICT_AGES_STR = {
     100 : "tous âges",
     0: "0 - 9 ans",
     1: "10 - 19 ans",
@@ -208,6 +215,32 @@ DICT_AGES_STR = {
     6: "60 - 69 ans",
     7: "70 - 79 ans",
     8: "80 - 89 ans",
+}
+var data;
+
+download_data();
+function download_data(){
+    var requestURL = 'https://raw.githubusercontent.com/CovidTrackerFr/data-utils/main/vaximpact/data/output/vaximpact.json';
+    var request = new XMLHttpRequest();
+    request.open('GET', requestURL);
+    request.responseType = 'json';
+    request.send();
+    request.onload = function() {
+        data = request.response;
+        populate_stats(data);
+    }
+}
+
+function populate_stats(data){
+    data_last_day = data[DATE_MAX];
+    update_stats(
+        sur_risque_hopital = parseFloat(data_last_day["hospitalisation_conventionnelle"]["risque_relatif"]).toFixed(0), 
+        sur_risque_dc = parseFloat(data_last_day["deces"]["risque_relatif"]).toFixed(0), 
+        hosp_evitables = parseFloat(data_last_day["hospitalisation_conventionnelle"]["FER_non_vacc"]).toFixed(0), 
+        hosp_evitables_pop_generale = parseFloat(data_last_day["hospitalisation_conventionnelle"]["FER_pop"]).toFixed(0), 
+        dc_evitables = parseFloat(data_last_day["deces"]["FER_non_vacc"]).toFixed(0),
+        dc_evitables_pop_generale=parseFloat(data_last_day["deces"]["FER_pop"]).toFixed(0),
+        )
 }
 
 function get_icon_body(color="black"){
@@ -267,12 +300,21 @@ function get_beds(number, color="black"){
 
 }
 
-update_stats();
-function update_stats(){
-    populateFigureHosp(sur_risque=14);
-    populateFigure(sur_risque=12);
-    populateFigureDecesEvitables(dc_evitables=80);
-    populateFigureHospEvitables(hosp_evitables=82);
+//update_stats();
+function update_stats(sur_risque_hopital=0, sur_risque_dc=0, hosp_evitables=0, hosp_evitables_pop_generale=0, dc_evitables=0, dc_evitables_pop_generale=0){
+    populateFigureHosp(sur_risque=sur_risque_hopital);
+    populateFigure(sur_risque=sur_risque_dc);
+    populateFigureDecesEvitables(dc_evitables=dc_evitables, dc_evitables_pop_generale=0);
+    populateFigureHospEvitables(hosp_evitables=hosp_evitables, hosp_evitables_pop_generale=hosp_evitables_pop_generale);
+    populateDates();
+}
+
+function populateDates(){
+    
+    for (let i = 1; i <= 5; i++) {
+        document.getElementById(`date-maj-${i}`).innerHTML = DATE_MAX;
+    }
+    
 }
 
 function populateFigure(sur_risque=0){
@@ -318,6 +360,7 @@ function populateFigureDecesEvitables(){
     }
     else{
         document.getElementById("chiffre-vax-evitables").innerHTML = dc_evitables;
+        document.getElementById("chiffre-vax-evitables-pop-generale").innerHTML = dc_evitables_pop_generale;
         document.getElementById("chiffre-vax-evitables-paragraphe").innerHTML = dc_evitables;
         document.getElementById("figure-vax-evitables").innerHTML = figure_vax;
     }
@@ -331,12 +374,13 @@ function populateFigureHospEvitables(){
     }
     else{
         document.getElementById("chiffre-vax-hosp-evitables").innerHTML = hosp_evitables;
+        document.getElementById("chiffre-vax-hosp-evitables-pop-generale").innerHTML = hosp_evitables_pop_generale;
         document.getElementById("chiffre-vax-hosp-evitables-paragraphe").innerHTML = hosp_evitables;
         document.getElementById("figure-vax-hosp-evitables").innerHTML = figure_vax;
     }
 }
 
-buildNoUiSlider()
+//buildNoUiSlider()
 
 change_ages(100)
 function change_ages(value){
