@@ -300,6 +300,16 @@ function changeTime(){
         })
     })
 
+    if((idx_max-idx_min)<100){
+        dataExplorerChart.data.datasets.map((dataset, idx_dataset) => {
+            dataset.pointRadius = 1;
+        })
+    } else {
+        dataExplorerChart.data.datasets.map((dataset, idx_dataset) => {
+            dataset.pointRadius = 0;
+        })
+    }
+
     dataExplorerChart.options.scales.yAxes.map((axis, idx) => {
         axis.ticks = {
             min: 0,
@@ -307,7 +317,6 @@ function changeTime(){
         }
     })
     
-    //console.log(dataExplorerChart.options.scales.xAxes.time)
     dataExplorerChart.update()
 
 }
@@ -375,13 +384,22 @@ function buildChart(){
     selected_data = [document.getElementById("typeDonees").value]
 
     pour100k_temp = checkPour100k(selected_data[0]);
-    
+    var param={'fill': true, 'borderWidth': 4};
     var show_alert=false
+
+    if(selected_territoires.length>1){
+        param['fill'] = false
+        param['borderWidth'] = 3
+    }
+    if(selected_territoires.length>10){
+        param['borderWidth'] = 2
+    }
+
     selected_territoires.map((value, idx) => {
         if(value!="france"){
             show_alert=true
         }
-        addTrace(selected_data[0], value, pour100k_temp);
+        addTrace(selected_data[0], value, pour100k_temp, param);
     })
     dataExplorerChart.update();
 
@@ -548,9 +566,22 @@ function removeElementArray(arr, element){
 
 function replaceBadCharacters(dep){
     return dep.replace("'", "&apos;").replace("ô", "&ocirc;")
-  }
+}
 
-function addTrace(value, territoire, pour100k_temp){
+function hexToRgbA(hex){
+    var c;
+    if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+        c= hex.substring(1).split('');
+        if(c.length== 3){
+            c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+        }
+        c= '0x'+c.join('');
+        return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',1)';
+    }
+    throw new Error('Bad Hex');
+}
+
+function addTrace(value, territoire, pour100k_temp, param){
     diviseur = 1;
     if (pour100k_temp){
         diviseur = data[territoire]["population"]/100000;
@@ -585,15 +616,20 @@ function addTrace(value, territoire, pour100k_temp){
         territoire=noms_zones[territoire]
     }
 
+    hex_color="#"+seq[N];
+    color=hexToRgbA(hex_color).match(/\d+/g);
+
     dataExplorerChart.data.datasets.push({
         yAxisID: value,
         label: territoire + complement,
         data: data_temp,
         pointRadius: 0,
-        backgroundColor: 'rgba(0, 168, 235, 0)',
-        borderColor: "#"+seq[N],
+        backgroundColor: `rgba(${color[0]}, ${color[1]}, ${color[2]}, 0.2)`,
+        fill: param['fill'],
+        borderColor: hex_color,
         cubicInterpolationMode: 'monotone',
         pointHoverRadius: 5,
+        borderWidth: param["borderWidth"],
         pointHoverBackgroundColor: "#"+seq[N],
     })
 
