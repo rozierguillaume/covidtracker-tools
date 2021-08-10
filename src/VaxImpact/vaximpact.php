@@ -42,11 +42,11 @@ p {
     background: #ffffff;
 }
 .title_h2 {
-    margin-top: 100px;
+    margin-top: 80px;
     margin-bottom: 10px;
 }
 .title {
-    margin-top: 40px;
+    margin-top: 50px;
 }
 </style>
 
@@ -70,8 +70,8 @@ p {
     -->
 
     <h2 class="title_h2">Cas positifs</h2>
-    <h3 class="title">Incidence des cas</h3>
-    <p>Ces quatre graphiques permettent de visualier les quatre principaux indicateurs de l'épidémie (cas symptomatiques, admissions à l'hôpital et en soins critiques, décès hospitaliers) suivant le statut vaccinal des personnes. Les données sont rapportées au nombre de personnes de chaque groupe afin d'écarter le biai lié à la couverture vaccinale.</p>
+    <p>Ce graphique permet de visualiser le nombre de nouveaux cas positifs déclarés comme symptomatiques chaque jour en fonction du statut vaccinal des personnes.</p>
+
         <div style="width: 100%; max-width: 1000px;">
             <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/cas_journ.jpeg" target="_blank" rel="noopener noreferrer">
                 <img id="imageTab" src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/pcr_plus_sympt_proportion_selon_statut_vaccinal.jpeg" width="95%">
@@ -79,6 +79,8 @@ p {
         </div>
 
     <!--
+    <p>Ces quatre graphiques permettent de visualier les quatre principaux indicateurs de l'épidémie (cas symptomatiques, admissions à l'hôpital et en soins critiques, décès hospitaliers) suivant le statut vaccinal des personnes. Les données sont rapportées au nombre de personnes de chaque groupe afin d'écarter le biai lié à la couverture vaccinale.</p>
+
     <h3 class="title">Réduction du risque de cas positif</h3>
     <h3 class="title">Cas positifs attribuables à la non vaccination</h3>
 
@@ -93,9 +95,10 @@ p {
             
     </div>
     -->
-
+    <br>
     <h2 class="title_h2">Admissions à l'hôpital</h2>
-    <h3 class="title">Incidence des admissions</h3>
+    <p>Ce graphique permet de visualiser le nombre de nouvelles admissions à l'hôpital chaque jour en fonction du statut vaccinal des patients.</p>
+        
         <div style="width: 100%; max-width: 1000px;">
             <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hosp_journ.jpeg" target="_blank" rel="noopener noreferrer">
                 <img id="imageTab" src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hc_proportion_selon_statut_vaccinal.jpeg" width="95%">
@@ -106,7 +109,7 @@ p {
     
     <div style="margin-top: 50px;">
             <div>
-                <div id="slider_hosp" style="max-width: 500px; margin-top: 5px; margin-left: 15px;"></div>
+                <div id="slider_hosp" style="max-width: 500px; margin-top: 5px; margin-left: 20px;"></div>
             </div>
     </div>
 
@@ -124,8 +127,9 @@ p {
     </div>
     <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span id="date-maj-2">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     
+    <br>
     <h3 class="title">Admissions attribuables à la non vaccination</h3>
-    <p>Cet indicateur permet d'estimer la proportion des hospitalisations parmi les personnes non vaccinées qui auraient pu être évités s'ils avaient été vaccinés.</p>
+    <p>Cet indicateur permet d'estimer la proportion des hospitalisations parmi les personnes non vaccinées qui auraient pu être évités si elles avaient été vaccinées.</p>
     <div class="wrap" style="margin-top: 20px;">
             <div class="boxshadow-wide" style="">
                 <span style="color:black; font-size: 20px;">Hospitalisations attribuables à la non vaccination • </span>
@@ -138,21 +142,22 @@ p {
     <br>
     </p>En population générale, le nombre d'hospitalisations qui auraient pu être évitées par la vaccination est de <span id="chiffre-vax-hosp-evitables-pop-generale">--</span> % (attention cet indicateur dépend du taux de vaccination).</p>
     
-
+    <br>
     <h2 class="title">Décès hospitaliers</h2>
-    <h3 class="title">Incidence des décès</h3>
+    <p>Ce graphique permet de visualiser le nombre de nouveaux décès hospitaliers chaque jour en fonction du statut vaccinal des personnes.</p>
+
         <div style="width: 100%; max-width: 1000px;">
             <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/dc_journ.jpeg" target="_blank" rel="noopener noreferrer">
                 <img id="imageTab" src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/dc_proportion_selon_statut_vaccinal.jpeg" width="95%">
             </a>
         </div>
-    
+    <br>
     <h3 class="title">Réduction du risque de décès</h3>
 
     <p>Imaginons deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe3">--</span> et l'autre non vaccinés. S'il y a un décès chaque jour dans le groupe vacciné, alors il y aura probablement <span id="chiffre-non-vax-paragraphe">--</span> décès chaque jour dans le groupe non vacciné.</p>
     <div style="margin-top: 50px;">
             <div>
-                <div id="slider_dc" style="max-width: 500px; margin-top: 5px; margin-left: 15px;"></div>
+                <div id="slider_dc" style="max-width: 500px; margin-top: 5px; margin-left: 20px;"></div>
             </div>
     </div>
     
@@ -172,9 +177,9 @@ p {
 
 
     
-
+    <br>
     <h3 class="title">Décès attribuables à la non vaccination</h3>
-    <p>Cet indicateur permet d'estimer la proportion des décès parmi les personnes non vaccinées qui auraient pu être évités s'ils avaient été vaccinés.</p>
+    <p>Cet indicateur permet d'estimer la proportion des décès parmi les personnes non vaccinées qui auraient pu être évités si elles avaient été vaccinées.</p>
     <div class="wrap" style="margin-top: 20px;">
             <div class="boxshadow-wide" style="">
                 <span style="color:black; font-size: 20px;">Décès attribuables à la non vaccination • </span>
