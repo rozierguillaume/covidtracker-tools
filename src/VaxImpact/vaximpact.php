@@ -149,7 +149,13 @@ p {
     
     <h3 class="title">Réduction du risque de décès</h3>
 
-    <p>Imaginons deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe3">--</span> et l'autre non vaccinés. S'il y a un décès dans le groupe vacciné, alors il y aura probablement <span id="chiffre-non-vax-paragraphe">--</span> décès dans le groupe non vacciné.</p>
+    <p>Imaginons deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe3">--</span> et l'autre non vaccinés. S'il y a un décès chaque jour dans le groupe vacciné, alors il y aura probablement <span id="chiffre-non-vax-paragraphe">--</span> décès chaque jour dans le groupe non vacciné.</p>
+    <div style="margin-top: 50px;">
+            <div>
+                <div id="slider_dc" style="max-width: 500px; margin-top: 5px; margin-left: 15px;"></div>
+            </div>
+    </div>
+    
     <div class="wrap" style="margin-top: 20px;">
             <div class="boxshadow" style="">
                 <span style="color:#4fafd9; font-size: 20px;">Groupe vacciné • </span>
@@ -351,8 +357,8 @@ function get_beds(number, color="black", animate=false){
 
 //update_stats();
 function update_stats(sur_risque_hopital=0, sur_risque_dc=0, hosp_evitables=0, hosp_evitables_pop_generale=0, dc_evitables=0, dc_evitables_pop_generale=0){
-    populateFigureHosp(sur_risque=sur_risque_hopital);
-    populateFigure(sur_risque=sur_risque_dc);
+    populateFigureHosp(nb_vax=1, sur_risque=sur_risque_hopital);
+    populateFigure(nb_vax=1, sur_risque=sur_risque_dc);
     populateFigureDecesEvitables(dc_evitables=dc_evitables, dc_evitables_pop_generale=0);
     populateFigureHospEvitables(hosp_evitables=hosp_evitables, hosp_evitables_pop_generale=hosp_evitables_pop_generale);
     populateDates();
@@ -366,9 +372,9 @@ function populateDates(){
     
 }
 
-function populateFigure(sur_risque=0){
-    let figure_vax = get_bodies(1, LIGHT_BLUE);
-    let figure_non_vax = get_bodies(sur_risque, "orange");
+function populateFigure(nb_vax=1, sur_risque=0){
+    let figure_vax = get_bodies(nb_vax, LIGHT_BLUE);
+    let figure_non_vax = get_bodies(sur_risque*nb_vax, "orange");
     
     if(sur_risque == 0){
         document.getElementById("figure-vax").innerHTML = MSG_DONNEES_INSUFFISANTES;
@@ -377,7 +383,7 @@ function populateFigure(sur_risque=0){
     else{
         document.getElementById("figure-vax").innerHTML = figure_vax;
         document.getElementById("chiffre-vax").innerHTML = 1;
-        document.getElementById("chiffre-non-vax").innerHTML = sur_risque;
+        document.getElementById("chiffre-non-vax").innerHTML = sur_risque*nb_vax;
         document.getElementById("chiffre-non-vax-paragraphe").innerHTML = sur_risque;
         document.getElementById("figure-non-vax").innerHTML = figure_non_vax;
     }
@@ -448,10 +454,14 @@ function sliderChanged(){
 }
 
 
-function sliderRiskChanged(){
-    let value = parseInt(slider_hosp.noUiSlider.get());
-    console.log(value)
-    populateFigureHosp(nb_vax=value, sur_risque=parseFloat(data[DATE_MAX]["hospitalisation_conventionnelle"]["risque_relatif"]).toFixed(0));
+function sliderRiskChanged(type){
+    if(type=="hosp"){
+        let value = parseInt(slider_hosp.noUiSlider.get());
+        populateFigureHosp(nb_vax=value, sur_risque=parseFloat(data[DATE_MAX]["hospitalisation_conventionnelle"]["risque_relatif"]).toFixed(0));
+    } else if (type=="dc"){
+        let value = parseInt(slider_dc.noUiSlider.get());
+        populateFigure(nb_vax=value, sur_risque=parseFloat(data[DATE_MAX]["deces"]["risque_relatif"]).toFixed(0));
+    }
 }
 
 function buildNoUiSlider(){
@@ -482,7 +492,24 @@ function buildNoUiSlider_hosp(){
         //tooltips: {to: (value: number){return "lol";}}
     });
     //slider.setAttribute('disabled', true);
-    slider_hosp.noUiSlider.on('update', function () { sliderRiskChanged("hosp"); });
+    slider_hosp.noUiSlider.on('slide', function () { sliderRiskChanged("hosp"); });
+}
+
+buildNoUiSlider_dc();
+function buildNoUiSlider_dc(){
+    noUiSlider.create(slider_dc, {
+        start: [1],
+        connect: true,
+        step: 1,
+        range: {
+            'min': 1,
+            'max': 50,
+        },
+        tooltips: wNumb({decimals: 0, prefix: "Jour "}),
+        //tooltips: {to: (value: number){return "lol";}}
+    });
+    //slider.setAttribute('disabled', true);
+    slider_dc.noUiSlider.on('slide', function () { sliderRiskChanged("dc"); });
 }
 
 </script>
