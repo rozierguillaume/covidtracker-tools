@@ -20,7 +20,7 @@ p {
         padding: 10px 10px 10px 10px;
         border-radius: 7px;
         margin-right: 15px;
-        max-width: 400px;
+        max-width: 500px;
         text-align: left;
         /*box-shadow: 6px 4px 25px #c3d19d;*/
         box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
@@ -382,7 +382,7 @@ function populateFigure(nb_vax=1, sur_risque=0){
     }
     else{
         document.getElementById("figure-vax").innerHTML = figure_vax;
-        document.getElementById("chiffre-vax").innerHTML = 1;
+        document.getElementById("chiffre-vax").innerHTML = nb_vax;
         document.getElementById("chiffre-non-vax").innerHTML = sur_risque*nb_vax;
         document.getElementById("chiffre-non-vax-paragraphe").innerHTML = sur_risque;
         document.getElementById("figure-non-vax").innerHTML = figure_non_vax;
