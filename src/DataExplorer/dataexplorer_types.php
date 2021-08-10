@@ -138,7 +138,6 @@ let types_selected = ["incidence", "reanimations"]
 function boxTypeChecked(value){
     if (document.getElementById("types_"+value).checked) {
         types_selected.push(value);
-        console.log(types_selected)
     } else {
         types_selected = removeElementArray(types_selected, value);
         
@@ -247,7 +246,6 @@ function changeTimeTypes(){
         if(type_dataset.label.includes("Cas")){
             y_max = 60000;
         }
-        console.log(y_max)
         types_dataExplorerAgeChart.options.scales.yAxes[idx_type_dataset].ticks.max = Math.round(y_max)
         })
     
@@ -383,8 +381,6 @@ function fetchtype_data(){
         })
         .then(json => {
                 this.data = json;
-                console.log("HEYYYY")
-                console.log(data)
                 console.log("init-t")
                 //associationTranches();
                 console.log("association-t")
@@ -393,7 +389,11 @@ function fetchtype_data(){
                 //Erreur au-dessus
                 populateTerritoiresTypes()
                 console.log("populate-territoires-t")
-                buildSliderTypes();
+
+                setTimeout(function () {
+                    buildSliderTypes();
+                }, 1000);
+                
                 console.log("done-t")
                 //telechargerImage()
                 
@@ -526,8 +526,6 @@ function buildEmptyChartTypes() {
                         
                         if (context.dataset.data[context.dataIndex].x == types_dataExplorerAgeChart.options.scales.xAxes[0].ticks.max)
                         {
-                            console.log(context)
-                            console.log()
                             //return  context.dataset.label;
                             //return  context.dataset.label;
                         }
@@ -536,11 +534,11 @@ function buildEmptyChartTypes() {
                 },
             },
             hover: {
-                mode: 'x',
+                mode: 'index',
                 intersect: false
             },
             tooltips: {
-                mode: 'x',
+                mode: 'index',
                 intersect: false
             },
             animation: {

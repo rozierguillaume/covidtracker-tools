@@ -16,7 +16,7 @@
                     <optgroup label="Indicateurs épidémiques">
                         <option value="incidence">Taux d'incidence</option>
                         <option value="cas">Cas positifs</option>
-                        <option value="cas_croissance_hebdo">Croissance cas positifs</option>
+                        <option value="cas_croissance_hebdo">Croissance cas pos.</option>
                         <option value="tests">Dépistage</option>
                         <option value="taux_positivite">Taux de positivite</option>
                     </optgroup>
@@ -438,7 +438,7 @@ function populateTerritoires(){
 
     html_code = "<optgroup label='Régions'>"
     age_data.regions.map((value, idx) => {
-        html_code += "<option value='" + replaceBadCharacters(value) + "'>" + value + "</option>"
+        html_code += "<option value='" + replaceBadCharacters(value) + "'>" + truncate(value) + "</option>"
     })
     html_code += "</optgroup>"
 
@@ -472,9 +472,12 @@ function fetchage_data(){
                 //Erreur au-dessus
                 populateTerritoires()
                 console.log("populate-territoires-a")
-                buildSliderAge();
+                setTimeout(function () {
+                    buildSliderAge();
+                }, 500);
+                
                 console.log("done-a")
-                telechargerImage()
+                //telechargerImage()
                 
             })
         .catch(function () {
@@ -590,10 +593,11 @@ function buildEmptyChartAge() {
                 },
             },
             hover: {
+                mode: 'index',
                 intersect: false
             },
             tooltips: {
-                mode: 'x',
+                mode: 'index',
                 intersect: false
             },
             animation: {

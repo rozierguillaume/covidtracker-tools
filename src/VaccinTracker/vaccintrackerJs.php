@@ -1066,7 +1066,7 @@
                             newsubrow.classList.add('green');
                         } else if (caseNb <= proportionVaccinesPartiellement + 0.01) {
                             newsubrow.classList.add('animation-premiere-dose');
-                        } else if (caseNb <= 80) {
+                        } else if (caseNb <= 80.001) {
                             newsubrow.classList.add("red");
                         } else {
                             newsubrow.classList.add("grey");

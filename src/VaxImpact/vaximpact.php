@@ -68,33 +68,37 @@ p {
     <div id="slider" style="max-width: 200px; margin-top: 5px;"></div>
     -->
 
-    <h2 class="title_h2">Impact de la vaccination sur les indicateurs</h2>
+    <h2 class="title_h2">Cas positifs</h2>
+    <h3 class="title">Incidence des cas</h3>
     <p>Ces quatre graphiques permettent de visualier les quatre principaux indicateurs de l'épidémie (cas symptomatiques, admissions à l'hôpital et en soins critiques, décès hospitaliers) suivant le statut vaccinal des personnes. Les données sont rapportées au nombre de personnes de chaque groupe afin d'écarter le biai lié à la couverture vaccinale.</p>
+        <div style="width: 100%; max-width: 1000px;">
+            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/cas_journ.jpeg" target="_blank" rel="noopener noreferrer">
+                <img id="imageTab" src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/pcr_plus_sympt_proportion_selon_statut_vaccinal.jpeg" width="95%">
+            </a>
+        </div>
+    <h3 class="title">Réduction du risque de cas positif</h3>
+    <h3 class="title">Cas positifs attribuables à la non vaccination</h3>
+
+    <!--
     <div class="row charts lineaire">
-            <div class="col-md-6">
-                <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/cas_journ.jpeg" target="_blank" rel="noopener noreferrer">
-                    <img id="imageTab" src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/pcr_plus_sympt_proportion_selon_statut_vaccinal.jpeg" width="95%">
-                </a>
-            </div>
-            <div class="col-md-6">
-                <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hosp_journ.jpeg" target="_blank" rel="noopener noreferrer">
-                    <img id="imageTab" src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hc_proportion_selon_statut_vaccinal.jpeg" width="95%">
-                </a>
-            </div>
+            
             <div class="col-md-6">
                 <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/rea_journ.jpeg" target="_blank" rel="noopener noreferrer">
                     <img id="imageTab" src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/sc_proportion_selon_statut_vaccinal.jpeg" width="95%">
                 </a>
             </div>
-            <div class="col-md-6">
-                <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/dc_journ.jpeg" target="_blank" rel="noopener noreferrer">
-                    <img id="imageTab" src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/dc_proportion_selon_statut_vaccinal.jpeg" width="95%">
-                </a>
-            </div>
+            
     </div>
+    -->
 
-    <h2 class="title_h2">Impact de la vaccination sur les formes graves</h2>
-    <h3 class="title">Risque d'hospitalisation</h3>
+    <h2 class="title_h2">Admissions à l'hôpital</h2>
+    <h3 class="title">Incidence des admissions</h3>
+        <div style="width: 100%; max-width: 1000px;">
+            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hosp_journ.jpeg" target="_blank" rel="noopener noreferrer">
+                <img id="imageTab" src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hc_proportion_selon_statut_vaccinal.jpeg" width="95%">
+            </a>
+        </div>
+    <h3 class="title">Réduction du risque d'admission</h3>
     <p>Imaginons deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe2">--</span> et l'autre non vaccinés. S'il y a une personne hospitalisée dans le groupe vacciné, alors il y aura probablement <span id="chiffre-non-vax-hosp-paragraphe">--</span> hospitalisations dans le groupe non vacciné.</p>
     <div class="wrap" style="margin-top: 20px;">
             <div class="boxshadow" style="">
@@ -109,8 +113,32 @@ p {
             </div>
     </div>
     <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span id="date-maj-2">-/-/-</span> • Données DREES • VaxImpact.fr</div>
+    
+    <h3 class="title">Admissions attribuables à la non vaccination</h3>
+    Cet indicateur permet d'estimer la proportion des hospitalisations parmi les personnes non vaccinées qui auraient pu être évités s'ils avaient été vaccinés.
+    <div class="wrap" style="margin-top: 20px;">
+            <div class="boxshadow-wide" style="">
+                <span style="color:black; font-size: 20px;">Hospitalisations attribuables à la non vaccination • </span>
+                <span style="color:#3ab55f; font-size: 20px; font-weight: bold;"><span id="chiffre-vax-hosp-evitables">--</span> %</span><br>
+                <p>Cela signifie que sur 100 hospitalisations de personnes non vaccinées ayant <span id="age_surrisque_hosp">--</span>, <span id="chiffre-vax-hosp-evitables-paragraphe">--</span> hospitalisations auraient pu être évités par la vaccination. </p>
+                <div id="figure-vax-hosp-evitables" style="margin-top: 20px;"></div>
+            </div>
+    </div>
+    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span id="date-maj-4">-/-/-</span> • Données DREES • VaxImpact.fr</div>
+    <br>
+    En population générale, le nombre d'hospitalisations qui auraient pu être évitées par la vaccination est de <span id="chiffre-vax-hosp-evitables-pop-generale">--</span> % (attention cet indicateur dépend du taux de vaccination).
+    
 
-    <h3 class="title">Risque de décès</h3>
+    <h2 class="title">Décès hospitaliers</h2>
+    <h3 class="title">Incidence des décès</h3>
+        <div style="width: 100%; max-width: 1000px;">
+            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/dc_journ.jpeg" target="_blank" rel="noopener noreferrer">
+                <img id="imageTab" src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/dc_proportion_selon_statut_vaccinal.jpeg" width="95%">
+            </a>
+        </div>
+    
+    <h3 class="title">Réduction du risque de décès</h3>
+
     <p>Imaginons deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe3">--</span> et l'autre non vaccinés. S'il y a un décès dans le groupe vacciné, alors il y aura probablement <span id="chiffre-non-vax-paragraphe">--</span> décès dans le groupe non vacciné.</p>
     <div class="wrap" style="margin-top: 20px;">
             <div class="boxshadow" style="">
@@ -127,22 +155,9 @@ p {
     <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span id="date-maj-3">-/-/-</span> • Données DREES • VaxImpact.fr</div>
 
 
-    <h2 class="title_h2">Formes graves évitables par la vaccination</h2>
-    <h3 class="title">Hospitalisations</h3>
-    Cet indicateur permet d'estimer la proportion des hospitalisations parmi les personnes non vaccinées qui auraient pu être évités s'ils avaient été vaccinés.
-    <div class="wrap" style="margin-top: 20px;">
-            <div class="boxshadow-wide" style="">
-                <span style="color:black; font-size: 20px;">Hospitalisations attribuables à la non vaccination • </span>
-                <span style="color:#3ab55f; font-size: 20px; font-weight: bold;"><span id="chiffre-vax-hosp-evitables">--</span> %</span><br>
-                <p>Cela signifie que sur 100 hospitalisations de personnes non vaccinées ayant <span id="age_surrisque_hosp">--</span>, <span id="chiffre-vax-hosp-evitables-paragraphe">--</span> hospitalisations auraient pu être évités par la vaccination. </p>
-                <div id="figure-vax-hosp-evitables" style="margin-top: 20px;"></div>
-            </div>
-    </div>
-    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span id="date-maj-4">-/-/-</span> • Données DREES • VaxImpact.fr</div>
-    <br>
-    En population générale, le nombre d'hospitalisations qui auraient pu être évitées par la vaccination est de <span id="chiffre-vax-hosp-evitables-pop-generale">--</span> % (attention cet indicateur dépend du taux de vaccination).
     
-    <h3 class="title">Décès</h3>
+
+    <h3 class="title">Décès attribuables à la non vaccination</h3>
     Cet indicateur permet d'estimer la proportion des décès parmi les personnes non vaccinées qui auraient pu être évités s'ils avaient été vaccinés.
     <div class="wrap" style="margin-top: 20px;">
             <div class="boxshadow-wide" style="">
@@ -163,14 +178,11 @@ p {
     <div style="border:solid 2px rgba(0, 0, 0, 0.1); border-radius: 10px; padding: 30px;">
         <h2>Méthodologie</h2>
         <p>Ces statistiques sont obtenues à partir des données publiées par la DREES. Elles seront mises à jour lors de la publication de nouvelles données.</p>
-        <img src="https://raw.githubusercontent.com/CovidTrackerFr/data-utils/main/vaximpact/data/impact_vaccin_covid.jpg" style="max-width: 700px;"/>
-        <img src="https://raw.githubusercontent.com/CovidTrackerFr/data-utils/main/vaximpact/data/impact_vaccin_covid2.jpg" style="max-width: 700px;"/>
-        <img src="https://raw.githubusercontent.com/CovidTrackerFr/data-utils/main/vaximpact/data/impact_vaccin_covid3.jpg" style="max-width: 700px;"/>
-        <img src="https://raw.githubusercontent.com/CovidTrackerFr/data-utils/main/vaximpact/data/impact_vaccin_covid4.jpg" style="max-width: 700px;"/>
-        <img src="https://raw.githubusercontent.com/CovidTrackerFr/data-utils/main/vaximpact/data/impact_vaccin_covid5.jpg" style="max-width: 700px;"/>
-        <br>
-        Auteurs : Sacha Guilhaumou, Guillaume Rozier.
+        <p><a href="https://github.com/CovidTrackerFr/data-utils/raw/main/vaximpact/data/doc/impact_vaccin_covid.pdf">Télécharger le document de méthodologie (PDF)</a></p>
     </div>
+    <br>
+    Auteurs : Sacha Guilhaumou, Guillaume Rozier.<br>
+    Remerciements pour leur aide : Catherine Hill, Dan Chaltiel.
     
 </body>
 

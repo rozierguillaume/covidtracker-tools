@@ -21,8 +21,8 @@
                         <option value="hospitalisations">Hospitalisations</option>
                         <option value="incid_hospitalisations">Admissions à l'hôpital</option>
                         <option value="reanimations">Réanimations</option>
-                        <option value="incid_reanimations">Admissions en réanimation</option>
-                        <option value="saturation_reanimations">Saturation des réanimations</option>
+                        <option value="incid_reanimations">Adm. réanimation</option>
+                        <option value="saturation_reanimations">Saturation réanimation</option>
                     
                         <option value="nbre_acte_corona">Actes SOS médecin</option>
                         <option value="nbre_pass_corona">Passages aux urgences</option>
@@ -30,8 +30,8 @@
                         <option value="deces_ehpad">Décès EHPAD</option>
                     </optgroup>
                     <optgroup label="Vaccination">
-                        <option value="n_cum_dose1">Personnes vaccinées (cumul)</option>
-                        <option value="n_dose1">Personnes vaccinées (quotidien)</option>
+                        <option value="n_cum_dose1">Vaccinations (cumul)</option>
+                        <option value="n_dose1">Vaccinations (quotidien)</option>
                     </optgroup>
                 </select>
                 <br>
@@ -41,7 +41,7 @@
             <br>
             
             <label>Territoires</label>
-            <div id="checkboxes" style="text-align: left; height:80vw; max-height: 400px; overflow-y:scroll; padding: 10px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
+            <div id="checkboxes" style="text-align: left; height:80vw; max-height: 40vh; overflow-y:scroll; padding: 10px; border-radius: 7px; box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.07)">
                     <span id="territoiresCheckboxes"></span>
                 
             </div>
@@ -57,11 +57,11 @@
             <span id="description">...</span><br>
             <img
                 src="https://files.covidtracker.fr/covidtracker_vect.svg"
-                alt="un triangle aux trois côtés égaux"
                 height="87px"
                 width="130px" 
             />
-            
+                <!-- height:70vh; width:100%; max-height: 75% -->
+                <!-- margin-top:20px; max-height: 800px; max-width: 1500px;-->
                 <div class="chart-container" style="position: relative; height:70vh; width:100%; max-height: 75%">
                     <canvas id="dataExplorerChart" style="margin-top:20px; max-height: 800px; max-width: 1500px;"></canvas>
                     
@@ -389,6 +389,10 @@ function buildChart(){
 
     if(selected_territoires.length>1){
         param['fill'] = false
+        param['borderWidth'] = 3.5
+    }
+    if(selected_territoires.length>3){
+        param['fill'] = false
         param['borderWidth'] = 3
     }
     if(selected_territoires.length>10){
@@ -540,7 +544,7 @@ function fetchData(){
                 buildChart()
                 console.log("2")
                 majDataUpdate();
-                startTypesChart();
+                //startTypesChart();
             })
         .catch(function () {
             this.dataError = true;
@@ -678,11 +682,13 @@ function buildEmptyChart() {
                     }
                 },
             },
+            
             hover: {
-                intersect: false
+                intersect: false,
+                mode: 'index',
             },
             tooltips: {
-                mode: 'x',
+                mode: 'index',
                 intersect: false
             },
             animation: {
