@@ -3,6 +3,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js" integrity="sha512-igVQ7hyQVijOUlfg3OmcTZLwYJIBXU63xL9RC12xBHNpmGJAktDnzl9Iw0J4yrSaQtDxTTVlwhY730vphoVqJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <style>
+.shadow {
+        border: 0px solid black;
+        padding: 12px;
+        border-radius: 7px;
+        text-align: left;
+        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+        background: #ffffff;
+        margin-top: 10px;
+    }
+    
 p {
     font-size: 17px;
 }
@@ -116,12 +126,16 @@ p {
     <div class="wrap" style="margin-top: 20px;">
             <div class="boxshadow" style="">
                 <span style="color:#4fafd9; font-size: 20px;">Groupe vacciné • </span>
-                <span style="color:#4fafd9; font-size: 20px; font-weight: bold;"><span id="chiffre-vax-hosp">--</span> hospitalisation</span><br>
+                <span style="color:#4fafd9; font-size: 20px; font-weight: bold;"><span id="chiffre-vax-hosp">--</span> hospitalisation(s)</span><br>
+                <span id="hosp-non-vax-cumul" style="font-size: 15px;">cumulée sur 1 jour</span><br>
+
                 <div id="figure-vax-hosp" style="margin-top: 20px;"></div>
             </div>
             <div class="boxshadow">
                 <span style="color:orange; font-size: 20px;">Groupe non vacciné • </span>
-                <span style="color:orange; font-size: 20px; font-weight: bold;"><span id="chiffre-non-vax-hosp">--</span> hospitalisations</span><br>
+                <span style="color:orange; font-size: 20px; font-weight: bold;"><span id="chiffre-non-vax-hosp">--</span> hospitalisation(s)</span><br>
+                <span id="hosp-vax-cumul" style="font-size: 15px;">cumulées sur 1 jour</span><br>
+
                 <div id="figure-non-vax-hosp" style="margin-top: 20px;"></div>
             </div>
     </div>
@@ -165,11 +179,13 @@ p {
             <div class="boxshadow" style="">
                 <span style="color:#4fafd9; font-size: 20px;">Groupe vacciné • </span>
                 <span style="color:#4fafd9; font-size: 20px; font-weight: bold;"><span id="chiffre-vax">--</span> décès</span><br>
+                <span id="dc-vax-cumul" style="font-size: 15px;">cumulé sur 1 jour</span><br>
                 <div id="figure-vax" style="margin-top: 20px;"></div>
             </div>
             <div class="boxshadow">
                 <span style="color:orange; font-size: 20px;">Groupe non vacciné • </span>
                 <span style="color:orange; font-size: 20px; font-weight: bold;"><span id="chiffre-non-vax">--</span> décès</span><br>
+                <span id="dc-non-vax-cumul" style="font-size: 15px;">cumulés sur 1 jour</span><br>
                 <div id="figure-non-vax" style="margin-top: 20px;"></div>
             </div>
     </div>
@@ -194,6 +210,7 @@ p {
 
     <br>
     <br>
+    <?php include(__DIR__ . '/menuBasPage.php'); ?>
     <br>
     <br>
     <div style="border:solid 2px rgba(0, 0, 0, 0.1); border-radius: 10px; padding: 30px;">
@@ -458,14 +475,40 @@ function sliderChanged(){
     value_start = value;
 }
 
+function plural(value_pl){
+    jour_s = ""
+        if(value_pl>1){
+            jour_s = "s"
+        }
+    return jour_s
+}
 
 function sliderRiskChanged(type){
     if(type=="hosp"){
         let value = parseInt(slider_hosp.noUiSlider.get());
-        populateFigureHosp(nb_vax=value, sur_risque=parseFloat(data[DATE_MAX]["hospitalisation_conventionnelle"]["risque_relatif"]).toFixed(0));
+        sur_risque = parseFloat(data[DATE_MAX]["hospitalisation_conventionnelle"]["risque_relatif"]).toFixed(0);
+        populateFigureHosp(nb_vax=value, sur_risque=sur_risque);
+        
+        jour_s = plural(value);
+        
+        cumule_s = plural(value=value);
+        document.getElementById("hosp-vax-cumul").innerHTML = `cumulées sur ${value} jour${jour_s}`;
+
+        cumule_s = plural(sur_risque*value);
+        document.getElementById("hosp-non-vax-cumul").innerHTML = `cumulées sur ${value} jour${jour_s}`;
+        
     } else if (type=="dc"){
         let value = parseInt(slider_dc.noUiSlider.get());
-        populateFigure(nb_vax=value, sur_risque=parseFloat(data[DATE_MAX]["deces"]["risque_relatif"]).toFixed(0));
+        sur_risque = parseFloat(data[DATE_MAX]["deces"]["risque_relatif"]).toFixed(0);
+        populateFigure(nb_vax=value, sur_risque=sur_risque);
+
+        jour_s = plural(value);
+        
+        cumule_s = plural(value);
+        document.getElementById("dc-vax-cumul").innerHTML = `cumulé${cumule_s} sur ${value} jour${jour_s}`;
+
+        cumule_s = plural(sur_risque*value);
+        document.getElementById("dc-non-vax-cumul").innerHTML = `cumulé${cumule_s} sur ${value} jour${jour_s}`;
     }
 }
 
