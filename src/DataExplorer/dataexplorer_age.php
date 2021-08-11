@@ -433,7 +433,13 @@ function populateAgesSelect(){
     
 }
 
-function truncate(value){
+function truncate(value, n=15){
+    if(value.length>n){
+        if(value.slice(n)==" "){
+            value.slice(0, n-1) + ".";
+        }
+        return value.slice(0, n) + ".";
+    }
     return value;
 }
 
@@ -451,7 +457,7 @@ function populateTerritoires(){
     html_code += "<optgroup label='Départements'>"
 
     age_data.departements.map((value, idx) => {
-        html_code += "<option value='" + replaceBadCharacters(value) + "'>" + value + " " + age_data.departements_noms[value] + "</option>"
+        html_code += "<option value='" + replaceBadCharacters(value) + "'>" + value + " " + truncate(age_data.departements_noms[value]) + "</option>"
     })
     html_code += "</optgroup>"
 
