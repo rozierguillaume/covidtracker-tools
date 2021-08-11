@@ -3,6 +3,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js" integrity="sha512-igVQ7hyQVijOUlfg3OmcTZLwYJIBXU63xL9RC12xBHNpmGJAktDnzl9Iw0J4yrSaQtDxTTVlwhY730vphoVqJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <style>
+.shadow {
+        border: 0px solid black;
+        padding: 12px;
+        border-radius: 7px;
+        text-align: left;
+        box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+        background: #ffffff;
+        margin-top: 10px;
+    }
+    
 p {
     font-size: 17px;
 }
@@ -200,6 +210,7 @@ p {
 
     <br>
     <br>
+    <?php include(__DIR__ . '/menuBasPage.php'); ?>
     <br>
     <br>
     <div style="border:solid 2px rgba(0, 0, 0, 0.1); border-radius: 10px; padding: 30px;">

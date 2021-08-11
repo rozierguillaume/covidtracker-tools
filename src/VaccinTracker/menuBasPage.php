@@ -1,3 +1,4 @@
+
 <h2 style="margin-top: 40px;">Menu</h2>
 <div shadow="" style="margin-bottom: 5px;">
     <div class_perso="">
@@ -33,7 +34,6 @@
                 <a href="https://covidtracker.fr/vaccintracker/" style="color:black">
                     <button>💉 <b>VaccinTracker</b></button>
                 </a>
-                <a href="https://covidtracker.fr/vaccinplanner/" style="color:black"><button>📆 <b>VaccinPlanner</b></button></a>
                 <a href="https://covidtracker.fr/deconfitracker/" style="color:black">
                     <button>🔥 DéconfiTracker</button>
                 </a><a href="https://covidtracker.fr/covidep/" style="color:black">
