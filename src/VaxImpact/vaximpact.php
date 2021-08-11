@@ -127,14 +127,14 @@ p {
             <div class="boxshadow" style="">
                 <span style="color:#4fafd9; font-size: 20px;">Groupe vacciné • </span>
                 <span style="color:#4fafd9; font-size: 20px; font-weight: bold;"><span id="chiffre-vax-hosp">--</span> hospitalisation(s)</span><br>
-                <span id="hosp-non-vax-cumul" style="font-size: 15px;">cumulée sur 1 jour</span><br>
+                <span id="hosp-vax-cumul" style="font-size: 15px;">cumulée sur 1 jour</span><br>
 
                 <div id="figure-vax-hosp" style="margin-top: 20px;"></div>
             </div>
             <div class="boxshadow">
                 <span style="color:orange; font-size: 20px;">Groupe non vacciné • </span>
                 <span style="color:orange; font-size: 20px; font-weight: bold;"><span id="chiffre-non-vax-hosp">--</span> hospitalisation(s)</span><br>
-                <span id="hosp-vax-cumul" style="font-size: 15px;">cumulées sur 1 jour</span><br>
+                <span id="hosp-non-vax-cumul" style="font-size: 15px;">cumulées sur 1 jour</span><br>
 
                 <div id="figure-non-vax-hosp" style="margin-top: 20px;"></div>
             </div>
@@ -148,7 +148,7 @@ p {
     <p>Cet indicateur permet d'estimer la proportion des hospitalisations parmi les personnes non vaccinées qui auraient pu être évités si elles avaient été vaccinées.</p>
     <div class="wrap" style="margin-top: 20px;">
             <div class="boxshadow-wide" style="">
-                <span style="color:black; font-size: 20px;">Hospitalisations attribuables à la non vaccination • </span>
+                <span style="color:black; font-size: 20px;">Hospitalisations attribuables à la non vaccination chez les non vaccinés • </span>
                 <span style="color:#800; font-size: 20px; font-weight: bold;"><span id="chiffre-vax-hosp-evitables">--</span> %</span><br>
                 <p>Cela signifie que sur 100 hospitalisations de personnes non vaccinées ayant <span id="age_surrisque_hosp">--</span>, <span id="chiffre-vax-hosp-evitables-paragraphe">--</span> hospitalisations auraient pu être évités par la vaccination. </p>
                 <div id="figure-vax-hosp-evitables" style="margin-top: 20px;"></div>
@@ -156,7 +156,7 @@ p {
     </div>
     <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span id="date-maj-4">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
-    </p>En population générale, le nombre d'hospitalisations qui auraient pu être évitées par la vaccination est de <span id="chiffre-vax-hosp-evitables-pop-generale">--</span> % <i>(N.B. : cet indicateur dépend du taux de vaccination, il décroît lorsque la couverture vaccinale augmente)</i>.</p>
+    <p>En population générale, le nombre d'hospitalisations qui auraient pu être évitées par la vaccination est de <span id="chiffre-vax-hosp-evitables-pop-generale">--</span> % <i>(N.B. : cet indicateur dépend du taux de vaccination, il décroît lorsque la couverture vaccinale augmente)</i>.</p>
     
     <p style="font-weight: bold;">Cela signifie que sur les 266 admissions à l'hôpital observées chaque jour en France (au 25 juillet), 192 pourraient être attribuables à la non vaccination.</p>
 
@@ -202,14 +202,14 @@ p {
     <p>Cet indicateur permet d'estimer la proportion des décès parmi les personnes non vaccinées qui auraient pu être évités si elles avaient été vaccinées.</p>
     <div class="wrap" style="margin-top: 20px;">
             <div class="boxshadow-wide" style="">
-                <span style="color:black; font-size: 20px;">Décès attribuables à la non vaccination • </span>
+                <span style="color:black; font-size: 20px;">Décès attribuables à la non vaccination chez les non vaccinés • </span>
                 <span style="color:#800; font-size: 20px; font-weight: bold;"><span id="chiffre-vax-evitables">--</span> %</span><br>
                 <p>Cela signifie que sur 100 décès de personnes non vaccinées ayant <span id="age_surrisque">--</span>, <span id="chiffre-vax-evitables-paragraphe">--</span> décès auraient pu être évités par la vaccination. </p>
                 <div id="figure-vax-evitables" style="margin-top: 20px;"></div>
             </div>
     </div>
     <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span id="date-maj-5">-/-/-</span> • Données DREES • VaxImpact.fr</div>
-    
+    <br>
     <p>En population générale, le nombre de décès qui auraient pu être évités par la vaccination est de <span id="chiffre-vax-evitables-pop-generale">--</span> % <i>(N.B. : cet indicateur dépend du taux de vaccination, il décroît lorsque la couverture vaccinale augmente)</i>.</p>
     <br>
     <p style="font-weight: bold;">Cela signifie que sur les 20 décès observés chaque jour en France (au 25/07), 12 pourraient être attribuables à la non vaccination.</p>
@@ -484,11 +484,11 @@ function sliderChanged(){
 }
 
 function plural(value_pl){
-    jour_s = ""
+    pluriel = ""
         if(value_pl>1){
-            jour_s = "s"
+            pluriel = "s"
         }
-    return jour_s
+    return pluriel
 }
 
 function sliderRiskChanged(type){
@@ -499,11 +499,11 @@ function sliderRiskChanged(type){
         
         jour_s = plural(value);
         
-        cumule_s = plural(value=value);
-        document.getElementById("hosp-vax-cumul").innerHTML = `cumulées sur ${value} jour${jour_s}`;
+        cumule_s = plural(value);
+        document.getElementById("hosp-vax-cumul").innerHTML = `cumulée${cumule_s} sur ${value} jour${jour_s}`;
 
         cumule_s = plural(sur_risque*value);
-        document.getElementById("hosp-non-vax-cumul").innerHTML = `cumulées sur ${value} jour${jour_s}`;
+        document.getElementById("hosp-non-vax-cumul").innerHTML = `cumulée${cumule_s} sur ${value} jour${jour_s}`;
         
     } else if (type=="dc"){
         let value = parseInt(slider_dc.noUiSlider.get());
