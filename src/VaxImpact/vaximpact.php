@@ -156,7 +156,7 @@ p {
     </div>
     <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span id="date-maj-4">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
-    </p>En population générale, le nombre d'hospitalisations qui auraient pu être évitées par la vaccination est de <span id="chiffre-vax-hosp-evitables-pop-generale">--</span> % (attention cet indicateur dépend du taux de vaccination).</p>
+    </p>En population générale, le nombre d'hospitalisations qui auraient pu être évitées par la vaccination est de <span id="chiffre-vax-hosp-evitables-pop-generale">--</span> % <i>(N.B. : cet indicateur dépend du taux de vaccination, il décroît lorsque la couverture vaccinale augmente)</i>.</p>
     
     <p style="font-weight: bold;">Cela signifie que sur les 266 admissions à l'hôpital observées chaque jour en France (au 25 juillet), 192 pourraient être attribuables à la non vaccination.</p>
 
@@ -210,7 +210,7 @@ p {
     </div>
     <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span id="date-maj-5">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     
-    <p>En population générale, le nombre de décès qui auraient pu être évités par la vaccination est de <span id="chiffre-vax-evitables-pop-generale">--</span> % (attention cet indicateur dépend du taux de vaccination).</p>
+    <p>En population générale, le nombre de décès qui auraient pu être évités par la vaccination est de <span id="chiffre-vax-evitables-pop-generale">--</span> % <i>(N.B. : cet indicateur dépend du taux de vaccination, il décroît lorsque la couverture vaccinale augmente)</i>.</p>
     <br>
     <p style="font-weight: bold;">Cela signifie que sur les 20 décès observés chaque jour en France (au 25/07), 12 pourraient être attribuables à la non vaccination.</p>
 
