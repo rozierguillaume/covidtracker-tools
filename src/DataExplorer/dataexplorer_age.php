@@ -433,8 +433,14 @@ function populateAgesSelect(){
     
 }
 
+function truncate(value){
+    return value;
+}
+
 function populateTerritoires(){
     console.log("enter_populate_territoires")
+    console.log(age_data.regions)
+    console.log(age_data.departements)
 
     html_code = "<optgroup label='Régions'>"
     age_data.regions.map((value, idx) => {
@@ -490,7 +496,7 @@ function fetchage_data(){
 function associationTranches(){
     console.log("enter associationTranches")
     age_data.france.tranches_noms.map((value, idx) => {associationTranchesNoms[value]=age_data.france.tranches_noms_affichage[idx]})
-    console.log("enter associationTranches")
+    console.log("exit associationTranches")
 }
 
 function removeElementArray(arr, element){
