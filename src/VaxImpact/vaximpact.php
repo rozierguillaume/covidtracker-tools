@@ -140,6 +140,8 @@ p {
             </div>
     </div>
     <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span id="date-maj-2">-/-/-</span> • Données DREES • VaxImpact.fr</div>
+    <br>
+    <p style="font-weight: bold;">Cela signifie qu'une personne non vaccinée a un risque multiplié par <span id="chiffre-non-vax-hosp-conclusion">--</span> d'être hospitalisée par rapport à une personne vaccinée.</p>
     
     <br>
     <h3 class="title">Admissions attribuables à la non vaccination</h3>
@@ -156,6 +158,8 @@ p {
     <br>
     </p>En population générale, le nombre d'hospitalisations qui auraient pu être évitées par la vaccination est de <span id="chiffre-vax-hosp-evitables-pop-generale">--</span> % (attention cet indicateur dépend du taux de vaccination).</p>
     
+    <p style="font-weight: bold;">Cela signifie que sur les 266 admissions à l'hôpital observées chaque jour en France (au 25 juillet), 192 pourraient être attribuables à la non vaccination.</p>
+
     <br>
     <h2 class="title">Décès hospitaliers</h2>
     <p>Ce graphique permet de visualiser le nombre de nouveaux décès hospitaliers chaque jour en fonction du statut vaccinal des personnes.</p>
@@ -190,8 +194,8 @@ p {
             </div>
     </div>
     <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span id="date-maj-3">-/-/-</span> • Données DREES • VaxImpact.fr</div>
-
-
+    <br>
+    <p style="font-weight: bold;">Cela signifie qu'une personne non vaccinée a un risque multiplié par <span id="chiffre-non-vax-conclusion">--</span> de décéder par rapport à une personne vaccinée.</p>
     
     <br>
     <h3 class="title">Décès attribuables à la non vaccination</h3>
@@ -205,8 +209,10 @@ p {
             </div>
     </div>
     <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span id="date-maj-5">-/-/-</span> • Données DREES • VaxImpact.fr</div>
-    <br>
+    
     <p>En population générale, le nombre de décès qui auraient pu être évités par la vaccination est de <span id="chiffre-vax-evitables-pop-generale">--</span> % (attention cet indicateur dépend du taux de vaccination).</p>
+    <br>
+    <p style="font-weight: bold;">Cela signifie que sur les 20 décès observés chaque jour en France (au 25/07), 12 pourraient être attribuables à la non vaccination.</p>
 
     <br>
     <br>
@@ -406,6 +412,7 @@ function populateFigure(nb_vax=1, sur_risque=0){
         document.getElementById("figure-vax").innerHTML = figure_vax;
         document.getElementById("chiffre-vax").innerHTML = nb_vax;
         document.getElementById("chiffre-non-vax").innerHTML = sur_risque*nb_vax;
+        document.getElementById("chiffre-non-vax-conclusion").innerHTML = sur_risque;
         document.getElementById("chiffre-non-vax-paragraphe").innerHTML = sur_risque;
         document.getElementById("figure-non-vax").innerHTML = figure_non_vax;
     }
@@ -423,6 +430,7 @@ function populateFigureHosp(nb_vax=1, sur_risque=1){
         document.getElementById("figure-vax-hosp").innerHTML = figure_vax;
         document.getElementById("chiffre-vax-hosp").innerHTML = nb_vax;
         document.getElementById("chiffre-non-vax-hosp").innerHTML = sur_risque*nb_vax;
+        document.getElementById("chiffre-non-vax-hosp-conclusion").innerHTML = sur_risque*nb_vax;
         document.getElementById("chiffre-non-vax-hosp-paragraphe").innerHTML = sur_risque;
         document.getElementById("figure-non-vax-hosp").innerHTML = figure_non_vax;
     }
