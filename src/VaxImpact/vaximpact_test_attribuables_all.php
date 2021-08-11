@@ -150,7 +150,10 @@ p {
             <div class="boxshadow-wide" style="">
                 <span style="color:black; font-size: 20px;">Hospitalisations attribuables à la non vaccination chez les non vaccinés • </span>
                 <span style="color:#800; font-size: 20px; font-weight: bold;"><span id="chiffre-vax-hosp-evitables">--</span> %</span><br>
-                <p>Cela signifie que sur 100 hospitalisations de personnes non vaccinées ayant <span id="age_surrisque_hosp">--</span>, <span id="chiffre-vax-hosp-evitables-paragraphe">--</span> hospitalisations auraient pu être évités par la vaccination. </p>
+                <p>Cela signifie que sur 100 hospitalisations, <span id="age_surrisque_hosp">--</span>, <span id="chiffre-vax-hosp-evitables-paragraphe">--</span> hospitalisations auraient pu être évités par la vaccination.<br>
+                Décès non vaccinées inévitables<br>
+                Décès non vaccinés évitables
+                Décès vaccinés</p>
                 <div id="figure-vax-hosp-evitables" style="margin-top: 20px;"></div>
             </div>
     </div>
@@ -299,6 +302,7 @@ function populate_stats(data){
         dc_evitables_pop_generale=parseFloat(data_last_day["deces"]["FER_pop"]).toFixed(0),
         )
 }
+//"#800;#f00;#800;#800"
 
 function get_icon_body(color="black", animate=false){
     animate_str=""
@@ -307,7 +311,7 @@ function get_icon_body(color="black", animate=false){
                 <animate
                     attributeType="XML"
                     attributeName="fill"
-                    values="#800;#f00;#800;#800"
+                    values="orange;#800;orange;orange"
                     dur="2s"
                     repeatCount="indefinite"/>
         `
@@ -437,8 +441,10 @@ function populateFigureHosp(nb_vax=1, sur_risque=1){
 }
 
 function populateFigureDecesEvitables(){
-    var figure_vax = get_bodies(100-dc_evitables, "grey");
-    figure_vax += get_bodies(dc_evitables, LIGHT_GREEN, animate=true);
+    var figure_vax = get_bodies(61/(dc_evitables/100) - 61, "orange"); // Non vacciné inévitable
+    figure_vax += get_bodies(61, LIGHT_GREEN, animate=true)     // Non vacciné évitable
+                + get_bodies(100 - 61/(dc_evitables/100), LIGHT_BLUE, animate=false) // Vacciné inévitable
+                + get_bodies((100 - 61/(dc_evitables/100))*4, "green", animate=false); // Vacciné sauvé
 
     if(dc_evitables == 0){
         document.getElementById("figure-vax-evitables").innerHTML = MSG_DONNEES_INSUFFISANTES;
@@ -568,4 +574,4 @@ function buildNoUiSlider_dc(){
     slider_dc.noUiSlider.on('slide', function () { sliderRiskChanged("dc"); });
 }
 
-</script>
+</script>   
