@@ -256,7 +256,7 @@ p {
     </div>
     <br>
     Auteurs : Sacha Guilhaumou, Elias Orphelin, Guillaume Rozier.<br>
-    Merci pour leur aide : Catherine Hill, Dan Chaltiel, Karine Lacombe. Merci pour leur relecture : Vittoria Colizza, Karine Lacombe, BioHospitalix, Le Doc.
+    Merci pour leur aide : Catherine Hill, Dan Chaltiel. Merci pour leur relecture : Vittoria Colizza, Karine Lacombe, BioHospitalix, Le Doc.
     
 </body>
 
