@@ -166,7 +166,7 @@ p {
     <p style="font-weight: bold;">Cela signifie qu'une personne non vaccinée a un risque multiplié par <span id="chiffre-non-vax-hosp-conclusion">--</span> d'être hospitalisée par rapport à une personne vaccinée.</p>
     
     <br>
-    <h3 class="title">Admissions évitables chez les non vaccinés</h3>
+    <h3 class="title">Admissions attribuables à la non vaccination</h3>
     
     <p>Cet indicateur permet d'estimer la proportion des hospitalisations parmi les personnes non vaccinées qui auraient pu être évités si elles avaient été vaccinées.</p>
     
@@ -186,7 +186,7 @@ p {
     <div style="font-size: 10px; margin-top: 10px;">Mise à jour : 12/08/2021 • Dernière donnée : <span id="date-maj-4">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
     
-    <p style="font-weight: bold;">Cela signifie que sur les 266 admissions à l'hôpital observées chaque jour en France (au 25 juillet), 192 hospitalisations pourraient être évitables par la vaccination.</p>
+    <p style="font-weight: bold;">Cela signifie que sur les 266 admissions à l'hôpital observées chaque jour en France (au 25 juillet), 192 hospitalisations sont évitables par la vaccination.</p>
 
     <br>
     <h2 class="title">Décès hospitaliers</h2>
@@ -242,7 +242,7 @@ p {
     </div>
     <div style="font-size: 10px; margin-top: 10px;">Mise à jour : 12/08/2021 • Dernière donnée : <span id="date-maj-5">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
-    <p style="font-weight: bold;">Cela signifie que sur les 20 décès observés chaque jour en France (au 25/07), 12 décès pourraient être évitables par la vaccination.</p>
+    <p style="font-weight: bold;">Cela signifie que sur les 20 décès observés chaque jour en France (au 25/07), 12 décès sont évitables par la vaccination.</p>
 
     <br>
     <br>
