@@ -255,8 +255,8 @@ p {
         <p><a href="https://github.com/CovidTrackerFr/data-utils/raw/main/vaximpact/data/doc/impact_vaccin_covid.pdf">Télécharger le document de méthodologie (PDF)</a></p>
     </div>
     <br>
-    Auteurs : Sacha Guilhaumou, Guillaume Rozier.<br>
-    Remerciements pour leur aide : Catherine Hill, Dan Chaltiel.
+    Auteurs : Sacha Guilhaumou, Elias Orphelin, Guillaume Rozier.<br>
+    Remerciements pour leur aide : Catherine Hill, Dan Chaltiel, Vittoria Colizza.
     
 </body>
 
