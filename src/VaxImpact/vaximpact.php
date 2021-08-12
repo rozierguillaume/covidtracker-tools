@@ -166,27 +166,27 @@ p {
     <p style="font-weight: bold;">Cela signifie qu'une personne non vaccinée a un risque multiplié par <span id="chiffre-non-vax-hosp-conclusion">--</span> d'être hospitalisée par rapport à une personne vaccinée.</p>
     
     <br>
-    <h3 class="title">Admissions attribuables à la non vaccination</h3>
+    <h3 class="title">Admissions évitables chez les non vaccinés</h3>
     
     <p>Cet indicateur permet d'estimer la proportion des hospitalisations parmi les personnes non vaccinées qui auraient pu être évités si elles avaient été vaccinées.</p>
     
 
-    <button class="btn-actif" href="#" role="button">Chez les non vaccinés</button>
-    <button class="btn-inactif" href="#" role="button">En population générale</button>
+    <button id="button-non-vax-hosp" class="btn-actif" onclick="buttonHospClicked('non-vax')" role="button">Chez les non vaccinés</button>
+    <button id="button-pop-generale-hosp" class="btn-inactif" onclick="buttonHospClicked('pop-generale')" role="button">En population générale</button>
 
     <div class="wrap" style="margin-top: 0px;">
             <div class="boxshadow-wide" style="">
-                <span style="color:black; font-size: 20px;">Hospitalisations attribuables à la non vaccination chez les non vaccinés • </span>
+                <span style="color:black; font-size: 20px;">Hospitalisations évitables <span id="type-vax-hosp-evitables-titre">--</span> • </span>
                 <span style="color:#800; font-size: 20px; font-weight: bold;"><span id="chiffre-vax-hosp-evitables">--</span> %</span><br>
-                <p>Cela signifie que sur 100 hospitalisations de personnes non vaccinées ayant <span id="age_surrisque_hosp">--</span>, <span id="chiffre-vax-hosp-evitables-paragraphe">--</span> hospitalisations auraient pu être évités par la vaccination. </p>
+                <p>Cela signifie que sur 100 hospitalisations <span id="type-vax-hosp-evitables">--</span> ayant <span id="age_surrisque_hosp">--</span>, <span id="chiffre-vax-hosp-evitables-paragraphe">--</span> hospitalisations auraient pu être évités par la vaccination.<br><span id="warning-hosp-evitables" style="font-size: 15px; font-weight: italic;"></span></p>
+                
                 <div id="figure-vax-hosp-evitables" style="margin-top: 20px;"></div>
             </div>
     </div>
     <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span id="date-maj-4">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
-    <p>En population générale, le nombre d'hospitalisations qui auraient pu être évitées par la vaccination est de <span id="chiffre-vax-hosp-evitables-pop-generale">--</span> % <i>(N.B. : cet indicateur dépend du taux de vaccination, il décroît lorsque la couverture vaccinale augmente)</i>.</p>
     
-    <p style="font-weight: bold;">Cela signifie que sur les 266 admissions à l'hôpital observées chaque jour en France (au 25 juillet), 192 pourraient être attribuables à la non vaccination.</p>
+    <p style="font-weight: bold;">Cela signifie que sur les 266 admissions à l'hôpital observées chaque jour en France (au 25 juillet), 192 pourraient être évitées si toute la population était vaccinée.</p>
 
     <br>
     <h2 class="title">Décès hospitaliers</h2>
@@ -229,19 +229,18 @@ p {
     <h3 class="title">Décès attribuables à la non vaccination</h3>
     <p>Cet indicateur permet d'estimer la proportion des décès parmi les personnes non vaccinées qui auraient pu être évités si elles avaient été vaccinées.</p>
     
-    <button class="btn-actif" href="#" role="button">Chez les non vaccinés</button>
-    <button class="btn-inactif" href="#" role="button">En population générale</button>
+    <button id="button-non-vax" class="btn-actif" onclick="buttonDecesClicked('non-vax')" role="button">Chez les non vaccinés</button>
+    <button id="button-pop-generale" class="btn-inactif" onclick="buttonDecesClicked('pop-generale')" role="button">En population générale</button>
     <div class="wrap" style="margin-top: 0px;">
             <div class="boxshadow-wide" style="">
-                <span style="color:black; font-size: 20px;">Décès attribuables à la non vaccination chez les non vaccinés • </span>
+                <span style="color:black; font-size: 20px;">Décès évitables <span id="type-vax-evitables-titre">--</span> • </span>
                 <span style="color:#800; font-size: 20px; font-weight: bold;"><span id="chiffre-vax-evitables">--</span> %</span><br>
-                <p>Cela signifie que sur 100 décès de personnes non vaccinées ayant <span id="age_surrisque">--</span>, <span id="chiffre-vax-evitables-paragraphe">--</span> décès auraient pu être évités par la vaccination. </p>
+                <p>Cela signifie que sur 100 décès <span id="type-vax-evitables">--</span> ayant <span id="age_surrisque">--</span>, <span id="chiffre-vax-evitables-paragraphe">--</span> décès auraient pu être évités par la vaccination.<br>
+                <span id="warning-evitables" style="font-size: 15px; font-weight: italic;"></span></p>
                 <div id="figure-vax-evitables" style="margin-top: 20px;"></div>
             </div>
     </div>
     <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span id="date-maj-5">-/-/-</span> • Données DREES • VaxImpact.fr</div>
-    <br>
-    <p>En population générale, le nombre de décès qui auraient pu être évités par la vaccination est de <span id="chiffre-vax-evitables-pop-generale">--</span> % <i>(N.B. : cet indicateur dépend du taux de vaccination, il décroît lorsque la couverture vaccinale augmente)</i>.</p>
     <br>
     <p style="font-weight: bold;">Cela signifie que sur les 20 décès observés chaque jour en France (au 25/07), 12 pourraient être attribuables à la non vaccination.</p>
 
@@ -317,6 +316,42 @@ function download_data(){
         data = request.response;
         populate_stats(data);
     }
+}
+
+function buttonHospClicked(state){
+    hosp_evitables=parseFloat(data_last_day["hospitalisation_conventionnelle"]["FER_non_vacc"]).toFixed(0);
+    hosp_evitables_pop_generale=parseFloat(data_last_day["hospitalisation_conventionnelle"]["FER_pop"]).toFixed(0);
+
+    if(state=="non-vax"){
+        populateFigureHospEvitables(hosp_evitables_figure=hosp_evitables, hosp_evitables_pop_generale=hosp_evitables_pop_generale, type_str="chez les non vaccinés", warning="");
+        other_state = "pop-generale"
+    } else if (state=="pop-generale"){
+        warning = "⚠ Cet indicateur dépend du taux de vaccination, il décroît forcément lorsque la couverture vaccinale augmente."
+        populateFigureHospEvitables(hosp_evitables_figure=hosp_evitables_pop_generale, hosp_evitables_pop_generale=hosp_evitables_pop_generale, type_str="en population générale", warning=warning);
+        other_state = "non-vax"
+    }
+    document.getElementById(`button-${other_state}-hosp`).classList.remove("btn-actif")
+    document.getElementById(`button-${other_state}-hosp`).classList.add("btn-inactif")
+    document.getElementById(`button-${state}-hosp`).classList.add("btn-actif")
+    document.getElementById(`button-${state}-hosp`).classList.remove("btn-inactif")
+}
+
+function buttonDecesClicked(state){
+    dc_evitables=parseFloat(data_last_day["deces"]["FER_non_vacc"]).toFixed(0);
+    dc_evitables_pop_generale=parseFloat(data_last_day["deces"]["FER_pop"]).toFixed(0);
+
+    if(state=="non-vax"){
+        populateFigureDecesEvitables(dc_evitables_figure=dc_evitables, dc_evitables_pop_generale=dc_evitables_pop_generale, type_str="chez les non vaccinés", warning="");
+        other_state = "pop-generale"
+    } else if (state=="pop-generale"){
+        warning = "⚠ Cet indicateur dépend du taux de vaccination, il décroît forcément lorsque la couverture vaccinale augmente."
+        populateFigureDecesEvitables(dc_evitables_figure=dc_evitables_pop_generale, dc_evitables_pop_generale=dc_evitables_pop_generale, type_str="en population générale", warning=warning);
+        other_state = "non-vax"
+    }
+    document.getElementById(`button-${other_state}`).classList.remove("btn-actif")
+    document.getElementById(`button-${other_state}`).classList.add("btn-inactif")
+    document.getElementById(`button-${state}`).classList.add("btn-actif")
+    document.getElementById(`button-${state}`).classList.remove("btn-inactif")
 }
 
 function populate_stats(data){
@@ -418,8 +453,8 @@ function get_beds(number, color="black", animate=false){
 function update_stats(sur_risque_hopital=0, sur_risque_dc=0, hosp_evitables=0, hosp_evitables_pop_generale=0, dc_evitables=0, dc_evitables_pop_generale=0){
     populateFigureHosp(nb_vax=1, sur_risque=sur_risque_hopital);
     populateFigure(nb_vax=1, sur_risque=sur_risque_dc);
-    populateFigureDecesEvitables(dc_evitables=dc_evitables, dc_evitables_pop_generale=0);
-    populateFigureHospEvitables(hosp_evitables=hosp_evitables, hosp_evitables_pop_generale=hosp_evitables_pop_generale);
+    populateFigureDecesEvitables(dc_evitables_figure=dc_evitables, dc_evitables_pop_generale=0);
+    populateFigureHospEvitables(hosp_evitables_figure=hosp_evitables, hosp_evitables_pop_generale=hosp_evitables_pop_generale, type_str="chez les non vaccinés");
     populateDates();
 }
 
@@ -467,34 +502,43 @@ function populateFigureHosp(nb_vax=1, sur_risque=1){
     }
 }
 
-function populateFigureDecesEvitables(){
-    var figure_vax = get_bodies(100-dc_evitables, "grey");
-    figure_vax += get_bodies(dc_evitables, LIGHT_GREEN, animate=true);
+function populateFigureDecesEvitables(dc_evitables_figure, dc_evitables_pop_generale, type_str="chez les non vaccinés", warning=""){
+    var figure_vax = get_bodies(100-dc_evitables_figure, "grey");
+    figure_vax += get_bodies(dc_evitables_figure, LIGHT_GREEN, animate=true);
 
     if(dc_evitables == 0){
         document.getElementById("figure-vax-evitables").innerHTML = MSG_DONNEES_INSUFFISANTES;
     }
     else{
-        document.getElementById("chiffre-vax-evitables").innerHTML = dc_evitables;
-        document.getElementById("chiffre-vax-evitables-pop-generale").innerHTML = dc_evitables_pop_generale;
-        document.getElementById("chiffre-vax-evitables-paragraphe").innerHTML = dc_evitables;
+        document.getElementById("chiffre-vax-evitables").innerHTML = dc_evitables_figure;
+        document.getElementById("chiffre-vax-evitables-paragraphe").innerHTML = dc_evitables_figure;
         document.getElementById("figure-vax-evitables").innerHTML = figure_vax;
+
+        document.getElementById("type-vax-evitables-titre").innerHTML = type_str;
+        document.getElementById("type-vax-evitables").innerHTML = type_str;
+
+        document.getElementById("warning-evitables").innerHTML = warning;
     }
 }
 
-function populateFigureHospEvitables(){
-    var figure_vax = get_beds(100-hosp_evitables, "grey");
-    figure_vax += get_beds(hosp_evitables, LIGHT_GREEN, animate=true);
+function populateFigureHospEvitables(hosp_evitables_figure, hosp_evitables_pop_generale, type_str="chez les non vaccinés", warning=""){
+    var figure_vax = get_beds(100-hosp_evitables_figure, "grey");
+    figure_vax += get_beds(hosp_evitables_figure, LIGHT_GREEN, animate=true);
     if(hosp_evitables == 0){
         document.getElementById("figure-vax-hosp-evitables").innerHTML = MSG_DONNEES_INSUFFISANTES;
     }
     else{
-        document.getElementById("chiffre-vax-hosp-evitables").innerHTML = hosp_evitables;
-        document.getElementById("chiffre-vax-hosp-evitables-pop-generale").innerHTML = hosp_evitables_pop_generale;
-        document.getElementById("chiffre-vax-hosp-evitables-paragraphe").innerHTML = hosp_evitables;
+        document.getElementById("chiffre-vax-hosp-evitables").innerHTML = hosp_evitables_figure;
+        document.getElementById("chiffre-vax-hosp-evitables-paragraphe").innerHTML = hosp_evitables_figure;
         document.getElementById("figure-vax-hosp-evitables").innerHTML = figure_vax;
+
+        document.getElementById("type-vax-hosp-evitables-titre").innerHTML = type_str;
+        document.getElementById("type-vax-hosp-evitables").innerHTML = type_str;
+
+        document.getElementById("warning-hosp-evitables").innerHTML = warning;
     }
 }
+
 
 //buildNoUiSlider()
 
