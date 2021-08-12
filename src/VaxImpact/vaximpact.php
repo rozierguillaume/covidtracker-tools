@@ -256,7 +256,7 @@ p {
     </div>
     <br>
     Auteurs : Sacha Guilhaumou, Elias Orphelin, Guillaume Rozier.<br>
-    Remerciements pour leur aide : Catherine Hill, Dan Chaltiel, Vittoria Colizza.
+    Remerciements pour leur aide : Catherine Hill, Dan Chaltiel, Vittoria Colizza, Karine Lacombe.
     
 </body>
 
