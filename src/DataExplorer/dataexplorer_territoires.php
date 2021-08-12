@@ -661,7 +661,6 @@ function buildEmptyChart() {
         margin_right=0;
     }
     
-
     this.dataExplorerChart = new Chart(ctx, {
         type: 'line',
         data: {
