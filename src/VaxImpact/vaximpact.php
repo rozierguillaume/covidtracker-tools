@@ -84,7 +84,7 @@ p {
 
 <body>
     <p><b>Combien d'hospitalisations ont été évitées grâce au vaccin Covid19 ? Quelle est l'importance de la non vaccination du Covid19 dans les décès hospitaliers ?</b> Cet outil permet d'évaluer l'impact de la vaccination sur les hospitalisations et décès de la Covid19.
-    Ces statistiques s'appuient sur les données issues des études de la DREES mises à jour chaque semaine (dernière : <span id="date-maj-1">-/-/-</span>). La méthodologie et les calculs sont décrits en bas de page.</p>
+    Ces statistiques s'appuient sur les données issues des études de la DREES mises à jour chaque semaine (dernière donnée : <span id="date-maj-1">-/-/-</span>). La méthodologie et les calculs sont décrits en bas de page.</p>
     
     <!--
     <div>
@@ -161,7 +161,7 @@ p {
                 <div id="figure-non-vax-hosp" style="margin-top: 20px;"></div>
             </div>
     </div>
-    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span id="date-maj-2">-/-/-</span> • Données DREES • VaxImpact.fr</div>
+    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : 12/08/2021 • Dernière donnée : <span id="date-maj-2">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
     <p style="font-weight: bold;">Cela signifie qu'une personne non vaccinée a un risque multiplié par <span id="chiffre-non-vax-hosp-conclusion">--</span> d'être hospitalisée par rapport à une personne vaccinée.</p>
     
@@ -183,10 +183,10 @@ p {
                 <div id="figure-vax-hosp-evitables" style="margin-top: 20px;"></div>
             </div>
     </div>
-    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span id="date-maj-4">-/-/-</span> • Données DREES • VaxImpact.fr</div>
+    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : 12/08/2021 • Dernière donnée : <span id="date-maj-4">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
     
-    <p style="font-weight: bold;">Cela signifie que sur les 266 admissions à l'hôpital observées chaque jour en France (au 25 juillet), 192 pourraient être évitées si toute la population était vaccinée.</p>
+    <p style="font-weight: bold;">Cela signifie que sur les 266 admissions à l'hôpital observées chaque jour en France (au 25 juillet), 192 hospitalisations pourraient être évitables par la vaccination.</p>
 
     <br>
     <h2 class="title">Décès hospitaliers</h2>
@@ -221,7 +221,7 @@ p {
                 <div id="figure-non-vax" style="margin-top: 20px;"></div>
             </div>
     </div>
-    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span id="date-maj-3">-/-/-</span> • Données DREES • VaxImpact.fr</div>
+    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : 12/08/2021 • Dernière donnée : <span id="date-maj-3">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
     <p style="font-weight: bold;">Cela signifie qu'une personne non vaccinée a un risque multiplié par <span id="chiffre-non-vax-conclusion">--</span> de décéder par rapport à une personne vaccinée.</p>
     
@@ -240,9 +240,9 @@ p {
                 <div id="figure-vax-evitables" style="margin-top: 20px;"></div>
             </div>
     </div>
-    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span id="date-maj-5">-/-/-</span> • Données DREES • VaxImpact.fr</div>
+    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : 12/08/2021 • Dernière donnée : <span id="date-maj-5">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
-    <p style="font-weight: bold;">Cela signifie que sur les 20 décès observés chaque jour en France (au 25/07), 12 pourraient être attribuables à la non vaccination.</p>
+    <p style="font-weight: bold;">Cela signifie que sur les 20 décès observés chaque jour en France (au 25/07), 12 décès pourraient être évitables par la vaccination.</p>
 
     <br>
     <br>
@@ -496,7 +496,7 @@ function populateFigureHosp(nb_vax=1, sur_risque=1){
         document.getElementById("figure-vax-hosp").innerHTML = figure_vax;
         document.getElementById("chiffre-vax-hosp").innerHTML = nb_vax;
         document.getElementById("chiffre-non-vax-hosp").innerHTML = sur_risque*nb_vax;
-        document.getElementById("chiffre-non-vax-hosp-conclusion").innerHTML = sur_risque*nb_vax;
+        document.getElementById("chiffre-non-vax-hosp-conclusion").innerHTML = sur_risque;
         document.getElementById("chiffre-non-vax-hosp-paragraphe").innerHTML = sur_risque;
         document.getElementById("figure-non-vax-hosp").innerHTML = figure_non_vax;
     }
