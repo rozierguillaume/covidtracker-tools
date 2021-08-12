@@ -321,12 +321,12 @@ function download_data(){
 function buttonHospClicked(state){
     hosp_evitables=parseFloat(data_last_day["hospitalisation_conventionnelle"]["FER_non_vacc"]).toFixed(0);
     hosp_evitables_pop_generale=parseFloat(data_last_day["hospitalisation_conventionnelle"]["FER_pop"]).toFixed(0);
-
+	taux_vaccination=parseFloat(data_last_day["proportion_vaccines"]).toFixed(0);
     if(state=="non-vax"){
         populateFigureHospEvitables(hosp_evitables_figure=hosp_evitables, hosp_evitables_pop_generale=hosp_evitables_pop_generale, type_str="chez les non vaccinés", warning="");
         other_state = "pop-generale"
     } else if (state=="pop-generale"){
-        warning = "⚠ Cet indicateur dépend du taux de vaccination (49%), il décroît forcément lorsque la couverture vaccinale augmente."
+        warning = "⚠ Cet indicateur dépend du taux de vaccination ("+taux_vaccination+" \%), il décroît forcément lorsque la couverture vaccinale augmente."
         populateFigureHospEvitables(hosp_evitables_figure=hosp_evitables_pop_generale, hosp_evitables_pop_generale=hosp_evitables_pop_generale, type_str="en population générale", warning=warning);
         other_state = "non-vax"
     }
@@ -344,7 +344,7 @@ function buttonDecesClicked(state){
         populateFigureDecesEvitables(dc_evitables_figure=dc_evitables, dc_evitables_pop_generale=dc_evitables_pop_generale, type_str="chez les non vaccinés", warning="");
         other_state = "pop-generale"
     } else if (state=="pop-generale"){
-        warning = "⚠ Cet indicateur dépend du taux de vaccination (49%), il décroît forcément lorsque la couverture vaccinale augmente."
+        warning = "⚠ Cet indicateur dépend du taux de vaccination ("+taux_vaccination+" \%), il décroît forcément lorsque la couverture vaccinale augmente."
         populateFigureDecesEvitables(dc_evitables_figure=dc_evitables_pop_generale, dc_evitables_pop_generale=dc_evitables_pop_generale, type_str="en population générale", warning=warning);
         other_state = "non-vax"
     }
