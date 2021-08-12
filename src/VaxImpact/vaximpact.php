@@ -168,7 +168,7 @@ p {
     <br>
     <h3 class="title">Admissions attribuables à la non vaccination</h3>
     
-    <p>Cet indicateur permet d'estimer la proportion des hospitalisations parmi les personnes non vaccinées qui auraient pu être évités si elles avaient été vaccinées.</p>
+    <p>Cet indicateur permet d'estimer la proportion des hospitalisations parmi les personnes non vaccinées qui auraient pu être évitées si elles avaient été vaccinées.</p>
     
 
     <button id="button-non-vax-hosp" class="btn-actif" onclick="buttonHospClicked('non-vax')" role="button">Chez les non vaccinés</button>
@@ -178,7 +178,7 @@ p {
             <div class="boxshadow-wide" style="">
                 <span style="color:black; font-size: 20px;">Hospitalisations évitables <span id="type-vax-hosp-evitables-titre">--</span> • </span>
                 <span style="color:#800; font-size: 20px; font-weight: bold;"><span id="chiffre-vax-hosp-evitables">--</span> %</span><br>
-                <p>Cela signifie que sur 100 hospitalisations <span id="type-vax-hosp-evitables">--</span> ayant <span id="age_surrisque_hosp">--</span>, <span id="chiffre-vax-hosp-evitables-paragraphe">--</span> hospitalisations auraient pu être évités par la vaccination.<br><span id="warning-hosp-evitables" style="font-size: 15px; font-weight: italic;"></span></p>
+                <p>Cela signifie que sur 100 hospitalisations <span id="type-vax-hosp-evitables">--</span> ayant <span id="age_surrisque_hosp">--</span>, <span id="chiffre-vax-hosp-evitables-paragraphe">--</span> hospitalisations auraient pu être évitées par la vaccination.<br><span id="warning-hosp-evitables" style="font-size: 15px; font-weight: italic;"></span></p>
                 
                 <div id="figure-vax-hosp-evitables" style="margin-top: 20px;"></div>
             </div>
