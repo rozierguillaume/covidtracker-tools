@@ -3,6 +3,28 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js" integrity="sha512-igVQ7hyQVijOUlfg3OmcTZLwYJIBXU63xL9RC12xBHNpmGJAktDnzl9Iw0J4yrSaQtDxTTVlwhY730vphoVqJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <style>
+.btn-actif{
+    border: 1px solid black;
+    padding: 6px;
+    border-radius: 5px;
+    color:black;
+}
+.btn-inactif{
+    border: 1px solid white;
+    padding: 6px;
+    border-radius: 5px;
+    color:black;
+}
+
+.btn-inactif:hover{
+    border: 1px solid black;
+    background-color: lightgrey;
+    padding: 6px;
+    border-radius: 5px;
+    color:white;
+}
+
+
 .shadow {
         border: 0px solid black;
         padding: 12px;
@@ -149,9 +171,9 @@ p {
     <p>Cet indicateur permet d'estimer la proportion des hospitalisations parmi les personnes non vaccinées qui auraient pu être évités si elles avaient été vaccinées.</p>
     
 
-    <a class="btn btn-primary" href="#" role="button">Chez les non vaccinés</a>
-    <a class="btn btn-outline-primary" href="#" role="button">En population générale</a>
-    <button type="button" class="btn btn-outline-primary">Primary</button>
+    <button class="btn-actif" href="#" role="button">Chez les non vaccinés</button>
+    <button class="btn-inactif" href="#" role="button">En population générale</button>
+
     <div class="wrap" style="margin-top: 0px;">
             <div class="boxshadow-wide" style="">
                 <span style="color:black; font-size: 20px;">Hospitalisations attribuables à la non vaccination chez les non vaccinés • </span>
@@ -206,7 +228,10 @@ p {
     <br>
     <h3 class="title">Décès attribuables à la non vaccination</h3>
     <p>Cet indicateur permet d'estimer la proportion des décès parmi les personnes non vaccinées qui auraient pu être évités si elles avaient été vaccinées.</p>
-    <div class="wrap" style="margin-top: 20px;">
+    
+    <button class="btn-actif" href="#" role="button">Chez les non vaccinés</button>
+    <button class="btn-inactif" href="#" role="button">En population générale</button>
+    <div class="wrap" style="margin-top: 0px;">
             <div class="boxshadow-wide" style="">
                 <span style="color:black; font-size: 20px;">Décès attribuables à la non vaccination chez les non vaccinés • </span>
                 <span style="color:#800; font-size: 20px; font-weight: bold;"><span id="chiffre-vax-evitables">--</span> %</span><br>
