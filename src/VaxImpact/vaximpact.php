@@ -145,8 +145,14 @@ p {
     
     <br>
     <h3 class="title">Admissions attribuables à la non vaccination</h3>
+    
     <p>Cet indicateur permet d'estimer la proportion des hospitalisations parmi les personnes non vaccinées qui auraient pu être évités si elles avaient été vaccinées.</p>
-    <div class="wrap" style="margin-top: 20px;">
+    
+
+    <a class="btn btn-primary" href="#" role="button">Chez les non vaccinés</a>
+    <a class="btn btn-outline-primary" href="#" role="button">En population générale</a>
+    <button type="button" class="btn btn-outline-primary">Primary</button>
+    <div class="wrap" style="margin-top: 0px;">
             <div class="boxshadow-wide" style="">
                 <span style="color:black; font-size: 20px;">Hospitalisations attribuables à la non vaccination chez les non vaccinés • </span>
                 <span style="color:#800; font-size: 20px; font-weight: bold;"><span id="chiffre-vax-hosp-evitables">--</span> %</span><br>
