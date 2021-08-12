@@ -36,7 +36,7 @@
                 <a href="https://vitemadose.covidtracker.fr/" style="color:black"><button><b>Vite Ma Dose !</b></button></a>
                 <a href="https://covidtracker.fr/covidexplorer/" style="color:black"><button>🔎 <b>CovidExplorer</b></button></a>
                 <a href="https://covidtracker.fr/vaccintracker/" style="color:black"><button>💉 <b>VaccinTracker</b></button></a>
-                <a href="https://covidtracker.fr/covidradius/" style="color:black"><button>📍 <b>CovidRadius</b></button></a>
+                <!--<a href="https://covidtracker.fr/covidradius/" style="color:black"><button>📍 <b>CovidRadius</b></button></a>-->
                 <a href="https://covidtracker.fr/deconfitracker/" style="color:black"><button>🔥 DéconfiTracker</button></a><a href="https://covidtracker.fr/covidep/" style="color:black"><button>🆕 CoviDep</button></a>
                 <a href="https://covidtracker.fr/calculateur-risque-covid/" style="color:black"><button>🔢 CoviRisque</button></a>
                 <a href="https://covidtracker.fr/archives/" style="color:black"><br><i>Outils archivés</i></a>
