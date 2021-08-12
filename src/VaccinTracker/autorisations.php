@@ -46,23 +46,19 @@
         </card>
     </div>
 
-    <h3 style="margin-top : 50px;">Vaccins en cours d'autorisation</h3>
+    <h3 style="margin-top : 50px;">Vaccins en cours d'évaluation continue par l'<a target="_blank" href="https://www.ema.europa.eu/en/human-regulatory/overview/public-health-threats/coronavirus-disease-covid-19/treatments-vaccines/vaccines-covid-19/covid-19-vaccines-under-evaluation">AEM</a></h3>
     <div class="row">
-        <card class="shadow-btn-orange col-xs-11 col-md-4"><b>🇷🇺 Sputnik V</b><br>
-            <i>Ce vaccin n'a pas été pré-commandé par l'UE</i><br>
+         <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇺🇸 Novavax</b><br>
             Phase 3/3<br>
-            Type : Vecteur viral<br>
-            Efficacité annoncée : 91,6%<br>
-            Prêt : oui<br>
-            Conservation : +5°C<br>
+            Type : Sous-unité protéique<br>
+            Efficacité annoncée : 89,3%<br>
+            Conservation : entre +2°C et +8°C<br>
+            Commandes UE : 100M (+ option 100M)<br>
+            Dont France : 15M (+ option 15M)<br>
             Doses à injecter : 2<br>
-            Statut : vaccin en <a target="_blank" href="https://www.ema.europa.eu/en/news/ema-starts-rolling-review-sputnik-v-covid-19-vaccine">cours d'évaluation</a> par l'AEM<br>
-            <a target="_blank" title="Sputnik V COVID-19 vaccine candidate appears safe and effective" href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)00191-4/fulltext">Article</a>
+            Statut : vaccin <a target="_blank" href="https://www.ema.europa.eu/en/news/ema-starts-rolling-review-novavaxs-covid-19-vaccine-nvx-cov2373">en cours d'évaluation</a> par l'AEM depuis le 03/02/2021<br>
         </card>
-    </div>
-
-    <h3 style="margin-top : 50px;">Vaccins non encore soumis</h3>
-    <div class="row">
+        
         <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇩🇪 CureVac</b><br>
             Phase 2/3<br>
             Type : ARN messager<br>
@@ -72,18 +68,29 @@
             Commandes UE : 225M (+ option 180M)<br>
             Dont France : 33.75M (+ option 27M)<br>
             Doses à injecter : 2<br>
-            Statut : examen continu (UE)
+            Statut : vaccin <a target="_blank" href="https://www.ema.europa.eu/en/news/ema-starts-rolling-review-curevacs-covid-19-vaccine-cvncov">en cours d'évaluation</a> par l'AEM depuis le 12/02/2021<br>
+        </card>        
+        
+        <card class="shadow-btn-orange col-xs-11 col-md-4"><b>🇷🇺 Sputnik V</b><br>
+            <i>Ce vaccin n'a pas été pré-commandé par l'UE</i><br>
+            Phase 3/3<br>
+            Type : Vecteur viral<br>
+            Efficacité annoncée : 91,6%<br>
+            Prêt : oui<br>
+            Conservation : +5°C<br>
+            Doses à injecter : 2<br>
+            Statut : vaccin <a target="_blank" href="https://www.ema.europa.eu/en/news/ema-starts-rolling-review-sputnik-v-covid-19-vaccine">en cours d'évaluation</a> par l'AEM depuis le 04/03/2021<br>
+            <a target="_blank" title="Sputnik V COVID-19 vaccine candidate appears safe and effective" href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)00191-4/fulltext">Article</a>
         </card>
         
-         <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇺🇸 Novavax</b><br>
-            Phase 3/3<br>
-            Type : Sous-unité protéique<br>
-            Efficacité annoncée : 89,3%<br>
+        <card class="shadow-btn-red col-xs-11 col-md-4"><b>[Chine] CoronaVac</b><br>
+            Phase --<br>
+            Type : Vaccin inactivé<br>
+            Efficacité annoncée : --%<br>
+            Prêt : --<br>
             Conservation : entre +2°C et +8°C<br>
-            Commandes UE : 100M (+ option 100M)<br>
-            Dont France : 15M (+ option 15M)<br>
-            Doses à injecter : 2<br>
-            Statut : examen continu (UE)
+            Doses à injecter : 1<br>
+            Statut : vaccin <a target="_blank" href="https://www.ema.europa.eu/en/news/ema-starts-rolling-review-covid-19-vaccine-vero-cell-inactivated">en cours d'évaluation</a> par l'AEM depuis le 04/05/2021<br>
         </card>
         
         <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇫🇷🇬🇧 Sanofi/Pasteur-GSK</b><br>
@@ -95,9 +102,12 @@
             Commandes UE : 300M<br>
             Dont France : 45M<br>
             Doses à injecter : --<br>
-            Statut : --
+            Statut : vaccin <a target="_blank" href="https://www.ema.europa.eu/en/news/ema-starts-rolling-review-covid-19-vaccine-vidprevtyn">en cours d'évaluation</a> par l'AEM depuis le 20/07/2021<br>
         </card>
+    </div>
 
+    <h3 style="margin-top : 50px;">Vaccins non encore soumis</h3>
+    <div class="row">             
         <card class="shadow-btn-red col-xs-11 col-md-4"><b>🇫🇷🇺🇸 Sanofi/Pasteur-Translate Bio</b><br>
             Phase 2/3<br>
             Type : ARN messager<br>
