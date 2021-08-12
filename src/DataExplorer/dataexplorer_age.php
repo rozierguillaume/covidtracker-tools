@@ -465,7 +465,10 @@ function populateTerritoires(){
     console.log("exit_populate_territoires")
 }
 
-fetchage_data();
+setTimeout(function () {
+    fetchage_data();
+        }, 500);
+
 function fetchage_data(){
     fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/dataexplorer_compr_age.json', {cache: 'no-cache'})
         .then(response => {
@@ -484,9 +487,7 @@ function fetchage_data(){
                 //Erreur au-dessus
                 populateTerritoires()
                 console.log("populate-territoires-a")
-                setTimeout(function () {
-                    buildSliderAge();
-                }, 500);
+                buildSliderAge();
                 
                 console.log("done-a")
                 //telechargerImage()

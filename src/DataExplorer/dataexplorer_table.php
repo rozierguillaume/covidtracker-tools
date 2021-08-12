@@ -125,7 +125,10 @@ var data_table;
 var lastsort=0;
 var lastorder="desc";
 
-fetchDataTable();
+setTimeout(function () {
+    fetchDataTable();
+        }, 2000);
+
 function fetchDataTable(){
     fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/dataexplorer_compr.json', {cache: 'no-cache'})
         .then(response => {

@@ -370,7 +370,11 @@ function populateTerritoiresTypes(){
     console.log("exit_populate_territoires")
 }
 
-fetchtype_data()
+
+setTimeout(function () {
+    fetchtype_data()
+            }, 1500);
+
 function fetchtype_data(){
     fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/dataexplorer_compr.json', {cache: 'no-cache'})
         .then(response => {
@@ -389,10 +393,7 @@ function fetchtype_data(){
                 //Erreur au-dessus
                 populateTerritoiresTypes()
                 console.log("populate-territoires-t")
-
-                setTimeout(function () {
-                    buildSliderTypes();
-                }, 1000);
+                buildSliderTypes();
                 
                 console.log("done-t")
                 //telechargerImage()
