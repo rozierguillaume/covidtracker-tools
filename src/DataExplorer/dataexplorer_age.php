@@ -376,6 +376,20 @@ function buildChartAge(){
     
     age_pour100k_temp = checkage_pour100kAge(age_selected_age_data[0]);
 
+    var param_age={'fill': true, 'borderWidth': 4};
+
+    if(age_selected_tranches.length>1){
+        param_age['fill'] = false
+        param_age['borderWidth'] = 3.5
+    }
+    if(age_selected_tranches.length>3){
+        param_age['fill'] = false
+        param_age['borderWidth'] = 3
+    }
+    if(age_selected_tranches.length>10){
+        param_age['borderWidth'] = 2
+    }
+
     if(document.querySelector('#territoireAge option:checked').parentElement.label == "Départements"){
         if(document.querySelector('#typeDoneesAge option:checked').parentElement.label == "Indicateurs sanitaires"){
             window.alert("Santé publique France ne publie pas les données hospitaliaires par tranche d'âge au niveau départemental. Merci de sélectionner un indicateur épidémique, ou de sélectionner un autre territoire (region, France entière).");
@@ -383,7 +397,7 @@ function buildChartAge(){
     }
     age_selected_territoires.map((territoire_temp, idx_temp) => {
         age_selected_tranches.map((value, idx) => {
-        addTraceAge(age_selected_age_data[0], value, age_pour100k_temp, document.getElementById("territoireAge").value);
+            addTraceAge(age_selected_age_data[0], value, age_pour100k_temp, document.getElementById("territoireAge").value, param_age);
     })
     })
 
@@ -520,7 +534,7 @@ function replaceBadCharacters(dep){
     return dep.replace("'", "&apos;").replace("ô", "&ocirc;")
   }
 
-function addTraceAge(value, tranche, age_pour100k_temp, territoire_temp){
+function addTraceAge(value, tranche, age_pour100k_temp, territoire_temp, param){
     diviseur = 1;
     if (age_pour100k_temp){
         diviseur = 1
@@ -549,13 +563,18 @@ function addTraceAge(value, tranche, age_pour100k_temp, territoire_temp){
         tranche=noms_tranches[tranche]
     }
     
+    hex_color="#"+age_seq[N];
+    color=hexToRgbA(hex_color).match(/\d+/g);
+
     age_dataExplorerAgeChart.data.datasets.push({
         yAxisID: value,
         label: associationTranchesNoms[tranche] + complement,
         data: age_data_temp,
         pointRadius: 0,
-        backgroundColor: 'rgba(0, 168, 235, 0)',
+        fill: param['fill'],
+        backgroundColor: `rgba(${color[0]}, ${color[1]}, ${color[2]}, 0.2)`,
         borderColor: "#"+age_seq[N],
+        borderWidth: param["borderWidth"],
         cubicInterpolationMode: 'monotone',
         pointHoverRadius: 5,
         pointHoverBackgroundColor: "#"+age_seq[N],

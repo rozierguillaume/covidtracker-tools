@@ -384,6 +384,7 @@ function buildChart(){
     selected_data = [document.getElementById("typeDonees").value]
 
     pour100k_temp = checkPour100k(selected_data[0]);
+    
     var param={'fill': true, 'borderWidth': 4};
     var show_alert=false
 
