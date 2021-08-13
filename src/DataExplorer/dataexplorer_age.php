@@ -376,6 +376,20 @@ function buildChartAge(){
     
     age_pour100k_temp = checkage_pour100kAge(age_selected_age_data[0]);
 
+    var param_age={'fill': true, 'borderWidth': 4};
+
+    if(age_selected_tranches.length>1){
+        param_age['fill'] = false
+        param_age['borderWidth'] = 3.5
+    }
+    if(age_selected_tranches.length>3){
+        param_age['fill'] = false
+        param_age['borderWidth'] = 3
+    }
+    if(age_selected_tranches.length>10){
+        param_age['borderWidth'] = 2
+    }
+
     if(document.querySelector('#territoireAge option:checked').parentElement.label == "Départements"){
         if(document.querySelector('#typeDoneesAge option:checked').parentElement.label == "Indicateurs sanitaires"){
             window.alert("Santé publique France ne publie pas les données hospitaliaires par tranche d'âge au niveau départemental. Merci de sélectionner un indicateur épidémique, ou de sélectionner un autre territoire (region, France entière).");
@@ -383,7 +397,7 @@ function buildChartAge(){
     }
     age_selected_territoires.map((territoire_temp, idx_temp) => {
         age_selected_tranches.map((value, idx) => {
-        addTraceAge(age_selected_age_data[0], value, age_pour100k_temp, document.getElementById("territoireAge").value);
+            addTraceAge(age_selected_age_data[0], value, age_pour100k_temp, document.getElementById("territoireAge").value, param_age);
     })
     })
 
@@ -465,7 +479,10 @@ function populateTerritoires(){
     console.log("exit_populate_territoires")
 }
 
-fetchage_data();
+setTimeout(function () {
+    fetchage_data();
+        }, 500);
+
 function fetchage_data(){
     fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/dataexplorer_compr_age.json', {cache: 'no-cache'})
         .then(response => {
@@ -484,9 +501,7 @@ function fetchage_data(){
                 //Erreur au-dessus
                 populateTerritoires()
                 console.log("populate-territoires-a")
-                setTimeout(function () {
-                    buildSliderAge();
-                }, 500);
+                buildSliderAge();
                 
                 console.log("done-a")
                 //telechargerImage()
@@ -519,7 +534,7 @@ function replaceBadCharacters(dep){
     return dep.replace("'", "&apos;").replace("ô", "&ocirc;")
   }
 
-function addTraceAge(value, tranche, age_pour100k_temp, territoire_temp){
+function addTraceAge(value, tranche, age_pour100k_temp, territoire_temp, param){
     diviseur = 1;
     if (age_pour100k_temp){
         diviseur = 1
@@ -548,13 +563,18 @@ function addTraceAge(value, tranche, age_pour100k_temp, territoire_temp){
         tranche=noms_tranches[tranche]
     }
     
+    hex_color="#"+age_seq[N];
+    color=hexToRgbA(hex_color).match(/\d+/g);
+
     age_dataExplorerAgeChart.data.datasets.push({
         yAxisID: value,
         label: associationTranchesNoms[tranche] + complement,
         data: age_data_temp,
         pointRadius: 0,
-        backgroundColor: 'rgba(0, 168, 235, 0)',
+        fill: param['fill'],
+        backgroundColor: `rgba(${color[0]}, ${color[1]}, ${color[2]}, 0.2)`,
         borderColor: "#"+age_seq[N],
+        borderWidth: param["borderWidth"],
         cubicInterpolationMode: 'monotone',
         pointHoverRadius: 5,
         pointHoverBackgroundColor: "#"+age_seq[N],
@@ -572,6 +592,16 @@ function addTraceAge(value, tranche, age_pour100k_temp, territoire_temp){
 buildEmptyChartAge();
 function buildEmptyChartAge() {
     var ctx = document.getElementById('age_dataExplorerAgeChart').getContext('2d');
+    let vw=Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+
+    margin_right=120;
+    if(vw>1000){
+        margin_right=120;
+    } else if(vw>800){
+        margin_right=80;
+    } else {
+        margin_right=0;
+    }
 
     this.age_dataExplorerAgeChart = new Chart(ctx, {
         type: 'line',
@@ -582,7 +612,7 @@ function buildEmptyChartAge() {
             layout: {
                 padding: {
                     left: 0,
-                    right: 100,
+                    right: margin_right,
                     top: 0,
                     bottom: 0
                 }
@@ -598,7 +628,9 @@ function buildEmptyChartAge() {
                     formatter: function(value, context) {
                         if (context.dataset.data[context.dataIndex].x == age_dataExplorerAgeChart.options.scales.xAxes[0].ticks.max)
                         {
-                            return  context.dataset.label;
+                            value = context.dataset.data[context.dataset.data.length-1].y
+                            value = (value*100).toFixed()/100
+                            return  value + " • " + context.dataset.label;
                         }
                         return "";
                     }

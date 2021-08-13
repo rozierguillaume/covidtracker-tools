@@ -370,7 +370,11 @@ function populateTerritoiresTypes(){
     console.log("exit_populate_territoires")
 }
 
-fetchtype_data()
+
+setTimeout(function () {
+    fetchtype_data()
+            }, 1500);
+
 function fetchtype_data(){
     fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/dataexplorer_compr.json', {cache: 'no-cache'})
         .then(response => {
@@ -389,10 +393,7 @@ function fetchtype_data(){
                 //Erreur au-dessus
                 populateTerritoiresTypes()
                 console.log("populate-territoires-t")
-
-                setTimeout(function () {
-                    buildSliderTypes();
-                }, 1000);
+                buildSliderTypes();
                 
                 console.log("done-t")
                 //telechargerImage()
@@ -489,6 +490,16 @@ function addTraceTypes(value, territoire_temp){
 buildEmptyChartTypes();
 function buildEmptyChartTypes() {
     var ctx = document.getElementById('types_dataExplorerAgeChart').getContext('2d');
+    let vw=Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+
+    margin_right=120;
+    if(vw>1000){
+        margin_right=130;
+    } else if(vw>800){
+        margin_right=80;
+    } else {
+        margin_right=0;
+    }
 
     this.types_dataExplorerAgeChart = new Chart(ctx, {
         type: 'line',
@@ -499,7 +510,7 @@ function buildEmptyChartTypes() {
             layout: {
                 padding: {
                     left: 0,
-                    right: 100,
+                    right: margin_right,
                     top: 0,
                     bottom: 0
                 }
@@ -521,14 +532,16 @@ function buildEmptyChartTypes() {
                         }
                         
                         if(context.dataset.data[context.dataIndex].x == min_x){
-                            return  context.dataset.label;
+                            value = context.dataset.data[context.dataset.data.length-1].y
+                            value = (value*100).toFixed()/100
+                            return  value + " • " + context.dataset.label;
                         }
                         
-                        if (context.dataset.data[context.dataIndex].x == types_dataExplorerAgeChart.options.scales.xAxes[0].ticks.max)
-                        {
+                        //if (context.dataset.data[context.dataIndex].x == types_dataExplorerAgeChart.options.scales.xAxes[0].ticks.max)
+                        //{
                             //return  context.dataset.label;
                             //return  context.dataset.label;
-                        }
+                        //}
                         return "";
                     }
                 },

@@ -256,7 +256,7 @@ p {
     </div>
     <br>
     Auteurs : Sacha Guilhaumou, Elias Orphelin, Guillaume Rozier.<br>
-    Merci pour leur aide : Catherine Hill, Dan Chaltiel, Karine Lacombe. Merci pour leur relecture : Vittoria Colizza, Karine Lacombe, BioHospitalix, Le Doc.
+    Merci pour leur aide : Catherine Hill, Dan Chaltiel. Merci pour leur relecture : Vittoria Colizza, Karine Lacombe, BioHospitalix, Le Doc.
     
 </body>
 
@@ -340,6 +340,7 @@ function buttonHospClicked(state){
     hosp_evitables=parseFloat(data_last_day["hospitalisation_conventionnelle"]["FER_non_vacc"]).toFixed(0);
     hosp_evitables_pop_generale=parseFloat(data_last_day["hospitalisation_conventionnelle"]["FER_pop"]).toFixed(0);
 	taux_vaccination=parseFloat(data_last_day["proportion_vaccines"]).toFixed(0);
+
     if(state=="non-vax"){
         populateFigureHospEvitables(hosp_evitables_figure=hosp_evitables, hosp_evitables_pop_generale=hosp_evitables_pop_generale, type_str="chez les non vaccinés", warning="");
         other_state = "pop-generale"
@@ -357,7 +358,8 @@ function buttonHospClicked(state){
 function buttonDecesClicked(state){
     dc_evitables=parseFloat(data_last_day["deces"]["FER_non_vacc"]).toFixed(0);
     dc_evitables_pop_generale=parseFloat(data_last_day["deces"]["FER_pop"]).toFixed(0);
-
+    taux_vaccination=parseFloat(data_last_day["proportion_vaccines"]).toFixed(0);
+    
     if(state=="non-vax"){
         populateFigureDecesEvitables(dc_evitables_figure=dc_evitables, dc_evitables_pop_generale=dc_evitables_pop_generale, type_str="chez les non vaccinés", warning="");
         other_state = "pop-generale"

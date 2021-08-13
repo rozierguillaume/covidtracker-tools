@@ -384,6 +384,7 @@ function buildChart(){
     selected_data = [document.getElementById("typeDonees").value]
 
     pour100k_temp = checkPour100k(selected_data[0]);
+    
     var param={'fill': true, 'borderWidth': 4};
     var show_alert=false
 
@@ -650,7 +651,17 @@ function addTrace(value, territoire, pour100k_temp, param){
 buildEmptyChart();
 function buildEmptyChart() {
     var ctx = document.getElementById('dataExplorerChart').getContext('2d');
+    let vw=Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 
+    margin_right=120;
+    if(vw>1000){
+        margin_right=120;
+    } else if(vw>800){
+        margin_right=80;
+    } else {
+        margin_right=0;
+    }
+    
     this.dataExplorerChart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -660,7 +671,7 @@ function buildEmptyChart() {
             layout: {
                 padding: {
                     left: -2,
-                    right: 100,
+                    right: margin_right,
                     top: 0,
                     bottom: 0
                 }
@@ -676,7 +687,9 @@ function buildEmptyChart() {
                     formatter: function(value, context) {
                         if (context.dataset.data[context.dataIndex].x == dataExplorerChart.options.scales.xAxes[0].ticks.max)
                         {
-                            return  context.dataset.label;
+                            value = context.dataset.data[context.dataset.data.length-1].y
+                            value = (value*100).toFixed()/100
+                            return  value + " • " + context.dataset.label;
                         }
                         return "";
                     }
