@@ -161,7 +161,7 @@ p {
                 <div id="figure-non-vax-hosp" style="margin-top: 20px;"></div>
             </div>
     </div>
-    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : 12/08/2021 • Dernière donnée : <span id="date-maj-2">-/-/-</span> • Données DREES • VaxImpact.fr</div>
+    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span class="date-maj-json"> -/-/- </span> • Dernière donnée : <span id="date-maj-2">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
     <p style="font-weight: bold;">Cela signifie qu'une personne non vaccinée a un risque multiplié par <span id="chiffre-non-vax-hosp-conclusion">--</span> d'être hospitalisée par rapport à une personne vaccinée.</p>
     
@@ -183,7 +183,7 @@ p {
                 <div id="figure-vax-hosp-evitables" style="margin-top: 20px;"></div>
             </div>
     </div>
-    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : 12/08/2021 • Dernière donnée : <span id="date-maj-4">-/-/-</span> • Données DREES • VaxImpact.fr</div>
+    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span class="date-maj-json"> -/-/- </span> • Dernière donnée : <span id="date-maj-4">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
     
     <p style="font-weight: bold;">Cela signifie que sur les 266 admissions à l'hôpital observées chaque jour en France (au 25 juillet), 192 hospitalisations sont évitables par la vaccination.</p>
@@ -221,7 +221,7 @@ p {
                 <div id="figure-non-vax" style="margin-top: 20px;"></div>
             </div>
     </div>
-    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : 12/08/2021 • Dernière donnée : <span id="date-maj-3">-/-/-</span> • Données DREES • VaxImpact.fr</div>
+    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span class="date-maj-json"> -/-/- </span> • Dernière donnée : <span id="date-maj-3">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
     <p style="font-weight: bold;">Cela signifie qu'une personne non vaccinée a un risque multiplié par <span id="chiffre-non-vax-conclusion">--</span> de décéder par rapport à une personne vaccinée.</p>
     
@@ -240,7 +240,7 @@ p {
                 <div id="figure-vax-evitables" style="margin-top: 20px;"></div>
             </div>
     </div>
-    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : 12/08/2021 • Dernière donnée : <span id="date-maj-5">-/-/-</span> • Données DREES • VaxImpact.fr</div>
+    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span class="date-maj-json"> -/-/- </span> • Dernière donnée : <span id="date-maj-5">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
     <p style="font-weight: bold;">Cela signifie que sur les 20 décès observés chaque jour en France (au 25/07), 12 décès sont évitables par la vaccination.</p>
 
@@ -290,7 +290,6 @@ let MSG_DONNEES_INSUFFISANTES = `
     `
 
 var value_age = 6;
-let DATE_MAX = "26/07/2021"
 let DICT_AGES_STR = {
     100 : "tous âges",
     0: "0 - 9 ans",
@@ -304,16 +303,35 @@ let DICT_AGES_STR = {
     8: "80 - 89 ans",
 }
 var data;
+var DATE_MAX;
 
 download_data();
 function download_data(){
-    var requestURL = 'https://raw.githubusercontent.com/CovidTrackerFr/data-utils/main/vaximpact/data/output/vaximpact.json';
+    var requestURL = 'https://raw.githubusercontent.com/CovidTrackerFr/data-utils/main/vaximpact/data/output/vaximpact_2.json';
     var request = new XMLHttpRequest();
     request.open('GET', requestURL);
     request.responseType = 'json';
     request.send();
     request.onload = function() {
         data = request.response;
+		dates_from_json=[]
+        data = request.response;
+		
+		for (date of Object.keys(data["days"]))
+		{dates_from_json.push(new Date(date));}
+	
+		var maxDate = new Date(Math.max.apply(null,dates_from_json));
+		
+		if(maxDate.getMonth().toString().length == 1)
+			{
+			var month = "0"+(maxDate.getMonth()+1).toString()
+			}	
+		else
+			{
+			var month = (maxDate.getMonth()+1).toString()
+			}
+			
+		DATE_MAX= maxDate.getFullYear() + "-" + month + "-" + maxDate.getDate();
         populate_stats(data);
     }
 }
@@ -357,7 +375,7 @@ function buttonDecesClicked(state){
 }
 
 function populate_stats(data){
-    data_last_day = data[DATE_MAX];
+    data_last_day = data["days"][DATE_MAX];
     update_stats(
         sur_risque_hopital = parseFloat(data_last_day["hospitalisation_conventionnelle"]["risque_relatif"]).toFixed(0), 
         sur_risque_dc = parseFloat(data_last_day["deces"]["risque_relatif"]).toFixed(0), 
@@ -460,12 +478,21 @@ function update_stats(sur_risque_hopital=0, sur_risque_dc=0, hosp_evitables=0, h
     populateDates();
 }
 
+
+
 function populateDates(){
-    
+    var date_str =DATE_MAX.substring(8,10) + "/" + DATE_MAX.substring(5,7) + "/" + DATE_MAX.substring(0,4);
+	var date_json_push = data["last_update_date"].substring(8,10) + "/" + data["last_update_date"].substring(5,7) + "/" + data["last_update_date"].substring(0,4);
+
+	for (element of document.getElementsByClassName('date-maj-json'))
+	{element.innerHTML = date_json_push;}
+
     for (let i = 1; i <= 5; i++) {
-        document.getElementById(`date-maj-${i}`).innerHTML = DATE_MAX;
+		
+        document.getElementById(`date-maj-${i}`).innerHTML = date_str;
+
     }
-    
+	
 }
 
 function populateFigure(nb_vax=1, sur_risque=0){
@@ -571,7 +598,7 @@ function plural(value_pl){
 function sliderRiskChanged(type){
     if(type=="hosp"){
         let value = parseInt(slider_hosp.noUiSlider.get());
-        sur_risque = parseFloat(data[DATE_MAX]["hospitalisation_conventionnelle"]["risque_relatif"]).toFixed(0);
+        sur_risque = parseFloat(data["days"][DATE_MAX]["hospitalisation_conventionnelle"]["risque_relatif"]).toFixed(0);
         populateFigureHosp(nb_vax=value, sur_risque=sur_risque);
         
         jour_s = plural(value);
@@ -584,7 +611,7 @@ function sliderRiskChanged(type){
         
     } else if (type=="dc"){
         let value = parseInt(slider_dc.noUiSlider.get());
-        sur_risque = parseFloat(data[DATE_MAX]["deces"]["risque_relatif"]).toFixed(0);
+        sur_risque = parseFloat(data["days"][DATE_MAX]["deces"]["risque_relatif"]).toFixed(0);
         populateFigure(nb_vax=value, sur_risque=sur_risque);
 
         jour_s = plural(value);
