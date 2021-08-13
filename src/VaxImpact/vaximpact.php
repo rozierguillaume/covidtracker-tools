@@ -163,7 +163,7 @@ p {
     </div>
     <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span class="date-maj-json"> -/-/- </span> • Dernière donnée : <span id="date-maj-2">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
-    <p style="font-weight: bold;">Cela signifie qu'une personne non vaccinée a un risque multiplié par <span id="chiffre-non-vax-hosp-conclusion">--</span> d'être hospitalisée par rapport à une personne vaccinée.</p>
+    <p><span style="font-weight: bold;">Cela signifie qu'une personne non vaccinée a un risque multiplié par <span id="chiffre-non-vax-hosp-conclusion">--</span> d'être hospitalisée par rapport à une personne vaccinée.</span> À ce bénéfice individuel de la vaccination, il faut ajouter le bénéfice collectif : réduction des contaminations (protection individuelle et immunité collective) et donc réduction du risque individuel d'hospitalisation.</p>
     
     <br>
     <h3 class="title">Admissions attribuables à la non vaccination</h3>
@@ -223,7 +223,7 @@ p {
     </div>
     <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span class="date-maj-json"> -/-/- </span> • Dernière donnée : <span id="date-maj-3">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
-    <p style="font-weight: bold;">Cela signifie qu'une personne non vaccinée a un risque multiplié par <span id="chiffre-non-vax-conclusion">--</span> de décéder par rapport à une personne vaccinée.</p>
+    <p><span style="font-weight: bold;">Cela signifie qu'une personne non vaccinée a un risque multiplié par <span id="chiffre-non-vax-conclusion">--</span> de décéder par rapport à une personne vaccinée.</span> À ce bénéfice individuel de la vaccination, il faut ajouter le bénéfice collectif : réduction des contaminations (protection individuelle et immunité collective), des hospitalisations et donc réduction du risque individuel de décès.</p>
     
     <br>
     <h3 class="title">Décès attribuables à la non vaccination</h3>
