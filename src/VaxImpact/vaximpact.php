@@ -186,7 +186,7 @@ p {
     <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span class="date-maj-json"> -/-/- </span> • Dernière donnée : <span id="date-maj-4">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
     
-    <p style="font-weight: bold;">Cela signifie que sur les 266 admissions à l'hôpital observées chaque jour en France (au 25 juillet), 192 hospitalisations sont évitables par la vaccination.</p>
+    <p><span style="font-weight: bold;">Cela signifie que sur les 511 admissions à l'hôpital observées chaque jour en France (au 01 août), 337 hospitalisations sont directement évitables par la vaccination.</span> D'autres hospitalisations auraient pu être indirectement évitées, la vaccination permettant de réduire les contaminations (protection individuelle et immunité collective).</p>
 
     <br>
     <h2 class="title">Décès hospitaliers</h2>
@@ -242,7 +242,7 @@ p {
     </div>
     <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span class="date-maj-json"> -/-/- </span> • Dernière donnée : <span id="date-maj-5">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
-    <p style="font-weight: bold;">Cela signifie que sur les 20 décès observés chaque jour en France (au 25/07), 12 décès sont évitables par la vaccination.</p>
+    <p><span style="font-weight: bold;">Cela signifie que sur les 38 décès observés chaque jour en France (au 01 août), 22 décès sont directement évitables par la vaccination.</span> D'autres décès auraient pu être indirectement évités, la vaccination permettant de réduire les contaminations (protection individuelle et immunité collective) et les hospitalisations.</p>
 
     <br>
     <br>
@@ -322,18 +322,21 @@ function download_data(){
 	
 		var maxDate = new Date(Math.max.apply(null,dates_from_json));
 		
-		if(maxDate.getMonth().toString().length == 1)
-			{
-			var month = "0"+(maxDate.getMonth()+1).toString()
-			}	
-		else
-			{
-			var month = (maxDate.getMonth()+1).toString()
-			}
+        let month = getDoubleDigit(maxDate.getMonth());
+        let day = getDoubleDigit(maxDate.getDay());
 			
-		DATE_MAX= maxDate.getFullYear() + "-" + month + "-" + maxDate.getDate();
+		DATE_MAX= maxDate.getFullYear() + "-" + month + "-" + day;
         populate_stats(data);
     }
+}
+
+function getDoubleDigit(value){
+    if(value.toString().length == 1){
+			return "0"+(value+1).toString()
+			}	
+    else {
+            return (value+1).toString()
+        }
 }
 
 function buttonHospClicked(state){
