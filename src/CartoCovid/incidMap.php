@@ -406,7 +406,8 @@ div[shadow] {
         opacity: 0.2,
         color: 'white',
         dashArray: '3',
-        fillOpacity: opacity_slider
+        fillOpacity: opacity_slider,
+        
     };
     }
 
@@ -476,6 +477,7 @@ div[shadow] {
         layerGroup.addTo(mymap);
         geojson_map = L.geoJson(geojson["features"], {
             style: style,
+            smoothFactor:0,
             onEachFeature: onEachFeature}).addTo(mymap);
         layerGroup.addLayer(geojson_map);
     }
