@@ -54,6 +54,15 @@
                      width="100%" style="max-width: 1000px;">
             </a>
         </p>
+        <h3 style="margin-top: 40px;">Admissions par statut vaccinal</h3>
+        <p>Admissions quotidiennes à l'hôpital (moyenne 7 jours) selon le statut vaccinal des patients.</p>
+        <p align="center">
+            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/regions_dashboards/hc_proportion_selon_statut_vaccinal_nomRegion.jpeg"
+               target="_blank" rel="noopener noreferrer">
+                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/regions_dashboards/hc_proportion_selon_statut_vaccinal_nomRegion.jpeg"
+                     width="100%" style="max-width: 1000px;">
+            </a>
+        </p>
         <h3 style="margin-top: 40px;">Flux hospitaliers</h3>
         <p>Ce graphique présente l'évolution des entrées et sorties de l'hôpital pour motif Covid19.</p>
         <p align="center">
