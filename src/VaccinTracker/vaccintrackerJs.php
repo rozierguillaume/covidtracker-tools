@@ -125,6 +125,7 @@
     const OBJECTIF_FIN_JANVIER = 1000000 // 1_000_000
     const OBJECTIF_FIN_AOUT = 52000000 // 1_000_000
     const OBJECTIF_MI_JUIN = 30000000
+    const N_VAX_OBJECTIF = 100
     var data;
     var data_france;
     var nb_vaccines = [];
@@ -240,7 +241,7 @@
                 nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
                 dejaVaccinesNb = nb_vaccines[nb_vaccines.length - 1].n_dose1
                 dejaVaccines = dejaVaccinesNb * 100 / 67000000;
-                restantaVaccinerImmunite = 80 - dejaVaccines
+                restantaVaccinerImmunite = N_VAX_OBJECTIF - dejaVaccines
                 this.objectifQuotidien = calculerObjectif();
                 fetch2ndDosesData();
 
@@ -388,12 +389,32 @@
         proportionVaccinesPartiellement = dejaVaccinesNb / 67000000 * 100
         proportionVaccinesTotalement = nbVaccinesComplet / 67000000 * 100
 
+        proportionVaccinesPartiellementPlus12Ans = dejaVaccinesNb / 57656000 * 100
+        proportionVaccinesCompletementPlus12Ans = nbVaccinesComplet / 57656000 * 100
+
         date = data_france.dates[data_france.dates.length - 1]
         document.getElementById("date_maj_2").innerHTML = date.slice(8) + "/" + date.slice(5, 7);
-        document.getElementById("proportionVaccinesTotalement").innerHTML = (Math.round(proportionVaccinesTotalement * 10000000) / 10000000).toFixed(2);
+
+        tableVaccin(table, proportionVaccinesTotalement, proportionVaccinesPartiellement);
+        majValeursTable();
+    }
 
 
-        tableVaccin(table);
+    function selectTableChanged(){
+        value = document.getElementById("selectTable").value;
+
+        if(value=="plus12ans"){
+            tableVaccin(table, proportionVaccinesCompletementPlus12Ans, proportionVaccinesPartiellementPlus12Ans);
+            for (element of document.getElementsByClassName('str-table-plus12ans')){
+                element.innerHTML = " éligibles (> 12 ans)"
+            }
+        } else {
+            tableVaccin(table, proportionVaccinesTotalement, proportionVaccinesPartiellement);
+            for (element of document.getElementsByClassName('str-table-plus12ans')){
+                element.innerHTML = ""
+            }
+        }
+        majValeursTable();
     }
 
     function afficherNews() {
@@ -1040,7 +1061,7 @@
         this.lineChart.update()
     }
 
-    function tableVaccin(tableElt) {
+    function tableVaccin(tableElt, proportionVaccinesTotalement, proportionVaccinesPartiellement) {
         tableElt.innerHTML = "";
         let first = true;
         for (let i = 0; i < 10; i++) {
@@ -1066,7 +1087,7 @@
                             newsubrow.classList.add('green');
                         } else if (caseNb <= proportionVaccinesPartiellement + 0.01) {
                             newsubrow.classList.add('animation-premiere-dose');
-                        } else if (caseNb <= 80.001) {
+                        } else if (caseNb <= N_VAX_OBJECTIF + 0.001) {
                             newsubrow.classList.add("red");
                         } else {
                             newsubrow.classList.add("grey");
@@ -1117,12 +1138,10 @@
         document.getElementById("nb_doses_injectees").innerHTML = numberWithSpaces(dejaVaccinesNb);
         document.getElementById("nb_doses_injectees_24h").innerHTML = numberWithSpaces(dejaVaccinesNb - nb_vaccines[nb_vaccines.length - 2].n_dose1);
 
-        document.getElementById("proportionVaccinesMax").innerHTML = (Math.round(dejaVaccines * 10000000) / 10000000).toFixed(2);
         //console.log(dejaVaccines2Doses);
         //document.getElementById("proportionVaccinesMin").innerHTML = (Math.round(dejaVaccines/2*10000000)/10000000).toFixed(2);
         //document.getElementById("proportion_doses").innerHTML = (dejaVaccinesNb/cumul_stock*100).toFixed(1);
 
-        document.getElementById("proportionAVaccinerImmu").innerHTML = (Math.round(restantaVaccinerImmunite * 10000000) / 10000000).toFixed(2);
         document.getElementById("objectif_quotidien").innerHTML = numberWithSpaces(objectifQuotidien);
         document.getElementById("date_projetee_objectif").innerHTML = formaterDate(dateProjeteeObjectif);
         date = nb_vaccines[nb_vaccines.length - 1].date
@@ -1135,8 +1154,23 @@
         document.getElementById("date_maj_1").innerHTML = date;
         //document.getElementById("date_maj_2").innerHTML = date + " à " + heure;
         document.getElementById("date_maj_3").innerHTML = date;
+        majValeursTable();
 
+    }
 
+    function majValeursTable(){
+        value = document.getElementById("selectTable").value;
+
+        if(value=="plus12ans"){
+            document.getElementById("proportionAVaccinerImmu").innerHTML = (Math.round((N_VAX_OBJECTIF-proportionVaccinesPartiellementPlus12Ans) * 10000000) / 10000000).toFixed(1);
+            document.getElementById("proportionVaccinesTotalement").innerHTML = (Math.round(proportionVaccinesCompletementPlus12Ans * 10000000) / 10000000).toFixed(1);
+            document.getElementById("proportionVaccinesMax").innerHTML = (Math.round(proportionVaccinesPartiellementPlus12Ans * 10000000) / 10000000).toFixed(1);
+        } else {
+            document.getElementById("proportionAVaccinerImmu").innerHTML = (Math.round((restantaVaccinerImmunite) * 10000000) / 10000000).toFixed(1);
+            document.getElementById("proportionVaccinesTotalement").innerHTML = (Math.round(proportionVaccinesTotalement * 10000000) / 10000000).toFixed(1);
+            document.getElementById("proportionVaccinesMax").innerHTML = (Math.round(dejaVaccines * 10000000) / 10000000).toFixed(1);
+
+        }
     }
 
     Array.prototype.sortBy = function (p) {

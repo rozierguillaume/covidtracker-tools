@@ -163,14 +163,20 @@
     }
 
     .green {
-        background-color: rgb(45, 189, 84);
+        background-color: #58c7b2;
+        /* #6fbac4 #3fbf8f */
     }
 
     .darkgreen {
-        background-color: rgb(31, 128, 57);
+        background-color: #319986;
+        /*#569d9f  #229c6e*/
     }
 
     .red {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .redold {
         background-color: rgb(237, 88, 88);
     }
 
@@ -179,25 +185,25 @@
     }
 
     .animation-seconde-dose {
-        background-color: rgb(45, 189, 84);
+        background-color: #58c7b2;
         animation: seconde-dose 3s ease infinite;
         animation-delay: 2s;
     }
 
     .animation-premiere-dose {
-        background-color: rgb(237, 88, 88);
+        background-color: rgba(0, 0, 0, 0.2);
         animation: premiere-dose 3s ease infinite;
         animation-delay: 2s;
     }
 
     @keyframes premiere-dose {
       /*from {background-color: rgb(237, 88, 88);}*/
-      50% {background-color: rgb(45, 189, 84);}
+      50% {background-color: #58c7b2;}
     }
 
     @keyframes seconde-dose {
       /*from {background-color: rgb(45, 189, 84);}*/
-      50% {background-color: rgb(31, 128, 57);}
+      50% {background-color: #319986;}
     }
 
 
