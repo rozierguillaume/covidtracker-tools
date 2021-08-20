@@ -83,8 +83,10 @@ p {
 </style>
 
 <body>
+
+
     <p><b>Combien d'hospitalisations ont été évitées grâce au vaccin Covid19 ? Quelle est l'importance de la non vaccination du Covid19 dans les décès hospitaliers ?</b> Cet outil permet d'évaluer l'impact de la vaccination sur les hospitalisations et décès de la Covid19.
-    Ces statistiques s'appuient sur les données issues des études de la DREES mises à jour chaque semaine (dernière donnée : <span id="date-maj-1">-/-/-</span>). La méthodologie et les calculs sont décrits en bas de page.</p>
+    Ces statistiques s'appuient sur les données issues des études de la DREES mises à jour chaque semaine (dernières données : du <span class="date-data-start">-/-/-</span> au <span class="date-data-end">-/-/-</span>). La méthodologie et les calculs sont décrits en bas de page.</p>
     
     <!--
     <div>
@@ -136,9 +138,13 @@ p {
                 <img id="imageTab" src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hc_proportion_selon_statut_vaccinal.jpeg" width="95%">
             </a>
         </div>
+
+        
     <h3 class="title">Réduction du risque d'admission</h3>
     <p>Imaginons deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe2">--</span> et l'autre non vaccinés. S'il y a une personne hospitalisée chaque jour dans le groupe vacciné, alors il y aura probablement <span id="chiffre-non-vax-hosp-paragraphe">--</span> hospitalisations chaque jour dans le groupe non vacciné.</p>
-    
+    <div class="alert alert-warning" role="alert">
+    Le groupe "Vaccinés" comprend uniquement les patients ayant terminé leur schéma vaccinal et le groupe "Non Vaccinés" les patients n'ayant reçu aucune dose de vaccin.  (voir méthodologie en bas de page pour plus de détails).
+</div>
     <div style="margin-top: 50px;">
             <div>
                 <div id="slider_hosp" style="max-width: 500px; margin-top: 7px; margin-left: 20px;"></div>
@@ -161,7 +167,7 @@ p {
                 <div id="figure-non-vax-hosp" style="margin-top: 20px;"></div>
             </div>
     </div>
-    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span class="date-maj-json"> -/-/- </span> • Dernière donnée : <span id="date-maj-2">-/-/-</span> • Données DREES • VaxImpact.fr</div>
+    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span class="date-maj-json"> -/-/- </span> • Dernières données : du <span class="date-data-start">-/-/-</span> au <span class="date-data-end">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
     <p><span style="font-weight: bold;">Cela signifie qu'une personne non vaccinée a un risque multiplié par <span id="chiffre-non-vax-hosp-conclusion">--</span> d'être hospitalisée par rapport à une personne vaccinée.</span> À ce bénéfice individuel de la vaccination, il faut ajouter le bénéfice collectif : réduction des contaminations (protection individuelle et immunité collective) et donc réduction du risque individuel d'hospitalisation.</p>
     
@@ -183,10 +189,9 @@ p {
                 <div id="figure-vax-hosp-evitables" style="margin-top: 20px;"></div>
             </div>
     </div>
-    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span class="date-maj-json"> -/-/- </span> • Dernière donnée : <span id="date-maj-4">-/-/-</span> • Données DREES • VaxImpact.fr</div>
+    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span class="date-maj-json"> -/-/- </span> • Dernières données : du <span class="date-data-start">-/-/-</span> au <span class="date-data-end">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
-    
-    <p><span style="font-weight: bold;">Cela signifie que sur les 511 admissions à l'hôpital observées chaque jour en France (au 01 août), 337 hospitalisations sont directement évitables par la vaccination.</span> D'autres hospitalisations auraient pu être indirectement évitées, la vaccination permettant de réduire les contaminations (protection individuelle et immunité collective).</p>
+    <p><span style="font-weight: bold;">Cela signifie que sur les <span id="hospi_dernier_jour">--</span> admissions à l'hôpital observées chaque jour (le <span id="hospi_dernier_jour_date">-/-/-</span>), <span id="hospi_dernier_jour_evitables">--</span> hospitalisations sont directement évitables par la vaccination.</span> D'autres décès hospitalisations pu être indirectement évités, la vaccination permettant de réduire les contaminations (protection individuelle et immunité collective).</p>
 
     <br>
     <h2 class="title">Décès hospitaliers</h2>
@@ -201,6 +206,9 @@ p {
     <h3 class="title">Réduction du risque de décès</h3>
 
     <p>Imaginons deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe3">--</span> et l'autre non vaccinés. S'il y a un décès chaque jour dans le groupe vacciné, alors il y aura probablement <span id="chiffre-non-vax-paragraphe">--</span> décès chaque jour dans le groupe non vacciné.</p>
+    <div class="alert alert-warning" role="alert">
+    Le groupe "Vaccinés" comprend uniquement les patients ayant terminé leur schéma vaccinal et le groupe "Non Vaccinés" les patients n'ayant reçu aucune dose de vaccin.  (voir méthodologie en bas de page pour plus de détails).
+</div>
     <div style="margin-top: 50px;">
             <div>
                 <div id="slider_dc" style="max-width: 500px; margin-top: 7px; margin-left: 20px;"></div>
@@ -221,7 +229,7 @@ p {
                 <div id="figure-non-vax" style="margin-top: 20px;"></div>
             </div>
     </div>
-    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span class="date-maj-json"> -/-/- </span> • Dernière donnée : <span id="date-maj-3">-/-/-</span> • Données DREES • VaxImpact.fr</div>
+    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span class="date-maj-json"> -/-/- </span> • Dernières données : du <span class="date-data-start">-/-/-</span> au <span class="date-data-end">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
     <p><span style="font-weight: bold;">Cela signifie qu'une personne non vaccinée a un risque multiplié par <span id="chiffre-non-vax-conclusion">--</span> de décéder par rapport à une personne vaccinée.</span> À ce bénéfice individuel de la vaccination, il faut ajouter le bénéfice collectif : réduction des contaminations (protection individuelle et immunité collective), des hospitalisations et donc réduction du risque individuel de décès.</p>
     
@@ -240,24 +248,26 @@ p {
                 <div id="figure-vax-evitables" style="margin-top: 20px;"></div>
             </div>
     </div>
-    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span class="date-maj-json"> -/-/- </span> • Dernière donnée : <span id="date-maj-5">-/-/-</span> • Données DREES • VaxImpact.fr</div>
+    <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span class="date-maj-json"> -/-/- </span> • Dernières données : du <span class="date-data-start">-/-/-</span> au <span class="date-data-end">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
-    <p><span style="font-weight: bold;">Cela signifie que sur les 38 décès observés chaque jour en France (au 01 août), 22 décès sont directement évitables par la vaccination.</span> D'autres décès auraient pu être indirectement évités, la vaccination permettant de réduire les contaminations (protection individuelle et immunité collective) et les hospitalisations.</p>
+    <p><span style="font-weight: bold;">Cela signifie que sur les <span id="deces_dernier_jour">--</span> décès observés chaque jour en France (le <span id="deces_dernier_jour_date">-/-/-</span>), <span id="deces_dernier_jour_evitables">--</span> décès sont directement évitables par la vaccination.</span> D'autres décès auraient pu être indirectement évités, la vaccination permettant de réduire les contaminations (protection individuelle et immunité collective) et les hospitalisations.</p>
+
 
     <br>
-    <br>
-    <?php include(__DIR__ . '/menuBasPage.php'); ?>
-    <br>
-    <br>
+    Auteurs : Sacha Guilhaumou, Elias Orphelin, Guillaume Rozier.<br>
+    Merci pour leur aide : Catherine Hill, Dan Chaltiel. Merci pour leur relecture : Vittoria Colizza, Karine Lacombe, BioHospitalix, Le Doc.
+    <br><br>
     <div style="border:solid 2px rgba(0, 0, 0, 0.1); border-radius: 10px; padding: 30px;">
         <h2>Méthodologie</h2>
         <p>Ces statistiques sont obtenues à partir des données publiées par la DREES. Elles seront mises à jour lors de la publication de nouvelles données.</p>
         <p><a href="https://github.com/CovidTrackerFr/data-utils/raw/main/vaximpact/data/doc/impact_vaccin_covid.pdf">Télécharger le document de méthodologie (PDF)</a></p>
     </div>
     <br>
-    Auteurs : Sacha Guilhaumou, Elias Orphelin, Guillaume Rozier.<br>
-    Merci pour leur aide : Catherine Hill, Dan Chaltiel. Merci pour leur relecture : Vittoria Colizza, Karine Lacombe, BioHospitalix, Le Doc.
-    
+  
+    <?php include(__DIR__ . '/menuBasPage.php'); ?>
+    <br>
+    <br>
+   
 </body>
 
 <script>
@@ -303,47 +313,73 @@ let DICT_AGES_STR = {
     8: "80 - 89 ans",
 }
 var data;
-var DATE_MAX;
-
+var data_grz;
+var date_max;
+var date_min;
+var week_max;
+var last_updated;
+var last_death_number;
+var last_death_number_date;
+var last_hosp_number;
+var last_hosp_number_date;
 download_data();
+
 function download_data(){
-    var requestURL = 'https://raw.githubusercontent.com/CovidTrackerFr/data-utils/main/vaximpact/data/output/vaximpact_2.json';
+
+    var grzURL = 'https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/objectif_deconfinement.json';
+    var grzrequest = new XMLHttpRequest();
+    grzrequest.open('GET', grzURL);
+    grzrequest.responseType = 'json';
+    grzrequest.send();
+    grzrequest.onload = function() {
+        populate_texts(grzrequest.response);
+    }
+
+    
+    var requestURL = 'https://raw.githubusercontent.com/CovidTrackerFr/data-utils/main/vaximpact/output/FR/stats_by_week.json';
     var request = new XMLHttpRequest();
     request.open('GET', requestURL);
     request.responseType = 'json';
     request.send();
     request.onload = function() {
-        data = request.response;
 		dates_from_json=[]
         data = request.response;
-		
-		for (date of Object.keys(data["days"]))
-		{dates_from_json.push(new Date(date));}
-	
-		var maxDate = new Date(Math.max.apply(null,dates_from_json));
-		
-        let month = getDoubleDigit(maxDate.getMonth());
-        let day = getDoubleDigit(maxDate.getDay());
-			
-		DATE_MAX= maxDate.getFullYear() + "-" + month + "-" + day;
-        populate_stats(data);
+
+		for (date of Object.keys(data["data_by_week"]))
+		{dates_from_json.push(date);}
+
+		week_max = Math.max.apply(null, dates_from_json);
+
+        maxDate = new Date(data["data_by_week"][week_max]["week_end_date"]);
+		date_max = maxDate.getFullYear() + "-" +getDoubleDigit(maxDate.getMonth()+1) + "-" + getDoubleDigit(maxDate.getDate());
+
+        minDate = new Date(data["data_by_week"][week_max]["week_start_date"]);
+		date_min = minDate.getFullYear() + "-" +getDoubleDigit(minDate.getMonth()+1) + "-" + getDoubleDigit(minDate.getDate());
+
+        lastUpdated = new Date(data["last_updated"]);
+        last_updated = lastUpdated.getFullYear() + "-" +getDoubleDigit(lastUpdated.getMonth()+1) + "-" + getDoubleDigit(lastUpdated.getDate());
+
+        populate_stats(data)
     }
+
+    
+
 }
 
 function getDoubleDigit(value){
     if(value.toString().length == 1){
-			return "0"+(value+1).toString()
+			return "0"+(value).toString()
 			}	
     else {
-            return (value+1).toString()
+            return (value).toString()
         }
 }
 
 function buttonHospClicked(state){
-    hosp_evitables=parseFloat(data_last_day["hospitalisation_conventionnelle"]["FER_non_vacc"]).toFixed(0);
-    hosp_evitables_pop_generale=parseFloat(data_last_day["hospitalisation_conventionnelle"]["FER_pop"]).toFixed(0);
-	taux_vaccination=parseFloat(data_last_day["proportion_vaccines"]).toFixed(0);
-
+    hosp_evitables=parseFloat(data_last_day["data"]["hospitalisation_conventionnelle"]["FER_exposes"]).toFixed(0);
+    hosp_evitables_pop_generale=parseFloat(data_last_day["data"]["hospitalisation_conventionnelle"]["FER_population"]).toFixed(0);
+	taux_vaccination=parseFloat(data_last_day["vaccination_rate"]).toFixed(0);
+    
     if(state=="non-vax"){
         populateFigureHospEvitables(hosp_evitables_figure=hosp_evitables, hosp_evitables_pop_generale=hosp_evitables_pop_generale, type_str="chez les non vaccinés", warning="");
         other_state = "pop-generale"
@@ -359,9 +395,9 @@ function buttonHospClicked(state){
 }
 
 function buttonDecesClicked(state){
-    dc_evitables=parseFloat(data_last_day["deces"]["FER_non_vacc"]).toFixed(0);
-    dc_evitables_pop_generale=parseFloat(data_last_day["deces"]["FER_pop"]).toFixed(0);
-    taux_vaccination=parseFloat(data_last_day["proportion_vaccines"]).toFixed(0);
+    dc_evitables=parseFloat(data_last_day["data"]["deces"]["FER_exposes"]).toFixed(0);
+    dc_evitables_pop_generale=parseFloat(data_last_day["data"]["deces"]["FER_population"]).toFixed(0);
+    taux_vaccination=parseFloat(data_last_day["vaccination_rate"]).toFixed(0);
     
     if(state=="non-vax"){
         populateFigureDecesEvitables(dc_evitables_figure=dc_evitables, dc_evitables_pop_generale=dc_evitables_pop_generale, type_str="chez les non vaccinés", warning="");
@@ -378,15 +414,19 @@ function buttonDecesClicked(state){
 }
 
 function populate_stats(data){
-    data_last_day = data["days"][DATE_MAX];
+    data_last_day = data["data_by_week"][week_max];
     update_stats(
-        sur_risque_hopital = parseFloat(data_last_day["hospitalisation_conventionnelle"]["risque_relatif"]).toFixed(0), 
-        sur_risque_dc = parseFloat(data_last_day["deces"]["risque_relatif"]).toFixed(0), 
-        hosp_evitables = parseFloat(data_last_day["hospitalisation_conventionnelle"]["FER_non_vacc"]).toFixed(0), 
-        hosp_evitables_pop_generale = parseFloat(data_last_day["hospitalisation_conventionnelle"]["FER_pop"]).toFixed(0), 
-        dc_evitables = parseFloat(data_last_day["deces"]["FER_non_vacc"]).toFixed(0),
-        dc_evitables_pop_generale=parseFloat(data_last_day["deces"]["FER_pop"]).toFixed(0),
+        sur_risque_hopital = parseFloat(data_last_day["data"]["hospitalisation_conventionnelle"]["risque_relatif"]).toFixed(0), 
+        sur_risque_dc = parseFloat(data_last_day["data"]["deces"]["risque_relatif"]).toFixed(0), 
+        hosp_evitables = parseFloat(data_last_day["data"]["hospitalisation_conventionnelle"]["FER_exposes"]).toFixed(0), 
+        hosp_evitables_pop_generale = parseFloat(data_last_day["data"]["hospitalisation_conventionnelle"]["FER_population"]).toFixed(0), 
+        dc_evitables = parseFloat(data_last_day["data"]["deces"]["FER_exposes"]).toFixed(0),
+        dc_evitables_pop_generale=parseFloat(data_last_day["data"]["deces"]["FER_population"]).toFixed(0),
         )
+}
+
+function populate_texts(data){
+data_grz = data;  
 }
 
 function get_icon_body(color="black", animate=false){
@@ -484,17 +524,18 @@ function update_stats(sur_risque_hopital=0, sur_risque_dc=0, hosp_evitables=0, h
 
 
 function populateDates(){
-    var date_str =DATE_MAX.substring(8,10) + "/" + DATE_MAX.substring(5,7) + "/" + DATE_MAX.substring(0,4);
-	var date_json_push = data["last_update_date"].substring(8,10) + "/" + data["last_update_date"].substring(5,7) + "/" + data["last_update_date"].substring(0,4);
+    var min_format = date_min.substring(8,10) + "/" + date_min.substring(5,7) + "/" + date_min.substring(0,4);
+    var max_format = date_max.substring(8,10) + "/" + date_max.substring(5,7) + "/" + date_max.substring(0,4);
+    var json_format = last_updated.substring(8,10) + "/" + last_updated.substring(5,7) + "/" + last_updated.substring(0,4);
 
-	for (element of document.getElementsByClassName('date-maj-json'))
-	{element.innerHTML = date_json_push;}
+	for (element of document.getElementsByClassName('date-data-start'))
+	{element.innerHTML = min_format;}
 
-    for (let i = 1; i <= 5; i++) {
-		
-        document.getElementById(`date-maj-${i}`).innerHTML = date_str;
-
-    }
+    for (element of document.getElementsByClassName('date-data-end'))
+	{element.innerHTML = max_format;}
+	
+    for (element of document.getElementsByClassName('date-maj-json'))
+	{element.innerHTML = json_format;}
 	
 }
 
@@ -550,7 +591,23 @@ function populateFigureDecesEvitables(dc_evitables_figure, dc_evitables_pop_gene
         document.getElementById("type-vax-evitables").innerHTML = type_str;
 
         document.getElementById("warning-evitables").innerHTML = warning;
-    }
+    }    
+
+    last_death_number = data_grz["dc"]["values"][data_grz["dc"]["values"].length-1];
+    last_death_number_date = new Date(data_grz["dc"]["dates"][data_grz["dc"]["dates"].length-1]);
+
+    last_death_number_evitables = (parseFloat(data_last_day["data"]["deces"]["FER_population"])*parseFloat(last_death_number))/100;
+
+
+    const formatter = new Intl.DateTimeFormat('fr', { month: 'short' });
+    last_date = getDoubleDigit(last_death_number_date.getDate()) + " " + formatter.format(last_death_number_date);
+
+
+    document.getElementById("deces_dernier_jour").innerHTML = last_death_number.toFixed(0);
+    document.getElementById("deces_dernier_jour_date").innerHTML = last_date;
+    document.getElementById("deces_dernier_jour_evitables").innerHTML = last_death_number_evitables.toFixed(0);
+
+
 }
 
 function populateFigureHospEvitables(hosp_evitables_figure, hosp_evitables_pop_generale, type_str="chez les non vaccinés", warning=""){
@@ -569,6 +626,23 @@ function populateFigureHospEvitables(hosp_evitables_figure, hosp_evitables_pop_g
 
         document.getElementById("warning-hosp-evitables").innerHTML = warning;
     }
+
+    last_hosp_number = data_grz["adm_hosp"]["values"][data_grz["adm_hosp"]["values"].length-1];
+    last_hosp_number_date = new Date(data_grz["adm_hosp"]["dates"][data_grz["adm_hosp"]["dates"].length-1]);
+
+    last_hosp_number_evitables = (parseFloat(data_last_day["data"]["hospitalisation_conventionnelle"]["FER_population"])*parseFloat(last_hosp_number))/100;
+
+
+    const formatter = new Intl.DateTimeFormat('fr', { month: 'short' });
+    last_date = getDoubleDigit(last_hosp_number_date.getDate()) + " " + formatter.format(last_hosp_number_date);
+
+
+    document.getElementById("hospi_dernier_jour").innerHTML = last_hosp_number.toFixed(0);
+    document.getElementById("hospi_dernier_jour_date").innerHTML = last_date;
+    document.getElementById("hospi_dernier_jour_evitables").innerHTML = last_hosp_number_evitables.toFixed(0);
+
+
+
 }
 
 
@@ -601,7 +675,7 @@ function plural(value_pl){
 function sliderRiskChanged(type){
     if(type=="hosp"){
         let value = parseInt(slider_hosp.noUiSlider.get());
-        sur_risque = parseFloat(data["days"][DATE_MAX]["hospitalisation_conventionnelle"]["risque_relatif"]).toFixed(0);
+        sur_risque = parseFloat(data["data_by_week"][week_max]["data"]["hospitalisation_conventionnelle"]["risque_relatif"]).toFixed(0);
         populateFigureHosp(nb_vax=value, sur_risque=sur_risque);
         
         jour_s = plural(value);
@@ -614,7 +688,7 @@ function sliderRiskChanged(type){
         
     } else if (type=="dc"){
         let value = parseInt(slider_dc.noUiSlider.get());
-        sur_risque = parseFloat(data["days"][DATE_MAX]["deces"]["risque_relatif"]).toFixed(0);
+        sur_risque = parseFloat(data["data_by_week"][week_max]["data"]["deces"]["risque_relatif"]).toFixed(0);
         populateFigure(nb_vax=value, sur_risque=sur_risque);
 
         jour_s = plural(value);
