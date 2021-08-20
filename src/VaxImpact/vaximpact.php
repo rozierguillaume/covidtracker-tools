@@ -83,6 +83,8 @@ p {
 </style>
 
 <body>
+
+
     <p><b>Combien d'hospitalisations ont été évitées grâce au vaccin Covid19 ? Quelle est l'importance de la non vaccination du Covid19 dans les décès hospitaliers ?</b> Cet outil permet d'évaluer l'impact de la vaccination sur les hospitalisations et décès de la Covid19.
     Ces statistiques s'appuient sur les données issues des études de la DREES mises à jour chaque semaine (dernières données : du <span class="date-data-start">-/-/-</span> au <span class="date-data-end">-/-/-</span>). La méthodologie et les calculs sont décrits en bas de page.</p>
     
@@ -136,9 +138,13 @@ p {
                 <img id="imageTab" src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hc_proportion_selon_statut_vaccinal.jpeg" width="95%">
             </a>
         </div>
+
+        
     <h3 class="title">Réduction du risque d'admission</h3>
     <p>Imaginons deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe2">--</span> et l'autre non vaccinés. S'il y a une personne hospitalisée chaque jour dans le groupe vacciné, alors il y aura probablement <span id="chiffre-non-vax-hosp-paragraphe">--</span> hospitalisations chaque jour dans le groupe non vacciné.</p>
-    
+    <div class="alert alert-warning" role="alert">
+    Le groupe "Vaccinés" comprend uniquement les patients ayant terminé leur schéma vaccinal et le groupe "Non Vaccinés" les patients n'ayant reçu aucune dose de vaccin.  (voir méthodologie en bas de page pour plus de détails).
+</div>
     <div style="margin-top: 50px;">
             <div>
                 <div id="slider_hosp" style="max-width: 500px; margin-top: 7px; margin-left: 20px;"></div>
@@ -200,6 +206,9 @@ p {
     <h3 class="title">Réduction du risque de décès</h3>
 
     <p>Imaginons deux groupes de taille identique, l'un comportant des individus vaccinés de <span id="age_paragraphe3">--</span> et l'autre non vaccinés. S'il y a un décès chaque jour dans le groupe vacciné, alors il y aura probablement <span id="chiffre-non-vax-paragraphe">--</span> décès chaque jour dans le groupe non vacciné.</p>
+    <div class="alert alert-warning" role="alert">
+    Le groupe "Vaccinés" comprend uniquement les patients ayant terminé leur schéma vaccinal et le groupe "Non Vaccinés" les patients n'ayant reçu aucune dose de vaccin.  (voir méthodologie en bas de page pour plus de détails).
+</div>
     <div style="margin-top: 50px;">
             <div>
                 <div id="slider_dc" style="max-width: 500px; margin-top: 7px; margin-left: 20px;"></div>
