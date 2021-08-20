@@ -627,9 +627,9 @@ function populateFigureHospEvitables(hosp_evitables_figure, hosp_evitables_pop_g
         document.getElementById("warning-hosp-evitables").innerHTML = warning;
     }
 
-    let index_of_max_date = data_grz["hosp"]["dates"].indexOf(date_max, 0);
-    last_hosp_number = data_grz["hosp"]["values"][index_of_max_date];
-    last_hosp_number_date = new Date(data_grz["hosp"]["dates"][index_of_max_date]);
+    let index_of_max_date = data_grz["adm_hosp"]["dates"].indexOf(date_max, 0);
+    last_hosp_number = data_grz["adm_hosp"]["values"][index_of_max_date];
+    last_hosp_number_date = new Date(data_grz["adm_hosp"]["dates"][index_of_max_date]);
     last_hosp_number_evitables = (parseFloat(data_last_day["data"]["hospitalisation_conventionnelle"]["FER_population"])*parseFloat(last_hosp_number))/100;
 
     const formatter = new Intl.DateTimeFormat('fr', { month: 'short' });
