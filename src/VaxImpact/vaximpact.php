@@ -593,8 +593,8 @@ function populateFigureDecesEvitables(dc_evitables_figure, dc_evitables_pop_gene
         document.getElementById("warning-evitables").innerHTML = warning;
     }    
 
-    last_death_number = data_grz["dc"]["values"][data_grz["dc"]["values"].length-1];
-    last_death_number_date = new Date(data_grz["dc"]["dates"][data_grz["dc"]["dates"].length-1]);
+    last_death_number = data_grz["dc"]["values"][data_grz["dc"]["values"].length-12];
+    last_death_number_date = new Date(data_grz["dc"]["dates"][data_grz["dc"]["dates"].length-12]);
 
     last_death_number_evitables = (parseFloat(data_last_day["data"]["deces"]["FER_population"])*parseFloat(last_death_number))/100;
 
@@ -605,7 +605,8 @@ function populateFigureDecesEvitables(dc_evitables_figure, dc_evitables_pop_gene
 
     document.getElementById("deces_dernier_jour").innerHTML = last_death_number.toFixed(0);
     document.getElementById("deces_dernier_jour_date").innerHTML = last_date;
-    document.getElementById("deces_dernier_jour_evitables").innerHTML = last_death_number_evitables.toFixed(0);
+    document.getElementById("deces_dernier_jour_evitables").innerHTML = 
+	    _evitables.toFixed(0);
 
 
 }
@@ -627,8 +628,8 @@ function populateFigureHospEvitables(hosp_evitables_figure, hosp_evitables_pop_g
         document.getElementById("warning-hosp-evitables").innerHTML = warning;
     }
 
-    last_hosp_number = data_grz["adm_hosp"]["values"][data_grz["adm_hosp"]["values"].length-1];
-    last_hosp_number_date = new Date(data_grz["adm_hosp"]["dates"][data_grz["adm_hosp"]["dates"].length-1]);
+    last_hosp_number = data_grz["adm_hosp"]["values"][data_grz["adm_hosp"]["values"].length-12];
+    last_hosp_number_date = new Date(data_grz["adm_hosp"]["dates"][data_grz["adm_hosp"]["dates"].length-12]);
 
     last_hosp_number_evitables = (parseFloat(data_last_day["data"]["hospitalisation_conventionnelle"]["FER_population"])*parseFloat(last_hosp_number))/100;
 
