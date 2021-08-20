@@ -191,7 +191,7 @@ p {
     </div>
     <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span class="date-maj-json"> -/-/- </span> • Dernières données : du <span class="date-data-start">-/-/-</span> au <span class="date-data-end">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
-    <p><span style="font-weight: bold;">Cela signifie que sur les <span id="hospi_dernier_jour">--</span> admissions à l'hôpital observées chaque jour (le <span id="hospi_dernier_jour_date">-/-/-</span>), <span id="hospi_dernier_jour_evitables">--</span> hospitalisations sont directement évitables par la vaccination.</span> D'autres décès hospitalisations pu être indirectement évités, la vaccination permettant de réduire les contaminations (protection individuelle et immunité collective).</p>
+    <p><span style="font-weight: bold;">Cela signifie que sur les <span id="hospi_dernier_jour">--</span> admissions à l'hôpital observées en France le <span id="hospi_dernier_jour_date">-/-/-</span>, <span id="hospi_dernier_jour_evitables">--</span> hospitalisations auraient été directement évitables par la vaccination.</span> D'autres décès hospitalisations pu être indirectement évités, la vaccination permettant de réduire les contaminations (protection individuelle et immunité collective).</p>
 
     <br>
     <h2 class="title">Décès hospitaliers</h2>
@@ -250,7 +250,7 @@ p {
     </div>
     <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span class="date-maj-json"> -/-/- </span> • Dernières données : du <span class="date-data-start">-/-/-</span> au <span class="date-data-end">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
-    <p><span style="font-weight: bold;">Cela signifie que sur les <span id="deces_dernier_jour">--</span> décès observés chaque jour en France (le <span id="deces_dernier_jour_date">-/-/-</span>), <span id="deces_dernier_jour_evitables">--</span> décès sont directement évitables par la vaccination.</span> D'autres décès auraient pu être indirectement évités, la vaccination permettant de réduire les contaminations (protection individuelle et immunité collective) et les hospitalisations.</p>
+    <p><span style="font-weight: bold;">Cela signifie que sur les <span id="deces_dernier_jour">--</span> décès observés en France le <span id="deces_dernier_jour_date">-/-/-</span>, <span id="deces_dernier_jour_evitables">--</span> décès sont auraient été directement évitables par la vaccination.</span> D'autres décès auraient pu être indirectement évités, la vaccination permettant de réduire les contaminations (protection individuelle et immunité collective) et les hospitalisations.</p>
 
 
     <br>
@@ -593,9 +593,9 @@ function populateFigureDecesEvitables(dc_evitables_figure, dc_evitables_pop_gene
         document.getElementById("warning-evitables").innerHTML = warning;
     }    
 
-    last_death_number = data_grz["dc"]["values"][data_grz["dc"]["values"].length-12];
-    last_death_number_date = new Date(data_grz["dc"]["dates"][data_grz["dc"]["dates"].length-12]);
-
+    let index_of_max_date = data_grz["dc"]["dates"].indexOf(date_max, 0);
+    last_death_number = data_grz["dc"]["values"][index_of_max_date];
+    last_death_number_date = new Date(data_grz["dc"]["dates"][index_of_max_date]);
     last_death_number_evitables = (parseFloat(data_last_day["data"]["deces"]["FER_population"])*parseFloat(last_death_number))/100;
 
 
@@ -627,11 +627,10 @@ function populateFigureHospEvitables(hosp_evitables_figure, hosp_evitables_pop_g
         document.getElementById("warning-hosp-evitables").innerHTML = warning;
     }
 
-    last_hosp_number = data_grz["adm_hosp"]["values"][data_grz["adm_hosp"]["values"].length-12];
-    last_hosp_number_date = new Date(data_grz["adm_hosp"]["dates"][data_grz["adm_hosp"]["dates"].length-12]);
-
+    let index_of_max_date = data_grz["hosp"]["dates"].indexOf(date_max, 0);
+    last_hosp_number = data_grz["hosp"]["values"][index_of_max_date];
+    last_hosp_number_date = new Date(data_grz["hosp"]["dates"][index_of_max_date]);
     last_hosp_number_evitables = (parseFloat(data_last_day["data"]["hospitalisation_conventionnelle"]["FER_population"])*parseFloat(last_hosp_number))/100;
-
 
     const formatter = new Intl.DateTimeFormat('fr', { month: 'short' });
     last_date = getDoubleDigit(last_hosp_number_date.getDate()) + " " + formatter.format(last_hosp_number_date);
