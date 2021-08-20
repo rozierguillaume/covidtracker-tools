@@ -605,8 +605,7 @@ function populateFigureDecesEvitables(dc_evitables_figure, dc_evitables_pop_gene
 
     document.getElementById("deces_dernier_jour").innerHTML = last_death_number.toFixed(0);
     document.getElementById("deces_dernier_jour_date").innerHTML = last_date;
-    document.getElementById("deces_dernier_jour_evitables").innerHTML = 
-	    _evitables.toFixed(0);
+    document.getElementById("deces_dernier_jour_evitables").innerHTML = last_death_number_evitables.toFixed(0);
 
 
 }
