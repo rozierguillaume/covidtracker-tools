@@ -21,7 +21,7 @@ et les carrés vert clair <svg width="10" height="10"><rect x="0" y="0" width="6
     <div class="col-md-4" style="padding-top: 20px;">
         <span style="font-size: 200%; color: #58c7b2"><span id="proportionVaccinesMax">--</span>%</span><br> des Français<span class="str-table-plus12ans"></span> ont reçu au moins une dose de vaccin, 
         <span style="color: #319986"><span id="proportionVaccinesTotalement">--</span>%</span> ont reçu toutes les doses requises.<br><br>
-        Il reste à vacciner au moins <br><span style="font-size: 200%; color: rgba(0, 0, 0, 0.3);"><span id="proportionAVaccinerImmu">--</span>%</span><br>des Français<span class="str-table-plus12ans"></span> avant d'atteindre un taux de vaccination de 100%. <br><br>
+        Il reste à vacciner <br><span style="font-size: 200%; color: rgba(0, 0, 0, 0.3);"><span id="proportionAVaccinerImmu">--</span>%</span><br>des Français<span class="str-table-plus12ans"></span> avant d'atteindre un taux de vaccination de 100%. <br><br>
         <!--<span style="font-size: 80%;">
             N.B. : un taux de vaccination de 80% ne permet pas nécessairement d'atteindre une immunité collective.<br>
         </span>-->
