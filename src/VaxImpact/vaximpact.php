@@ -250,7 +250,7 @@ p {
     </div>
     <div style="font-size: 10px; margin-top: 10px;">Mise à jour : <span class="date-maj-json"> -/-/- </span> • Dernières données : du <span class="date-data-start">-/-/-</span> au <span class="date-data-end">-/-/-</span> • Données DREES • VaxImpact.fr</div>
     <br>
-    <p><span style="font-weight: bold;">Cela signifie que sur les <span id="deces_dernier_jour">--</span> décès observés en France le <span id="deces_dernier_jour_date">-/-/-</span>, <span id="deces_dernier_jour_evitables">--</span> décès sont auraient été directement évitables par la vaccination.</span> D'autres décès auraient pu être indirectement évités, la vaccination permettant de réduire les contaminations (protection individuelle et immunité collective) et les hospitalisations.</p>
+    <p><span style="font-weight: bold;">Cela signifie que sur les <span id="deces_dernier_jour">--</span> décès observés en France le <span id="deces_dernier_jour_date">-/-/-</span>, <span id="deces_dernier_jour_evitables">--</span> décès auraient été directement évitables par la vaccination.</span> D'autres décès auraient pu être indirectement évités, la vaccination permettant de réduire les contaminations (protection individuelle et immunité collective) et les hospitalisations.</p>
 
 
     <br>
