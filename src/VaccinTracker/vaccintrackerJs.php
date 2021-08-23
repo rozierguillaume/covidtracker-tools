@@ -740,11 +740,10 @@
                             yAxisID:"stock",
                             label: 'Doses réceptionnées ou officiellement attendues ',
                             data: data_object_stock,
+                            fill: true,
+                            tension: 0.4,
                             borderWidth: 3,
-                            borderColor: 'grey',
-                            pointRadius: 0,
-                            steppedLine: true,
-                            pointHitRadius: 3,
+                            borderColor: 'grey'
                         })
             var max_value = livraisons.nb_doses_tot_cumsum[livraisons.nb_doses_tot_cumsum.length-1]
         
