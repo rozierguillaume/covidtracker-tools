@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="alert alert-info">
-            Attention l'échelle de cette diffère de la carte précédente même si le code couleur utilisé est le même.
+            Attention, l'échelle de cette carte diffère de celle de la carte précédente même si le code couleur utilisé est le même.
         </div>
     </div>
     <div class="col-md-6 text-center">
