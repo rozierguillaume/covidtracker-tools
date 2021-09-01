@@ -92,8 +92,13 @@ function switchEvolutionAge(){
 
 function buildLineChartAge(type){
     
-    
     var ctx = document.getElementById('barChartAge').getContext('2d');
+
+    var data_non_vaccines=[];
+    data_age["population"].map((value, idx) => {data_non_vaccines.push(value - data_age["n_tot_dose1"][idx])})
+
+    var data_vaccines_1_dose=[];
+    data_age["n_tot_dose1"].map((value, idx) => {data_vaccines_1_dose.push(value - data_age["n_tot_complet"][idx])})
 
     this.barChartAge = new Chart(ctx, {
         type: 'horizontalBar',
@@ -109,10 +114,18 @@ function buildLineChartAge(type){
                 cubicInterpolationMode: 'monotone',
             },
             {
-                label: 'Nombre de vaccinés (partiellement) ',
-                data: data_age["n_tot_dose1"],
+                label: 'Nombre de vaccinés (1 dose) ',
+                data: data_vaccines_1_dose,
                 borderWidth: 3,
                 backgroundColor: "#a1cbe6",
+                borderWidth: 0,
+                cubicInterpolationMode: 'monotone',
+            },
+            {
+                label: 'Non vaccinés ',
+                data: data_non_vaccines,
+                borderWidth: 3,
+                backgroundColor: "#ededed",
                 borderWidth: 0,
                 cubicInterpolationMode: 'monotone',
             },
@@ -139,7 +152,7 @@ function buildLineChartAge(type){
                                         return value/1000 +" k";
                                     }
                                 },
-							stacked: false,
+							stacked: true,
                             
 						}],
 						yAxes: [{
@@ -345,7 +358,7 @@ function buildLineChartAge(type){
                 },
                 {
                     label: 'Non vaccinés ',
-                    data: [100, 100, 100, 100, 100, 100],
+                    data: [100, 100, 100, 100, 100, 100, 100],
                     borderWidth: 3,
                     backgroundColor: "#ededed",
                     borderWidth: 0,
