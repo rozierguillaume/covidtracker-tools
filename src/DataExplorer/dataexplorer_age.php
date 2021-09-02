@@ -112,7 +112,7 @@ var associationTranchesNoms = {}
 
 var age_descriptions = {
     "hospitalisations": "Nombre de lits occupés à l'hôpital pour Covid19.",
-    "adm_hospitalisations": "Nombre nouvelles admissions à l'hôpital pour Covid19 (moyenne sur 7 jours, dernière donnée : semaine dernière).",
+    "adm_hospitalisations": "Nombre nouvelles admissions à l'hôpital pour Covid19 (par date d'admission, moyenne sur chaque semaine calendaire, màj les jeudis).",
     "incid_hospitalisations": "Nombre d'admissions quotidiennes à l'hôpital pour Covid19 (moyenne glissante 7 jours).",
     "incidence": "Nombre de cas par semaine pour 100 000 habitants.",
     "taux_positivite": "Proportion des tests qui sont positifs (en %).",
