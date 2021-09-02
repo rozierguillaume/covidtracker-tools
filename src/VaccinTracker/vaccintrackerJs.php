@@ -1124,8 +1124,8 @@
         //document.getElementById("proportionVaccinesMin").innerHTML = (Math.round(dejaVaccines/2*10000000)/10000000).toFixed(2);
         //document.getElementById("proportion_doses").innerHTML = (dejaVaccinesNb/cumul_stock*100).toFixed(1);
 
-        document.getElementById("objectif_quotidien").innerHTML = numberWithSpaces(objectifQuotidien);
-        document.getElementById("date_projetee_objectif").innerHTML = formaterDate(dateProjeteeObjectif);
+        //document.getElementById("objectif_quotidien").innerHTML = numberWithSpaces(objectifQuotidien);
+        //document.getElementById("date_projetee_objectif").innerHTML = formaterDate(dateProjeteeObjectif);
         date = nb_vaccines[nb_vaccines.length - 1].date
         date = date.slice(8) + "/" + date.slice(5, 7)
         //heure = nb_vaccines[nb_vaccines.length-1].heure
