@@ -1,5 +1,4 @@
-
-
+<script>
 // Fonction visant à imiter la fonction format() de python.
 // "Je suis {0} {1}".format("Guillaume", "Rozier") => "Je suis Guillaume Rozier"
 String.prototype.format = function() 
@@ -186,3 +185,5 @@ function no_data(template, json_data_field, slider, raw_data, last_week, repos)
     div_NaN.innerHTML=message;
     template.querySelector('#block_maj').parentNode.insertBefore(div_NaN,template.querySelector('#block_maj'));
 }
+
+</script>

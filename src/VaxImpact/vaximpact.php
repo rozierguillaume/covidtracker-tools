@@ -8,19 +8,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js" integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-
-<!--- VAXIMPACT IMPORTS --->
-    <!--- CSS sheets --->
-    <link rel="stylesheet" href="vaximpact.css">
-
-    <!--- Js scripts --->
-    <script src="vaximpact_assets.js"></script>
-    <script src="vaximpact_utils.js"></script>
 
 
 <!--- Début HTML -->
 <body>
+
+<!--- VAXIMPACT IMPORTS --->
+    <!--- CSS sheets --->
+    <?php include(__DIR__ . '/vaximpactCss.php'); ?>
+
+    <!--- Js scripts --->
+    <?php include(__DIR__ . '/vaximpact_assetsJs.php'); ?>
+    <?php include(__DIR__ . '/vaximpact_utilsJs.php'); ?>
 
     <!-- Les graphiques HTML fonctionnent sur la base de templates qui sont en include.-->
     <?php include(__DIR__ . '/templates.php'); ?>
