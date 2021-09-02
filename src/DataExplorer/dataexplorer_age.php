@@ -22,6 +22,7 @@
                     </optgroup>
                     <optgroup label="Indicateurs sanitaires">
                         <option value="hospitalisations">Hospitalisations</option>
+                        <option value="adm_hospitalisations">Adm. à l'hôpital</option>
                         <option value="reanimations">Réanimations</option>
                         <option value="deces_hospitaliers">Décès hospitaliers</option>
                     </optgroup>
@@ -111,6 +112,7 @@ var associationTranchesNoms = {}
 
 var age_descriptions = {
     "hospitalisations": "Nombre de lits occupés à l'hôpital pour Covid19.",
+    "adm_hospitalisations": "Nombre nouvelles admissions à l'hôpital pour Covid19 (moyenne sur 7 jours, dernière donnée : semaine dernière).",
     "incid_hospitalisations": "Nombre d'admissions quotidiennes à l'hôpital pour Covid19 (moyenne glissante 7 jours).",
     "incidence": "Nombre de cas par semaine pour 100 000 habitants.",
     "taux_positivite": "Proportion des tests qui sont positifs (en %).",
@@ -126,6 +128,7 @@ var age_descriptions = {
 
 var age_titres = {
     "hospitalisations": "Hospitalisations",
+    "adm_hospitalisations": "Nouvelles adm. à l'hôpital",
     "incid_hospitalisations": "Nouvelles admissions à l'hôpital",
     "incidence": "Taux d'incidence",
     "taux_positivite": "Taux de positivité",
