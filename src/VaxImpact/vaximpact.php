@@ -12,11 +12,11 @@
 
 <!--- VAXIMPACT IMPORTS --->
     <!--- CSS sheets --->
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/rozierguillaume/covidtracker-tools/main/src/VaxImpact/vaximpact.css">
+    <link rel="stylesheet" href="vaximpact.css">
 
     <!--- Js scripts --->
-    <script src="https://raw.githubusercontent.com/rozierguillaume/covidtracker-tools/main/src/VaxImpact/vaximpact_assets.js"></script>
-    <script src="https://raw.githubusercontent.com/rozierguillaume/covidtracker-tools/main/src/VaxImpact/vaximpact_utils.js"></script>
+    <script src="vaximpact_assets.js"></script>
+    <script src="vaximpact_utils.js"></script>
 
 
 <!--- Début HTML -->
