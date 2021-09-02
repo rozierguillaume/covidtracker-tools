@@ -1,4 +1,6 @@
-.btn-actif{
+<style>
+
+.boxshadow{
     border: 1px solid black;
     padding: 6px;
     border-radius: 5px;
@@ -181,3 +183,4 @@ content : 'aaa';
 ::-ms-tooltip { 
     display: none;
 }
+</style>
