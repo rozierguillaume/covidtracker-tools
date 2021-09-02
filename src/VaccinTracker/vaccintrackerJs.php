@@ -124,6 +124,7 @@
 
     const OBJECTIF_FIN_JANVIER = 1000000 // 1_000_000
     const OBJECTIF_FIN_AOUT = 52000000 // 1_000_000
+    const OBJECTIF_POPULATION_PLUS_12_ANS = 57656000
     const OBJECTIF_MI_JUIN = 30000000
     const N_VAX_OBJECTIF = 100
     var data;
@@ -432,18 +433,18 @@
 
 
     function calculerDateProjeteeObjectif() {
-        const duréeLissageEnJours = 15
-        const objectif = OBJECTIF_FIN_AOUT
+        const duréeLissageEnJours = 14
+        const objectif = OBJECTIF_POPULATION_PLUS_12_ANS
         const vdose1 = (nb_vaccines[nb_vaccines.length - 1].n_dose1 - nb_vaccines[nb_vaccines.length - (1 + duréeLissageEnJours)].n_dose1) / duréeLissageEnJours
-        const cumsum = vaccines_2doses.n_dose2_cumsum
-        const vdose2 = (cumsum[cumsum.length - 1] - cumsum[cumsum.length - (1 + duréeLissageEnJours)]) / duréeLissageEnJours
+        //const cumsum = vaccines_2doses.n_dose2_cumsum
+        //const vdose2 = (cumsum[cumsum.length - 1] - cumsum[cumsum.length - (1 + duréeLissageEnJours)]) / duréeLissageEnJours
         const resteAVaccinerDose1 = objectif - nb_vaccines[nb_vaccines.length - 1].n_dose1
         const joursDose1Complete = Math.ceil(resteAVaccinerDose1 / vdose1)
-        const nDose2quandD1Complete = Math.floor(joursDose1Complete * vdose2)
-        const resteAVaccinerDose2 = objectif - nDose2quandD1Complete
-        const joursDose2Complete = Math.ceil(resteAVaccinerDose2 / (vdose2 + vdose1))
+        //const nDose2quandD1Complete = Math.floor(joursDose1Complete * vdose2)
+        //const resteAVaccinerDose2 = objectif - nDose2quandD1Complete
+        //const joursDose2Complete = Math.ceil(resteAVaccinerDose2 / (vdose2 + vdose1))
         const date = new Date(nb_vaccines[nb_vaccines.length - 1].date)
-        date.setDate(date.getDate() + Math.max(joursDose2Complete, joursDose1Complete))
+        date.setDate(date.getDate() + Math.max(joursDose1Complete))
         return date
     }
 
@@ -1125,7 +1126,7 @@
         //document.getElementById("proportion_doses").innerHTML = (dejaVaccinesNb/cumul_stock*100).toFixed(1);
 
         //document.getElementById("objectif_quotidien").innerHTML = numberWithSpaces(objectifQuotidien);
-        //document.getElementById("date_projetee_objectif").innerHTML = formaterDate(dateProjeteeObjectif);
+        document.getElementById("date_projetee_objectif").innerHTML = formaterDate(dateProjeteeObjectif);
         date = nb_vaccines[nb_vaccines.length - 1].date
         date = date.slice(8) + "/" + date.slice(5, 7)
         //heure = nb_vaccines[nb_vaccines.length-1].heure
