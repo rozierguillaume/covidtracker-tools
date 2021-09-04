@@ -25,7 +25,7 @@
     <?php include(__DIR__ . '/templates.php'); ?>
 
     <!--- Selecteur de région-->
-    <?php include(__DIR__ . '/region_selector.php'); ?>
+    <?php include(__DIR__ . '/top_selectors.php'); ?>
 
     <br><br>
     
@@ -125,7 +125,6 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
         raw_data,
         last_week,
         first_load,
-        age="tous âges",
         active_tab_by_default = true,
         tab_name = "cas",
         json_data_field = "nb_pcr0",
@@ -157,44 +156,7 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
         ]
     );
 
-    // Cas symptomatiques
-    fillFigure(
-        stats,
-        raw_data,
-        last_week,
-        first_load,
-        age="tous âges",
-        active_tab_by_default = false,
-        tab_name = "cas_symptomatiques",
-        json_data_field = "nb_pcr_sympt0",
-        graphique_intro = 'Ce graphique permet de visualiser le nombre de nouveaux cas positifs déclarés comme symptomatiques chaque jour en fonction du statut vaccinal des personnes.',
-        graphique_link = "https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/pcr_plus_sympt_proportion_selon_statut_vaccinal.jpeg",
-        figures_data = [
-            {
-                figure_type : "reduction_risque", 
-                field_name : "cas sympto. pour 100 tests",
-                icon_type : "body",
-                icon_color_vax : LIGHT_BLUE,
-                icon_color_non_vax : "orange",
-                title : "Réduction du risque de Covid-19 symptomatique.",
-                intro : "Imaginons deux groupes de 100 personnes, l'un comportant des individus vaccinés de {0} qui sont testés chaque jour, et l'autre uniquement des individus non vaccinés qui sont eux aussi testés chaque jour. S'il y a une personne testée positive au Covid-19 et symptomatique chaque jour chez les vaccinés, alors il y aura probablement {1} cas symptomatiques chaque jour chez les non-vaccinés.",
-                conclu : "Cela signifie qu'une personne non vaccinée a un risque multiplié par au moins {0} de développer un Covid-19 symptomatique par rapport à une personne vaccinée. À ce bénéfice individuel de la vaccination, il faut ajouter le bénéfice collectif : réduction des contaminations (protection individuelle et immunité collective) et donc réduction du risque individuel d'infection.",
-            },
-            { 
-                figure_type : "fraction_attribuable",
-                animate : true,
-                field_name : "Cas symptomatiques",
-                icon_type : "body",
-                icon_color_vax: "black",
-                icon_color_non_vax:"black",
-                title : "Cas de Covid-19 symptomatiques attribuables à la non vaccination.",
-                intro : "Cet indicateur permet d'estimer la proportion des cas symptomatiques qui auraient pu être évités par la vaccination.",
-                mini_conclu : "Cela signifie que sur 100 cas symptomatiques ayant {0} {1}, {2} cas auraient pu être évités par la vaccination.",
-                conclu : "Cela signifie que sur les {0} cas symptomatiques observées le {1}, {2} cas auraient été directement évitables par la vaccination. D'autres cas auraient pu être indirectement évités, la vaccination permettant de réduire les contaminations (protection individuelle et immunité collective).",
-            }
-        ]
-    );
-
+    
     
     // Hospitalisations
     fillFigure(
@@ -202,12 +164,11 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
         raw_data,
         last_week,
         first_load,
-        age="tous âges",
         active_tab_by_default = false,
         tab_name = "hospitalisation_conventionnelle",
         json_data_field = "hc_pcr",
-        graphique_intro="Ce graphique permet de visualiser le nombre de nouvelles admissions à l'hôpital chaque jour en fonction du statut vaccinal des patients.",
-        graphique_link="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hc_proportion_selon_statut_vaccinal.jpeg",
+        graphique_intro="",
+        graphique_link="",
         figures_data = [
             {
                 figure_type : "reduction_risque", 
@@ -240,7 +201,6 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
         raw_data,
         last_week,
         first_load,
-        age="tous âges",
         active_tab_by_default = false,
         tab_name = "soins_critiques",
         json_data_field = "sc_pcr",
@@ -272,46 +232,46 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
         ]
     );
 
-    if (populate_region == false)
-    {
-        // Décès
-        fillFigure(
-            stats,
-            raw_data,
-            last_week,
-            first_load,
-            age="tous âges",
-            active_tab_by_default = false,
-            tab_name = "deces",
-            json_data_field = "dc_pcr",
-            graphique_intro="Ce graphique permet de visualiser le nombre de nouveaux décès hospitaliers chaque jour en fonction du statut vaccinal des personnes.",
-            graphique_link="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/dc_proportion_selon_statut_vaccinal.jpeg",
-            figures_data = [
-                {
-                    figure_type : "reduction_risque", 
-                    field_name : "décès",
-                    icon_type : "body",
-                    icon_color_vax : LIGHT_BLUE,
-                    icon_color_non_vax : "orange",
-                    title : "Réduction du risque de décès.",
-                    intro : "Imaginons deux groupes, l'un comportant des individus vaccinés de {0} et l'autre uniquement des individus non vaccinés. S'il y a un décès du Covid-19 par jour dans le groupe des vaccinés, alors il y aura probablement {1} décès du Covid-19 chaque jour dans le groupe des non-vaccinés.",
-                    conclu : "Cela signifie qu'une personne non vaccinée a un risque multiplié par {0} de décéder du Covid-19 par rapport à une personne vaccinée. À ce bénéfice individuel de la vaccination, il faut ajouter le bénéfice collectif : réduction des contaminations (protection individuelle et immunité collective) et donc réduction du risque individuel d'infection.",
-                },
-                { 
-                    figure_type : "fraction_attribuable",
-                    animate : true,
-                    field_name : "Décès",
-                    icon_type : "body",
-                    icon_color_vax: "black",
-                    icon_color_non_vax:"black",
-                    title : "Décès du Covid-19 attribuables à la non vaccination.",
-                    intro : "Cet indicateur permet d'estimer la proportion des décès du Covid-19 qui auraient pu être évités par la vaccination.",
-                    mini_conclu : "Cela signifie que sur 100 décès Covid-19 ayant {0} {1}, {2} décès auraient pu être évitées par la vaccination.",
-                    conclu : "Cela signifie que sur les {0} décès du COvid-19 observés le {1}, {2} décès auraient été directement évitables par la vaccination. D'autres décès auraient pu être indirectement évités, la vaccination permettant de réduire les contaminations (protection individuelle et immunité collective).",
-                }
-            ]
-        );
-    }
+    // if (populate_region == false)
+    // {
+    //     // Décès
+    //     fillFigure(
+    //         stats,
+    //         raw_data,
+    //         last_week,
+    //         first_load,
+    //         age="tous âges",
+    //         active_tab_by_default = false,
+    //         tab_name = "deces",
+    //         json_data_field = "dc_pcr",
+    //         graphique_intro="Ce graphique permet de visualiser le nombre de nouveaux décès hospitaliers chaque jour en fonction du statut vaccinal des personnes.",
+    //         graphique_link="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/dc_proportion_selon_statut_vaccinal.jpeg",
+    //         figures_data = [
+    //             {
+    //                 figure_type : "reduction_risque", 
+    //                 field_name : "décès",
+    //                 icon_type : "body",
+    //                 icon_color_vax : LIGHT_BLUE,
+    //                 icon_color_non_vax : "orange",
+    //                 title : "Réduction du risque de décès.",
+    //                 intro : "Imaginons deux groupes, l'un comportant des individus vaccinés de {0} et l'autre uniquement des individus non vaccinés. S'il y a un décès du Covid-19 par jour dans le groupe des vaccinés, alors il y aura probablement {1} décès du Covid-19 chaque jour dans le groupe des non-vaccinés.",
+    //                 conclu : "Cela signifie qu'une personne non vaccinée a un risque multiplié par {0} de décéder du Covid-19 par rapport à une personne vaccinée. À ce bénéfice individuel de la vaccination, il faut ajouter le bénéfice collectif : réduction des contaminations (protection individuelle et immunité collective) et donc réduction du risque individuel d'infection.",
+    //             },
+    //             { 
+    //                 figure_type : "fraction_attribuable",
+    //                 animate : true,
+    //                 field_name : "Décès",
+    //                 icon_type : "body",
+    //                 icon_color_vax: "black",
+    //                 icon_color_non_vax:"black",
+    //                 title : "Décès du Covid-19 attribuables à la non vaccination.",
+    //                 intro : "Cet indicateur permet d'estimer la proportion des décès du Covid-19 qui auraient pu être évités par la vaccination.",
+    //                 mini_conclu : "Cela signifie que sur 100 décès Covid-19 ayant {0} {1}, {2} décès auraient pu être évitées par la vaccination.",
+    //                 conclu : "Cela signifie que sur les {0} décès du COvid-19 observés le {1}, {2} décès auraient été directement évitables par la vaccination. D'autres décès auraient pu être indirectement évités, la vaccination permettant de réduire les contaminations (protection individuelle et immunité collective).",
+    //             }
+    //         ]
+    //     );
+    // }
 
 
     // On remplit toutes les dates "mis à jour le ..." d'un coup
@@ -319,7 +279,7 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
 }
 
 
-function fillFigure(stats, raw_data, last_week, active_tab_by_default, age, first_load, tab_name, json_data_field, graphique_intro, graphique_link, figures_data){
+function fillFigure(stats, raw_data, last_week, active_tab_by_default, first_load, tab_name, json_data_field, graphique_intro, graphique_link, figures_data){
 
     // On créé un div au nom de l'onglet en cours
     if (document.querySelector("#"+tab_name))
@@ -359,17 +319,18 @@ function fillFigure(stats, raw_data, last_week, active_tab_by_default, age, firs
         // On récupère la HTML template
         var template = document.querySelector('#template_'+figure.figure_type);
         template = document.importNode(template.content, true);
-        
-        var FER_population = (parseFloat(stats["data_by_week"][last_week]["data"][tab_name]["FER_population"])).toFixed(0);
-
+        var age = document.getElementById("select_age")
+        var age_text = age.options[age.selectedIndex].text;
+        age = age.value
+        var FER_population = (parseFloat(stats["data_by_week"][last_week]["data"][age][tab_name]["FER_population"])).toFixed(0);
 
         if (figure.figure_type=="reduction_risque"){
-            var raw_chiffre_non_vax = (parseFloat(stats["data_by_week"][last_week]["data"][tab_name]["risque_relatif"])).toFixed(0);
+            var raw_chiffre_non_vax = (parseFloat(stats["data_by_week"][last_week]["data"][age][tab_name]["risque_relatif"])).toFixed(0);
             var chiffre_vax = 1;
         }
 
         else if (figure.figure_type=="fraction_attribuable"){
-            var raw_chiffre_non_vax = (parseFloat(stats["data_by_week"][last_week]["data"][tab_name]["FER_exposes"])).toFixed(0);
+            var raw_chiffre_non_vax = (parseFloat(stats["data_by_week"][last_week]["data"][age][tab_name]["FER_exposes"])).toFixed(0);
             var chiffre_vax = 100-raw_chiffre_non_vax;
         }
 
@@ -389,7 +350,7 @@ function fillFigure(stats, raw_data, last_week, active_tab_by_default, age, firs
         }
 
         template.querySelector('#title').innerHTML = figure.title;
-        template.querySelector('#description').innerHTML = figure.intro.format(age, raw_chiffre_non_vax);
+        template.querySelector('#description').innerHTML = figure.intro.format(age_text.toLowerCase(), raw_chiffre_non_vax);
 
         if (figure.figure_type=="reduction_risque"){
 
@@ -410,10 +371,10 @@ function fillFigure(stats, raw_data, last_week, active_tab_by_default, age, firs
 
         else if (figure.figure_type=="fraction_attribuable"){
 
-            template.querySelector('#premiere_conclu').innerHTML = figure.mini_conclu.format(age, "chez les non vaccinés", chiffre_non_vax);
+            template.querySelector('#premiere_conclu').innerHTML = figure.mini_conclu.format(age_text.toLowerCase(), "chez les non vaccinés", chiffre_non_vax);
             template.querySelector('#premiere_conclu').setAttribute("tag",figure.mini_conclu);
-            template.querySelector('#premiere_conclu').setAttribute("age",age); 
-            template.querySelector('#conclusion').innerHTML = figure.conclu.format(raw_data["data_by_week"][last_week]["Vaccinés"][json_data_field], format_date_to_day_month(stats["data_by_week"][last_week]["week_end_date"]), parseFloat(raw_data["data_by_week"][last_week]["Vaccinés"][json_data_field]*FER_population/100).toFixed(0));
+            template.querySelector('#premiere_conclu').setAttribute("age",age_text.toLowerCase()); 
+            template.querySelector('#conclusion').innerHTML = figure.conclu.format(raw_data["data_by_week"][last_week]["data"][age]["Vaccinés"][json_data_field], format_date_to_day_month(stats["data_by_week"][last_week]["week_end_date"]), parseFloat(raw_data["data_by_week"][last_week]["data"][age]["Vaccinés"][json_data_field]*FER_population/100).toFixed(0));
             template.querySelector('#figure_vax').innerHTML = vax_icons + non_vax_icons;
             template.querySelector('#group').innerHTML = figure.field_name + " chez les non vaccinés";
             template.querySelector('#group').setAttribute("tag",figure.field_name);
@@ -438,30 +399,45 @@ function fillFigure(stats, raw_data, last_week, active_tab_by_default, age, firs
 // Récupère les données pour la bonne région
 function selectRegion(selected){
 
-    var tab_deces = document.getElementById("tabs_navbar").querySelectorAll('a[href="#deces"]')[0]
+    // var tab_deces = document.getElementById("tabs_navbar").querySelectorAll('a[href="#deces"]')[0]
+    var selector_age = document.getElementById("select_age")
+    selector_age.disabled = false
 
     // Dans le cas où on ne regarde pas la france entière, il faut désactiver les décès (pas de données)
     if (selected.value!="FR")
     {
-        tab_deces.classList.add("disable_link");
-        tab_deces.parentElement.classList.add("disabled");
+        // tab_deces.classList.add("disable_link");
+        // tab_deces.parentElement.classList.add("disabled");
+
+        selector_age.querySelector('option[value="all"]').selected=true
+        selector_age.disabled = true
 
         // Si l'utilisateur était sur un onglet décès, on le redirige sur le 1er onglet (ici cas)
-        if ($('#tabs_navbar .active')[0].id == "#deces")
-        {
-            $('[href="#cas"]').tab('show');   
-        }
+        // if ($('#tabs_navbar .active')[0].id == "#deces")
+        // {
+        //     $('[href="#cas"]').tab('show');   
+        // }
     }
 
     // Si l'utilisateur était sur une région et repasse sur la france, il faut réactiver l'onglet décès.
-    else
-    {
-        tab_deces.classList.remove("disable_link");
-        tab_deces.parentElement.classList.remove("disabled");
-    }
-    
+    // else
+    // {
+    //     tab_deces.classList.remove("disable_link");
+    //     tab_deces.parentElement.classList.remove("disabled");
+    // }
+
     // On récupère les données pour la région directement ! 
     download_data(selected.value);
+}
+
+
+// Récupère les données pour le bon âge
+function selectAge(selected){
+
+    var selector_region = document.getElementById("select_region")
+
+    // On récupère les données pour la région directement ! 
+    download_data(selector_region.value);
 }
 
 </script>

@@ -92,13 +92,12 @@ p {
     pointer-events:none;
 }
 
-.select_region {
+.selectors {
 
     border:2px solid lightgray;
     border-radius:10px;
     padding:6px;
-    font-size:1vw;
-    width:100%;
+    width:45%;
 }
 
 .emphasis {
