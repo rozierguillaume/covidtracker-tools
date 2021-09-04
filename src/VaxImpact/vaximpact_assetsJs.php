@@ -1,8 +1,8 @@
 
 <script>
 // URLs des sources
-var data_url = 'https://raw.githubusercontent.com/CovidTrackerFr/data-utils/main/vaximpact/output/{0}/data_by_week.json';
-var stats_url = 'https://raw.githubusercontent.com/CovidTrackerFr/data-utils/main/vaximpact/output/{0}/stats_by_week.json';
+var data_url = 'https://raw.githubusercontent.com/CovidTrackerFr/data-utils/main/vaximpact/output_age/{0}/data_by_week.json';
+var stats_url = 'https://raw.githubusercontent.com/CovidTrackerFr/data-utils/main/vaximpact/output_age/{0}/stats_by_week.json';
 
 
 // Quelques couleurs custom.
