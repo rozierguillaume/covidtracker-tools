@@ -1,5 +1,22 @@
 <style>
 
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
+    background-color: white;
+    color: black;
+    border: 1px solid darkgrey;
+    border-radius: 7px;
+}
+
+.nav>li>a{
+    color: black;
+}
+
+.nav>li>:hover{
+    border: 1px solid darkgrey;
+    border-radius: 7px;
+    color: black;
+}
+
 .boxshadow{
     border: 1px solid black;
     padding: 6px;
@@ -7,18 +24,21 @@
     color:black;
 }
 
+.btn-actif{
+    padding: 6px;
+    border: 1px solid grey;
+}
+
 .btn-inactif{
     border: 1px solid white;
     padding: 6px;
-    border-radius: 5px;
     color:black;
 }
 
 .btn-inactif:hover{
-    border: 1px solid black;
-    background-color: lightgrey;
+    border: 1px solid grey;
+    background-color: grey;
     padding: 6px;
-    border-radius: 5px;
     color:white;
 }
 
@@ -80,7 +100,9 @@ p {
 }
 
 .title {
-    margin-top: 50px;
+    margin-top: 100px;
+    font-size: 28px;
+    margin-bottom: 20px;
 }
 
 .custom_picker{
@@ -101,27 +123,26 @@ p {
 }
 
 .emphasis {
-font-weight:bold;
-color:#e76f51;
-    
+    font-weight:bold;
+    //color:#e76f51;
 }
 
 .slider:before{
-content : 'aaa';
+content : '';
 }
 
 .slider { 
     -webkit-appearance: none;
     position: relative;
     overflow: hidden;
-    height: 40px;
+    height: 20px;
     width: 600px;
     cursor: pointer;
-    border-radius: 0; /* iOS */
+    border-radius: 7px; /* iOS */
 }
 
 ::-webkit-slider-runnable-track {
-    background: #ddd;
+    background: #ededed;
 }
 
 /*
@@ -130,25 +151,26 @@ content : 'aaa';
 ::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 20px; /* 1 */
-    height: 40px;
+    height: 20px;
     background: #fff;
-    box-shadow: -100vw 0 0 100vw dodgerblue;
+    border-radius: 7px !important;
+    box-shadow: -100vw 0 0 99vw lightgrey;
     border: 2px solid #999; /* 1 */
 }
 
 
 ::-moz-range-track {
-    height: 40px;
-    background: #ddd;
+    height: 20px;
+    background: #ededed;
 }
 
 ::-moz-range-thumb {
     background: #fff;
-    height: 40px;
+    height: 20px;
     width: 20px;
-    border: 3px solid #999;
-    border-radius: 0 !important;
-    box-shadow: -100vw 0 0 100vw dodgerblue;
+    border: 2px solid #999;
+    border-radius: 7px !important;
+    box-shadow: -100vw 0 0 99vw lightgrey;
     box-sizing: border-box;
 }
 
@@ -173,7 +195,7 @@ content : 'aaa';
 }
 
 ::-ms-track { 
-    background: #ddd;
+    background: #ededed;
     color: transparent;
     height: 40px;
     border: none;

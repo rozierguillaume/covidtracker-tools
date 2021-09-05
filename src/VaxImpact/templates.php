@@ -1,11 +1,12 @@
 <!--- Template graphique -->
 <template id="template_graphique">
+    <h3 class="title emphasis" style="margin-top: 20px;">Indicateurs</h3>
+    <p id="title" style=""></p>
     <div style="width: 100%; max-width: 1000px; text-align:center;">
         <a id="link" target="_blank" rel="noopener noreferrer">
             <img id="imageTab" id="graph_img" width="75%">
         </a>
     </div>
-    <p id="title" style="font-style:italic; font-size:0.9vw; text-align:center;"></p>
 </template>
 
 <!--- Template risque relatif -->
@@ -43,7 +44,7 @@
         <div style="font-size: 10px; margin-top: 10px; " id="block_maj">Mise à jour : <span class="date-maj-json"> -/-/- </span> • Dernières données : du <span class="date-data-start">-/-/-</span> au <span class="date-data-end">-/-/-</span> • Données DREES • VaxImpact.fr</div>
 
         <br>
-        <p style="font-weight: bold;" id="conclusion"></p>
+        <p style="font-weight: bold; margin-top: 20px;" id="conclusion"></p>
     </div>
 </template>
 
@@ -73,6 +74,6 @@
         <div style="font-size: 10px; margin-top: 10px;" id="block_maj">Mise à jour : <span class="date-maj-json"> -/-/- </span> • Dernières données : du <span class="date-data-start">-/-/-</span> au <span class="date-data-end">-/-/-</span> • Données DREES • VaxImpact.fr</div>
         
         <br>
-        <p style="font-weight: bold;" id="conclusion"></p>
+        <p style="font-weight: bold; margin-top: 20px;" id="conclusion"></p>
     </div>
 </template>

@@ -297,7 +297,7 @@
     }
 </style>
 
-<h2 style="margin-top: 40px;">Menu</h2>
+<h2 style="margin-top: 100px;">Menu</h2>
 <div shadow="" style="margin-bottom: 5px;">
     <div class_perso="">
         <div>
