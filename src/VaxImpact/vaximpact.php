@@ -337,7 +337,7 @@ function fillFigure(stats, raw_data, last_week, active_tab_by_default, first_loa
             var get_graph = "_"+region;
         }
 
-        alert(get_graph);
+       
         graphe.querySelector("#title").innerHTML = graphique_intro.format(age_text.toLowerCase());
         graphe.querySelector("#link").href = graphique_link.format(folder,get_graph);
         graphe.querySelector("#imageTab").src = graphique_link.format(folder,get_graph);
