@@ -19,9 +19,9 @@
                 <option value="HDF">Hauts-de-France</option>
                 <option value="IDF">Ile-de-France</option>        
                 <option value="LRE">La Réunion</option>
-                <option value="MAR">La Martinique</option>
+                <option value="MAR">Martinique</option>
                 <option value="MAY">Mayotte</option>
-                <option value="NAQ">Nouvelle Aquitaine</option>
+                <option value="NAQ">Nouvelle-Aquitaine</option>
                 <option value="NOR">Normandie</option>
                 <option value="OCC">Occitanie</option>
                 <option value="PAC">Provence-Alpes-Côte d'Azur</option>

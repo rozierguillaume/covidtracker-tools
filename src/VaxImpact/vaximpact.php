@@ -136,7 +136,7 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
         tab_name = "cas",
         json_data_field = "nb_pcr0",
         graphique_intro="Ce graphique permet de visualiser le nombre de nouveaux cas de Covid-19 (symptomatiques ou non) diagnostiqués jour chez des individus de {0} en fonction du statut vaccinal des personnes.",
-        graphique_link="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/pcr_plus_proportion_selon_statut_vaccinal{0}.jpeg",
+        graphique_link="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/{0}pcr_plus_proportion_selon_statut_vaccinal{1}.jpeg",
         figures_data = [
             {
                 figure_type : "reduction_risque", 
@@ -175,7 +175,7 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
         tab_name = "hospitalisation_conventionnelle",
         json_data_field = "hc_pcr",
         graphique_intro="Ce graphique permet de visualiser le nombre de nouvelles hospitalisations (hors réa.) pour suspiscion de Covid-19 ayant lieu chaque jour chez des individus de {0} en fonction du statut vaccinal des personnes.",
-        graphique_link="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hc_proportion_selon_statut_vaccinal{0}.jpeg",
+        graphique_link="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/{0}hc_proportion_selon_statut_vaccinal{1}.jpeg",
         figures_data = [
             {
                 figure_type : "reduction_risque", 
@@ -212,7 +212,7 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
         tab_name = "soins_critiques",
         json_data_field = "sc_pcr",
         graphique_intro="Ce graphique permet de visualiser le nombre de nouvelles admissions en réanimations pour Covid-19 ayant lieu chaque jour chez des individus de {0} en fonction du statut vaccinal des personnes.",
-        graphique_link="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/sc_proportion_selon_statut_vaccinal{0}.jpeg",
+        graphique_link="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/{0}sc_proportion_selon_statut_vaccinal{1}.jpeg",
         figures_data = [
             {
                 figure_type : "reduction_risque", 
@@ -312,17 +312,37 @@ function fillFigure(stats, raw_data, last_week, active_tab_by_default, first_loa
 
     if (graphique_intro!="" && graphique_link!="")
     {
-        var age = document.getElementById("select_age")
-        var age_text = age.options[age.selectedIndex].text;
-        age = age.value
         var graphe = document.querySelector('#template_graphique');
         graphe = document.importNode(graphe.content, true);
+
+        var age = document.getElementById("select_age")
+        var age_text = age.options[age.selectedIndex].text;
+
+        var region = document.getElementById("select_region").options[document.getElementById("select_region").selectedIndex].text;
+
+        if (region=="Toute la France"){
+            folder = "";
+                if(age.value!="all"){
+                    var get_graph = "_"+age.value;
+                }
+                else{
+                    var get_graph=""
+                }
+        }
+
+        else{
+            folder="regions_dashboards/"
+            if (region == "Centre-Val de Loire"){
+                region = "Centre"}
+            var get_graph = "_"+region;
+        }
+
+        alert(get_graph);
         graphe.querySelector("#title").innerHTML = graphique_intro.format(age_text.toLowerCase());
-        if (age!="all"){
-            graphe.querySelector("#link").href = graphique_link.format("_"+age);
-            graphe.querySelector("#imageTab").src = graphique_link.format("_"+age);}
-        else{ graphe.querySelector("#link").href = graphique_link.format("");
-            graphe.querySelector("#imageTab").src = graphique_link.format("");}
+        graphe.querySelector("#link").href = graphique_link.format(folder,get_graph);
+        graphe.querySelector("#imageTab").src = graphique_link.format(folder,get_graph);
+
+    
     }
 
 
