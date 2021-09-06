@@ -72,11 +72,11 @@ p {
     padding: 10px 10px 10px 10px;
     border-radius: 7px;
     margin-right: 15px;
-    max-width: 500px;
+    max-width: 520px;
     text-align: left;
     /*box-shadow: 6px 4px 25px #c3d19d;*/
-    box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
-    width: 100%;
+    box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 30px #d6d6d6;
+    margin-left:15px;
     background: #ffffff;
     }
 
@@ -90,6 +90,7 @@ p {
     text-align: left;
     /*box-shadow: 6px 4px 25px #c3d19d;*/
     box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px #d6d6d6;
+    margin-left:15px;
     width: 100%;
     background: #ffffff;
 }

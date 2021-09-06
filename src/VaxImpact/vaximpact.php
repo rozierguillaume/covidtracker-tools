@@ -140,11 +140,11 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
         figures_data = [
             {
                 figure_type : "reduction_risque", 
-                field_name : "infecté(s) pour 100 tests",
+                field_name : "cas positif(s) pour 100 tests",
                 icon_type : "virus",
                 icon_color_vax : LIGHT_BLUE,
                 icon_color_non_vax : "orange",
-                title : "Réduction du risque d'infection",
+                title : "Réduction du risque de cas positifs",
                 intro : "Imaginons deux groupes de 100 personnes, l'un comportant des individus vaccinés de {0} qui sont testés chaque jour, et l'autre uniquement des individus non vaccinés qui sont eux aussi testés chaque jour. S'il y a une personne testée positive au Covid-19 chaque jour chez les vaccinés, alors il y aura probablement {1} personnes testées positives chaque jour chez les non-vaccinés.",
                 conclu : "Cela signifie qu'une personne non vaccinée a un risque multiplié par au moins {0} d'être infecté par le virus SARS-Cov2 par rapport à une personne vaccinée. À ce bénéfice individuel de la vaccination, il faut ajouter le bénéfice collectif : réduction des contaminations (protection individuelle et immunité collective) et donc réduction du risque individuel d'infection.",
             },
@@ -194,7 +194,7 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
                 icon_type : "bed",
                 icon_color_vax: "black",
                 icon_color_non_vax:"black",
-                title : "Admissions hospitalières évitables",
+                title : "Admissions à l'hôpital évitables",
                 intro : "Cet indicateur permet d'estimer la proportion d'hospitalisations (hors réa.) pour Covid-19 qui auraient pu être évitées par la vaccination.",
                 mini_conclu : "Cela signifie que sur 100 hospitalisations pour Covid-19 ayant {0} {1}, {2} admissions auraient pu être évitées par la vaccination.",
                 conclu : "Cela signifie que sur les {0} admissions hospitalières (hors réa.) observées le {1}, {2} hospitalisations auraient été directement évitables par la vaccination. D'autres admissions auraient pu être indirectement évités, la vaccination permettant de réduire les contaminations (protection individuelle et immunité collective).",
@@ -211,7 +211,7 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
         active_tab_by_default = false,
         tab_name = "soins_critiques",
         json_data_field = "sc_pcr",
-        graphique_intro="Ce graphique permet de visualiser le nombre de nouvelles admissions en réanimations pour Covid-19 ayant lieu chaque jour chez des individus de {0} en fonction du statut vaccinal des personnes.",
+        graphique_intro="Ce graphique permet de visualiser le nombre de nouvelles admissions en soins critiques pour Covid-19 ayant lieu chaque jour chez des individus de {0} en fonction du statut vaccinal des personnes.",
         graphique_link="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/{0}sc_proportion_selon_statut_vaccinal{1}.jpeg",
         figures_data = [
             {
@@ -227,14 +227,14 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
             { 
                 figure_type : "fraction_attribuable",
                 animate : true,
-                field_name : "Admissions à l'hopital",
+                field_name : "Admissions en soins critiques",
                 icon_type : "bed",
                 icon_color_vax: "black",
                 icon_color_non_vax:"black",
-                title : "Admissions en réanimation évitables",
-                intro : "Cet indicateur permet d'estimer la proportion d'admissions en réa. pour Covid-19 qui auraient pu être évitées par la vaccination.",
-                mini_conclu : "Cela signifie que sur 100 admissions en réa. pour Covid-19 ayant {0} {1}, {2} admissions auraient pu être évitées par la vaccination.",
-                conclu : "Cela signifie que sur les {0} admissions en réanimation observées le {1}, {2} admissions auraient été directement évitables par la vaccination. D'autres admissions auraient pu être indirectement évités, la vaccination permettant de réduire les contaminations (protection individuelle et immunité collective).",
+                title : "Admissions en soins critiques évitables",
+                intro : "Cet indicateur permet d'estimer la proportion d'admissions en soins critiques pour Covid-19 qui auraient pu être évitées par la vaccination.",
+                mini_conclu : "Cela signifie que sur 100 admissions en soins critiques pour Covid-19 ayant {0} {1}, {2} admissions auraient pu être évitées par la vaccination.",
+                conclu : "Cela signifie que sur les {0} admissions en soins critiques observées le {1}, {2} admissions auraient été directement évitables par la vaccination. D'autres admissions auraient pu être indirectement évités, la vaccination permettant de réduire les contaminations (protection individuelle et immunité collective).",
             }
         ]
     );
@@ -418,7 +418,7 @@ function fillFigure(stats, raw_data, last_week, active_tab_by_default, first_loa
         }
 
     if (raw_chiffre_non_vax == -1){
-        no_data(template, json_data_field, slider, raw_data, last_week);
+        no_data(template, age, json_data_field, slider, raw_data, last_week);
     }
 
     if (graphe){div_container.appendChild(graphe);}
