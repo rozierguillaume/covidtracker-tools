@@ -26,7 +26,7 @@
             <div class="boxshadow">
                 <span style="color:#4fafd9; font-size: 18px;">Groupe vacciné • </span> <span style="color:#4fafd9; font-size: 18px; font-weight: bold;" id="chiffre_vax">--</span>
                 <br>
-                <span style="font-size: 15px;">cumulé(e)(s) sur 1 jour</span>
+                <span style="font-size: 15px;" class="cumul_on">cumulé(e)(s) sur 1 jour</span>
                 <br>
                 <div id="figure_vax" style="margin-top: 18px;"></div>
             </div>
@@ -34,7 +34,7 @@
             <div class="boxshadow">
                 <span style="color:orange; font-size: 18px;">Groupe non vacciné • </span><span style="color:orange; font-size: 18px; font-weight: bold;" id="chiffre_non_vax">--</span>
                 <br>
-                <span style="font-size: 15px;">cumulé(e)(s) sur 1 jour</span>
+                <span style="font-size: 15px;" class="cumul_on">cumulé(e)(s) sur 1 jour</span>
                 <br>
                 <div id="figure_non_vax" style="margin-top: 18px;"></div>
             </div>

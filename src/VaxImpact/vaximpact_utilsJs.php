@@ -141,6 +141,7 @@ function sliderShifted(slider) {
     // Updating title
     document.getElementById(field).querySelector('#chiffre_vax').innerHTML = `${parseFloat(multiplier).toFixed(0)} ${detail_field}`;
     document.getElementById(field).querySelector('#chiffre_non_vax').innerHTML = `${parseFloat(non_vax_value*multiplier).toFixed(0)} ${detail_field}.`;
+    for (element of document.getElementById(field).getElementsByClassName('cumul_on')) {element.innerHTML = "cumulé(e)(s) sur {0} jour".format(multiplier)};
 
     // Updating icons in figures
     document.getElementById(field).querySelector('#figure_vax').innerHTML = vax_icons;
@@ -148,7 +149,7 @@ function sliderShifted(slider) {
 }
 
 // Replaces data if calculation can't be made
-function no_data(template, json_data_field, slider, raw_data, last_week, repos)
+function no_data(template, age, json_data_field, slider, raw_data, last_week, repos)
 {
     
     var list_to_clean=["#description", '#chiffre_vax_evitables', '#group', '#premiere_conclu', '#conclusion', '#figure_wrap', '#button_non_vax', '#button_pop_generale']
@@ -168,12 +169,12 @@ function no_data(template, json_data_field, slider, raw_data, last_week, repos)
         template.querySelector("#slider_block").remove();
 }   
 
-    if(raw_data["data_by_week"][last_week]["Vaccinés"][json_data_field] == 0)
+    if(raw_data["data_by_week"][last_week]["data"][age]["Vaccinés"][json_data_field] == 0)
     {
         var message="<b> Aucun cas chez les vaccinés cette semaine ! </b> <br> <i> L'indicateur n'est donc pas calculable </i> ";
     }
 
-    else if(raw_data["data_by_week"][last_week]["Pas_vaccinés"][json_data_field] == 0)
+    else if(raw_data["data_by_week"][last_week]["data"][age]["Pas_vaccinés"][json_data_field] == 0)
     {
         var message="<b>L'indicateur n'est pas calculable avec les données de la semaine. </b> ";
     }
