@@ -684,58 +684,24 @@
         var ctx = document.getElementById('lineVacChartCum').getContext('2d');
         let data_values = ndose_fra.n_cum_dose1.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
         let data_values_2nd = ndose_fra.n_cum_dose2.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
+        let data_values_3rd = ndose_fra.n_cum_dose3.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
         
         let data_object_stock = livraisons.nb_doses_tot_cumsum.map((value, idx)=> ({x: moment(livraisons.jour[idx]).add(-4, 'd').format("YYYY-MM-DD"), y: parseInt(value)}))
         
-        //let data_values_2doses = vaccines_2doses.n_dose2_cumsum.map((value, idx)=> ({x: vaccines_2doses.jour[idx], y: parseInt(value)}))
         let labels=nb_vaccines.map(val => val.date)
 
         debut_2nd_doses = labels.map((value, idx) => ({x: value, y:0}))
         let N_tot = labels.length;
-        //let N2 = data_values_2doses.length;
         
-        var datasets = [
-                    {
-                        yAxisID:"injections",
-                        label: 'Secondes doses injectées ',
-                        data: data_values_2nd, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
-                        borderWidth: 0.1,
-                        backgroundColor: '#1796e6',
-                        borderColor: '#127aba',
-                        pointRadius: 0,
-                        pointHitRadius: 1,
-                    },
-                    {
-                        yAxisID:"injections",
-                        label: 'Premières doses injectées ',
-                        data: data_values,
-                        borderWidth: 0.1,
-                        backgroundColor: '#a1cbe6',
-                        borderColor: '#3691c9',
-                        pointRadius: 0,
-                        cubicInterpolationMode: 'monotone',
-                        pointHitRadius: 1,
-                    }
-
-                ]
-
-            datasets.push({
-                            yAxisID:"stock",
-                            label: 'Doses réceptionnées ou officiellement attendues ',
-                            data: data_object_stock,
-                            borderWidth: 3,
-                            borderColor: 'grey',
-                            pointRadius: 0,
-                            steppedLine: true,
-                            pointHitRadius: 3,
-                        })
-            var max_value = livraisons.nb_doses_tot_cumsum[livraisons.nb_doses_tot_cumsum.length-1]
+    
+        var max_value = livraisons.nb_doses_tot_cumsum[livraisons.nb_doses_tot_cumsum.length-1]
         
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
                 //labels: labels,
-                datasets: [{
+                datasets: [
+                    {
                         yAxisID:"injections",
                         label: 'Premières doses injectées ',
                         data: data_values,
@@ -752,6 +718,16 @@
                         borderWidth: 0.1,
                         backgroundColor: '#1796e6',
                         borderColor: '#127aba',
+                        pointRadius: 0,
+                        pointHitRadius: 1,
+                    },
+                    {
+                        yAxisID:"injections",
+                        label: 'Troisièmes doses injectées ',
+                        data: data_values_3rd, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
+                        borderWidth: 0.1,
+                        backgroundColor: '#06629c',
+                        borderColor: '#064870',
                         pointRadius: 0,
                         pointHitRadius: 1,
                     },
@@ -868,6 +844,8 @@
 
         let data_premieres_injections = this.ndose_fra.n_dose1.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
         let data_secondes_injections = this.ndose_fra.n_dose2.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
+        let data_troisiemes_injections = this.ndose_fra.n_dose3.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
+
         let data_tot_rolling = this.ndose_fra.n_dose_tot_rolling.slice(0, ndose_fra.n_dose_tot_rolling.length-3);
         data_tot_rolling.unshift(0,0,0,);
         data_tot_rolling = data_tot_rolling.map((val, idx) => ({x: this.ndose_fra.jour[idx], y:parseInt(val)}));
@@ -879,6 +857,10 @@
         let data_ndose2_rolling = this.ndose_fra.n_dose2_rolling.slice(0, this.ndose_fra.n_dose2_rolling.length-3);
         data_ndose2_rolling.unshift(0,0,0);
         data_ndose2_rolling = data_ndose2_rolling.map((val, idx) => ({x: this.ndose_fra.jour[idx], y:parseInt(val)}));
+
+        let data_ndose3_rolling = this.ndose_fra.n_dose3_rolling.slice(0, this.ndose_fra.n_dose3_rolling.length-3);
+        data_ndose3_rolling.unshift(0,0,0);
+        data_ndose3_rolling = data_ndose3_rolling.map((val, idx) => ({x: this.ndose_fra.jour[idx], y:parseInt(val)}));
 
         this.lineChart = new Chart(ctx, {
             type: 'bar',
@@ -900,7 +882,7 @@
                         label: 'Moyenne quotidienne des premières doses ',
                         data: data_ndose1_rolling,
                         type: 'line',
-                        borderColor: 'rgba(0, 168, 235, 1)',
+                        borderColor: '#57beff',
                         pointBackgroundColor: 'rgba(0, 168, 235, 1)',
                         backgroundColor: 'rgba(0, 168, 235, 0)',
                         pointRadius: 1,
@@ -919,6 +901,17 @@
                         yAxisID: 'moyennes'
                     },
                     {
+                        label: 'Moyenne quotidienne des troisièmes doses ',
+                        data: data_ndose3_rolling,
+                        type: 'line',
+                        borderColor: '#064870',
+                        pointBackgroundColor: '#064870',
+                        backgroundColor: 'rgba(0, 168, 235, 0)',
+                        pointRadius: 1,
+                        pointHitRadius: 3,
+                        yAxisID: 'moyennes'
+                    },
+                    {
                         label: 'Nombre de premières doses ',
                         data: data_premieres_injections,
                         backgroundColor: 'rgba(0, 168, 235, 0.5)',
@@ -928,6 +921,12 @@
                         label: 'Nombre de deuxièmes doses ',
                         data: data_secondes_injections, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
                         backgroundColor: '#1796e6',
+                        hidden: true,
+                    },
+                    {
+                        label: 'Nombre de troisièmes doses ',
+                        data: data_troisiemes_injections, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
+                        backgroundColor: '#06629c', //'#064870'
                         hidden: true,
                     }
                 ]
