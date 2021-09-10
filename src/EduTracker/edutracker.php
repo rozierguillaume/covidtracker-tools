@@ -217,6 +217,8 @@ p {
     </div>
 
     <br>
+    Données : Ministère de l'Éducation Nationale et de la Jeunesse
+    <br>
   
     <?php include(__DIR__ . '/menuBasPage.php'); ?>
     <br>
