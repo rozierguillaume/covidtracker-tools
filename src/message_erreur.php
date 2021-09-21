@@ -1,4 +1,4 @@
-<!--<div class="alert alert-warning" role="alert">
-    <i>28 juillet •</i><b> Données vaccination non publiées</b><br>
-    Pour des raisons techniques, les données de vaccination n’ont pas été communiquées à Santé publique France ce jour. Les indicateurs ne peuvent donc pas être produits. CovidTracker sera à jour dès que ces données seront de nouveau disponibles.
-</div>-->
+<div class="alert alert-warning" role="alert">
+    <i>20 septembre •</i><b> Données vaccination non publiées</b><br>
+    Santé publique France indique : "<i>Suite à des incohérences rencontrées sur les données de vaccination depuis le 15 septembre, les indicateurs ne sont pas publiés. L'incident est en cours de résolution</i>". CovidTracker sera à jour dès que ces données seront de nouveau disponibles.
+</div>
