@@ -41,6 +41,10 @@
         fill-opacity: 1;
     }
 
+    p {
+        font-size: 16px;
+    }
+
     #map.animated path.selected {
         /*.animated*stroke: #000000;*/
         /*stroke-width: 1.5;*/

@@ -21,7 +21,7 @@
 <div id="menu" class="row">
     <div class="col-md-6 text-center">
         <div class="row">
-            <h4 id="titre_map" class="" style="display: inline-block">Aujourd'hui (J-3) :</h4><br>
+            <h3 id="titre_map" class="" style="display: inline-block">Aujourd'hui (J-3) :</h3><br>
             <b><span id="nb_dep_incid_inf_50" style="font-size: 18px;">--</span></b> départements ont une incidence inférieure à 50
             <div class="col-xs-10">
                 <div id="carteEHPAD1Dose" style="margin-top:20px;">
@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="col-md-6 text-center">
-        <h4 id="titre_map" class="" style="display: inline-block">Dans 7 jours si évolution constante :</h4><br>
+        <h3 id="titre_map" class="" style="display: inline-block">Dans 7 jours si évolution constante :</h3><br>
         <b><span id="nb_dep_incid_inf_50_pred" style="font-size: 18px;">--</span></b> départements auraient une incidence inférieure à 50
         <div class="col-xs-10">
             <div id="carteEHPAD2Doses" style="margin-top:20px;">
@@ -46,6 +46,9 @@
         </div>
     </div>
 </div>
+
+Sélectionnez un département sur la carte.
+<br>
 
 <div style="border: 1px solid;  max-width: 1000px; border-radius: 7px; padding: 10px; margin-bottom: 40px;">
     <h2 id="nom_departement"></h2>
