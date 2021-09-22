@@ -58,21 +58,6 @@
             return total/count;
         }
 
-        function computeMedian() {
-            let percentages = [];
-            for (numeroDepartement in donneesDepartementsVaccination) {
-                if (numeroDepartement == 'departements') {
-                    continue;
-                }
-                percentages.push(donneesDepartementsVaccination[numeroDepartement]["n_dose1_cumsum_pop"]);
-            }
-            percentages = percentages.sort();
-            let len = percentages.length;
-            let mid = Math.ceil(len/2);
-            let median = len % 2 === 0 ? (percentages[mid] + percentages[mid -1]) /2 : percentages[mid -1];
-            return median;
-        };
-
         //from Picomath
         function erf(x) {
             // constants
@@ -97,19 +82,6 @@
             return sign*y;
         }
 
-
-        function computeGaussScale() {
-            let tableauValeurs = []
-            tableauValeurs.push(0);
-            let median = computeMedian();
-            for(let i = 1; i <= 8; i++){
-                let y = 0.5 + 0.5 * erf((i/13-median/130)/Math.sqrt(2));
-                tableauValeurs.push(Math.floor(y *100));
-            }
-            tableauValeurs.push(90);
-            return tableauValeurs;
-        };
-
         function colorerCarte() {
             pourcentage = false;
             plus = "+";
@@ -124,7 +96,7 @@
                 return;
             }
 
-           tableauValeurs = computeGaussScale();
+           tableauValeurs = [0, 50, 100]
 
             construireLegende(tableauValeurs, tableauCouleurs, true);
 

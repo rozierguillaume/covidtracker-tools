@@ -275,9 +275,9 @@ function changeTimeAge(){
         })
     })
     
-    if(age_selected_age_data=="cas_croissance_hebdo"){
-        y_max=200
-    }
+    //if(age_selected_age_data=="cas_croissance_hebdo"){
+       // y_max=200
+    //}
 
     age_dataExplorerAgeChart.options.scales.yAxes.map((axis, idx) => {
         axis.ticks = {
