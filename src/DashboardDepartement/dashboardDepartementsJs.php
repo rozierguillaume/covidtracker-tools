@@ -5,7 +5,7 @@
             var valeurs_cas = [">", "400", "250", "150", "50"];
             var couleurs_cas = ["purple", "#3c0000", "#c80000", "#f95228", "#98ac3b"];
 
-            var valeurs_n_dose1_cumsum_pop = [">", "70", "67", "64", "61", "57", "54", "50", "20", "10"];
+            var valeurs_n_dose1_cumsum_pop = [">", "82", "79", "76", "73", "69", "66", "60", "50", "30"];
             //var couleurs_n_dose1_cumsum_pop = ["#98ac3b", "#3c0000", "#c80000", "#f95228"];
             var couleurs_n_dose1_cumsum_pop = [
                 "#0076bf", "#148dd9", "#2e9fe6", "#45a8e6", "#5cb1e6",
