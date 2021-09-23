@@ -22,7 +22,7 @@
     }
 
     #map path:hover {
-        fill-opacity: 0.6;
+        fill-opacity: 0.5;
         transition: fill-opacity 2s, fill 0.2s, stroke 0.3s;
         cursor: pointer;
     }

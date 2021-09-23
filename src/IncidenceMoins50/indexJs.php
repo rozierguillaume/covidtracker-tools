@@ -6,7 +6,7 @@
 <script id="legendTemplateMid" type="text/template">
     <tr>
         <td class="legendValue"
-            style="text-align: center; background-color: colorBg; color: white; font-size: 50%; padding: 5px;"
+            style="text-align: center; background-color: colorBg; color: white; font-size: 70%; padding: 5px;"
             data-idx="idxval"
         >
             valeur
@@ -42,13 +42,13 @@
         var tableauValeurs = [0, 50]
 
         var tableauCouleurs1dose = [
-            "#005AB5",
-            "#DC3220"
+            "#7dbfd1",
+            "#ff8880"
         ];
 
         var tableauCouleurs2doses = [
-            "#3874b0",
-            "#db6e63"
+            "#93c4d2",
+            "#ffa59e"
         ];
         
 
@@ -61,6 +61,7 @@
         })
         .then(json => {
             data_incid = json;
+            updateDate();
             })
         .catch(function (error) {
             this.dataError = true;
@@ -89,6 +90,11 @@
         nb_dep_incid_sup_50=0;
         nb_dep_incid_inf_50_pred=0;
         nb_dep_incid_sup_50_pred=0;
+
+        function updateDate(){
+            date = data_incid.dates[data_incid.dates.length-1]
+            this.document.getElementById("date_derniere_donnee").innerHTML = date.slice(8, 10) + "/" + date.slice(5, 7)
+        }
 
         function compter_departements(data){
             if(data["aujourdhui"]<50){
@@ -162,13 +168,10 @@
 
         function construireLegendesEHPAD(values = [], colors = [], divLegende) {
             content = $('#legendTemplatePre').html();
-            values.map((val, idx) => {
-                if (val > 0) {
-                    content += $('#legendTemplateMid').html().replaceAll("valeur", '> ' + val + ' cas / sem. / 100k. hab.').replaceAll("colorBg", colors[idx]);
-                } else {
-                    content += $('#legendTemplateMid').html().replaceAll("valeur", '< ' + values[idx + 1] + ' cas');
-                }
-            });
+            
+            content += $('#legendTemplateMid').html().replaceAll("valeur", 'incidence <b>inférieure à ' + 50 + '</b>').replaceAll("colorBg", colors[0]);
+            content += $('#legendTemplateMid').html().replaceAll("valeur", 'incidence <b>supérieure à ' + 50 + '</b>').replaceAll("colorBg", colors[1]);
+
             content += $('#legendTemplatePost').html();
             divLegende.html(content);
         }
@@ -305,7 +308,7 @@
                         borderWidth: 3,
                         label: {
                             backgroundColor: "red",
-                            content: "Seuil d'alerte",
+                            content: "Seuil d'alerte de 50",
                             enabled: true
                         },
                         onClick: function(e) {

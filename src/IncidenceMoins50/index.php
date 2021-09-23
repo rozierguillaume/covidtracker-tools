@@ -1,5 +1,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js"
+        integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw=="
+        crossorigin="anonymous"></script>
+        
 <?php include(dirname(__FILE__) . '/indexJs.php') ?>
 <?php include(dirname(__FILE__) . '/indexCss.php') ?>
 
@@ -21,7 +24,7 @@
 <div id="menu" class="row">
     <div class="col-md-6 text-center">
         <div class="row">
-            <h3 id="titre_map" class="" style="display: inline-block">Aujourd'hui (J-3) :</h3><br>
+            <h3 id="titre_map" class="" style="display: inline-block">Aujourd'hui (J-3 : <span id="date_derniere_donnee">--</span>) :</h3><br>
             <b><span id="nb_dep_incid_inf_50" style="font-size: 18px;">--</span></b> départements ont une incidence inférieure à 50
             <div class="col-xs-10">
                 <div id="carteEHPAD1Dose" style="margin-top:20px;">
