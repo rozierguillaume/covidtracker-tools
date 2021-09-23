@@ -2,11 +2,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js"
         integrity="sha512-9hzM/Gfa9KP1hSBlq3/zyNF/dfbcjAYwUTBWYX+xi8fzfAPHL3ILwS1ci0CTVeuXTGkRAWgRMZZwtSNV7P+nfw=="
         crossorigin="anonymous"></script>
-        
+
 <?php include(dirname(__FILE__) . '/indexJs.php') ?>
 <?php include(dirname(__FILE__) . '/indexCss.php') ?>
 
-<p>Le gouvernement a annoncé le relachement de certaines mesures comme le port du masque à l'école élémentaire dans les territoires où le taux d'incidence resterait inférieur à 50 pendant plusieurs jours. Quels sont les départements où le taux d'incidence reste inférieur à 50 ? Cet outil sera mis à jour quotidiennement avec les données du Ministère de la Santé. Dernière mise à jour : 22/09.</p>
+<p>Le gouvernement a annoncé le relachement de certaines mesures comme le port du masque à l'école élémentaire dans les territoires où le taux d'incidence resterait inférieur à 50 pendant plusieurs jours. Quels sont les départements où le taux d'incidence reste inférieur à 50 ? Cet outil sera mis à jour quotidiennement avec les données du Ministère de la Santé.</p>
 
 <h2 style="margin-top : 80px;">
     Départements où l'incidence est inférieure à 50
