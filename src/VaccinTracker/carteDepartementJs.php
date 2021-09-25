@@ -82,6 +82,46 @@
             return sign*y;
         }
 
+        function computeDeciles() {
+            let percentages = [];
+            for (numeroDepartement in donneesDepartementsVaccination) {
+                if (numeroDepartement == 'departements') {
+                    continue;
+                }
+                percentages.push(donneesDepartementsVaccination[numeroDepartement]["n_dose1_cumsum_pop"]);
+            }
+            percentages = percentages.sort();
+
+            let tableauValeurs = []
+            tableauValeurs.push(Math.floor(percentages[0]));
+            for(let i = 1; i <= 9; i++){
+                let y = percentages[Math.round(percentages.length / 10.0 * i)];
+                let nbDec = 0;
+                while(floorDec(y, nbDec) < tableauValeurs[0] || nbDec > 2) {
+                    nbDec += 1;
+                }
+                tableauValeurs.push(floorDec(y, nbDec));
+            }
+            return tableauValeurs;
+        };
+
+        function floorDec(val, n) {
+            let tenPowN = Math.pow(10, n);
+            return Math.floor(val * tenPowN) / tenPowN;
+        };
+
+        function computeGaussScale() {
+            let tableauValeurs = []
+            tableauValeurs.push(0);
+            let median = computeMedian();
+            for(let i = 1; i <= 8; i++){
+                let y = 0.5 + 0.5 * erf((i/13-median/130)/Math.sqrt(2));
+                tableauValeurs.push(Math.floor(y *100));
+            }
+            tableauValeurs.push(90);
+            return tableauValeurs;
+        };
+
         function colorerCarte() {
             pourcentage = false;
             plus = "+";
@@ -96,7 +136,7 @@
                 return;
             }
 
-           tableauValeurs = [0, 50, 100]
+           tableauValeurs = computeDeciles();
 
             construireLegende(tableauValeurs, tableauCouleurs, true);
 
