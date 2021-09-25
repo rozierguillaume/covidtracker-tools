@@ -88,7 +88,7 @@ p {
 <body>
 
 
-    <p>Combien d'écoles, de collèges et de lycées sont fermées à cause du Covid ? Combien d'élèves ou de personnels ont obtenu un test positif cette semaine ? Quelle proportion des classes scolaires sont fermées ? Ce tableau de bord permet de suivre l'évolution de l'épidémie de Covid19 dans l'Éducation Nationale. Les données proviennent du Ministère de l'Éducation Nationale de la Jeunesse et des Sports, et sont mises à jour chaque</p>
+    <p>Combien d'écoles, de collèges et de lycées sont fermées à cause du Covid ? Combien d'élèves ou de personnels ont obtenu un test positif cette semaine ? Quelle proportion des classes scolaires sont fermées ? <b>Ce tableau de bord permet de suivre l'évolution de l'épidémie de Covid19 dans l'Éducation Nationale. Les données proviennent du Ministère de l'Éducation Nationale de la Jeunesse et des Sports, et sont mises à jour chaque semaine.</b></p>
     
     <div style="background: #f5f5f5; padding: 30px; border-radius: 20px;">
     <div class="row">
@@ -112,23 +112,23 @@ p {
     <br><h2>Résumé</h2>
     <div class="wrap">
         <div class="one">
-            <span id="nb_classes_fermees" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span>&nbsp;&nbsp;(<span id="nb_classes_fermees_7j">--</span> en 7j)<br>
+            <span id="nb_classes_fermees" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span>&nbsp;&nbsp;(<span id="nb_classes_fermees_7j">--</span> en une semaine)<br>
             <b>Classes fermées</b><br>
             pour Covid, soit <span id="taux_classes_fermees">--</span>% de l'ensemble des classes.
             <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span class="date_maj">--/--</span>.<br>Source : Ministère Éducation Nationale</i></div>
         </div>
 
         <div class="one">
-            <span id="nb_structures_fermees" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span>&nbsp;&nbsp;(<span id="nb_structures_fermees_7j">--</span> en 7j)<br>
+            <span id="nb_structures_fermees" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span>&nbsp;&nbsp;(<span id="nb_structures_fermees_7j">--</span> en une semaine)<br>
             <b>Structures scolaires fermées</b><br>
             pour Covid, soit <span id="taux_structures_fermees">--</span>% de l'ensemble des structures scolaires.
             <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span class="date_maj">--/--</span>.<br>Source : Ministère Éducation Nationale</i></div>
         </div>
 
         <div class="one">
-            <span id="nb_cas_positifs" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span>&nbsp;&nbsp;(<span id="nb_cas_positifs_7j">--</span> en 7j)<br>
+            <span id="nb_cas_positifs" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span>&nbsp;&nbsp;(<span id="nb_cas_positifs_7j">--</span> en une semaine)<br>
             <b>Cas positifs</b><br>
-            quotidiens en moyenne sur 7j, dont <span id="nb_cas_positifs_eleves">--</span> parmi les personnels et <span id="nb_cas_positifs_personnels">--</span> parmi les élèves.<br>
+            quotidiens en moyenne sur 7j, dont <span id="nb_cas_positifs_personnels">--</span> parmi les personnels et <span id="nb_cas_positifs_eleves">--</span> parmi les élèves.<br>
             <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span class="date_maj">--/--</span>.<br>Source : Ministère Éducation Nationale</i></div>
         </div>
     </div>
@@ -139,6 +139,7 @@ p {
         <div class="row nowrap" style="padding: 7px;">
             <h3>Structures scolaires fermées</h3>
             <p>
+            Nombre de structures scolaires fermées en raison des mesures liées au Covid19.
             </p>
             <div style="max-width: 1200px; text-align: center; margin-bottom: 10px;">
                 <canvas id="chart-structures-scolaires-fermees" width="500" height="200" style="max-height: 70vh;"></canvas>
@@ -150,6 +151,7 @@ p {
         <div class="row nowrap" style="padding: 7px">
             <h3>Fermetures par type de structure</h3>
             <p>
+            Nombre de structures scolaires fermées en raison des mesures liées au Covid19, par type de structure (collège, lycée, école).
             </p>
             <div style="max-width: 1200px; text-align: center; margin-bottom: 10px;">
                 <canvas id="chart-fermetures-par-type-de-structure" width="500" height="200"></canvas>
@@ -161,6 +163,7 @@ p {
         <div class="row nowrap" style="padding: 7px">
             <h3>Classes fermées</h3>
             <p>
+            Nombre de classes scolaires fermées en raison des mesures liées au Covid19.
             </p>
             <div style="max-width: 1200px; text-align: center; margin-bottom: 10px;">
                 <canvas id="chart-classes-fermees" width="500" height="200"></canvas>
@@ -168,12 +171,25 @@ p {
         </div>
     </div>
 
-    <br><h2>Cas positifs</h2>
+    <div shadow="" id="div-classes-fermees-par-academie" style="margin-top: 20px; margin-bottom: 30px; ">
+        <div class="row nowrap" style="padding: 7px">
+            <h3>Classes fermées par académie</h3>
+            <p>
+            Nombre de classes scolaires fermées en raison des mesures liées au Covid19, par académie.
+            </p>
+            <div style="max-width: 1200px; text-align: center; margin-bottom: 10px;">
+                <canvas id="chart-classes-fermees-par-academie" width="500" height="500"></canvas>
+            </div>
+        </div>
+    </div>
 
+    <br><h2>Cas positifs</h2>
+    <p>Ces indicateurs ne sont disponibles qu'à l'échelle nationale.</p>
     <div shadow="" id="div-cas-positifs-personnels" style="margin-top: 20px; margin-bottom: 30px;">
         <div class="row nowrap" style="padding: 7px;">
             <h3>Cas positifs personnels</h3>
             <p>
+            Nombre quotidien de cas positifs remontés parmi les personnels (moyenne quotidienne sur une semaine).
             </p>
             <div style="max-width: 1200px; text-align: center; margin-bottom: 10px;">
                 <canvas id="chart-cas-positifs-personnels" width="500" height="200"></canvas>
@@ -185,6 +201,7 @@ p {
         <div class="row nowrap" style="padding: 7px">
             <h3>Cas positifs élèves</h3>
             <p>
+            Nombre quotidien de cas positifs remontés parmi les élèves (moyenne quotidienne sur une semaine).
             </p>
             <div style="max-width: 1200px; text-align: center; margin-bottom: 10px;">
                 <canvas id="chart-cas-positifs-eleves" width="500" height="200"></canvas>
@@ -193,11 +210,12 @@ p {
     </div>
 
     <br><h2>Tests salivaires</h2>
-
+    <p>Ces indicateurs ne sont disponibles qu'à l'échelle nationale.</p>
     <div shadow="" id="div-tests-salivaires" style="margin-top: 20px; margin-bottom: 30px; ">
         <div class="row nowrap" style="padding: 7px">
             <h3>Tests salivaires en milieu scolaire</h3>
             <p>
+            Nombre de tests salivaires proposés et effectués sur une semaine.
             </p>
             <div style="max-width: 1200px; text-align: center; margin-bottom: 10px;">
                 <canvas id="chart-tests-salivaires" width="500" height="200"></canvas>
@@ -209,6 +227,7 @@ p {
         <div class="row nowrap" style="padding: 7px">
             <h3>Taux de positivité des tests salivaires</h3>
             <p>
+            Proportion des tests positifs parmi l'ensemble des tests effectués (en %).
             </p>
             <div style="max-width: 1200px; text-align: center; margin-bottom: 10px;">
                 <canvas id="chart-tests-salivaires-taux-positivite" width="500" height="200"></canvas>
@@ -265,6 +284,7 @@ function download_data_academies(){
     grzrequest.onload = function() {
         data_academies = grzrequest.response;
         populateAcademies(grzrequest.response);
+        buildBarChartClassesFermeesParAcademie(grzrequest.response);
     }
 }
 
@@ -280,6 +300,7 @@ let list_data_unavailable_academies=[
     "div-cas-positifs-personnels",
     "div-tests-salivaires",
     "div-tests-salivaires-taux-positivite",
+    "div-classes-fermees-par-academie"
 ]
 function selectChanged(selected){
         if(selected.value!="FR"){
@@ -297,10 +318,18 @@ function selectChanged(selected){
         
 }
 
+function addPlusOrMinus(value){
+    if(value>=0){
+        return "+" + value
+    } else {
+        return value
+    }
+}
+
 function populateResume(data_France){
     let N = data_France["date"].length;
     document.getElementById("nb_classes_fermees").innerHTML = numberWithSpaces(data_France.nombre_classes_fermees[N-1]) ;
-    document.getElementById("nb_classes_fermees_7j").innerHTML = numberWithSpaces((data_France.nombre_classes_fermees[N-1] - data_France.nombre_classes_fermees[N-2])) ;
+    document.getElementById("nb_classes_fermees_7j").innerHTML = numberWithSpaces(addPlusOrMinus((data_France.nombre_classes_fermees[N-1] - data_France.nombre_classes_fermees[N-2]))) ;
     
     if(data_France.nombre_total_classes){
         document.getElementById("taux_classes_fermees").innerHTML = (data_France.nombre_classes_fermees[N-1]/data_France.nombre_total_classes[N-1] * 100).toFixed(1) ;
@@ -309,7 +338,7 @@ function populateResume(data_France){
     }
 
     document.getElementById("nb_structures_fermees").innerHTML = data_France.nombre_structures_fermees[N-1] ;
-    document.getElementById("nb_structures_fermees_7j").innerHTML = data_France.nombre_structures_fermees[N-1] -  data_France.nombre_structures_fermees[N-2];
+    document.getElementById("nb_structures_fermees_7j").innerHTML = addPlusOrMinus(data_France.nombre_structures_fermees[N-1] -  data_France.nombre_structures_fermees[N-2]);
     
     if(data_France.nombre_total_structures){
         document.getElementById("taux_structures_fermees").innerHTML = (data_France.nombre_structures_fermees[N-1] / data_France.nombre_total_structures[N-1] * 100 ).toFixed(1)
@@ -323,13 +352,13 @@ function populateResume(data_France){
         document.getElementById("nb_cas_positifs_7j").innerHTML = numberWithSpaces(nb_cas_positifs - ((data_France.nombre_cas_eleves_7j[N-2] + data_France.nombre_cas_personnels_7j[N-2]) / 7 ).toFixed()) ;
 
         document.getElementById("nb_cas_positifs_eleves").innerHTML = (data_France.nombre_cas_eleves_7j[N-1] / 7).toFixed()
-        document.getElementById("nb_cas_positifs_personnels").innerHTML = (data_France.nombre_cas_personnels_7j[N-1] / 7).toFixed()
+        document.getElementById("nb_cas_positifs_personnels").innerHTML = addPlusOrMinus((data_France.nombre_cas_personnels_7j[N-1] / 7).toFixed())
     } else {
         document.getElementById("nb_cas_positifs").innerHTML = "--" ;
         document.getElementById("nb_cas_positifs_7j").innerHTML = "--" ;
 
         document.getElementById("nb_cas_positifs_eleves").innerHTML = "--"
-        doc
+        document.getElementById("nb_cas_positifs_personnels").innerHTML = "--"
     }
     for (element of document.getElementsByClassName('date_maj'))
 	{element.innerHTML = data_France.date[N-1];}
@@ -371,20 +400,24 @@ function buildBarChartStructuresFermees(data_France) {
                     {
                         label: 'Structures fermées ',
                         data: structures_fermees, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
-                        backgroundColor: '#1796e6',
+                        backgroundColor: '#79c3f2',
+                        borderColor: '#1796e6',
                         pointRadius: 0,
-                        pointHoverRadius: 10 ,
                         steppedLine: 'middle',
                     },
                 ]
             },
             options: {
-                legend: {
-                    display: false
-                },
                 hover: {
                     intersect: false,
-                    mode: 'x'
+                    mode: 'index',
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false
+                },
+                legend: {
+                    display: false
                 },
                 scales: {
                     xAxes: [{
@@ -449,9 +482,9 @@ function buildBarChartClassesFermees(data_France) {
                     {
                         label: 'Classes scolaires fermées ',
                         data: classes_fermees, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
-                        backgroundColor: '#1796e6',
+                        backgroundColor: '#79c3f2',
+                        borderColor: '#1796e6',
                         pointRadius: 0,
-                        pointHoverRadius: 10,
                         steppedLine: 'middle',
                     },
                 ]
@@ -462,7 +495,11 @@ function buildBarChartClassesFermees(data_France) {
                 },
                 hover: {
                     intersect: false,
-                    mode: 'x'
+                    mode: 'index',
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false
                 },
                 scales: {
                     xAxes: [{
@@ -475,6 +512,58 @@ function buildBarChartClassesFermees(data_France) {
                         display:false
                     }
                 }],
+                }
+            }
+        });
+        
+    }
+
+var barChartClassesFermeesParAcademie;
+function buildBarChartClassesFermeesParAcademie(data_academies) {
+        if(this.barChartClassesFermeesParAcademie){
+            this.barChartClassesFermeesParAcademie.destroy();
+        }
+        var ctx = document.getElementById('chart-classes-fermees-par-academie').getContext('2d');
+        labels = data_academies.academies_sort_by_nombre_classes_fermees
+        let N = data_academies[data_academies.academies[0]].nombre_classes_fermees.length
+        classes_fermees_academies = data_academies.academies_sort_by_nombre_classes_fermees.map((val, idx) => ({y: val, x:parseInt(data_academies[val].nombre_classes_fermees[N-1])}));
+
+        this.barChartClassesFermeesParAcademie = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Classes scolaires fermées ',
+                        data: classes_fermees_academies, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
+                        backgroundColor: '#1796e6',
+                    },
+                ]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                hover: {
+                    intersect: false,
+                    mode: 'index',
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false
+                },
+                scales: {
+                    xAxes: [{
+                        position: "top",
+                        gridLines: {
+                            display: true
+                        }
+                    }],
+                    yAxes: [{
+                        gridLines: {
+                            display: false
+                        }
+                    }],
                 }
             }
         });
@@ -496,9 +585,9 @@ function buildBarChartCasPositifsPersonnels(data_France) {
                     {
                         label: 'Cas personnels ',
                         data: cas_personnels,
-                        backgroundColor: '#1796e6',
+                        backgroundColor: '#79c3f2',
+                        borderColor: '#1796e6',
                         pointRadius: 0,
-                        pointHoverRadius: 10 ,
                         steppedLine: 'middle',
                     },
                 ]
@@ -509,7 +598,11 @@ function buildBarChartCasPositifsPersonnels(data_France) {
                 },
                 hover: {
                     intersect: false,
-                    mode: 'x'
+                    mode: 'index',
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false
                 },
                 scales: {
                     xAxes: [{
@@ -542,9 +635,9 @@ function buildBarChartCasPositifsEleves(data_France) {
                     {
                         label: 'Cas élèves ',
                         data: cas_eleves,
-                        backgroundColor: '#1796e6',
+                        backgroundColor: '#79c3f2',
+                        borderColor: '#1796e6',
                         pointRadius: 0,
-                        pointHoverRadius: 10 ,
                         steppedLine: 'middle',
                     },
                 ]
@@ -555,7 +648,11 @@ function buildBarChartCasPositifsEleves(data_France) {
                 },
                 hover: {
                     intersect: false,
-                    mode: 'x'
+                    mode: 'index',
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false
                 },
                 scales: {
                     xAxes: [{
@@ -589,9 +686,9 @@ function buildChartTestsSalivaires(data_France) {
                     {
                         label: 'Tests salivaires réalisés ',
                         data: tests_salivaires_realises,
-                        backgroundColor: '#1796e6',
+                        backgroundColor: '#79c3f2',
+                        borderColor: '#1796e6',
                         pointRadius: 0,
-                        pointHoverRadius: 10 ,
                         steppedLine: 'middle',
                     },
                     {
@@ -610,7 +707,11 @@ function buildChartTestsSalivaires(data_France) {
                 },
                 hover: {
                     intersect: false,
-                    mode: 'x'
+                    mode: 'index',
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false
                 },
                 scales: {
                     xAxes: [{
@@ -643,9 +744,9 @@ function buildChartTestsSalivairesTauxPositivite(data_France) {
                     {
                         label: 'Taux de positivité tests salivaires ',
                         data: taux_positivite_tests_salivaires,
-                        backgroundColor: '#1796e6',
+                        backgroundColor: '#79c3f2',
+                        borderColor: '#1796e6',
                         pointRadius: 0,
-                        pointHoverRadius: 10 ,
                         steppedLine: 'middle',
                     },
                 ]
@@ -656,7 +757,11 @@ function buildChartTestsSalivairesTauxPositivite(data_France) {
                 },
                 hover: {
                     intersect: false,
-                    mode: 'x'
+                    mode: 'index',
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false
                 },
                 scales: {
                     xAxes: [{
