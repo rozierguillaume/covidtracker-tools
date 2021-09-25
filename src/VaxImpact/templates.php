@@ -16,7 +16,7 @@
         <p id="description"></p>
 
             <div style="text-align:center; " id="slider_block">
-                <input id="slider" class="slider" style="max-width: 500px; margin-top: 7px; text-align:center; display:inline-block; " type="range" min="1" max="50" step="1" value="1"; onchange="sliderShifted(this)" oninput="this.nextElementSibling.value = 'Jour '+ this.value">
+                <input id="slider" class="slider" style="max-width: 500px; margin-top: 7px; text-align:center; display:inline-block; " type="range" min="1" max="50" step="1" value="1"; onchange="sliderShifted(this)" oninput="this.nextElementSibling.value = 'Jour '+ this.value; sliderShifted(this)">
                 <output class="emphasis">Jour 1</output>
                     <!-- <div id="slider" style="max-width: 500px; margin-top: 7px; margin-left: 30px;" onclick="sliderShifted(this)"></div> -->
         </div>
