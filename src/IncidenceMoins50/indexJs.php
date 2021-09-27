@@ -92,7 +92,7 @@
         nb_dep_incid_sup_50_pred=0;
 
         function updateDate(){
-            date = data_incid.dates[data_incid.dates.length-6]
+            date = data_incid.dates[data_incid.dates.length-7]
             this.document.getElementById("date_derniere_donnee").innerHTML = date.slice(8, 10) + "/" + date.slice(5, 7)
         }
 
