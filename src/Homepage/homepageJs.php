@@ -8,7 +8,7 @@
 
     //window.alert("Santé publique France a publié des données incomplètes et erronées ce soir. Nous les avons contactés. CovidTracker sera de nouveau à jour dès leur correction.");
 
-    fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/objectif_deconfinement.json')
+    fetch('https://data.covidtracker.fr/data/france/stats/objectif_deconfinement.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error("HTTP error " + response.status);
