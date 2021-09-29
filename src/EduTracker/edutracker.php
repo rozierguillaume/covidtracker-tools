@@ -423,7 +423,7 @@ function buildBarChartStructuresFermees(data_France) {
                         backgroundColor: '#79c3f2',
                         borderColor: '#1796e6',
                         pointRadius: 0,
-                        steppedLine: 'middle',
+                        steppedLine: 'after',
                     },
                 ]
             },
@@ -485,7 +485,7 @@ function buildBarChartOffreVaccinale(data_France) {
                         backgroundColor: '#f0adad',
                         borderColor: '#f0adad',
                         pointRadius: 0,
-                        steppedLine: 'middle',
+                        steppedLine: 'after',
                     },
                 ]
             },
@@ -573,7 +573,7 @@ function buildBarChartClassesFermees(data_France) {
                         backgroundColor: '#79c3f2',
                         borderColor: '#1796e6',
                         pointRadius: 0,
-                        steppedLine: 'middle',
+                        steppedLine: 'before',
                     },
                 ]
             },
