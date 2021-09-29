@@ -31,22 +31,22 @@
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane active in" id="derniere" role="tabpanel" aria-labelledby="derniere-tab">
         <p align="center">
-            <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/dep-map-incid-cat/latest.jpeg" width="100%" style="max-width: 1200px">
+            <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/dep-map-incid-cat/latest.jpeg" width="100%" style="max-width: 1200px">
         </p>
     </div>
     <div class="tab-pane fade" id="animation" role="tabpanel" aria-labelledby="animation-tab">
         <p align="center">
-            <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/incid-cat_opti.gif" width="100%" style="max-width: 800px">
+            <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/incid-cat_opti.gif" width="100%" style="max-width: 800px">
         </p>
     </div>
     <div class="tab-pane fade" id="derniereDegrade" role="tabpanel" aria-labelledby="derniereDegrade-tab">
         <p align="center">
-            <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/dep-map-incid/latest.jpeg" width="100%" style="max-width: 800px">
+            <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/dep-map-incid/latest.jpeg" width="100%" style="max-width: 800px">
         </p>
     </div>
     <div class="tab-pane fade" id="animationDegrade" role="tabpanel" aria-labelledby="animationDegrade-tab">
         <p align="center">
-            <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/dep-map-incid_opti.gif" width="100%" style="max-width: 800px">
+            <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/dep-map-incid_opti.gif" width="100%" style="max-width: 800px">
         </p>
     </div>
 </div>

@@ -136,7 +136,7 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
         tab_name = "cas",
         json_data_field = "nb_pcr0",
         graphique_intro="Ce graphique permet de visualiser le nombre de nouveaux cas de Covid-19 (symptomatiques ou non) diagnostiqués jour chez des individus de {0} en fonction du statut vaccinal des personnes.",
-        graphique_link="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/{0}pcr_plus_proportion_selon_statut_vaccinal{1}.jpeg",
+        graphique_link="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/{0}pcr_plus_proportion_selon_statut_vaccinal{1}.jpeg",
         figures_data = [
             {
                 figure_type : "reduction_risque", 
@@ -175,7 +175,7 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
         tab_name = "hospitalisation_conventionnelle",
         json_data_field = "hc_pcr",
         graphique_intro="Ce graphique permet de visualiser le nombre de nouvelles hospitalisations (hors réa.) pour suspiscion de Covid-19 ayant lieu chaque jour chez des individus de {0} en fonction du statut vaccinal des personnes.",
-        graphique_link="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/{0}hc_proportion_selon_statut_vaccinal{1}.jpeg",
+        graphique_link="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/{0}hc_proportion_selon_statut_vaccinal{1}.jpeg",
         figures_data = [
             {
                 figure_type : "reduction_risque", 
@@ -212,7 +212,7 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
         tab_name = "soins_critiques",
         json_data_field = "sc_pcr",
         graphique_intro="Ce graphique permet de visualiser le nombre de nouvelles admissions en soins critiques pour Covid-19 ayant lieu chaque jour chez des individus de {0} en fonction du statut vaccinal des personnes.",
-        graphique_link="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/{0}sc_proportion_selon_statut_vaccinal{1}.jpeg",
+        graphique_link="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/{0}sc_proportion_selon_statut_vaccinal{1}.jpeg",
         figures_data = [
             {
                 figure_type : "reduction_risque", 
@@ -252,7 +252,7 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
     //         tab_name = "deces",
     //         json_data_field = "dc_pcr",
     //         graphique_intro="Ce graphique permet de visualiser le nombre de nouveaux décès hospitaliers chaque jour en fonction du statut vaccinal des personnes.",
-    //         graphique_link="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/dc_proportion_selon_statut_vaccinal.jpeg",
+    //         graphique_link="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/dc_proportion_selon_statut_vaccinal.jpeg",
     //         figures_data = [
     //             {
     //                 figure_type : "reduction_risque", 

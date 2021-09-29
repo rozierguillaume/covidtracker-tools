@@ -84,7 +84,7 @@ div div {
 readJson()
 function readJson () {
    // http://localhost:8080
-   fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/stats.json')
+   fetch('https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/stats.json')
    .then(response => {
        if (!response.ok) {
            throw new Error("HTTP error " + response.status);
@@ -136,7 +136,7 @@ document.getElementById("cas_last7_descr").innerHTML = document.getElementById("
 <!-- /wp:spacer -->
 
 <p>Ce graphique permet de visualiser en un coup d'oeil la situation de chaque département : </p>
-<p id="line_metropoles" align="center"><a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/evolution_deps/evolution_deps_0.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/evolution_deps/evolution_deps_0.jpeg" width="100%" style="max-width: 2000px;"></a></p>
+<p id="line_metropoles" align="center"><a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/evolution_deps/evolution_deps_0.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/evolution_deps/evolution_deps_0.jpeg" width="100%" style="max-width: 2000px;"></a></p>
 
 <!-- wp:spacer {"height":50} -->
 <div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
@@ -1408,7 +1408,7 @@ document.getElementById("cas_last7_descr").innerHTML = document.getElementById("
 <p><!-- /wp:spacer --></p>
 <h3 id="cas_dep">Nouveaux tests positifs par département</h3>
 <p>Cliquez sur un élément de légende pour l'ajouter. Double-cliquez dessus pour l'isoler.</p>
-<p><iframe src="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/testspositifs_nouv_line.html" width="100%" height="600" frameborder="0" scrolling="yes"></iframe></p>
+<p><iframe src="https://htmlpreview.github.io/?https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/html_exports/france/testspositifs_nouv_line.html" width="100%" height="600" frameborder="0" scrolling="yes"></iframe></p>
 <p><!-- wp:heading {"level":3} --></p>
 <p>Une moyenne mobile de 7 jours a été appliquée afin de lisser les irrégularités. N.B. : les données ne sont publiées qu'après 3 jours par le gouvernement. Un décalage est donc normal (il est de 5 jours le lundi).</p>
 <p><!-- /wp:html --></p>
@@ -1421,7 +1421,7 @@ document.getElementById("cas_last7_descr").innerHTML = document.getElementById("
 <div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
 <p><!-- /wp:spacer --></p>
 <h3 id="cas_reg">Nouveaux tests positifs par région</h3>
-<p><iframe src="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/cas_reg.html" width="100%" height="700" frameborder="0" scrolling="yes"></iframe></p>
+<p><iframe src="https://htmlpreview.github.io/?https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/html_exports/france/cas_reg.html" width="100%" height="700" frameborder="0" scrolling="yes"></iframe></p>
 <p></p>
 <p><!-- wp:spacer --></p>
 <div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
@@ -1433,7 +1433,7 @@ document.getElementById("cas_last7_descr").innerHTML = document.getElementById("
 <p><!-- /wp:spacer --></p>
 <h3 id="couvre_feu_renforce">Efficacité du couvre-feu renforcé</h3>
 <p>Les départements ont été séparés en trois groupes : ceux en couvre-feu renforcé le 02/01 (bleu), ceux en couvre-feu renforcé le 08/01 (orange), et les autres (noir).</p>
-<p id="line_metropoles" align="center"><a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/impact_couvre_feu.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/impact_couvre_feu.jpeg" width="100%"></a></p>
+<p id="line_metropoles" align="center"><a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/impact_couvre_feu.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/impact_couvre_feu.jpeg" width="100%"></a></p>
 <p><!-- wp:spacer --></p>
 <div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
 <p><!-- /wp:spacer --></p>
@@ -1501,11 +1501,11 @@ document.getElementById("cas_last7_descr").innerHTML = document.getElementById("
 <p>[TABS_R id=835]</p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:paragraph --></p>
-<p><video controls="controls" width="80%" height="150"><source src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/course_dc/course_opti.mp4" type="video/mp4">Your browser does not support the video tag.</video></p>
+<p><video controls="controls" width="80%" height="150"><source src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/course_dc/course_opti.mp4" type="video/mp4">Your browser does not support the video tag.</video></p>
 <p>La région Île-de-France enregistre le plus de décès. Cependant, on observe plus de décès par habitant dans la région Grand-Est.</p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:html --></p>
-<p align="center"><a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/dc_cum_hab_nonhab_comp.html" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/dc_cum_hab_nonhab_comp.jpeg" width="100%"></a></p>
+<p align="center"><a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/html_exports/france/dc_cum_hab_nonhab_comp.html" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/dc_cum_hab_nonhab_comp.jpeg" width="100%"></a></p>
 <p><!-- /wp:html --></p>
 <p><!-- wp:html --></p>
 <p><!-- /wp:html --></p>
@@ -1516,7 +1516,7 @@ document.getElementById("cas_last7_descr").innerHTML = document.getElementById("
 <h1 id="mortalite">Mortalité toutes causes</h1>
 <p><!-- wp:separator --></p>
 <hr class="wp-block-separator"><!-- /wp:separator --><p></p>
-<p><a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/mortalite.html" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/mortalite.jpeg" width="100%"></a></p>
+<p><a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/html_exports/france/mortalite.html" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/mortalite.jpeg" width="100%"></a></p>
 <p><!-- /wp:spacer --></p>
 <p></p>
 <div class="wp-block-buttons">

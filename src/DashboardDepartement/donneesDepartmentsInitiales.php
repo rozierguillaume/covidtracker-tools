@@ -5,19 +5,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Ain.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Ain.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Ain.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Ain.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_01.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_01.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_01.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_01.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Ain.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Ain.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Ain.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Ain.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -33,19 +33,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Aisne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Aisne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Aisne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Aisne.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_02.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_02.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_02.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_02.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Aisne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Aisne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Aisne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Aisne.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -61,19 +61,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Allier.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Allier.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Allier.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Allier.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_03.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_03.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_03.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_03.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Allier.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Allier.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Allier.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Allier.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -89,19 +89,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Alpes-Maritimes.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Alpes-Maritimes.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Alpes-Maritimes.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Alpes-Maritimes.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_06.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_06.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_06.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_06.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Alpes-Maritimes.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Alpes-Maritimes.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Alpes-Maritimes.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Alpes-Maritimes.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -117,19 +117,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Alpes-de-Haute-Provence.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Alpes-de-Haute-Provence.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Alpes-de-Haute-Provence.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Alpes-de-Haute-Provence.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_04.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_04.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_04.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_04.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Alpes-de-Haute-Provence.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Alpes-de-Haute-Provence.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Alpes-de-Haute-Provence.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Alpes-de-Haute-Provence.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -145,19 +145,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Ardennes.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Ardennes.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Ardennes.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Ardennes.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_08.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_08.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_08.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_08.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Ardennes.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Ardennes.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Ardennes.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Ardennes.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -173,19 +173,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Ardèche.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Ardèche.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Ardèche.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Ardèche.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_07.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_07.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_07.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_07.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Ardèche.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Ardèche.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Ardèche.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Ardèche.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -201,19 +201,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Ariège.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Ariège.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Ariège.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Ariège.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_09.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_09.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_09.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_09.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Ariège.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Ariège.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Ariège.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Ariège.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -229,19 +229,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Aube.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Aube.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Aube.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Aube.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_10.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_10.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_10.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_10.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Aube.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Aube.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Aube.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Aube.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -257,19 +257,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Aude.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Aude.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Aude.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Aude.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_11.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_11.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_11.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_11.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Aude.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Aude.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Aude.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Aude.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -285,19 +285,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Aveyron.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Aveyron.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Aveyron.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Aveyron.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_12.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_12.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_12.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_12.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Aveyron.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Aveyron.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Aveyron.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Aveyron.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -313,19 +313,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Bas-Rhin.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Bas-Rhin.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Bas-Rhin.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Bas-Rhin.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_67.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_67.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_67.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_67.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Bas-Rhin.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Bas-Rhin.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Bas-Rhin.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Bas-Rhin.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -341,19 +341,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Bouches-du-Rhône.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Bouches-du-Rhône.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Bouches-du-Rhône.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Bouches-du-Rhône.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_13.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_13.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_13.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_13.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Bouches-du-Rhône.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Bouches-du-Rhône.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Bouches-du-Rhône.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Bouches-du-Rhône.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -369,19 +369,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Calvados.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Calvados.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Calvados.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Calvados.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_14.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_14.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_14.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_14.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Calvados.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Calvados.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Calvados.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Calvados.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -397,19 +397,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Cantal.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Cantal.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Cantal.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Cantal.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_15.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_15.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_15.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_15.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Cantal.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Cantal.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Cantal.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Cantal.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -425,19 +425,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Charente.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Charente.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Charente.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Charente.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_16.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_16.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_16.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_16.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Charente.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Charente.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Charente.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Charente.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -453,19 +453,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Charente-Maritime.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Charente-Maritime.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Charente-Maritime.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Charente-Maritime.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_17.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_17.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_17.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_17.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Charente-Maritime.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Charente-Maritime.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Charente-Maritime.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Charente-Maritime.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -481,19 +481,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Cher.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Cher.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Cher.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Cher.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_18.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_18.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_18.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_18.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Cher.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Cher.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Cher.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Cher.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -509,19 +509,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Corrèze.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Corrèze.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Corrèze.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Corrèze.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_19.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_19.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_19.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_19.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Corrèze.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Corrèze.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Corrèze.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Corrèze.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -537,19 +537,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Corse-du-Sud.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Corse-du-Sud.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Corse-du-Sud.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Corse-du-Sud.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_2A.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_2A.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_2A.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_2A.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Corse-du-Sud.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Corse-du-Sud.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Corse-du-Sud.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Corse-du-Sud.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -565,19 +565,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Creuse.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Creuse.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Creuse.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Creuse.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_23.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_23.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_23.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_23.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Creuse.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Creuse.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Creuse.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Creuse.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -593,19 +593,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Côte-d'or.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Côte-d'or.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Côte-d'or.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Côte-d'or.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_21.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_21.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_21.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_21.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Côte-d'or.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Côte-d'or.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Côte-d'or.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Côte-d'or.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -622,19 +622,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Côtes-d'armor.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Côtes-d'armor.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Côtes-d'armor.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Côtes-d'armor.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_22.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_22.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_22.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_22.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Côtes-d'armor.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Côtes-d'armor.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Côtes-d'armor.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Côtes-d'armor.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -650,19 +650,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Deux-Sèvres.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Deux-Sèvres.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Deux-Sèvres.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Deux-Sèvres.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_79.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_79.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_79.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_79.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Deux-Sèvres.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Deux-Sèvres.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Deux-Sèvres.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Deux-Sèvres.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -678,19 +678,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Dordogne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Dordogne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Dordogne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Dordogne.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_24.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_24.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_24.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_24.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Dordogne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Dordogne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Dordogne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Dordogne.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -706,19 +706,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Doubs.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Doubs.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Doubs.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Doubs.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_25.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_25.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_25.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_25.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Doubs.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Doubs.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Doubs.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Doubs.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -734,19 +734,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Drôme.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Drôme.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Drôme.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Drôme.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_26.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_26.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_26.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_26.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Drôme.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Drôme.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Drôme.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Drôme.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -762,19 +762,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Essonne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Essonne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Essonne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Essonne.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_91.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_91.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_91.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_91.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Essonne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Essonne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Essonne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Essonne.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -790,19 +790,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Eure.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Eure.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Eure.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Eure.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_27.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_27.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_27.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_27.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Eure.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Eure.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Eure.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Eure.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -818,19 +818,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Eure-et-Loir.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Eure-et-Loir.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Eure-et-Loir.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Eure-et-Loir.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_28.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_28.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_28.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_28.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Eure-et-Loir.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Eure-et-Loir.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Eure-et-Loir.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Eure-et-Loir.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -846,19 +846,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Finistère.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Finistère.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Finistère.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Finistère.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_29.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_29.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_29.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_29.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Finistère.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Finistère.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Finistère.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Finistère.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -874,19 +874,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Gard.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Gard.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Gard.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Gard.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_30.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_30.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_30.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_30.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Gard.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Gard.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Gard.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Gard.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -902,19 +902,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Gers.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Gers.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Gers.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Gers.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_32.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_32.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_32.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_32.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Gers.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Gers.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Gers.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Gers.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -930,19 +930,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Gironde.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Gironde.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Gironde.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Gironde.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_33.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_33.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_33.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_33.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Gironde.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Gironde.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Gironde.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Gironde.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -958,19 +958,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Guadeloupe.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Guadeloupe.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Guadeloupe.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Guadeloupe.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_971.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_971.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_971.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_971.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Guadeloupe.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Guadeloupe.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Guadeloupe.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Guadeloupe.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -986,19 +986,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Guyane.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Guyane.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Guyane.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Guyane.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_973.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_973.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_973.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_973.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Guyane.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Guyane.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Guyane.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Guyane.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1014,19 +1014,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Haut-Rhin.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Haut-Rhin.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Haut-Rhin.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Haut-Rhin.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_68.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_68.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_68.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_68.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haut-Rhin.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haut-Rhin.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haut-Rhin.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haut-Rhin.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1042,19 +1042,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Corse.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Corse.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Corse.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Corse.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_2B.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_2B.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_2B.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_2B.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Corse.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Corse.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Corse.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Corse.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1070,19 +1070,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Garonne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Garonne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Garonne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Garonne.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_31.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_31.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_31.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_31.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Garonne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Garonne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Garonne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Garonne.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1098,19 +1098,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Loire.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Loire.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Loire.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Loire.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_43.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_43.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_43.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_43.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Loire.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Loire.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Loire.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Loire.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1126,19 +1126,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Marne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Marne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Marne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Marne.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_52.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_52.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_52.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_52.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Marne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Marne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Marne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Marne.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1154,19 +1154,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Savoie.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Savoie.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Savoie.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Savoie.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_74.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_74.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_74.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_74.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Savoie.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Savoie.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Savoie.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Savoie.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1182,19 +1182,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Saône.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Saône.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Saône.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Saône.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_70.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_70.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_70.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_70.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Saône.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Saône.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Saône.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Saône.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1210,19 +1210,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Vienne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Vienne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Vienne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Haute-Vienne.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_87.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_87.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_87.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_87.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Vienne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Vienne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Vienne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Haute-Vienne.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1238,19 +1238,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Hautes-Alpes.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Hautes-Alpes.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Hautes-Alpes.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Hautes-Alpes.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_05.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_05.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_05.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_05.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Hautes-Alpes.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Hautes-Alpes.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Hautes-Alpes.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Hautes-Alpes.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1266,19 +1266,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Hautes-Pyrénées.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Hautes-Pyrénées.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Hautes-Pyrénées.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Hautes-Pyrénées.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_65.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_65.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_65.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_65.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Hautes-Pyrénées.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Hautes-Pyrénées.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Hautes-Pyrénées.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Hautes-Pyrénées.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1294,19 +1294,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Hauts-de-Seine.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Hauts-de-Seine.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Hauts-de-Seine.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Hauts-de-Seine.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_92.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_92.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_92.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_92.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Hauts-de-Seine.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Hauts-de-Seine.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Hauts-de-Seine.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Hauts-de-Seine.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1322,19 +1322,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Hérault.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Hérault.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Hérault.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Hérault.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_34.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_34.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_34.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_34.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Hérault.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Hérault.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Hérault.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Hérault.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1350,19 +1350,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Ille-et-Vilaine.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Ille-et-Vilaine.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Ille-et-Vilaine.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Ille-et-Vilaine.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_35.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_35.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_35.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_35.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Ille-et-Vilaine.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Ille-et-Vilaine.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Ille-et-Vilaine.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Ille-et-Vilaine.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1378,19 +1378,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Indre.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Indre.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Indre.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Indre.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_36.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_36.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_36.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_36.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Indre.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Indre.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Indre.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Indre.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1406,19 +1406,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Indre-et-Loire.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Indre-et-Loire.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Indre-et-Loire.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Indre-et-Loire.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_37.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_37.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_37.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_37.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Indre-et-Loire.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Indre-et-Loire.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Indre-et-Loire.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Indre-et-Loire.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1434,19 +1434,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Isère.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Isère.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Isère.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Isère.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_38.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_38.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_38.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_38.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Isère.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Isère.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Isère.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Isère.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1462,19 +1462,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Jura.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Jura.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Jura.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Jura.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_39.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_39.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_39.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_39.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Jura.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Jura.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Jura.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Jura.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1490,19 +1490,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_La Réunion.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_La Réunion.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_La Réunion.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_La Réunion.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_974.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_974.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_974.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_974.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_La Réunion.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_La Réunion.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_La Réunion.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_La Réunion.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1518,19 +1518,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Landes.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Landes.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Landes.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Landes.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_40.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_40.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_40.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_40.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Landes.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Landes.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Landes.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Landes.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1546,19 +1546,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Loir-et-Cher.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Loir-et-Cher.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Loir-et-Cher.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Loir-et-Cher.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_41.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_41.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_41.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_41.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Loir-et-Cher.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Loir-et-Cher.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Loir-et-Cher.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Loir-et-Cher.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1574,19 +1574,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Loire.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Loire.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Loire.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Loire.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_42.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_42.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_42.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_42.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Loire.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Loire.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Loire.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Loire.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1602,19 +1602,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Loire-Atlantique.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Loire-Atlantique.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Loire-Atlantique.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Loire-Atlantique.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_44.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_44.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_44.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_44.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Loire-Atlantique.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Loire-Atlantique.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Loire-Atlantique.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Loire-Atlantique.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1630,19 +1630,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Loiret.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Loiret.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Loiret.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Loiret.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_45.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_45.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_45.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_45.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Loiret.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Loiret.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Loiret.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Loiret.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1658,19 +1658,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Lot.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Lot.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Lot.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Lot.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_46.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_46.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_46.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_46.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Lot.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Lot.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Lot.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Lot.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1686,19 +1686,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Lot-et-Garonne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Lot-et-Garonne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Lot-et-Garonne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Lot-et-Garonne.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_47.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_47.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_47.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_47.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Lot-et-Garonne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Lot-et-Garonne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Lot-et-Garonne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Lot-et-Garonne.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1714,19 +1714,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Lozère.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Lozère.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Lozère.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Lozère.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_48.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_48.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_48.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_48.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Lozère.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Lozère.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Lozère.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Lozère.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1742,19 +1742,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Maine-et-Loire.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Maine-et-Loire.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Maine-et-Loire.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Maine-et-Loire.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_49.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_49.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_49.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_49.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Maine-et-Loire.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Maine-et-Loire.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Maine-et-Loire.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Maine-et-Loire.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1770,19 +1770,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Manche.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Manche.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Manche.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Manche.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_50.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_50.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_50.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_50.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Manche.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Manche.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Manche.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Manche.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1798,19 +1798,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Marne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Marne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Marne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Marne.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_51.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_51.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_51.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_51.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Marne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Marne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Marne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Marne.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1826,19 +1826,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Martinique.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Martinique.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Martinique.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Martinique.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_972.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_972.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_972.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_972.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Martinique.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Martinique.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Martinique.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Martinique.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1854,19 +1854,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Mayenne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Mayenne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Mayenne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Mayenne.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_53.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_53.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_53.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_53.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Mayenne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Mayenne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Mayenne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Mayenne.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1882,19 +1882,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Mayotte.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Mayotte.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Mayotte.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Mayotte.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_976.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_976.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_976.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_976.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Mayotte.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Mayotte.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Mayotte.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Mayotte.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1910,19 +1910,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Meurthe-et-Moselle.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Meurthe-et-Moselle.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Meurthe-et-Moselle.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Meurthe-et-Moselle.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_54.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_54.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_54.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_54.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Meurthe-et-Moselle.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Meurthe-et-Moselle.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Meurthe-et-Moselle.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Meurthe-et-Moselle.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1938,19 +1938,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Meuse.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Meuse.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Meuse.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Meuse.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_55.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_55.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_55.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_55.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Meuse.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Meuse.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Meuse.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Meuse.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1966,19 +1966,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Morbihan.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Morbihan.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Morbihan.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Morbihan.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_56.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_56.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_56.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_56.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Morbihan.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Morbihan.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Morbihan.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Morbihan.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -1994,19 +1994,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Moselle.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Moselle.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Moselle.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Moselle.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_57.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_57.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_57.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_57.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Moselle.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Moselle.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Moselle.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Moselle.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2022,19 +2022,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Nièvre.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Nièvre.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Nièvre.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Nièvre.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_58.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_58.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_58.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_58.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Nièvre.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Nièvre.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Nièvre.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Nièvre.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2050,19 +2050,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Nord.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Nord.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Nord.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Nord.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_59.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_59.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_59.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_59.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Nord.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Nord.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Nord.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Nord.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2078,19 +2078,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Oise.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Oise.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Oise.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Oise.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_60.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_60.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_60.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_60.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Oise.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Oise.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Oise.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Oise.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2106,19 +2106,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Orne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Orne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Orne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Orne.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_61.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_61.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_61.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_61.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Orne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Orne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Orne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Orne.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2134,19 +2134,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Paris.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Paris.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Paris.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Paris.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_75.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_75.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_75.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_75.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Paris.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Paris.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Paris.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Paris.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2162,19 +2162,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Pas-de-Calais.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Pas-de-Calais.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Pas-de-Calais.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Pas-de-Calais.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_62.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_62.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_62.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_62.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Pas-de-Calais.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Pas-de-Calais.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Pas-de-Calais.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Pas-de-Calais.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2190,19 +2190,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Puy-de-Dôme.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Puy-de-Dôme.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Puy-de-Dôme.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Puy-de-Dôme.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_63.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_63.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_63.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_63.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Puy-de-Dôme.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Puy-de-Dôme.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Puy-de-Dôme.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Puy-de-Dôme.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2218,19 +2218,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Pyrénées-Atlantiques.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Pyrénées-Atlantiques.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Pyrénées-Atlantiques.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Pyrénées-Atlantiques.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_64.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_64.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_64.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_64.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Pyrénées-Atlantiques.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Pyrénées-Atlantiques.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Pyrénées-Atlantiques.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Pyrénées-Atlantiques.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2246,19 +2246,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Pyrénées-Orientales.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Pyrénées-Orientales.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Pyrénées-Orientales.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Pyrénées-Orientales.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_66.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_66.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_66.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_66.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Pyrénées-Orientales.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Pyrénées-Orientales.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Pyrénées-Orientales.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Pyrénées-Orientales.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2274,19 +2274,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Rhône.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Rhône.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Rhône.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Rhône.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_69.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_69.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_69.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_69.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Rhône.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Rhône.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Rhône.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Rhône.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2302,19 +2302,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Sarthe.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Sarthe.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Sarthe.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Sarthe.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_72.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_72.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_72.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_72.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Sarthe.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Sarthe.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Sarthe.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Sarthe.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2330,19 +2330,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Savoie.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Savoie.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Savoie.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Savoie.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_73.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_73.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_73.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_73.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Savoie.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Savoie.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Savoie.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Savoie.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2358,19 +2358,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Saône-et-Loire.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Saône-et-Loire.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Saône-et-Loire.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Saône-et-Loire.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_71.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_71.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_71.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_71.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Saône-et-Loire.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Saône-et-Loire.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Saône-et-Loire.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Saône-et-Loire.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2386,19 +2386,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Seine-Maritime.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Seine-Maritime.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Seine-Maritime.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Seine-Maritime.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_76.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_76.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_76.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_76.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Seine-Maritime.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Seine-Maritime.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Seine-Maritime.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Seine-Maritime.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2414,19 +2414,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Seine-Saint-Denis.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Seine-Saint-Denis.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Seine-Saint-Denis.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Seine-Saint-Denis.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_93.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_93.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_93.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_93.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Seine-Saint-Denis.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Seine-Saint-Denis.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Seine-Saint-Denis.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Seine-Saint-Denis.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2442,19 +2442,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Seine-et-Marne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Seine-et-Marne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Seine-et-Marne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Seine-et-Marne.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_77.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_77.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_77.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_77.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Seine-et-Marne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Seine-et-Marne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Seine-et-Marne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Seine-et-Marne.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2470,19 +2470,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Somme.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Somme.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Somme.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Somme.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_80.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_80.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_80.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_80.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Somme.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Somme.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Somme.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Somme.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2498,19 +2498,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Tarn.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Tarn.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Tarn.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Tarn.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_81.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_81.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_81.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_81.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Tarn.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Tarn.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Tarn.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Tarn.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2526,19 +2526,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Tarn-et-Garonne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Tarn-et-Garonne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Tarn-et-Garonne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Tarn-et-Garonne.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_82.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_82.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_82.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_82.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Tarn-et-Garonne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Tarn-et-Garonne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Tarn-et-Garonne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Tarn-et-Garonne.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2554,19 +2554,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Territoire de Belfort.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Territoire de Belfort.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Territoire de Belfort.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Territoire de Belfort.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_90.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_90.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_90.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_90.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Territoire de Belfort.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Territoire de Belfort.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Territoire de Belfort.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Territoire de Belfort.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2582,19 +2582,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Val-d'oise.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Val-d'oise.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Val-d'oise.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Val-d'oise.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_95.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_95.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_95.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_95.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Val-d'oise.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Val-d'oise.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Val-d'oise.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Val-d'oise.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2610,19 +2610,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Val-de-Marne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Val-de-Marne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Val-de-Marne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Val-de-Marne.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_94.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_94.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_94.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_94.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Val-de-Marne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Val-de-Marne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Val-de-Marne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Val-de-Marne.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2638,19 +2638,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Var.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Var.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Var.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Var.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_83.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_83.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_83.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_83.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Var.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Var.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Var.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Var.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2666,19 +2666,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Vaucluse.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Vaucluse.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Vaucluse.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Vaucluse.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_84.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_84.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_84.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_84.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Vaucluse.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Vaucluse.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Vaucluse.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Vaucluse.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2694,19 +2694,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Vendée.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Vendée.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Vendée.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Vendée.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_85.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_85.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_85.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_85.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Vendée.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Vendée.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Vendée.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Vendée.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2722,19 +2722,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Vienne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Vienne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Vienne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Vienne.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_86.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_86.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_86.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_86.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Vienne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Vienne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Vienne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Vienne.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2750,19 +2750,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Vosges.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Vosges.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Vosges.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Vosges.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_88.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_88.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_88.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_88.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Vosges.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Vosges.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Vosges.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Vosges.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2778,19 +2778,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Yonne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Yonne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Yonne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Yonne.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_89.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_89.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_89.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_89.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Yonne.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Yonne.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Yonne.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Yonne.jpeg"
                     width="60%"> </a></p>
 
         <!-- wp:spacer {"height":50} -->
@@ -2806,19 +2806,19 @@
         <!-- /wp:heading -->
 
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Yvelines.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Yvelines.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Yvelines.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Yvelines.jpeg"
                     width="75%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_78.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_78.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_78.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_78.jpeg"
                     width="60%"> </a></p>
         <p align="center"><a
-                href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Yvelines.jpeg"
+                href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Yvelines.jpeg"
                 target="_blank" rel="noopener noreferrer"><img
-                    src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_Yvelines.jpeg"
+                    src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_Yvelines.jpeg"
                     width="60%"> </a>
         </p>
     </div>

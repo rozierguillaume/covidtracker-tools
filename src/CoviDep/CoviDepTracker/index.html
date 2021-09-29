@@ -156,7 +156,7 @@
   var data_incid;
   var selected_dep = ""
   
-  fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/stats.json')
+  fetch('https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/covidep/stats.json')
        .then(response => {
            if (!response.ok) {
                throw new Error("HTTP error " + response.status);
@@ -176,7 +176,7 @@
        }
       )
 
-      fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/pred_dep_incid.json')
+      fetch('https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/pred_dep_incid.json')
        .then(response => {
            if (!response.ok) {
                throw new Error("HTTP error " + response.status);
@@ -218,20 +218,20 @@
         
          data["higher_high"].forEach(dep => {
            dep = replaceBadCharacters(dep);
-           document.getElementById("higher_high").innerHTML += "<button id='{{dep}}' class='btn_dep' onclick='buttonClicked(\"{{dep}}\")'><img class='dep-img' src='https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/higher_high/incid_{{dep}}.svg' style=''></img></button></button>".replace("{{dep}}", dep).replace("{{dep}}", dep).replace("{{dep}}", dep);
+           document.getElementById("higher_high").innerHTML += "<button id='{{dep}}' class='btn_dep' onclick='buttonClicked(\"{{dep}}\")'><img class='dep-img' src='https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/covidep/higher_high/incid_{{dep}}.svg' style=''></img></button></button>".replace("{{dep}}", dep).replace("{{dep}}", dep).replace("{{dep}}", dep);
          })
   
          data["higher_low"].forEach(dep => {
            dep = replaceBadCharacters(dep);
   
-           document.getElementById("higher_low").innerHTML += "<button id='{{dep}}' class='btn_dep' onclick='buttonClicked(\"{{dep}}\")'><img class='dep-img' class='img-dep' src='https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/higher_low/incid_{{dep}}.svg' style=''></img></button>".replace("{{dep}}", dep).replace("{{dep}}", dep).replace("{{dep}}", dep);
+           document.getElementById("higher_low").innerHTML += "<button id='{{dep}}' class='btn_dep' onclick='buttonClicked(\"{{dep}}\")'><img class='dep-img' class='img-dep' src='https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/covidep/higher_low/incid_{{dep}}.svg' style=''></img></button>".replace("{{dep}}", dep).replace("{{dep}}", dep).replace("{{dep}}", dep);
          }
          )
   
          data["lower_high"].forEach(dep => {
            dep = replaceBadCharacters(dep);
   
-           document.getElementById("lower_high").innerHTML += "<button id='{{dep}}' class='btn_dep' onclick='buttonClicked(\"{{dep}}\")'><img class='dep-img' src='https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/lower_high/incid_{{dep}}.svg' style=''></img></button>"
+           document.getElementById("lower_high").innerHTML += "<button id='{{dep}}' class='btn_dep' onclick='buttonClicked(\"{{dep}}\")'><img class='dep-img' src='https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/covidep/lower_high/incid_{{dep}}.svg' style=''></img></button>"
            .replace("{{dep}}", dep).replace("{{dep}}", dep).replace("{{dep}}", dep);
          }
          )
@@ -239,7 +239,7 @@
          data["lower_low"].forEach(dep => {
            dep = replaceBadCharacters(dep);	
   
-           document.getElementById("lower_low").innerHTML += "<button id='{{dep}}' class='btn_dep' onclick='buttonClicked(\"{{dep}}\")'><img class='dep-img' src='https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/lower_low/incid_{{dep}}.svg' style=''></img></button>"
+           document.getElementById("lower_low").innerHTML += "<button id='{{dep}}' class='btn_dep' onclick='buttonClicked(\"{{dep}}\")'><img class='dep-img' src='https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/covidep/lower_low/incid_{{dep}}.svg' style=''></img></button>"
            .replace("{{dep}}", dep).replace("{{dep}}", dep).replace("{{dep}}", dep);
          }
   
@@ -321,7 +321,7 @@
 
     
 
-    document.getElementById("chart").innerHTML = "<h3>Dans ce département, l'incidence est actuellement <span style='color: {{color_niveau}}'>{{niveau}}</span>, et <span style='color: {{color_evol}}''>{{evol}}</span> par rapport à la semaine dernière.</h3><p>La courbe grise représente la projection sur les prochains jours si l'évolution de l'épidémie est similaire aux derniers jours. Les dates correspondent aux prélévements des tests, et non à la remontée du résultat, d'où le décalage de 3 jours entre la dernière donnée et la date actuelle. <i>En aucun cas la projection doit être considérée comme une prédiction fiable.</i></p>" //<br><br><center><img src=\"https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/covidep/{{class_dep}}/incid_{{dep}}.svg\" width=100% style='max-width: 550px; margin-bottom: 0px; margin-right: 0px;'></img></center>"
+    document.getElementById("chart").innerHTML = "<h3>Dans ce département, l'incidence est actuellement <span style='color: {{color_niveau}}'>{{niveau}}</span>, et <span style='color: {{color_evol}}''>{{evol}}</span> par rapport à la semaine dernière.</h3><p>La courbe grise représente la projection sur les prochains jours si l'évolution de l'épidémie est similaire aux derniers jours. Les dates correspondent aux prélévements des tests, et non à la remontée du résultat, d'où le décalage de 3 jours entre la dernière donnée et la date actuelle. <i>En aucun cas la projection doit être considérée comme une prédiction fiable.</i></p>" //<br><br><center><img src=\"https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/covidep/{{class_dep}}/incid_{{dep}}.svg\" width=100% style='max-width: 550px; margin-bottom: 0px; margin-right: 0px;'></img></center>"
     .replace("{{dep}}", dep.replace("&apos;", "'"))
     .replace("{{class_dep}}", class_this_dep)
     .replace("{{niveau}}", niveau)

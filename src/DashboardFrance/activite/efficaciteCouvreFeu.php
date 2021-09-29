@@ -6,8 +6,8 @@
 </p>
 
 <p id="line_metropoles" align="center">
-    <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/impact_couvre_feu.jpeg" target="_blank" rel="noopener noreferrer"><img
-                src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/impact_couvre_feu.jpeg" width="100%">
+    <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/impact_couvre_feu.jpeg" target="_blank" rel="noopener noreferrer"><img
+                src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/impact_couvre_feu.jpeg" width="100%">
     </a>
 </p>
 

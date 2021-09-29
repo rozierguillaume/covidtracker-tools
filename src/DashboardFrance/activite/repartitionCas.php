@@ -33,31 +33,31 @@
         Le taux d'incidence correspond au nombre de cas sur 7 jours ramené à 100 000 habitants de chaque tranche d'âge. Le seuil d'alerte commun à de nombreux pays est 50.
 
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmap_incidence.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmap_incidence.jpeg" width="100%" style="max-width: 1000px" /></a>
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmap_incidence.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmap_incidence.jpeg" width="100%" style="max-width: 1000px" /></a>
         </p>
     </div>
     <div class="tab-pane fade" id="heatMapCas" role="tabpanel" aria-labelledby="heatMapCas-tab">
         Nombre de cas (test RT-PCR positif).
 
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmap_cas.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmap_cas.jpeg"  width="100%" style="max-width: 1000px"/></a>
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmap_cas.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmap_cas.jpeg"  width="100%" style="max-width: 1000px"/></a>
         </p>
     </div>
     <div class="tab-pane fade" id="heatMapPositivite" role="tabpanel" aria-labelledby="heatMapPositivite-tab">
         Le taux de positivité correspond à la proportion de tests qui se révèlent être positifs.
 
-        <p align="center"> <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmap_taux.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmap_taux.jpeg" width="100%" style="max-width: 1000px"/></a>
+        <p align="center"> <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmap_taux.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmap_taux.jpeg" width="100%" style="max-width: 1000px"/></a>
         </p>
     </div>
     <div class="tab-pane fade" id="heatMapAge" role="tabpanel" aria-labelledby="heatMapAge-tab">
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hosp_clage_P.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hosp_clage_P.jpeg" width="100%" style="max-width: 1300px" /></a></p>
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/hosp_clage_P.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/hosp_clage_P.jpeg" width="100%" style="max-width: 1300px" /></a></p>
 
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/repartition_age_tests.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/repartition_age_tests.jpeg" width="100%" style="max-width: 900px" /></a></p>
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/repartition_age_tests.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/repartition_age_tests.jpeg" width="100%" style="max-width: 900px" /></a></p>
 
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/repartition_age_testspositifs.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/repartition_age_testspositifs.jpeg" width="100%" style="max-width: 900px"/></a></p>
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/repartition_age_testspositifs.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/repartition_age_testspositifs.jpeg" width="100%" style="max-width: 900px"/></a></p>
     </div>
 </div>
 

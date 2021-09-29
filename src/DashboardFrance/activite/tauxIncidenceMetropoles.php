@@ -16,15 +16,15 @@
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane active in" id="TITousAges" role="tabpanel" aria-labelledby="TITousAges-tab">
         <p>
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_metropoles_0.jpeg" target="_blank" rel="noopener noreferrer">
-                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_metropoles_0.jpeg" width="100%">
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_metropoles_0.jpeg" target="_blank" rel="noopener noreferrer">
+                <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_metropoles_0.jpeg" width="100%">
             </a>
         </p>
     </div>
     <div class="tab-pane fade" id="TIPlus65" role="tabpanel" aria-labelledby="TIPlus65-tab">
         <p>
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_metropoles_65.jpeg" target="_blank" rel="noopener noreferrer">
-                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_metropoles_65.jpeg" width="100%">
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_metropoles_65.jpeg" target="_blank" rel="noopener noreferrer">
+                <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_metropoles_65.jpeg" width="100%">
             </a>
         </p>
     </div>

@@ -4,7 +4,7 @@
     <br>
     <h2 style="margin-top: 60px;">Les fêtes de fin d'année sont-elles risquées ?</h2>
     <p>Cette question, on se l’est tous posée dernièrement : quelles sont les chances que quelqu’un qui porte le virus soit présent à un repas de Noël ? Quelle est la probabilité qu’un enfant de la classe de mon fils ait la Covid19 ? Grâce à cet outil, vous pouvez l’estimer.</p>
-    <p>Pour cela, il vous suffit de choisir votre département et le nombre de personnes participant à l'événement, dans la partie "Mon événement" ci-dessous. Vous pouvez ajouter plusieurs départements afin de simuler un rassemblement de famille dont les membres viennent de différents départements, par exemple lors des fêtes de fin d'années. Vous pouvez aussi modifier manuellement l'incidence, vous retrouverez ce taux dans les <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_metropoles_0.jpeg">grandes métropoles ici</a>, par exemple.</p>
+    <p>Pour cela, il vous suffit de choisir votre département et le nombre de personnes participant à l'événement, dans la partie "Mon événement" ci-dessous. Vous pouvez ajouter plusieurs départements afin de simuler un rassemblement de famille dont les membres viennent de différents départements, par exemple lors des fêtes de fin d'années. Vous pouvez aussi modifier manuellement l'incidence, vous retrouverez ce taux dans les <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_metropoles_0.jpeg">grandes métropoles ici</a>, par exemple.</p>
 
     <p>Les données de circulation du virus sont automatiquement mises à jour quotidiennement, et proviennent de Santé publique France. N'hésitez pas à réaliser une nouvelle simulation dans quelques jours.</p>
 
@@ -293,7 +293,7 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
       
     }
 
-    fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/incidence_departements.json')
+    fetch('https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/incidence_departements.json')
        .then(response => {
            if (!response.ok) {
                throw new Error("HTTP error " + response.status);

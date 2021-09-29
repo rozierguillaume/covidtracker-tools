@@ -93,32 +93,32 @@ if (isset($_GET['dep']) and $_GET['dep']) {
             mesurer la crise sanitaire.</p>
         <div class="row">
             <div class="col-md-6">
-                <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/cas_journ_nomDepartement.jpeg"
+                <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/cas_journ_nomDepartement.jpeg"
                    target="_blank" rel="noopener noreferrer">
-                    <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/cas_journ_nomDepartement.jpeg"
+                    <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/cas_journ_nomDepartement.jpeg"
                          width="100%" style="max-width: 1000px;">
                 </a>
             </div>
             <div class="col-md-6">
-                <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/hosp_journ_nomDepartement.jpeg"
+                <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/hosp_journ_nomDepartement.jpeg"
                    target="_blank" rel="noopener noreferrer">
-                    <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/hosp_journ_nomDepartement.jpeg"
+                    <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/hosp_journ_nomDepartement.jpeg"
                          width="100%" style="max-width: 1000px;">
                 </a>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/rea_journ_nomDepartement.jpeg"
+                <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/rea_journ_nomDepartement.jpeg"
                    target="_blank" rel="noopener noreferrer">
-                    <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/rea_journ_nomDepartement.jpeg"
+                    <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/rea_journ_nomDepartement.jpeg"
                          width="100%" style="max-width: 1000px;">
                 </a>
             </div>
             <div class="col-md-6">
-                <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dc_journ_nomDepartement.jpeg"
+                <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dc_journ_nomDepartement.jpeg"
                    target="_blank" rel="noopener noreferrer">
-                    <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dc_journ_nomDepartement.jpeg"
+                    <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dc_journ_nomDepartement.jpeg"
                          width="100%" style="max-width: 1000px;">
                 </a>
             </div>
@@ -127,9 +127,9 @@ if (isset($_GET['dep']) and $_GET['dep']) {
         <h3 style="margin-top: 40px;">Comparaison cas et décès</h3>
         <p>Ce graphique permet de comparer les cas positifs et les décès, en miroir, afin de visualiser l'effet de la vaccination.</p>
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/comparaison_cas_dc_nomDepartement.jpeg"
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/comparaison_cas_dc_nomDepartement.jpeg"
                target="_blank" rel="noopener noreferrer">
-                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/comparaison_cas_dc_nomDepartement.jpeg"
+                <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/comparaison_cas_dc_nomDepartement.jpeg"
                      width="100%" style="max-width: 1000px;">
             </a>
         </p>
@@ -137,9 +137,9 @@ if (isset($_GET['dep']) and $_GET['dep']) {
         <h3 style="margin-top: 40px;">Nombre de variants</h3>
         <p>Estimation du nombre de chaque variants dans les cas détectés. L'estimation est réalisée à partir de la proportion de chaque variants dans les tests positifs criblés, et du nombre total de tests positifs.</p>
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/variants_nombre_nomDepartement.jpeg"
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/variants_nombre_nomDepartement.jpeg"
                target="_blank" rel="noopener noreferrer">
-                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/variants_nombre_nomDepartement.jpeg"
+                <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/variants_nombre_nomDepartement.jpeg"
                      width="100%" style="max-width: 1000px;">
             </a>
         </p>
@@ -148,18 +148,18 @@ if (isset($_GET['dep']) and $_GET['dep']) {
         <p>Le taux d'incidence correspond au nombre de cas cumulé sur 7 jours rapporté à 100 000 habitants du
             département. Cet indicateur représente l'activité épidémique du virus. Le seuil d'alerte est de 50.</p>
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_numeroDepartement.jpeg"
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_numeroDepartement.jpeg"
                target="_blank" rel="noopener noreferrer">
-                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_numeroDepartement.jpeg"
+                <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_numeroDepartement.jpeg"
                      width="100%" style="max-width: 1000px;">
             </a>
         </p>
         <h3 style="margin-top: 40px;">Flux hospitaliers</h3>
         <p>Ce graphique présente l'évolution des entrées et sorties de l'hôpital pour motif Covid19.</p>
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/hosp_journ_flux_nomDepartement.jpeg"
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/hosp_journ_flux_nomDepartement.jpeg"
                target="_blank" rel="noopener noreferrer">
-                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/hosp_journ_flux_nomDepartement.jpeg"
+                <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/hosp_journ_flux_nomDepartement.jpeg"
                      width="100%" style="max-width: 1000px;">
             </a>
         </p>
@@ -167,9 +167,9 @@ if (isset($_GET['dep']) and $_GET['dep']) {
         <p>Ce graphique présente la proportion de lits de réanimation occupés uniquement par les patients Covid19, par
             rapport au nombre de lits en temps normal (fin 2018, étude de la DREES).</p>
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_nomDepartement.jpeg"
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_nomDepartement.jpeg"
                target="_blank" rel="noopener noreferrer">
-                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_nomDepartement.jpeg"
+                <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_nomDepartement.jpeg"
                      width="100%" style="max-width: 1000px;">
             </a>
         </p>

@@ -177,8 +177,22 @@ p {
             <p>
             Nombre de classes scolaires fermées en raison des mesures liées au Covid19, par académie.
             </p>
+            <span style="color: darkred;">ℹ Donnée non mise à jour par le Ministère de l'Éducation Nationale depuis l'été 2021.</span>
             <div style="max-width: 1200px; text-align: center; margin-bottom: 10px;">
                 <canvas id="chart-classes-fermees-par-academie" width="500" height="500"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <br><h2>Vaccination</h2>
+    <div shadow="" id="div-offre-vaccinale" style="margin-top: 20px; margin-bottom: 30px; ">
+        <div class="row nowrap" style="padding: 7px">
+            <h3>Offre vaccinale</h3>
+            <p>
+            Nombre de structures proposant une offre vaccinale aux élèves et personnels.
+            </p>
+            <div style="max-width: 1200px; text-align: center; margin-bottom: 10px;">
+                <canvas id="chart-offre-vaccinale" width="500" height="200"></canvas>
             </div>
         </div>
     </div>
@@ -191,6 +205,7 @@ p {
             <p>
             Nombre quotidien de cas positifs remontés parmi les personnels (moyenne quotidienne sur une semaine).
             </p>
+            <span style="color: darkred;">ℹ Donnée non publiée par le Ministère de l'Éducation Nationale.</span>
             <div style="max-width: 1200px; text-align: center; margin-bottom: 10px;">
                 <canvas id="chart-cas-positifs-personnels" width="500" height="200"></canvas>
             </div>
@@ -203,6 +218,7 @@ p {
             <p>
             Nombre quotidien de cas positifs remontés parmi les élèves (moyenne quotidienne sur une semaine).
             </p>
+            <span style="color: darkred;">ℹ Donnée non publiée par le Ministère de l'Éducation Nationale.</span>
             <div style="max-width: 1200px; text-align: center; margin-bottom: 10px;">
                 <canvas id="chart-cas-positifs-eleves" width="500" height="200"></canvas>
             </div>
@@ -217,6 +233,7 @@ p {
             <p>
             Nombre de tests salivaires proposés et effectués sur une semaine.
             </p>
+            <span style="color: darkred;">ℹ Donnée non publiée par le Ministère de l'Éducation Nationale.</span>
             <div style="max-width: 1200px; text-align: center; margin-bottom: 10px;">
                 <canvas id="chart-tests-salivaires" width="500" height="200"></canvas>
             </div>
@@ -229,6 +246,7 @@ p {
             <p>
             Proportion des tests positifs parmi l'ensemble des tests effectués (en %).
             </p>
+            <span style="color: darkred;">ℹ Donnée non publiée par le Ministère de l'Éducation Nationale.</span>
             <div style="max-width: 1200px; text-align: center; margin-bottom: 10px;">
                 <canvas id="chart-tests-salivaires-taux-positivite" width="500" height="200"></canvas>
             </div>
@@ -267,11 +285,12 @@ function updateChartAndData(data){
     populateResume(data);
     buildBarChartStructuresFermees(data);
     buildBarChartClassesFermees(data);
-    buildBarChartCasPositifsPersonnels(data);
-    buildBarChartCasPositifsEleves(data);
+    buildBarChartOffreVaccinale(data);
+    //buildBarChartCasPositifsPersonnels(data);
+    //buildBarChartCasPositifsEleves(data);
     buildDoughnutFermturesParType(data);
-    buildChartTestsSalivaires(data);
-    buildChartTestsSalivairesTauxPositivite(data);
+    //buildChartTestsSalivaires(data);
+    //buildChartTestsSalivairesTauxPositivite(data);
 }
 
 download_data_academies()
@@ -300,7 +319,8 @@ let list_data_unavailable_academies=[
     "div-cas-positifs-personnels",
     "div-tests-salivaires",
     "div-tests-salivaires-taux-positivite",
-    "div-classes-fermees-par-academie"
+    "div-classes-fermees-par-academie",
+    "div-offre-vaccinale"
 ]
 function selectChanged(selected){
         if(selected.value!="FR"){
@@ -435,13 +455,81 @@ function buildBarChartStructuresFermees(data_France) {
         });
     }
 
+var barChartOffreVaccinale;
+function buildBarChartOffreVaccinale(data_France) {
+        if(barChartOffreVaccinale){
+            barChartOffreVaccinale.destroy();
+        }
+        var ctx = document.getElementById('chart-offre-vaccinale').getContext('2d');
+        labels = data_France.date
+        
+        structures_proposant_offre_vaccinale = data_France.nombre_etablissements_avec_offre_vaccinale.map((val, idx) => ({x: data_France.date[idx], y:parseInt(val)}));
+        structures_ne_proposant_pas_offre_vaccinale = data_France.nombre_etablissements_avec_offre_vaccinale.map((val, idx) => ({x: data_France.date[idx], y:11400}));
+
+        barChartOffreVaccinale = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Structures proposant une offre vaccinale ',
+                        data: structures_proposant_offre_vaccinale, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
+                        backgroundColor: '#79c3f2',
+                        borderColor: '#1796e6',
+                        pointRadius: 0,
+                        steppedLine: 'middle',
+                    },
+                    {
+                        label: 'Nombre total collèges et lycées ',
+                        data: structures_ne_proposant_pas_offre_vaccinale,
+                        backgroundColor: '#f0adad',
+                        borderColor: '#f0adad',
+                        pointRadius: 0,
+                        steppedLine: 'middle',
+                    },
+                ]
+            },
+            options: {
+                hover: {
+                    intersect: false,
+                    mode: 'index',
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false
+                },
+                legend: {
+                    display: false
+                },
+                scales: {
+                    xAxes: [{
+                    type: 'time',
+                    stack: true,
+                    ticks: {
+                            source: 'auto'
+                        },
+                    distribution: 'linear',
+                    gridLines: {
+                        display:false
+                    }
+                }],
+                yAxes: [{
+                    stack: true,
+                }]
+                }
+            }
+        });
+    }
+
 var doughnutFermturesParType;
 function buildDoughnutFermturesParType(data_France) {
         var ctx = document.getElementById('chart-fermetures-par-type-de-structure').getContext('2d');
         labels = ["écoles", "collèges", "lycées"]
         let N = data_France.date.length;
-        let data_par_structure = [data_France.nombre_ecoles_fermees[N-1], data_France.nombre_colleges_fermes[N-1], data_France.nombre_lycees_fermes[N-1]];
         
+        let data_par_structure = [data_France.nombre_ecoles_fermees[N-1], data_France.nombre_colleges_fermes[N-1], data_France.nombre_lycees_fermes[N-1]];
+        console.log("nah")
+        console.log(data_par_structure)
         this.doughnutFermturesParType = new Chart(ctx, {
             type: 'doughnut',
             data: {

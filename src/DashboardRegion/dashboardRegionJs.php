@@ -9,7 +9,7 @@
         var valeurs_cas = [">", "400", "250", "150", "50"];
         var couleurs_cas = ["purple", "#3c0000", "#c80000", "#f95228", "#98ac3b"];
 
-        fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/incidence_regions.json')
+        fetch('https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/incidence_regions.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error("HTTP error " + response.status);
@@ -84,7 +84,7 @@
         //     $("#map").addClass("animated")
         // }
 
-        fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/reffectif_region.json')
+        fetch('https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/reffectif_region.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error("HTTP error " + response.status);
@@ -95,7 +95,7 @@
                 reffectifRegions = json;
             });
 
-        fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/saturation_rea_regions.json')
+        fetch('https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/saturation_rea_regions.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error("HTTP error " + response.status);

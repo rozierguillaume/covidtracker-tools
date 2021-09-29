@@ -30,18 +30,18 @@
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane active in" id="TPFrance" role="tabpanel" aria-labelledby="TPFrance-tab">
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/incidence_taux_france.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/incidence_taux_france.jpeg" width="100%" style="max-width: 800px" />
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/incidence_taux_france.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/incidence_taux_france.jpeg" width="100%" style="max-width: 800px" />
             </a>
         </p>
     </div>
     <div class="tab-pane fade" id="TPDepartements" role="tabpanel" aria-labelledby="TPDepartements-tab">
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/subplots_dep_incidence.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/subplots_dep_incidence.jpeg" width="100%" /></a>
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/subplots_dep_incidence.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/subplots_dep_incidence.jpeg" width="100%" /></a>
         </p>
     </div>
     <div class="tab-pane fade" id="TPClassesAge" role="tabpanel" aria-labelledby="TPClassesAge-tab">
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hosp_clage_tP.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hosp_clage_tP.jpeg" width="100%" style="" /></a>
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/hosp_clage_tP.jpeg" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/hosp_clage_tP.jpeg" width="100%" style="" /></a>
         </p>
     </div>
 

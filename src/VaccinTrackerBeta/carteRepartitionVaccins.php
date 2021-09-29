@@ -164,7 +164,7 @@ Coloration en fonction du pourcentage de population vaccinée. Données fournies
             $("#map").addClass("animated")
         }
 
-        // fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/reffectif_region.json')
+        // fetch('https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/reffectif_region.json')
         //     .then(response => {
         //         if (!response.ok) {
         //             throw new Error("HTTP error " + response.status);
@@ -175,7 +175,7 @@ Coloration en fonction du pourcentage de population vaccinée. Données fournies
         //         reffectifRegions = json;
         //     });
 
-        // fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/saturation_rea_regions.json')
+        // fetch('https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/saturation_rea_regions.json')
         //     .then(response => {
         //         if (!response.ok) {
         //             throw new Error("HTTP error " + response.status);

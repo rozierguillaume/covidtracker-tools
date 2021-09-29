@@ -365,7 +365,7 @@
     var numero_deps= {};
     var maj = "";
 
-    fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/risk_rates.json')
+    fetch('https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/risk_rates.json')
      .then(response => {
          if (!response.ok) {
              throw new Error("HTTP error " + response.status);
@@ -505,7 +505,7 @@
     depa = depa.replace("'","\'")
     console.log(depa)
 
-    document.getElementById("img").innerHTML = "<a href=\"https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/hosp_comp_vagues_" + depa + ".jpeg\" target=\"_blank\" rel=\"noopener noreferrer\"><img  id=\"imageTab\" src=\"https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/hosp_comp_vagues_" + HtmlEncode(depa) + ".jpeg\" width=\"100%\" style=\"max-width: 900px;\">"
+    document.getElementById("img").innerHTML = "<a href=\"https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/hosp_comp_vagues_" + depa + ".jpeg\" target=\"_blank\" rel=\"noopener noreferrer\"><img  id=\"imageTab\" src=\"https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/hosp_comp_vagues_" + HtmlEncode(depa) + ".jpeg\" width=\"100%\" style=\"max-width: 900px;\">"
 
     var element = document.getElementById("img");
 

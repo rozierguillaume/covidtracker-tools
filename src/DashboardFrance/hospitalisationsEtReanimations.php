@@ -20,19 +20,19 @@
     <div class="tab-pane active in" id="hospitalisations" role="tabpanel" aria-labelledby="hospitalisations-tab">
 
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hosp_journ_flux.jpeg" target="_blank" rel="noopener noreferrer">
-                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hosp_journ_flux.jpeg" width="100%" style="max-width: 1300px"/>
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/hosp_journ_flux.jpeg" target="_blank" rel="noopener noreferrer">
+                <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/hosp_journ_flux.jpeg" width="100%" style="max-width: 1300px"/>
             </a>
         </p>
         <br>
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hosp_clage_hosp.jpeg" target="_blank" rel="noopener noreferrer">
-                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hosp_clage_hosp.jpeg" width="100%" style="max-width: 1300px"/>
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/hosp_clage_hosp.jpeg" target="_blank" rel="noopener noreferrer">
+                <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/hosp_clage_hosp.jpeg" width="100%" style="max-width: 1300px"/>
             </a>
         </p>
         <br>
         <video controls="controls" width="100%">
-            <source src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/course_hosp_clage_rolling/course_opti.mp4" type="video/mp4">
+            <source src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/course_hosp_clage_rolling/course_opti.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <br>
@@ -41,8 +41,8 @@
         <!-- /wp:spacer -->
 
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/subplots_hosp_regpop.jpeg" target="_blank" rel="noopener noreferrer">
-                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/subplots_hosp_regpop.jpeg" width="100%">
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/subplots_hosp_regpop.jpeg" target="_blank" rel="noopener noreferrer">
+                <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/subplots_hosp_regpop.jpeg" width="100%">
             </a>
         </p>
 
@@ -58,13 +58,13 @@
     </div>
     <div class="tab-pane fade" id="reanimations" role="tabpanel" aria-labelledby="reanimations-tab">
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hosp_clage_rea.jpeg" target="_blank" rel="noopener noreferrer">
-                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hosp_clage_rea.jpeg" width="100%" style="max-width: 1300px"/>
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/hosp_clage_rea.jpeg" target="_blank" rel="noopener noreferrer">
+                <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/hosp_clage_rea.jpeg" width="100%" style="max-width: 1300px"/>
             </a>
         </p>
         <br><br>
         <video controls="controls" width="100%">
-            <source src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/course_rea_clage_rolling/course_opti.mp4" type="video/mp4">
+            <source src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/course_rea_clage_rolling/course_opti.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <!-- wp:spacer {"height":50} -->
@@ -73,8 +73,8 @@
         <br>
         <br>
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/subplots_rea_regpop.jpeg" target="_blank" rel="noopener noreferrer">
-                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/subplots_rea_regpop.jpeg" width="100%">
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/subplots_rea_regpop.jpeg" target="_blank" rel="noopener noreferrer">
+                <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/subplots_rea_regpop.jpeg" width="100%">
             </a>
             <br><!-- /wp:html -->
 
@@ -91,7 +91,7 @@
     <div style="height:25px" aria-hidden="true" class="wp-block-spacer"></div>
     <!-- /wp:spacer -->
     <p align="center">
-        <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/dep-map_opti.gif" width="100%">
+        <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/dep-map_opti.gif" width="100%">
     </p>
 </div>
 

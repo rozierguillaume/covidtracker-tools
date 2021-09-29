@@ -52,7 +52,7 @@
         ];
         
 
-        fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/pred_dep_incid.json')
+        fetch('https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/pred_dep_incid.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error("HTTP error " + response.status);
@@ -71,7 +71,7 @@
         )
 
 
-        fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/dep_incidence_moins_50.json')
+        fetch('https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/dep_incidence_moins_50.json')
             .then(response => {
                 console.log(response);
                 if (!response.ok) {

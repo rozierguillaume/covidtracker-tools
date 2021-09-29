@@ -16,7 +16,7 @@
     <meta property="og:site_name" content="CovidTracker">
     <meta property="article:modified_time" content="2020-11-15T19:04:40+00:00">
     <meta property="og:image"
-          content="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Ain.jpeg">
+          content="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Ain.jpeg">
     <meta name="twitter:label1" content="Écrit par">
     <meta name="twitter:data1" content="Guillaume Rozier">
     <meta name="twitter:label2" content="Durée de lecture est.">
@@ -44,7 +44,7 @@
 <!--                    "@type": "ImageObject",-->
 <!--                    "@id": "https://covidtracker.fr/dashboard-departements/#primaryimage",-->
 <!--                    "inLanguage": "fr-FR",-->
-<!--                    "url": "https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_Ain.jpeg"-->
+<!--                    "url": "https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_Ain.jpeg"-->
 <!--                },-->
 <!--                {-->
 <!--                    "@type": "WebPage",-->

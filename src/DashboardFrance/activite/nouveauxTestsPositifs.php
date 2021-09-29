@@ -5,7 +5,7 @@
 
     <p>Cliquez sur un élément de légende pour l'ajouter. Double-cliquez dessus pour l'isoler.</p>
     <p>
-        <iframe src="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/testspositifs_nouv_line.html" scrolling="yes" width="100%" height="600"
+        <iframe src="https://htmlpreview.github.io/?https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/html_exports/france/testspositifs_nouv_line.html" scrolling="yes" width="100%" height="600"
                 frameborder="0"></iframe>
     </p>
 
@@ -19,7 +19,7 @@
     <h3>Nouveaux tests positifs par région </h3>
     <!-- /wp:heading -->
     <p>
-        <iframe src="https://htmlpreview.github.io/?https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/html_exports/france/cas_reg.html" scrolling="yes" width="100%" height="700" frameborder="0"></iframe></p>
+        <iframe src="https://htmlpreview.github.io/?https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/html_exports/france/cas_reg.html" scrolling="yes" width="100%" height="700" frameborder="0"></iframe></p>
 
     <div class="wp-block-spacer" style="height: 50px;" aria-hidden="true">&nbsp;</div>
 

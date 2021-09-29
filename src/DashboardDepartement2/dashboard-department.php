@@ -47,9 +47,9 @@
             l'activité du virus. Le nombre d'hospitalisations, de réanimations et de décès hospitaliers permettent de
             mesurer la crise sanitaire.</p>
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_nomDepartement.jpeg"
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_nomDepartement.jpeg"
                target="_blank" rel="noopener noreferrer">
-                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/dashboard_jour_nomDepartement.jpeg"
+                <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/dashboard_jour_nomDepartement.jpeg"
                      width="100%" style="max-width: 1000px;">
             </a>
         </p>
@@ -57,18 +57,18 @@
         <p>Le taux d'incidence correspond au nombre de cas cumulé sur 7 jours rapporté à 100 000 habitants du
             département. Cet indicateur représente l'activité épidémique du virus. Le seuil d'alerte est de 50.</p>
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_numeroDepartement.jpeg"
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_numeroDepartement.jpeg"
                target="_blank" rel="noopener noreferrer">
-                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/heatmaps_deps/heatmap_taux_numeroDepartement.jpeg"
+                <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/heatmaps_deps/heatmap_taux_numeroDepartement.jpeg"
                      width="100%" style="max-width: 1000px;">
             </a>
         </p>
         <h3 style="margin-top: 40px;">Flux hospitaliers</h3>
         <p>Ce graphique présente l'évolution des entrées et sorties de l'hôpital pour motif Covid19.</p>
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/hosp_journ_flux_nomDepartement.jpeg"
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/hosp_journ_flux_nomDepartement.jpeg"
                target="_blank" rel="noopener noreferrer">
-                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/hosp_journ_flux_nomDepartement.jpeg"
+                <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/hosp_journ_flux_nomDepartement.jpeg"
                      width="100%" style="max-width: 1000px;">
             </a>
         </p>
@@ -76,9 +76,9 @@
         <p>Ce graphique présente la proportion de lits de réanimation occupés uniquement par les patients Covid19, par
             rapport au nombre de lits en temps normal (fin 2018, étude de la DREES).</p>
         <p align="center">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_nomDepartement.jpeg"
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_nomDepartement.jpeg"
                target="_blank" rel="noopener noreferrer">
-                <img src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/departements_dashboards/saturation_rea_journ_nomDepartement.jpeg"
+                <img src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/departements_dashboards/saturation_rea_journ_nomDepartement.jpeg"
                      width="100%" style="max-width: 1000px;">
             </a>
         </p>
@@ -153,7 +153,7 @@
             var dateMaj;
             var typeCarte = 'incidence-cas';
 
-            fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/incidence_departements.json')
+            fetch('https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/incidence_departements.json')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error("HTTP error " + response.status);

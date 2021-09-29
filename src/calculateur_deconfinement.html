@@ -73,7 +73,7 @@
 		<h2>Taux de reproduction</h2>
     <p>Merci de sélectionner une valeur du taux de reproduction R<sub>effectif</sub> pour chaque semaine. Pour cela, il vous suffit de faire glisser les points ci-dessous. Le premier point n'est pas modifiable, car il représente le taux de reproduction sur la semaine écoulée.</p>
 
-<p>La valeur actuelle du taux de reproduction est visible <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/reffectif.jpeg">sur ce graphique</a>. Pour information, le R<sub>effectif</sub> varie en général de 0,5 à 5. Il est actuellement d'environ 1,35. Lors de la première vague, il est descendu à 0,7.</p>
+<p>La valeur actuelle du taux de reproduction est visible <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/reffectif.jpeg">sur ce graphique</a>. Pour information, le R<sub>effectif</sub> varie en général de 0,5 à 5. Il est actuellement d'environ 1,35. Lors de la première vague, il est descendu à 0,7.</p>
     
     </div>
 
@@ -178,7 +178,7 @@ plugins: {
       var values_data = [1.35, 0.7, 0.65, 0.65, 0.7, 0.7, 0.7]
       var cas_last7 = [301122, 175388, 107402, 65733]
      
-      fetch('https://raw.githubusercontent.com/rozierguillaume/covid-19/master/data/france/stats/stats.json')
+      fetch('https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/stats.json')
 	   .then(response => {
 	       if (!response.ok) {
 	           throw new Error("HTTP error " + response.status);

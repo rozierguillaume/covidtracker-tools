@@ -83,8 +83,8 @@ p {
     <p>Ce graphique permet de visualiser le nombre de nouveaux cas positifs déclarés comme symptomatiques chaque jour en fonction du statut vaccinal des personnes.</p>
 
         <div style="width: 100%; max-width: 1000px;">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/pcr_plus_sympt_proportion_selon_statut_vaccinal.jpeg" target="_blank" rel="noopener noreferrer">
-                <img id="imageTab" src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/pcr_plus_sympt_proportion_selon_statut_vaccinal.jpeg" width="95%">
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/pcr_plus_sympt_proportion_selon_statut_vaccinal.jpeg" target="_blank" rel="noopener noreferrer">
+                <img id="imageTab" src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/pcr_plus_sympt_proportion_selon_statut_vaccinal.jpeg" width="95%">
             </a>
         </div>
 
@@ -98,8 +98,8 @@ p {
     <div class="row charts lineaire">
             
             <div class="col-md-6">
-                <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/rea_journ.jpeg" target="_blank" rel="noopener noreferrer">
-                    <img id="imageTab" src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/sc_proportion_selon_statut_vaccinal.jpeg" width="95%">
+                <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/rea_journ.jpeg" target="_blank" rel="noopener noreferrer">
+                    <img id="imageTab" src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/sc_proportion_selon_statut_vaccinal.jpeg" width="95%">
                 </a>
             </div>
             
@@ -110,8 +110,8 @@ p {
     <p>Ce graphique permet de visualiser le nombre de nouvelles admissions à l'hôpital chaque jour en fonction du statut vaccinal des patients.</p>
         
         <div style="width: 100%; max-width: 1000px;">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hc_proportion_selon_statut_vaccinal.jpeg" target="_blank" rel="noopener noreferrer">
-                <img id="imageTab" src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/hc_proportion_selon_statut_vaccinal.jpeg" width="95%">
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/hc_proportion_selon_statut_vaccinal.jpeg" target="_blank" rel="noopener noreferrer">
+                <img id="imageTab" src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/hc_proportion_selon_statut_vaccinal.jpeg" width="95%">
             </a>
         </div>
     <h3 class="title">Réduction du risque d'admission</h3>
@@ -168,8 +168,8 @@ p {
     <p>Ce graphique permet de visualiser le nombre de nouveaux décès hospitaliers chaque jour en fonction du statut vaccinal des personnes.</p>
 
         <div style="width: 100%; max-width: 1000px;">
-            <a href="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/dc_proportion_selon_statut_vaccinal.jpeg" target="_blank" rel="noopener noreferrer">
-                <img id="imageTab" src="https://raw.githubusercontent.com/rozierguillaume/covid-19/master/images/charts/france/dc_proportion_selon_statut_vaccinal.jpeg" width="95%">
+            <a href="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/dc_proportion_selon_statut_vaccinal.jpeg" target="_blank" rel="noopener noreferrer">
+                <img id="imageTab" src="https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/charts/france/dc_proportion_selon_statut_vaccinal.jpeg" width="95%">
             </a>
         </div>
     <br>
