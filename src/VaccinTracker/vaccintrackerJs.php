@@ -387,7 +387,7 @@
         nbVaccinesComplet24h = nbVaccinesComplet - data_france.n_cum_complet[data_france.n_cum_complet.length - 2]
         nbVaccinesTroisDoses24h = nbVaccinesTroisDoses - ndose_fra.n_dose3[ndose_fra.n_cum_dose3.length - 2]
             
-        document.getElementById("nb_vaccines_totalement").innerHTML = numberWithSpaces(nbVaccinesComplet24h);
+        document.getElementById("nb_vaccines_totalement").innerHTML = numberWithSpaces(nbVaccinesTroisDoses);
         document.getElementById("nb_vaccines_24h_totalement").innerHTML = numberWithSpaces(nbVaccinesTroisDoses24h);
 
         proportionVaccinesPartiellement = dejaVaccinesNb / 67000000 * 100
