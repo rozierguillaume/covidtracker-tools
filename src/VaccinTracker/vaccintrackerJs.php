@@ -268,7 +268,6 @@
                 this.vaccines_2doses = json;
                 this.dateProjeteeObjectif = calculerDateProjeteeObjectif();
                 majValeurs();
-                maj2Doses();
                 fetchNDoses();
 
             })
@@ -305,6 +304,7 @@
         })
         .then(json => {
             this.ndose_fra = json;
+            maj2Doses();
             fetchStock();
         })
         .catch(function () {
@@ -382,10 +382,13 @@
         //dejaVaccines2Doses = dejaVaccines2DosesNb*100/67000000;
 
         nbVaccinesComplet = data_france.n_cum_complet[data_france.n_cum_complet.length - 1]
+        nbVaccinesTroisDoses = ndose_fra.n_dose3[ndose_fra.n_cum_dose3.length - 1]
+            
         nbVaccinesComplet24h = nbVaccinesComplet - data_france.n_cum_complet[data_france.n_cum_complet.length - 2]
-
-        document.getElementById("nb_vaccines_totalement").innerHTML = numberWithSpaces(nbVaccinesComplet);
-        document.getElementById("nb_vaccines_24h_totalement").innerHTML = numberWithSpaces(nbVaccinesComplet24h);
+        nbVaccinesTroisDoses24h = nbVaccinesTroisDoses - ndose_fra.n_dose3[ndose_fra.n_cum_dose3.length - 2]
+            
+        document.getElementById("nb_vaccines_totalement").innerHTML = numberWithSpaces(nbVaccinesComplet24h);
+        document.getElementById("nb_vaccines_24h_totalement").innerHTML = numberWithSpaces(nbVaccinesTroisDoses24h);
 
         proportionVaccinesPartiellement = dejaVaccinesNb / 67000000 * 100
         proportionVaccinesTotalement = nbVaccinesComplet / 67000000 * 100
