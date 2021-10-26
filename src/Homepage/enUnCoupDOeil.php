@@ -61,7 +61,7 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
                         <span id="cas_moyen_quotidien" style="font-size: 20px;">--</span> cas</b>
                     positifs au Covid19 <span id="cas_p2"></span>chaque jour,
                     <span id="croissance_cas" class="taux_croissance_stable">--</span>
-                    par rapport à la semaine dernière <span id="type_jour"></span>.
+                    par rapport à la semaine dernière <span id="type_jour"></span>. <a href="https://covidtracker.fr/dashboard-depistage">Données dépistage &#10140;</a>
                 </p>
 
                 <div>
