@@ -92,17 +92,17 @@ p {
 <body>
     <h2>Cas positifs</h2>
     <h3>Nombre de cas positifs</h3>
-    <div id="cas" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; margin-bottom: 150px;"></div>
+    <div id="cas" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
 
     <h3>Taux de croissance des de cas positifs</h3>
-    <div id="cas_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; margin-bottom: 150px;"></div>
+    <div id="cas_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
 
     <h3>Taux de positivité des de cas positifs</h3>
-    <div id="cas_taux_positivite" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; margin-bottom: 150px;"></div>
+    <div id="cas_taux_positivite" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
 
     <h2>Dépistage</h2>
     <h3>Nombre de tests effectués</h3>
-    <div id="tests" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px;"></div>
+    <div id="tests" style="width: 95vw; height: 35vw; max-width: 1000px; min-height: 300px; max-height: 800px;"></div>
 
     <br>
     Données : Santé publique France
