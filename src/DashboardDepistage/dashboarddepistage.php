@@ -1,3 +1,4 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
 <head>
                <script src="https://cdn.plot.ly/plotly-2.4.2.min.js"></script>
@@ -89,11 +90,22 @@ p {
 </style>
 
 <body>
-    <div id="cas" style="width: 95vw; height: 30vw; max-width: 1000px; max-height: 800px;"></div>
-    <div id="tests" style="width: 95vw; height: 30vw; max-width: 1000px; max-height: 800px;"></div>
+    <h2>Cas positifs</h2>
+    <h3>Nombre de cas positifs</h3>
+    <div id="cas" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; margin-bottom: 150px;"></div>
+
+    <h3>Taux de croissance des de cas positifs</h3>
+    <div id="cas_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; margin-bottom: 150px;"></div>
+
+    <h3>Taux de positivité des de cas positifs</h3>
+    <div id="cas_taux_positivite" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; margin-bottom: 150px;"></div>
+
+    <h2>Dépistage</h2>
+    <h3>Nombre de tests effectués</h3>
+    <div id="tests" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px;"></div>
 
     <br>
-    Données : 
+    Données : Santé publique France
     <br>
   
     <?php include(__DIR__ . '/menuBasPage.php'); ?>
@@ -115,7 +127,10 @@ function download_data(){
     request.onload = function() {
         data_France = request.response;
         buildChartCas();
+        buildChartCasTauxDeCroissance();
+        buildChartCasTauxDePositivite();
         buildChartTests();
+        
     }
 }
 
@@ -151,20 +166,140 @@ function buildChartCas(){
         },
         xaxis: {
             tickfont: {size: 10},
-            range: [x_min, x_max]
+            range: [x_min, x_max],
         },
         yaxis: {
             range: [y_min, y_max]
         }
     };
 
-    var config = {responsive: true, displaylogo: false}
+    var config = {responsive: true, displaylogo: false, locale: 'fr', showAxisDragHandles: true,}
 
     var data = [trace2];
 
     Plotly.newPlot('cas', data, layout, config);
 }
 
+function buildChartCasTauxDeCroissance(){
+    let MAX_VALUES = 100;
+    let N = data_France.france.jour_incid.length;
+
+    var trace1 = {
+        x: data_France.france.jour_incid.slice(9, N-3),
+        y: data_France.france.croissance_cas_rolling7.valeur.slice(9, N-3),
+        hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
+        name: "Taux de croissance (moyenne 7 j)",
+        type: 'line',
+        line: {
+            color: 'black',
+            width: 3
+        }
+    };
+
+    var bar_colors = [];
+    data_France.france.croissance_cas.valeur.map((value, idx) => {
+        if(value>0){
+            bar_colors.push("red");
+        } else {
+            bar_colors.push("green");
+        }
+    })
+
+    var trace2 = {
+        x: data_France.france.jour_incid,
+        y: data_France.france.croissance_cas.valeur,
+        hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
+        name: 'Taux de croissance',
+        type: 'bar',
+        fill: 'tozeroy',
+        marker: {
+            color: bar_colors
+        }
+    };
+
+    let x_min = data_France.france.jour_incid[N-MAX_VALUES];
+    let x_last = data_France.france.jour_incid[N-1];
+    let x_max = moment(x_last, "YYYY-MM-DD").add('days', 1).format("YYYY-MM-DD");
+
+    let y_min = Math.min.apply(Math, data_France.france.croissance_cas.valeur.slice(-MAX_VALUES));
+    let y_max = Math.max.apply(Math, data_France.france.croissance_cas.valeur.slice(-MAX_VALUES));
+
+    var layout = { 
+        font: {size: 12},
+        legend: {"orientation": "h"},
+        margin: {
+            l: 40,
+            r: 10,
+            b: 20,
+            t: 0,
+            pad: 0
+        },
+        xaxis: {
+            tickfont: {size: 10},
+            range: [x_min, x_max],
+        },
+        yaxis: {
+            range: [y_min, y_max],
+            ticksuffix: '%',
+        }
+    };
+
+    var config = {responsive: true, displaylogo: false, locale: 'fr', showAxisDragHandles: true,}
+
+    var data = [trace1, trace2];
+
+    Plotly.newPlot('cas_taux_croissance', data, layout, config);
+}
+
+function buildChartCasTauxDePositivite(){
+    let MAX_VALUES = 100;
+    let N = data_France.france.jour_incid.length;
+
+    var trace1 = {
+        x: data_France.france.jour_incid,
+        y: data_France.france.taux_positivite.valeur,
+        hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
+        name: "Taux de croissance (moyenne 7 j)",
+        fill: 'tozeroy',
+        type: 'line',
+        line: {
+            color: 'black',
+            width: 3
+        }
+    };
+
+    let x_min = data_France.france.jour_incid[N-MAX_VALUES];
+    let x_max = data_France.france.jour_incid[N-1];
+
+    let y_min = 0;
+    let y_max = Math.max.apply(Math, data_France.france.taux_positivite.valeur.slice(-MAX_VALUES));
+
+    var layout = { 
+        font: {size: 12},
+        legend: {"orientation": "h"},
+        margin: {
+            l: 40,
+            r: 10,
+            b: 20,
+            t: 0,
+            pad: 0
+        },
+        xaxis: {
+            tickfont: {size: 10},
+            range: [x_min, x_max],
+        },
+        yaxis: {
+            range: [y_min, y_max],
+            ticksuffix: '%',
+        }
+    };
+
+    var config = {responsive: true, displaylogo: false, locale: 'fr', showAxisDragHandles: true,}
+
+    var data = [trace1];
+
+    Plotly.newPlot('cas_taux_positivite', data, layout, config);
+}
 
 function buildChartTests(){
     var trace2 = {
@@ -187,10 +322,10 @@ function buildChartTests(){
     let y_max = Math.max.apply(Math, data_France.france.tests.valeur.slice(-300));
 
     var layout = { 
-        font: {size: 15},
+        font: {size: 12},
         legend: {"orientation": "h"},
         margin: {
-            l: 30,
+            l: 35,
             r: 0,
             b: 20,
             t: 0,
