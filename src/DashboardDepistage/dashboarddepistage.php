@@ -92,16 +92,20 @@ p {
 <body>
     <h2>Cas positifs</h2>
     <h3>Nombre de cas positifs</h3>
+    <p>Nombre de résultats de tests positifs chaque jour, par date de prélèvement du test sur le patient (dernière donnée : J-3).</p>
     <div id="cas" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
 
-    <h3>Taux de croissance des de cas positifs</h3>
+    <h3>Taux de croissance des tests</h3>
+    <p>Taux d'évolution du nombre de cas positifs (dernière donnée : J-3). Une barre rouge signifie une croissance des cas, une barre verte une décroissance.</p>
     <div id="cas_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
 
     <h3>Taux de positivité des de cas positifs</h3>
+    <p>Proportion des tests qui sont positifs parmi l'ensemble des tests (dernière donnée : J-3).</p>
     <div id="cas_taux_positivite" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
 
     <h2>Dépistage</h2>
     <h3>Nombre de tests effectués</h3>
+    <p>Nombre total de tests Covid effectués chaque jour (antigéniques et PCR).</p>
     <div id="tests" style="width: 95vw; height: 35vw; max-width: 1000px; min-height: 300px; max-height: 800px;"></div>
 
     <br>
@@ -116,6 +120,21 @@ p {
 
 <script>
 
+let BUTTONS_TO_REMOVE = ['toImage', 'zoomIn2d', 'zoomOut2d'];
+let config = {responsive: true, displaylogo: false, locale: 'fr', showAxisDragHandles: true, modeBarButtonsToRemove: BUTTONS_TO_REMOVE};
+let IMAGES = [
+            {
+            x: 0.5,
+            y: 1,
+            sizex: 0.15,
+            sizey: 0.15,
+            source: "https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/covidtracker.svg",
+            xanchor: "middle",
+            xref: "paper",
+            yanchor: "top",
+            yref: "top"
+            }
+        ];
 
 download_data();
 function download_data(){
@@ -155,6 +174,7 @@ function buildChartCas(){
     let y_max = Math.max.apply(Math, data_France.france.cas.valeur.slice(-300));
 
     var layout = { 
+        images: IMAGES,
         font: {size: 15},
         legend: {"orientation": "h"},
         margin: {
@@ -172,8 +192,6 @@ function buildChartCas(){
             range: [y_min, y_max]
         }
     };
-
-    var config = {responsive: true, displaylogo: false, locale: 'fr', showAxisDragHandles: true,}
 
     var data = [trace2];
 
@@ -225,6 +243,7 @@ function buildChartCasTauxDeCroissance(){
     let y_max = Math.max.apply(Math, data_France.france.croissance_cas.valeur.slice(-MAX_VALUES));
 
     var layout = { 
+        images: IMAGES,
         font: {size: 12},
         legend: {"orientation": "h"},
         margin: {
@@ -243,9 +262,6 @@ function buildChartCasTauxDeCroissance(){
             ticksuffix: '%',
         }
     };
-
-    var config = {responsive: true, displaylogo: false, locale: 'fr', showAxisDragHandles: true,}
-
     var data = [trace1, trace2];
 
     Plotly.newPlot('cas_taux_croissance', data, layout, config);
@@ -275,6 +291,7 @@ function buildChartCasTauxDePositivite(){
     let y_max = Math.max.apply(Math, data_France.france.taux_positivite.valeur.slice(-MAX_VALUES));
 
     var layout = { 
+        images: IMAGES,
         font: {size: 12},
         legend: {"orientation": "h"},
         margin: {
@@ -293,9 +310,6 @@ function buildChartCasTauxDePositivite(){
             ticksuffix: '%',
         }
     };
-
-    var config = {responsive: true, displaylogo: false, locale: 'fr', showAxisDragHandles: true,}
-
     var data = [trace1];
 
     Plotly.newPlot('cas_taux_positivite', data, layout, config);
@@ -322,6 +336,7 @@ function buildChartTests(){
     let y_max = Math.max.apply(Math, data_France.france.tests.valeur.slice(-300));
 
     var layout = { 
+        images: IMAGES,
         font: {size: 12},
         legend: {"orientation": "h"},
         margin: {
@@ -339,8 +354,6 @@ function buildChartTests(){
             range: [y_min, y_max]
         }
     };
-
-    var config = {responsive: true, displaylogo: false}
 
     var data = [trace2];
 
