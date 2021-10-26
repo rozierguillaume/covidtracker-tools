@@ -89,8 +89,8 @@ p {
 </style>
 
 <body>
-    <div id="cas" style="width:100%; height: 60vh; max-width: 1000px; min-height: 300px; max-height: 800px;"></div>
-    <div id="tests" style="width:100%; height: 60vh; max-width: 1000px; min-height: 300px; max-height: 800px;"></div>
+    <div id="cas" style="width: 95vw; height: 30vw; max-width: 1000px; max-height: 800px;"></div>
+    <div id="tests" style="width: 95vw; height: 30vw; max-width: 1000px; max-height: 800px;"></div>
 
     <br>
     Données : 
@@ -142,6 +142,13 @@ function buildChartCas(){
     var layout = { 
         font: {size: 15},
         legend: {"orientation": "h"},
+        margin: {
+            l: 30,
+            r: 0,
+            b: 20,
+            t: 0,
+            pad: 0
+        },
         xaxis: {
             tickfont: {size: 10},
             range: [x_min, x_max]
@@ -182,6 +189,13 @@ function buildChartTests(){
     var layout = { 
         font: {size: 15},
         legend: {"orientation": "h"},
+        margin: {
+            l: 30,
+            r: 0,
+            b: 20,
+            t: 0,
+            pad: 0
+        },
         xaxis: {
             tickfont: {size: 10},
             range: [x_min, x_max]
