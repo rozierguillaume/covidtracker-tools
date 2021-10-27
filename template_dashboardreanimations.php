@@ -35,7 +35,7 @@ Template Name: template_dashboardreanimations
 					    <div class="entry">
 
 				   		<?php the_content(); ?>
-				   		<?php include(dirname(__FILE__) . '/src/DashboardDepistage/dashboardreanimations.php') ?>
+				   		<?php include(dirname(__FILE__) . '/src/DashboardReanimations/dashboardreanimations.php') ?>
 
 					    </div>
 					     

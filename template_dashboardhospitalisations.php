@@ -35,7 +35,7 @@ Template Name: template_dashboardhospitalisations
 					    <div class="entry">
 
 				   		<?php the_content(); ?>
-				   		<?php include(dirname(__FILE__) . '/src/DashboardDepistage/dashboardhospitalisations.php') ?>
+				   		<?php include(dirname(__FILE__) . '/src/DashboardHospitalisations/dashboardhospitalisations.php') ?>
 
 					    </div>
 					     
