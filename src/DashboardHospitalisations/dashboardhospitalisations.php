@@ -90,23 +90,24 @@ p {
 </style>
 
 <body>
-    <h2>Cas positifs</h2>
-    <h3>Nombre de cas positifs</h3>
-    <p>Nombre de résultats de tests positifs chaque jour, par date de prélèvement du test sur le patient (dernière donnée : J-3).</p>
-    <div id="cas" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    <h2>Hospitalisations</h2>
 
-    <h3>Taux de croissance des tests</h3>
-    <p>Taux d'évolution du nombre de cas positifs (dernière donnée : J-3), en pourcent. Une barre rouge signifie une croissance des cas, une barre verte une décroissance.</p>
-    <div id="cas_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    <h3>Nombre de personnes hospitalisées</h3>
+    <p>Nombre de personnes hospitalisées pour Covid19.</p>
+    <div id="hospitalisations" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
 
-    <h3>Taux de positivité des tests</h3>
-    <p>Proportion des tests qui sont positifs parmi l'ensemble des tests (dernière donnée : J-3).</p>
-    <div id="cas_taux_positivite" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    <h3>Taux de croissance du nombre d'hospitalisations</h3>
+    <p>Taux d'évolution du nombre de personnes hospitalisées pour Covid19.</p>
+    <div id="hospitalisations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    
+    <h2>Admissions à l'hôpital</h2>
+    <h3>Nouvelles admissions à l'hôpital</h3>
+    <p>Nombre d'admissions quotidiennes à l'hôpital pour Covid19.</p>
+    <div id="nouvelles_hospitalisations" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
 
-    <h2>Dépistage</h2>
-    <h3>Nombre de tests effectués</h3>
-    <p>Nombre total de tests Covid effectués chaque jour (antigéniques et PCR).</p>
-    <div id="tests" style="width: 95vw; height: 35vw; max-width: 1000px; min-height: 300px; max-height: 800px;"></div>
+    <h3>Taux de croissance des nouvelles admissions</h3>
+    <p>Taux d'évolution du nombre d'admissions quotidiennes à l'hôpital pour Covid19.</p>
+    <div id="nouvelles_hospitalisations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; min-height: 300px; max-height: 800px;"></div>
 
     <br>
     Données : Santé publique France
@@ -145,33 +146,36 @@ function download_data(){
     request.send();
     request.onload = function() {
         data_France = request.response;
-        buildChartCas();
-        buildChartCasTauxDeCroissance();
-        buildChartCasTauxDePositivite();
-        buildChartTests();
+        buildChartHospitalisations();
+        buildChartHospitalisationsTauxDeCroissance();
+        buildChartNouvellesHospitalisations();
+        buildChartNouvellesHospitalisationsTauxDeCroissance();
         
     }
 }
 
-function buildChartCas(){
+function buildChartHospitalisations(){
+    let data_nom = "hospitalisations";
+    let jour_nom = data_France.france[data_nom].jour_nom;
+
     var trace2 = {
-        x: data_France.france.jour_incid,
-        y: data_France.france.cas.valeur,
-        hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
+        x: data_France.france[jour_nom],
+        y: data_France.france[data_nom].valeur,
+        hovertemplate: '%{y:.1f} hospitalisations<br>%{x}<extra></extra>',
         mode: 'lines',
         type: 'scatter',
         fill: 'tozeroy',
         line: {
-            color: 'rgb(8, 115, 191)',
+            color: 'rgba(209, 102, 21,1)',
             width: 3
         }
     };
 
-    let N = data_France.france.jour_incid.length;
-    let x_min = data_France.france.jour_incid[N-300];
-    let x_max = data_France.france.jour_incid[N-1];
+    let N = data_France.france[jour_nom].length;
+    let x_min = data_France.france[jour_nom][N-300];
+    let x_max = data_France.france[jour_nom][N-1];
     let y_min = 0;
-    let y_max = Math.max.apply(Math, data_France.france.cas.valeur.slice(-300));
+    let y_max = Math.max.apply(Math, data_France.france[data_nom].valeur.slice(-300));
 
     var layout = { 
         images: IMAGES,
@@ -195,17 +199,19 @@ function buildChartCas(){
 
     var data = [trace2];
 
-    Plotly.newPlot('cas', data, layout, config);
+    Plotly.newPlot('hospitalisations', data, layout, config);
 }
 
-function buildChartCasTauxDeCroissance(){
+function buildChartHospitalisationsTauxDeCroissance(){
     let MAX_VALUES = 100;
-    let N = data_France.france.jour_incid.length;
+    let data_nom = "croissance_hospitalisations";
+    let jour_nom = data_France.france[data_nom].jour_nom;
+    let N = data_France.france[jour_nom].length;
 
     var trace1 = {
-        x: data_France.france.jour_incid.slice(9, N-3),
-        y: data_France.france.croissance_cas_rolling7.valeur.slice(9, N-3),
-        hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
+        x: data_France.france[jour_nom].slice(9, N-3),
+        y: data_France.france[data_nom+"_rolling7"].valeur.slice(9, N-3),
+        hovertemplate: 'Évolution hospitalisations : %{y:.1f} %<br>%{x}<extra></extra>',
         name: "Taux de croissance (moyenne 7 j)",
         type: 'line',
         line: {
@@ -215,7 +221,7 @@ function buildChartCasTauxDeCroissance(){
     };
 
     var bar_colors = [];
-    data_France.france.croissance_cas.valeur.map((value, idx) => {
+    data_France.france[data_nom].valeur.map((value, idx) => {
         if(value>0){
             bar_colors.push("red");
         } else {
@@ -224,9 +230,9 @@ function buildChartCasTauxDeCroissance(){
     })
 
     var trace2 = {
-        x: data_France.france.jour_incid,
-        y: data_France.france.croissance_cas.valeur,
-        hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
+        x: data_France.france[jour_nom],
+        y: data_France.france[data_nom].valeur,
+        hovertemplate: 'Évolution hospitalisations : %{y:.1f} %<br>%{x}<extra></extra>',
         name: 'Taux de croissance',
         type: 'bar',
         fill: 'tozeroy',
@@ -235,12 +241,12 @@ function buildChartCasTauxDeCroissance(){
         }
     };
 
-    let x_min = data_France.france.jour_incid[N-MAX_VALUES];
-    let x_last = data_France.france.jour_incid[N-1];
+    let x_min = data_France.france[jour_nom][N-MAX_VALUES];
+    let x_last = data_France.france[jour_nom][N-1];
     let x_max = moment(x_last, "YYYY-MM-DD").add('days', 1).format("YYYY-MM-DD");
 
-    let y_min = Math.min.apply(Math, data_France.france.croissance_cas.valeur.slice(-MAX_VALUES));
-    let y_max = Math.max.apply(Math, data_France.france.croissance_cas.valeur.slice(-MAX_VALUES));
+    let y_min = Math.min.apply(Math, data_France.france[data_nom].valeur.slice(-MAX_VALUES));
+    let y_max = Math.max.apply(Math, data_France.france[data_nom].valeur.slice(-MAX_VALUES));
 
     var layout = { 
         images: IMAGES,
@@ -264,19 +270,68 @@ function buildChartCasTauxDeCroissance(){
     };
     var data = [trace1, trace2];
 
-    Plotly.newPlot('cas_taux_croissance', data, layout, config);
+    Plotly.newPlot('hospitalisations_taux_croissance', data, layout, config);
 }
 
-function buildChartCasTauxDePositivite(){
+function buildChartNouvellesHospitalisations(){
+    let data_nom = "incid_hospitalisations";
+    let jour_nom = data_France.france[data_nom].jour_nom;
+
+    var trace2 = {
+        x: data_France.france[jour_nom],
+        y: data_France.france[data_nom].valeur,
+        hovertemplate: '%{y:.1f} nouvelles admissions<br>%{x}<extra></extra>',
+        mode: 'lines',
+        type: 'scatter',
+        fill: 'tozeroy',
+        line: {
+            color: 'rgba(209, 102, 21,1)',
+            width: 3
+        }
+    };
+
+    let N = data_France.france[jour_nom].length;
+    let x_min = data_France.france[jour_nom][N-300];
+    let x_max = data_France.france[jour_nom][N-1];
+    let y_min = 0;
+    let y_max = Math.max.apply(Math, data_France.france[data_nom].valeur.slice(-300));
+
+    var layout = { 
+        images: IMAGES,
+        font: {size: 15},
+        legend: {"orientation": "h"},
+        margin: {
+            l: 30,
+            r: 0,
+            b: 20,
+            t: 0,
+            pad: 0
+        },
+        xaxis: {
+            tickfont: {size: 10},
+            range: [x_min, x_max],
+        },
+        yaxis: {
+            range: [y_min, y_max]
+        }
+    };
+
+    var data = [trace2];
+
+    Plotly.newPlot('nouvelles_hospitalisations', data, layout, config);
+}
+
+function buildChartNouvellesHospitalisationsTauxDeCroissance(){
     let MAX_VALUES = 100;
-    let N = data_France.france.jour_incid.length;
+    let data_nom = "croissance_incid_hospitalisations";
+    let jour_nom = data_France.france[data_nom].jour_nom;
+    let N = data_France.france[jour_nom].length;
 
     var trace1 = {
-        x: data_France.france.jour_incid,
-        y: data_France.france.taux_positivite.valeur,
-        hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
+        x: data_France.france[jour_nom].slice(9, N-3),
+        y: data_France.france[data_nom+"_rolling7"].valeur.slice(9, N-3),
+        hovertemplate: 'Évolution nouvelles admissions (moyenne) : %{y:.1f} %<br>%{x}<extra></extra>',
         name: "Taux de croissance (moyenne 7 j)",
-        fill: 'tozeroy',
         type: 'line',
         line: {
             color: 'black',
@@ -284,11 +339,33 @@ function buildChartCasTauxDePositivite(){
         }
     };
 
-    let x_min = data_France.france.jour_incid[N-MAX_VALUES];
-    let x_max = data_France.france.jour_incid[N-1];
+    var bar_colors = [];
+    data_France.france[data_nom].valeur.map((value, idx) => {
+        if(value>0){
+            bar_colors.push("red");
+        } else {
+            bar_colors.push("green");
+        }
+    })
 
-    let y_min = 0;
-    let y_max = Math.max.apply(Math, data_France.france.taux_positivite.valeur.slice(-MAX_VALUES));
+    var trace2 = {
+        x: data_France.france[jour_nom],
+        y: data_France.france[data_nom].valeur,
+        hovertemplate: 'Évolution nouvelles admissions : %{y:.1f} %<br>%{x}<extra></extra>',
+        name: 'Taux de croissance',
+        type: 'bar',
+        fill: 'tozeroy',
+        marker: {
+            color: bar_colors
+        }
+    };
+
+    let x_min = data_France.france[jour_nom][N-MAX_VALUES];
+    let x_last = data_France.france[jour_nom][N-1];
+    let x_max = moment(x_last, "YYYY-MM-DD").add('days', 1).format("YYYY-MM-DD");
+
+    let y_min = Math.min.apply(Math, data_France.france[data_nom].valeur.slice(-MAX_VALUES));
+    let y_max = Math.max.apply(Math, data_France.france[data_nom].valeur.slice(-MAX_VALUES));
 
     var layout = { 
         images: IMAGES,
@@ -310,54 +387,10 @@ function buildChartCasTauxDePositivite(){
             ticksuffix: '%',
         }
     };
-    var data = [trace1];
+    var data = [trace1, trace2];
 
-    Plotly.newPlot('cas_taux_positivite', data, layout, config);
+    Plotly.newPlot('nouvelles_hospitalisations_taux_croissance', data, layout, config);
 }
 
-function buildChartTests(){
-    var trace2 = {
-        x: data_France.france.jour_incid,
-        y: data_France.france.tests.valeur,
-        hovertemplate: '%{y:.1f} tests en moyenne sur 7j.<br>%{x}<extra></extra>',
-        mode: 'lines',
-        type: 'scatter',
-        fill: 'tozeroy',
-        line: {
-            color: 'grey',
-            width: 3
-        }
-    };
-
-    let N = data_France.france.jour_incid.length;
-    let x_min = data_France.france.jour_incid[N-300];
-    let x_max = data_France.france.jour_incid[N-1];
-    let y_min = 0;
-    let y_max = Math.max.apply(Math, data_France.france.tests.valeur.slice(-300));
-
-    var layout = { 
-        images: IMAGES,
-        font: {size: 12},
-        legend: {"orientation": "h"},
-        margin: {
-            l: 35,
-            r: 0,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
-        xaxis: {
-            tickfont: {size: 10},
-            range: [x_min, x_max]
-        },
-        yaxis: {
-            range: [y_min, y_max]
-        }
-    };
-
-    var data = [trace2];
-
-    Plotly.newPlot('tests', data, layout, config);
-}
 
 </script>
