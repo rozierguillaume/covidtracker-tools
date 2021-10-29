@@ -31,6 +31,11 @@
     Ces statistiques s'appuient sur les données issues des études de la DREES mises à jour chaque semaine (dernières données : du <span class="date-data-start">-/-/-</span> au <span class="date-data-end">-/-/-</span>). La méthodologie et les calculs sont décrits en bas de page.
     </p>
 
+    <div class="alert alert-warning" role="alert">
+    <i>29 octobre •</i><b> Changement de méthode</b><br>
+        La DREES a modifié sa méthodologie d'appariement du statut vaccinal des personnes hospitalisées. Cela engendre un nombre de non vaccinés un peu moins important parmi les hospitalisés. Les données et graphiques ont été mis à jour retrospectivement, depuis le début. <a href="https://drees.solidarites-sante.gouv.fr/recherche?f%5B0%5D=content_type%3A506">Plus d'informations</a>
+    </div>
+
     <br>
     <br>
     
