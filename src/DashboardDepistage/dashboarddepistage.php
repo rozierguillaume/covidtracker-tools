@@ -95,7 +95,7 @@ p {
     <p>Nombre de résultats de tests positifs chaque jour, par date de prélèvement du test sur le patient (dernière donnée : J-3).</p>
     <div id="cas" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
 
-    <h3>Taux de croissance des tests</h3>
+    <h3>Taux de croissance des cas</h3>
     <p>Taux d'évolution du nombre de cas positifs (dernière donnée : J-3), en pourcent. Une barre rouge signifie une croissance des cas, une barre verte une décroissance.</p>
     <div id="cas_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
 
@@ -107,6 +107,10 @@ p {
     <h3>Nombre de tests effectués</h3>
     <p>Nombre total de tests Covid effectués chaque jour (antigéniques et PCR).</p>
     <div id="tests" style="width: 95vw; height: 35vw; max-width: 1000px; min-height: 300px; max-height: 800px;"></div>
+
+    <h3>Taux de croissance des tests effectués</h3>
+    <p>Taux d'évolution du nombre de tests réalisés (dernière donnée : J-3), en pourcent. Une barre rouge signifie une croissance des tests, une barre verte une décroissance.</p>
+    <div id="tests_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; min-height: 300px; max-height: 800px;"></div>
 
     <br>
     Données : Santé publique France
@@ -149,9 +153,18 @@ function download_data(){
         buildChartCasTauxDeCroissance();
         buildChartCasTauxDePositivite();
         buildChartTests();
+        buildChartTestsTauxDeCroissance();
         
     }
 }
+
+function printableTaux(n) {
+    return (n<0?"":"+") + n;
+    };
+
+function printableNumber(n){
+    return Math.round(n)
+};
 
 function buildChartCas(){
     var trace2 = {
@@ -179,7 +192,7 @@ function buildChartCas(){
         legend: {"orientation": "h"},
         margin: {
             l: 30,
-            r: 0,
+            r: 20,
             b: 20,
             t: 0,
             pad: 0
@@ -190,7 +203,33 @@ function buildChartCas(){
         },
         yaxis: {
             range: [y_min, y_max]
-        }
+        },
+        annotations: [
+            {
+            x: x_max,
+            y: data_France.france.cas.valeur[N-1],
+            xref: 'x',
+            yref: 'y',
+            text: String(printableNumber(data_France.france.cas.valeur[N-1])) + " cas<br>" + printableTaux(data_France.france.croissance_cas_rolling7.valeur[N-4]) + "%",
+            showarrow: true,
+            font: {
+                family: 'Helvetica Neue',
+                size: 13,
+                color: 'rgb(8, 115, 191)'
+            },
+            align: 'center',
+            arrowhead: 2,
+            arrowsize: 1,
+            arrowwidth: 1.5,
+            arrowcolor: 'rgb(8, 115, 191)',
+            ax: -30,
+            ay: -30,
+            borderwidth: 1,
+            borderpad: 2,
+            bgcolor: 'rgba(256, 256, 256, 0.5)',
+            opacity: 0.8
+            }
+        ]
     };
 
     var data = [trace2];
@@ -358,6 +397,75 @@ function buildChartTests(){
     var data = [trace2];
 
     Plotly.newPlot('tests', data, layout, config);
+}
+
+function buildChartTestsTauxDeCroissance(){
+    let MAX_VALUES = 100;
+    let N = data_France.france.jour_incid.length;
+
+    var trace1 = {
+        x: data_France.france.jour_incid.slice(9, N-3),
+        y: data_France.france.croissance_tests_rolling7.valeur.slice(9, N-3),
+        hovertemplate: '%{y:.1f} tests en moyenne sur 7j.<br>%{x}<extra></extra>',
+        name: "Taux de croissance (moyenne 7 j)",
+        type: 'line',
+        line: {
+            color: 'black',
+            width: 3
+        }
+    };
+
+    var bar_colors = [];
+    data_France.france.croissance_tests.valeur.map((value, idx) => {
+        if(value>0){
+            bar_colors.push("red");
+        } else {
+            bar_colors.push("green");
+        }
+    })
+
+    var trace2 = {
+        x: data_France.france.jour_incid,
+        y: data_France.france.croissance_tests.valeur,
+        hovertemplate: '%{y:.1f} tests en moyenne sur 7j.<br>%{x}<extra></extra>',
+        name: 'Taux de croissance',
+        type: 'bar',
+        fill: 'tozeroy',
+        marker: {
+            color: bar_colors
+        }
+    };
+
+    let x_min = data_France.france.jour_incid[N-MAX_VALUES];
+    let x_last = data_France.france.jour_incid[N-1];
+    let x_max = moment(x_last, "YYYY-MM-DD").add('days', 1).format("YYYY-MM-DD");
+
+    let y_min = Math.min.apply(Math, data_France.france.croissance_tests.valeur.slice(-MAX_VALUES));
+    let y_max = Math.max.apply(Math, data_France.france.croissance_tests.valeur.slice(-MAX_VALUES));
+
+    var layout = { 
+        images: IMAGES,
+        font: {size: 12},
+        legend: {"orientation": "h"},
+        margin: {
+            l: 40,
+            r: 10,
+            b: 20,
+            t: 0,
+            pad: 0
+        },
+        xaxis: {
+            tickfont: {size: 10},
+            range: [x_min, x_max],
+        },
+        yaxis: {
+            range: [y_min, y_max],
+            ticksuffix: '%',
+        }
+    };
+    var data = [trace1, trace2];
+
+    Plotly.newPlot('tests_taux_croissance', data, layout, config);
 }
 
 </script>
