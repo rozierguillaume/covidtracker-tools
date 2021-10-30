@@ -245,7 +245,7 @@ function buildChartCasTauxDeCroissance(){
         x: data_France.france.jour_incid.slice(9, N-3),
         y: data_France.france.croissance_cas_rolling7.valeur.slice(9, N-3),
         hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
-        name: "Taux de croissance (moyenne 7 j)",
+        name: "Taux de croissance de la moyenne 7j",
         type: 'line',
         line: {
             color: 'black',
@@ -407,7 +407,7 @@ function buildChartTestsTauxDeCroissance(){
         x: data_France.france.jour_incid.slice(9, N-3),
         y: data_France.france.croissance_tests_rolling7.valeur.slice(9, N-3),
         hovertemplate: '%{y:.1f} tests en moyenne sur 7j.<br>%{x}<extra></extra>',
-        name: "Taux de croissance (moyenne 7 j)",
+        name: "Taux de croissance de la moyenne 7j",
         type: 'line',
         line: {
             color: 'black',

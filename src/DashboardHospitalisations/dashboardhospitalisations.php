@@ -212,7 +212,7 @@ function buildChartHospitalisationsTauxDeCroissance(){
         x: data_France.france[jour_nom].slice(9, N-3),
         y: data_France.france[data_nom+"_rolling7"].valeur.slice(9, N-3),
         hovertemplate: 'Évolution hospitalisations : %{y:.1f} %<br>%{x}<extra></extra>',
-        name: "Taux de croissance (moyenne 7 j)",
+        name: "Taux de croissance de la moyenne 7j",
         type: 'line',
         line: {
             color: 'black',
@@ -331,7 +331,7 @@ function buildChartNouvellesHospitalisationsTauxDeCroissance(){
         x: data_France.france[jour_nom].slice(9, N-3),
         y: data_France.france[data_nom+"_rolling7"].valeur.slice(9, N-3),
         hovertemplate: 'Évolution nouvelles admissions (moyenne) : %{y:.1f} %<br>%{x}<extra></extra>',
-        name: "Taux de croissance (moyenne 7 j)",
+        name: "Taux de croissance de la moyenne 7j",
         type: 'line',
         line: {
             color: 'black',
