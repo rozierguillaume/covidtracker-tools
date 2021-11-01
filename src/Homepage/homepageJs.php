@@ -130,7 +130,7 @@
             document.getElementById("nb_injections_variation").innerHTML = "en hausse (+ " + variation + " %)";
             document.getElementById("nb_injections_variation").className = "taux_croissance_baisse"; //c'est normal, c'est inversé
         } else {
-            document.getElementById("nb_injections_variation").innerHTML = "en baisse (" + variation + ")";
+            document.getElementById("nb_injections_variation").innerHTML = "en baisse (" + variation + " %)";
             document.getElementById("nb_injections_variation").className = "taux_croissance_hausse";
         }
 
