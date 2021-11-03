@@ -159,11 +159,16 @@ function download_data(){
 }
 
 function printableTaux(n) {
-    return (n<0?"":"+") + n;
+    n = (n<0?"":"+") + n;
+    n = n.replace('.', ',');
+    return n;
     };
 
-function printableNumber(n){
-    return Math.round(n)
+function printableNumber(x){
+    x = Math.round(x);
+    x = x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "&nbsp;");
+    x = x.replace('.', ',');
+    return x
 };
 
 function buildChartCas(){
@@ -244,7 +249,7 @@ function buildChartCasTauxDeCroissance(){
     var trace1 = {
         x: data_France.france.jour_incid.slice(9, N-3),
         y: data_France.france.croissance_cas_rolling7.valeur.slice(9, N-3),
-        hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
+        hovertemplate: '%{y:.1f}% cas en moyenne sur 7j.<br>%{x}<extra></extra>',
         name: "Taux de croissance de la moyenne 7j",
         type: 'line',
         line: {
@@ -256,16 +261,16 @@ function buildChartCasTauxDeCroissance(){
     var bar_colors = [];
     data_France.france.croissance_cas.valeur.map((value, idx) => {
         if(value>0){
-            bar_colors.push("red");
+            bar_colors.push("#ff4d4d");
         } else {
-            bar_colors.push("green");
+            bar_colors.push("#70db70");
         }
     })
 
     var trace2 = {
         x: data_France.france.jour_incid,
         y: data_France.france.croissance_cas.valeur,
-        hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
+        hovertemplate: '%{y:.1f}% cas en moyenne sur 7j.<br>%{x}<extra></extra>',
         name: 'Taux de croissance',
         type: 'bar',
         fill: 'tozeroy',
@@ -285,6 +290,32 @@ function buildChartCasTauxDeCroissance(){
         images: IMAGES,
         font: {size: 12},
         legend: {"orientation": "h"},
+        annotations: [
+            {
+            x: data_France.france.jour_incid[N-4],
+            y: data_France.france.croissance_cas_rolling7.valeur[N-4],
+            xref: 'x',
+            yref: 'y',
+            text: String(printableTaux(data_France.france.croissance_cas_rolling7.valeur[N-4])) + ' %',
+            showarrow: true,
+            font: {
+                family: 'Helvetica Neue',
+                size: 13,
+                color: 'rgb(0, 0, 0)'
+            },
+            align: 'center',
+            arrowhead: 2,
+            arrowsize: 1,
+            arrowwidth: 1.5,
+            arrowcolor: 'rgb(0, 0, 0)',
+            ax: -20,
+            ay: -40,
+            borderwidth: 1,
+            borderpad: 2,
+            bgcolor: 'rgba(256, 256, 256, 0.5)',
+            opacity: 0.8
+            }
+        ],
         margin: {
             l: 40,
             r: 10,
@@ -333,6 +364,32 @@ function buildChartCasTauxDePositivite(){
         images: IMAGES,
         font: {size: 12},
         legend: {"orientation": "h"},
+        annotations: [
+            {
+            x: x_max,
+            y: data_France.france.taux_positivite.valeur[-1],
+            xref: 'x',
+            yref: 'y',
+            text: String(data_France.france.taux_positivite.valeur[N-1]) + ' %',
+            showarrow: true,
+            font: {
+                family: 'Helvetica Neue',
+                size: 13,
+                color: 'rgb(0, 0, 0)'
+            },
+            align: 'center',
+            arrowhead: 2,
+            arrowsize: 1,
+            arrowwidth: 1.5,
+            arrowcolor: 'rgb(0, 0, 0)',
+            ax: -20,
+            ay: -40,
+            borderwidth: 1,
+            borderpad: 2,
+            bgcolor: 'rgba(256, 256, 256, 0.5)',
+            opacity: 0.8
+            }
+        ],
         margin: {
             l: 40,
             r: 10,
@@ -378,6 +435,32 @@ function buildChartTests(){
         images: IMAGES,
         font: {size: 12},
         legend: {"orientation": "h"},
+        annotations: [
+            {
+            x: x_max,
+            y: data_France.france.tests.valeur[N-1],
+            xref: 'x',
+            yref: 'y',
+            text: String(printableNumber(data_France.france.tests.valeur[N-1])) + '<br> tests',
+            showarrow: true,
+            font: {
+                family: 'Helvetica Neue',
+                size: 13,
+                color: 'rgb(0, 0, 0)'
+            },
+            align: 'center',
+            arrowhead: 2,
+            arrowsize: 1,
+            arrowwidth: 1.5,
+            arrowcolor: 'rgb(0, 0, 0)',
+            ax: -30,
+            ay: -50,
+            borderwidth: 1,
+            borderpad: 2,
+            bgcolor: 'rgba(256, 256, 256, 0.5)',
+            opacity: 0.8
+            }
+        ],
         margin: {
             l: 35,
             r: 0,
@@ -406,7 +489,7 @@ function buildChartTestsTauxDeCroissance(){
     var trace1 = {
         x: data_France.france.jour_incid.slice(9, N-3),
         y: data_France.france.croissance_tests_rolling7.valeur.slice(9, N-3),
-        hovertemplate: '%{y:.1f} tests en moyenne sur 7j.<br>%{x}<extra></extra>',
+        hovertemplate: '%{y:.1f}% tests en moyenne sur 7j.<br>%{x}<extra></extra>',
         name: "Taux de croissance de la moyenne 7j",
         type: 'line',
         line: {
@@ -418,9 +501,9 @@ function buildChartTestsTauxDeCroissance(){
     var bar_colors = [];
     data_France.france.croissance_tests.valeur.map((value, idx) => {
         if(value>0){
-            bar_colors.push("red");
+            bar_colors.push("#ff4d4d");
         } else {
-            bar_colors.push("green");
+            bar_colors.push("#70db70");
         }
     })
 
@@ -447,6 +530,32 @@ function buildChartTestsTauxDeCroissance(){
         images: IMAGES,
         font: {size: 12},
         legend: {"orientation": "h"},
+        annotations: [
+            {
+            x: data_France.france.jour_incid[N-4],
+            y: data_France.france.croissance_tests_rolling7.valeur[N-4],
+            xref: 'x',
+            yref: 'y',
+            text: String(printableTaux(data_France.france.croissance_tests_rolling7.valeur[N-4])) + ' %',
+            showarrow: true,
+            font: {
+                family: 'Helvetica Neue',
+                size: 13,
+                color: 'rgb(0, 0, 0)'
+            },
+            align: 'center',
+            arrowhead: 2,
+            arrowsize: 1,
+            arrowwidth: 1.5,
+            arrowcolor: 'rgb(0, 0, 0)',
+            ax: -30,
+            ay: -30,
+            borderwidth: 1,
+            borderpad: 2,
+            bgcolor: 'rgba(256, 256, 256, 0.6)',
+            opacity: 0.8
+            }
+        ],
         margin: {
             l: 40,
             r: 10,
