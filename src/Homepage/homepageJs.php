@@ -119,9 +119,9 @@
     }
 
     function updateDivVaccination(data){
-        let N = data["n_dose1_moyenne7j"].length;
-        value_today = data["n_dose1_moyenne7j"][N-1];
-        value_j7 = data["n_dose1_moyenne7j"][N-8];
+        let N = data["n_dose3_moyenne7j"].length;
+        value_today = data["n_dose3_moyenne7j"][N-1];
+        value_j7 = data["n_dose3_moyenne7j"][N-8];
         variation = Math.round((value_today-value_j7)/value_j7*100);
 
         document.getElementById("nb_injections_jour").innerHTML = numberWithSpaces(value_today);
@@ -134,7 +134,7 @@
             document.getElementById("nb_injections_variation").className = "taux_croissance_hausse";
         }
 
-        proportion_vaccines = Math.round(data["n_cum_dose1"][N-1]/67000)/10;
+        proportion_vaccines = Math.round(data["n_cum_dose1"][N-1]/67400)/10;
         document.getElementById("vaccination_proportion_population").innerHTML = proportion_vaccines;
         
 
@@ -631,13 +631,13 @@
         lineChartVaccnation = new Chart(document.getElementById("line-chart-vaccination"), {
             type: 'line',
             data: {
-            labels: data["dates"],
+            labels: data["dates"].slice(-100, -1),
             datasets: [
                 {
                 label: "",
                 backgroundColor: "rgba(185, 235, 203, 0.6)",
                 borderColor: "#9bc9ac",
-                data: data["n_dose1_moyenne7j"],
+                data: data["n_dose3_moyenne7j"].slice(-100, -1),
                 pointRadius: 0
                 }
             ]
