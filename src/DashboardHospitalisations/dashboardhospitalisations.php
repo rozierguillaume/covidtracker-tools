@@ -262,9 +262,9 @@ function buildChartHospitalisationsTauxDeCroissance(){
     var bar_colors = [];
     data_France.france[data_nom].valeur.map((value, idx) => {
         if(value>0){
-            bar_colors.push("red");
+            bar_colors.push("#ff4d4d");
         } else {
-            bar_colors.push("green");
+            bar_colors.push("#70db70");
         }
     })
 
@@ -433,9 +433,9 @@ function buildChartNouvellesHospitalisationsTauxDeCroissance(){
     var bar_colors = [];
     data_France.france[data_nom].valeur.map((value, idx) => {
         if(value>0){
-            bar_colors.push("red");
+            bar_colors.push("#ff4d4d");
         } else {
-            bar_colors.push("green");
+            bar_colors.push("#70db70");
         }
     })
 

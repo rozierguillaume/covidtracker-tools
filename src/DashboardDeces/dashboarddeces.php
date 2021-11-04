@@ -90,25 +90,16 @@ p {
 </style>
 
 <body>
-    <h2>Soins critiques (dont réanimation)</h2>
+    <h2>Décès hospitaliers</h2>
 
-    <h3>Nombre de personnes en soins critiques</h3>
-    <p>Nombre de personnes en soins critiques dont réanimation pour Covid19.</p>
-    <div id="reanimations" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    <h3>Nombre de décès hospitaliers quotidien</h3>
+    <p>Nombre de personnes décédées à l'hôpital pour Covid19 chaque jour.</p>
+    <div id="deces" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
 
-    <h3>Taux de croissance du nombre de soins critiques</h3>
-    <p>Taux d'évolution du nombre de personnes en soins critiques dont réanimation pour Covid19.</p>
-    <div id="reanimations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    <h3>Taux de croissance des décès hospitaliers</h3>
+    <p>Taux d'évolution hebdomadaire du nombre quotidien de personnes décédées à l'hôpital pour Covid19.</p>
+    <div id="deces_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
     
-    <h2>Admissions en soins critiques</h2>
-    <h3>Nouvelles admissions en réanimation</h3>
-    <p>Nombre d'admissions quotidiennes en soins critiques dont réanimation pour Covid19.</p>
-    <div id="nouvelles_reanimations" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
-
-    <h3>Taux de croissance des nouvelles admissions</h3>
-    <p>Taux d'évolution du nombre d'admissions quotidiennes en soins critiques dont réanimation pour Covid19.</p>
-    <div id="nouvelles_reanimations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; min-height: 300px; max-height: 800px;"></div>
-
     <br>
     Données : Santé publique France
     <br>
@@ -146,10 +137,8 @@ function download_data(){
     request.send();
     request.onload = function() {
         data_France = request.response;
-        buildChartReanimations();
-        buildChartReanimationsTauxDeCroissance();
-        buildChartNouvellesReanimations();
-        buildChartNouvellesReanimationsTauxDeCroissance();
+        buildChartDeces();
+        buildChartDecesTauxDeCroissance();
         
     }
 }
@@ -167,19 +156,19 @@ function printableNumber(x){
     return x
 };
 
-function buildChartReanimations(){
-    let data_nom = "reanimations";
-    let jour_nom = data_France.france[data_nom].jour_nom;
+function buildChartDeces(){
+    let data_nom = "deces_hospitaliers";
+    let jour_nom = "jour_new" //data_France.france[data_nom].jour_nom;
 
     var trace2 = {
         x: data_France.france[jour_nom],
         y: data_France.france[data_nom].valeur,
-        hovertemplate: '%{y:.1f} reanimations<br>%{x}<extra></extra>',
+        hovertemplate: '%{y:.1f} décès<br>%{x}<extra></extra>',
         mode: 'lines',
         type: 'scatter',
         fill: 'tozeroy',
         line: {
-            color: 'rgba(201, 4, 4, 1)',
+            color: 'rgba(0, 0, 0, 1)',
             width: 3
         }
     };
@@ -200,18 +189,18 @@ function buildChartReanimations(){
             y: data_France.france[data_nom].valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>soins crit.",
+            text: printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>décès",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
                 size: 13,
-                color: 'rgba(201, 4, 4, 1)'
+                color: 'rgba(0, 0, 0, 1)'
             },
             align: 'center',
             arrowhead: 2,
             arrowsize: 1,
             arrowwidth: 1.5,
-            arrowcolor: 'rgba(201, 4, 4, 1)',
+            arrowcolor: 'rgba(0, 0, 0, 1)',
             ax: -30,
             ay: -30,
             borderwidth: 1,
@@ -238,19 +227,19 @@ function buildChartReanimations(){
 
     var data = [trace2];
 
-    Plotly.newPlot('reanimations', data, layout, config);
+    Plotly.newPlot('deces', data, layout, config);
 }
 
-function buildChartReanimationsTauxDeCroissance(){
+function buildChartDecesTauxDeCroissance(){
     let MAX_VALUES = 100;
-    let data_nom = "croissance_reanimations";
+    let data_nom = "croissance_deces_hospitaliers";
     let jour_nom = data_France.france[data_nom].jour_nom;
     let N = data_France.france[jour_nom].length;
 
     var trace1 = {
         x: data_France.france[jour_nom].slice(9, N-3),
         y: data_France.france[data_nom+"_rolling7"].valeur.slice(9, N-3),
-        hovertemplate: 'Évolution reanimations : %{y:.1f} %<br>%{x}<extra></extra>',
+        hovertemplate: 'Évolution hospitalisations : %{y:.1f} %<br>%{x}<extra></extra>',
         name: "Taux de croissance de la moyenne 7j",
         type: 'line',
         line: {
@@ -271,7 +260,7 @@ function buildChartReanimationsTauxDeCroissance(){
     var trace2 = {
         x: data_France.france[jour_nom],
         y: data_France.france[data_nom].valeur,
-        hovertemplate: 'Évolution reanimations : %{y:.1f} %<br>%{x}<extra></extra>',
+        hovertemplate: 'Évolution hospitalisations : %{y:.1f} %<br>%{x}<extra></extra>',
         name: 'Taux de croissance',
         type: 'bar',
         fill: 'tozeroy',
@@ -309,7 +298,7 @@ function buildChartReanimationsTauxDeCroissance(){
             arrowsize: 1,
             arrowwidth: 1.5,
             arrowcolor: 'rgba(0, 0, 0, 1)',
-            ax: -10,
+            ax: -30,
             ay: -30,
             borderwidth: 1,
             borderpad: 2,
@@ -335,178 +324,7 @@ function buildChartReanimationsTauxDeCroissance(){
     };
     var data = [trace1, trace2];
 
-    Plotly.newPlot('reanimations_taux_croissance', data, layout, config);
-}
-
-function buildChartNouvellesReanimations(){
-    let data_nom = "incid_reanimations";
-    let jour_nom = data_France.france[data_nom].jour_nom;
-
-    var trace2 = {
-        x: data_France.france[jour_nom],
-        y: data_France.france[data_nom].valeur,
-        hovertemplate: '%{y:.1f} nouvelles admissions<br>%{x}<extra></extra>',
-        mode: 'lines',
-        type: 'scatter',
-        fill: 'tozeroy',
-        line: {
-            color: 'rgba(201, 4, 4, 1)',
-            width: 3
-        }
-    };
-
-    let N = data_France.france[jour_nom].length;
-    let x_min = data_France.france[jour_nom][N-300];
-    let x_max = data_France.france[jour_nom][N-1];
-    let y_min = 0;
-    let y_max = Math.max.apply(Math, data_France.france[data_nom].valeur.slice(-300));
-
-    var layout = { 
-        images: IMAGES,
-        font: {size: 15},
-        legend: {"orientation": "h"},
-        annotations: [
-            {
-            x: x_max,
-            y: data_France.france[data_nom].valeur[N-1],
-            xref: 'x',
-            yref: 'y',
-            text: printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>admissions",
-            showarrow: true,
-            font: {
-                family: 'Helvetica Neue',
-                size: 13,
-                color: 'rgba(201, 4, 4, 1)'
-            },
-            align: 'center',
-            arrowhead: 2,
-            arrowsize: 1,
-            arrowwidth: 1.5,
-            arrowcolor: 'rgba(201, 4, 4, 1)',
-            ax: -40,
-            ay: -30,
-            borderwidth: 1,
-            borderpad: 2,
-            bgcolor: 'rgba(256, 256, 256, 0.5)',
-            opacity: 0.8
-            }
-        ],
-        margin: {
-            l: 30,
-            r: 0,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
-        xaxis: {
-            tickfont: {size: 10},
-            range: [x_min, x_max],
-        },
-        yaxis: {
-            range: [y_min, y_max]
-        }
-    };
-
-    var data = [trace2];
-
-    Plotly.newPlot('nouvelles_reanimations', data, layout, config);
-}
-
-function buildChartNouvellesReanimationsTauxDeCroissance(){
-    let MAX_VALUES = 100;
-    let data_nom = "croissance_incid_reanimations";
-    let jour_nom = data_France.france[data_nom].jour_nom;
-    let N = data_France.france[jour_nom].length;
-
-    var trace1 = {
-        x: data_France.france[jour_nom].slice(9, N-3),
-        y: data_France.france[data_nom+"_rolling7"].valeur.slice(9, N-3),
-        hovertemplate: 'Évolution nouvelles admissions (moyenne) : %{y:.1f} %<br>%{x}<extra></extra>',
-        name: "Taux de croissance de la moyenne 7j",
-        type: 'line',
-        line: {
-            color: 'black',
-            width: 3
-        }
-    };
-
-    var bar_colors = [];
-    data_France.france[data_nom].valeur.map((value, idx) => {
-        if(value>0){
-            bar_colors.push("#ff4d4d");
-        } else {
-            bar_colors.push("#70db70");
-        }
-    })
-
-    var trace2 = {
-        x: data_France.france[jour_nom],
-        y: data_France.france[data_nom].valeur,
-        hovertemplate: 'Évolution nouvelles admissions : %{y:.1f} %<br>%{x}<extra></extra>',
-        name: 'Taux de croissance',
-        type: 'bar',
-        fill: 'tozeroy',
-        marker: {
-            color: bar_colors
-        }
-    };
-
-    let x_min = data_France.france[jour_nom][N-MAX_VALUES];
-    let x_last = data_France.france[jour_nom][N-1];
-    let x_max = moment(x_last, "YYYY-MM-DD").add('days', 1).format("YYYY-MM-DD");
-
-    let y_min = Math.min.apply(Math, data_France.france[data_nom].valeur.slice(-MAX_VALUES));
-    let y_max = Math.max.apply(Math, data_France.france[data_nom].valeur.slice(-MAX_VALUES));
-
-    var layout = { 
-        images: IMAGES,
-        font: {size: 12},
-        legend: {"orientation": "h"},
-        annotations: [
-            {
-            x: data_France.france[jour_nom][N-4],
-            y: data_France.france[data_nom+"_rolling7"].valeur[N-4],
-            xref: 'x',
-            yref: 'y',
-            text: printableTaux(data_France.france[data_nom+"_rolling7"].valeur[N-4]) + " %",
-            showarrow: true,
-            font: {
-                family: 'Helvetica Neue',
-                size: 13,
-                color: 'rgba(0, 0, 0, 1)'
-            },
-            align: 'center',
-            arrowhead: 2,
-            arrowsize: 1,
-            arrowwidth: 1.5,
-            arrowcolor: 'rgba(0, 0, 0, 1)',
-            ax: -10,
-            ay: -30,
-            borderwidth: 1,
-            borderpad: 2,
-            bgcolor: 'rgba(256, 256, 256, 0.5)',
-            opacity: 0.8
-            }
-        ],
-        margin: {
-            l: 40,
-            r: 10,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
-        xaxis: {
-            tickfont: {size: 10},
-            range: [x_min, x_max],
-        },
-        yaxis: {
-            range: [y_min, y_max],
-            ticksuffix: '%',
-        }
-    };
-    var data = [trace1, trace2];
-
-    Plotly.newPlot('nouvelles_reanimations_taux_croissance', data, layout, config);
+    Plotly.newPlot('deces_taux_croissance', data, layout, config);
 }
 
 
