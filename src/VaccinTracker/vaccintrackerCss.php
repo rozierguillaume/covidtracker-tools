@@ -166,10 +166,14 @@
         background-color: #58c7b2;
         /* #6fbac4 #3fbf8f */
     }
-
+    
     .darkgreen {
         background-color: #319986;
         /*#569d9f  #229c6e*/
+    }
+
+    .darkdarkgreen {
+        background-color: #1e7363;
     }
 
     .red {

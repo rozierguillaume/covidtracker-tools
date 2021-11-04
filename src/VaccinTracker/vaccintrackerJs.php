@@ -390,11 +390,13 @@
         document.getElementById("nb_vaccines_totalement").innerHTML = numberWithSpaces(nbVaccinesTroisDoses);
         document.getElementById("nb_vaccines_24h_totalement").innerHTML = numberWithSpaces(nbVaccinesTroisDoses24h);
 
-        proportionVaccinesPartiellement = dejaVaccinesNb / 67000000 * 100
-        proportionVaccinesTotalement = nbVaccinesComplet / 67000000 * 100
+        proportionVaccinesPartiellement = dejaVaccinesNb / 67407241 * 100
+        proportionVaccinesTotalement = nbVaccinesComplet / 67407241 * 100
+        proportionVaccinesRappel = nbVaccinesTroisDoses / 67407241 * 100
 
         proportionVaccinesPartiellementPlus12Ans = dejaVaccinesNb / 57656000 * 100
         proportionVaccinesCompletementPlus12Ans = nbVaccinesComplet / 57656000 * 100
+        proportionVaccinesRappelPlus12Ans = nbVaccinesTroisDoses / 57656000 * 100
 
         date = data_france.dates[data_france.dates.length - 1]
         document.getElementById("date_maj_2").innerHTML = date.slice(8) + "/" + date.slice(5, 7);
@@ -514,6 +516,8 @@
     function buildLineChart() {
         var ctx = document.getElementById('lineVacChart').getContext('2d');
         let data_values = data_france.n_cum_dose1.map((val, idx) => ({x: data_france.dates[idx], y: parseInt(val)}));
+        let data_values_rappel = data_france.n_cum_dose3.map((val, idx) => ({x: data_france.dates[idx], y: parseInt(val)}));
+
         let data_values_2nd = data_france.n_cum_complet.map((val, idx) => ({
             x: data_france.dates[idx],
             y: parseInt(val)
@@ -535,11 +539,20 @@
         let N2 = data_values_2doses.length;
 
         var datasets = [
-
+            {
+                yAxisID: "injections",
+                label: 'Personnes vaccinées (rappel) ',
+                data: data_values_rappel,
+                borderWidth: 0.1,
+                backgroundColor: '#0676bd',
+                borderColor: '#127aba',
+                pointRadius: 0,
+                pointHitRadius: 1,
+            },
             {
                 yAxisID: "injections",
                 label: 'Personnes totalement vaccinées ',
-                data: data_values_2nd, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
+                data: data_values_2nd,
                 borderWidth: 0.1,
                 backgroundColor: '#1796e6',
                 borderColor: '#127aba',
@@ -566,50 +579,48 @@
         projections_dates1 = datesProjection(data_france.dates[data_france.dates.length - 1], 50)
 
 
-        datasets.push({
-            yAxisID: "injections",
-            label: 'Projection totalement vaccinées ',
-            data: projections_dose2.map((value, idx) => ({x: projections_dates1[idx], y: value})),
-            borderWidth: 2,
-            //backgroundColor: '#a1cbe6',
-            fill: false,
-            borderColor: '#127aba',
-            pointRadius: 0,
-            cubicInterpolationMode: 'linear',
-            pointHitRadius: 1,
-            borderDash: [3, 2]
-        });
-        datasets.push({
-            yAxisID: "injections",
-            label: 'Projection partiellement vaccinées ',
-            data: projections_dose1.map((value, idx) => ({x: projections_dates2[idx], y: value})),
-            borderWidth: 2,
-            //backgroundColor: '#a1cbe6',
-            fill: false,
-            borderColor: '#3691c9',
-            pointRadius: 0,
-            cubicInterpolationMode: 'linear',
-            pointHitRadius: 1,
-            borderDash: [3, 2]
-        });
+        // datasets.push({
+        //     yAxisID: "injections",
+        //     label: 'Projection totalement vaccinées ',
+        //     data: projections_dose2.map((value, idx) => ({x: projections_dates1[idx], y: value})),
+        //     borderWidth: 2,
+        //     fill: false,
+        //     borderColor: '#127aba',
+        //     pointRadius: 0,
+        //     cubicInterpolationMode: 'linear',
+        //     pointHitRadius: 1,
+        //     borderDash: [3, 2]
+        // });
+        // datasets.push({
+        //     yAxisID: "injections",
+        //     label: 'Projection partiellement vaccinées ',
+        //     data: projections_dose1.map((value, idx) => ({x: projections_dates2[idx], y: value})),
+        //     borderWidth: 2,
+        //     fill: false,
+        //     borderColor: '#3691c9',
+        //     pointRadius: 0,
+        //     cubicInterpolationMode: 'linear',
+        //     pointHitRadius: 1,
+        //     borderDash: [3, 2]
+        // });
 
-        let data_objectifs = calculateObjectifs(50000000, data_france.n_cum_dose1[data_france.n_cum_dose1.length -1],
-                                               data_france.dates[data_france.dates.length -1],
-                                               50);
+        // let data_objectifs = calculateObjectifs(50000000, data_france.n_cum_dose1[data_france.n_cum_dose1.length -1],
+        //                                        data_france.dates[data_france.dates.length -1],
+        //                                        50);
 
-        datasets.push({
-            yAxisID: "injections",
-            label: 'Objectif 50M fin août ',
-            data: data_objectifs,
-            borderWidth: 2,
-            //backgroundColor: '#a1cbe6',
-            fill: false,
-            borderColor: '#cb1322',
-            pointRadius: 0,
-            cubicInterpolationMode: 'linear',
-            pointHitRadius: 1,
-            borderDash: [3, 2]
-        });
+        // datasets.push({
+        //     yAxisID: "injections",
+        //     label: 'Objectif 50M fin août ',
+        //     data: data_objectifs,
+        //     borderWidth: 2,
+        //     //backgroundColor: '#a1cbe6',
+        //     fill: false,
+        //     borderColor: '#cb1322',
+        //     pointRadius: 0,
+        //     cubicInterpolationMode: 'linear',
+        //     pointHitRadius: 1,
+        //     borderDash: [3, 2]
+        // });
 
 
         this.lineChart = new Chart(ctx, {
@@ -1064,7 +1075,9 @@
                     for (let l = 0; l < 10; l++) {
                         let caseNb = i * 10 + j + 0.1 * k + 0.01 * l + 0.01
                         let newsubrow = subrow.insertCell(l);
-                        if (caseNb <= proportionVaccinesTotalement) {
+                        if (caseNb <= proportionVaccinesRappel) {
+                            newsubrow.classList.add('darkdarkgreen');
+                        } else if (caseNb <= proportionVaccinesTotalement) {
                             newsubrow.classList.add('darkgreen');
                         } else if (caseNb <= proportionVaccinesTotalement + 0.01) {
                             newsubrow.classList.add('animation-seconde-dose');
@@ -1149,10 +1162,12 @@
         if(value=="plus12ans"){
             document.getElementById("proportionAVaccinerImmu").innerHTML = (Math.round((N_VAX_OBJECTIF-proportionVaccinesPartiellementPlus12Ans) * 10000000) / 10000000).toFixed(1);
             document.getElementById("proportionVaccinesTotalement").innerHTML = (Math.round(proportionVaccinesCompletementPlus12Ans * 10000000) / 10000000).toFixed(1);
+            document.getElementById("proportionVaccinesRappel").innerHTML = (Math.round(proportionVaccinesRappelPlus12Ans * 10000000) / 10000000).toFixed(1);
             document.getElementById("proportionVaccinesMax").innerHTML = (Math.round(proportionVaccinesPartiellementPlus12Ans * 10000000) / 10000000).toFixed(1);
         } else {
             document.getElementById("proportionAVaccinerImmu").innerHTML = (Math.round((restantaVaccinerImmunite) * 10000000) / 10000000).toFixed(1);
             document.getElementById("proportionVaccinesTotalement").innerHTML = (Math.round(proportionVaccinesTotalement * 10000000) / 10000000).toFixed(1);
+            document.getElementById("proportionVaccinesRappel").innerHTML = (Math.round(proportionVaccinesRappel * 10000000) / 10000000).toFixed(1);
             document.getElementById("proportionVaccinesMax").innerHTML = (Math.round(dejaVaccines * 10000000) / 10000000).toFixed(1);
 
         }

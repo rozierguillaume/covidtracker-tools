@@ -48,29 +48,11 @@
 
 <?php include(__DIR__.'/proportionVaccines.php'); ?>
 <?php include(__DIR__.'/evolution.php'); ?>
-<?php include(__DIR__.'/typesVaccins.php'); ?>
 <?php include(__DIR__.'/repartition.php'); ?>
-
-<div class="alert alert-info clearFix" style="font-size: 18px;">
-    <div class="row">
-        <div class="col-md-8">
-            <small>À VOIR AUSSI...</small>
-            <br>
-            Combien de personnes reste-t-il à vacciner avant vous ? Estimez votre temps d'attente en fonction du rythme
-            actuel de vaccination.<br>
-        </div>
-        <div class="col-md-4 text-right">
-            <button class="btn-shadow">
-                <a href="https://covidtracker.fr/vaccinplanner" target="_blank" rel="noreferrer noopener">Accéder à 🗓
-                    <b>VaccinPlanner</b></a>
-            </button> &nbsp;&nbsp;
-        </div>
-    </div>
-</div>
+<?php include(__DIR__ . '/vaccinationsParAge.php') ?>
+<?php include(__DIR__.'/typesVaccins.php'); ?>
 
 <?php include(__DIR__ . '/vaccinationEHPAD.php') ?>
-<?php include(__DIR__ . '/vaccinationsParAge.php') ?>
-
 <?php include(__DIR__ . '/dansLeMonde.php') ?>
 <br>
 <br>
