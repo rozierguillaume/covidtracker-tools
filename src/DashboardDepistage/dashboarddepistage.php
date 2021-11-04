@@ -374,7 +374,7 @@ function buildChartCasTauxDePositivite(){
         annotations: [
             {
             x: x_max,
-            y: data_France.france.taux_positivite.valeur[-1],
+            y: data_France.france.taux_positivite.valeur[N-1],
             xref: 'x',
             yref: 'y',
             text: String(data_France.france.taux_positivite.valeur[N-1]) + ' %',
