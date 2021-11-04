@@ -43,7 +43,7 @@
 <!-- /wp:html -->
 
 <?php include(__DIR__.'/resume.php'); ?>
-<p style="font-size: 80%; padding-top: 17px;"><i><b>* 10 avril 2021 - Information sur les données de livraisons de vaccins.</b> Les données de livraison de vaccins fournies par le Ministère de la Santé considèrent que toutes les doses sont livrées le dimanche de chaque semaine. Or, les livraisons sont en réalité étalées sur toute la semaine. Cela entraine des graphiques où, sur certains jours, les courbes des injections dépassent les courbes des livraisons. Pour cette raison, à partir d'aujourd'hui nous considérerons que les livraisons sont effectuées le jeudi de chaque semaine, et non plus le dimanche.</i>  </p>
+<!--<p style="font-size: 80%; padding-top: 17px;"><i><b>* 10 avril 2021 - Information sur les données de livraisons de vaccins.</b> Les données de livraison de vaccins fournies par le Ministère de la Santé considèrent que toutes les doses sont livrées le dimanche de chaque semaine. Or, les livraisons sont en réalité étalées sur toute la semaine. Cela entraine des graphiques où, sur certains jours, les courbes des injections dépassent les courbes des livraisons. Pour cette raison, à partir d'aujourd'hui nous considérerons que les livraisons sont effectuées le jeudi de chaque semaine, et non plus le dimanche.</i>  </p>-->
 
 
 <?php include(__DIR__.'/proportionVaccines.php'); ?>
