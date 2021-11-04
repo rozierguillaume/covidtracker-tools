@@ -91,10 +91,10 @@ p {
 
 <body>
     <div class="btn-group btn-group-toggle" role="group" >
-        <a href="https://covidtracker.fr/dashboard-depistage" class="btn btn-secondary active">Dépistage</a>
+        <a href="https://covidtracker.fr/dashboard-depistage" class="btn btn-secondary">Dépistage</a>
         <a href="https://covidtracker.fr/dashboard-hospitalisations" class="btn btn-secondary">Hospitalisations</a>
         <a href="https://covidtracker.fr/dashboard-reanimations" class="btn btn-secondary">Soins critiques</a>
-        <a href="https://covidtracker.fr/dashboard-deces" class="btn btn-secondary">Décès</a>
+        <a href="https://covidtracker.fr/dashboard-deces" class="btn btn-secondary active">Décès</a>
     </div>
 
     <h2>Décès hospitaliers</h2>
