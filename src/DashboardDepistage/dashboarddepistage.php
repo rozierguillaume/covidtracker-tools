@@ -128,7 +128,7 @@ let BUTTONS_TO_REMOVE = ['toImage', 'zoomIn2d', 'zoomOut2d'];
 let config = {responsive: true, displaylogo: false, locale: 'fr', showAxisDragHandles: true, modeBarButtonsToRemove: BUTTONS_TO_REMOVE};
 let IMAGES = [
             {
-            x: 0.5,
+            x: 0.45,
             y: 1,
             sizex: 0.15,
             sizey: 0.15,

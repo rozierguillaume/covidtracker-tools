@@ -125,7 +125,7 @@ let BUTTONS_TO_REMOVE = ['toImage', 'zoomIn2d', 'zoomOut2d'];
 let config = {responsive: true, displaylogo: false, locale: 'fr', showAxisDragHandles: true, modeBarButtonsToRemove: BUTTONS_TO_REMOVE};
 let IMAGES = [
             {
-            x: 0.5,
+            x: 0.45,
             y: 1,
             sizex: 0.15,
             sizey: 0.15,
@@ -154,6 +154,19 @@ function download_data(){
     }
 }
 
+function printableTaux(n) {
+    n = (n<0?"":"+ ") + n;
+    n = n.replace('.', ',');
+    return n;
+    };
+
+function printableNumber(x){
+    x = Math.round(x);
+    x = x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "&nbsp;");
+    x = x.replace('.', ',');
+    return x
+};
+
 function buildChartHospitalisations(){
     let data_nom = "hospitalisations";
     let jour_nom = data_France.france[data_nom].jour_nom;
@@ -181,6 +194,32 @@ function buildChartHospitalisations(){
         images: IMAGES,
         font: {size: 15},
         legend: {"orientation": "h"},
+        annotations: [
+            {
+            x: x_max,
+            y: data_France.france[data_nom].valeur[N-1],
+            xref: 'x',
+            yref: 'y',
+            text: printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>hosp.",
+            showarrow: true,
+            font: {
+                family: 'Helvetica Neue',
+                size: 13,
+                color: 'rgba(209, 102, 21,1)'
+            },
+            align: 'center',
+            arrowhead: 2,
+            arrowsize: 1,
+            arrowwidth: 1.5,
+            arrowcolor: 'rgba(209, 102, 21,1)',
+            ax: -30,
+            ay: -30,
+            borderwidth: 1,
+            borderpad: 2,
+            bgcolor: 'rgba(256, 256, 256, 0.5)',
+            opacity: 0.8
+            }
+        ],
         margin: {
             l: 30,
             r: 0,
@@ -252,6 +291,32 @@ function buildChartHospitalisationsTauxDeCroissance(){
         images: IMAGES,
         font: {size: 12},
         legend: {"orientation": "h"},
+        annotations: [
+            {
+            x: data_France.france[jour_nom][N-4],
+            y: data_France.france[data_nom+"_rolling7"].valeur[N-4],
+            xref: 'x',
+            yref: 'y',
+            text: printableTaux(data_France.france[data_nom+"_rolling7"].valeur[N-4]) + " %",
+            showarrow: true,
+            font: {
+                family: 'Helvetica Neue',
+                size: 13,
+                color: 'rgba(0, 0, 0, 1)'
+            },
+            align: 'center',
+            arrowhead: 2,
+            arrowsize: 1,
+            arrowwidth: 1.5,
+            arrowcolor: 'rgba(0, 0, 0, 1)',
+            ax: -30,
+            ay: -30,
+            borderwidth: 1,
+            borderpad: 2,
+            bgcolor: 'rgba(256, 256, 256, 0.5)',
+            opacity: 0.8
+            }
+        ],
         margin: {
             l: 40,
             r: 10,
@@ -300,6 +365,32 @@ function buildChartNouvellesHospitalisations(){
         images: IMAGES,
         font: {size: 15},
         legend: {"orientation": "h"},
+        annotations: [
+            {
+            x: x_max,
+            y: data_France.france[data_nom].valeur[N-1],
+            xref: 'x',
+            yref: 'y',
+            text: printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>admissions",
+            showarrow: true,
+            font: {
+                family: 'Helvetica Neue',
+                size: 13,
+                color: 'rgba(209, 102, 21,1)'
+            },
+            align: 'center',
+            arrowhead: 2,
+            arrowsize: 1,
+            arrowwidth: 1.5,
+            arrowcolor: 'rgba(209, 102, 21,1)',
+            ax: -40,
+            ay: -30,
+            borderwidth: 1,
+            borderpad: 2,
+            bgcolor: 'rgba(256, 256, 256, 0.5)',
+            opacity: 0.8
+            }
+        ],
         margin: {
             l: 30,
             r: 0,
@@ -371,6 +462,32 @@ function buildChartNouvellesHospitalisationsTauxDeCroissance(){
         images: IMAGES,
         font: {size: 12},
         legend: {"orientation": "h"},
+        annotations: [
+            {
+            x: data_France.france[jour_nom][N-4],
+            y: data_France.france[data_nom+"_rolling7"].valeur[N-4],
+            xref: 'x',
+            yref: 'y',
+            text: printableTaux(data_France.france[data_nom+"_rolling7"].valeur[N-4]) + " %",
+            showarrow: true,
+            font: {
+                family: 'Helvetica Neue',
+                size: 13,
+                color: 'rgba(0, 0, 0, 1)'
+            },
+            align: 'center',
+            arrowhead: 2,
+            arrowsize: 1,
+            arrowwidth: 1.5,
+            arrowcolor: 'rgba(0, 0, 0, 1)',
+            ax: -30,
+            ay: -30,
+            borderwidth: 1,
+            borderpad: 2,
+            bgcolor: 'rgba(256, 256, 256, 0.5)',
+            opacity: 0.8
+            }
+        ],
         margin: {
             l: 40,
             r: 10,
