@@ -106,6 +106,14 @@ function buildLineChartAge(type){
             labels: data_age.age,
             datasets: [
                 {
+                label: 'Nombre de vaccinés (rappel) ',
+                data: data_age["n_tot_rappel"],
+                borderWidth: 3,
+                backgroundColor: "#0676bd",
+                borderWidth: 0,
+                cubicInterpolationMode: 'monotone',
+            },
+                {
                 label: 'Nombre de vaccinés (complètement) ',
                 data: data_age["n_tot_complet"],
                 borderWidth: 3,
@@ -340,7 +348,16 @@ function buildLineChartAge(type){
             data: {
                 labels: data_age.age,
                 datasets: [
-                    {
+                    
+                {
+                    label: 'Vaccinés (rappel) ',
+                    data: data_age["couv_tot_rappel"],
+                    borderWidth: 3,
+                    backgroundColor: "#0676bd",
+                    borderWidth: 0,
+                    cubicInterpolationMode: 'monotone',
+                },
+                {
                     label: 'Vaccinés (complètement) ',
                     data: data_age["couv_tot_complet"],
                     borderWidth: 3,

@@ -71,20 +71,6 @@
 <?php include(__DIR__ . '/vaccinationEHPAD.php') ?>
 <?php include(__DIR__ . '/vaccinationsParAge.php') ?>
 
-
-<div class="alert alert-warning" style="font-size: 18px; margin-top:40px; margin-bottom: 20px;">
-    <b>29 janvier - Information sur les données.</b> <i>Provenance des données</i> : jusqu’alors les données étaient
-    remontées manuellement par les ARS au Ministère de la Santé. Désormais, le Système d’Information VAC-SI est utilisé.
-    De petits écarts peuvent temporairement être observés le temps que toutes les données soient saisies. Les données du
-    jour concerneront désormais J-1. <i>Type des données</i> : les données concernent désormais le nombre de personnes
-    ayant reçu une dose (non plus le nombre de doses injectées). <a
-            href="https://solidarites-sante.gouv.fr/actualites/presse/communiques-de-presse/article/le-suivi-de-la-couverture-vaccinale-desormais-opere-via-vaccin-covid">Plus
-        d'informations</a>.
-</div>
-
-<?php include(__DIR__ . '/vaccin-map.html') ?>
-<?php include(__DIR__ . '/autorisations.php') ?>
-<?php include(__DIR__ . '/immuniteCollective.php') ?>
 <?php include(__DIR__ . '/dansLeMonde.php') ?>
 <br>
 <br>
