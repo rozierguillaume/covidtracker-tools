@@ -90,16 +90,11 @@ p {
 </style>
 
 <body>
-    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-    <label class="btn btn-secondary active">
-        <input type="radio" name="options" id="option1" autocomplete="off" checked> Active
-    </label>
-    <label class="btn btn-secondary">
-        <input type="radio" name="options" id="option2" autocomplete="off"> Radio
-    </label>
-    <label class="btn btn-secondary">
-        <input type="radio" name="options" id="option3" autocomplete="off"> Radio
-    </label>
+    <div class="btn-group btn-group-toggle" role="group" >
+        <a href="https://covidtracker.fr/dashboard-depistage" class="btn btn-secondary active">Dépistage</a>
+        <a href="https://covidtracker.fr/dashboard-hospitalisations" class="btn btn-secondary">Hospitalisations</a>
+        <a href="https://covidtracker.fr/dashboard-reanimations" class="btn btn-secondary">Soins critiques</a>
+        <a href="https://covidtracker.fr/dashboard-deces" class="btn btn-secondary">Décès</a>
     </div>
 
     <h2>Décès hospitaliers</h2>
