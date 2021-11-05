@@ -49,7 +49,7 @@
 <?php include(__DIR__.'/proportionVaccines.php'); ?>
 <?php include(__DIR__.'/evolution.php'); ?>
 <?php include(__DIR__.'/repartition.php'); ?>
-<?php include(__DIR__ . '/vaccinationsParAge.php') ?>
+<?php include(__DIR__. '/vaccinationsParAge.php') ?>
 <?php include(__DIR__.'/typesVaccins.php'); ?>
 
 <?php include(__DIR__ . '/vaccinationEHPAD.php') ?>

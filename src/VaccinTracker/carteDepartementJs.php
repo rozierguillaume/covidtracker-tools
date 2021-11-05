@@ -33,7 +33,8 @@
             "#0076bf"
         ];
 
-        fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/vacsi-dep.json')
+        fetch('https://raw.githubusercontent.com/CovidTrackerFr/data-utils/main/vaccination-ameli/data/output/donnees-vaccination-par-tranche-dage-type-de-vaccin-et-departement.json')
+        //https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/vacsi-dep.json
             .then(response => {
                 if (!response.ok) {
                     throw new Error("HTTP error " + response.status);
@@ -52,7 +53,7 @@
                 if (numeroDepartement == 'departements') {
                     continue;
                 }
-                total += donneesDepartementsVaccination[numeroDepartement]["n_dose1_cumsum_pop"];
+                total += donneesDepartementsVaccination[numeroDepartement]["taux_cumu_1_inj"];
                 count++;
             }
             return total/count;
@@ -88,7 +89,7 @@
                 if (numeroDepartement == 'departements') {
                     continue;
                 }
-                percentages.push(donneesDepartementsVaccination[numeroDepartement]["n_dose1_cumsum_pop"]);
+                percentages.push(donneesDepartementsVaccination[numeroDepartement]["taux_cumu_1_inj"]);
             }
             percentages = percentages.sort();
 
@@ -128,7 +129,7 @@
             vaccination = false;
 
            if (typeCarteDepartement == 'n_dose1_cumsum_pop') {
-                nomDonnee = "n_dose1_cumsum_pop";
+                nomDonnee = "taux_cumu_1_inj";
                 pourcentage = true;
                 plus = "";
             } else {
@@ -205,10 +206,10 @@
 
             $('.departement-detail').remove();
             donneesVaccinationDepartement = donneesDepartementsVaccination[numeroDepartement];
-            donneesJournalieresDepartement = donneesVaccinationDepartement['n_dose1_cumsum'];
+            donneesJournalieresDepartement = donneesVaccinationDepartement['taux_cumu_1_inj_temps'];
             datesJours = donneesVaccinationDepartement['dates'];
             vaccinesDepartement = donneesJournalieresDepartement[donneesJournalieresDepartement.length-1];
-            vaccinesDepartementPop = donneesVaccinationDepartement['n_dose1_cumsum_pop'];
+            vaccinesDepartementPop = donneesVaccinationDepartement['taux_cumu_1_inj'];
             vaccinesDepartement = numberWithSpaces(vaccinesDepartement);
 
             dateMaj = datesJours[datesJours.length-1]
@@ -227,7 +228,6 @@
             content = content.replace(/nomDepartement/g, nomDepartement);
             content = content.replace(/numeroDepartement/g, numeroDepartement);
             content = content.replace(/vaccinesDepartement/g, vaccinesDepartement);
-            content = content.replace(/vaccinesPopReg/g, vaccinesDepartementPop);
 
             content = content.replace(/dateMajDoses/g, parseInt(fullDate.getDate()).addZero() + '/' + (fullDate.getMonth() + 1).addZero());
 
@@ -316,7 +316,7 @@
             departement = $(this).data("num");
             nomDepartement = $("#listeDepartements option[data-num='" + departement + "']").val();
             if (typeCarteDepartement == 'n_dose1_cumsum_pop') {
-                $('#carte #map title').text(nomDepartement + ' (' + $(this).data("n_dose1_cumsum_pop").toFixed(2) + ')');
+                $('#carte #map title').text(nomDepartement + ' (' + $(this).data("taux_cumu_1_inj").toFixed(2) + ')');
             } else {
                 $('#carte #map title').text(nomDepartement);
             }
@@ -350,7 +350,7 @@
                     bornesup = tableauValeurs[idx+1];
                 }
                 $('#carte').find('svg path').filter(function(){
-                    let val = $(this).data('n_dose1_cumsum_pop');
+                    let val = $(this).data('taux_cumu_1_inj');
                     return val >= borneinf && val <= bornesup;
                 }).css({"stroke-width": '2.6', 'stroke': 'yellow'});
             },
