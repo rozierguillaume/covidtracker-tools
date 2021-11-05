@@ -21,6 +21,7 @@ CovidTracker.fr - Données : Ministère de la Santé
     <select name="type_age_evolution" id="type_age_evolution" onchange="switchEvolutionAge()">
         <option value="partiellement">Partiellement vaccinés</option>
         <option value="totalement">Totalement vaccinés</option>
+        <option value="rappel">Totalement vaccinés + rappel</option>
     </select>
 </div>
 <div class="chart-container" style="position: relative; height:80vh; width:100%">
@@ -85,9 +86,13 @@ function switchEvolutionAge(){
     if(type_donnees=="partiellement"){
         buildLineChartAgePop("couv_dose1")
     }
-    if(type_donnees=="totalement"){
+    else if(type_donnees=="totalement"){
         buildLineChartAgePop("couv_complet")
     }
+    else if(type_donnees=="rappel"){
+        buildLineChartAgePop("couv_rappel")
+    }
+
 }
 
 function buildLineChartAge(type){
@@ -189,7 +194,8 @@ function buildLineChartAge(type){
     function buildLineChartAgePop(type_donnees){
         
         var datasets = []
-        var colorscale = chroma.scale(['#440154FF', '#39568CFF', '#1E968BFF', '#73D055FF', '#FDE725FF'])
+        //var colorscale = chroma.scale(['#440154FF', '#39568CFF', '#1E968BFF', '#73D055FF', '#FDE725FF'])
+        var colorscale = chroma.scale(['#45006e', '#2e00a3', '#0071ad', '#f0dd0a', '#e8b009', '#e87109', '#e6160b'])
         var maxdate;
         Object.keys(data_age_all).map((value_age, idx) => {
             var data = data_age_all[value_age]
