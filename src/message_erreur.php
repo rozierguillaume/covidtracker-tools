@@ -1,5 +1,4 @@
-<!--<div class="alert alert-warning" role="alert">
-    <i>20 septembre •</i><b> Données vaccination non publiées</b><br>
-    Santé publique France indique : "<i>Suite à des incohérences rencontrées sur les données de vaccination depuis le 15 septembre, les indicateurs ne sont pas publiés. L'incident est en cours de résolution</i>". CovidTracker sera à jour dès que ces données seront de nouveau disponibles.
+<div class="alert alert-warning" role="alert">
+    <i>05 octobre •</i><b> Jours fériés : baisse artificielle des cas</b><br>
+    Les données épidémiques (nombre de cas, nombre de tests) sont sous évaluées en raison de la présence de jours fériés (1er et 11 novembre). Les données hospitalières sont faiblement impactées.
 </div>
--->
