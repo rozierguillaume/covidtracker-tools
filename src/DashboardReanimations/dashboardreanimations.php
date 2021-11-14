@@ -101,23 +101,38 @@ p {
 
     <h3>Nombre de personnes en soins critiques</h3>
     <p>Nombre de personnes en soins critiques dont réanimation pour Covid19.</p>
-    <div id="reanimations" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    <div id="reanimations" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
     <h3>Taux de croissance du nombre de soins critiques</h3>
     <p>Taux d'évolution du nombre de personnes en soins critiques dont réanimation pour Covid19.</p>
-    <div id="reanimations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    <div id="reanimations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
     
     <h2>Admissions en soins critiques</h2>
+    <div class="wrap">
+        <div class="one">
+            <span id="nb_total_admissions" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span><br>
+            <b>Nombre total d'admissions</b><br>
+            Nombre total d'admissions Covid19 en soins critiques depuis le printemps 2020.
+            <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span class="date_maj">--/--</span> • Source : Santé publique France</i></div>
+        </div>
+
+        <div class="one">
+            <span id="nb_quotidien_admissions" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span><br>
+            <b>Moyenne quotidienne d'admissions</b><br>
+            Nombre quotidien d'admissions Covid19 en soins critiques, en moyenne sur les 7 derniers jours.
+            <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span class="date_maj">--/--</span> • Source : Santé publique France</i></div>
+        </div>
+    </div> 
+    <br>
+
     <h3>Nouvelles admissions en réanimation</h3>
     <p>Nombre d'admissions quotidiennes en soins critiques dont réanimation pour Covid19.</p>
-    <div id="nouvelles_reanimations" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    <div id="nouvelles_reanimations" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
     <h3>Taux de croissance des nouvelles admissions</h3>
     <p>Taux d'évolution du nombre d'admissions quotidiennes en soins critiques dont réanimation pour Covid19.</p>
-    <div id="nouvelles_reanimations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; min-height: 300px; max-height: 800px;"></div>
+    <div id="nouvelles_reanimations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; min-height: 300px; max-height: 800px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
-    <br>
-    Données : Santé publique France
     <br>
   
     <?php include(__DIR__ . '/menuBasPage.php'); ?>
@@ -173,6 +188,19 @@ function printableNumber(x){
     x = x.replace('.', ',');
     return x
 };
+
+function updateDataAdmissions(){
+    N = data_France.france.incid_reanimations.valeur.length;
+    let jour_nom = data_France.france["incid_reanimations"].jour_nom;
+    let jour = data_France.france[jour_nom][N-1];
+
+    document.getElementById("nb_total_admissions").innerHTML = printableNumber(data_France.france.incid_reanimations_total.valeur);
+    document.getElementById("nb_quotidien_admissions").innerHTML = printableNumber(data_France.france.incid_reanimations.valeur[N-1]);
+
+    for (element of document.getElementsByClassName('date_maj')){
+            element.innerHTML = moment(jour, "YYYY-MM-DD").format("DD / MM / YYYY");
+        }
+}
 
 function buildChartReanimations(){
     let data_nom = "reanimations";
@@ -346,6 +374,8 @@ function buildChartReanimationsTauxDeCroissance(){
 }
 
 function buildChartNouvellesReanimations(){
+    updateDataAdmissions();
+
     let data_nom = "incid_reanimations";
     let jour_nom = data_France.france[data_nom].jour_nom;
 

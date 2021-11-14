@@ -8,6 +8,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js" integrity="sha512-igVQ7hyQVijOUlfg3OmcTZLwYJIBXU63xL9RC12xBHNpmGJAktDnzl9Iw0J4yrSaQtDxTTVlwhY730vphoVqJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/google-palette/1.1.0/palette.js" integrity="sha512-C8lBe+d5Peg8kU+0fyU+JfoDIf0kP1rQBuPwRSBNHqqvqaPu+rkjlY0zPPAqdJOLSFlVI+Wku32S7La7eFhvlA==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/humanize-duration/3.27.0/humanize-duration.min.js" integrity="sha512-C6XM91cD52KknT8jaQF1P2PrIRTrbMzq6hzFkc22Pionu774sZwVPJInNxfHNwPvPne3AMtnRWKunr9+/gQR5g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <style>
 .btn-actif{
@@ -98,26 +99,43 @@ p {
     </div>
 
     <h2>Cas positifs</h2>
+
+    <div class="wrap">
+        <div class="one">
+            <span id="nb_total_cas_positifs" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span><br>
+            <b>Nombre total de cas positifs</b><br>
+            Nombre total de cas positifs depuis le printemps 2020.
+            <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span class="date_maj">--/--</span> • Source : Santé publique France</i></div>
+        </div>
+
+        <div class="one">
+            <span id="nb_quotidien_cas_positifs" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span><br>
+            <b>Moyenne quotidienne de cas positifs</b><br>
+            Nombre quotidien de cas positifs, en moyenne sur les 7 derniers jours.
+            <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span class="date_maj">--/--</span> • Source : Santé publique France</i></div>
+        </div>
+    </div>
+    <br>
     <h3>Nombre de cas positifs</h3>
     <p>Nombre de résultats de tests positifs chaque jour, par date de prélèvement du test sur le patient (dernière donnée : J-3).</p>
-    <div id="cas" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    <div id="cas" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
     <h3>Taux de croissance des cas</h3>
     <p>Taux d'évolution du nombre de cas positifs (dernière donnée : J-3), en pourcent. Une barre rouge signifie une croissance des cas, une barre verte une décroissance.</p>
-    <div id="cas_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    <div id="cas_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
     <h3>Taux de positivité des tests</h3>
     <p>Proportion des tests qui sont positifs parmi l'ensemble des tests (dernière donnée : J-3).</p>
-    <div id="cas_taux_positivite" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    <div id="cas_taux_positivite" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
     <h2>Dépistage</h2>
     <h3>Nombre de tests effectués</h3>
     <p>Nombre total de tests Covid effectués chaque jour (antigéniques et PCR).</p>
-    <div id="tests" style="width: 95vw; height: 35vw; max-width: 1000px; min-height: 300px; max-height: 800px;"></div>
-
+    <div id="tests" style="width: 95vw; height: 35vw; max-width: 1000px; min-height: 300px; max-height: 800px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <br>
     <h3>Taux de croissance des tests effectués</h3>
     <p>Taux d'évolution du nombre de tests réalisés (dernière donnée : J-3), en pourcent. Une barre rouge signifie une croissance des tests, une barre verte une décroissance.</p>
-    <div id="tests_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; min-height: 300px; max-height: 800px;"></div>
+    <div id="tests_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; min-height: 300px; max-height: 800px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
     <br>
     Données : Santé publique France
@@ -178,7 +196,22 @@ function printableNumber(x){
     return x
 };
 
+function updateDataCas(){
+    N = data_France.france.cas.valeur.length;
+    let jour_nom = data_France.france["cas"].jour_nom;
+    let jour = data_France.france[jour_nom][N-1];
+
+    document.getElementById("nb_total_cas_positifs").innerHTML = printableNumber(data_France.france.cas_total.valeur);
+    document.getElementById("nb_quotidien_cas_positifs").innerHTML = printableNumber(data_France.france.cas.valeur[N-1]);
+
+    for (element of document.getElementsByClassName('date_maj')){
+            element.innerHTML = moment(jour, "YYYY-MM-DD").format("DD / MM / YYYY");
+        }
+}
+
 function buildChartCas(){
+    updateDataCas();
+
     var trace2 = {
         x: data_France.france.jour_incid,
         y: data_France.france.cas.valeur,
