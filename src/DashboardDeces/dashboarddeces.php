@@ -98,17 +98,31 @@ p {
     </div>
 
     <h2>Décès hospitaliers</h2>
+    <div class="wrap">
+        <div class="one">
+            <span id="nb_total_deces" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span><br>
+            <b>Décès hospitaliers (total)</b><br>
+            Nombre total de décès hospitaliers Covid19 depuis le printemps 2020.
+            <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span class="date_maj">--/--</span> • Source : Santé publique France</i></div>
+        </div>
+
+        <div class="one">
+            <span id="nb_quotidien_deces" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span><br>
+            <b>Décès hospitaliers (quotidien)</b><br>
+            Nombre quotidien de décès hospitaliers Covid19 en moyenne sur les 7 derniers jours.
+            <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span class="date_maj">--/--</span> • Source : Santé publique France</i></div>
+        </div>
+    </div> 
+    <br>
 
     <h3>Nombre de décès hospitaliers quotidien</h3>
     <p>Nombre de personnes décédées à l'hôpital pour Covid19 chaque jour.</p>
-    <div id="deces" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    <div id="deces" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
     <h3>Taux de croissance des décès hospitaliers</h3>
     <p>Taux d'évolution hebdomadaire du nombre quotidien de personnes décédées à l'hôpital pour Covid19.</p>
-    <div id="deces_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    <div id="deces_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
     
-    <br>
-    Données : Santé publique France
     <br>
   
     <?php include(__DIR__ . '/menuBasPage.php'); ?>
@@ -163,7 +177,22 @@ function printableNumber(x){
     return x
 };
 
+function updateDataDeces(){
+    N = data_France.france.deces_hospitaliers.valeur.length;
+    let jour_nom = data_France.france["deces_hospitaliers"].jour_nom;
+    let jour = data_France.france[jour_nom][N-1];
+
+    document.getElementById("nb_total_deces").innerHTML = printableNumber(data_France.france.deces_hospitaliers_total.valeur);
+    document.getElementById("nb_quotidien_deces").innerHTML = printableNumber(data_France.france.deces_hospitaliers.valeur[N-1]);
+
+    for (element of document.getElementsByClassName('date_maj')){
+            element.innerHTML = moment(jour, "YYYY-MM-DD").format("DD / MM / YYYY");
+        }
+}
+
 function buildChartDeces(){
+    updateDataDeces();
+
     let data_nom = "deces_hospitaliers";
     let jour_nom = "jour_new" //data_France.france[data_nom].jour_nom;
 

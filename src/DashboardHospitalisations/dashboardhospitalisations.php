@@ -112,14 +112,14 @@ p {
     <div class="wrap">
         <div class="one">
             <span id="nb_total_admissions" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span><br>
-            <b>Nombre total d'admissions</b><br>
+            <b>Admissions (total)</b><br>
             Nombre total d'admissions Covid19 à l'hôpital depuis le printemps 2020.
             <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span class="date_maj">--/--</span> • Source : Santé publique France</i></div>
         </div>
 
         <div class="one">
             <span id="nb_quotidien_admissions" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span><br>
-            <b>Moyenne quotidienne d'admissions</b><br>
+            <b>Admissions (quotidien)</b><br>
             Nombre quotidien d'admissions Covid19 à l'hôpital, en moyenne sur les 7 derniers jours.
             <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span class="date_maj">--/--</span> • Source : Santé publique France</i></div>
         </div>
