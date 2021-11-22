@@ -67,12 +67,22 @@
                 })
                 .then(json => {
                     donneesDepartementsVaccination = json;
-                   // console.log(donneesDepartementsVaccination);
                     fetchOtherData();
 
                 });
+            
+                fetch('https://raw.githubusercontent.com/CovidTrackerFr/data-utils/main/vaccination-ameli/data/output/donnees-vaccination-par-tranche-dage-type-de-vaccin-et-departement.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("HTTP error " + response.status);
+                    }
+                    return response.json();
+                })
+                .then(json => {
+                    donneesVaccinationAmeli = json;
+                    fetchOtherData();
 
-
+                });
 
             function fetchOtherData() {
                 fetch('https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/incidence_departements.json')
@@ -383,9 +393,9 @@
                 incidenceDepartement = donneesDepartements[nomDepartement]["incidence_cas"];
                 saturationRea = Math.round(donneesDepartements[nomDepartement]["saturation_rea"]);
                 tauxPositivite = donneesDepartements[nomDepartement]["taux_positivite"];
-                n_dose1_cumsum_pop = donneesDepartementsVaccination[numeroDepartement]["n_dose1_cumsum_pop"];
+                n_dose1_cumsum_pop = donneesVaccinationAmeli[numeroDepartement]["taux_cumu_1_inj"];
                 incidenceFrance = Math.round(donneesFrance["incidence_cas"]);
-                dateMajVaccination = donneesDepartementsVaccination[numeroDepartement]["dates"][donneesDepartementsVaccination[numeroDepartement]["dates"].length - 1]
+                dateMajVaccination = donneesVaccinationAmeli[numeroDepartement]["dates"][donneesVaccinationAmeli[numeroDepartement]["dates"].length - 1]
 
                 if (incidenceDepartement > 100) {
                     couleurIncidence = "red";
