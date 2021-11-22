@@ -5,26 +5,26 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
 <div class="wrap" shadow="">
     <div class="one">
         <h2 id="taux_incidence">--</h2>
-        <span id="taux_incidence_str" style="font-size: 60%;">-- ET --</span><br>
+        <span id="taux_incidence_str" style="font-size: 60%;">-- ET --</span> <span style="font-size: 60%;">•</span> <span id="date_taux_incidence" style="font-size: 60%;">--/--</span><br>
         <p><b>Taux d'incidence</b><br><span style="font-size: 85%">Nombre de cas par semaine pour 100k habitants. Le seuil d'alerte est 50.</span></p>
     </div>
 
     <div class="one">
         <h2 id="taux_positivite">--</h2>
-        <span id="taux_positivite_str" style="font-size: 60%;">-- ET --</span><br>
+        <span id="taux_positivite_str" style="font-size: 60%;">-- ET --</span> <span style="font-size: 60%;">•</span> <span id="date_taux_positivite" style="font-size: 60%;">--/--</span><br>
         <p><b>Taux de positivité</b><br><span style="font-size: 85%">Proportion des tests qui sont positifs parmi l'ensemble des tests.</span></p>
     </div>
 
     <div class="two">
         <h2 id="reffectif">--</h2>
-        <span id="reffectif_str" style="font-size: 60%;">-- ET --</span><br>
+        <span id="reffectif_str" style="font-size: 60%;">-- ET --</span> <span style="font-size: 60%;">•</span> <span id="date_reffectif" style="font-size: 60%;">--/--</span><br>
         <p><b>Taux de reproduction R</b><br><span style="font-size: 85%">Nombre de personnes contaminées par 1 malade. Au-dessus de R=1, l'épidémie progresse.</span></p>
     </div>
 
     <div class="three">
         <h2 id="sat_rea">--%</h2>
-        <span id="sat_rea_str" style="font-size: 60%;">-- ET --</span><br>
-        <p><b>Tension hospitalière</b><br><span style="font-size: 85%">Nombre de lits de réanimation occupés par les patients Covid19 par rapport au nombre de lits fin 2018.</span></p>
+        <span id="sat_rea_str" style="font-size: 60%;">-- ET --</span> <span style="font-size: 60%;">•</span> <span id="date_sat_rea" style="font-size: 60%;">--/--</span><br>
+        <p><b>Tension hospitalière</b><br><span style="font-size: 85%">Nombre de lits de soins critiques occupés par les patients Covid19 par rapport au nombre de lits fin 2018.</span></p>
     </div>
 </div>
 <br>
