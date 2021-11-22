@@ -8,7 +8,7 @@
 
     <div class="row nowrap" style="padding: 0px">
         <h3>Taux d'incidence</h3>
-        <span id="descriptionCarte">Nombre de personnes testées positives sur les 7 derniers jours pour 100 000 habitants</span> au <span id="dateCarte">--/--</span>
+        <span id="descriptionCarte">Nombre de personnes testées positives sur les 7 derniers jours pour 100 000 habitants</span>, données du <span id="dateCarte">--/--</span> (J-3)
         <br>
         <img
                 src="https://files.covidtracker.fr/covidtracker_vect.svg"
@@ -23,12 +23,6 @@
                 <div id="carte">
                     <?php include(__DIR__ . '/../DashboardDepartement/carteDepartements.php'); ?>
                 </div>
-                <!--
-                <div id="droitsCarte" style="font-size: 8px; font-style: italic; margin-top: 30px; ">
-                    Carte adaptée à partir d'une création
-                    <a target="_blank" href="https://fr.wikipedia.org/wiki/Fichier:Carte_vierge_d%C3%A9partements_fran%C3%A7ais_avec_DOM.svg">Wikipedia</a>
-                </div>
-                -->
             </div>
             <div id="legendeCarte" class="col-xs-2"></div>
         </div>

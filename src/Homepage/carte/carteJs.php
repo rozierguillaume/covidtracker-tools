@@ -24,7 +24,7 @@
             .then(json => {
                 donneesDepartements = json['donnees_departements'];
                 donneesFrance = json['donnees_france'];
-                dateMaj = json["date_update"];
+                dateMaj = json["date_donnees"];
                 colorerCarte();
             });
 
