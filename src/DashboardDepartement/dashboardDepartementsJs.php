@@ -87,6 +87,7 @@
                         donneesDepartements = json['donnees_departements'];
                         donneesFrance = json['donnees_france'];
                         dateMaj = json["date_update"];
+                        dateDepistage = json["date_donnees"]
                         colorerCarte();
                         selectionnerDepartement();
                     });
@@ -422,6 +423,7 @@
                 content = content.replaceAll('tauxPositivite', tauxPositivite + "%");
                 content = content.replaceAll('n_dose1_cumsum_pop', n_dose1_cumsum_pop + "%");
                 content = content.replaceAll('dateMaj', dateMaj);
+                content = content.replaceAll('dateTauxIncidence', dateDepistage+" (J-3)");
                 content = content.replaceAll('dateVaccinationMaj', dateMajVaccination);
                 content = content.replaceAll('couleurIncidence', couleurIncidence);
                 content = content.replaceAll('couleurSaturationRea', couleurSaturationRea);

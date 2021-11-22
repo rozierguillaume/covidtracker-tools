@@ -58,7 +58,7 @@ if (isset($_GET['dep']) and $_GET['dep']) {
                     <span style="font-size: 160%; color: couleurIncidence"><b>incidenceDepartement</b></span><br>
                     <span><b>Taux d'incidence</b><br>
                 Nombre de cas sur 7 jours pour 100k habitants. L'incidence moyenne en France est incidenceFrance, et le seuil d'alerte 50.<br></span>
-                    <span style="font-size: 70%;">Mise à jour : dateMaj</span>
+                    <span style="font-size: 70%;">Mise à jour : dateTauxIncidence</span>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">
@@ -74,7 +74,7 @@ if (isset($_GET['dep']) and $_GET['dep']) {
                     <span style="font-size: 160%; color: couleurTauxPositivite"><b>tauxPositivite</b></span><br>
                     <span><b>Taux de positivité</b>
                 <br>Proportion de tests positifs dans l'ensemble des tests. Un chiffre bas peut être dû à une faible circulation du virus ou à un testing massif.</span><br>
-                    <span style="font-size: 70%;">Mise à jour : dateMaj</span>
+                    <span style="font-size: 70%;">Mise à jour : dateTauxIncidence</span>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">
