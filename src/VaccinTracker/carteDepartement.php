@@ -18,7 +18,7 @@
 
         </div>
         <div class="alert alert-info">
-            05 octobre 2021 : attention, depuis ce jour la carte affiche le nombre de personnes vaccinées par lieu de résidence, et non plus par lieu d'injection. Une personne habitant à Paris et vaccinée dans les Yvelines est désormais comptaibilisée à Paris.
+            05 octobre 2021 : attention, depuis ce jour la carte affiche le nombre de personnes vaccinées par lieu de résidence, et non plus par lieu d'injection. Une personne habitant à Paris et vaccinée dans les Yvelines est désormais comptabilisée à Paris.
         </div>
     </div>
     <div class="col-md-6" style="" id="donneesDepartements">
