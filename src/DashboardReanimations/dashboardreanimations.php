@@ -235,7 +235,7 @@ function buildChartReanimations(){
             y: data_France.france[data_nom].valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>soins crit.",
+            text: printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>soins crit.<br>" + printableTaux(data_France.france["croissance_"+data_nom].valeur[N-1]) + "%",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -408,7 +408,7 @@ function buildChartNouvellesReanimations(){
             y: data_France.france[data_nom].valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>admissions",
+            text: printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>admissions<br>" + printableTaux(data_France.france["croissance_" + data_nom + "_rolling7"].valeur[N-4]) + "%",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',

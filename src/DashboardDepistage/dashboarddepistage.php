@@ -493,7 +493,7 @@ function buildChartTests(){
             y: data_France.france.tests.valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: String(printableNumber(data_France.france.tests.valeur[N-1])) + '<br> tests',
+            text: String(printableNumber(data_France.france.tests.valeur[N-1])) + '<br> tests<br>' + printableTaux(data_France.france.croissance_tests_rolling7.valeur[N-4]) + "%",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
