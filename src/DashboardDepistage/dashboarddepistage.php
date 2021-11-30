@@ -115,9 +115,13 @@ p {
         </div>
     </div>
     <br>
-    <h3>Nombre de cas positifs</h3>
+    <h3>Nombre de cas positifs (date de prélèvement)</h3>
     <p>Nombre de résultats de tests positifs chaque jour, par date de prélèvement du test sur le patient (dernière donnée : J-3).</p>
     <div id="cas" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    
+    <h3>Nombre de cas positifs (date de publication)</h3>
+    <p>Nombre de résultats de tests positifs chaque jour, par date de saisie du résultat de test par le professionel de santé (dernière donnée : J-0).</p>
+    <div id="cas_spf" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
     <h3>Taux de croissance des cas</h3>
     <p>Taux d'évolution du nombre de cas positifs (dernière donnée : J-3), en pourcent. Une barre rouge signifie une croissance des cas, une barre verte une décroissance.</p>
@@ -174,6 +178,7 @@ function download_data(){
     request.onload = function() {
         data_France = request.response;
         buildChartCas();
+        buildChartCasSpf();
         buildChartCasTauxDeCroissance();
         buildChartCasTauxDePositivite();
         buildChartTests();
@@ -219,7 +224,7 @@ function buildChartCas(){
         type: 'bar',
         fill: 'tozeroy',
         marker: {
-            color: 'rgba(8, 115, 191, 0.2)'
+            color: 'rgba(8, 115, 191, 0.1)'
         }
     };
 
@@ -292,6 +297,91 @@ function buildChartCas(){
     var data = [trace_cas, trace_cas_rolling];
 
     Plotly.newPlot('cas', data, layout, config);
+}
+
+function buildChartCasSpf(){
+
+    var trace_cas = {
+        x: data_France.france.jour_ehpad,
+        y: data_France.france["cas_spf_brut"].valeur,
+        hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
+        name: "cas",
+        type: 'bar',
+        fill: 'tozeroy',
+        marker: {
+            color: 'rgba(8, 115, 191, 0.1)'
+        }
+    };
+
+    var trace_cas_rolling = {
+        x: data_France.france.jour_ehpad,
+        y: data_France.france.cas_spf.valeur,
+        hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
+        name: "Cas (moyenne 7 jours)",
+        mode: 'lines',
+        type: 'scatter',
+        fill: 'tozeroy',
+        line: {
+            color: 'rgb(8, 115, 191)',
+            width: 3
+        }
+    };
+
+    let N = data_France.france.jour_ehpad.length;
+    let x_min = data_France.france.jour_ehpad[N-300];
+    let x_max = data_France.france.jour_ehpad[N-1];
+    let y_min = 0;
+    let y_max = Math.max.apply(Math, data_France.france.cas_spf.valeur.slice(-300));
+
+    var layout = { 
+        images: IMAGES,
+        font: {size: 15},
+        legend: {"orientation": "h"},
+        margin: {
+            l: 30,
+            r: 20,
+            b: 20,
+            t: 0,
+            pad: 0
+        },
+        xaxis: {
+            tickfont: {size: 10},
+            range: [x_min, x_max],
+        },
+        yaxis: {
+            range: [y_min, y_max]
+        },
+        annotations: [
+            {
+            x: x_max,
+            y: data_France.france.cas_spf.valeur[N-1],
+            xref: 'x',
+            yref: 'y',
+            text: String(printableNumber(data_France.france.cas_spf.valeur[N-1])) + " cas",
+            showarrow: true,
+            font: {
+                family: 'Helvetica Neue',
+                size: 13,
+                color: 'rgb(8, 115, 191)'
+            },
+            align: 'center',
+            arrowhead: 2,
+            arrowsize: 1,
+            arrowwidth: 1.5,
+            arrowcolor: 'rgb(8, 115, 191)',
+            ax: -30,
+            ay: -30,
+            borderwidth: 1,
+            borderpad: 2,
+            bgcolor: 'rgba(256, 256, 256, 0.5)',
+            opacity: 0.8
+            }
+        ]
+    };
+
+    var data = [trace_cas, trace_cas_rolling];
+
+    Plotly.newPlot('cas_spf', data, layout, config);
 }
 
 function buildChartCasTauxDeCroissance(){
