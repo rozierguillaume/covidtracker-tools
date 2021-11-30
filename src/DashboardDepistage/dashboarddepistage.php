@@ -211,10 +211,23 @@ function updateDataCas(){
 function buildChartCas(){
     updateDataCas();
 
-    var trace2 = {
+    var trace_cas = {
+        x: data_France.france.jour_incid,
+        y: data_France.france.cas_brut.valeur,
+        hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
+        name: "cas",
+        type: 'bar',
+        fill: 'tozeroy',
+        marker: {
+            color: 'rgba(8, 115, 191, 0.2)'
+        }
+    };
+
+    var trace_cas_rolling = {
         x: data_France.france.jour_incid,
         y: data_France.france.cas.valeur,
         hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
+        name: "Cas (moyenne 7 jours)",
         mode: 'lines',
         type: 'scatter',
         fill: 'tozeroy',
@@ -276,7 +289,7 @@ function buildChartCas(){
         ]
     };
 
-    var data = [trace2];
+    var data = [trace_cas, trace_cas_rolling];
 
     Plotly.newPlot('cas', data, layout, config);
 }
