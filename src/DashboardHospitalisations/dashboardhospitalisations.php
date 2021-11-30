@@ -400,7 +400,7 @@ function buildChartNouvellesHospitalisations(){
 
     var layout = { 
         images: IMAGES,
-        font: {size: 15},
+        font: {size: 12},
         legend: {"orientation": "h"},
         annotations: [
             {
