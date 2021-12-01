@@ -41,6 +41,8 @@ Le deuxième, plus bas, permet d'explorer l'évolution de l'épidémie dans les 
 <h3 id="ages">Explorez les tranches d'âge</h3>
 <?php include(__DIR__ . '/dataexplorer_age.php'); ?>
 
+<?php include(__DIR__ . '/dataexplorer_niveaux_scolaires.php'); ?>
+
 <br><br><br>
 <h3 id="types">Explorez les types de données</h3>
 <?php include(__DIR__ . '/dataexplorer_types.php'); ?>
