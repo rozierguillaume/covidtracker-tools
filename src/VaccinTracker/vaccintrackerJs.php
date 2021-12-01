@@ -403,7 +403,7 @@
         date = data_france.dates[data_france.dates.length - 1]
         document.getElementById("date_maj_2").innerHTML = date.slice(8) + "/" + date.slice(5, 7);
 
-        tableVaccin(table, proportionVaccinesTotalement, proportionVaccinesPartiellement);
+        tableVaccin(table, proportionVaccinesTotalement, proportionVaccinesPartiellement, proportionVaccinesRappel);
         majValeursTable();
     }
 
@@ -412,12 +412,12 @@
         value = document.getElementById("selectTable").value;
 
         if(value=="plus12ans"){
-            tableVaccin(table, proportionVaccinesCompletementPlus12Ans, proportionVaccinesPartiellementPlus12Ans);
+            tableVaccin(table, proportionVaccinesCompletementPlus12Ans, proportionVaccinesPartiellementPlus12Ans, proportionVaccinesRappelPlus12Ans);
             for (element of document.getElementsByClassName('str-table-plus12ans')){
                 element.innerHTML = " éligibles (> 12 ans)"
             }
         } else {
-            tableVaccin(table, proportionVaccinesTotalement, proportionVaccinesPartiellement);
+            tableVaccin(table, proportionVaccinesTotalement, proportionVaccinesPartiellement, proportionVaccinesRappel);
             for (element of document.getElementsByClassName('str-table-plus12ans')){
                 element.innerHTML = ""
             }
@@ -1059,7 +1059,7 @@
         this.lineChart.update()
     }
 
-    function tableVaccin(tableElt, proportionVaccinesTotalement, proportionVaccinesPartiellement) {
+    function tableVaccin(tableElt, proportionVaccinesTotalement, proportionVaccinesPartiellement, proportionVaccinesRappel) {
         tableElt.innerHTML = "";
         let first = true;
         for (let i = 0; i < 10; i++) {
