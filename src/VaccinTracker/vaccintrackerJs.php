@@ -122,9 +122,11 @@
         return (arrData);
     }
 
+    const POPULATION_TOTALE = 67407241
+    const POPULATION_TOTALE_PLUS_12_ANS = 57656000
     const OBJECTIF_FIN_JANVIER = 1000000 // 1_000_000
     const OBJECTIF_FIN_AOUT = 52000000 // 1_000_000
-    const OBJECTIF_POPULATION_PLUS_12_ANS = 57656000
+    const OBJECTIF_POPULATION_PLUS_12_ANS = POPULATION_TOTALE_PLUS_12_ANS
     const OBJECTIF_MI_JUIN = 30000000
     const N_VAX_OBJECTIF = 100
     var data;
@@ -241,7 +243,7 @@
                 nb_vaccines = nb_vaccines.filter((v, i, a) => a.findIndex(t => (t.date == v.date)) === i); // suppression doublons
                 nb_vaccines = nb_vaccines.sortBy('date'); // tri par date
                 dejaVaccinesNb = nb_vaccines[nb_vaccines.length - 1].n_dose1
-                dejaVaccines = dejaVaccinesNb * 100 / 67000000;
+                dejaVaccines = dejaVaccinesNb * 100 / POPULATION_TOTALE;
                 restantaVaccinerImmunite = N_VAX_OBJECTIF - dejaVaccines
                 this.objectifQuotidien = calculerObjectif();
                 fetch2ndDosesData();
@@ -379,7 +381,7 @@
         let vaccines_2doses_24h = data_france.n_complet[data_france.n_complet.length - 1]
 
         //dejaVaccines2DosesNb = vaccines_2doses.n_dose2_cumsum[N-1];
-        //dejaVaccines2Doses = dejaVaccines2DosesNb*100/67000000;
+        //dejaVaccines2Doses = dejaVaccines2DosesNb*100/POPULATION_TOTALE;
 
         nbVaccinesComplet = data_france.n_cum_complet[data_france.n_cum_complet.length - 1]
         nbVaccinesTroisDoses = ndose_fra.n_cum_dose3[ndose_fra.n_cum_dose3.length - 1]
@@ -390,13 +392,13 @@
         document.getElementById("nb_vaccines_totalement").innerHTML = numberWithSpaces(nbVaccinesTroisDoses);
         document.getElementById("nb_vaccines_24h_totalement").innerHTML = numberWithSpaces(nbVaccinesTroisDoses24h);
 
-        proportionVaccinesPartiellement = dejaVaccinesNb / 67407241 * 100
-        proportionVaccinesTotalement = nbVaccinesComplet / 67407241 * 100
-        proportionVaccinesRappel = nbVaccinesTroisDoses / 67407241 * 100
+        proportionVaccinesPartiellement = dejaVaccinesNb / POPULATION_TOTALE * 100
+        proportionVaccinesTotalement = nbVaccinesComplet / POPULATION_TOTALE * 100
+        proportionVaccinesRappel = nbVaccinesTroisDoses / POPULATION_TOTALE * 100
 
-        proportionVaccinesPartiellementPlus12Ans = dejaVaccinesNb / 57656000 * 100
-        proportionVaccinesCompletementPlus12Ans = nbVaccinesComplet / 57656000 * 100
-        proportionVaccinesRappelPlus12Ans = nbVaccinesTroisDoses / 57656000 * 100
+        proportionVaccinesPartiellementPlus12Ans = dejaVaccinesNb / POPULATION_TOTALE_PLUS_12_ANS * 100
+        proportionVaccinesCompletementPlus12Ans = nbVaccinesComplet / POPULATION_TOTALE_PLUS_12_ANS * 100
+        proportionVaccinesRappelPlus12Ans = nbVaccinesTroisDoses / POPULATION_TOTALE_PLUS_12_ANS * 100
 
         date = data_france.dates[data_france.dates.length - 1]
         document.getElementById("date_maj_2").innerHTML = date.slice(8) + "/" + date.slice(5, 7);
