@@ -149,7 +149,7 @@ function sliderShifted(slider) {
 }
 
 // Replaces data if calculation can't be made
-function no_data(template, age, json_data_field, slider, raw_data, last_week, repos)
+function no_data(template, age, json_data_field, slider, raw_data, last_week, groupe1, groupe2)
 {
     
     var list_to_clean=["#description", '#chiffre_vax_evitables', '#group', '#premiere_conclu', '#conclusion', '#figure_wrap', '#button_non_vax', '#button_pop_generale']
@@ -169,12 +169,12 @@ function no_data(template, age, json_data_field, slider, raw_data, last_week, re
         template.querySelector("#slider_block").remove();
 }   
 
-    if(raw_data["data_by_week"][last_week]["data"][age]["Vaccinés"][json_data_field] == 0)
+    if(raw_data["data_by_week"][last_week]["data"][age][groupe1][json_data_field] == 0)
     {
         var message="<b> Aucun cas chez les vaccinés cette semaine ! </b> <br> <i> L'indicateur n'est donc pas calculable </i> ";
     }
 
-    else if(raw_data["data_by_week"][last_week]["data"][age]["Pas_vaccinés"][json_data_field] == 0)
+    else if(raw_data["data_by_week"][last_week]["data"][age][groupe2][json_data_field] == 0)
     {
         var message="<b>L'indicateur n'est pas calculable avec les données de la semaine. </b> ";
     }
