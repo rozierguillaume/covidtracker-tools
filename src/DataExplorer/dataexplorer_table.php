@@ -121,36 +121,24 @@ function replaceBadCharacters(dep){
 }
 
 var datatype_table = "incidence"
-var data_table;
+var data;
 var lastsort=0;
 var lastorder="desc";
 
-setTimeout(function () {
-    fetchDataTable();
-        }, 2000);
+// setTimeout(function () {
+//     fetchDataTable();
+//         }, 2000);
 
-function fetchDataTable(){
-    fetch('https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/dataexplorer_compr.json', {cache: 'no-cache'})
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("HTTP error " + response.status);
-            }
-            return response.json();
-        })
-        .then(json => {
-                this.data_table = json;
-                populateTable()
-            })
-        .catch(function () {
-            this.dataError = true;
-            console.log("error-x1")
-        }
-        )
+
+//execute_table();
+function execute_table(){
+    //await fetchData();
+    populateTable();
 }
 function header_table(){
-    jour_nom = data_table['france'][datatype_table].jour_nom
-    N = data_table['france'][datatype_table].valeur.length
-    var date = data_table['france'][jour_nom][N-1]
+    jour_nom = data['france'][datatype_table].jour_nom
+    N = data['france'][datatype_table].valeur.length
+    var date = data['france'][jour_nom][N-1]
 return `
 
         <tr>
@@ -208,16 +196,16 @@ function populateTable(){
     }
 
     var content_html=header_table()
-    var matrice = data_table[territoire].slice()
+    var matrice = data[territoire].slice()
     matrice.push('france')
 
     matrice.map((dep_id, idx) => {
-        if(datatype_table in data_table[dep_id]){
+        if(datatype_table in data[dep_id]){
             population = 1
 
             if(pour100kTable){
                 if(!incompatibles_pour100k.includes(datatype_table)){
-                population = data_table[dep_id].population/100000
+                population = data[dep_id].population/100000
                 }
             }
 
@@ -227,11 +215,11 @@ function populateTable(){
                 suffixe="%"
             }
 
-            N = data_table[dep_id][datatype_table].valeur.length
-            valeur_j0 = data_table[dep_id][datatype_table].valeur[N-1]/population
-            valeur_72h = data_table[dep_id][datatype_table].valeur[N-4]/population
-            valeur_j7 = data_table[dep_id][datatype_table].valeur[N-8]/population
-            valeur_j3 = data_table[dep_id][datatype_table].valeur[N-15]/population
+            N = data[dep_id][datatype_table].valeur.length
+            valeur_j0 = data[dep_id][datatype_table].valeur[N-1]/population
+            valeur_72h = data[dep_id][datatype_table].valeur[N-4]/population
+            valeur_j7 = data[dep_id][datatype_table].valeur[N-8]/population
+            valeur_j3 = data[dep_id][datatype_table].valeur[N-15]/population
 
             prefixe_evolution = ""
             color="black"
@@ -305,7 +293,7 @@ function populateTable(){
             complement_territoire = ""
 
             if (territoire=="departements"){
-                complement_territoire = data_table.departements_noms[dep_id]
+                complement_territoire = data.departements_noms[dep_id]
             }
 
             if(dep_id == "france"){
@@ -331,7 +319,7 @@ function populateTable(){
         chart_list = []
 
         matrice.map((dep_id, idx) => {
-            if(datatype_table in data_table[dep_id]){
+            if(datatype_table in data[dep_id]){
                 buildLittleChart(dep_id)
             } else {
                 console.log(dep_id)
@@ -348,10 +336,10 @@ function buildLittleChart(dep_id){
     var ctx = document.getElementById('littleChart'+dep_id).getContext('2d');
     ctx_list.push(ctx)
 
-    jour_nom = data_table[dep_id][datatype_table].jour_nom
-    N = data_table[dep_id][datatype_table].valeur.length
+    jour_nom = data[dep_id][datatype_table].jour_nom
+    N = data[dep_id][datatype_table].valeur.length
     DEB = 130
-    data_ch = data_table[dep_id][datatype_table].valeur.slice(DEB, N).map((value, idx) => ({x: data_table['france'][jour_nom][idx+DEB], y:value}))
+    data_ch = data[dep_id][datatype_table].valeur.slice(DEB, N).map((value, idx) => ({x: data['france'][jour_nom][idx+DEB], y:value}))
 
     var gradient = ctx_list[ctx_list.length-1].createLinearGradient(180, 0, 0, 0);
     gradient.addColorStop(0, 'rgba(58, 94, 153, 0.2)');   

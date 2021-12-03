@@ -469,7 +469,6 @@ function addTraceNiveauxScolaires(value, tranche, territoire_temp, param){
     
     hex_color="#"+niveaux_scolaires_seq[N];
     color=hexToRgbA(hex_color).match(/\d+/g);
-    console.log(niveaux_scolaires_data_temp)
     age_dataExplorerNiveauxScolairesChart.data.datasets.push({
         yAxisID: value,
         label: associationTranchesNiveauxScolairesNoms[tranche] + complement,

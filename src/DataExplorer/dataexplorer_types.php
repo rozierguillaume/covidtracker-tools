@@ -371,39 +371,25 @@ function populateTerritoiresTypes(){
 }
 
 
-setTimeout(function () {
-    fetchtype_data()
-            }, 1500);
+// setTimeout(function () {
+//     fetchtype_data()
+//             }, 1500);
 
-function fetchtype_data(){
-    fetch('https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/dataexplorer_compr.json', {cache: 'no-cache'})
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("HTTP error " + response.status);
-            }
-            return response.json();
-        })
-        .then(json => {
-                this.data = json;
-                console.log("init-t")
-                //associationTranches();
-                console.log("association-t")
-                //populateAgesSelect();
-                console.log("populate-t")
-                //Erreur au-dessus
-                populateTerritoiresTypes()
-                console.log("populate-territoires-t")
-                buildSliderTypes();
-                
-                console.log("done-t")
-                //telechargerImage()
-                
-            })
-        .catch(function () {
-            this.types_dataError = true;
-            console.log("error-x-t")
-        }
-        )
+function execute_types(){
+    //await fetchData();
+    console.log("init-t")
+    //associationTranches();
+    console.log("association-t")
+    //populateAgesSelect();
+    console.log("populate-t")
+    //Erreur au-dessus
+    populateTerritoiresTypes()
+    console.log("populate-territoires-t")
+    buildSliderTypes();
+
+    console.log("done-t")
+    //telechargerImage()
+  
 }
 
 function removeElementArray(arr, element){

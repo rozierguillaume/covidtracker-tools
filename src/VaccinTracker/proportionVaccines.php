@@ -1,7 +1,7 @@
 
 <h2 style="margin-top : 80px;">Proportion de personnes vaccinées</h2>
 Chaque carré correspond à 1% des Français<span class="str-table-plus12ans"></span>.
-Les carrés vert foncé <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:#319986;" /></svg> correspondent aux Français <span class="str-table-plus12ans"></span> complètement vaccinés
+Les carrés en vert très foncé <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:#1e7363;" /></svg> correspondent aux Français vaccinés avec une dose de rappel (3 doses, ou 2 doses si infection Covid). Les carrés vert foncé <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:#319986;" /></svg> correspondent aux Français <span class="str-table-plus12ans"></span> complètement vaccinés (2 doses, ou 1 dose si infection)
 et les carrés vert clair <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:#58c7b2;" /></svg> aux Français <span class="str-table-plus12ans"></span> ayant commencé leur vaccination. Les carrés gris <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill:rgba(0, 0, 0, 0.25);" /></svg> représentent les Français <span class="str-table-plus12ans"></span> qu'il faut vacciner avant d'atteindre un taux de vaccination de 100%.
 <!--Les carrés rouge clair <svg width="10" height="10"><rect x="0" y="0" width="60" height="60" style="fill: rgb(207, 169, 169);" /></svg>  représentent les autres Français non vaccinés. -->
 <i>Mise à jour : <span id="date_maj_3">--/--</span></i>

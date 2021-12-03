@@ -89,9 +89,22 @@
 
 <br>
 
+<br><br><br>
+<h3 id="ages">Explorez les tranches d'âge</h3>
+<?php include(__DIR__ . '/dataexplorer_age.php'); ?>
+
+<?php include(__DIR__ . '/dataexplorer_niveaux_scolaires.php'); ?>
+
+<br><br><br>
+
+<h3 id="types">Explorez les types de données</h3>
+<?php include(__DIR__ . '/dataexplorer_types.php'); ?>
+
+<?php include(__DIR__ . '/dataexplorer_table.php'); ?>
+
+
+
 <script>
-
-
 var dataExplorerChart;
 var selected_data=["incidence"];
 var selected_territoires=["france"];
@@ -524,8 +537,8 @@ function unselectAll(keep_selected){
     }
 }
 
-fetchData();
-function fetchData(){
+//fetchData();
+function fetchData(_callback){
     fetch('https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/dataexplorer_compr.json', {cache: 'no-cache'})
         .then(response => {
             if (!response.ok) {
@@ -535,23 +548,37 @@ function fetchData(){
         })
         .then(json => {
                 this.data = json;
-                console.log("init-terr")
-                populateTerritoireSelect();
-                //addTrace("incidence", "france");
-                console.log("0-terr")
-                
-                buildSlider();
-                console.log("1-terr")
-                buildChart()
-                console.log("2")
-                majDataUpdate();
-                //startTypesChart();
+                _callback();
             })
         .catch(function () {
             this.dataError = true;
             console.log("error-x1")
         }
         )
+}
+
+execute_next();
+function execute_next(value){
+    fetchData(function() {
+        console.log("init-terr")
+        populateTerritoireSelect();
+        //addTrace("incidence", "france");
+        console.log("0-terr")
+        
+        buildSlider();
+        console.log("1-terr")
+        buildChart()
+        console.log("2-terr")
+        majDataUpdate();
+        //startTypesChart();
+        console.log("3-terr")
+        execute_types();
+        console.log("4-terr")
+        //execute_table();
+        populateTable();
+
+    })
+    
 }
 
 function majDataUpdate(){

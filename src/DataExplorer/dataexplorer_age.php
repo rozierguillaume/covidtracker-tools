@@ -462,8 +462,6 @@ function truncate(value, n=15){
 
 function populateTerritoires(){
     console.log("enter_populate_territoires")
-    console.log(age_data.regions)
-    console.log(age_data.departements)
 
     html_code = "<optgroup label='Régions'>"
     age_data.regions.map((value, idx) => {
@@ -483,8 +481,8 @@ function populateTerritoires(){
 }
 
 setTimeout(function () {
-    fetchage_data();
-        }, 500);
+     fetchage_data();
+         }, 500);
 
 function fetchage_data(){
     fetch('https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/dataexplorer_compr_age.json', {cache: 'no-cache'})
