@@ -1,13 +1,13 @@
 
 <div class="row">
-    <div class="col-md-10 col-lg-8 col-xs-12">
-        <select id="select_region" class="selectors" autocomplete="off" onchange="selectRegion(this)">
+    <div class="col-md-10 col-lg-12 col-xs-12">
+        <select id="select_region" class="selectors" autocomplete="off" onchange="selectRegion(this)" style="display:none;">
 
             <optgroup label="France">
                 <option selected="selected" value="FR">Toute la France</option>
             </optgroup>
             
-            <optgroup label="Régions">
+            <optgroup label="Régions" disabled="disabled">
                 <option value="ARA">Auvergne-Rhône-Alpes</option>
                 <option value="BFC">Bourgogne-Franche-Comté</option>
                 <option value="BRE">Bretagne</option>
@@ -45,6 +45,15 @@
                 <option value="[80;+]">80 ans ou plus</option>
             
             </optgroup>
+
+        </select>
+         <select id="select_groupes" class="selectors" autocomplete="off" onchange="selectAge(this)">
+            <option value="vaccinés sans rappel vs non vaccinés" selected="selected">Vaccinés sans rappel vs. non vaccinés</option>
+
+            <option value="vaccinés avec rappel vs non vaccinés">Vaccinés avec rappel vs. non vaccinés</option>
+            <option value="vaccinés avec rappel vs vaccinés sans rappel" >Vaccinés avec rappel vs. vaccinés sans rappel</option>
+            
+        
 
         </select>
     </div>

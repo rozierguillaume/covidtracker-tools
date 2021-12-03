@@ -24,20 +24,18 @@
     <!-- Les graphiques HTML fonctionnent sur la base de templates qui sont en include.-->
     <?php include(__DIR__ . '/templates.php'); ?>
 
-    <br>
-    
+      <div class="alert alert-success" role="alert">
+    <i>03 decembre •</i><b> Nouveau</b><br>
+        VaxImpact vous permet désormais d'évaluer spécifiquement l'impact des doses de rappel.</a>
+    </div>
     <!--- Intro globale --->
-    <p><b>Combien d'hospitalisations ont été évitées grâce au vaccin Covid19 ? Quelle est l'importance de la non vaccination du Covid19 dans les décès hospitaliers ?</b> Cet outil permet d'évaluer l'impact de la vaccination sur les hospitalisations et décès de la Covid19.
-    Ces statistiques s'appuient sur les données issues des études de la DREES mises à jour chaque semaine (dernières données : du <span class="date-data-start">-/-/-</span> au <span class="date-data-end">-/-/-</span>). La méthodologie et les calculs sont décrits en bas de page.
+    <p><b>Cet outil permet d'évaluer l'impact de la vaccination sur les hospitalisations et cas de Covid19.</b><br>
+        Ces statistiques s'appuient sur les données issues de la DREES mises à jour chaque semaine.<br>
+        <i>Dernières données : <span class="date-data-start">-/-/-</span> - <span class="date-data-end">-/-/-</span></i>
+
     </p>
 
-    <div class="alert alert-warning" role="alert">
-    <i>29 octobre •</i><b> Changement de méthode</b><br>
-        La DREES a modifié sa méthodologie d'appariement du statut vaccinal des personnes hospitalisées. Cela engendre un nombre de non vaccinés un peu moins important parmi les hospitalisés. Les données et graphiques ont été mis à jour retrospectivement, depuis le début. <a href="https://drees.solidarites-sante.gouv.fr/recherche?f%5B0%5D=content_type%3A506">Plus d'informations</a>
-    </div>
 
-    <br>
-    <br>
     
     <div style="background: #f5f5f5; padding: 30px; border-radius: 20px;">
 
@@ -57,7 +55,6 @@
     <!--- Contenu des onglets qui sera généré en js --->
     <div class="tab-content" id="tabs" style="margin-top: 30px;"></div>
 
-    <br>
     <br>
 
     <!--- Affichage du cadre méthodologie --->
@@ -84,14 +81,17 @@
 <!--- Début JS --->
 <script>
 
+
 // Permet d'afficher un onglet de la navbar lorsqu'on clique dessus.
 $('#tabs_navbar a').click(function (e) {
      e.preventDefault()
 $(this).tab('show')
 })
 
+
 // Fonction principale, télécharge les données pour la région sélectionnée
-function download_data(region_code, first_load = false)
+function download_data(region_code, first_load = false, groupes_a_comparer, groupe1,groupe2)
+
 {
     var populate_region = false;
     if (region_code != "FR")
@@ -118,19 +118,20 @@ function download_data(region_code, first_load = false)
 
             })
             .then(function(){
-            populate_figures(stats_for_region, data_for_region, last_week_number, populate_region, first_load)
+            populate_figures(stats_for_region, data_for_region, last_week_number, populate_region, first_load,groupes_a_comparer, groupe1,groupe2)
             })
         });        
     
     }
 
+var groupes_a_comparer=document.getElementById("select_groupes").value;
+
     
 // Par défaut, on initialise tous les graphiques pour la france entière.
-download_data("FR", first_load = true);	
+download_data("FR", first_load = true, groupes_a_comparer, groupes_a_comparer.split(" vs ")[0], groupes_a_comparer.split(" vs ")[1]);	
 
   
-function populate_figures(stats, raw_data, last_week, populate_region = false, first_load = false){
-    
+function populate_figures(stats, raw_data, last_week, populate_region = false, first_load = false, groupes_a_comparer, groupe1, groupe2){
     // Cas
     fillFigure(
         stats,
@@ -150,8 +151,8 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
                 icon_color_vax : LIGHT_BLUE,
                 icon_color_non_vax : "orange",
                 title : "Réduction du risque de cas positifs",
-                intro : "Imaginons deux groupes de 100 personnes, l'un comportant des individus vaccinés de {0} qui sont testés chaque jour, et l'autre uniquement des individus non vaccinés qui sont eux aussi testés chaque jour. S'il y a une personne testée positive au Covid-19 chaque jour chez les vaccinés, alors il y aura probablement {1} personnes testées positives chaque jour chez les non-vaccinés.",
-                conclu : "Cela signifie qu'une personne non vaccinée a un risque multiplié par au moins {0} d'être infecté par le virus SARS-Cov2 par rapport à une personne vaccinée. À ce bénéfice individuel de la vaccination, il faut ajouter le bénéfice collectif : réduction des contaminations (protection individuelle et immunité collective) et donc réduction du risque individuel d'infection.",
+                intro : "Imaginons deux groupes, l'un comportant des individus {0} de {1}, et l'autre uniquement des individus {2}. S'il y a une personne testée positive au Covid-19 chez les {3}, alors il y aura probablement {4} personnes testées positives chez les {5}.",
+                conclu : "Cela signifie que les individus {0} ont un risque multiplié par {1} d'être contaminés au Covid-19 par rapport aux individus {2}. À ce bénéfice individuel de la vaccination, il faut ajouter le bénéfice collectif : réduction des contaminations (protection individuelle et immunité collective) et donc réduction du risque individuel d'infection.",
             },
             { 
                 figure_type : "fraction_attribuable",
@@ -159,13 +160,13 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
                 field_name : "Infections évitables",
                 icon_type : "virus",
                 icon_color_vax: "black",
-                icon_color_non_vax:"black",
+                icon_color_non_vazx:"black",
                 title : "Infections évitables",
-                intro : "Cet indicateur permet d'estimer la proportion des infections qui auraient pu être évitées par la vaccination.",
-                mini_conclu : "Cela signifie que sur 100 infections d'individus ayant {0} {1}, {2} cas auraient pu être évités par la vaccination.",
+                intro : "Cet indicateur permet d'estimer la proportion de cas de Covid-19 qui auraient pu être évités si tous les individus avaient été {0}.",
+                mini_conclu : "Cela signifie que sur 100 infections d'individus ayant {0} {1}, {2} cas auraient pu être évités s'ils avaient été {3}.",
                 conclu : "Cela signifie que sur les {0} infections observées le {1}, {2} infections auraient été directement évitables par la vaccination. D'autres infections auraient pu être indirectement évitées, la vaccination permettant de réduire les contaminations (protection individuelle et immunité collective).",
             }
-        ]
+        ], groupes_a_comparer, groupe1,groupe2
     );
 
     
@@ -189,8 +190,8 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
                 icon_color_vax : LIGHT_BLUE,
                 icon_color_non_vax : "orange",
                 title : "Réduction du risque d'admission à l'hôpital",
-                intro : "Imaginons deux groupes, l'un comportant des individus vaccinés de {0} et l'autre uniquement des individus non vaccinés. S'il y a une personne hospitalisée pour Covid-19 chaque jour dans le groupe des vaccinés, alors il y aura probablement {1} personnes hospitalisées chaque jour dans le groupe des non-vaccinés.",
-                conclu : "Cela signifie qu'une personne non vaccinée a un risque multiplié par {0} d'être hospitalisée pour Covid-19 par rapport à une personne vaccinée. À ce bénéfice individuel de la vaccination, il faut ajouter le bénéfice collectif : réduction des contaminations (protection individuelle et immunité collective) et donc réduction du risque individuel d'infection.",
+                intro : "Imaginons deux groupes, l'un comportant des individus {0} de {1} et l'autre uniquement des individus {2} du même âge. S'il y a une personne hospitalisée pour Covid-19 chaque jour chez les {3}, alors il y aura probablement {4} personnes hospitalisées chaque jour chez les {5}.",
+                conclu : "Cela signifie que les individus {0} ont un risque multiplié par {1} d'être hospitalisés pour Covid-19 par rapport aux individus {2}. À ce bénéfice individuel de la vaccination, il faut ajouter le bénéfice collectif : réduction des contaminations (protection individuelle et immunité collective) et donc réduction du risque individuel d'infection.",
             },
             { 
                 figure_type : "fraction_attribuable",
@@ -200,11 +201,11 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
                 icon_color_vax: "black",
                 icon_color_non_vax:"black",
                 title : "Admissions à l'hôpital évitables",
-                intro : "Cet indicateur permet d'estimer la proportion d'hospitalisations (hors réa.) pour Covid-19 qui auraient pu être évitées par la vaccination.",
-                mini_conclu : "Cela signifie que sur 100 hospitalisations pour Covid-19 ayant {0} {1}, {2} admissions auraient pu être évitées par la vaccination.",
+                intro : "Cet indicateur permet d'estimer la proportion d'hospitalisations (hors réa.) pour Covid-19 qui auraient pu être évitées si tous les individus avaient été {0}.",
+                mini_conclu : "Cela signifie que sur 100 hospitalisations pour Covid-19 ayant {0} {1}, {2} admissions auraient pu être évitées s'ils avaient été {3}.",
                 conclu : "Cela signifie que sur les {0} admissions hospitalières (hors réa.) observées le {1}, {2} hospitalisations auraient été directement évitables par la vaccination. D'autres admissions auraient pu être indirectement évités, la vaccination permettant de réduire les contaminations (protection individuelle et immunité collective).",
             }
-        ]
+        ], groupes_a_comparer, groupe1,groupe2
     );
 
     // Réanimations
@@ -226,8 +227,8 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
                 icon_color_vax : LIGHT_BLUE,
                 icon_color_non_vax : "orange",
                 title : "Réduction du risque d'admission en soins critiques",
-                intro : "Imaginons deux groupes, l'un comportant des individus vaccinés de {0} et l'autre uniquement des individus non vaccinés. S'il y a une personne admise par jour en réanimation pour Covid-19 dans le groupe des vaccinés, alors il y aura probablement {1} personnes admises chaque jour dans le groupe des non-vaccinés.",
-                conclu : "Cela signifie qu'une personne non vaccinée a un risque multiplié par {0} d'être admise en réanimation pour Covid-19 par rapport à une personne vaccinée. À ce bénéfice individuel de la vaccination, il faut ajouter le bénéfice collectif : réduction des contaminations (protection individuelle et immunité collective) et donc réduction du risque individuel d'infection.",
+                intro : "Imaginons deux groupes, l'un comportant des individus {0} de {1} et l'autre uniquement des individus {2} du même age. S'il y a une personne admise en soins critiques pour Covid-19 chaque jour chez les {3}, alors il y aura probablement {4} personnes admises en soins critiques chaque jour chez les {5}.",
+                conclu : "Cela signifie que les individus {0} ont un risque multiplié par {1} d'être admis en soins critiques pour Covid-19 par rapport aux individus {2}. À ce bénéfice individuel de la vaccination, il faut ajouter le bénéfice collectif : réduction des contaminations (protection individuelle et immunité collective) et donc réduction du risque individuel d'infection.",
             },
             { 
                 figure_type : "fraction_attribuable",
@@ -237,11 +238,11 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
                 icon_color_vax: "black",
                 icon_color_non_vax:"black",
                 title : "Admissions en soins critiques évitables",
-                intro : "Cet indicateur permet d'estimer la proportion d'admissions en soins critiques pour Covid-19 qui auraient pu être évitées par la vaccination.",
-                mini_conclu : "Cela signifie que sur 100 admissions en soins critiques pour Covid-19 ayant {0} {1}, {2} admissions auraient pu être évitées par la vaccination.",
+                intro : "Cet indicateur permet d'estimer la proportion d'admissions en soins critiques pour Covid-19 qui auraient pu être évitées si tous les individus avaient été {0}.",
+                mini_conclu : "Cela signifie que sur 100 admissions en soins critiques pour Covid-19 ayant {0} {1}, {2} admissions auraient pu être évitées s'ils avaient été {3}.",
                 conclu : "Cela signifie que sur les {0} admissions en soins critiques observées le {1}, {2} admissions auraient été directement évitables par la vaccination. D'autres admissions auraient pu être indirectement évités, la vaccination permettant de réduire les contaminations (protection individuelle et immunité collective).",
             }
-        ]
+        ], groupes_a_comparer, groupe1,groupe2
     );
 
     // if (populate_region == false)
@@ -291,7 +292,7 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
 }
 
 
-function fillFigure(stats, raw_data, last_week, active_tab_by_default, first_load, tab_name, json_data_field, graphique_intro, graphique_link, figures_data){
+function fillFigure(stats, raw_data, last_week, active_tab_by_default, first_load, tab_name, json_data_field, graphique_intro, graphique_link, figures_data, groupes_a_comparer, groupe1, groupe2){
 
     // On créé un div au nom de l'onglet en cours
     if (document.querySelector("#"+tab_name))
@@ -359,16 +360,16 @@ function fillFigure(stats, raw_data, last_week, active_tab_by_default, first_loa
         template = document.importNode(template.content, true);
         var age = document.getElementById("select_age")
         var age_text = age.options[age.selectedIndex].text;
-        age = age.value
-        var FER_population = (parseFloat(stats["data_by_week"][last_week]["data"][age][tab_name]["FER_population"])).toFixed(0);
-
+        age = age.value;
+        console.log(`breakpoint1${groupes_a_comparer}`);
+        var FER_population = (parseFloat(stats["data_by_week"][last_week]["data"][age][groupes_a_comparer][tab_name]["FER_population"])).toFixed(0);
         if (figure.figure_type=="reduction_risque"){
-            var raw_chiffre_non_vax = (parseFloat(stats["data_by_week"][last_week]["data"][age][tab_name]["risque_relatif"])).toFixed(0);
+            var raw_chiffre_non_vax = (parseFloat(stats["data_by_week"][last_week]["data"][age][groupes_a_comparer][tab_name]["risque_relatif"])).toFixed(0);
             var chiffre_vax = 1;
         }
 
         else if (figure.figure_type=="fraction_attribuable"){
-            var raw_chiffre_non_vax = (parseFloat(stats["data_by_week"][last_week]["data"][age][tab_name]["FER_exposes"])).toFixed(0);
+            var raw_chiffre_non_vax = (parseFloat(stats["data_by_week"][last_week]["data"][age][groupes_a_comparer][tab_name]["FER_exposes"])).toFixed(0);
             var chiffre_vax = 100-raw_chiffre_non_vax;
         }
 
@@ -388,15 +389,16 @@ function fillFigure(stats, raw_data, last_week, active_tab_by_default, first_loa
         }
 
         template.querySelector('#title').innerHTML = figure.title;
-        template.querySelector('#description').innerHTML = figure.intro.format(age_text.toLowerCase(), raw_chiffre_non_vax);
-
+        
         if (figure.figure_type=="reduction_risque"){
-
+            template.querySelector('#description').innerHTML = figure.intro.format(groupe1, age_text.toLowerCase(), groupe2, groupe1, raw_chiffre_non_vax, groupe2);
+            template.querySelector('#groupe1').innerHTML = `Groupe des ${groupe1} • `;
+            template.querySelector('#groupe2').innerHTML = `Groupe des ${groupe2} • `;
             template.querySelector('#chiffre_vax').innerHTML = chiffre_vax;
             template.querySelector('#chiffre_non_vax').innerHTML = chiffre_non_vax;
             template.querySelector('#figure_vax').innerHTML = vax_icons;
             template.querySelector('#figure_non_vax').innerHTML = non_vax_icons;
-            template.querySelector('#conclusion').innerHTML = figure.conclu.format(raw_chiffre_non_vax);
+            template.querySelector('#conclusion').innerHTML = figure.conclu.format(groupe2,raw_chiffre_non_vax,groupe1);
 
             var slider = "slider_{0}".format(tab_name);
             template.querySelector('#slider').setAttribute("id",slider);
@@ -408,13 +410,12 @@ function fillFigure(stats, raw_data, last_week, active_tab_by_default, first_loa
         }
 
         else if (figure.figure_type=="fraction_attribuable"){
-
-            template.querySelector('#premiere_conclu').innerHTML = figure.mini_conclu.format(age_text.toLowerCase(), "chez les non vaccinés", chiffre_non_vax);
+            template.querySelector('#premiere_conclu').innerHTML = figure.mini_conclu.format(age_text.toLowerCase(), `chez des individus ${groupe2}`, chiffre_non_vax, groupe1);
             template.querySelector('#premiere_conclu').setAttribute("tag",figure.mini_conclu);
             template.querySelector('#premiere_conclu').setAttribute("age",age_text.toLowerCase()); 
-            template.querySelector('#conclusion').innerHTML = figure.conclu.format(raw_data["data_by_week"][last_week]["data"][age]["Vaccinés"][json_data_field], format_date_to_day_month(stats["data_by_week"][last_week]["week_end_date"]), parseFloat(raw_data["data_by_week"][last_week]["data"][age]["Vaccinés"][json_data_field]*FER_population/100).toFixed(0));
+            // template.querySelector('#conclusion').innerHTML = figure.conclu.format(raw_data["data_by_week"][last_week]["data"][age][groupe1][json_data_field], format_date_to_day_month(stats["data_by_week"][last_week]["week_end_date"]), parseFloat(raw_data["data_by_week"][last_week]["data"][age][groupe1][json_data_field]*FER_population/100).toFixed(0));
             template.querySelector('#figure_vax').innerHTML = vax_icons + non_vax_icons;
-            template.querySelector('#group').innerHTML = figure.field_name + " chez les non vaccinés";
+            template.querySelector('#group').innerHTML = figure.field_name + " chez les "+groupe2;
             template.querySelector('#group').setAttribute("tag",figure.field_name);
             template.querySelector('#chiffre_vax_evitables').innerHTML = chiffre_non_vax;
             template.querySelector('#chiffre_vax_evitables').setAttribute("non_vaccines",chiffre_non_vax);
@@ -423,7 +424,7 @@ function fillFigure(stats, raw_data, last_week, active_tab_by_default, first_loa
         }
 
     if (raw_chiffre_non_vax == -1){
-        no_data(template, age, json_data_field, slider, raw_data, last_week);
+         (template, age, json_data_field, slider, raw_data, last_week, groupe1, groupe2);
     }
 
     if (graphe){div_container.appendChild(graphe);}
@@ -465,17 +466,19 @@ function selectRegion(selected){
     // }
 
     // On récupère les données pour la région directement ! 
-    download_data(selected.value);
+    download_data(selected.value, first_load=false,groupe_a_comparer, groupe1, groupe2);
 }
 
 
 // Récupère les données pour le bon âge
 function selectAge(selected){
 
-    var selector_region = document.getElementById("select_region")
+    var selector_region = document.getElementById("select_region");
 
+    var selector_groupes = document.getElementById("select_groupes");
     // On récupère les données pour la région directement ! 
-    download_data(selector_region.value);
+    download_data(selector_region.value, first_load=false,selector_groupes.value, selector_groupes.value.split(' vs ')[0], selector_groupes.value.split(' vs ')[1]);
 }
 
 </script>
+

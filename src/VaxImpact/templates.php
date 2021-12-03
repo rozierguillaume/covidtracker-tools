@@ -24,7 +24,7 @@
         <div class="wrap" style="margin-top: 18px;" id="figure_wrap">
 
             <div class="boxshadow">
-                <span style="color:#4fafd9; font-size: 18px;">Groupe vacciné • </span> <span style="color:#4fafd9; font-size: 18px; font-weight: bold;" id="chiffre_vax">--</span>
+                <span id="groupe1" style="color:#4fafd9; font-size: 18px;">groupe-- </span><span style="color:#4fafd9; font-size: 18px; font-weight: bold;" id="chiffre_vax">--</span>
                 <br>
                 <span style="font-size: 15px;" class="cumul_on">cumulé(e)(s) sur 1 jour</span>
                 <br>
@@ -32,7 +32,7 @@
             </div>
 
             <div class="boxshadow">
-                <span style="color:orange; font-size: 18px;">Groupe non vacciné • </span><span style="color:orange; font-size: 18px; font-weight: bold;" id="chiffre_non_vax">--</span>
+                <span id="groupe2" style="color:orange; font-size: 18px;">groupe--</span><span style="color:orange; font-size: 18px; font-weight: bold;" id="chiffre_non_vax">--</span>
                 <br>
                 <span style="font-size: 15px;" class="cumul_on">cumulé(e)(s) sur 1 jour</span>
                 <br>
@@ -55,9 +55,9 @@
         <h3 class="title emphasis" id="title"></h3>
         <p id="description"></p>
 
-        <button id="button_non_vax" onclick="button_attribuable(this)" class="btn-actif btn_event" role="button" value="chez les non vaccinés">Chez les non vaccinés</button>
+        <!-- <button id="button_non_vax" onclick="button_attribuable(this)" class="btn-actif btn_event" role="button" value="chez les non vaccinés">Chez les non vaccinés</button>
         <button id="button_pop_generale" onclick="button_attribuable(this)" class="btn-inactif btn_event" role="button" value="en population générale">En population générale</button>
-        
+         -->
         <div class="wrap" style="margin-top: 0px;" id="figure_wrap">
 
             <div class="boxshadow-wide" style="">

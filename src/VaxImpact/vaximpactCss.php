@@ -120,7 +120,7 @@ p {
     border:2px solid lightgray;
     border-radius:10px;
     padding:6px;
-    width:45%;
+    width:32%;
 }
 
 .emphasis {
