@@ -428,6 +428,7 @@ function fetchniveaux_scolaires_data(){
 
 function associationTranchesNiveauxScolaires(){
     console.log("enter associationTranchesNiveauxScolaires")
+    console.log(niveaux_scolaires_data)
     niveaux_scolaires_data.france.tranches_noms_scolaires.map((value, idx) => {associationTranchesNiveauxScolairesNoms[value]=niveaux_scolaires_data.france.tranches_noms_affichage_scolaires[idx]})
     console.log("exit associationTranchesNiveauxScolaires")
 }

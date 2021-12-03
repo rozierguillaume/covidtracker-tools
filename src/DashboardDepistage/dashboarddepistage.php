@@ -302,8 +302,8 @@ function buildChartCas(){
 function buildChartCasSpf(){
 
     var trace_cas = {
-        x: data_France.france.jour_ehpad,
-        y: data_France.france["cas_spf_brut"].valeur,
+        x: data_France.france.jour_spf_opendata,
+        y: data_France.france["cas_spf_opendata"].valeur,
         hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
         name: "cas",
         type: 'bar',
@@ -314,8 +314,8 @@ function buildChartCasSpf(){
     };
 
     var trace_cas_rolling = {
-        x: data_France.france.jour_ehpad,
-        y: data_France.france.cas_spf.valeur,
+        x: data_France.france.jour_spf_opendata,
+        y: data_France.france.cas_spf_opendata_rolling.valeur,
         hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
         name: "Cas (moyenne 7 jours)",
         mode: 'lines',
@@ -327,11 +327,11 @@ function buildChartCasSpf(){
         }
     };
 
-    let N = data_France.france.jour_ehpad.length;
-    let x_min = data_France.france.jour_ehpad[N-300];
-    let x_max = data_France.france.jour_ehpad[N-1];
+    let N = data_France.france.jour_spf_opendata.length;
+    let x_min = data_France.france.jour_spf_opendata[N-300];
+    let x_max = data_France.france.jour_spf_opendata[N-1];
     let y_min = 0;
-    let y_max = Math.max.apply(Math, data_France.france.cas_spf.valeur.slice(-300));
+    let y_max = Math.max.apply(Math, data_France.france.cas_spf_opendata_rolling.valeur.slice(-300));
 
     var layout = { 
         images: IMAGES,
@@ -354,10 +354,10 @@ function buildChartCasSpf(){
         annotations: [
             {
             x: x_max,
-            y: data_France.france.cas_spf.valeur[N-1],
+            y: data_France.france.cas_spf_opendata_rolling.valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: String(printableNumber(data_France.france.cas_spf.valeur[N-1])) + " cas",
+            text: String(printableNumber(data_France.france.cas_spf_opendata_rolling.valeur[N-1])) + " cas",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
