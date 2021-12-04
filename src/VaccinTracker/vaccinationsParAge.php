@@ -105,6 +105,9 @@ function buildLineChartAge(type){
     var data_vaccines_1_dose=[];
     data_age["n_tot_dose1"].map((value, idx) => {data_vaccines_1_dose.push(value - data_age["n_tot_complet"][idx])})
 
+    var data_vaccines_complet=[];
+    data_age["n_tot_complet"].map((value, idx) => {data_vaccines_complet.push(value - data_age["n_tot_rappel"][idx])})
+
     this.barChartAge = new Chart(ctx, {
         type: 'horizontalBar',
         data: {
@@ -120,7 +123,7 @@ function buildLineChartAge(type){
             },
                 {
                 label: 'Nombre de vaccinés (complètement) ',
-                data: data_age["n_tot_complet"],
+                data: data_vaccines_complet,
                 borderWidth: 3,
                 backgroundColor: "#1796e6",
                 borderWidth: 0,
