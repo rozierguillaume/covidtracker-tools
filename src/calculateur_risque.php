@@ -353,7 +353,6 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
       }
 
     function listHasChanged(id=0){
-
       let dep = document.getElementById('deps_list_choice_'+id).value;
       departements_a_afficher[id] = dep;
       updateButtonColor(dep);

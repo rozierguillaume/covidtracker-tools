@@ -143,18 +143,22 @@ p {
     <br>
     Données : Santé publique France
     <br>
-  
-    <?php include(__DIR__ . '/menuBasPage.php'); ?>
+
     <br>
+
+    <?php include(__DIR__ . '/dashboardhospitalisations.php'); ?>
+
+    
+
     <br>
    
 </body>
 
 <script>
 
-let BUTTONS_TO_REMOVE = ['toImage', 'zoomIn2d', 'zoomOut2d'];
-let config = {responsive: true, displaylogo: false, locale: 'fr', showAxisDragHandles: true, modeBarButtonsToRemove: BUTTONS_TO_REMOVE};
-let IMAGES = [
+var BUTTONS_TO_REMOVE = ['toImage', 'zoomIn2d', 'zoomOut2d'];
+var config = {responsive: true, displaylogo: false, locale: 'fr', showAxisDragHandles: true, modeBarButtonsToRemove: BUTTONS_TO_REMOVE};
+var IMAGES = [
             {
             x: 0.45,
             y: 1,
