@@ -351,7 +351,8 @@ function buildLineChartAge(type){
         document.getElementById("dateMajParAge").innerHTML = date.slice(8) + "/" + date.slice(5, 7);
 
         var ctx = document.getElementById('barChartAge').getContext('2d');
-        console.log(data_age["couv_tot_complet"])
+        var non_vaccines = [100, 100, 100, 100, 100, 100, 100];
+ 
         this.barChartAge = new Chart(ctx, {
             type: 'horizontalBar',
             data: {
@@ -384,7 +385,7 @@ function buildLineChartAge(type){
                 },
                 {
                     label: 'Non vaccinés ',
-                    data: [100, 100, 100, 100, 100, 100, 100],
+                    data: non_vaccines,
                     borderWidth: 3,
                     backgroundColor: "#ededed",
                     borderWidth: 0,
@@ -395,12 +396,18 @@ function buildLineChartAge(type){
             },
             options: {
                 tooltips: {
-                    filter: function (tooltipItem) {
-                        return tooltipItem.datasetIndex != 2;
-                    },
+                    //filter: function (tooltipItem) {
+                        //return tooltipItem.datasetIndex != 3;
+                    //},
                     callbacks: {
                         label: function(tooltipItem, data) {
-                        return data['datasets'][tooltipItem.datasetIndex]['label'] + ': ' + data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']] + ' %';
+                        if(tooltipItem.datasetIndex!=3){
+                            return data['datasets'][tooltipItem.datasetIndex]['label'] + ': ' + data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']] + ' %';
+                        } else {
+                            let partiellement = parseFloat(data['datasets'][2]['data'][tooltipItem['index']])
+                            let result = (100-partiellement).toFixed(2)
+                            return "Non-vaccinés : " + result + " %"
+                        }
                         }
                     }
                 },
