@@ -119,13 +119,18 @@ p {
     <p>Nombre de résultats de tests positifs chaque jour, par date de prélèvement du test sur le patient (dernière donnée : J-3).</p>
     <div id="cas" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
     
+    <h3>Taux de croissance des cas (date de prélèvement)</h3>
+    <p>Taux d'évolution du nombre de cas positifs (dernière donnée : J-3), en pourcent. Une barre rouge signifie une croissance des cas, une barre verte une décroissance.</p>
+    <div id="cas_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+
     <h3>Nombre de cas positifs (date de publication)</h3>
     <p>Nombre de résultats de tests positifs chaque jour, par date de saisie du résultat de test par le professionel de santé (dernière donnée : J-0).</p>
     <div id="cas_spf" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
-    <h3>Taux de croissance des cas</h3>
+    <h3>Taux de croissance des cas (date de publication)</h3>
     <p>Taux d'évolution du nombre de cas positifs (dernière donnée : J-3), en pourcent. Une barre rouge signifie une croissance des cas, une barre verte une décroissance.</p>
-    <div id="cas_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <div id="cas_spf_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+
 
     <h3>Taux de positivité des tests</h3>
     <p>Proportion des tests qui sont positifs parmi l'ensemble des tests (dernière donnée : J-3).</p>
@@ -180,6 +185,7 @@ function download_data(){
         buildChartCas();
         buildChartCasSpf();
         buildChartCasTauxDeCroissance();
+        buildChartCasSpfTauxDeCroissance();
         buildChartCasTauxDePositivite();
         buildChartTests();
         buildChartTestsTauxDeCroissance();
@@ -331,7 +337,7 @@ function buildChartCasSpf(){
     let x_min = data_France.france.jour_spf_opendata[N-300];
     let x_max = data_France.france.jour_spf_opendata[N-1];
     let y_min = 0;
-    let y_max = Math.max.apply(Math, data_France.france.cas_spf_opendata_rolling.valeur.slice(-300));
+    let y_max = 1.1*Math.max.apply(Math, data_France.france.cas_spf_opendata_rolling.valeur.slice(-300));
 
     var layout = { 
         images: IMAGES,
@@ -357,7 +363,9 @@ function buildChartCasSpf(){
             y: data_France.france.cas_spf_opendata_rolling.valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: String(printableNumber(data_France.france.cas_spf_opendata_rolling.valeur[N-1])) + " cas",
+            //text: String(printableNumber(data_France.france.cas_spf_opendata_rolling.valeur[N-1])) + " cas",
+            text: String(printableNumber(data_France.france.cas_spf_opendata_rolling.valeur[N-1])) + " cas<br>" + printableTaux(data_France.france.croissance_cas_spf_opendata_rolling7.valeur[N-4]) + "%",
+
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -479,6 +487,101 @@ function buildChartCasTauxDeCroissance(){
     Plotly.newPlot('cas_taux_croissance', data, layout, config);
 }
 
+function buildChartCasSpfTauxDeCroissance(){
+    let MAX_VALUES = 100;
+    let N = data_France.france.jour_spf_opendata.length;
+
+    var trace1 = {
+        x: data_France.france.jour_spf_opendata.slice(9, N-3),
+        y: data_France.france.croissance_cas_spf_opendata_rolling7.valeur.slice(9, N-3),
+        hovertemplate: '%{y:.1f}% cas en moyenne sur 7j.<br>%{x}<extra></extra>',
+        name: "Taux de croissance de la moyenne 7j",
+        type: 'line',
+        line: {
+            color: 'black',
+            width: 3
+        }
+    };
+
+    var bar_colors = [];
+    data_France.france.croissance_cas_spf_opendata.valeur.map((value, idx) => {
+        if(value>0){
+            bar_colors.push("#ff4d4d");
+        } else {
+            bar_colors.push("#70db70");
+        }
+    })
+
+    var trace2 = {
+        x: data_France.france.jour_spf_opendata,
+        y: data_France.france.croissance_cas_spf_opendata.valeur,
+        hovertemplate: '%{y:.1f}% cas en moyenne sur 7j.<br>%{x}<extra></extra>',
+        name: 'Taux de croissance',
+        type: 'bar',
+        fill: 'tozeroy',
+        marker: {
+            color: bar_colors
+        }
+    };
+
+    let x_min = data_France.france.jour_spf_opendata[N-MAX_VALUES];
+    let x_last = data_France.france.jour_spf_opendata[N-1];
+    let x_max = moment(x_last, "YYYY-MM-DD").add('days', 1).format("YYYY-MM-DD");
+
+    let y_min = Math.min.apply(Math, data_France.france.croissance_cas_spf_opendata.valeur.slice(-MAX_VALUES));
+    let y_max = Math.max.apply(Math, data_France.france.croissance_cas_spf_opendata.valeur.slice(-MAX_VALUES));
+
+    var layout = { 
+        images: IMAGES,
+        font: {size: 12},
+        legend: {"orientation": "h"},
+        annotations: [
+            {
+            x: data_France.france.jour_spf_opendata[N-4],
+            y: data_France.france.croissance_cas_spf_opendata_rolling7.valeur[N-4],
+            xref: 'x',
+            yref: 'y',
+            text: String(printableTaux(data_France.france.croissance_cas_spf_opendata_rolling7.valeur[N-4])) + ' %',
+            showarrow: true,
+            font: {
+                family: 'Helvetica Neue',
+                size: 13,
+                color: 'rgb(0, 0, 0)'
+            },
+            align: 'center',
+            arrowhead: 2,
+            arrowsize: 1,
+            arrowwidth: 1.5,
+            arrowcolor: 'rgb(0, 0, 0)',
+            ax: -20,
+            ay: -40,
+            borderwidth: 1,
+            borderpad: 2,
+            bgcolor: 'rgba(256, 256, 256, 0.5)',
+            opacity: 0.8
+            }
+        ],
+        margin: {
+            l: 40,
+            r: 10,
+            b: 20,
+            t: 0,
+            pad: 0
+        },
+        xaxis: {
+            tickfont: {size: 10},
+            range: [x_min, x_max],
+        },
+        yaxis: {
+            range: [y_min, y_max],
+            ticksuffix: '%',
+        }
+    };
+    var data = [trace1, trace2];
+
+    Plotly.newPlot('cas_spf_taux_croissance', data, layout, config);
+}
+
 function buildChartCasTauxDePositivite(){
     let MAX_VALUES = 100;
     let N = data_France.france.jour_incid.length;
@@ -571,7 +674,7 @@ function buildChartTests(){
     let x_min = data_France.france.jour_incid[N-300];
     let x_max = data_France.france.jour_incid[N-1];
     let y_min = 0;
-    let y_max = Math.max.apply(Math, data_France.france.tests.valeur.slice(-300));
+    let y_max = 1.1*Math.max.apply(Math, data_France.france.tests.valeur.slice(-300));
 
     var layout = { 
         images: IMAGES,
