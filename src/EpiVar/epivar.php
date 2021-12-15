@@ -89,11 +89,12 @@ p {
     <br>
     <h2>Résultats du modèle</h2>
 
-    <div style="border-radius: 15px; border: 1px solid grey;"><img src="https://raw.githubusercontent.com/CovidTrackerFr/forecast/main/output/model_booster_fit.png"/></div>
+    <div style="border-radius: 15px; border: 1px solid grey; padding: 5px; max-width: 950px;"><img src="https://raw.githubusercontent.com/CovidTrackerFr/forecast/main/output/model_booster_fit.png" style="max-width: 900px;"/></div>
     <br>
     <h2>Résultats de la semaine dernière</h2>
     <p>Ci-dessous les résultats produits par le modèle il y a 7 jours, comparés aux valeurs réelles observées. Cela permet de mesurer la justesse du modèle.</p>
-    <p><img src="https://raw.githubusercontent.com/CovidTrackerFr/forecast/main/output/model_booster_lastweek_fit.png"/></p>
+    <div style="border-radius: 15px; border: 1px solid grey; padding: 5px; max-width: 950px;"><img src="https://raw.githubusercontent.com/CovidTrackerFr/forecast/main/output/model_booster_lastweek_fit.png" style="max-width: 900px;"/></div>
+    <br>
     <p><strong>Auteurs et sources.</strong> Ce modèle a été initialement développé par Pierre Aldama, puis adapté par Guillaume Rozier. Les données proviennent de Santé Publique france et le Ministère de la Santé. Il est réactualisé quotidiennement. Les projections s'étalent sur les 14 prochains jours.</p>        
     <br>
     <?php include(__DIR__ . '/menuBasPage.php'); ?>
