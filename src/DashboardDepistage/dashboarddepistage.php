@@ -125,11 +125,11 @@ p {
 
     <h3>Nombre de cas positifs (date de publication)</h3>
     <p>Nombre de résultats de tests positifs chaque jour, par date de saisie du résultat de test par le professionel de santé (dernière donnée : J-0).</p>
-    <div id="cas_spf" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <div id="cas_spf" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj_spf_opendata">--/--</span></span></div>
 
     <h3>Taux de croissance des cas (date de publication)</h3>
-    <p>Taux d'évolution du nombre de cas positifs (dernière donnée : J-3), en pourcent. Une barre rouge signifie une croissance des cas, une barre verte une décroissance.</p>
-    <div id="cas_spf_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <p>Taux d'évolution du nombre de cas positifs, par date de saisie du résultat (dernière donnée : J-0), en pourcent. Une barre rouge signifie une croissance des cas, une barre verte une décroissance.</p>
+    <div id="cas_spf_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj_spf_opendata">--/--</span></span></div>
 
 
     <h3>Taux de positivité des tests</h3>
@@ -210,6 +210,9 @@ function updateDataCas(){
     N = data_France.france.cas.valeur.length;
     let jour_nom = data_France.france["cas"].jour_nom;
     let jour = data_France.france[jour_nom][N-1];
+    
+    N_spf = data_France.france.jour_spf_opendata.length
+    let jour_spf = data_France.france.jour_spf_opendata[N_spf-1];
 
     document.getElementById("nb_total_cas_positifs").innerHTML = printableNumber(data_France.france.cas_total.valeur);
     document.getElementById("nb_quotidien_cas_positifs").innerHTML = printableNumber(data_France.france.cas.valeur[N-1]);
@@ -217,6 +220,9 @@ function updateDataCas(){
     for (element of document.getElementsByClassName('date_maj')){
             element.innerHTML = moment(jour, "YYYY-MM-DD").format("DD / MM / YYYY");
         }
+    for (element of document.getElementsByClassName('date_maj_spf_opendata')){
+        element.innerHTML = jour_spf//moment(jour_spf, "YYYY-MM-DD").format("DD / MM / YYYY");
+    }
 }
 
 function buildChartCas(){
