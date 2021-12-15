@@ -88,7 +88,8 @@ p {
     <p>La zone bleue correspond à l'intervalle de confiance de la projection : le collier bleu le plus foncé et étroit est associé à une confiance de 75 %, et celui le plus clair et large une confiance de 97 %.</p>
     <br>
     <h2>Résultats du modèle</h2>
-    <p><img src="https://raw.githubusercontent.com/CovidTrackerFr/forecast/main/output/model_booster_fit.png"/></p>
+
+    <div style="border-radius: 15px; border: 1px solid grey;"><img src="https://raw.githubusercontent.com/CovidTrackerFr/forecast/main/output/model_booster_fit.png"/></div>
     <br>
     <h2>Résultats de la semaine dernière</h2>
     <p>Ci-dessous les résultats produits par le modèle il y a 7 jours, comparés aux valeurs réelles observées. Cela permet de mesurer la justesse du modèle.</p>
