@@ -88,29 +88,25 @@ p {
     <p>La zone bleue correspond à l'intervalle de confiance de la projection : le collier bleu le plus foncé et étroit est associé à une confiance de 75 %, et celui le plus clair et large une confiance de 97 %.</p>
     <br>
     <h2>Résultats du modèle</h2>
+    
 
-    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-  <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
-  </li>
-</ul>
-<div class="tab-content" id="pills-tabContent">
-  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">...</div>
-  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
-  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
-</div>
-
-    <div style="border-radius: 15px; border: 1px solid grey; padding: 5px; max-width: 950px;"><img src="https://raw.githubusercontent.com/CovidTrackerFr/forecast/main/output/model_booster_fit.png" style="width: 100%; max-width: 900px;"/></div>
+    <div style="border-radius: 15px; border: 1px solid grey; padding: 5px; max-width: 950px;">
+        <input type="checkbox" id="historique_complet" onClick="historiqueComplet(lastweek='')" style="margin: 20px;">
+            <label class="form-check-label" for="historique_complet">Historique complet</label>
+        </input>
+        
+        <img id="img_modele" src="https://raw.githubusercontent.com/CovidTrackerFr/forecast/main/output/model_booster_fit.png" style="width: 100%; max-width: 900px;"/>
+        </div>
     <br>
     <h2>Résultats de la semaine dernière</h2>
     <p>Ci-dessous les résultats produits par le modèle il y a 7 jours, comparés aux valeurs réelles observées. Cela permet de mesurer la justesse du modèle.</p>
-    <div style="border-radius: 15px; border: 1px solid grey; padding: 5px; max-width: 950px;"><img src="https://raw.githubusercontent.com/CovidTrackerFr/forecast/main/output/model_booster_lastweek_fit.png" style="width: 100%; max-width: 900px;"/></div>
+    <div style="border-radius: 15px; border: 1px solid grey; padding: 5px; max-width: 950px;">
+
+    <input type="checkbox" id="historique_complet_lastweek" onClick="historiqueComplet(lastweek='_lastweek')" style="margin: 20px;">
+            <label class="form-check-label" for="historique_complet_lastweek">Historique complet</label>
+    </input>
+    
+    <img id="img_modele_lastweek" src="https://raw.githubusercontent.com/CovidTrackerFr/forecast/main/output/model_booster_lastweek_fit.png" style="width: 100%; max-width: 900px;"/></div>
     <br>
     <p><strong>Auteurs et sources.</strong> Ce modèle a été initialement développé par Pierre Aldama, puis adapté par Guillaume Rozier. Les données proviennent de Santé Publique france et le Ministère de la Santé. Il est réactualisé quotidiennement. Les projections s'étalent sur les 14 prochains jours.</p>        
     <br>
@@ -118,3 +114,15 @@ p {
     <br>
     <br>
 </body>
+
+<script>
+historiqueComplet(lastweek)
+function historiqueComplet(){
+    checked = document.getElementById("historique_complet"+lastweek).checked
+    if(checked){
+        document.getElementById("img_modele"+lastweek).src = `https://raw.githubusercontent.com/CovidTrackerFr/forecast/main/output/model_booster${lastweek}_fit_tout.png`
+    } else {
+        document.getElementById("img_modele"+lastweek).src = `https://raw.githubusercontent.com/CovidTrackerFr/forecast/main/output/model_booster${lastweek}_fit.png`
+    }
+}
+</script>
