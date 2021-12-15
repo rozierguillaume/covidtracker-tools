@@ -81,8 +81,8 @@ p {
 
 <body>
 
-    <p>Cette page présente les résultats de EpiVar, un modèle autoregressif (VARX) appliqué à l'épidémie de Covid19. Ce modèle n'est pas un modèle épidémiologique. Il est souvent utilisé en macro-économie, et réputé donner de bons résultats pour une projection de certains indicateurs à court-terme.</p>
-    <p><strong>Il ne faut en aucun cas considérer les résultats de ce modèle comme des prévisions fiables, mais plutôt comme des projections possibles. </strong></p>
+    <p><b>Cette page présente les résultats de EpiVar, un modèle autoregressif (VARX) appliqué à l'épidémie de Covid19.</b> Ce modèle n'est pas un modèle épidémiologique. Il est souvent utilisé en macro-économie, et réputé donner de bons résultats pour une projection de certains indicateurs à court-terme.
+    <strong>Il ne faut en aucun cas considérer les résultats de ce modèle comme des prévisions fiables, mais plutôt comme des projections possibles. </strong></p>
     <p>Notons que ce modèle est meilleur pour projeter les admissions à l'hôpital, en soins critiques, et les décès que les cas positifs, car ces variables dépendent en partie des cas passés (ceux-ci étant certains, car déjà observés). Par ailleurs, en l'absence de choc particulier, le modèle aura tendance à stabiliser les cas : par exemple en période de hausse épidémique, il aura tendance à projeter un pic de cas un peu plus tôt, ou un peu plus bas que ce qui devrait se réaliser.</p>
     <p>Par ailleurs, ces modélisations ne prennent en compte aucun événement ou donnée autres que l'évolution passée de l'épidémie, et la vaccination. Ainsi, l'effet des conditions météo, de certains événements (fêtes de fin d'année, rassemblements, voyages…), mesures et restrictions etc. sont ignorés.</p>
     <p>La zone bleue correspond à l'intervalle de confiance de la projection : le collier bleu le plus foncé et étroit est associé à une confiance de 75 %, et celui le plus clair et large une confiance de 97 %.</p>
