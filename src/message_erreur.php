@@ -1,4 +1,4 @@
-<!--<div class="alert alert-warning" role="alert">
-    <i>05 novembre •</i><b> Jours fériés : baisse artificielle des cas</b><br>
-    Les données épidémiques (nombre de cas, nombre de tests) sont sous évaluées en raison de la présence de jours fériés (1er et 11 novembre). Les données hospitalières sont faiblement impactées.
-</div>-->
+<div class="alert alert-warning" role="alert">
+    <i>17 décembre 2021</i><br>
+    Les données Covid n’ont pas été mises à jour sur data.gouv ce soir. CovidTracker sera mis à jour automatiquement dès publication des données par Santé publique France. 
+</div>
