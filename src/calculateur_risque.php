@@ -155,7 +155,7 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
       <br>
 
       Taux d'incidence mesuré :
-      <input type="text_incid" id="tauxincid_0" onkeyup="tauxIncidHasChanged()" value="300">  / 100 000 hab.
+      <input type="text_incid" id="tauxincid_0" onkeyup="tauxIncidHasChanged()" value="500">  / 100 000 hab.
       <span id="taux_incid_corrigé_0"></span>
 
       <br>
@@ -333,7 +333,7 @@ progress[type=black]::-webkit-progress-value{ /* Safari/Chrome */
           <br>
 
           Taux d'incidence mesuré :
-          <input type="text_incid" id="tauxincid_{{id}}" onkeyup="tauxIncidHasChanged()" value="300">  / 100 000 hab.
+          <input type="text_incid" id="tauxincid_{{id}}" onkeyup="tauxIncidHasChanged()" value="500">  / 100 000 hab.
           <span id="taux_incid_corrigé_{{id}}"></span>
 
           <br>
