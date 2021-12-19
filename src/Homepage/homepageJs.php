@@ -915,25 +915,25 @@
                 annotation: {
                     events: ["click"],
                     annotations: [
-                        {
-                            drawTime: "afterDatasetsDraw",
-                            id: "hline",
-                            type: "line",
-                            mode: "horizontal",
-                            scaleID: "y-axis-0",
-                            value: 3000,
-                            borderColor: "green",
-                            borderWidth: 2,
-                            label: {
-                                backgroundColor: "green",
-                                content: "Objectif",
-                                enabled: true,
-                            },
-                            borderDash: [6, 2],
-                            onClick: function(e) {
-                                console.log("Annotation", e.type, this);
-                            }
-                        }
+                 //    {
+                 //           drawTime: "afterDatasetsDraw",
+                 //           id: "hline",
+                 //           type: "line",
+                 //           mode: "horizontal",
+                 //           scaleID: "y-axis-0",
+                 //           value: 3000,
+                 //           borderColor: "green",
+                 //           borderWidth: 2,
+                 //           label: {
+                 //               backgroundColor: "green",
+                 //               content: "Objectif",
+                 //               enabled: true,
+                 //           },
+                 //           borderDash: [6, 2],
+                 //           onClick: function(e) {
+                 //               console.log("Annotation", e.type, this);
+                 //           }
+                 //       }
                     ]
                 }
 
