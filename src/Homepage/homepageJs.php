@@ -524,7 +524,7 @@
 
     function updateDivOmicron(data_variants){
         let n = data_variants["taux_c1"].length
-        document.getElementById("taux_non_c1").innerHTML = 100-data_variants["taux_c1"][n-1]
+        document.getElementById("taux_non_c1").innerHTML = (100-data_variants["taux_c1"][n-1]).toFixed(1)
     }
 
     var omicronChart;
