@@ -5,6 +5,7 @@
     var projection_cas = [];
     var data_indicateurs;
     var data_vaccination;
+    var data_variants;
 
     //window.alert("Santé publique France a publié des données incomplètes et erronées ce soir. Nous les avons contactés. CovidTracker sera de nouveau à jour dès leur correction.");
 
@@ -35,6 +36,24 @@
                 this.dataError = true;
             }
         )
+
+    fetch('https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/variants.json')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("HTTP error " + response.status);
+        }
+        return response.json();
+    })
+    .then(json => {
+        data_variants = json;
+        buildChartVariants(data_variants);
+        updateDivOmicron(data_variants);
+
+    })
+    .catch(function () {
+            this.dataError = true;
+        }
+    )
 
     fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/vacsi-fra.json')
     .then(response => {
@@ -421,6 +440,165 @@
                         }
                     ]
                 }
+            }
+        });
+    }
+
+    var lineChartAdmHosp;
+    function buildLineChartAdmHosp(selected_data){ 
+
+        selected_color_background = 'rgba(201, 4, 4, 0.5)';
+        selected_color_border = 'rgba(201, 4, 4, 1)'; 
+        if (selected_data=="adm_hosp"){
+            selected_color_background = 'rgba(209, 102, 21,0.3)';
+            selected_color_border = 'rgba(209, 102, 21,1)';
+        }
+
+        var ctx = document.getElementById('admHospitChart').getContext('2d');
+
+        lineChartAdmHosp = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: data[selected_data]["dates"],
+                datasets: [{
+                    label: 'Cas positifs',
+                    data: data[selected_data]["values"],
+                    borderWidth: 3,
+                    pointRadius: 0,
+                    backgroundColor: selected_color_background,
+                    borderColor: selected_color_border
+                },
+                    {
+                        label: 'Projection cas positifs',
+                        data: projection_cas
+                    }]
+            },
+            options: {
+                plugins: {
+                    deferred: {
+                        xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
+                        yOffset: '50%', // defer until 50% of the canvas height are inside the viewport
+                        delay: 100      // delay of 500 ms after the canvas is considered inside the viewport
+                    }
+                },
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        gridLines: {
+                            display: true
+                        },
+                        ticks: {
+                            min: 0,
+                            userCallback: function(value, index, values) {
+                                return value/1000+"k"
+                            }
+                        },
+
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                            maxRotation: 0,
+                            minRotation: 0,
+                            maxTicksLimit: 6,
+                            callback: function(value, index, values) {
+                                return value.slice(8) + "/" + value.slice(5, 7);
+                            }
+                        }
+
+                    }]
+                },
+                annotation: {
+                    events: ["click"],
+                    annotations: [
+                        
+                    ]
+                }
+            }
+        });
+    }
+
+    function updateDivOmicron(data_variants){
+        let n = data_variants["taux_c1"].length
+        document.getElementById("taux_non_c1").innerHTML = 100-data_variants["taux_c1"][n-1]
+    }
+
+    var omicronChart;
+    function buildChartVariants(data_variants){
+        var ctx = document.getElementById('omicronChart').getContext('2d');
+
+        omicronChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: data_variants["jours"],
+                datasets: [
+                    {
+                    label: 'Suspectés Omicron (absence L452R)',
+                    data: data_variants["cas_non_c1"],
+                    pointRadius: 0,
+                    backgroundColor: 'rgba(240, 31, 31)',
+                    borderColor: 'rgba(240, 31, 31, 0)',
+                },
+                    {
+                    label: 'Suspectés Delta (présence L452R)',
+                    data: data_variants["cas_c1"],
+                    pointRadius: 0,
+                    backgroundColor: 'rgba(153, 153, 153, 1)',
+                    borderColor: 'rgba(153, 153, 153, 0)',
+                },
+                {
+                    label: 'Total cas',
+                    data: data_variants["cas"].map((value, idx) => (0)),
+                    borderWidth: 3,
+                    pointRadius: 0,
+                    borderColor: 'rgba(0, 0, 0, 1)'
+                },
+                ]
+            },
+            options: {
+                plugins: {
+                    deferred: {
+                        xOffset: 150,   
+                        yOffset: '50%', 
+                        delay: 100 
+                    }
+                },
+                legend: {
+                    display: true
+                },
+                scales: {
+                    yAxes: [{
+                        stacked: true,
+                        gridLines: {
+                            display: true
+                        },
+                        ticks: {
+                            min: 0,
+                            userCallback: function(value, index, values) {
+                                return value/1000+"k"
+                            }
+                        },
+
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                            maxRotation: 0,
+                            minRotation: 0,
+                            maxTicksLimit: 6,
+                            callback: function(value, index, values) {
+                                return value.slice(8) + "/" + value.slice(5, 7);
+                            }
+                        }
+
+                    }]
+                },
             }
         });
     }
