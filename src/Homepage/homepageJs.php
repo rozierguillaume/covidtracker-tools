@@ -537,18 +537,18 @@
                 labels: data_variants["jours"],
                 datasets: [
                     {
-                    label: 'Suspectés Omicron (absence L452R)',
-                    data: data_variants["cas_non_c1"],
-                    pointRadius: 0,
-                    backgroundColor: 'rgba(240, 31, 31)',
-                    borderColor: 'rgba(240, 31, 31, 0)',
-                },
-                    {
                     label: 'Suspectés Delta (présence L452R)',
                     data: data_variants["cas_c1"],
                     pointRadius: 0,
                     backgroundColor: 'rgba(153, 153, 153, 1)',
                     borderColor: 'rgba(153, 153, 153, 0)',
+                },
+                    {
+                    label: 'Suspectés Omicron (absence L452R)',
+                    data: data_variants["cas_non_c1"],
+                    pointRadius: 0,
+                    backgroundColor: 'rgba(240, 31, 31)',
+                    borderColor: 'rgba(240, 31, 31, 0)',
                 },
                 {
                     label: 'Total cas',

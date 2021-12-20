@@ -3,7 +3,7 @@
 
 <div class="container" style="text-align: center; width:100%; border-radius: 7px; padding: 0px 0px;">
     <div class="row" style="margin-bottom:10px;">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div style="text-align: left; margin-top:5px;" shadow="">
                 
                 <p>
@@ -11,7 +11,7 @@
                 </p>
 
                 <div>
-                    <canvas id="omicronChart" style="margin-top:20px; max-height: 700px; max-width: 900px;"></canvas>
+                    <canvas id="omicronChart" style="margin-top:20px; height: 80vh; max-height: 900px; max-width: 900px;"></canvas>
                 </div>
                 <br>
                 
@@ -22,4 +22,6 @@
 </div>
 </div>
 <br>
+
+
 

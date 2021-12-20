@@ -108,30 +108,6 @@
                 $("#donneesDepartements").html(alphabeticallyOrderedDeps);
             }
 
-            // $('.select2').select2({
-            //     placeholder: 'Sélectionnez les départements que vous voulez consulter....',
-            //     closeOnSelect: false,
-            // });
-
-            // $('.select2').val(null).trigger('change');
-
-
-
-            // $('.select2').on('select2:select', function (e) {
-            //     nomDepartement = e.params.data.id;
-            //     numeroDepartement = e.params.data.element.dataset.num;
-            //     $('#map path[data-num=' + numeroDepartement + ']').addClass('selected');
-            //     // $('#' + nomDepartement).parent().removeClass('hidden');
-            //     afficherDepartement(nomDepartement, numeroDepartement);
-            // });
-            //
-            // $('.select2').on('select2:unselect', function (e) {
-            //     nomDepartement = e.params.data.id;
-            //     numeroDepartement = e.params.data.element.dataset.num;
-            //     $('#map path[data-num=' + numeroDepartement + ']').removeClass('selected');
-            //     $('#' + numeroDepartement).remove();
-            // });
-
 
             $('#carte path').hover(function (e) {
                 departement = $(this).data("num");

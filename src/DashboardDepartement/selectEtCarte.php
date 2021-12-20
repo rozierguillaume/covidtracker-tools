@@ -45,6 +45,9 @@
                             <li data-carte="var_c1">
                                 <a href="#" class="">Variant Delta</a>
                             </li>
+                            <li data-carte="var_non_c1">
+                                <a href="#" class="">Variant Omicron</a>
+                            </li>
                             <li data-carte="evolution-cas"><a href="#">Évolution du taux d'incidence</a></li>
                             <li data-carte="taux-positivite-restreint"><a href="#">Taux de positivité</a></li>
                             <!--<li data-carte="taux-positivite"><a href="#">Taux de positivité (13 couleurs)</a></li> --> 
