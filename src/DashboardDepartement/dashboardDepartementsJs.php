@@ -230,8 +230,8 @@
                     nomDonnee = "var_c1";
                     pourcentage_abs = true;
                 } else if (typeCarte == 'var_non_c1') {
-                    $('#titreCarte').html("<h3>Proportion d'absence de mutation L452R (Omicron)</h3>");
-                    $('#descriptionCarte').html("Proportion des cas criblés n'ayant pas la mutation L452R, non présente sur le variant Omicron (en %)");
+                    $('#titreCarte').html("<h3>Proportion de suspicion d'Omicron</h3>");
+                    $('#descriptionCarte').html("Proportion des cas criblés n'ayant pas la mutation L452R, dont Omicron (en %)");
                     tableauValeurs = valeurs_var_non_c1;
                     tableauCouleurs = couleurs_var_non_c1;
                     nomDonnee = "var_non_c1";
