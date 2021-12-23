@@ -171,7 +171,7 @@ function no_data(template, age, json_data_field, slider, raw_data, last_week, gr
 
     if(raw_data["data_by_week"][last_week]["data"][age][groupe1][json_data_field] == 0)
     {
-        var message="<b> Aucun cas chez les vaccinés cette semaine ! </b> <br> <i> L'indicateur n'est donc pas calculable </i> ";
+        var message="<b>L'indicateur n'est pas calculable avec les données de la semaine. </b> ";
     }
 
     else if(raw_data["data_by_week"][last_week]["data"][age][groupe2][json_data_field] == 0)
