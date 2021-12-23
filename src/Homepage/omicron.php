@@ -11,7 +11,7 @@
                 </p>
 
                 <div>
-                    <canvas id="omicronChart" style="margin-top:20px; height: 80vh; max-height: 900px; max-width: 900px;"></canvas>
+                    <canvas id="omicronChart" style="margin-top:20px; height: 80vh; max-height: 500px; max-width: 800px;"></canvas>
                 </div>
                 <br>
                 

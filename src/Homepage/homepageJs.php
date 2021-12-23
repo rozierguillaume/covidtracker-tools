@@ -560,6 +560,7 @@
                 ]
             },
             options: {
+                maintainAspectRatio: false,
                 plugins: {
                     deferred: {
                         xOffset: 150,   
