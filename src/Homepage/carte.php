@@ -8,7 +8,7 @@
 
     <div class="row nowrap" style="padding: 0px">
         <h3>Taux d'incidence</h3>
-        <span id="descriptionCarte">Nombre de personnes testées positives sur les 7 derniers jours pour 100 000 habitants</span>, données du <span id="dateCarte">--/--</span> (J-3)
+        <span id="descriptionCarte">Nombre de personnes testées positives sur les 7 derniers jours pour 100 000 habitants</span>, données du <span id="dateCarte">--/--</span> (J-3).<br><i>27/12/21 : les couleurs ont été changées en raison de valeurs élevées du taux d'incidence.</i>
         <br>
         <img
                 src="https://files.covidtracker.fr/covidtracker_vect.svg"

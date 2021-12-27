@@ -2,8 +2,8 @@
     jQuery(document).ready(function ($) {
             $('.dropdown-toggle').dropdown();
 
-            var valeurs_cas = [">", "400", "250", "150", "50"];
-            var couleurs_cas = ["purple", "#3c0000", "#c80000", "#f95228", "#98ac3b"];
+            var valeurs_cas = [">", "1000", "500", "250", "150", "50"];
+            var couleurs_cas = ["black", "#3d013d", "purple", "#c80000", "#f95228", "#98ac3b"];
 
             var valeurs_n_dose1_cumsum_pop = [">", "82", "79", "76", "73", "69", "66", "60", "50", "30"];
             //var couleurs_n_dose1_cumsum_pop = ["#98ac3b", "#3c0000", "#c80000", "#f95228"];
@@ -11,8 +11,8 @@
                 "#0076bf", "#148dd9", "#2e9fe6", "#45a8e6", "#5cb1e6",
                 "#73bae6", "#8ac2e6", "#a1cbe6", "#b8d4e6", "#cfdde6"]
 
-            var valeurs_cas_12_couleurs = [">", "500", "450", "400", "350", "300", "250", "200", "150", "100", "75", "50", "25"];
-            var couleurs_cas_12_couleurs = ["#3c0000", "#4c0000", "#6a0000", "#840000", "#a00000", "#c40001", "#d50100", "#e20001", "#f50e07", "#f95228", "#fb9449", "#98ac3b", "#118408"];
+            var valeurs_cas_12_couleurs = [">", "1000", "500", "450", "400", "350", "300", "250", "200", "150", "100", "75", "50", "25"];
+            var couleurs_cas_12_couleurs = ["black", "#3c0000", "#4c0000", "#6a0000", "#840000", "#a00000", "#c40001", "#d50100", "#e20001", "#f50e07", "#f95228", "#fb9449", "#98ac3b", "#118408"];
 
             var valeurs_positivite_restreint = ["> 13", "13", "10", "7", "4", "1"];
             var couleurs_positivite_restreint = ['black', '#6a0000', '#c40001', '#f50e07', '#fb9449', '#118408'];

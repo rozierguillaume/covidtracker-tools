@@ -6,7 +6,7 @@
 <div class="alert alert-info clearFix" style="font-size: 18px; margin-top:10px; margin-bottom:40px;">
     <div class="row">
         <div class="col-md-8">
-            <small>NOUVEAU !</small>
+            <small>CovidExplorer</small>
             <br>
             <b>Explorez les données avec CovidExplorer</b>
             <br>
