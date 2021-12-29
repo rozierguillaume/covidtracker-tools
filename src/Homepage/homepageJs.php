@@ -46,8 +46,8 @@
     })
     .then(json => {
         data_variants = json;
-        buildChartVariants(data_variants);
-        updateDivOmicron(data_variants);
+        //buildChartVariants(data_variants);
+        //updateDivOmicron(data_variants);
 
     })
     .catch(function () {

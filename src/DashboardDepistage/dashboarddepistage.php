@@ -339,6 +339,20 @@ function buildChartCasSpf(){
         }
     };
 
+    var trace_cas_rolling_corrige = {
+        x: data_France.france.jour_spf_opendata,
+        y: data_France.france.cas_spf_opendata_rolling.valeur,
+        hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
+        name: "Cas (moyenne 7 jours, correction j. fériés)",
+        mode: 'lines',
+        type: 'scatter',
+        line: {
+            color: 'red',
+            dash: "dot",
+            width: 3
+        }
+    };
+
     let N = data_France.france.jour_spf_opendata.length;
     let x_min = data_France.france.jour_spf_opendata[N-300];
     let x_max = data_France.france.jour_spf_opendata[N-1];
@@ -393,7 +407,7 @@ function buildChartCasSpf(){
         ]
     };
 
-    var data = [trace_cas, trace_cas_rolling];
+    var data = [trace_cas, trace_cas_rolling_corrige, trace_cas_rolling];
 
     Plotly.newPlot('cas_spf', data, layout, config);
 }
