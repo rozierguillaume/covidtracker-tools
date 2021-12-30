@@ -258,7 +258,7 @@ function buildChartCas(){
     let x_min = data_France.france.jour_incid[N-300];
     let x_max = data_France.france.jour_incid[N-1];
     let y_min = 0;
-    let y_max = 1.1*Math.max.apply(Math, data_France.france.cas.valeur.slice(-300));
+    let y_max = 1.2*Math.max.apply(Math, data_France.france.cas.valeur.slice(-300));
 
     var layout = { 
         images: IMAGES,
@@ -276,6 +276,7 @@ function buildChartCas(){
             range: [x_min, x_max],
         },
         yaxis: {
+            tickfont: {size: 8},
             range: [y_min, y_max]
         },
         annotations: [
@@ -341,7 +342,7 @@ function buildChartCasSpf(){
 
     var trace_cas_rolling_corrige = {
         x: data_France.france.jour_spf_opendata,
-        y: data_France.france.cas_spf_opendata_rolling.valeur,
+        y: data_France.france.cas_spf_opendata_rolling_corrige.valeur,
         hovertemplate: '%{y:.1f} cas en moyenne sur 7j.<br>%{x}<extra></extra>',
         name: "Cas (moyenne 7 jours, correction j. fériés)",
         mode: 'lines',
@@ -357,7 +358,7 @@ function buildChartCasSpf(){
     let x_min = data_France.france.jour_spf_opendata[N-300];
     let x_max = data_France.france.jour_spf_opendata[N-1];
     let y_min = 0;
-    let y_max = 1.1*Math.max.apply(Math, data_France.france.cas_spf_opendata_rolling.valeur.slice(-300));
+    let y_max = 1.2 * Math.max.apply(Math, data_France.france.cas_spf_opendata_rolling.valeur.slice(-300));
 
     var layout = { 
         images: IMAGES,
@@ -375,6 +376,7 @@ function buildChartCasSpf(){
             range: [x_min, x_max],
         },
         yaxis: {
+            tickfont: {size: 8},
             range: [y_min, y_max]
         },
         annotations: [
@@ -623,7 +625,7 @@ function buildChartCasTauxDePositivite(){
     let x_max = data_France.france.jour_incid[N-1];
 
     let y_min = 0;
-    let y_max = 1.1*Math.max.apply(Math, data_France.france.taux_positivite.valeur.slice(-MAX_VALUES));
+    let y_max = 1.2*Math.max.apply(Math, data_France.france.taux_positivite.valeur.slice(-MAX_VALUES));
 
     var layout = { 
         images: IMAGES,
@@ -694,7 +696,7 @@ function buildChartTests(){
     let x_min = data_France.france.jour_incid[N-300];
     let x_max = data_France.france.jour_incid[N-1];
     let y_min = 0;
-    let y_max = 1.1*Math.max.apply(Math, data_France.france.tests.valeur.slice(-300));
+    let y_max = 1.2*Math.max.apply(Math, data_France.france.tests.valeur.slice(-300));
 
     var layout = { 
         images: IMAGES,
