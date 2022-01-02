@@ -550,8 +550,8 @@ function buildChartCasSpfTauxDeCroissance(){
     let x_last = data_France.france.jour_spf_opendata[N-1];
     let x_max = moment(x_last, "YYYY-MM-DD").add('days', 1).format("YYYY-MM-DD");
 
-    let y_min = Math.min.apply(Math, data_France.france.croissance_cas_spf_opendata.valeur.slice(-MAX_VALUES));
-    let y_max = Math.max.apply(Math, data_France.france.croissance_cas_spf_opendata.valeur.slice(-MAX_VALUES));
+    let y_min = -100 //Math.min.apply(Math, data_France.france.croissance_cas_spf_opendata.valeur.slice(-MAX_VALUES));
+    let y_max = 100 //Math.max.apply(Math, data_France.france.croissance_cas_spf_opendata.valeur.slice(-MAX_VALUES));
 
     var layout = { 
         images: IMAGES,
