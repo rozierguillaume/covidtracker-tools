@@ -409,7 +409,7 @@ function buildChartCasSpf(){
         ]
     };
 
-    var data = [trace_cas, trace_cas_rolling_corrige, trace_cas_rolling];
+    var data = [trace_cas, trace_cas_rolling];
 
     Plotly.newPlot('cas_spf', data, layout, config);
 }
