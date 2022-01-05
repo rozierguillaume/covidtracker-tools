@@ -787,7 +787,7 @@
     <!--                        <p style="margin-bottom:1cm;"></p>-->
     <!--                        <div class="wp-block-button is-style-outline">-->
     <!--                            <a class="wp-block-button__link"-->
-    <!--                                                                         href="https://lydia-app.com/collect/covidtracker/fr"-->
+    <!--                                                                         href="https://covidtracker.fr/don"-->
     <!--                                                                         target="_blank" rel="noreferrer noopener"><img-->
     <!--                                        draggable="false" role="img" class="emoji" alt="☕️"-->
     <!--                                        src="CoviDepOri_fichiers/2615.svg">-->

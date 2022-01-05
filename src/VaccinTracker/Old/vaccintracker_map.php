@@ -13,9 +13,9 @@ Lors du lancement de VaccinTracker le 27 décembre (jour du début de la campagn
 
 <div id="news"></div>
 
-<div class="alert alert-info clearFix"  style="font-size: 20px;">
+<div class="alert alert-info clearFix"  style="font-size: 20px; display: none;">
     <button class="btn-shadow pull-right">
-        <a href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">🍩 Offrez-moi un donut</a>
+        <a href="https://covidtracker.fr/don" target="_blank" rel="noreferrer noopener">🍩 Offrez-moi un donut</a>
     </button> &nbsp;&nbsp;
     Bonne année 2021 ! CovidTracker est gratuit, sans pub et développé bénévolement.<br>
 
@@ -933,7 +933,7 @@ Array.prototype.sortBy = function(p) {
 <br>
 <!-- /wp:html -->
 
-<div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">☕️ Offrez-moi un café</a></div>
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://covidtracker.fr/don" target="_blank" rel="noreferrer noopener">☕️ Offrez-moi un café</a></div>
 
 <!-- wp:spacer -->
 <div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>

@@ -63,10 +63,6 @@
 <p>♥ <a href="https://covidtracker.fr/covidtracker-soutenir/">Soutenez CovidTracker</a></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:html -->
-CovidTracker est gratuit et sans pub. <div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">☕️ Offrez-moi un café</a></div>
-<!-- /wp:html -->
-
 <!-- wp:separator -->
 <hr class="wp-block-separator"/>
 <!-- /wp:separator -->

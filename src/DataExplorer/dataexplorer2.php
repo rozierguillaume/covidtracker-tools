@@ -14,14 +14,14 @@ Le second, en bas de page, permet d'explorer l'évolution de l'épidémie dans l
 
 <?php include(__DIR__ . '/styles.php'); ?>
 
-<div class="alert alert-info clearFix"  style="font-size: 18px;">
+<div class="alert alert-info clearFix"  style="font-size: 18px; display: none;">
     <div class="row">
         <div class="col-md-8">
             Bonne année 2021 ! CovidTracker est gratuit, sans pub et développé bénévolement.<br>
         </div>
         <div class="col-md-4 text-right">
             <button class="btn-shadow">
-                <a href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">🍩 Offrez-moi un donut</a>
+                <a href="https://covidtracker.fr/don" target="_blank" rel="noreferrer noopener">🍩 Offrez-moi un donut</a>
             </button> &nbsp;&nbsp;
         </div>
     </div>

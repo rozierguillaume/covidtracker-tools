@@ -166,7 +166,7 @@
 
     function updateDataDivIndicateurs(){
         document.getElementById("taux_incidence").innerHTML = data_indicateurs["taux_incidence"]["valeur"];
-        document.getElementById("date_taux_incidence").innerHTML = data_indicateurs["tests_last7"]["date"] + " (J-3)";
+        document.getElementById("date_taux_incidence").innerHTML = data_indicateurs["taux_incidence"]["date"] + " (J-3)";
         document.getElementById("taux_incidence_str").innerHTML = data_indicateurs["taux_incidence"]["str"];
 
         document.getElementById("reffectif").innerHTML = data_indicateurs["reffectif"]["valeur"];
@@ -178,7 +178,7 @@
         document.getElementById("sat_rea_str").innerHTML = data_indicateurs["taux_saturation_rea"]["str"];
 
         document.getElementById("taux_positivite").innerHTML = data_indicateurs["taux_positivite"]["valeur"] + "%";
-        document.getElementById("date_taux_positivite").innerHTML = data_indicateurs["tests_last7"]["date"] + " (J-3)";
+        document.getElementById("date_taux_positivite").innerHTML = data_indicateurs["taux_incidence"]["date"] + " (J-3)";
         document.getElementById("taux_positivite_str").innerHTML = data_indicateurs["taux_positivite"]["str"];
 
     }

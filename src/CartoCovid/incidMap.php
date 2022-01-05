@@ -12,14 +12,14 @@ crossorigin=""></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js" integrity="sha512-MQlyPV+ol2lp4KodaU/Xmrn+txc1TP15pOBF/2Sfre7MRsA/pB4Vy58bEqe9u7a7DczMLtU5wT8n7OblJepKbg==" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css" integrity="sha512-BBToHPBStgMiw0lD4AtkRIZmdndhB6aQbXpX7omcrXeG2PauGBl2lzq2xUZTxaLxYz5IDHlmneCZ1IJ+P3kYtQ==" crossorigin="anonymous" />
 <p>CoviCarte est un outil de CovidTracker permettant de suivre l'activité de l'épidémie en France. Les données proviennent de Santé publique France, et sont mises à jour tous les soirs. La carte est interactive. <i>Cette page est en cours de construction et s'améliorera au fil du temps.</i></p>
-<div class="alert alert-info clearFix" style="font-size: 18px;">
+<div class="alert alert-info clearFix" style="font-size: 18px; display: none;">
     <div class="row">
         <div class="col-md-8">
             Bonne année 2021 ! CovidTracker est gratuit, sans pub et développé bénévolement.<br>
         </div>
         <div class="col-md-4 text-right">
             <button class="btn-shadow">
-                <a href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">🍩
+                <a href="https://covidtracker.fr/don" target="_blank" rel="noreferrer noopener">🍩
                     Offrez-moi un donut</a>
             </button> &nbsp;&nbsp;
         </div>

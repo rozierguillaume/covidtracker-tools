@@ -1,11 +1,11 @@
-<div class="alert alert-info clearFix" style="font-size: 18px;">
+<div class="alert alert-info clearFix" style="font-size: 18px; display: none;">
     <div class="row">
         <div class="col-md-8">
             CovidTracker est gratuit et indépendant.<br>
         </div>
         <div class="col-md-4 text-right">
             <button class="btn-shadow">
-                <a href="https://lydia-app.com/collect/covidtracker/fr" target="_blank" rel="noreferrer noopener">☕️
+                <a href="https://covidtracker.fr/don" target="_blank" rel="noreferrer noopener">☕️
                     Offrez-nous un thé</a>
             </button> &nbsp;&nbsp;
         </div>
