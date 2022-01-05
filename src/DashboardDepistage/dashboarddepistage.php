@@ -164,7 +164,7 @@ p {
 
 <script>
 
-let BUTTONS_TO_REMOVE = ['toImage', 'zoomIn2d', 'zoomOut2d'];
+let BUTTONS_TO_REMOVE = ['toImage', 'lasso2d', 'zoomIn2d', 'zoomOut2d'];
 let config = {responsive: true, displaylogo: false, locale: 'fr', showAxisDragHandles: true, modeBarButtonsToRemove: BUTTONS_TO_REMOVE};
 let IMAGES = [
             {
