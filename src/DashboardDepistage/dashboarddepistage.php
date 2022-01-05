@@ -265,7 +265,7 @@ function buildChartCas(){
     let x_min = data_France.france.jour_incid[N-300];
     let x_max = data_France.france.jour_incid[N-1];
     let y_min = 0;
-    let y_max = 1.2*Math.max.apply(Math, data_France.france.cas.valeur.slice(-300));
+    let y_max = 1.2*Math.max.apply(Math, data_France.france.cas.valeur);
 
     var layout = { 
         images: IMAGES,
@@ -365,7 +365,7 @@ function buildChartCasSpf(){
     let x_min = data_France.france.jour_spf_opendata[N-300];
     let x_max = data_France.france.jour_spf_opendata[N-1];
     let y_min = 0;
-    let y_max = 1.2 * Math.max.apply(Math, data_France.france.cas_spf_opendata_rolling.valeur.slice(-300));
+    let y_max = 1.2 * Math.max.apply(Math, data_France.france.cas_spf_opendata_rolling.valeur);
 
     var layout = { 
         images: IMAGES,

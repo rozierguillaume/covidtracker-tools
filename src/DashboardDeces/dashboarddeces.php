@@ -212,7 +212,7 @@ function buildChartDeces(){
     let x_min = data_France.france[jour_nom][N-300];
     let x_max = data_France.france[jour_nom][N-1];
     let y_min = 0;
-    let y_max = Math.max.apply(Math, data_France.france[data_nom].valeur.slice(-300));
+    let y_max = Math.max.apply(Math, data_France.france[data_nom].valeur);
 
     var layout = { 
         images: IMAGES,
