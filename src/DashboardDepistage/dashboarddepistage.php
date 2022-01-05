@@ -280,7 +280,7 @@ function buildChartCas(){
         },
         xaxis: {
             tickfont: {size: 10},
-            range: [x_min, x_max],
+            //range: [x_min, x_max],
         },
         yaxis: {
             tickfont: {size: 8},
@@ -308,7 +308,7 @@ function buildChartCas(){
             ay: -30,
             borderwidth: 1,
             borderpad: 2,
-            bgcolor: 'rgba(256, 256, 256, 0.5)',
+            bgcolor: 'rgba(256, 256, 256, 0.8)',
             opacity: 0.8
             }
         ]
@@ -380,7 +380,7 @@ function buildChartCasSpf(){
         },
         xaxis: {
             tickfont: {size: 10},
-            range: [x_min, x_max],
+            //range: [x_min, x_max],
         },
         yaxis: {
             tickfont: {size: 8},
@@ -410,7 +410,7 @@ function buildChartCasSpf(){
             ay: -30,
             borderwidth: 1,
             borderpad: 2,
-            bgcolor: 'rgba(256, 256, 256, 0.5)',
+            bgcolor: 'rgba(256, 256, 256, 0.8)',
             opacity: 0.8
             }
         ]
@@ -433,6 +433,7 @@ function buildChartCasTauxDeCroissance(){
         type: 'line',
         line: {
             color: 'black',
+            dash: "dot",
             width: 3
         }
     };
@@ -491,7 +492,7 @@ function buildChartCasTauxDeCroissance(){
             ay: -40,
             borderwidth: 1,
             borderpad: 2,
-            bgcolor: 'rgba(256, 256, 256, 0.5)',
+            bgcolor: 'rgba(256, 256, 256, 0.8)',
             opacity: 0.8
             }
         ],
@@ -532,6 +533,7 @@ function buildChartCasSpfTauxDeCroissance(){
             width: 2
         }
     };
+    
 
     var bar_colors = [];
     data_France.france.croissance_cas_spf_opendata.valeur.map((value, idx) => {
@@ -587,7 +589,7 @@ function buildChartCasSpfTauxDeCroissance(){
             ay: -40,
             borderwidth: 1,
             borderpad: 2,
-            bgcolor: 'rgba(256, 256, 256, 0.5)',
+            bgcolor: 'rgba(256, 256, 256, 0.8)',
             opacity: 0.8
             }
         ],
@@ -661,7 +663,7 @@ function buildChartCasTauxDePositivite(){
             ay: -40,
             borderwidth: 1,
             borderpad: 2,
-            bgcolor: 'rgba(256, 256, 256, 0.5)',
+            bgcolor: 'rgba(256, 256, 256, 0.8)',
             opacity: 0.8
             }
         ],
@@ -732,7 +734,7 @@ function buildChartTests(){
             ay: -50,
             borderwidth: 1,
             borderpad: 2,
-            bgcolor: 'rgba(256, 256, 256, 0.5)',
+            bgcolor: 'rgba(256, 256, 256, 0.8)',
             opacity: 0.8
             }
         ],
