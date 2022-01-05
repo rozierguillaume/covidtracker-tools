@@ -264,7 +264,7 @@ function buildChartReanimations(){
         },
         xaxis: {
             tickfont: {size: 10},
-            range: [x_min, x_max],
+            //range: [x_min, x_max],
         },
         yaxis: {
             range: [y_min, y_max]
