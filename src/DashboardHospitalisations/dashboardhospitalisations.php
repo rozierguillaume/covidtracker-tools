@@ -237,7 +237,7 @@ function buildChartHospitalisations(){
             y: data_France.france[data_nom].valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>hosp.<br>" + printableTaux(data_France.france["croissance_"+data_nom].valeur[N-1]) + "%",
+            text: "<b>" + printableNumber(data_France.france[data_nom].valeur[N-1]) + " hosp.</b><br> (+ " + printableNumber(data_France.france[data_nom].valeur[N-1]-data_France.france[data_nom].valeur[N-8]) +" / sem.)",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -249,7 +249,7 @@ function buildChartHospitalisations(){
             arrowsize: 1,
             arrowwidth: 1.5,
             arrowcolor: 'rgba(209, 102, 21,1)',
-            ax: -30,
+            ax: -50,
             ay: -30,
             borderwidth: 1,
             borderpad: 2,
@@ -330,11 +330,11 @@ function buildChartHospitalisationsTauxDeCroissance(){
         legend: {"orientation": "h"},
         annotations: [
             {
-            x: data_France.france[jour_nom][N-4],
-            y: data_France.france[data_nom+"_rolling7"].valeur[N-4],
+            x: data_France.france[jour_nom][N-1],
+            y: data_France.france[data_nom].valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: printableTaux(data_France.france[data_nom+"_rolling7"].valeur[N-4]) + " %",
+            text: printableTaux(data_France.france[data_nom].valeur[N-1]) + " %",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -370,7 +370,7 @@ function buildChartHospitalisationsTauxDeCroissance(){
             ticksuffix: '%',
         }
     };
-    var data = [trace1, trace2];
+    var data = [trace2];
 
     Plotly.newPlot('hospitalisations_taux_croissance', data, layout, config);
 }
@@ -408,7 +408,7 @@ function buildChartNouvellesHospitalisations(){
             y: data_France.france[data_nom].valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>admissions" + '<br>' + printableTaux(data_France.france["croissance_" + data_nom + "_rolling7"].valeur[N-4]) + "%",
+            text: "<b>" + printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>admissions</b>" + '<br> (' + printableTaux(data_France.france["croissance_" + data_nom + "_rolling7"].valeur[N-4]) + "% / sem.)",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -420,7 +420,7 @@ function buildChartNouvellesHospitalisations(){
             arrowsize: 1,
             arrowwidth: 1.5,
             arrowcolor: 'rgba(209, 102, 21,1)',
-            ax: -40,
+            ax: -60,
             ay: -30,
             borderwidth: 1,
             borderpad: 2,

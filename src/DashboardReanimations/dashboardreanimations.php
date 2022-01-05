@@ -125,7 +125,7 @@ p {
     </div> 
     <br>
 
-    <h3>Nouvelles admissions en réanimation</h3>
+    <h3>Nouvelles admissions en soins critiques</h3>
     <p>Nombre d'admissions quotidiennes en soins critiques dont réanimation pour Covid19.</p>
     <div id="nouvelles_reanimations" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
@@ -235,7 +235,7 @@ function buildChartReanimations(){
             y: data_France.france[data_nom].valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>soins crit.<br>" + printableTaux(data_France.france["croissance_"+data_nom].valeur[N-1]) + "%",
+            text: "<b>" + printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>soins crit.</b><br>(+ " + printableNumber(data_France.france[data_nom].valeur[N-1] - data_France.france[data_nom].valeur[N-8]) + " / sem.)",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -247,7 +247,7 @@ function buildChartReanimations(){
             arrowsize: 1,
             arrowwidth: 1.5,
             arrowcolor: 'rgba(201, 4, 4, 1)',
-            ax: -30,
+            ax: -50,
             ay: -30,
             borderwidth: 1,
             borderpad: 2,
@@ -328,11 +328,11 @@ function buildChartReanimationsTauxDeCroissance(){
         legend: {"orientation": "h"},
         annotations: [
             {
-            x: data_France.france[jour_nom][N-4],
-            y: data_France.france[data_nom+"_rolling7"].valeur[N-4],
+            x: data_France.france[jour_nom][N-1],
+            y: data_France.france[data_nom].valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: printableTaux(data_France.france[data_nom+"_rolling7"].valeur[N-4]) + " %",
+            text: printableTaux(data_France.france[data_nom].valeur[N-1]) + " %",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -368,7 +368,7 @@ function buildChartReanimationsTauxDeCroissance(){
             ticksuffix: '%',
         }
     };
-    var data = [trace1, trace2];
+    var data = [trace2];
 
     Plotly.newPlot('reanimations_taux_croissance', data, layout, config);
 }
@@ -408,7 +408,7 @@ function buildChartNouvellesReanimations(){
             y: data_France.france[data_nom].valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>admissions<br>" + printableTaux(data_France.france["croissance_" + data_nom + "_rolling7"].valeur[N-4]) + "%",
+            text: "<b>" + printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>admissions</b><br> (" + printableTaux(data_France.france["croissance_" + data_nom + "_rolling7"].valeur[N-4]) + "% / sem.)",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -420,7 +420,7 @@ function buildChartNouvellesReanimations(){
             arrowsize: 1,
             arrowwidth: 1.5,
             arrowcolor: 'rgba(201, 4, 4, 1)',
-            ax: -40,
+            ax: -50,
             ay: -30,
             borderwidth: 1,
             borderpad: 2,
