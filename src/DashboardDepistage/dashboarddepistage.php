@@ -117,7 +117,8 @@ p {
     <br>
     <h3>Nombre de cas positifs (date de prélèvement)</h3>
     <p>Nombre de résultats de tests positifs chaque jour, par date de prélèvement du test sur le patient (dernière donnée : J-3).</p>
-    <div id="cas" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <div id="cas" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;">
+    <br><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
     
     <h3>Taux de croissance des cas (date de prélèvement)</h3>
     <p>Taux d'évolution du nombre de cas positifs (dernière donnée : J-3), en pourcent. Une barre rouge signifie une croissance des cas, une barre verte une décroissance.</p>
