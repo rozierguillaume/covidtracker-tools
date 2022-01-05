@@ -625,7 +625,6 @@ function buildChartCasTauxDePositivite(){
         type: 'line',
         line: {
             color: 'black',
-            dash: 'dot',
             width: 3
         }
     };
