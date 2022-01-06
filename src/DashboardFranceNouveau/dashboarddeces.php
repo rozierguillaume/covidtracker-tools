@@ -131,33 +131,6 @@ p {
 
 <script>
 
-download_data();
-function download_data(){
-    var URL = 'https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/dataexplorer_compr.json';
-    var request = new XMLHttpRequest();
-    request.open('GET', URL);
-    request.responseType = 'json';
-    request.send();
-    request.onload = function() {
-        data_France = request.response;
-       
-        
-    }
-}
-
-function printableTaux(n) {
-    n = (n<0?"":"+ ") + n;
-    n = n.replace('.', ',');
-    return n;
-    };
-
-function printableNumber(x){
-    x = Math.round(x);
-    x = x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "&nbsp;");
-    x = x.replace('.', ',');
-    return x
-};
-
 function updateDataDeces(){
     N = data_France.france.deces_hospitaliers.valeur.length;
     let jour_nom = data_France.france["deces_hospitaliers"].jour_nom;
