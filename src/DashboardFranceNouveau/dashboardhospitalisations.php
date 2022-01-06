@@ -91,18 +91,18 @@ p {
 
 <body>
 
-    <div class="btn-group btn-group-toggle" role="group" >
-        <a href="https://covidtracker.fr/dashboard-depistage" class="btn btn-secondary">Dépistage</a>
-        <a href="https://covidtracker.fr/dashboard-hospitalisations" class="btn btn-secondary active">Hospitalisations</a>
-        <a href="https://covidtracker.fr/dashboard-reanimations" class="btn btn-secondary">Soins critiques</a>
-        <a href="https://covidtracker.fr/dashboard-deces" class="btn btn-secondary">Décès</a>
+    <div id="hospitalisations" class="btn-group btn-group-toggle" role="group" >
+        <a href="#depistage" class="btn btn-secondary">Dépistage</a>
+        <a href="#hospitalisations" class="btn btn-secondary active">Hospitalisations</a>
+        <a href="#reanimations" class="btn btn-secondary">Soins critiques</a>
+        <a href="#deces" class="btn btn-secondary">Décès</a>
     </div>
 
     <h2>Hospitalisations</h2>
 
     <h3>Nombre de personnes hospitalisées</h3>
     <p>Nombre de personnes hospitalisées pour Covid19.</p>
-    <div id="hospitalisations" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <div id="lits_hospitalisations" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
     <h3>Taux de croissance du nombre d'hospitalisations</h3>
     <p>Taux d'évolution du nombre de personnes hospitalisées pour Covid19.</p>
@@ -134,8 +134,6 @@ p {
     <div id="nouvelles_hospitalisations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; min-height: 300px; max-height: 800px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
     <br>
-  
-    <?php include(__DIR__ . '/menuBasPage.php'); ?>
     <br>
     <br>
    
@@ -143,24 +141,9 @@ p {
 
 <script>
 
-let BUTTONS_TO_REMOVE = ['toImage', 'lasso2d', 'zoomIn2d', 'zoomOut2d'];
-let config = {responsive: true, displaylogo: false, locale: 'fr', showAxisDragHandles: true, modeBarButtonsToRemove: BUTTONS_TO_REMOVE};
-let IMAGES = [
-            {
-            x: 0.45,
-            y: 1,
-            sizex: 0.15,
-            sizey: 0.15,
-            source: "https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/covidtracker.svg",
-            xanchor: "middle",
-            xref: "paper",
-            yanchor: "top",
-            yref: "top"
-            }
-        ];
 
-download_data_hosp();
-function download_data_hosp(){
+download_data();
+function download_data(){
     var URL = 'https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/dataexplorer_compr.json';
     var request = new XMLHttpRequest();
     request.open('GET', URL);
@@ -168,10 +151,7 @@ function download_data_hosp(){
     request.send();
     request.onload = function() {
         data_France = request.response;
-        buildChartHospitalisations();
-        buildChartHospitalisationsTauxDeCroissance();
-        buildChartNouvellesHospitalisations();
-        buildChartNouvellesHospitalisationsTauxDeCroissance();
+        
         
     }
 }
@@ -275,7 +255,7 @@ function buildChartHospitalisations(){
 
     var data = [trace2];
 
-    Plotly.newPlot('hospitalisations', data, layout, config);
+    Plotly.newPlot('lits_hospitalisations', data, layout, config);
 }
 
 function buildChartHospitalisationsTauxDeCroissance(){

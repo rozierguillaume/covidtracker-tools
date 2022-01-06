@@ -90,52 +90,50 @@ p {
 </style>
 
 <body>
-
-    <div class="btn-group btn-group-toggle" role="group" >
-        <a href="https://covidtracker.fr/dashboard-depistage" class="btn btn-secondary">Dépistage</a>
-        <a href="https://covidtracker.fr/dashboard-hospitalisations" class="btn btn-secondary active">Hospitalisations</a>
-        <a href="https://covidtracker.fr/dashboard-reanimations" class="btn btn-secondary">Soins critiques</a>
-        <a href="https://covidtracker.fr/dashboard-deces" class="btn btn-secondary">Décès</a>
+    <div id="reanimations" class="btn-group btn-group-toggle" role="group" >
+        <a href="#depistage" class="btn btn-secondary">Dépistage</a>
+        <a href="#hospitalisations" class="btn btn-secondary">Hospitalisations</a>
+        <a href="#reanimations" class="btn btn-secondary active">Soins critiques</a>
+        <a href="#deces" class="btn btn-secondary">Décès</a>
     </div>
 
-    <h2>Hospitalisations</h2>
+    <h2>Soins critiques (dont réanimation)</h2>
 
-    <h3>Nombre de personnes hospitalisées</h3>
-    <p>Nombre de personnes hospitalisées pour Covid19.</p>
-    <div id="hospitalisations" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <h3>Nombre de personnes en soins critiques</h3>
+    <p>Nombre de personnes en soins critiques dont réanimation pour Covid19.</p>
+    <div id="lits_reanimations" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
-    <h3>Taux de croissance du nombre d'hospitalisations</h3>
-    <p>Taux d'évolution du nombre de personnes hospitalisées pour Covid19.</p>
-    <div id="hospitalisations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <h3>Taux de croissance du nombre de soins critiques</h3>
+    <p>Taux d'évolution du nombre de personnes en soins critiques dont réanimation pour Covid19.</p>
+    <div id="reanimations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
     
-    <h2>Admissions à l'hôpital</h2>
+    <h2>Admissions en soins critiques</h2>
     <div class="wrap">
         <div class="one">
             <span id="nb_total_admissions" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span><br>
             <b>Admissions (total)</b><br>
-            Nombre total d'admissions Covid19 à l'hôpital depuis le printemps 2020.
+            Nombre total d'admissions Covid19 en soins critiques depuis le printemps 2020.
             <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span class="date_maj">--/--</span> • Source : Santé publique France</i></div>
         </div>
 
         <div class="one">
             <span id="nb_quotidien_admissions" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span><br>
             <b>Admissions (quotidien)</b><br>
-            Nombre quotidien d'admissions Covid19 à l'hôpital, en moyenne sur les 7 derniers jours.
+            Nombre quotidien d'admissions Covid19 en soins critiques, en moyenne sur les 7 derniers jours.
             <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span class="date_maj">--/--</span> • Source : Santé publique France</i></div>
         </div>
-    </div>
+    </div> 
     <br>
-    <h3>Nouvelles admissions à l'hôpital</h3>
-    <p>Nombre d'admissions quotidiennes à l'hôpital pour Covid19.</p>
-    <div id="nouvelles_hospitalisations" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+
+    <h3>Nouvelles admissions en soins critiques</h3>
+    <p>Nombre d'admissions quotidiennes en soins critiques dont réanimation pour Covid19.</p>
+    <div id="nouvelles_reanimations" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
     <h3>Taux de croissance des nouvelles admissions</h3>
-    <p>Taux d'évolution du nombre d'admissions quotidiennes à l'hôpital pour Covid19.</p>
-    <div id="nouvelles_hospitalisations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; min-height: 300px; max-height: 800px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <p>Taux d'évolution du nombre d'admissions quotidiennes en soins critiques dont réanimation pour Covid19.</p>
+    <div id="nouvelles_reanimations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; min-height: 300px; max-height: 800px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
     <br>
-  
-    <?php include(__DIR__ . '/menuBasPage.php'); ?>
     <br>
     <br>
    
@@ -143,24 +141,8 @@ p {
 
 <script>
 
-let BUTTONS_TO_REMOVE = ['toImage', 'lasso2d', 'zoomIn2d', 'zoomOut2d'];
-let config = {responsive: true, displaylogo: false, locale: 'fr', showAxisDragHandles: true, modeBarButtonsToRemove: BUTTONS_TO_REMOVE};
-let IMAGES = [
-            {
-            x: 0.45,
-            y: 1,
-            sizex: 0.15,
-            sizey: 0.15,
-            source: "https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/images/covidtracker.svg",
-            xanchor: "middle",
-            xref: "paper",
-            yanchor: "top",
-            yref: "top"
-            }
-        ];
-
-download_data_hosp();
-function download_data_hosp(){
+download_data();
+function download_data(){
     var URL = 'https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/dataexplorer_compr.json';
     var request = new XMLHttpRequest();
     request.open('GET', URL);
@@ -168,10 +150,7 @@ function download_data_hosp(){
     request.send();
     request.onload = function() {
         data_France = request.response;
-        buildChartHospitalisations();
-        buildChartHospitalisationsTauxDeCroissance();
-        buildChartNouvellesHospitalisations();
-        buildChartNouvellesHospitalisationsTauxDeCroissance();
+        
         
     }
 }
@@ -190,33 +169,31 @@ function printableNumber(x){
 };
 
 function updateDataAdmissions(){
-    N = data_France.france.incid_hospitalisations.valeur.length;
-    let jour_nom = data_France.france["incid_hospitalisations"].jour_nom;
+    N = data_France.france.incid_reanimations.valeur.length;
+    let jour_nom = data_France.france["incid_reanimations"].jour_nom;
     let jour = data_France.france[jour_nom][N-1];
 
-    document.getElementById("nb_total_admissions").innerHTML = printableNumber(data_France.france.incid_hospitalisations_total.valeur);
-    document.getElementById("nb_quotidien_admissions").innerHTML = printableNumber(data_France.france.incid_hospitalisations.valeur[N-1]);
+    document.getElementById("nb_total_admissions").innerHTML = printableNumber(data_France.france.incid_reanimations_total.valeur);
+    document.getElementById("nb_quotidien_admissions").innerHTML = printableNumber(data_France.france.incid_reanimations.valeur[N-1]);
 
     for (element of document.getElementsByClassName('date_maj')){
             element.innerHTML = moment(jour, "YYYY-MM-DD").format("DD / MM / YYYY");
         }
 }
 
-function buildChartHospitalisations(){
-    updateDataAdmissions();
-
-    let data_nom = "hospitalisations";
+function buildChartReanimations(){
+    let data_nom = "reanimations";
     let jour_nom = data_France.france[data_nom].jour_nom;
 
     var trace2 = {
         x: data_France.france[jour_nom],
         y: data_France.france[data_nom].valeur,
-        hovertemplate: '%{y:.1f} hospitalisations<br>%{x}<extra></extra>',
+        hovertemplate: '%{y:.1f} reanimations<br>%{x}<extra></extra>',
         mode: 'lines',
         type: 'scatter',
         fill: 'tozeroy',
         line: {
-            color: 'rgba(209, 102, 21,1)',
+            color: 'rgba(201, 4, 4, 1)',
             width: 3
         }
     };
@@ -229,7 +206,7 @@ function buildChartHospitalisations(){
 
     var layout = { 
         images: IMAGES,
-        font: {size: 15},
+        font: {size: 12},
         legend: {"orientation": "h"},
         annotations: [
             {
@@ -237,18 +214,18 @@ function buildChartHospitalisations(){
             y: data_France.france[data_nom].valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: "<b>" + printableNumber(data_France.france[data_nom].valeur[N-1]) + " hosp.</b><br> (+ " + printableNumber(data_France.france[data_nom].valeur[N-1]-data_France.france[data_nom].valeur[N-8]) +" / sem.)",
+            text: "<b>" + printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>soins crit.</b><br>(+ " + printableNumber(data_France.france[data_nom].valeur[N-1] - data_France.france[data_nom].valeur[N-8]) + " / sem.)",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
                 size: 13,
-                color: 'rgba(209, 102, 21,1)'
+                color: 'rgba(201, 4, 4, 1)'
             },
             align: 'center',
             arrowhead: 2,
             arrowsize: 1,
             arrowwidth: 1.5,
-            arrowcolor: 'rgba(209, 102, 21,1)',
+            arrowcolor: 'rgba(201, 4, 4, 1)',
             ax: -50,
             ay: -30,
             borderwidth: 1,
@@ -275,19 +252,19 @@ function buildChartHospitalisations(){
 
     var data = [trace2];
 
-    Plotly.newPlot('hospitalisations', data, layout, config);
+    Plotly.newPlot('lits_reanimations', data, layout, config);
 }
 
-function buildChartHospitalisationsTauxDeCroissance(){
+function buildChartReanimationsTauxDeCroissance(){
     let MAX_VALUES = 100;
-    let data_nom = "croissance_hospitalisations";
+    let data_nom = "croissance_reanimations";
     let jour_nom = data_France.france[data_nom].jour_nom;
     let N = data_France.france[jour_nom].length;
 
     var trace1 = {
         x: data_France.france[jour_nom].slice(9, N-3),
         y: data_France.france[data_nom+"_rolling7"].valeur.slice(9, N-3),
-        hovertemplate: 'Évolution hospitalisations : %{y:.1f} %<br>%{x}<extra></extra>',
+        hovertemplate: 'Évolution reanimations : %{y:.1f} %<br>%{x}<extra></extra>',
         name: "Taux de croissance de la moyenne 7j",
         type: 'line',
         line: {
@@ -308,7 +285,7 @@ function buildChartHospitalisationsTauxDeCroissance(){
     var trace2 = {
         x: data_France.france[jour_nom],
         y: data_France.france[data_nom].valeur,
-        hovertemplate: 'Évolution hospitalisations : %{y:.1f} %<br>%{x}<extra></extra>',
+        hovertemplate: 'Évolution reanimations : %{y:.1f} %<br>%{x}<extra></extra>',
         name: 'Taux de croissance',
         type: 'bar',
         fill: 'tozeroy',
@@ -346,7 +323,7 @@ function buildChartHospitalisationsTauxDeCroissance(){
             arrowsize: 1,
             arrowwidth: 1.5,
             arrowcolor: 'rgba(0, 0, 0, 1)',
-            ax: -30,
+            ax: -10,
             ay: -30,
             borderwidth: 1,
             borderpad: 2,
@@ -372,11 +349,13 @@ function buildChartHospitalisationsTauxDeCroissance(){
     };
     var data = [trace2];
 
-    Plotly.newPlot('hospitalisations_taux_croissance', data, layout, config);
+    Plotly.newPlot('reanimations_taux_croissance', data, layout, config);
 }
 
-function buildChartNouvellesHospitalisations(){
-    let data_nom = "incid_hospitalisations";
+function buildChartNouvellesReanimations(){
+    updateDataAdmissions();
+
+    let data_nom = "incid_reanimations";
     let jour_nom = data_France.france[data_nom].jour_nom;
 
     var trace2 = {
@@ -387,7 +366,7 @@ function buildChartNouvellesHospitalisations(){
         type: 'scatter',
         fill: 'tozeroy',
         line: {
-            color: 'rgba(209, 102, 21,1)',
+            color: 'rgba(201, 4, 4, 1)',
             width: 3
         }
     };
@@ -400,7 +379,7 @@ function buildChartNouvellesHospitalisations(){
 
     var layout = { 
         images: IMAGES,
-        font: {size: 12},
+        font: {size: 15},
         legend: {"orientation": "h"},
         annotations: [
             {
@@ -408,19 +387,19 @@ function buildChartNouvellesHospitalisations(){
             y: data_France.france[data_nom].valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: "<b>" + printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>admissions</b>" + '<br> (' + printableTaux(data_France.france["croissance_" + data_nom + "_rolling7"].valeur[N-4]) + "% / sem.)",
+            text: "<b>" + printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>admissions</b><br> (" + printableTaux(data_France.france["croissance_" + data_nom + "_rolling7"].valeur[N-4]) + "% / sem.)",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
                 size: 13,
-                color: 'rgba(209, 102, 21,1)'
+                color: 'rgba(201, 4, 4, 1)'
             },
             align: 'center',
             arrowhead: 2,
             arrowsize: 1,
             arrowwidth: 1.5,
-            arrowcolor: 'rgba(209, 102, 21,1)',
-            ax: -60,
+            arrowcolor: 'rgba(201, 4, 4, 1)',
+            ax: -50,
             ay: -30,
             borderwidth: 1,
             borderpad: 2,
@@ -446,12 +425,12 @@ function buildChartNouvellesHospitalisations(){
 
     var data = [trace2];
 
-    Plotly.newPlot('nouvelles_hospitalisations', data, layout, config);
+    Plotly.newPlot('nouvelles_reanimations', data, layout, config);
 }
 
-function buildChartNouvellesHospitalisationsTauxDeCroissance(){
+function buildChartNouvellesReanimationsTauxDeCroissance(){
     let MAX_VALUES = 100;
-    let data_nom = "croissance_incid_hospitalisations";
+    let data_nom = "croissance_incid_reanimations";
     let jour_nom = data_France.france[data_nom].jour_nom;
     let N = data_France.france[jour_nom].length;
 
@@ -517,7 +496,7 @@ function buildChartNouvellesHospitalisationsTauxDeCroissance(){
             arrowsize: 1,
             arrowwidth: 1.5,
             arrowcolor: 'rgba(0, 0, 0, 1)',
-            ax: -30,
+            ax: -10,
             ay: -30,
             borderwidth: 1,
             borderpad: 2,
@@ -543,7 +522,7 @@ function buildChartNouvellesHospitalisationsTauxDeCroissance(){
     };
     var data = [trace1, trace2];
 
-    Plotly.newPlot('nouvelles_hospitalisations_taux_croissance', data, layout, config);
+    Plotly.newPlot('nouvelles_reanimations_taux_croissance', data, layout, config);
 }
 
 
