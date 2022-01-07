@@ -46,8 +46,8 @@
     })
     .then(json => {
         data_variants = json;
-        //buildChartVariants(data_variants);
-        //updateDivOmicron(data_variants);
+        buildChartVariants(data_variants);
+        updateDivOmicron(data_variants);
 
     })
     .catch(function () {
@@ -523,8 +523,7 @@
     }
 
     function updateDivOmicron(data_variants){
-        let n = data_variants["taux_c1"].length
-        document.getElementById("taux_non_c1").innerHTML = (100-data_variants["taux_c1"][n-1]).toFixed(1)
+        document.getElementById("taux_d1").innerHTML = (data_variants["taux_d1"]).toFixed(1)
     }
 
     var omicronChart;
@@ -537,15 +536,15 @@
                 labels: data_variants["jours"],
                 datasets: [
                     {
-                    label: 'Suspectés Delta (présence L452R)',
-                    data: data_variants["cas_c1"],
+                    label: 'Delta et autres (absence D1)',
+                    data: data_variants["cas_non_d1"],
                     pointRadius: 0,
                     backgroundColor: 'rgba(153, 153, 153, 1)',
                     borderColor: 'rgba(153, 153, 153, 0)',
                 },
                     {
-                    label: 'Suspectés Omicron (absence L452R)',
-                    data: data_variants["cas_non_c1"],
+                    label: 'Omicron (présence D1)',
+                    data: data_variants["cas_d1"],
                     pointRadius: 0,
                     backgroundColor: 'rgba(240, 31, 31)',
                     borderColor: 'rgba(240, 31, 31, 0)',
