@@ -184,7 +184,7 @@ Mise à jour : <span id="date_update_coup_doeil2">-/-</span>
     <!-- wp:spacer {"height":30} -->
     <div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
     <!-- /wp:spacer -->
-    Plus d'informations sur le <a href="https://covidtracker.fr/covidtracker-france">Dashboard France</a> et <a href="https://covidtracker.fr/deconfitracker">DéconfiTracker</a>. Mise à jour : <span id="date_update_coup_doeil">-/-</span>.
+    Plus d'informations sur le <a href="https://covidtracker.fr/france">Dashboard France</a> et <a href="https://covidtracker.fr/deconfitracker">DéconfiTracker</a>. Mise à jour : <span id="date_update_coup_doeil">-/-</span>.
 </div>
 
 <!-- wp:spacer {"height":30} -->

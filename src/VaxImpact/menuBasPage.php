@@ -307,7 +307,7 @@
                 <a href="https://covidtracker.fr" style="color:black">
                     <button>🏠 <b>Accueil</b></button>
                 </a>
-                <a href="https://covidtracker.fr/covidtracker-france/" style="color:black">
+                <a href="https://covidtracker.fr/france/" style="color:black">
                     <button>🇫🇷 France</button>
                 </a>
                 <a href="https://covidtracker.fr/dashboard-regions/" style="color:black">
