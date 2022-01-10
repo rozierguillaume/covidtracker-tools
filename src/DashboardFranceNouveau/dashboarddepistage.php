@@ -361,7 +361,7 @@ function buildChartCasSpf(){
         type: 'bar',
         fill: 'tozeroy',
         marker: {
-            color: 'rgba(8, 115, 191, 0.1)'
+            color: 'rgba(8, 115, 191, 0.3)'
         }
     };
 
@@ -373,6 +373,7 @@ function buildChartCasSpf(){
         mode: 'lines',
         type: 'scatter',
         fill: 'tozeroy',
+        fillcolor: 'rgba(8, 115, 191, 0.5)',
         line: {
             color: 'rgb(8, 115, 191)',
             width: 3
