@@ -6,6 +6,12 @@
 
 
 <style>
+h3 {
+    margin-top: 30px;
+}
+h2 {
+    margin-top: 50px;
+}
 .btn-actif{
     border: 1px solid black;
     padding: 6px;
@@ -118,28 +124,28 @@ p {
     <br>
     <h3>Nombre de cas positifs (date de prélèvement)</h3>
     <p>Nombre de résultats de tests positifs chaque jour, par date de prélèvement du test sur le patient (dernière donnée : J-3).</p>
-    <div id="cas" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    <div id="cas" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px;"></div>
     <span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span>
     
     <h3>Taux de croissance des cas (date de prélèvement)</h3>
     <p>Taux d'évolution du nombre de cas positifs (dernière donnée : J-3), en pourcent. Une barre rouge signifie une croissance des cas, une barre verte une décroissance.</p>
-    <div id="cas_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    <div id="cas_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px;"></div>
     <span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span>
 
     <h3>Nombre de cas positifs (date de publication)</h3>
     <p>Nombre de résultats de tests positifs chaque jour, par date de saisie du résultat de test par le professionel de santé (dernière donnée : J-0).</p>
-    <div id="cas_spf" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    <div id="cas_spf" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px;"></div>
     <span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj_spf_opendata">--/--</span></span>
 
     <h3>Taux de croissance des cas (date de publication)</h3>
     <p>Taux d'évolution du nombre de cas positifs, par date de saisie du résultat (dernière donnée : J-0), en pourcent. Une barre rouge signifie une croissance des cas, une barre verte une décroissance.</p>
-    <div id="cas_spf_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    <div id="cas_spf_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px;"></div>
     <span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj_spf_opendata">--/--</span></span>
 
 
     <h3>Taux de positivité des tests</h3>
     <p>Proportion des tests qui sont positifs parmi l'ensemble des tests (dernière donnée : J-3).</p>
-    <div id="cas_taux_positivite" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"></div>
+    <div id="cas_taux_positivite" style="width: 95vw; height: 35vw; max-width: 1000px; min-height: 300px; max-height: 800px;"></div>
     <span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span>
 
     <h2>Dépistage</h2>

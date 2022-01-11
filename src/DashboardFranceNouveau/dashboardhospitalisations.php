@@ -1,5 +1,11 @@
 
 <style>
+h3 {
+    margin-top: 30px;
+}
+h2 {
+    margin-top: 50px;
+}
 .btn-actif{
     border: 1px solid black;
     padding: 6px;
@@ -92,15 +98,15 @@ p {
 
     <h3>Nombre de personnes hospitalisées</h3>
     <p>Nombre de personnes hospitalisées avec Covid19.</p>
-    <div id="lits_hospitalisations" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <div id="lits_hospitalisations" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
     <h3>Taux de croissance du nombre d'hospitalisations</h3>
     <p>Taux d'évolution du nombre de personnes hospitalisées avec Covid19.</p>
-    <div id="hospitalisations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <div id="hospitalisations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
     
     <h3>Hospitalisations par âge</h3>
     <p>Personnes actuellement hospitalisées avec Covid19, par tranche d'âge.</p>
-    <div id="hospitalisations_par_age" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <div id="hospitalisations_par_age" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
 
     <h2>Admissions à l'hôpital</h2>
@@ -122,7 +128,7 @@ p {
     <br>
     <h3>Nouvelles admissions à l'hôpital</h3>
     <p>Nombre d'admissions quotidiennes à l'hôpital avec Covid19.</p>
-    <div id="nouvelles_hospitalisations" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <div id="nouvelles_hospitalisations" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
     <h3>Taux de croissance des nouvelles admissions</h3>
     <p>Taux d'évolution du nombre d'admissions quotidiennes à l'hôpital avec Covid19.</p>
