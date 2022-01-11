@@ -214,13 +214,7 @@ function buildChartHospitalisations(){
             opacity: 0.8
             }
         ],
-        margin: {
-            l: 30,
-            r: 0,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
             tickfont: {size: 10},
             //range: [x_min, x_max],
@@ -311,13 +305,7 @@ function buildChartHospitalisationsTauxDeCroissance(){
             opacity: 0.8
             }
         ],
-        margin: {
-            l: 40,
-            r: 10,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
             tickfont: {size: 10},
             range: [x_min, x_max],
@@ -385,13 +373,7 @@ function buildChartNouvellesHospitalisations(){
             opacity: 0.8
             }
         ],
-        margin: {
-            l: 30,
-            r: 0,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
             tickfont: {size: 10},
             range: [x_min, x_max],
@@ -482,13 +464,7 @@ function buildChartNouvellesHospitalisationsTauxDeCroissance(){
             opacity: 0.8
             }
         ],
-        margin: {
-            l: 40,
-            r: 10,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
             tickfont: {size: 10},
             range: [x_min, x_max],
@@ -528,12 +504,7 @@ function buildChartHospitalisationsParAge(){
         var data = [trace1];
 
         var layout = {
-            margin: {
-                t: 0,
-                b:0,
-                r:0,
-                l:0
-            }
+            margin: MARGIN
         };
 
         Plotly.newPlot('hospitalisations_par_age', data, layout);  

@@ -199,6 +199,13 @@ let IMAGES = [
             }
         ];
 
+let MARGIN = {
+            t: 0,
+            b:0,
+            r:0,
+            l:0
+    };
+
 download_data();
 function download_data(){
     var URL = 'https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/dataexplorer_compr.json';
@@ -304,13 +311,7 @@ function buildChartCas(){
         images: IMAGES,
         font: {size: 15},
         legend: {"orientation": "h"},
-        margin: {
-            l: 30,
-            r: 20,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
             tickfont: {size: 10},
             //range: [x_min, x_max],
@@ -405,13 +406,7 @@ function buildChartCasSpf(){
         images: IMAGES,
         font: {size: 15},
         legend: {"orientation": "h"},
-        margin: {
-            l: 30,
-            r: 20,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
             tickfont: {size: 10},
             //range: [x_min, x_max],
@@ -530,13 +525,7 @@ function buildChartCasTauxDeCroissance(){
             opacity: 0.8
             }
         ],
-        margin: {
-            l: 40,
-            r: 10,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
             tickfont: {size: 10},
             range: [x_min, x_max],
@@ -627,13 +616,7 @@ function buildChartCasSpfTauxDeCroissance(){
             opacity: 0.8
             }
         ],
-        margin: {
-            l: 40,
-            r: 10,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
             tickfont: {size: 10},
             range: [x_min, x_max],
@@ -701,13 +684,7 @@ function buildChartCasTauxDePositivite(){
             opacity: 0.8
             }
         ],
-        margin: {
-            l: 40,
-            r: 10,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
             tickfont: {size: 10},
             range: [x_min, x_max],
@@ -772,13 +749,7 @@ function buildChartTests(){
             opacity: 0.8
             }
         ],
-        margin: {
-            l: 35,
-            r: 0,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
             tickfont: {size: 10},
             range: [x_min, x_max]
@@ -868,13 +839,7 @@ function buildChartTestsTauxDeCroissance(){
             opacity: 0.8
             }
         ],
-        margin: {
-            l: 40,
-            r: 10,
-            b: 20,
-            t: 0,
-            pad: 0
-        },
+        margin: MARGIN,
         xaxis: {
             tickfont: {size: 10},
             range: [x_min, x_max],
