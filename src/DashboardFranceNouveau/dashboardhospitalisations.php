@@ -108,6 +108,11 @@ p {
     <p>Taux d'évolution du nombre de personnes hospitalisées avec Covid19.</p>
     <div id="hospitalisations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
     
+    <h3>Hospitalisations par âge</h3>
+    <p>Personnes actuellement hospitalisées avec Covid19, par tranche d'âge.</p>
+    <div id="hospitalisations_par_age" style="width: 95vw; height: 35vw; max-width: 1000px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+
+
     <h2>Admissions à l'hôpital</h2>
     <div class="wrap">
         <div class="one">
@@ -496,6 +501,41 @@ function buildChartNouvellesHospitalisationsTauxDeCroissance(){
     var data = [trace1, trace2];
 
     Plotly.newPlot('nouvelles_hospitalisations_taux_croissance', data, layout, config);
+}
+
+function buildChartHospitalisationsParAge(){
+    var URL = 'https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/api/hospitalisations_par_age.json';
+    var request = new XMLHttpRequest();
+    request.open('GET', URL);
+    request.responseType = 'json';
+    request.send();
+    request.onload = function() {
+        data = request.response;
+        var trace1 = {
+            x: data['hosp'],
+            y: data["cl_age90"],
+            name: '',
+            text: data['hosp'],
+            textposition: 'auto',
+            orientation: 'h',
+            marker: {
+                color: 'rgba(55,128,191,0.6)',
+                width: 1
+            },
+            type: 'bar'
+        };
+
+        var data = [trace1];
+
+        var layout = {
+            margin: {
+                t: 0
+            }
+        };
+
+        Plotly.newPlot('hospitalisations_par_age', data, layout);  
+    }
+    
 }
 
 

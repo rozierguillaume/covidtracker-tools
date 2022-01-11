@@ -217,6 +217,7 @@ function download_data(){
         buildChartTestsTauxDeCroissance();
 
         buildChartHospitalisations();
+        buildChartHospitalisationsParAge();
         buildChartHospitalisationsTauxDeCroissance();
         buildChartNouvellesHospitalisations();
         buildChartNouvellesHospitalisationsTauxDeCroissance();
