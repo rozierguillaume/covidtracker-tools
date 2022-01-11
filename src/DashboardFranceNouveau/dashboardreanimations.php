@@ -199,7 +199,7 @@ function buildChartReanimations(){
         ],
         margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             //range: [x_min, x_max],
         },
         yaxis: {
@@ -290,7 +290,7 @@ function buildChartReanimationsTauxDeCroissance(){
         ],
         margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             range: [x_min, x_max],
         },
         yaxis: {
@@ -360,7 +360,7 @@ function buildChartNouvellesReanimations(){
         ],
         margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             range: [x_min, x_max],
         },
         yaxis: {
@@ -451,7 +451,7 @@ function buildChartNouvellesReanimationsTauxDeCroissance(){
         ],
         margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             range: [x_min, x_max],
         },
         yaxis: {

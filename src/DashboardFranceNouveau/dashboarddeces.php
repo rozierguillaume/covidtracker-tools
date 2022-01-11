@@ -190,7 +190,7 @@ function buildChartDeces(){
         ],
         margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             //range: [x_min, x_max],
         },
         yaxis: {
@@ -281,7 +281,7 @@ function buildChartDecesTauxDeCroissance(){
         ],
         margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             range: [x_min, x_max],
         },
         yaxis: {

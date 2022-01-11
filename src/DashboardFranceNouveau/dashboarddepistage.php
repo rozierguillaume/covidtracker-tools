@@ -201,7 +201,7 @@ let IMAGES = [
 
 let MARGIN = {
             t: 0,
-            b:20,
+            b:40,
             r:0,
             l:50
     };
@@ -313,7 +313,7 @@ function buildChartCas(){
         legend: {"orientation": "h"},
         margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             //range: [x_min, x_max],
         },
         yaxis: {
@@ -408,7 +408,7 @@ function buildChartCasSpf(){
         legend: {"orientation": "h"},
         margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             //range: [x_min, x_max],
         },
         yaxis: {
@@ -527,7 +527,7 @@ function buildChartCasTauxDeCroissance(){
         ],
         margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             range: [x_min, x_max],
         },
         yaxis: {
@@ -618,7 +618,7 @@ function buildChartCasSpfTauxDeCroissance(){
         ],
         margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             range: [x_min, x_max],
         },
         yaxis: {
@@ -686,7 +686,7 @@ function buildChartCasTauxDePositivite(){
         ],
         margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             range: [x_min, x_max],
         },
         yaxis: {
@@ -751,7 +751,7 @@ function buildChartTests(){
         ],
         margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             range: [x_min, x_max]
         },
         yaxis: {
@@ -841,7 +841,7 @@ function buildChartTestsTauxDeCroissance(){
         ],
         margin: MARGIN,
         xaxis: {
-            tickfont: {size: 10},
+            tickfont: {size: 12},
             range: [x_min, x_max],
         },
         yaxis: {
