@@ -200,8 +200,8 @@ let IMAGES = [
         ];
 
 let MARGIN = {
-            t: 10,
-            b:0,
+            t: 0,
+            b:20,
             r:0,
             l:50
     };
