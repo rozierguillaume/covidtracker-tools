@@ -91,11 +91,11 @@ p {
 
     <h3>Nombre de personnes en soins critiques</h3>
     <p>Nombre de personnes en soins critiques dont réanimation avec Covid19.</p>
-    <div id="lits_reanimations" style="width: 95vw; height: 35vw; max-width: 1200px; max-height: 800px; min-height: 300px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <div id="lits_reanimations" style="width: 95vw; height: 35vw; max-width: 1100px; max-height: 800px; min-height: 300px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
     <h3>Taux de croissance du nombre de soins critiques</h3>
     <p>Taux d'évolution du nombre de personnes en soins critiques dont réanimation avec Covid19.</p>
-    <div id="reanimations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1200px; max-height: 800px; min-height: 300px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <div id="reanimations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1100px; max-height: 800px; min-height: 300px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
     
     <h2>Admissions en soins critiques</h2>
     <div class="wrap">
@@ -117,11 +117,11 @@ p {
 
     <h3>Nouvelles admissions en soins critiques</h3>
     <p>Nombre d'admissions quotidiennes en soins critiques dont réanimation avec Covid19.</p>
-    <div id="nouvelles_reanimations" style="width: 95vw; height: 35vw; max-width: 1200px; max-height: 800px; min-height: 300px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <div id="nouvelles_reanimations" style="width: 95vw; height: 35vw; max-width: 1100px; max-height: 800px; min-height: 300px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
     <h3>Taux de croissance des nouvelles admissions</h3>
     <p>Taux d'évolution du nombre d'admissions quotidiennes en soins critiques dont réanimation avec Covid19.</p>
-    <div id="nouvelles_reanimations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1200px; min-height: 300px; max-height: 800px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <div id="nouvelles_reanimations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1100px; min-height: 300px; max-height: 800px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
     <br>
     <br>

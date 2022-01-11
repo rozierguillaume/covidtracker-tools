@@ -108,11 +108,11 @@ p {
 
     <h3>Nombre de décès hospitaliers quotidien</h3>
     <p>Nombre de personnes décédées à l'hôpital avec Covid19 chaque jour.</p>
-    <div id="deces_hosp" style="width: 95vw; height: 35vw; max-width: 1200px; max-height: 800px; min-height: 300px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <div id="deces_hosp" style="width: 95vw; height: 35vw; max-width: 1100px; max-height: 800px; min-height: 300px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
 
     <h3>Taux de croissance des décès hospitaliers</h3>
     <p>Taux d'évolution hebdomadaire du nombre quotidien de personnes décédées à l'hôpital avec Covid19.</p>
-    <div id="deces_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1200px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+    <div id="deces_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1100px; max-height: 800px; min-height: 300px; margin-bottom: 100px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
     
     <br>
     <br>
