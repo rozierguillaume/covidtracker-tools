@@ -529,7 +529,10 @@ function buildChartHospitalisationsParAge(){
 
         var layout = {
             margin: {
-                t: 0
+                t: 0,
+                b:0,
+                r:0,
+                l:0
             }
         };
 
