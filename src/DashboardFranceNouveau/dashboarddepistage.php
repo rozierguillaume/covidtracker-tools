@@ -200,10 +200,10 @@ let IMAGES = [
         ];
 
 let MARGIN = {
-            t: 0,
+            t: 10,
             b:0,
             r:0,
-            l:0
+            l:50
     };
 
 download_data();
