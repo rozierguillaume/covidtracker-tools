@@ -142,12 +142,12 @@ p {
 <script>
 
 function updateDataAdmissions(){
-    N = data_France.france.incid_reanimations.valeur.length;
-    let jour_nom = data_France.france["incid_reanimations"].jour_nom;
-    let jour = data_France.france[jour_nom][N-1];
+    N = data_France.incid_reanimations.valeur.length;
+    let jour_nom = data_France["incid_reanimations"].jour_nom;
+    let jour = data_France[jour_nom][N-1];
 
-    document.getElementById("nb_total_admissions").innerHTML = printableNumber(data_France.france.incid_reanimations_total.valeur);
-    document.getElementById("nb_quotidien_admissions").innerHTML = printableNumber(data_France.france.incid_reanimations.valeur[N-1]);
+    document.getElementById("nb_total_admissions").innerHTML = printableNumber(data_France.incid_reanimations_total.valeur);
+    document.getElementById("nb_quotidien_admissions").innerHTML = printableNumber(data_France.incid_reanimations.valeur[N-1]);
 
     for (element of document.getElementsByClassName('date_maj')){
             element.innerHTML = moment(jour, "YYYY-MM-DD").format("DD / MM / YYYY");
@@ -156,11 +156,11 @@ function updateDataAdmissions(){
 
 function buildChartReanimations(){
     let data_nom = "reanimations";
-    let jour_nom = data_France.france[data_nom].jour_nom;
+    let jour_nom = data_France[data_nom].jour_nom;
 
     var trace2 = {
-        x: data_France.france[jour_nom],
-        y: data_France.france[data_nom].valeur,
+        x: data_France[jour_nom],
+        y: data_France[data_nom].valeur,
         hovertemplate: '%{y:.1f} reanimations<br>%{x}<extra></extra>',
         mode: 'lines',
         type: 'scatter',
@@ -171,11 +171,11 @@ function buildChartReanimations(){
         }
     };
 
-    let N = data_France.france[jour_nom].length;
-    let x_min = data_France.france[jour_nom][N-300];
-    let x_max = data_France.france[jour_nom][N-1];
+    let N = data_France[jour_nom].length;
+    let x_min = data_France[jour_nom][N-300];
+    let x_max = data_France[jour_nom][N-1];
     let y_min = 0;
-    let y_max = Math.max.apply(Math, data_France.france[data_nom].valeur);
+    let y_max = Math.max.apply(Math, data_France[data_nom].valeur);
 
     var layout = { 
         images: IMAGES,
@@ -184,10 +184,10 @@ function buildChartReanimations(){
         annotations: [
             {
             x: x_max,
-            y: data_France.france[data_nom].valeur[N-1],
+            y: data_France[data_nom].valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: "<b>" + printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>soins crit.</b><br>(+ " + printableNumber(data_France.france[data_nom].valeur[N-1] - data_France.france[data_nom].valeur[N-8]) + " / sem.)",
+            text: "<b>" + printableNumber(data_France[data_nom].valeur[N-1]) + "<br>soins crit.</b><br>(+ " + printableNumber(data_France[data_nom].valeur[N-1] - data_France[data_nom].valeur[N-8]) + " / sem.)",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -225,12 +225,12 @@ function buildChartReanimations(){
 function buildChartReanimationsTauxDeCroissance(){
     let MAX_VALUES = 100;
     let data_nom = "croissance_reanimations";
-    let jour_nom = data_France.france[data_nom].jour_nom;
-    let N = data_France.france[jour_nom].length;
+    let jour_nom = data_France[data_nom].jour_nom;
+    let N = data_France[jour_nom].length;
 
     var trace1 = {
-        x: data_France.france[jour_nom].slice(9, N-3),
-        y: data_France.france[data_nom+"_rolling7"].valeur.slice(9, N-3),
+        x: data_France[jour_nom].slice(9, N-3),
+        y: data_France[data_nom+"_rolling7"].valeur.slice(9, N-3),
         hovertemplate: 'Évolution reanimations : %{y:.1f} %<br>%{x}<extra></extra>',
         name: "Taux de croissance de la moyenne 7j",
         type: 'line',
@@ -241,7 +241,7 @@ function buildChartReanimationsTauxDeCroissance(){
     };
 
     var bar_colors = [];
-    data_France.france[data_nom].valeur.map((value, idx) => {
+    data_France[data_nom].valeur.map((value, idx) => {
         if(value>0){
             bar_colors.push("#ff4d4d");
         } else {
@@ -250,8 +250,8 @@ function buildChartReanimationsTauxDeCroissance(){
     })
 
     var trace2 = {
-        x: data_France.france[jour_nom],
-        y: data_France.france[data_nom].valeur,
+        x: data_France[jour_nom],
+        y: data_France[data_nom].valeur,
         hovertemplate: 'Évolution reanimations : %{y:.1f} %<br>%{x}<extra></extra>',
         name: 'Taux de croissance',
         type: 'bar',
@@ -261,12 +261,12 @@ function buildChartReanimationsTauxDeCroissance(){
         }
     };
 
-    let x_min = data_France.france[jour_nom][N-MAX_VALUES];
-    let x_last = data_France.france[jour_nom][N-1];
+    let x_min = data_France[jour_nom][N-MAX_VALUES];
+    let x_last = data_France[jour_nom][N-1];
     let x_max = moment(x_last, "YYYY-MM-DD").add('days', 1).format("YYYY-MM-DD");
 
-    let y_min = Math.min.apply(Math, data_France.france[data_nom].valeur.slice(-MAX_VALUES));
-    let y_max = Math.max.apply(Math, data_France.france[data_nom].valeur.slice(-MAX_VALUES));
+    let y_min = Math.min.apply(Math, data_France[data_nom].valeur.slice(-MAX_VALUES));
+    let y_max = Math.max.apply(Math, data_France[data_nom].valeur.slice(-MAX_VALUES));
 
     var layout = { 
         images: IMAGES,
@@ -274,11 +274,11 @@ function buildChartReanimationsTauxDeCroissance(){
         legend: {"orientation": "h"},
         annotations: [
             {
-            x: data_France.france[jour_nom][N-1],
-            y: data_France.france[data_nom].valeur[N-1],
+            x: data_France[jour_nom][N-1],
+            y: data_France[data_nom].valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: printableTaux(data_France.france[data_nom].valeur[N-1]) + " %",
+            text: printableTaux(data_France[data_nom].valeur[N-1]) + " %",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -317,11 +317,11 @@ function buildChartNouvellesReanimations(){
     updateDataAdmissions();
 
     let data_nom = "incid_reanimations";
-    let jour_nom = data_France.france[data_nom].jour_nom;
+    let jour_nom = data_France[data_nom].jour_nom;
 
     var trace2 = {
-        x: data_France.france[jour_nom],
-        y: data_France.france[data_nom].valeur,
+        x: data_France[jour_nom],
+        y: data_France[data_nom].valeur,
         hovertemplate: '%{y:.1f} nouvelles admissions<br>%{x}<extra></extra>',
         mode: 'lines',
         type: 'scatter',
@@ -332,11 +332,11 @@ function buildChartNouvellesReanimations(){
         }
     };
 
-    let N = data_France.france[jour_nom].length;
-    let x_min = data_France.france[jour_nom][N-300];
-    let x_max = data_France.france[jour_nom][N-1];
+    let N = data_France[jour_nom].length;
+    let x_min = data_France[jour_nom][N-300];
+    let x_max = data_France[jour_nom][N-1];
     let y_min = 0;
-    let y_max = Math.max.apply(Math, data_France.france[data_nom].valeur.slice(-300));
+    let y_max = Math.max.apply(Math, data_France[data_nom].valeur.slice(-300));
 
     var layout = { 
         images: IMAGES,
@@ -345,10 +345,10 @@ function buildChartNouvellesReanimations(){
         annotations: [
             {
             x: x_max,
-            y: data_France.france[data_nom].valeur[N-1],
+            y: data_France[data_nom].valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: "<b>" + printableNumber(data_France.france[data_nom].valeur[N-1]) + "<br>admissions</b><br> (" + printableTaux(data_France.france["croissance_" + data_nom + "_rolling7"].valeur[N-4]) + "% / sem.)",
+            text: "<b>" + printableNumber(data_France[data_nom].valeur[N-1]) + "<br>admissions</b><br> (" + printableTaux(data_France["croissance_" + data_nom + "_rolling7"].valeur[N-4]) + "% / sem.)",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -386,12 +386,12 @@ function buildChartNouvellesReanimations(){
 function buildChartNouvellesReanimationsTauxDeCroissance(){
     let MAX_VALUES = 100;
     let data_nom = "croissance_incid_reanimations";
-    let jour_nom = data_France.france[data_nom].jour_nom;
-    let N = data_France.france[jour_nom].length;
+    let jour_nom = data_France[data_nom].jour_nom;
+    let N = data_France[jour_nom].length;
 
     var trace1 = {
-        x: data_France.france[jour_nom].slice(9, N-3),
-        y: data_France.france[data_nom+"_rolling7"].valeur.slice(9, N-3),
+        x: data_France[jour_nom].slice(9, N-3),
+        y: data_France[data_nom+"_rolling7"].valeur.slice(9, N-3),
         hovertemplate: 'Évolution nouvelles admissions (moyenne) : %{y:.1f} %<br>%{x}<extra></extra>',
         name: "Taux de croissance de la moyenne 7j",
         type: 'line',
@@ -402,7 +402,7 @@ function buildChartNouvellesReanimationsTauxDeCroissance(){
     };
 
     var bar_colors = [];
-    data_France.france[data_nom].valeur.map((value, idx) => {
+    data_France[data_nom].valeur.map((value, idx) => {
         if(value>0){
             bar_colors.push("#ff4d4d");
         } else {
@@ -411,8 +411,8 @@ function buildChartNouvellesReanimationsTauxDeCroissance(){
     })
 
     var trace2 = {
-        x: data_France.france[jour_nom],
-        y: data_France.france[data_nom].valeur,
+        x: data_France[jour_nom],
+        y: data_France[data_nom].valeur,
         hovertemplate: 'Évolution nouvelles admissions : %{y:.1f} %<br>%{x}<extra></extra>',
         name: 'Taux de croissance',
         type: 'bar',
@@ -422,12 +422,12 @@ function buildChartNouvellesReanimationsTauxDeCroissance(){
         }
     };
 
-    let x_min = data_France.france[jour_nom][N-MAX_VALUES];
-    let x_last = data_France.france[jour_nom][N-1];
+    let x_min = data_France[jour_nom][N-MAX_VALUES];
+    let x_last = data_France[jour_nom][N-1];
     let x_max = moment(x_last, "YYYY-MM-DD").add('days', 1).format("YYYY-MM-DD");
 
-    let y_min = Math.min.apply(Math, data_France.france[data_nom].valeur.slice(-MAX_VALUES));
-    let y_max = Math.max.apply(Math, data_France.france[data_nom].valeur.slice(-MAX_VALUES));
+    let y_min = Math.min.apply(Math, data_France[data_nom].valeur.slice(-MAX_VALUES));
+    let y_max = Math.max.apply(Math, data_France[data_nom].valeur.slice(-MAX_VALUES));
 
     var layout = { 
         images: IMAGES,
@@ -435,11 +435,11 @@ function buildChartNouvellesReanimationsTauxDeCroissance(){
         legend: {"orientation": "h"},
         annotations: [
             {
-            x: data_France.france[jour_nom][N-4],
-            y: data_France.france[data_nom+"_rolling7"].valeur[N-4],
+            x: data_France[jour_nom][N-4],
+            y: data_France[data_nom+"_rolling7"].valeur[N-4],
             xref: 'x',
             yref: 'y',
-            text: printableTaux(data_France.france[data_nom+"_rolling7"].valeur[N-4]) + " %",
+            text: printableTaux(data_France[data_nom+"_rolling7"].valeur[N-4]) + " %",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
