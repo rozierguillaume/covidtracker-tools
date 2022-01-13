@@ -308,7 +308,7 @@ function buildChartReanimationsTauxDeCroissance(){
 }
 
 function buildChartNouvellesReanimations(){
-    updateDataAdmissionsHopital();
+    updateDataAdmissionsReanimations();
 
     let data_nom = "incid_reanimations";
     let jour_nom = data_France[data_nom].jour_nom;
