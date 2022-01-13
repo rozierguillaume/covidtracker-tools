@@ -100,14 +100,14 @@ p {
     <h2>Admissions en soins critiques</h2>
     <div class="wrap">
         <div class="one">
-            <span id="nb_total_admissions" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span><br>
+            <span id="nb_total_admissions_reanimation" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span><br>
             <b>Admissions (total)</b><br>
             Nombre total d'admissions Covid19 en soins critiques depuis le printemps 2020.
             <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span class="date_maj">--/--</span> • Source : Santé publique France</i></div>
         </div>
 
         <div class="one">
-            <span id="nb_quotidien_admissions" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span><br>
+            <span id="nb_quotidien_admissions_reanimation" style="font-size:200%; margin-top:5px; margin-bottom: 3px;">--</span><br>
             <b>Admissions (quotidien)</b><br>
             Nombre quotidien d'admissions Covid19 en soins critiques, en moyenne sur les 7 derniers jours.
             <div style="font-size: 70%; margin-top: 3px;"><i>Dernière donnée : <span class="date_maj">--/--</span> • Source : Santé publique France</i></div>
@@ -136,8 +136,8 @@ function updateDataAdmissionsReanimations(){
     let jour_nom = data_France["incid_reanimations"].jour_nom;
     let jour = data_France[jour_nom][N-1];
 
-    document.getElementById("nb_total_admissions").innerHTML = printableNumber(data_France.incid_reanimations_total.valeur);
-    document.getElementById("nb_quotidien_admissions").innerHTML = printableNumber(data_France.incid_reanimations.valeur[N-1]);
+    document.getElementById("nb_total_admissions_reanimation").innerHTML = printableNumber(data_France.incid_reanimations_total.valeur);
+    document.getElementById("nb_quotidien_admissions_reanimation").innerHTML = printableNumber(data_France.incid_reanimations.valeur[N-1]);
 
     for (element of document.getElementsByClassName('date_maj')){
             element.innerHTML = moment(jour, "YYYY-MM-DD").format("DD / MM / YYYY");
