@@ -9,7 +9,7 @@ Dépôt concernant la gestion des données et graphiques : [covid-19](https://gi
 
 ## Mode opératoire
 
-Afin de faciliter le développement, il est possible de lancer VaccingTracker sur une machine locale.
+Afin de faciliter le développement, il est possible de lancer VaccinTracker sur une machine locale.
 Pour cela, il faut lancer la commande
 ```bash
 docker-compose up -d
