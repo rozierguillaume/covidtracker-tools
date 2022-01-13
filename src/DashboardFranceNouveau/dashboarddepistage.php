@@ -1,7 +1,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <head>
-               <script src="https://cdn.plot.ly/plotly-2.4.2.min.js"></script>
-               <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.1.0/plotly-locale-fr.min.js" integrity="sha512-LNl5CA52EQN7w9dlZhK8x8OuX6yldsqBIU+GWM806iViujAw6KjQ1a9h34UEkidQotn+DOTjGHJcYJ4HgdsF/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.plot.ly/plotly-2.4.2.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.1.0/plotly-locale-fr.min.js" integrity="sha512-LNl5CA52EQN7w9dlZhK8x8OuX6yldsqBIU+GWM806iViujAw6KjQ1a9h34UEkidQotn+DOTjGHJcYJ4HgdsF/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 

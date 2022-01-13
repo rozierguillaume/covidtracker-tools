@@ -142,7 +142,7 @@ p {
 
 <script>
 
-function updateDataAdmissions(){
+function updateDataAdmissionsHopital(){
     N = data_France.incid_hospitalisations.valeur.length;
     let jour_nom = data_France["incid_hospitalisations"].jour_nom;
     let jour = data_France[jour_nom][N-1];
@@ -156,7 +156,7 @@ function updateDataAdmissions(){
 }
 
 function buildChartHospitalisations(){
-    updateDataAdmissions();
+    updateDataAdmissionsHopital();
 
     let data_nom = "hospitalisations";
     let jour_nom = data_France[data_nom].jour_nom;

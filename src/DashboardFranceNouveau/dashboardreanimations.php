@@ -131,7 +131,7 @@ p {
 
 <script>
 
-function updateDataAdmissions(){
+function updateDataAdmissionsReanimations(){
     N = data_France.incid_reanimations.valeur.length;
     let jour_nom = data_France["incid_reanimations"].jour_nom;
     let jour = data_France[jour_nom][N-1];
@@ -304,7 +304,7 @@ function buildChartReanimationsTauxDeCroissance(){
 }
 
 function buildChartNouvellesReanimations(){
-    updateDataAdmissions();
+    updateDataAdmissionsHopital();
 
     let data_nom = "incid_reanimations";
     let jour_nom = data_France[data_nom].jour_nom;
