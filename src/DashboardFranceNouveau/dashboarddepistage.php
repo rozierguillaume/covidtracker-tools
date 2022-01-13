@@ -94,7 +94,7 @@ p {
 <body>
     <div class="alert alert-info" role="alert">
         <i>Nouveau dashboard France</i><br>
-        Bienvenue sur le nouveau dashboard France. Un problème ? <a href="https://covidtracker.fr/france">Accéder à l'ancien dashboard France</a>.  
+        Bienvenue sur le nouveau dashboard France. Un problème ? <a href="https://covidtracker.fr/covidtracker-france">Accéder à l'ancien dashboard France</a>.  
     </div>
 
     <div id="depistage" class="btn-group btn-group-toggle" role="group" >
