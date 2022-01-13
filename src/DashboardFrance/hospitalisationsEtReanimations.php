@@ -51,7 +51,7 @@
             Les "ombres" derrière les courbes sont là pour donner une échelle et faciliter la comparaison. L'ombre la plus grande (et la plus claire)
             représente le maximum quotidien sur l'ensemble des territoires. L'ensemble des points de
             données sont donc situés en dessous. L'ombre juste en dessous, la deuxième, un peu plus foncée est tracée telle que 75 % des données
-            se situent en dessous. La troisième ombre, encore plus basse et sombre, correspond au seul de
+            se situent en dessous. La troisième ombre, encore plus basse et sombre, correspond au seuil de
             50 %. Et, finalement, 25% des points de données se situent sous l'ombre la plus basse et la plus foncée.</p>
         <p><!-- /wp:paragraph --></p>
 
