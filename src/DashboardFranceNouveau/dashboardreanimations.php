@@ -97,6 +97,10 @@ p {
     <p>Taux d'évolution du nombre de personnes en soins critiques dont réanimation avec Covid19.</p>
     <div id="reanimations_taux_croissance" style="width: 95vw; height: 35vw; max-width: 1100px; max-height: 800px; min-height: 300px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
     
+    <h3>Soins critiques par âge</h3>
+    <p>Personnes actuellement hospitalisées en soins critiques avec Covid19, par tranche d'âge.</p>
+    <div id="reanimations_par_age" style="width: 95vw; height: 35vw; max-width: 1100px; max-height: 800px; min-height: 300px;"><span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span></div>
+
     <h2>Admissions en soins critiques</h2>
     <div class="wrap">
         <div class="one">
@@ -462,6 +466,44 @@ function buildChartNouvellesReanimationsTauxDeCroissance(){
     var data = [trace1, trace2];
 
     Plotly.newPlot('nouvelles_reanimations_taux_croissance', data, layout, config);
+}
+
+function buildChartReanimationsParAge(){
+    var URL = 'https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/api/hospitalisations_par_age.json';
+    var request = new XMLHttpRequest();
+    request.open('GET', URL);
+    request.responseType = 'json';
+    request.send();
+    request.onload = function() {
+        data = request.response;
+        var trace1 = {
+            x: data['rea'],
+            y: data["cl_age90"],
+            name: '',
+            text: data['rea'],
+            textposition: 'auto',
+            orientation: 'h',
+            marker: {
+                color: 'rgba(55,128,191,0.6)',
+                width: 1
+            },
+            type: 'bar'
+        };
+
+        var data = [trace1];
+
+        var layout = {
+            margin: {
+                t: MARGIN.t,
+                r: MARGIN.r,
+                l: 70,
+                b: MARGIN.b
+            }
+        };
+
+        Plotly.newPlot('reanimations_par_age', data, layout);  
+    }
+    
 }
 
 

@@ -236,6 +236,7 @@ function download_data(){
         buildChartNouvellesHospitalisationsTauxDeCroissance();
 
         buildChartReanimations();
+        buildChartReanimationsParAge();
         buildChartReanimationsTauxDeCroissance();
         buildChartNouvellesReanimations();
         buildChartNouvellesReanimationsTauxDeCroissance();
