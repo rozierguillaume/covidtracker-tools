@@ -17,3 +17,12 @@ docker-compose up -d
 
 Les modifications locales sont alors accessibles à l'adresse http://localhost:8100/VaccinTracker/test.php.
 :warning: Les modifications n'entrainent pas un rechargement automatique de la page we. Il faut penser à la rafraîchir manuellement.
+
+
+### En cas de problèmes 
+Si l'erreur suivante s'affiche :
+```
+docker.errors.DockerException: Error while fetching server API version: (2, 'CreateFile', 'Le fichier spécifié est introuvable.')
+[4740] Failed to execute script docker-compose
+```
+Essayer de télécharger l'image `docker pull php:8.0.1-apache` avant de lancer `docker-compose up -d`.
