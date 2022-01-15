@@ -160,8 +160,6 @@ p {
     <span>CovidTracker.fr • Données : Santé publique France • Dernière donnée : <span class="date_maj">--/--</span></span>
 
     <br>
-    Données : Santé publique France
-    <br>
 
     <div style="margin-bottom: 200px;"> </div>
 

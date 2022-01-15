@@ -354,7 +354,7 @@ function buildChartNouvellesReanimations(){
             arrowsize: 1,
             arrowwidth: 1.5,
             arrowcolor: 'rgba(201, 4, 4, 1)',
-            ax: -50,
+            ax: -100,
             ay: -30,
             borderwidth: 1,
             borderpad: 2,
