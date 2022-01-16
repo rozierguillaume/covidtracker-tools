@@ -270,7 +270,7 @@ function populate_figures(stats, raw_data, last_week, populate_region = false, f
                 icon_color_non_vax:"black",
                 title : "Décès évitables",
                 intro : "Cet indicateur permet d'estimer la proportion de décès du Covid-19 qui auraient pu être évitées si tous les individus avaient été {0}.",
-                mini_conclu : "Cela signifie que sur 100 décès pour Covid-19 d'iindividus {0} ayant {1}, {2} décès auraient pu être évités si tous ces individus étaient {3}.",
+                mini_conclu : "Cela signifie que sur 100 décès pour Covid-19 d'individus {0} ayant {1}, {2} décès auraient pu être évités si tous ces individus étaient {3}.",
                 conclu : "Cela signifie que sur les {0} décès du Covid-19 observés le {1}, {2} décès auraient été directement évitables par la vaccination. D'autres décès auraient pu être indirectement évités, la vaccination permettant de réduire les contaminations (protection individuelle et immunité collective).",
             }
         ], groupes_a_comparer, groupe1,groupe2
