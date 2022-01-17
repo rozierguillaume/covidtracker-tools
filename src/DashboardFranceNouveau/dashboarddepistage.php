@@ -440,7 +440,7 @@ function buildChartCasSpf(){
             arrowsize: 1,
             arrowwidth: 1.5,
             arrowcolor: 'rgb(8, 115, 191)',
-            ax: -30,
+            ax: -50,
             ay: -30,
             borderwidth: 1,
             borderpad: 2,
