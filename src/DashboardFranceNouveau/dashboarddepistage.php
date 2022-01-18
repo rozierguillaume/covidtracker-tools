@@ -359,7 +359,7 @@ function buildChartCas(){
 }
 
 function buildChartCasSpf(){
-
+    console.log(data_France.jour_spf_opendata)
     var trace_cas = {
         x: data_France.jour_spf_opendata,
         y: data_France["cas_spf_opendata"].valeur,

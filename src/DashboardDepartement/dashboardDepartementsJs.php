@@ -2,9 +2,8 @@
     jQuery(document).ready(function ($) {
             $('.dropdown-toggle').dropdown();
 
-            var valeurs_cas = [">", "1000", "500", "250", "150", "50"];
-            var couleurs_cas = ["black", "#3d013d", "purple", "#c80000", "#f95228", "#98ac3b"];
-            //["3c0a09", "#aa120e", "e25e13", "#e2a213", "#e2e013", "#98ac3b"];
+            var valeurs_cas = [">", "4000", "2000", "1000", "500", "150", "50"];
+            var couleurs_cas = ["black", "#701210", "#ab1915", "#d34912", "#e29113", "#e2cb13", "#98ac3b"];
 
             var valeurs_n_dose1_cumsum_pop = [">", "82", "79", "76", "73", "69", "66", "60", "50", "30"];
             var couleurs_n_dose1_cumsum_pop = [

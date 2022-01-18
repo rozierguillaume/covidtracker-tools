@@ -6,8 +6,8 @@
         var donneesFrance
         var saturationReaRegions
         var dateMaj
-        var valeurs_cas = [">", "400", "250", "150", "50"];
-        var couleurs_cas = ["purple", "#3c0000", "#c80000", "#f95228", "#98ac3b"];
+        var valeurs_cas = [">", "4000", "2000", "1000", "500", "150", "50"];
+        var couleurs_cas = ["black", "#701210", "#ab1915", "#d34912", "#e29113", "#e2cb13", "#98ac3b"];
 
         fetch('https://raw.githubusercontent.com/CovidTrackerFr/covidtracker-data/master/data/france/stats/incidence_regions.json')
             .then(response => {
