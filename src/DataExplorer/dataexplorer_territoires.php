@@ -135,7 +135,7 @@ var descriptions = {
 
 var titres = {
     "hospitalisations": "Hospitalisations",
-    "incid_hospitalisations": "Nouvelles admissions à l'hospital",
+    "incid_hospitalisations": "Nouvelles admissions à l'hôpital",
     "incidence": "Taux d'incidence",
     "taux_positivite": "Taux de positivité",
     "taux_positivite_rolling_before": "Taux de positivité",
