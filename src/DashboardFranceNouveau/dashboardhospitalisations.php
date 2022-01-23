@@ -195,7 +195,7 @@ function buildChartHospitalisations(){
             y: data_France[data_nom].valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: "<b>" + printableNumber(data_France[data_nom].valeur[N-1]) + " hosp.</b><br> (+ " + printableNumber(data_France[data_nom].valeur[N-1]-data_France[data_nom].valeur[N-8]) +" / sem.)",
+            text: "<b>" + printableNumber(data_France[data_nom].valeur[N-1]) + " hosp.</b><br> (" + printableNumberEvolution(data_France[data_nom].valeur[N-1]-data_France[data_nom].valeur[N-8]) +" / sem.)",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
@@ -342,7 +342,7 @@ function buildChartNouvellesHospitalisations(){
     let x_min = data_France[jour_nom][N-300];
     let x_max = data_France[jour_nom][N-1];
     let y_min = 0;
-    let y_max = Math.max.apply(Math, data_France[data_nom].valeur.slice(-300));
+    let y_max = 1.2*Math.max.apply(Math, data_France[data_nom].valeur.slice(-300));
 
     var layout = { 
         images: IMAGES,

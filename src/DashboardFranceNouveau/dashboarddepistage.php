@@ -258,6 +258,13 @@ function printableNumber(x){
     return x
 };
 
+function printableNumberEvolution(x){
+    x = (x<0?"":"+") + x;
+    x = x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "&nbsp;");
+    x = x.replace('.', ',');
+    return x
+};
+
 function updateDataCas(){
     N = data_France.cas.valeur.length;
     let jour_nom = data_France["cas"].jour_nom;

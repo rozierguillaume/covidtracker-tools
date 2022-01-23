@@ -181,7 +181,7 @@ function buildChartReanimations(){
             y: data_France[data_nom].valeur[N-1],
             xref: 'x',
             yref: 'y',
-            text: "<b>" + printableNumber(data_France[data_nom].valeur[N-1]) + "<br>soins crit.</b><br>(+ " + printableNumber(data_France[data_nom].valeur[N-1] - data_France[data_nom].valeur[N-8]) + " / sem.)",
+            text: "<b>" + printableNumber(data_France[data_nom].valeur[N-1]) + "<br>soins crit.</b><br>(" + printableNumberEvolution(data_France[data_nom].valeur[N-1] - data_France[data_nom].valeur[N-8]) + " / sem.)",
             showarrow: true,
             font: {
                 family: 'Helvetica Neue',
