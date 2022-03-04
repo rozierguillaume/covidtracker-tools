@@ -24,7 +24,6 @@
 <!-- wp:spacer {"height":30} -->
 <div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
-<?php include(dirname(__FILE__) . '/omicron.php') ?>
 <?php include(dirname(__FILE__) . '/enUnCoupDOeil.php') ?>
 <?php include(dirname(__FILE__) . '/carte.php') ?>
 <?php include(dirname(__FILE__) . '/vaccination.php') ?>
