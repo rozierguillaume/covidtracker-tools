@@ -222,7 +222,7 @@
                     tableauCouleurs = couleurs_cas_12_couleurs;
                     nomDonnee = "incidence_cas";
                 } else if (typeCarte == 'var_c1') {
-                    $('#titreCarte').html("<h3>Proportion de mutation L452R (Delta)</h3>");
+                    $('#titreCarte').html("<h3>Proportion de mutation L452R (Delta, BA.4, BA.5)</h3>");
                     $('#descriptionCarte').html("Proportion des cas criblés ayant la mutation L452R, présente sur le variant Delta (en %)");
                     tableauValeurs = valeurs_var_c1;
                     tableauCouleurs = couleurs_var_c1;

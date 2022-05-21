@@ -43,7 +43,7 @@
                                 <a href="#" class="">Taux d'incidence (13 couleurs)</a>
                             </li>
                             <li data-carte="var_c1">
-                                <a href="#" class="">Variant Delta</a>
+                                <a href="#" class="">Mut. L452R (Delta, BA.4, BA.5)</a>
                             </li>
                             <li data-carte="var_non_c1">
                                 <a href="#" class="">Variant Omicron</a>
