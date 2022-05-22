@@ -1,6 +1,4 @@
-<!--
-    <div class="alert alert-success" role="alert">
-    <i>10 janvier 2022</i><br>
-    Suite à un correctif de Santé publique France, les données épidémiques à l'échelle départementale sont de nouveau disponibles sur CovidTracker.
+<div class="alert alert-success" role="alert">
+    <i>22 mai 2022</i><br>
+    En raison de changements importants dans le format des données opéré par Santé publique France, CovidTracker n'est plus à jour depuis le 17 mai. Nous sommes en train d'adapter les traitements aux nouveaux formats, et espérons un correctif dans les plus brefs délais.
 </div>
- -->
