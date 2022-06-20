@@ -519,6 +519,7 @@
         var ctx = document.getElementById('lineVacChart').getContext('2d');
         let data_values = data_france.n_cum_dose1.map((val, idx) => ({x: data_france.dates[idx], y: parseInt(val)}));
         let data_values_rappel = data_france.n_cum_dose3.map((val, idx) => ({x: data_france.dates[idx], y: parseInt(val)}));
+        let data_values_2_rappel = data_france.n_cum_dose4.map((val, idx) => ({x: data_france.dates[idx], y: parseInt(val)}));
 
         let data_values_2nd = data_france.n_cum_complet.map((val, idx) => ({
             x: data_france.dates[idx],
@@ -541,6 +542,16 @@
         let N2 = data_values_2doses.length;
 
         var datasets = [
+            {
+                yAxisID: "injections",
+                label: 'Personnes vaccinées (2 rappels) ',
+                data: data_values_2_rappel,
+                borderWidth: 0.1,
+                backgroundColor: '#044e7d',
+                borderColor: '#127aba',
+                pointRadius: 0,
+                pointHitRadius: 1,
+            },
             {
                 yAxisID: "injections",
                 label: 'Personnes vaccinées (rappel) ',
@@ -701,7 +712,8 @@
         let data_values = ndose_fra.n_cum_dose1.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
         let data_values_2nd = ndose_fra.n_cum_dose2.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
         let data_values_3rd = ndose_fra.n_cum_dose3.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
-        
+        let data_values_4rd = ndose_fra.n_cum_dose4.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
+
         let data_object_stock = livraisons.nb_doses_tot_cumsum.map((value, idx)=> ({x: moment(livraisons.jour[idx]).add(-4, 'd').format("YYYY-MM-DD"), y: parseInt(value)}))
         
         let labels=nb_vaccines.map(val => val.date)
@@ -739,11 +751,21 @@
                     },
                     {
                         yAxisID:"injections",
-                        label: 'Troisièmes doses injectées ',
+                        label: 'Premiers doses de rappel injectées ',
                         data: data_values_3rd, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
                         borderWidth: 0.1,
                         backgroundColor: '#06629c',
                         borderColor: '#064870',
+                        pointRadius: 0,
+                        pointHitRadius: 1,
+                    },
+                    {
+                        yAxisID:"injections",
+                        label: 'Deuxièmes doses de rappel injectées ',
+                        data: data_values_4rd, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
+                        borderWidth: 0.1,
+                        backgroundColor: '#044e7d',
+                        borderColor: '#044e7d',
                         pointRadius: 0,
                         pointHitRadius: 1,
                     },
@@ -861,6 +883,7 @@
         let data_premieres_injections = this.ndose_fra.n_dose1.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
         let data_secondes_injections = this.ndose_fra.n_dose2.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
         let data_troisiemes_injections = this.ndose_fra.n_dose3.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
+        let data_quatriemes_injections = this.ndose_fra.n_dose4.map((val, idx) => ({x: ndose_fra.jour[idx], y:parseInt(val)}));
 
         let data_tot_rolling = this.ndose_fra.n_dose_tot_rolling.slice(0, ndose_fra.n_dose_tot_rolling.length-3);
         data_tot_rolling.unshift(0,0,0,);
@@ -877,6 +900,11 @@
         let data_ndose3_rolling = this.ndose_fra.n_dose3_rolling.slice(0, this.ndose_fra.n_dose3_rolling.length-3);
         data_ndose3_rolling.unshift(0,0,0);
         data_ndose3_rolling = data_ndose3_rolling.map((val, idx) => ({x: this.ndose_fra.jour[idx], y:parseInt(val)}));
+
+        let data_ndose4_rolling = this.ndose_fra.n_dose4_rolling.slice(0, this.ndose_fra.n_dose4_rolling.length-3);
+        data_ndose4_rolling.unshift(0,0,0);
+        data_ndose4_rolling = data_ndose4_rolling.map((val, idx) => ({x: this.ndose_fra.jour[idx], y:parseInt(val)}));
+
 
         this.lineChart = new Chart(ctx, {
             type: 'bar',
@@ -917,7 +945,7 @@
                         yAxisID: 'moyennes'
                     },
                     {
-                        label: 'Moyenne quotidienne des troisièmes doses ',
+                        label: 'Moyenne quotidienne de premiers rappels ',
                         data: data_ndose3_rolling,
                         type: 'line',
                         borderColor: '#064870',
@@ -928,23 +956,16 @@
                         yAxisID: 'moyennes'
                     },
                     {
-                        label: 'Nombre de premières doses ',
-                        data: data_premieres_injections,
-                        backgroundColor: 'rgba(0, 168, 235, 0.5)',
-                        hidden: true,
+                        label: 'Moyenne quotidienne de deuxièmes rappels ',
+                        data: data_ndose4_rolling,
+                        type: 'line',
+                        borderColor: '#044e7d',
+                        pointBackgroundColor: '#044e7d',
+                        backgroundColor: 'rgba(0, 168, 235, 0)',
+                        pointRadius: 1,
+                        pointHitRadius: 3,
+                        yAxisID: 'moyennes'
                     },
-                    {
-                        label: 'Nombre de deuxièmes doses ',
-                        data: data_secondes_injections, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
-                        backgroundColor: '#1796e6',
-                        hidden: true,
-                    },
-                    {
-                        label: 'Nombre de troisièmes doses ',
-                        data: data_troisiemes_injections, //debut_2nd_doses.slice(0,N_tot-N2).concat(data_values_2doses),
-                        backgroundColor: '#06629c', //'#064870'
-                        hidden: true,
-                    }
                 ]
             },
             options: {
