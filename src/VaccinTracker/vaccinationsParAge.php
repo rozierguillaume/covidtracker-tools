@@ -22,6 +22,7 @@ CovidTracker.fr - Données : Ministère de la Santé
         <option value="partiellement">Partiellement vaccinés</option>
         <option value="totalement">Totalement vaccinés</option>
         <option value="rappel">Totalement vaccinés + rappel</option>
+        <option value="2_rappel">Totalement vaccinés + 2 rappels</option>
     </select>
 </div>
 <div class="chart-container" style="position: relative; height:80vh; width:100%">
@@ -91,6 +92,9 @@ function switchEvolutionAge(){
     }
     else if(type_donnees=="rappel"){
         buildLineChartAgePop("couv_rappel")
+    }
+    else if(type_donnees=="2_rappel"){
+        buildLineChartAgePop("couv_2_rappel")
     }
 
 }
@@ -407,7 +411,7 @@ function buildLineChartAge(type){
                     //},
                     callbacks: {
                         label: function(tooltipItem, data) {
-                        if(tooltipItem.datasetIndex!=3){
+                        if(tooltipItem.datasetIndex!=4){
                             return data['datasets'][tooltipItem.datasetIndex]['label'] + ': ' + data['datasets'][tooltipItem.datasetIndex]['data'][tooltipItem['index']] + ' %';
                         } else {
                             let partiellement = parseFloat(data['datasets'][2]['data'][tooltipItem['index']])
