@@ -197,7 +197,6 @@ function buildLineChartAge(type){
     function buildLineChartAgePop(type_donnees){
         
         var datasets = []
-        //var colorscale = chroma.scale(['#440154FF', '#39568CFF', '#1E968BFF', '#73D055FF', '#FDE725FF'])
         var colorscale = chroma.scale(['#45006e', '#2e00a3', '#0071ad', '#f0dd0a', '#e8b009', '#e87109', '#e6160b'])
         var maxdate;
         Object.keys(data_age_all).map((value_age, idx) => {
@@ -358,7 +357,14 @@ function buildLineChartAge(type){
             data: {
                 labels: data_age.age,
                 datasets: [
-                    
+                {
+                    label: 'Vaccinés (2 rappels) ',
+                    data: data_age["couv_tot_2_rappel"],
+                    borderWidth: 3,
+                    backgroundColor: "#044e7d",
+                    borderWidth: 0,
+                    cubicInterpolationMode: 'monotone',
+                },
                 {
                     label: 'Vaccinés (rappel) ',
                     data: data_age["couv_tot_rappel"],
