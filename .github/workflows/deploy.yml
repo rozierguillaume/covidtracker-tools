@@ -13,7 +13,7 @@ jobs:
       uses: burnett01/rsync-deployments@4.1
       with:
         switches: -avz --delete --exclude ".git*"
-        path: ./
+        path: .
         remote_path: ${{ secrets.DEPLOY_PATH }}
         remote_host: ${{ secrets.DEPLOY_IP }}
         remote_user: ubuntu
