@@ -5,7 +5,8 @@ crossorigin=""/>
 integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
 crossorigin=""></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
-
+<script src="https://unpkg.com/geobuf@3.0.2/dist/geobuf.js"></script>
+<script src="https://unpkg.com/pbf@3.0.5/dist/pbf.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js" integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg==" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.css" integrity="sha512-XXtRBFtk/QfR8GEWwQPYjrQBHQwjidXg0wo8HJi9YOaFycWqd2uWkjJoAyx8Mb/+H8uhvmf70EAIxDnQxrwrvw==" crossorigin="anonymous" />
 
@@ -258,17 +259,18 @@ div[shadow] {
        });
     
     var geojson;
-
-    fetch('https://raw.githubusercontent.com/rozierguillaume/vaccintracker/main/data/output/epci2020_notnull_latlong_compr.json', {cache: 'no-cache'})
+    
+    var epci_url = 'epci2020_notnull_latlong_compr.pbf';
+    fetch(epci_url, {cache: 'no-cache'})
     .then(response => {
         if (!response.ok) {
             throw new Error("HTTP error " + response.status);
         }
 
-        return response.json();
+        return response.arrayBuffer();
     })
-    .then(json => {
-            this.geojson = json;
+    .then(arraybuffer => {
+            this.geojson = geobuf.decode(new Pbf(arraybuffer));
             secondFetch();
         })
     .catch(function () {
